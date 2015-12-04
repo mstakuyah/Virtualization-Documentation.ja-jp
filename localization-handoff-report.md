@@ -6,14 +6,14 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/38e40fc004ec64851a0520575139936eed7b331e/virtualization/hyperv_on_windows/user_guide/vmsession.md) | HandedOff | [Details](#436e5d14aced41f8066ac5b9379e85e377cc2468178)
+ [virtualization\community\contribute_to_docs.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/0d4b68282cdb96a92d6ee183da3d1fc63d82fc6b/virtualization/community/contribute_to_docs.md) | HandedOff | [Details](#0898f47e513977c7bb5d130bbe961a7d3fc08dec58)
 
 ## Item Details
-##### <a name='436e5d14aced41f8066ac5b9379e85e377cc2468178'></a> Source: [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/38e40fc004ec64851a0520575139936eed7b331e/virtualization/hyperv_on_windows/user_guide/vmsession.md)
+##### <a name='0898f47e513977c7bb5d130bbe961a7d3fc08dec58'></a> Source: [virtualization\community\contribute_to_docs.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/0d4b68282cdb96a92d6ee183da3d1fc63d82fc6b/virtualization/community/contribute_to_docs.md)
 * Status: HandedOff
 * Target File: 
-* Handoff File: [vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/dd292676c538deaa56dafb801e41f125e6e8ace6/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.ja-jp.xlf)
-* Handoff Datetime: 2015-12-04 18:43:54
+* Handoff File: [contribute_to_docs.d73574c30ea237d679cf11495f670244e941fb1d.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/24903f8bb3d3e098ad3957b3a8dc3b018f4a14ce/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/contribute_to_docs.d73574c30ea237d679cf11495f670244e941fb1d.ja-jp.xlf)
+* Handoff Datetime: 2015-12-04 19:06:34
 * Handoff Reason: Include
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
