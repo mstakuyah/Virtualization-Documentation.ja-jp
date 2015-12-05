@@ -22,9 +22,8 @@
         {
             "docset_name": "Microsoft_Windows-Container-Documentation-Private_windowscontainers",
             "build_output_subfolder": "virtualization/windowscontainers",
-            "locale": "en-us",
+            "locale": "ja-jp",
             "version": 0,
-            "open_to_public_contributors": "true",
             "type_mapping": {
                 "Conceptual": "Content"
             }
