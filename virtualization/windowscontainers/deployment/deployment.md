@@ -1,0 +1,284 @@
+## コンテナー ホストの展開
+
+**この記事は暫定的な内容であり、変更される可能性があります。**
+
+Windows コンテナー ホストの展開手順は、オペレーティング システムやホスト システムの種類 (物理または仮想) によって異なります。 このドキュメントでは、Windows Server 2016 と Nano Server の物理システムと仮想システムの展開オプションについて詳しく説明します。
+
+システム要件の詳細については、「[Windows Container Host System Requirements (Windows コンテナー ホスト システムの要件)](./system_requirements.md)」を参照してください。
+
+PowerShell スクリプトを使用すると、Windows コンテナー ホストの展開を自動化できます。
+- [新しい Hyper-V 仮想マシンでコンテナー ホストを展開する](../quick_start/container_setup.md)
+- [既存のシステムにコンテナー ホストを展開する](../quick_start/inplace_setup.md)
+- [Azure でコンテナー ホストを展開する](../quick_start/azure_setup.md)
+
+### Windows Server ホスト
+
+次の表に示された手順を使用して、Windows Server 2016 TP4 および Windows Server Core 2016 にコンテナー ホストを展開できます。 Windows Server コンテナーと Hyper-V コンテナーの両方に必要な構成が含まれています。
+
+\ * Hyper-V コンテナーを展開する場合にのみ必要です。  
+\*\* Docker を使用して、コンテナーの作成と管理を行う場合にのみ必要です。
+
+<table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:100%" cellpadding="5" cellspacing="5">
+<tr valign="top">
+<td width="30%"><strong>展開アクション</strong></td>
+<td width="70%"><strong>詳細</strong></td>
+</tr>
+<tr>
+<td>[コンテナー機能のインストール](#role)</td>
+<td>コンテナー機能により Windows Server と Hyper-V コンテナーの使用が有効になります。</td>
+</tr>
+<tr>
+<td>[入れ子になった仮想化の有効化 *](#nest)</td>
+<td>コンテナー ホスト自体が Hyper-V 仮想マシンの場合、入れ子になった仮想化を有効にする必要があります。</td>
+</tr>
+<tr>
+<td>[仮想プロセッサの構成 *](#proc)</td>
+<td>コンテナー ホスト自体が Hyper-V 仮想マシンの場合、少なくとも 2 つの仮想プロセッサを構成する必要があります。</td>
+</tr>
+<tr>
+<td>[Hyper-V の役割の有効化 *](#hypv) </td>
+<td>Hyper-V は Hyper-V コンテナーを使用する場合にのみ必要です。</td>
+</tr>
+<tr>
+<td>[仮想スイッチの作成](#vswitch)</td>
+<td>コンテナーは、ネットワーク接続のために仮想スイッチに接続します。</td>
+</tr>
+<tr>
+<td>[NAT の構成](#nat)</td>
+<td>仮想スイッチが Network Address Translation (NAT) を使用して構成されている場合、NAT 自体に構成が必要です。</td>
+</tr>
+<tr>
+<td>[MAC アドレスのスプーフィングの構成](#mac)</td>
+<td>コンテナー ホストが仮想化されている場合、MAC スプーフィングを有効にする必要があります。</td>
+</tr>
+<tr>
+<td>[コンテナー OS イメージのインストール](#img)</td>
+<td>OS イメージは、コンテナー展開の基盤を提供します。</td>
+</tr>
+<tr>
+<td>[Docker のインストール **](#docker)</td>
+<td>この手順は省略可能ですが、Docker を使用して Windows コンテナーの作成と管理を行うためには必要です。</td>
+</tr>
+</table>
+
+### Nano Server ホスト
+
+次の表に示された手順を使用して、Nano Server にコンテナー ホストを展開できます。 Windows Server コンテナーと Hyper-V コンテナーの両方に必要な構成が含まれています。
+
+\ * Hyper-V コンテナーを展開する場合にのみ必要です。  
+\*\* Docker を使用して、コンテナーの作成と管理を行う場合にのみ必要です。
+
+<table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:100%" cellpadding="5" cellspacing="5">
+<tr valign="top">
+<td width="30%"><strong>展開アクション</strong></td>
+<td width="70%"><strong>詳細</strong></td>
+</tr>
+<tr>
+<td>[コンテナーのための Nano Server の準備](#nano)</td>
+<td>コンテナーと Hyper-V の機能を持つ Nano Server VHD を準備します。</td>
+</tr>
+<tr>
+<td>[入れ子になった仮想化の有効化 *](#nest)</td>
+<td>コンテナー ホスト自体が Hyper-V 仮想マシンの場合、入れ子になった仮想化を有効にする必要があります。</td>
+</tr>
+<tr>
+<td>[仮想プロセッサの構成 *](#proc)</td>
+<td>コンテナー ホスト自体が Hyper-V 仮想マシンの場合、少なくとも 2 つの仮想プロセッサを構成する必要があります。</td>
+</tr>
+<tr>
+<td>[仮想スイッチの作成](#vswitch)</td>
+<td>コンテナーは、ネットワーク接続のために仮想スイッチに接続します。</td>
+</tr>
+<tr>
+<td>[NAT の構成](#nat)</td>
+<td>仮想スイッチが Network Address Translation (NAT) を使用して構成されている場合、NAT 自体に構成が必要です。</td>
+</tr>
+<tr>
+<td>[MAC アドレスのスプーフィングの構成](#mac)</td>
+<td>コンテナー ホストが仮想化されている場合、MAC スプーフィングを有効にする必要があります。</td>
+</tr>
+<tr>
+<td>[コンテナー OS イメージのインストール](#img)</td>
+<td>OS イメージは、コンテナー展開の基盤を提供します。</td>
+</tr>
+<tr>
+<td>[Docker のインストール **](#docker)</td>
+<td>この手順は省略可能ですが、Docker を使用して Windows コンテナーの作成と管理を行うためには必要です。 </td>
+</tr>
+</table>
+
+## 展開の手順
+
+### <a name=role></a>コンテナー機能のインストール
+
+コンテナー機能は、Windows サーバー マネージャーまたは PowerShell を使用して、Windows Server 2016 または Windows Server 2016 Core にインストールできます。
+
+PowerShell を使用してロールをインストールするには、管理者特権の PowerShell セッションで、次のコマンドを実行します。
+
+```powershell
+PS C:\> Install-WindowsFeature containers
+```
+コンテナー ロールのインストールが完了したら、システムを再起動する必要があります。
+
+```powershell
+PS C:\> shutdown /r 
+```
+
+システムの再起動後、`Get-ContainerHost` コマンドを使用して、コンテナー ロールが正常にインストールされていることを確認します。
+
+```powershell
+PS C:\> Get-ContainerHost
+
+Name            ContainerImageRepositoryLocation
+----            --------------------------------
+WIN-LJGU7HD7TEP C:\ProgramData\Microsoft\Windows\Hyper-V\Container Image Store
+```
+
+### <a name=nano></a>Nano Server の準備
+
+Nano Server の展開には、準備された仮想ハード ドライブの作成が含まれます。このドライブには、Nano Server オペレーティング システムと追加の機能パッケージが含まれます。 このガイドでは、Windows コンテナーに使用できる Nano Server 仮想ハード ドライブの準備について簡単に説明します。
+
+Nano Server に関する詳細、および Nano Server のさまざまな展開オプションについては、[Nano Server のドキュメント](https://technet.microsoft.com/en-us/library/mt126167.aspx)を参照してください。
+
+`nano` という名前のフォルダーを作成します。
+
+```powershell
+PS C:\> New-Item -ItemType Directory c:\nano
+```
+
+Windows Server メディア上の Nano Server フォルダーから `NanoServerImageGenerator.psm1` と `Convert WindowsImage.ps1` のファイルを見つけます。 これらのファイルを `c:\nano` にコピーします。
+
+```powershell
+#Set path to Windows Server 2016 Media
+PS C:\> $WindowsMedia = "C:\Users\Administrator\Desktop\TP4 Release Media"
+
+PS C:\> Copy-Item $WindowsMedia\NanoServer\Convert-WindowsImage.ps1 c:\nano
+PS C:\> Copy-Item $WindowsMedia\NanoServer\NanoServerImageGenerator.psm1 c:\nano
+```
+次を実行して Nano Server 仮想ハード ドライブを作成します。 `–Containers` パラメーターは、コンテナー パッケージがインストールされることを示し、`–Compute` パラメーターは Hyper-V パッケージを処理します。 Hyper-V は Hyper-V コンテナーが作成される場合にのみ必要です。
+
+```powershell
+PS C:\> Import-Module C:\nano\NanoServerImageGenerator.psm1
+PS C:\> New-NanoServerImage -MediaPath $WindowsMedia -BasePath c:\nano -TargetPath C:\nano\NanoContainer.vhdx -MaxSize 10GB -GuestDrivers -ReverseForwarders -Compute -Containers
+```
+完了したら、`NanoContainer.vhdx` ファイルから仮想マシンを作成します。 この仮想マシンは、オプションのパッケージとともに Nano Server OS を実行します。
+
+### <a name=nest></a>入れ子になった仮想化の構成
+
+コンテナー ホスト自体が Hyper-V 仮想マシン上で実行され、Hyper-V コンテナーもホストする場合、入れ子になった仮想化を有効にする必要があります。 この処理は、次の PowerShell コマンドを使って完了できます。
+
+> このコマンドを実行するときには、仮想マシンをオフにする必要があります。
+
+```powershell
+PS C:\> Set-VMProcessor -VMName <container host vm> -ExposeVirtualizationExtensions $true
+```
+
+### <a name=proc></a>仮想プロセッサの構成
+
+コンテナー ホスト自体が Hyper-V 仮想マシン上で実行され、Hyper-V コンテナーもホストする場合、仮想マシンには少なくとも 2 つのプロセッサが必要になります。 これは、仮想マシンの設定を通じて、または次の PowerShell スクリプトを使って構成できます。
+
+```poweshell
+PS C:\> Set-VMProcessor –VMName <VM Name> -Count 2
+```
+
+### <a name=hypv></a>Hyper-V の役割の有効化
+
+Hyper-V コンテナーを展開する場合、コンテナーのホストで Hyper-V の役割を有効にする必要があります。 コンテナーのホストが仮想マシンである場合、仮想化の入れ子が有効になっていることを確認してください。 Hyper-V ロールは、次の PowerShell コマンドを使用して、Windows Server 2016 または Windows Server 2016 Core にインストールできます。 Nano Server 構成については、「[Nano Server の準備](#nano)」を参照してください。
+
+```powershell
+PS C:\> Install-WindowsFeature hyper-v
+```
+
+### <a name=vswitch></a>仮想スイッチの作成
+
+各コンテナーは、ネットワーク経由で通信するために仮想スイッチに接続する必要があります。 仮想スイッチは、`New-VMSwitch` コマンドで作成されます。 コンテナーは、`外部`または `NAT` の種類の仮想スイッチをサポートします。
+
+この例では、種類が NAT で、NAT サブネットが 172.16.0.0/12 の “Virtual Switch” という名前の仮想スイッチを作成します。
+
+```powershell
+PS C:\> New-VMSwitch -Name "Virtual Switch" -SwitchType NAT -NATSubnetAddress 172.16.0.0/12
+```
+
+### <a name=nat></a>NAT の構成
+
+仮想スイッチの作成に加え、スイッチの種類が NAT の場合には、NAT オブジェクトを作成する必要があります。 これは `New-NetNat` コマンドを使用することで完了できます。 この例では、`ContainerNat` という名前の NAT オブジェクトと、コンテナー スイッチに割り当てられる NAT サブネットに一致するアドレスのプレフィックスを作成します。
+
+```powershell
+PS C:\> New-NetNat -Name ContainerNat -InternalIPInterfaceAddressPrefix "172.16.0.0/12"
+
+Name                             : ContainerNat
+ExternalIPInterfaceAddressPrefix :
+InternalIPInterfaceAddressPrefix : 172.16.0.0/12
+IcmpQueryTimeout                 : 30
+TcpEstablishedConnectionTimeout  : 1800
+TcpTransientConnectionTimeout    : 120
+TcpFilteringBehavior             : AddressDependentFiltering
+UdpFilteringBehavior             : AddressDependentFiltering
+UdpIdleSessionTimeout            : 120
+UdpInboundRefresh                : False
+Store                            : Local
+Active                           : True
+```
+
+<a name=mac></a>最後に、コンテナー ホストが Hyper-V 仮想マシンの内部で実行されている場合には、MAC スプーフィングを有効化する必要があります。これにより、各コンテナーが IP アドレスを受け取れるようになります。MAC アドレスのスプーフィングを有効にするには、Hyper-V ホストで次のコマンドを実行します。VMName プロパティは、コンテナー ホストの名前になります。
+
+```powershell
+PS C:\> Get-VMNetworkAdapter -VMName <contianer host vm> | Set-VMNetworkAdapter -MacAddressSpoofing On
+```
+
+### <a name=img></a>OS イメージのインストール
+
+OS イメージは、任意の Windows Server コンテナーまたは Hyper-V コンテナーのベースとして使用されます。 このイメージは、コンテナーの展開に使用されます。展開されたコンテナーは、変更が可能で、新しいコンテナー イメージにキャプチャできます。 OS イメージは、基になるオペレーティング システムとして Windows Server Core と Nano Server の両方で作成されています。
+
+コンテナー OS イメージは、ContainerProvider PowerShell モジュールを使用して検索およびインストールできます。 このモジュールを使用するには、先にインストールする必要があります。 モジュールをインストールするには、次のコマンドを使用できます。
+
+```powershell
+PS C:\> Install-PackageProvider ContainerProvider -Force
+```
+
+PowerShell OneGet パッケージ マネージャーからイメージの一覧が返されます。
+```powershell
+PS C:\> Find-ContainerImage
+
+Name                 Version                 Description
+----                 -------                 -----------
+NanoServer           10.0.10586.0            Container OS Image of Windows Server 2016 Techn...
+WindowsServerCore    10.0.10586.0            Container OS Image of Windows Server 2016 Techn...
+```
+
+Nano Server ベースの OS イメージをダウンロードしてインストールするには、次を実行します。
+
+```powershell
+PS C:\> Install-ContainerImage -Name NanoServer -Version 10.0.10586.0
+Downloaded in 0 hours, 0 minutes, 10 seconds.
+```
+
+このコマンドは、Windows Server Core ベースの OS イメージも同様にダウンロードしてインストールします。
+
+> **問題:** リモート PowerShell セッションから実行する Save-ContainerImage コマンドレットと Install-ContainerImage コマンドレットが、WindowsServerCore コンテナー イメージの操作に失敗します。<br />**回避策:** リモート デスクトップを使用してマシンにログオンし、直接 Save-ContainerImage コマンドレットを使用します。
+
+```powershell
+PS C:\> Install-ContainerImage -Name WindowsServerCore -Version 10.0.10586.0
+Downloaded in 0 hours, 2 minutes, 28 seconds.
+```
+
+`Get-ContainerImage` コマンドを使用して、イメージがインストールされていることを確認します。
+
+```powershell
+PS C:\> Get-ContainerImage
+
+Name              Publisher    Version      IsOSImage
+----              ---------    -------      ---------
+NanoServer        CN=Microsoft 10.0.10586.0 True
+WindowsServerCore CN=Microsoft 10.0.10586.0 True
+```
+コンテナー イメージの管理の詳細については、[Windows コンテナー イメージ](../management/manage_images.md)に関するドキュメントを参照してください。
+
+
+### <a name=docker></a>Docker のインストール
+
+Docker デーモンとコマンド ライン インターフェイスは、Windows に付属していません。また、Windows コンテナー機能と一緒にインストールされません。 Docker は、Windows コンテナーを使用するための要件ではありません。 Docker をインストールする場合は、この記事「[Docker and Windows (Docker と Windows)](./docker_windows.md)」の手順に従います。
+
+
+
+
