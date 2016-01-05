@@ -1,29 +1,29 @@
-# Windows コンテナー クイック スタート -Docker
+# Windows Containers Quick Start - Docker
 
-Windows コンテナーを使用すると、単一のコンピューター システムに多数の独立したアプリケーションを短時間で展開できます。 この演習では、Docker を使用した Windows コンテナーの作成と管理の方法を示します。 完了すると、Docker と Windows コンテナーを統合する方法の基本的な理解が得られ、テクノロジを実際に体験できるはずです。
+Windows Containers can be used to rapidly deploy many isolated applications on a single computer system. This exercise will demonstrate Windows Container creation and management using Docker. When completed you should have a basic understanding of how Docker integrates with Windows Containers and will have gained hands on experience with the technology.
 
-このチュートリアルでは、Windows Server コンテナーと Hyper-V コンテナーの両方について説明します。 コンテナーの種類によって基本要件は異なります。 Windows コンテナー ドキュメントには、コンテナー ホストを簡単にデプロイする手順が記載されています。 Windows コンテナーを初めて使用するときは、これが最も簡単な方法です。 コンテナー ホストをお持ちでない場合は、[コンテナー ホストの展開のクイック スタート](./container_setup.md)に関するページを参照してください。
+This walkthrough will detail both Windows Server containers and Hyper-V containers. Each type of container has its own basic requirements. Included with the Windows Container documentation is a procedure for quickly deploying a container host. This is the easiest way to quickly start with Windows Containers. If you do not already have a container host, see the [Container Host Deployment Quick Start](./container_setup.md).
 
-各演習には、次の項目が必要です。
+The following items will be required for each exercise.
 
-**Windows サーバー コンテナー:**
+**Windows Server Containers:**
 
-- オンプレミスまたは Azure で Windows Server 2016 (Full または Core) を実行している Windows コンテナー ホスト。
+- A Windows Container Host running Windows Server 2016 (Full or Core), either on-prem or in Azure.
 
-**Hyper-V コンテナー:**
+**Hyper-V Containers:**
 
-- 仮想化の入れ子に対応した Windows コンテナー ホスト。
-- Windows Server 2016 メディア - [ダウンロード](https://aka.ms/tp4/serveriso)。
+- A Windows Container host enabled with Nested Virtualization.
+- The Windows Server 2016 Media - [Download](https://aka.ms/tp4/serveriso).
 
-> Microsoft Azure は、Hyper-V コンテナーをサポートしていません。 Hyper-V コンテナーの演習を実行するには、オンプレミスのコンテナー ホストが必要です。
+> Microsoft Azure does not support Hyper-V containers. To complete the Hyper-V Container exercises, you need an on-prem container host.
 
-## Windows Server コンテナー
+## Windows Server Container
 
-Windows Server コンテナーは、アプリケーションとホスト プロセスを実行するための、独立した、移植可能な、リソースが制御された運用環境を提供します。 Windows Server コンテナーを使用すると、プロセスと名前空間の分離によって、コンテナーとホスト間を分離できます。
+Windows Server Containers provide an isolated, portable, and resource controlled operating environment for running applications and hosting processes. Windows Server Containers provide isolation between the container and host, through process and namespace isolation.
 
-### コンテナーの作成
+### Create Container <!--1-->
 
-コンテナーを作成する前に、`docker images` コマンドを使用して、ホストにインストールされているコンテナー イメージを一覧表示します。
+Before creating a container, use the `docker images` command to list container images installed on the host.
 
 ```powershell
 PS C:\> docker images
@@ -35,39 +35,39 @@ nanoserver          10.0.10586.0        8572198a60f1        2 weeks ago         
 nanoserver          latest              8572198a60f1        2 weeks ago         0 B
 ```
 
-この例では、Windows Server Core イメージを使用してコンテナーを作成します。 これは、`docker run コマンド`で行います。 `docker run` の詳細については、[docker.com の Docker Run リファレンス](https://docs.docker.com/engine/reference/run/)を参照してください。
+For this example, create a container using the Windows Server Core image. This is done with the `docker run command`. For more information on `docker run`, see the [Docker Run reference on docker.com]( https://docs.docker.com/engine/reference/run/).
 
-この例では、`iisbase` という名前のコンテナーを作成し、コンテナーとの対話型セッションを開始します。
+This example creates a container named `iisbase`, and starts an interactive session with the container. 
 
 ```powershell
 C:\> docker run --name iisbase -it windowsservercore cmd
 ```
 
-コンテナーが作成されたら、コンテナー内からシェル セッションで操作します。
+When the container has been created, you will be working in a shell session from within the container. 
 
 
-### IIS イメージの作成
+### Create IIS Image <!--1-->
 
-IIS がインストールされ、次に、コンテナーからイメージが作成されます。 IIS をインストールするには、次のコマンドを実行します。
+IIS will be installed, and then an image created from the container. To install IIS, run the following.
 
 ```powershell
 C:\> powershell.exe Install-WindowsFeature web-server
 ```
 
-完了したら、対話型シェル セッションを終了します。
+When completed, exit the interactive shell session.
 
 ```powershell
 C:\> exit
 ```
 
-最後に、`docker commit` を使用して、コンテナーを新しいコンテナー イメージにコミットします。 この例では、`windowsservercoreiis` という名前で新しいコンテナー イメージを作成します。
+Finally, the container will be committed to a new container image using `docker commit`. This example creates a new container image with the name `windowsservercoreiis`.
 
 ```powershell
 C:\> docker commit iisbase windowsservercoreiis
 4193c9f34e320c4e2c52ec52550df225b2243927ed21f014fbfff3f29474b090
 ```
 
-新しい IIS イメージを表示するには、`docker images` コマンドを使用します。
+The new IIS images can be viewed using the `docker images` command.
 
 ```powershell
 C:\> docker images
@@ -80,9 +80,8 @@ nanoserver             10.0.10586.0        8572198a60f1        2 weeks ago      
 nanoserver             latest              8572198a60f1        2 weeks ago         0 B
 ```
 
-### ネットワークの構成
-
-Docker でコンテナーを作成する前に、コンテナーへのネットワーク接続を許可する Windows ファイアウォールのルールを作成する必要があります。 次を実行して、ポート 80 のルールを作成します。
+### Configure Network
+Before creating a container with Docker, a rule needs to be created for the Windows Firewall that will allow network connectivity to the container. Run the following to create a rule for port 80.
 
 ```powershell
 if (!(Get-NetFirewallRule | where {$_.Name -eq "TCP80"})) {
@@ -90,52 +89,52 @@ if (!(Get-NetFirewallRule | where {$_.Name -eq "TCP80"})) {
 }
 ```
 
-コンテナー ホスト IP アドレスを書き留めておく必要がある場合もあります。 これは、この演習を通して使用します。
+You may also want to take note of the container host IP address. This will be use throughout the exercise.
 
-### IIS コンテナーの作成
+### Create IIS Container <!--1-->
 
-IIS 対応の運用環境を展開するために使用できる、IIS を含むコンテナー イメージが作成されました。
+You now have a container image that contains IIS, which can be used to deploy IIS ready operating environments. 
 
-新しいイメージからコンテナーを作成するには、`docker run` コマンドを使用します。今回は IIS のイメージの名前を指定します。 この例ではパラメーター `-p 80:80` を指定していることに注意してください。 コンテナーは、ネットワーク アドレス変換を介して、IP を提供している仮想スイッチに接続されているため、ポートはコンテナー ホストから、コンテナーの NAT IP アドレス上のポートにマップされる必要があります。 `-p` の詳細については、[docker.com の Docker Run リファレンス](https://docs.docker.com/engine/reference/run/)を参照してください。
+To create a container from the new image, use the `docker run` command, this time specifying the name of the IIS image. Notice that this sample has specified a parameter `-p 80:80`. Because the container is connected to a virtual switch that is supplying IP addresses .via network address translation, a port needs to be mapped from the container host, to a port on the containers NAT IP address. For more information on the `-p` see the [Docker Run reference on docker.com]( https://docs.docker.com/engine/reference/run/)
 
 ```powershell
 C:\> docker run --name iisdemo -it -p 80:80 windowsservercoreiis cmd
 ```
 
-コンテナーが作成されたら、ブラウザーを開いて、コンテナー ホストの IP アドレスを参照します。 ホストのポート 80 はコンテナーのポート 80 にマップされているため、IIS スプラッシュ画面が表示されるはずです。
+When the container has been created, open a browser, and browse to the IP address of the container host. Because port 80 of the host has been mapped to port 80 if the container, the IIS splash screen should be displayed.
 
 ![](media/iis1.png)
 
-### アプリケーションの作成
+### Create Application <!--1-->
 
-次のコマンドを実行して、IIS スプラッシュ画面を削除します。
+Run the following command to remove the IIS splash screen.
 
 ```powershell
 C:\> del C:\inetpub\wwwroot\iisstart.htm
 ```
 
-次のコマンドを実行して、既定の IIS サイトを新しい静的サイトに置き換えます。
+Run the following command to replace the default IIS site with a new static site.
 
 ```powershell
 C:\> echo "Hello World From a Windows Server Container" > C:\inetpub\wwwroot\index.html
 ```
 
-再びコンテナー ホストの IP アドレスにアクセスすると、"Hellow World" アプリケーションが表示されます。 注: 更新されたアプリケーションを表示するには、既存のブラウザー接続を閉じたり、ブラウザー キャッシュをクリアしたりする必要がある場合があります。
+Browse again to the IP Address of the container host, you should now see the ‘Hello World’ application. Note – you may need to close any existing browser connections, or clear browser cache to see the updated application.
 
 ![](media/HWWINServer.png)
 
-コンテナーとの対話型セッションを終了します。
+Exit the interactive session with the container.
 
 ```powershell
 C:\> exit
 ```
 
-コンテナーの削除
+Remove the container
 
 ```powershell
 C:\> docker rm iisdemo
 ```
-IIS イメージを削除します。
+Remove the IIS image.
 
 ```powershell
 C:\> docker rmi windowsservercoreiis
@@ -143,23 +142,23 @@ C:\> docker rmi windowsservercoreiis
 
 ## Dockerfile
 
-前回の演習によって、コンテナーが手動で作成され、変更されて、新しいコンテナー イメージにキャプチャされています。 Docker には、このプロセスを自動化するためのメソッドが含まれており、dockerfile と呼ばれるものを使用します。 この演習は前回と同じ結果になりますが、今回はプロセスが完全に自動化されます。
+Through the last exercise, a container was manually created, modified, and then captured into a new container image. Docker includes a method for automating this process, using what is called a dockerfile. This exercise will have identical results as the last, however this time the process will be completely automated.
 
-### IIS イメージの作成
+### Create IIS Image
 
-コンテナー ホストで、ディレクトリ `c:\build` を作成し、このディレクトリ内に `dockerfile` という名前のファイルを作成します。
+On the container host, create a directory `c:\build`, and in this directory create a file named `dockerfile`.
 
 ```powershell
 C:\> powershell new-item c:\build\dockerfile -Force
 ```
 
-メモ帳で、dockerfile を開きます。
+Open the dockerfile in notepad.
 
 ```powershell
 C:\> notepad c:\build\dockerfile
 ```
 
-dockerfile に次のテキストをコピーし、ファイルを保存します。 これらのコマンドは、Docker に `windosservercore` をベースとして使用して新しいイメージを作成し、`RUN` で指定した変更を含めるように指示します。 Dockerfile の詳細については、[docker.com の Dockerfile リファレンス](http://docs.docker.com/engine/reference/builder/)を参照してください。
+Copy the following text into the dockerfile and save the file. These commands instruct Docker to create a new image, using `windosservercore` as the base, and include the modifications specified with `RUN`. For more information on Dockerfiles, see the [Dockerfile reference at docker.com](http://docs.docker.com/engine/reference/builder/).
 
 ```powershell
 FROM windowsservercore
@@ -167,13 +166,13 @@ RUN dism /online /enable-feature /all /featurename:iis-webserver /NoRestart
 RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 ```
 
-このコマンドは、自動化されたイメージ ビルド プロセスを開始します。 `-t` パラメーターは、新しいイメージに `iis` と名付けるようにプロセスに指示します。
+This command will start the automated image build process. The `-t` parameter instructs the process to name the new image `iis`.
 
 ```powershell
 C:\> docker build -t iis c:\Build
 ```
 
-完了したら、`docker images` コマンドを使用して、イメージが作成されたことを確認できます。
+When completed, you can verify that the image has been created using the `docker images` command.
 
 ```powershell
 C:\> docker images
@@ -186,58 +185,58 @@ nanoserver          10.0.10586.0        8572198a60f1        2 weeks ago         
 nanoserver          latest              8572198a60f1        2 weeks ago         0 B
 ```
 
-### IIS コンテナーの展開
+### Deploy IIS Container
 
-ここで、前回の演習と同様に、コンテナーを展開し、ホストのポート 80 をコンテナーのポート 80 にマップします。
+Now, just like in the last exercise, deploy the container, mapping port 80 of the host to port 80 of the container.
 
 ```powershell
 C:\> docker run --name iisdemo -it -p 80:80 iis cmd
 ```
 
-コンテナーが作成されたら、コンテナー ホストの IP アドレスを参照します。 hello world アプリケーションが表示されるはずです。
+Once the container has been created, browse to the IP address of the container host. You should see the hello world application.
 
 ![](media/dockerfile2.png)
 
-コンテナーとの対話型セッションを終了します。
+Exit the interactive session with the container.
 
 ```powershell
 C:\> exit
 ```
 
-コンテナーの削除
+Remove the container
 
 ```powershell
 C:\> docker rm iisdemo
 ```
-IIS イメージを削除します。
+Remove the IIS image.
 
 ```powershell
 C:\> docker rmi iis
 ```
 
-## Hyper-V コンテナー
+## Hyper-V Container
 
-Hyper-V コンテナーは、Windows Server コンテナー上に分離したレイヤーを追加します。 各 Hyper-V コンテナーは、高度に最適化された仮想マシン内に作成されます。 Windows Server コンテナーは、コンテナー ホストとカーネルを共有しますが、Hyper-V コンテナーは完全に分離されています。 Hyper-V コンテナーは、Windows Server コンテナーと全く同じように作成および管理されます。 Hyper-V コンテナーの詳細については、[Hyper-V コンテナーの管理](../management/hyperv_container.md)に関するドキュメントを参照してください。
+Hyper-V Containers provide an additional layer of isolation over Windows Server Containers. Each Hyper-V Container is created within a highly optimized virtual machine. Where a Windows Server Container shares a kernel with the Container host, a Hyper-V container is completely isolated. Hyper-V Containers are created and managed identically to Windows Server Containers. For more information about Hyper-V Containers see [Managing Hyper-V Containers](../management/hyperv_container.md).
 
-> Microsoft Azure は、Hyper-V コンテナーをサポートしていません。 Hyper-V の演習を実行するには、オンプレミスのコンテナー ホストが必要です。
+> Microsoft Azure does not support Hyper-V containers. To complete the Hyper-V exercises, you need an on-prem container host.
 
-### コンテナーの作成
+### Create Container <!--2-->
 
-コンテナーは Nano Server OS イメージを実行するため、IIS をインストールするために、Nano Server IIS パッケージが必要です。 これらのパッケージは、Windows Server 2016 TP4 インストール メディアの `NanoServer\Packages` ディレクトリにあります。
+Because the container will be running a Nano Server OS Image, the Nano Server IIS packages will be needed to install IIS. These can be found on the Windows Server 2016 TP4 Installation media, under the `NanoServer\Packages` directory.
 
-この例では、`docker run` の `-v` パラメーターを使用して、実行中のコンテナーからコンテナー ホストのディレクトリを使用できるようにします。 これを行う前にソース ディレクトリを構成する必要があります。
+In this example a directory from the container host will be made available to the running container using the `-v` parameter of `docker run`. Before doing so, the source directory will need to be configured. 
 
-コンテナー ホスト上にコンテナーで共有されるディレクトリを作成します。 PowerShell チュートリアルを既に完了している場合は、このディレクトリと必要なファイルが既に存在している可能性があります。
+Create a directory on the container host that will be shared with the container. If you have already completed the PowerShell walkthrough, this directory and the needed files may already exist. 
 
 ```powershell
 C:\> powershell New-Item -Type Directory c:\share\en-us
 ```
 
-`Microsoft-NanoServer-IIS-Package.cab` を `NanoServer\Packages` からコンテナー ホストの `c:\share` にコピーします。
+Copy `Microsoft-NanoServer-IIS-Package.cab` from `NanoServer\Packages` to `c:\share` on the container host. 
 
-`NanoServer\Packages\en-us\Microsoft-NanoServer-IIS-Package.cab` をコンテナー ホストの `c:\share\en-us` にコピーします。
+Copy `NanoServer\Packages\en-us\Microsoft-NanoServer-IIS-Package.cab` to `c:\share\en-us` on the container host.
 
-c:\share フォルダーに unattend.xml という名前のファイルを作成し、次のテキストを unattend.xml ファイルにコピーします。
+Create a file in the c:\share folder named unattend.xml, copy this text into the unattend.xml file.
 
 ```powershell
 <?xml version="1.0" encoding="utf-8"?>
@@ -255,7 +254,7 @@ c:\share フォルダーに unattend.xml という名前のファイルを作成
 </unattend>
 ```
 
-完了すると、コンテナー ホストの `c:\share` ディレクトリが次のように構成されているはずです。
+When completed, the `c:\share` directory, on the container host, should be configured like this.
 
 ```
 c:\share
@@ -266,41 +265,41 @@ c:\share
 |-- unattend.xml
 ```
 
-docker を使用して Hyper-V コンテナーを作成するには、`--isolation=hyperv` パラメーターを指定します。 この例では、ホストの `c:\share` ディレクトリを、コンテナーの `c:\iisinstall` ディレクトリにマウントし、次にコンテナーとの対話型シェル セッションを作成します。
+To create a Hyper-V container using docker, specify the `--isolation=hyperv` parameter. This example mounts the `c:\share` directory from the host, to the `c:\iisinstall` directory of the container, and then creates an interactive shell session with the container.
 
 ```powershell
 C:\> docker run --name iisnanobase -it -v c:\share:c:\iisinstall --isolation=hyperv nanoserver cmd
 ```
 
-### IIS イメージの作成
+### Create IIS Image <!--2-->
 
-コンテナー シェル セッション内から、`dism` を使用して、IIS をインストールできます。 次のコマンドを実行して、コンテナーに IIS をインストールします。
+From within the container shell session, IIS can be installed using `dism`. Run the following command to install IIS in the container.
 
 ```powershell
 C:\> dism /online /apply-unattend:c:\iisinstall\unattend.xml
 ```
 
-IIS のインストールが完了したら、次のコマンドを使用して手動で IIS を起動します。
+When the IIS installation has complete, manually start IIS with the following command.
 
 ```powershell
 C:\> Net start w3svc
 ```
 
-コンテナー セッションを終了します。
+Exit the container session.
 
 ```powershell
 C:\> exit
 ```
 
-### IIS コンテナーの作成
+### Create IIS Container <!--2-->
 
-変更した Nano Server コンテナーを、新しいコンテナー イメージにコミットできるようになりました。 これを行うには、`docker commit` コマンドを使用します。
+The modified Nano Server container can now be committed to a new container image. To do so, use the `docker commit` command.
 
 ```powershell
 C:\> docker commit iisnanobase nanoserveriis
 ```
 
-結果は、コンテナー イメージの一覧が返されたときに確認できます。
+The results can be seen when returning a list of container images.
 
 ```powershell
 C:\> docker images
@@ -313,38 +312,34 @@ nanoserver          10.0.10586.0        8572198a60f1        2 weeks ago         
 nanoserver          latest              8572198a60f1        2 weeks ago          0 B
 ```
 
-### アプリケーションの作成
+### Create Application <!--2-->
 
-Nano Server IIS イメージを新しいコンテナーに展開できるようになりました。
+The Nano Server IIS image can now be deployed to a new container.
 
 ```powershell
 C:\> docker run -it -p 80:80 --isolation=hyperv nanoserveriis cmd
 ```
 
-次のコマンドを実行して、IIS スプラッシュ画面を削除します。
+Run the following command to remove the IIS splash screen.
 
 ```powershell
 C:\> del C:\inetpub\wwwroot\iisstart.htm
 ```
 
-次のコマンドを実行して、既定の IIS サイトを新しい静的サイトに置き換えます。
+Run the following command to replace the default IIS site with a new static site.
 
 ```powershell
 C:\> echo "Hello World From a Hyper-V Container" > C:\inetpub\wwwroot\index.html
 ```
 
-コンテナー ホストの IP アドレスを参照すると、"Hellow World" アプリケーションが表示されるようになったはずです。 注: 更新されたアプリケーションを表示するには、既存のブラウザー接続を閉じたり、ブラウザー キャッシュをクリアしたりする必要がある場合があります。
+Browse to the IP Address of the container host, you should now see the ‘Hello World’ application. Note – you may need to close any existing browser connections, or clear browser cache to see the updated application.
 
 ![](media/HWWINServer.png)
 
-コンテナーとの対話型セッションを終了します。
+Exit the interactive session with the container.
 
 ```powershell
 C:\> exit
 ```
-
-
-
-
 
 

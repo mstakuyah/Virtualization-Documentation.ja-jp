@@ -1,50 +1,45 @@
-# Windows 10 の Hyper-V
+# Hyper-V on Windows 10 
 
-Windows 10 の多くのバージョンに Hyper-V 仮想化テクノロジが含まれています。 Hyper-V を利用すれば、物理ホストの上で仮想化されたコンピューター システムを実行できます。 仮想化されたコンピューター システムはあたかも物理コンピューター システムであるかのように使用し、管理できますが、実際は仮想化され、分離された環境に存在します。 ハイパーバイザーと呼ばれる特別なソフトウェアが仮想システムと物理ハードウェア リソース間のアクセスを管理します。 仮想化により、コンピューター システムを短時間で展開したり、以前の良好な状態にシステムをすばやく戻したり、物理ホスト間でシステムを移行したりできます。
+Many versions of Windows 10 include the Hyper-V virtualization technology. Hyper-V enables running virtualized computer systems on top of a physical host. These virtualized systems can be used and managed just as if they were physical computer systems, however they exist in virtualized and isolated environment. Special software called a hypervisor manages access between the virtual systems and the physical hardware resources. Virtualization enables quick deployment of computer systems, a way to quickly restore systems to a previously known good state, and the ability to migrate systems between physical hosts.
 
-次のドキュメントでは、Windows 10 における Hyper-V 機能について説明し、クイック スタート ガイドを提供します。また、詳しいリソースやコミュニティ フォーラムのリンクを紹介します。
+The following documents detail the Hyper-V feature in Windows 10, provide a guided quick start, and also contain links to further resources and community forums. 
 
 <table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:100%" cellpadding="15" cellspacing="3">
-    <tr valign="top">
-        <td><center>![](./media/MeetsRequirements_65.png)</center></td>
-        <td valign="top">
-            <p><strong>Windows の Hyper-V について</strong></p>
-            <p>次の記事には、Windows の Hyper-V の概要と情報が記載されています。</p>
-            <ul>
-                <li class="unordered">[Hyper-V の概要](./about/hyperv_on_windows.md)<br /><br /></li>
-                <li class="unordered">[Windows 10 の Hyper-V の新機能](./about/whats_new.md)<br /><br /></li>
-                <li class="unordered">[サポートされているゲスト オペレーティング システム](about\supported_guest_os.md)<br /><br /></li>
-            </ul>   
-        </td>
-    </tr>
-    <tr valign="top">
-        <td><center>![](./media/All_ContentTypeIcons_VisualWalkthrough_65.png)</center></td>
-        <td valign="top">
-            <p><strong>Hyper-V の概要</strong></p>
-            <p>次のドキュメントには、Windows 10 の Hyper-V の概要が記載されています。</p>
-            <ul>
-                <li class="unordered">[システム要件を確認する](quick_start\walkthrough_compatibility.md)<br /><br /></li>
-                <li class="unordered">[Hyper-V をインストールする](quick_start\walkthrough_install.md)<br /><br /></li>
-                <li class="unordered">[仮想スイッチを作成する](quick_start\walkthrough_virtual_switch.md)<br /><br /></li>
-                <li class="unordered">[仮想マシンを作成する](quick_start\walkthrough_create_vm.md)<br /><br /></li>
-                <li class="unordered">[Hyper-V でチェックポイントを使用する](quick_start\walkthrough_checkpoints.md)<br /><br /></li>
-                <li class="unordered">[仮想マシンのエクスポートとインポート](quick_start\walkthrough_export_import.md)<br /><br /></li>
-                <li class="unordered">[Hyper-V と PowerShell](quick_start\walkthrough_powershell.md)<br /><br /></li>
-            </ul>
-        </td>
-    </tr>
-    <tr valign="top">
-        <td><center>![](./media/Chat_65.png)</center></td>
-        <td valign="top">
-            <p><strong>コミュニティとサポートへの接続</strong></p>
-            <p>テクニカル サポートとコミュニティからも情報が得られます。</p>
-            <ul>
-                <li class="unordered">[Hyper-V フォーラム](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home?forum=winserverhyperv)<br /><br /></li>
-                <li class="unordered">[Hyper-V と Windows コンテナーのコミュニティ リソース](/virtualization/community/community_overview.md)<br /><br /></li>
-            </ul>   
-        </td>
-    </tr>
+	<tr valign="top">
+		<td><center>![](./media/MeetsRequirements_65.png)</center></td>
+		<td valign="top">
+			<p><strong>About Hyper-V on Windows</strong></p>
+			<p>The following articles provide an introduction to and information about Hyper-V on Windows.</p>
+			<ul>
+				<li class="unordered">[Introduction to Hyper-V](./about/hyperv_on_windows.md)<br /><br /></li>
+				<li class="unordered">[What’s New in Hyper-V for Windows 10](./about/whats_new.md)<br /><br /></li>
+				<li class="unordered">[Supported Guest Operating Systems](about\supported_guest_os.md)<br /><br /></li>
+			</ul>	
+		</td>
+	</tr>
+	<tr valign="top">
+		<td><center>![](./media/All_ContentTypeIcons_VisualWalkthrough_65.png)</center></td>
+		<td valign="top">
+			<p><strong>Get started with Hyper-V</strong></p>
+			<p>The following documents provide a quick and guided introduction to Hyper-V on Windows 10.</p>
+			<ul>
+				<li class="unordered">[Check system requirements](quick_start\walkthrough_compatibility.md)<br /><br /></li>
+                <li class="unordered">[Install Hyper-V](quick_start\walkthrough_install.md)<br /><br /></li>
+				<li class="unordered">[Create a Virtual Switch](quick_start\walkthrough_virtual_switch.md)<br /><br /></li>
+				<li class="unordered">[Create a Virtual Machine](quick_start\walkthrough_create_vm.md)<br /><br /></li>
+				<li class="unordered">[Hyper-V and PowerShell](quick_start\walkthrough_powershell.md)<br /><br /></li>
+			</ul>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td><center>![](./media/Chat_65.png)</center></td>
+		<td valign="top">
+			<p><strong>Connect with Community and Support</strong></p>
+			<p>Additional technical support and community resources.</p>
+			<ul>
+				<li class="unordered">[Hyper-V forums](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home?forum=winserverhyperv)<br /><br /></li>
+				<li class="unordered">[Community Resources for Hyper-V and Windows Containers](/virtualization/community/community_overview.md)<br /><br /></li>
+			</ul>	
+		</td>
+	</tr>
 </table>
-
-
-
