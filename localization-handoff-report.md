@@ -1,35 +1,24 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 2
+ Total Files | 1
 
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\Nano_EULA.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e8c2522788395c01addc4987c89d49f6ff1889a8/virtualization/windowscontainers/Nano_EULA.md) | HandedOff | [Details](#aa26c5fc60bcdfd7cd521799700e2f6eea48eb17225)
- [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e8c2522788395c01addc4987c89d49f6ff1889a8/virtualization/windowscontainers/TOC.md) | PartialHandedBack | [Details](#04d101913570c35c791327d521dd996ab9f681c2274)
+ [virtualization\windowscontainers\deployment\docker_windows.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/5355136c0d8cf96346976b40bb94a87abd3c21f6/virtualization/windowscontainers/deployment/docker_windows.md) | PartialHandedBack | [Details](#73f98cc3a66d271b274ebf25174facd5d3bedf33200)
 
 ## Item Details
-##### <a name='aa26c5fc60bcdfd7cd521799700e2f6eea48eb17225'></a> Source: [virtualization\windowscontainers\Nano_EULA.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e8c2522788395c01addc4987c89d49f6ff1889a8/virtualization/windowscontainers/Nano_EULA.md)
-* Status: HandedOff
-* Target File: 
-* Handoff File: [Nano_EULA.dc5fd75e218dabebc3dde5de2ed83d8f59835aa5.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/48918532b6125e71313021884c6ff30af8c12da5/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/Nano_EULA.dc5fd75e218dabebc3dde5de2ed83d8f59835aa5.ja-jp.xlf)
-* Handoff Datetime: 2016-01-05 20:41:18
-* Handoff Reason: Include
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* [Back to Top](#report-top)
-
-##### <a name='04d101913570c35c791327d521dd996ab9f681c2274'></a> Source: [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e8c2522788395c01addc4987c89d49f6ff1889a8/virtualization/windowscontainers/TOC.md)
+##### <a name='73f98cc3a66d271b274ebf25174facd5d3bedf33200'></a> Source: [virtualization\windowscontainers\deployment\docker_windows.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/5355136c0d8cf96346976b40bb94a87abd3c21f6/virtualization/windowscontainers/deployment/docker_windows.md)
 * Status: PartialHandedBack
 * Target File: 
-* Handoff File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/48918532b6125e71313021884c6ff30af8c12da5/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf)
-* Handoff Datetime: 2016-01-05 20:41:18
+* Handoff File: [docker_windows.48c2b5c855b2e2f9c878a0dd97aec82b1b8b1a92.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/e02f41057df871d12d8e8559d60b20d1b22015ab/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/docker_windows.48c2b5c855b2e2f9c878a0dd97aec82b1b8b1a92.ja-jp.xlf)
+* Handoff Datetime: 2016-01-05 23:34:10
 * Handoff Reason: Include
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ce086504dcef43cdbc99582c5e09c0e3015652a5/virtualization/windowscontainers/TOC.md)
-* Current Handback File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/9d0bbf00d55082604cea81ecc6b4c0b49a49a53e/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf)
+* Current Target File: [virtualization\windowscontainers\deployment\docker_windows.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ce086504dcef43cdbc99582c5e09c0e3015652a5/virtualization/windowscontainers/deployment/docker_windows.md)
+* Current Handback File: [docker_windows.48c2b5c855b2e2f9c878a0dd97aec82b1b8b1a92.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/9d0bbf00d55082604cea81ecc6b4c0b49a49a53e/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/docker_windows.48c2b5c855b2e2f9c878a0dd97aec82b1b8b1a92.ja-jp.xlf)
 * Current Handback Datetime: 2016-01-04 21:48:05
 * [Back to Top](#report-top)
 
