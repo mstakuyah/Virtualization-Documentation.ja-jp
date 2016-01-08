@@ -63,8 +63,8 @@ IT プロフェッショナルは、コンテナーを使用して、開発、�
 
 ## 概要に関するビデオ
 
-<iframe 
-src="https://channel9.msdn.com/Blogs/containers/Containers-101-with-Microsoft-and-Docker/player#ccLang=ja" width="800" height="450" allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
+< iframe 
+src="https://channel9.msdn.com/Blogs/containers/Containers-101-with-Microsoft-and-Docker/player" width="800" height="450" allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
 
 
 ## Windows Server コンテナーを試す
