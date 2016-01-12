@@ -1,38 +1,24 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 2
+ Total Files | 1
 
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\deployment\docker_windows.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e577d92beeec2fb887c324c35415f8a3b5a5e4cc/virtualization/windowscontainers/deployment/docker_windows.md) | OutofSyncHandedBackSuccess | [Details](#aa659c18a731357315e593dcf6024af4dd16a9a2200)
- [virtualization\windowscontainers\quick_start\container_setup.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e577d92beeec2fb887c324c35415f8a3b5a5e4cc/virtualization/windowscontainers/quick_start/container_setup.md) | OutofSyncHandedBackSuccess | [Details](#29847bf207e3d89ea77cf6871eabad0db0f7da3c227)
+ [virtualization\hyperv_on_windows\user_guide\managing_ics.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/0cdc6735d0e22f1df13d7ed1b741e52eec85b630/virtualization/hyperv_on_windows/user_guide/managing_ics.md) | OutofSyncHandedBackSuccess | [Details](#19a5ba665b931c8eac1d698d74b325ba165fdea6158)
 
 ## Item Details
-##### <a name='aa659c18a731357315e593dcf6024af4dd16a9a2200'></a> Source: [virtualization\windowscontainers\deployment\docker_windows.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e577d92beeec2fb887c324c35415f8a3b5a5e4cc/virtualization/windowscontainers/deployment/docker_windows.md)
+##### <a name='19a5ba665b931c8eac1d698d74b325ba165fdea6158'></a> Source: [virtualization\hyperv_on_windows\user_guide\managing_ics.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/0cdc6735d0e22f1df13d7ed1b741e52eec85b630/virtualization/hyperv_on_windows/user_guide/managing_ics.md)
 * Status: OutofSyncHandedBackSuccess
 * Target File: 
-* Handoff File: [docker_windows.48c2b5c855b2e2f9c878a0dd97aec82b1b8b1a92.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/e75c0c653a6ee783e69b4f64f86229a776d62be1/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/docker_windows.48c2b5c855b2e2f9c878a0dd97aec82b1b8b1a92.ja-jp.xlf)
-* Handoff Datetime: 2016-01-12 01:38:20
+* Handoff File: [managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/3488bb5261d16313ae2cd072bb8ec2884724978b/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.ja-jp.xlf)
+* Handoff Datetime: 2016-01-12 21:58:07
 * Handoff Reason: Include
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\deployment\docker_windows.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ce086504dcef43cdbc99582c5e09c0e3015652a5/virtualization/windowscontainers/deployment/docker_windows.md)
-* Current Handback File: [docker_windows.48c2b5c855b2e2f9c878a0dd97aec82b1b8b1a92.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/9d0bbf00d55082604cea81ecc6b4c0b49a49a53e/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/docker_windows.48c2b5c855b2e2f9c878a0dd97aec82b1b8b1a92.ja-jp.xlf)
-* Current Handback Datetime: 2016-01-04 21:48:05
-* [Back to Top](#report-top)
-
-##### <a name='29847bf207e3d89ea77cf6871eabad0db0f7da3c227'></a> Source: [virtualization\windowscontainers\quick_start\container_setup.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e577d92beeec2fb887c324c35415f8a3b5a5e4cc/virtualization/windowscontainers/quick_start/container_setup.md)
-* Status: OutofSyncHandedBackSuccess
-* Target File: 
-* Handoff File: [container_setup.08ea6a3e6a859d063eb84a0b25eb20db0b7bdd52.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/e75c0c653a6ee783e69b4f64f86229a776d62be1/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/container_setup.08ea6a3e6a859d063eb84a0b25eb20db0b7bdd52.ja-jp.xlf)
-* Handoff Datetime: 2016-01-12 01:38:20
-* Handoff Reason: Include
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\quick_start\container_setup.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ce086504dcef43cdbc99582c5e09c0e3015652a5/virtualization/windowscontainers/quick_start/container_setup.md)
-* Current Handback File: [container_setup.08ea6a3e6a859d063eb84a0b25eb20db0b7bdd52.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/9d0bbf00d55082604cea81ecc6b4c0b49a49a53e/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/container_setup.08ea6a3e6a859d063eb84a0b25eb20db0b7bdd52.ja-jp.xlf)
+* Current Target File: [virtualization\hyperv_on_windows\user_guide\managing_ics.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ce086504dcef43cdbc99582c5e09c0e3015652a5/virtualization/hyperv_on_windows/user_guide/managing_ics.md)
+* Current Handback File: [managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/9d0bbf00d55082604cea81ecc6b4c0b49a49a53e/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.ja-jp.xlf)
 * Current Handback Datetime: 2016-01-04 21:48:05
 * [Back to Top](#report-top)
 
