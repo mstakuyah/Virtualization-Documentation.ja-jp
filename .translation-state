@@ -1,6 +1,6 @@
 {
   "LastProcessedCommit": "fd01d85031748c73615a0fafeec80238f11b5cd6",
-  "LastTranslatedCommit": "ac41b27f7fb62d58e239a06ec004a5d708134f2e",
+  "LastTranslatedCommit": "9d80530d7176b80c92e500c93aee087ff3140886",
   "Items": {
     "5090f6d60b5cbdce0990242d795d9e4e3736e791": {
       "FileHash": "5090f6d60b5cbdce0990242d795d9e4e3736e791",
@@ -131,14 +131,14 @@
       "HandoffDateTime": "2015-12-03T10:33:01.6246533Z",
       "HandoffException": null,
       "HandoffFailureTimes": 0,
-      "TargetFileCommit": "ce086504dcef43cdbc99582c5e09c0e3015652a5",
+      "TargetFileCommit": "9d80530d7176b80c92e500c93aee087ff3140886",
       "TargetFilePath": "virtualization\\hyperv_on_windows\\develop\\make_mgmt_service.md",
       "HandbackFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.ja-jp.xlf",
-      "HandbackFileCommit": "9d0bbf00d55082604cea81ecc6b4c0b49a49a53e",
-      "HandbackDateTime": "2016-01-04T21:48:05.0404875Z",
+      "HandbackFileCommit": "21133898e6d019b052c8dbd186fb66c8e46b67ba",
+      "HandbackDateTime": "2016-01-14T19:19:58.8761905Z",
       "HandbackException": null,
       "HandbackFailureTimes": 0,
-      "UpdatedDateTime": "2016-01-04T21:48:05.0404875Z"
+      "UpdatedDateTime": "2016-01-14T19:19:58.8761905Z"
     },
     "2fe214e2a741bb53de8e5d3ff3d2129f195a3208": {
       "FileHash": "2fe214e2a741bb53de8e5d3ff3d2129f195a3208",
