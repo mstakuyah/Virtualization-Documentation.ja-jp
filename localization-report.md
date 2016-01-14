@@ -2323,7 +2323,7 @@
 
 ##### <a name='7e2a65e10cd49e4598d091eb16968abf7b7ca70b186'></a> Source: [virtualization\windowscontainers\about\about_overview.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/955d199d111b55d44b5eb42fc9d10d2c8a3309ad/virtualization/windowscontainers/about/about_overview.md)
 * Status: InSyncHandedBackSuccess
-* Target File: [virtualization\windowscontainers\about\about_overview.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ce086504dcef43cdbc99582c5e09c0e3015652a5/virtualization/windowscontainers/about/about_overview.md)
+* Target File: [virtualization\windowscontainers\about\about_overview.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/10f1aa70ba71a796abb55609f52070b0baecdf4f/virtualization/windowscontainers/about/about_overview.md)
 * Handoff File: [about_overview.128dd77ccb6c6a944b03f43ade40980cc30f0f48.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/02ec98ad6bbcf7af665c49c749a55cccfec1bf95/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/about_overview.128dd77ccb6c6a944b03f43ade40980cc30f0f48.ja-jp.xlf)
 * Handoff Datetime: 2015-12-11 03:53:48
 * Handoff Reason: Include
@@ -2768,7 +2768,7 @@
 
 ##### <a name='2dc4275e8ca76cb14938cd4b6e6d98e8a0ce9a85228'></a> Source: [virtualization\windowscontainers\quick_start\azure_setup.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/0e185734ebb59296b6157c37e96d19e3036fdfe3/virtualization/windowscontainers/quick_start/azure_setup.md)
 * Status: InSyncHandedBackSuccess
-* Target File: [virtualization\windowscontainers\quick_start\azure_setup.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ce086504dcef43cdbc99582c5e09c0e3015652a5/virtualization/windowscontainers/quick_start/azure_setup.md)
+* Target File: [virtualization\windowscontainers\quick_start\azure_setup.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/84450d065378ab612a953bd7decd7a5b58793f8b/virtualization/windowscontainers/quick_start/azure_setup.md)
 * Handoff File: [azure_setup.efbdfa56db2e296be3a4b34d7841c826cfcc65b5.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/74dd7e1b550db347c97705875b203d009084a2e3/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/azure_setup.efbdfa56db2e296be3a4b34d7841c826cfcc65b5.ja-jp.xlf)
 * Handoff Datetime: 2015-12-03 21:41:37
 * Handoff Reason: Include
