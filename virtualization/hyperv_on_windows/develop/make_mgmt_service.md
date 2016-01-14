@@ -31,7 +31,7 @@ Windows 10 以降、Hyper-V により、ネットワーク接続に依存せず�
 簡単なアプリケーションを作成するには、次が必要です。
 * C コンパイラ。 ない場合は、[Visual Studio Code](https://aka.ms/vs) を確認してください。
 * Hyper-V と仮想マシンを実行しているコンピューター。
-    * ホストおよびゲスト (VM) OS は、Windows 10、Windows Server Technical Preview 3 以降である必要があります。
+* ホストおよびゲスト (VM) OS は、Windows 10、Windows Server Technical Preview 3 以降である必要があります。
 * Windows SDK - ここに、`hvsocket.h` を含む [Win10 SDK](https://dev.windows.com/en-us/downloads/windows-10-sdk) のリンクを示します。
 
 ## 新しいアプリケーションの登録
@@ -66,7 +66,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 
 サービスごとのレジストリ内の情報:
 * `サービス GUID`
-    * `ElementName (REG_SZ)` - これは、サービスのフレンドリ名です。
+* `ElementName (REG_SZ)` - これは、サービスのフレンドリ名です。
 
 独自のサービスを登録するには、独自の GUID とフレンドリ名を使用して新しいレジストリ キーを作成します。
 
@@ -81,7 +81,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
         ElementName REG_SZ  Your Service Friendly Name
 ```
 
-> ** ヒント:** PowerShell で GUID を生成し、それをクリップボードにコピーするには、次を実行します。
+>** ヒント:** PowerShell で GUID を生成し、それをクリップボードにコピーするには、次を実行します。
 ``` PowerShell
 [System.Guid]::NewGuid().ToString() | clip.exe
 ```
@@ -90,9 +90,9 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 
 最も基本的な例で、ソケットの定義には、アドレス ファミリ、接続の種類、およびプロトコルが必要です。
 
-これは、簡単なソケット定義です (
+これは、[簡単なソケット定義](
 https://msdn.microsoft.com/en-us/library/windows/desktop/ms740506(v=vs.85).aspx
-)
+)です
 
 ``` C
 SOCKET WSAAPI socket(
@@ -165,12 +165,12 @@ IP またはホスト名の代わりに、AF_HYPERV エンドポイントは 2 �
 | HV_GUID_PARENT| a42e7cda-d03f-480c-9cc2-a4de20abb878| 親アドレス。この VmId を使用して、コネクタの親パーティションに接続します。*|
 
 
-***HV_GUID_PARENT**  
-仮想マシンの親は、そのホストです。 コンテナーの親は、コンテナーのホストです。  
-仮想マシンで実行しているコンテナーからの接続は、コンテナーをホストしている仮想マシンに接続します。  
-この VmId でリッスンし、次からの接続を受け入れます。  
-(コンテナー内): コンテナー ホスト。  
-(VM 内: コンテナー ホスト/コンテナーなし): VM ホスト。  
+***HV_GUID_PARENT**
+仮想マシンの親は、そのホストです。 コンテナーの親は、コンテナーのホストです。
+仮想マシンで実行しているコンテナーからの接続は、コンテナーをホストしている仮想マシンに接続します。
+この VmId でリッスンし、次からの接続を受け入れます。
+(コンテナー内): コンテナー ホスト。
+(VM 内: コンテナー ホスト/コンテナーなし): VM ホスト。
 (VM 内でない: コンテナー ホスト/コンテナーなし): サポートされていません。
 
 ## サポートされているソケット コマンド
@@ -191,3 +191,4 @@ Accept()
 
 
 
+<!--HONumber=Dec15_HO1-->
