@@ -1,11 +1,35 @@
 # <a name='report-top'></a> Localization Handback Report
 
 ## Summary
- Total Files | 0
+ Total Files | 2
 
 ## File List
+ Source File | Status | Details 
+ ----------- | ------ | ------- 
+ [virtualization\hyperv_on_windows\develop\make_mgmt_service.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/beb2ff361edf5d86391458d4e37c8cef9fc6d1ae/virtualization/hyperv_on_windows/develop/make_mgmt_service.md) | InSyncHandedBackSuccess | [Details](#e5aad90dd8dd7facdb532a3465d1596646e69cfc78)
+ [virtualization\windowscontainers\about\about_overview.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/955d199d111b55d44b5eb42fc9d10d2c8a3309ad/virtualization/windowscontainers/about/about_overview.md) | InSyncHandedBackSuccess | [Details](#7e2a65e10cd49e4598d091eb16968abf7b7ca70b189)
 
 ## Item Details
+##### <a name='e5aad90dd8dd7facdb532a3465d1596646e69cfc78'></a> Source: [virtualization\hyperv_on_windows\develop\make_mgmt_service.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/beb2ff361edf5d86391458d4e37c8cef9fc6d1ae/virtualization/hyperv_on_windows/develop/make_mgmt_service.md)
+* Status: InSyncHandedBackSuccess
+* Target File: [virtualization\hyperv_on_windows\develop\make_mgmt_service.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/e1004939c7bce5c73da77667d69948aaf1013dcf/virtualization/hyperv_on_windows/develop/make_mgmt_service.md)
+* Handoff File: [make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/6077617c73eda4c2cb41f70c3b9c8ebfb1052a27/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.ja-jp.xlf)
+* Handoff Datetime: 2015-12-03 10:33:01
+* Handoff Reason: Include
+* Handback File: [make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/ff954370450d25bc1bea431c56f14870014fc0d6/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.ja-jp.xlf)
+* Handback Datetime: 2016-01-21 00:24:50
+* [Back to Top](#report-top)
+
+##### <a name='7e2a65e10cd49e4598d091eb16968abf7b7ca70b189'></a> Source: [virtualization\windowscontainers\about\about_overview.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/955d199d111b55d44b5eb42fc9d10d2c8a3309ad/virtualization/windowscontainers/about/about_overview.md)
+* Status: InSyncHandedBackSuccess
+* Target File: [virtualization\windowscontainers\about\about_overview.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/e1004939c7bce5c73da77667d69948aaf1013dcf/virtualization/windowscontainers/about/about_overview.md)
+* Handoff File: [about_overview.128dd77ccb6c6a944b03f43ade40980cc30f0f48.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/02ec98ad6bbcf7af665c49c749a55cccfec1bf95/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/about_overview.128dd77ccb6c6a944b03f43ade40980cc30f0f48.ja-jp.xlf)
+* Handoff Datetime: 2015-12-11 03:53:48
+* Handoff Reason: Include
+* Handback File: [about_overview.128dd77ccb6c6a944b03f43ade40980cc30f0f48.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/ff954370450d25bc1bea431c56f14870014fc0d6/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/about_overview.128dd77ccb6c6a944b03f43ade40980cc30f0f48.ja-jp.xlf)
+* Handback Datetime: 2016-01-21 00:24:50
+* [Back to Top](#report-top)
+
 
 ## Error Details
 
