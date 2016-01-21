@@ -90,9 +90,9 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 
 最も基本的な例で、ソケットの定義には、アドレス ファミリ、接続の種類、およびプロトコルが必要です。
 
-これは、[簡単なソケット定義](
+これは、簡単な[ソケット定義](
 https://msdn.microsoft.com/en-us/library/windows/desktop/ms740506(v=vs.85).aspx
-)です
+)です。
 
 ``` C
 SOCKET WSAAPI socket(
