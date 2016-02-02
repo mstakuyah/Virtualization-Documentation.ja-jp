@@ -6,11 +6,26 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
+ [virtualization\hyperv_on_windows\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/941d4b77c1969175733d2ebbc154803dcf70ae99/virtualization/hyperv_on_windows/TOC.md) | OutofSyncHandedBackSuccess | [Details](#f470829df10e8b1da1cad19a468e8c45a666a089162)
  [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/5d2cef0ba13561091e4587dedbb45f4d959b09d4/virtualization/windowscontainers/deployment/deployment.md) | OutofSyncHandedBackSuccess | [Details](#59439790683c9c315093c6a6d42bd3264859d5b6206)
  [virtualization\windowscontainers\deployment\deployment_nano.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/5d2cef0ba13561091e4587dedbb45f4d959b09d4/virtualization/windowscontainers/deployment/deployment_nano.md) | HandedOffFailed | [Details](#a2a4d70bfe731be88af709ed37dc5ede9b5e8df3207)
- [virtualization\windowscontainers\quick_start\manage_powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/71bb79ebf64f0d34b0b2ee417d09097e8670e1bb/virtualization/windowscontainers/quick_start/manage_powershell.md) | OutofSyncHandedBackSuccess | [Details](#e813c7c1c9a04e812f0ce51171a4ba7dd6a03bfb238)
 
 ## Item Details
+##### <a name='f470829df10e8b1da1cad19a468e8c45a666a089162'></a> Source: [virtualization\hyperv_on_windows\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/941d4b77c1969175733d2ebbc154803dcf70ae99/virtualization/hyperv_on_windows/TOC.md)
+* Status: OutofSyncHandedBackSuccess
+* Target File: 
+* Handoff File: [TOC.dc6d280c11d16ece7fbc1f22991c5fc34412dd1a.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/16763278c5f55eb26ddb8f1fc37436ba5a60da03/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/TOC.dc6d280c11d16ece7fbc1f22991c5fc34412dd1a.ja-jp.xlf)
+* Handoff Datetime: 2016-02-02 21:17:01
+* Handoff Reason: Include
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Current Target File: [virtualization\hyperv_on_windows\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ce086504dcef43cdbc99582c5e09c0e3015652a5/virtualization/hyperv_on_windows/TOC.md)
+* Current Handback File: [TOC.dc6d280c11d16ece7fbc1f22991c5fc34412dd1a.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/9d0bbf00d55082604cea81ecc6b4c0b49a49a53e/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/TOC.dc6d280c11d16ece7fbc1f22991c5fc34412dd1a.ja-jp.xlf)
+* Current Handback Datetime: 2016-01-04 21:48:05
+* [Back to Top](#report-top)
+
 ##### <a name='59439790683c9c315093c6a6d42bd3264859d5b6206'></a> Source: [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/5d2cef0ba13561091e4587dedbb45f4d959b09d4/virtualization/windowscontainers/deployment/deployment.md)
 * Status: OutofSyncHandedBackSuccess
 * Target File: 
@@ -38,21 +53,6 @@
 * Archive Datetime: 0001-01-01 00:00:00
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
-* [Back to Top](#report-top)
-
-##### <a name='e813c7c1c9a04e812f0ce51171a4ba7dd6a03bfb238'></a> Source: [virtualization\windowscontainers\quick_start\manage_powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/71bb79ebf64f0d34b0b2ee417d09097e8670e1bb/virtualization/windowscontainers/quick_start/manage_powershell.md)
-* Status: OutofSyncHandedBackSuccess
-* Target File: 
-* Handoff File: [manage_powershell.fccfd13be3f4bd16afbe4f31a5ca5ed4e93806b7.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/e5a0cfffac4ef905f5a6e04cda4e3e0379330e35/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/manage_powershell.fccfd13be3f4bd16afbe4f31a5ca5ed4e93806b7.ja-jp.xlf)
-* Handoff Datetime: 2016-02-02 20:46:54
-* Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\quick_start\manage_powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/3258c860b6b6cd842e1a0357212020ca5c6b306d/virtualization/windowscontainers/quick_start/manage_powershell.md)
-* Current Handback File: [manage_powershell.fccfd13be3f4bd16afbe4f31a5ca5ed4e93806b7.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/459fa0d5a47994c3f58d9d6561e133e306f48f44/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/manage_powershell.fccfd13be3f4bd16afbe4f31a5ca5ed4e93806b7.ja-jp.xlf)
-* Current Handback Datetime: 2016-01-14 21:50:03
 * [Back to Top](#report-top)
 
 
