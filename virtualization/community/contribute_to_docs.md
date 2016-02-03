@@ -1,54 +1,55 @@
-# ドキュメントに投稿する
+# Contribute to the docs
 
-> **注:** ドキュメントに投稿するには、[GitHub](https://www.github.com) アカウントを所有している必要があります。
+>**Note:**  In order to contribute, you must have a [GitHub](https://www.github.com) account.
 
-## 既存のドキュメントの編集
+## Edit an existing doc
 
-1. 編集するドキュメントを探します。
+1. Find the doc you'd like to edit.
 
-2. **[このトピックに投稿する]** を選択します。  
-    ![](media/editDoc.png)
+2. Select **Contribute to this topic**
+![](media/editDoc.png)
 
-    すると、そのファイルに関連付けられた GitHub のマークダウン ファイルへと自動的にリダイレクトされます。
+This will automatically redirect you to the markdown file in GitHub associated with this file.
 
-    GitHub にサインインしていることを確認します。 サインインしていなければ、サインインするか、GitHub アカウントを作成します。
+Make sure you are signed into GitHub. If not, either sign in or create a GitHub account.
 
-    ![](media/GitHubView.png)
+![](media/GitHubView.png)
 
-3. 編集アイコンを選択し、ブラウザー内のエディターで編集します。
+3. Select the edit icon to edit with the in browser editor.
 
-    ![](media/GitHubEdit.png)
+![](media/GitHubEdit.png)
 
-4. インラインで変更を加えます。
+4. Make changes inline.
 
-    実行できる操作は次のとおりです。
-    1. ファイルの編集
-    2. 変更のプレビュー
-    3. ファイル名の変更 (この操作が必要になることはまずありません)
+Possible actions:
+1. Edit file
+2. Preview changes
+3. Rename the file (it's very unlikely you'll want to do this)
 
-    ![](media/GitHubEditor.png)
+![](media/GitHubEditor.png)
 
-5. 変更内容をプル要求として提案します。
+5. Propose your changes as a pull request
 
-    ![](media/GitHubProposeChange.png)
+![](media/GitHubProposeChange.png)
 
-6. 変更内容を確認します。
+6. Review your changes
 
-    **プル要求においてマイクロソフトが重視する要素**
-    * 変更内容が正しいこと (テクノロジが正確に表現されていること)
-    * スペルや文法が正しいこと
-    * ドキュメント内の論理的な場所
+**What we're looking for in a pull request**
+* The change is correct -- it accurately represents the technology
+* Spelling/grammar are correct
+* Logical location in the documentation
 
-    ![](media/GitHubCreatePR.png)
+![](media/GitHubCreatePR.png)
 
-7. [プル要求](contribute_to_docs.md#pull-requests)の作成
+7. Create a [pull request](contribute_to_docs.md#pull-requests)
 
-## プル要求
+## Pull requests
 
-ほとんどの変更はプル要求を介してコミットされます。 プル要求は、複数のレビューアーで変更セットを審査したり、変更を加えたり、現在のコンテンツについてコメントしたりする手段です。
-
-
+Most changes will be committed via pull request. A pull request is a way of reviewing a change set with multiple reviewers, changing, and commenting on the current content.
 
 
 
 
+
+
+<!--HONumber=Jan16_HO1-->
