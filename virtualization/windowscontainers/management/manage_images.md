@@ -43,7 +43,7 @@ NanoServer           10.0.10586.0            Container OS Image of Windows Serve
 WindowsServerCore    10.0.10586.0            Container OS Image of Windows Server 2016 Techn...
 ```
 
-Nano Server ベースの OS イメージをダウンロードしてインストールするには、次を実行します。
+Nano Server ベースの OS イメージをダウンロードしてインストールするには、次を実行します。 `–version` パラメーターは省略可能です。 ベース OS イメージのバージョンを指定しない場合は、最新のバージョンがインストールされます。
 
 ```powershell
 PS C:\> Install-ContainerImage -Name NanoServer -Version 10.0.10586.0
@@ -51,9 +51,9 @@ PS C:\> Install-ContainerImage -Name NanoServer -Version 10.0.10586.0
 Downloaded in 0 hours, 0 minutes, 10 seconds.
 ```
 
-このコマンドは、Windows Server Core ベース OS イメージも同様にダウンロードしてインストールします。
+このコマンドは、Windows Server Core ベース OS イメージも同様にダウンロードしてインストールします。 `–version` パラメーターは省略可能です。 ベース OS イメージのバージョンを指定しない場合は、最新のバージョンがインストールされます。
 
-> **問題:** Save-ContainerImage コマンドレットと Install-ContainerImage コマンドレットが、PowerShell リモート セッションで WindowsServerCore コンテナー イメージの操作に失敗します。 **回避策:** リモート デスクトップを使用してコンピューターにログオンし、直接 Save-ContainerImage コマンドレットを使用します。
+>**問題:** Save-ContainerImage コマンドレットと Install-ContainerImage コマンドレットが、PowerShell リモート セッションで WindowsServerCore コンテナー イメージの操作に失敗します。 **回避策:** リモート デスクトップを使用してコンピューターにログオンし、直接 Save-ContainerImage コマンドレットを使用します。
 
 ```powershell
 PS C:\> Install-ContainerImage -Name WindowsServerCore -Version 10.0.10586.0
@@ -202,3 +202,4 @@ IMAGE               CREATED             CREATED BY          SIZE                
 
 
 
+<!--HONumber=Jan16_HO1-->

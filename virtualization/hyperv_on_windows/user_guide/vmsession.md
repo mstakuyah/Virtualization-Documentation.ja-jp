@@ -36,7 +36,7 @@ Enter-PSSession -VMGUID <VMGUID>
 Exit-PSSession 
 ```
 
->注: セッションが接続されない場合は、接続している仮想マシンの資格情報を使用していることを確認してください (Hyper-V ではありません)。
+> 注: セッションが接続されない場合は、接続している仮想マシンの資格情報を使用していることを確認してください (Hyper-V ではありません)。
 
 これらのコマンドレットの詳細については、「[Enter-PSSession](http://technet.microsoft.com/library/hh849707.aspx)」と「[Exit-PSSession](http://technet.microsoft.com/library/hh849743.aspx)」を参照してください。
 
@@ -60,31 +60,47 @@ PowerShell ダイレクトを通じて表示される一般的なエラー メ�
 
 ### エラー: リモート セッションが終了した可能性がある
 
-エラー メッセージ:
+**エラー メッセージ:**
 ```
 Enter-PSSession : An error has occurred which Windows PowerShell cannot handle. A remote session might have ended.
 ```
 
-考えられる原因:
+**考えられる原因:**
 * VM が実行されていない
-* ゲスト OS が PowerShell Direct をサポートしていない (「[要件](#Requirements)」を参照してください)
+* ゲスト OS が PowerShell Direct をサポートしていない (「[要件](#Requirements))」を参照してください)
 * PowerShell がまだゲストで使用できない
-* オペレーティング システムが起動を完了していない
-* オペレーティング システムが正しく起動できない
-* ユーザー入力が必要な起動時のイベントがある
+  * オペレーティング システムが起動を完了していない
+  * オペレーティング システムが正しく起動できない
+  * ユーザー入力が必要な起動時のイベントがある
 * ゲストの資格情報を検証できない
-* 指定された資格情報が誤っていた
-* ゲストにユーザー アカウントがない (前もって OS が起動されていない)
-* 管理者として接続する場合: 管理者がアクティブなユーザーとして設定されていない。 詳細については、[こちら](https://technet.microsoft.com/en-us/library/hh825104.aspx)を参照してください。
+  * 指定された資格情報が誤っていた
+  * ゲストにユーザー アカウントがない (前もって OS が起動されていない)
+  * 管理者として接続する場合: 管理者がアクティブなユーザーとして設定されていない。 詳細については、[こちら](https://technet.microsoft.com/en-us/library/hh825104.aspx)を参照してください。
 
 [Get-VM](http://technet.microsoft.com/library/hh848479.aspx) コマンドレットを使用して、使用している資格情報に Hyper-V 管理者の役割があることを確認し、ホスト上でローカルで実行されている、起動した VM を確認することができます。
+
+### エラー: パラメーター セットを解決できません。
+
+**エラー メッセージ:**
+``` 
+Enter-PSSession : Parameter set cannot be resolved using the specified named parameters.
+```
+
+**考えられる原因:**  
+仮想マシンに接続するときは、`-RunAsAdministrator` はサポートされません。
+
+仮想マシンに接続するときと Windows コンテナーに接続するときでは、PowerShell Direct の動作が異なります。 Windows コンテナーに接続するときは、`-RunAsAdministrator` フラグを指定すると、明示的な資格情報がなくても管理者として接続できます。 仮想マシンはホストに暗黙の管理者アクセス権を付与しないため、資格情報を明示的に入力する必要があります。
+
+仮想マシンに管理者の資格情報を渡すには、`-credential` パラメーターを使用するか、要求されたときに手動で入力します。
+
 
 ## サンプル
 
 [GitHub](https://github.com/Microsoft/Virtualization-Documentation/search?l=powershell&q=-VMName+OR+-VMGuid&type=Code&utf8=%E2%9C%93) のサンプルをご確認ください。
 
-ご自分の環境で PowerShell Direct を使用する方法を示すさまざまな例や、PowerShell で Hyper-V スクリプトを記述するためのヒントとコツについては、[PowerShell Direct のスニペット](../develop/powershell_snippets.md)に関するページを参照してください。
+実際の環境で PowerShell Direct を使用する方法を示すさまざまな例や、PowerShell で Hyper-V スクリプトを記述するためのヒントとコツについては、[PowerShell Direct のスニペット](../develop/powershell_snippets.md)を参照してください。
 
 
 
-<!--HONumber=Jan16_HO1-->
+
+<!--HONumber=Jan16_HO2-->

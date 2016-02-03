@@ -2,7 +2,7 @@
 
 Windows コンテナーを使用すると、単一のコンピューター システムに多数の独立したアプリケーションを短時間で展開できます。 この演習では、Docker を使用した Windows コンテナーの作成と管理の方法を示します。 完了すると、Docker と Windows コンテナーを統合する方法の基本的な理解が得られ、テクノロジを実際に体験できるはずです。
 
-このチュートリアルでは、Windows Server コンテナーと Hyper-V コンテナーの両方について説明します。 コンテナーの種類によって基本要件は異なります。 Windows コンテナー ドキュメントには、コンテナー ホストを簡単にデプロイする手順が記載されています。 Windows コンテナーを初めて使用するときは、これが最も簡単な方法です。 コンテナー ホストをお持ちでない場合は、[コンテナー ホストの展開のクイック スタート](./container_setup.md)に関するページを参照してください。
+このチュートリアルでは、Windows Server コンテナーと Hyper-V コンテナーの両方について説明します。 コンテナーの種類によって基本要件は異なります。 Windows コンテナー ドキュメントには、コンテナー ホストを簡単にデプロイする手順が記載されています。 Windows コンテナーを初めて使用するときは、これが最も簡単な方法です。 コンテナー ホストをお持ちでない場合は、「[Container Host Deployment Quick Start (コンテナー ホストの展開のクイック スタート)](./container_setup.md)」を参照してください。
 
 各演習には、次の項目が必要です。
 
@@ -159,7 +159,7 @@ C:\> powershell new-item c:\build\dockerfile -Force
 C:\> notepad c:\build\dockerfile
 ```
 
-dockerfile に次のテキストをコピーし、ファイルを保存します。 これらのコマンドは、`windosservercore` をベースとして使用して新しいイメージを作成し、`RUN` で指定した変更を加えるように Docker に指示します。 Dockerfile の詳細については、[docker.com の Dockerfile リファレンス](http://docs.docker.com/engine/reference/builder/)を参照してください。
+dockerfile に次のテキストをコピーし、ファイルを保存します。 これらのコマンドは、`windowsservercore` をベースとして使用して新しいイメージを作成し、`RUN` で指定した変更を加えるように Docker に指示します。 Dockerfile の詳細については、[docker.com の Dockerfile リファレンス](http://docs.docker.com/engine/reference/builder/)を参照してください。
 
 ```powershell
 FROM windowsservercore
@@ -217,7 +217,7 @@ C:\> docker rmi iis
 
 ## Hyper-V コンテナー
 
-Hyper-V コンテナーは、Windows Server コンテナー上に分離したレイヤーを追加します。 各 Hyper-V コンテナーは、高度に最適化された仮想マシン内に作成されます。 Windows Server コンテナーは、コンテナー ホストとカーネルを共有しますが、Hyper-V コンテナーは完全に分離されています。 Hyper-V コンテナーは、Windows Server コンテナーと全く同じように作成および管理されます。 Hyper-V コンテナーの詳細については、[Hyper-V コンテナーの管理](../management/hyperv_container.md)に関するページを参照してください。
+Hyper-V コンテナーは、Windows Server コンテナー上に分離したレイヤーを追加します。 各 Hyper-V コンテナーは、高度に最適化された仮想マシン内に作成されます。 Windows Server コンテナーは、コンテナー ホストとカーネルを共有しますが、Hyper-V コンテナーは完全に分離されています。 Hyper-V コンテナーは、Windows Server コンテナーと全く同じように作成および管理されます。 Hyper-V コンテナーの詳細については、「[Managing Hyper-V Containers (Hyper-V コンテナーの管理)](../management/hyperv_container.md)」を参照してください。
 
 >Microsoft Azure は、Hyper-V コンテナーをサポートしていません。 Hyper-V の演習を実行するには、オンプレミスのコンテナー ホストが必要です。
 

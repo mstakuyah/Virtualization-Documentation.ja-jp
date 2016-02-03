@@ -24,7 +24,7 @@ PS C:\> $con = New-Container -Name HYPVCON -ContainerImageName NanoServer -Switc
 
 ビルド時に Hyper-V コンテナーとしてコンテナーを作成することに加え、PowerShell を使用して作成されたコンテナーは、Windows Server コンテナーから Hyper-V コンテナーに変換することもできます。
 
-> 現在、コンテナーのランタイム変換をサポートしているホスト オペレーティング システムは、Nano Server だけです。
+>現在、コンテナーのランタイム変換をサポートしているホスト オペレーティング システムは、Nano Server だけです。
 
 既定のランタイムで新しいコンテナーを作成します。
 
@@ -61,7 +61,7 @@ DEMO               HyperV
 
 ### コンテナーの作成
 
-Docker を使用した Hyper-V コンテナーの管理は、Windows Server コンテナーの管理とほぼ同じです。 Docker を使用して Hyper-V コンテナーを作成する場合には、`–issolation=hyperv` パラメーターを使用します。
+Docker を使用した Hyper-V コンテナーの管理は、Windows Server コンテナーの管理とほぼ同じです。 Docker を使用して Hyper-V コンテナーを作成する場合には、`-isolation=hyperv` パラメーターを使用します。
 
 ```powershell
 docker run -it --isolation=hyperv 646d6317b02f cmd
@@ -214,3 +214,4 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
 
 
 
+<!--HONumber=Jan16_HO1-->

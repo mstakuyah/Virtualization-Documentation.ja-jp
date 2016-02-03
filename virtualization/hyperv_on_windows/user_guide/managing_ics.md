@@ -2,18 +2,18 @@
 
 統合サービス (多くの場合、統合コンポーネントと呼ばれます) は、仮想マシンから Hyper-V ホストに通信できるようにするサービスです。 このようなサービスの多くは便利なものですが (ゲスト ファイル コピーなど)、ゲスト オペレーティング システムが正しく機能するために重要なサービスもあります (時間の同期)。
 
-この記事では、Hyper-V マネージャーと PowerShell の両方を Windows 10 で使用して、統合サービスを管理する方法について説明します。 各統合サービスの詳細については、[統合サービス](https://technet.microsoft.com/en-us/library/dn798297.aspx)に関するページを参照してください。
+この記事では、Hyper-V マネージャーと PowerShell の両方を Windows 10 で使用して、統合サービスを管理する方法について説明します。 各統合サービスの詳細については、「[Integration Services (統合サービス)](https://technet.microsoft.com/en-us/library/dn798297.aspx)」を参照してください。
 
 ## Hyper-V マネージャーを使用して統合サービスを有効または無効にする
 
 1. 仮想マシンを選択して設定を開きます。
-    ![](./media/HyperVManager-OpenVMSettings.png)
+  ![](./media/HyperVManager-OpenVMSettings.png)
 
 2. 仮想マシンの設定ウィンドウから、[管理] の [統合サービス] タブを開きます。
 
-    ![](./media/HyperVManager-IntegrationServices.png)
+  ![](./media/HyperVManager-IntegrationServices.png)
 
-    このタブには、Hyper-V ホストで使用できるすべての統合サービスが表示されます。 表示されているすべての統合サービスをゲスト オペレーティング システムがサポートしているかどうかを注意してください。
+  このタブには、Hyper-V ホストで使用できるすべての統合サービスが表示されます。 表示されているすべての統合サービスをゲスト オペレーティング システムがサポートしているかどうかを注意してください。
 
 ## PowerShell を使用して統合サービスを有効または無効にする
 
@@ -147,9 +147,9 @@ Running  vmicvss            Hyper-V Volume Shadow Copy Requestor
   ```
 
   次のような統合サービス デーモンが表示されます。
-  * **`hv_vss_daemon`** – このデーモンは、Linux 仮想マシンのライブ バックアップを作成するために必要です。
-  * **`hv_kvp_daemon`** – このデーモンを使用すると、組み込みと外部のキーと値のペアを設定および照会できます。
-  * **`hv_fcopy_daemon`** – このデーモンは、ホストとゲスト間にファイル コピー サービスを実装します。
+  * **`hv_vss_daemon`** - このデーモンは、Linux 仮想マシンのライブ バックアップを作成するために必要です。
+  * **`hv_kvp_daemon`** - このデーモンを使用すると、組み込みと外部のキーと値のペアを設定および照会できます。
+  * **`hv_fcopy_daemon`** - このデーモンは、ホストとゲスト間にファイル コピー サービスを実装します。
 
 > **注:** 上の統合サービス デーモンを使用できない場合、システムでサポートされていないか、インストールできない可能性があります。 ディストリビューション固有の詳細については、[こちら](https://technet.microsoft.com/en-us/library/dn531030.aspx)を参照してください。
 
@@ -188,11 +188,12 @@ sudo hv_kvp_daemon
 | -| | |
 | Windows Server 2012 R2| Windows Update| |
 | Windows Server 2012| Windows Update| データ交換統合サービスが必要です。*****|
-| Windows Server 2008 R2| Windows Update| データ交換統合サービスが必要です。*****|
-| Windows Server 2008 (SP 2)| Windows Update| データ交換統合サービスが必要です。*****|
-| Windows Home Server 2011| Windows Update| データ交換統合サービスが必要です。*****|
-| Windows Small Business Server 2011| Windows Update| データ交換統合サービスが必要です。*****|
-
+| Windows Server 2008 R2 (SP 1)| Windows Update| データ交換統合サービスが必要です。*****|
+| Windows Server 2008 (SP 2)| Windows Update| Server 2016 での拡張サポートのみ ([詳細](https://support.microsoft.com/en-us/lifecycle?p1=12925)))。|
+| Windows Home Server 2011| Windows Update| Server 2016 ではサポートされません ([詳細](https://support.microsoft.com/en-us/lifecycle?p1=15820)))。|
+| Windows Small Business Server 2011| Windows Update| メインストリーム サポートではありません ([詳細](https://support.microsoft.com/en-us/lifecycle?p1=15817)))。|
+| -| | |
+| Linux ゲスト| パッケージ マネージャー| Linux 用の統合コンポーネントはディストリビューションに組み込まれていますが、オプションで更新プログラムを使用できる場合があります。********|
 
 **\*** データ交換統合サービスを有効にすることができない場合は、これらのゲストの統合コンポーネントは、ダウンロード センターの[こちら](https://support.microsoft.com/en-us/kb/3071740)で、キャビネット (cab) ファイルの形式で入手できます。 cab を適用する手順については、[こちら](http://blogs.technet.com/b/virtualization/archive/2015/07/24/integration-components-available-for-virtual-machines-not-connected-to-windows-update.aspx)を参照してください。
 
@@ -216,6 +217,9 @@ sudo hv_kvp_daemon
 | Windows Small Business Server 2011| 統合サービス ディスク| |
 | Windows Server 2003 R2 (SP 2)| 統合サービス ディスク| |
 | Windows Server 2003 (SP 2)| 統合サービス ディスク| |
+| -| | |
+| Linux ゲスト| パッケージ マネージャー| Linux 用の統合コンポーネントはディストリビューションに組み込まれていますが、オプションで更新プログラムを使用できる場合があります。********|
+
 
 **Windows 8 ホストで実行されている仮想マシンの場合:**
 
@@ -235,11 +239,15 @@ sudo hv_kvp_daemon
 | Windows Small Business Server 2011| 統合サービス ディスク| |
 | Windows Server 2003 R2 (SP 2)| 統合サービス ディスク| |
 | Windows Server 2003 (SP 2)| 統合サービス ディスク| |
+| -| | |
+| Linux ゲスト| パッケージ マネージャー| Linux 用の統合コンポーネントはディストリビューションに組み込まれていますが、オプションで更新プログラムを使用できる場合があります。********|
+
 
 Windows 8 および Windows 8.1 用統合サービス ディスクを使用した更新手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。
 
-**\*\*** Linux ゲストの詳細については、[こちら](https://technet.microsoft.com/en-us/library/dn531030.aspx)を参照してください。
+ **\****** Linux ゲストの詳細については、[こちら](https://technet.microsoft.com/en-us/library/dn531030.aspx)を参照してください。
 
 
 
 
+<!--HONumber=Jan16_HO3-->

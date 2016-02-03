@@ -70,7 +70,7 @@ Add-NetNatStaticMapping -NatName "Nat" -Protocol TCP -ExternalIPAddress 0.0.0.0 
 ```powershell
 Add-NetNatStaticMapping -NatName "Nat" -Protocol TCP -ExternalIPAddress 0.0.0.0 -InternalIPAddress 172.16.0.3 -InternalPort 80 -ExternalPort 82
 ```
-> 対応するファイアウォール規則が、外部ポートごとに必要となります。 これは、`New-NetFirewallRule` で作成できます。 詳細については、[New-NetFirewallRule のリファレンス](https://technet.microsoft.com/en-us/library/jj554908.aspx)を参照してください。
+>対応するファイアウォール規則が、外部ポートごとに必要となります。 これは、`New-NetFirewallRule` で作成できます。 詳細については、[New-NetFirewallRule のリファレンス](https://technet.microsoft.com/en-us/library/jj554908.aspx)を参照してください。
 
 ポート マッピングの作成後、コンテナーのホスト (物理または仮想) に割り当てられている IP アドレスと公開されている外部ポートを使用して、コンテナーのアプリケーションにアクセスすることができます。 たとえば、以下の図は、コンテナー ホストの外部ポート **82** を要求の宛先とした NAT 構成を表しています。 この要求は、ポート マッピングに基づいて、コンテナー 2 でホストされているアプリケーションを返します。
 
@@ -128,7 +128,7 @@ docker daemon -D -b “New Switch Name"
 Start-Service docker
 ```
 
-## コンテナーのネットワーク アダプターの管理
+## ネットワーク アダプターを管理する
 
 コンテナーのネットワーク アダプターと仮想スイッチ接続は、ネットワーク構成 (NAT または透過) に関係なく、いくつかの PowerShell コマンドを使って管理できます。
 
@@ -149,3 +149,4 @@ Start-Service docker
 
 
 
+<!--HONumber=Jan16_HO1-->

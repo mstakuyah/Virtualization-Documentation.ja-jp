@@ -2,7 +2,7 @@
 
 Windows コンテナーを使用すると、1 つのコンピューター システムに多数の独立したアプリケーションを短時間でデプロイできます。 このクイック スタートでは、PowerShell を使用した Windows Server と Hyper-V 両方のコンテナーのデプロイメントと管理について説明します。 この演習では、Windows Server と Hyper-V コンテナーの両方で動作するとても単純な "hello world" アプリケーションを 1 から構築します。 この処理中、コンテナー イメージを作成し、コンテナー共有フォルダーを操作し、コンテナー ライフサイクルを管理します。 完了すると、Windows コンテナーのデプロイメントと管理の基本について理解できます。
 
-このチュートリアルでは、Windows Server コンテナーと Hyper-V コンテナーの両方について説明します。 コンテナーの種類によって基本的な必要条件は異なります。 Windows コンテナー ドキュメントには、コンテナー ホストを簡単にデプロイする手順が記載されています。 Windows コンテナーを初めて使用するときは、これが最も簡単な方法です。 コンテナー ホストをお持ちでない場合は、[コンテナー ホストの展開のクイック スタート](./container_setup.md)に関するページを参照してください。
+このチュートリアルでは、Windows Server コンテナーと Hyper-V コンテナーの両方について説明します。 コンテナーの種類によって基本的な必要条件は異なります。 Windows コンテナー ドキュメントには、コンテナー ホストを簡単にデプロイする手順が記載されています。 Windows コンテナーを初めて使用するときは、これが最も簡単な方法です。 コンテナー ホストをお持ちでない場合は、「[Container Host Deployment Quick Start (コンテナー ホストの展開のクイック スタート)](./container_setup.md)」を参照してください。
 
 各演習には、次のアイテムが必要です。
 
@@ -23,7 +23,7 @@ Windows Server コンテナーは、アプリケーションとホスト プロ�
 
 ### コンテナーの作成
 
-TP4 の時点で、Windows Server 2016 で実行されている Windows Server コンテナー、または Windows Server 2016 Core には、Windows Server 2016 Core OS イメージが必要です。
+TP4 の時点で、Windows Server 2016 または Windows Server 2016 Core で実行されている Windows Server コンテナーには、Windows Server 2016 Core OS イメージが必要です。
 
 「`powershell`」と入力して PowerShell セッションを開始します。
 
@@ -46,7 +46,7 @@ NanoServer        CN=Microsoft 10.0.10586.0 True
 WindowsServerCore CN=Microsoft 10.0.10586.0 True
 ```
 
-Windows Server コンテナーを作成するには、`New-Container` コマンドを使用します。 次の例では、`WindowsServerCore` OS イメージから `TP4Demo` というコンテナーを作成し、そのコンテナーを `Virtual Switch` という VM スイッチに接続します。 コンテナーを表すオブジェクトである出力は、`$con` 変数に格納されます。 この変数は、以降のコマンドで使用されます。
+Windows Server コンテナーを作成するには、`New-Container` コマンドを使用します。 次の例では、`WindowsServerCore` OS イメージから `TP4Demo` というコンテナーを作成し、そのコンテナーを `Virtual Switch` という VM スイッチに接続します。
 
 ```powershell
 PS C:\> New-Container -Name TP4Demo -ContainerImageName WindowsServerCore -SwitchName "Virtual Switch"
@@ -72,7 +72,7 @@ TP4Demo Off   00:00:00 WindowsServerCore
 PS C:\> Start-Container -Name TP4Demo
 ```
 
-`Enter-PSSession` コマンドを使用してコンテナーに接続します。 コンテナーで PowerShell セッションが作成されると、PowerShell から、変更はコンテナー名に反映されるというメッセージが表示されます。
+`Enter-PSSession` コマンドを使用してコンテナーに接続します。 コンテナーで PowerShell セッションが作成されると、PowerShell のプロンプトが、コンテナー名を反映するように変わります。
 
 ```powershell
 PS C:\> Enter-PSSession -ContainerName TP4Demo -RunAsAdministrator
@@ -145,7 +145,7 @@ PS C:\> Start-Container -Name IIS
 
 ### ネットワークの構成
 
-Windows コンテナー クイック スタートの既定のネットワーク構成では、ネットワーク アドレス変換 (NAT) が構成された仮想スイッチにコンテナーを接続します。 そのため、コンテナー内で実行されるアプリケーションに接続するには、コンテナー ホスト上のポートをコンテナーのポートにマッピングする必要があります。
+Windows コンテナー クイック スタートの既定のネットワーク構成では、ネットワーク アドレス変換 (NAT) が構成された仮想スイッチにコンテナーを接続します。 そのため、コンテナー内で実行されるアプリケーションに接続するには、コンテナー ホスト上のポートをコンテナーのポートにマッピングする必要があります。 コンテナーのネットワークの詳細については、「[コンテナーのネットワーク](../management/container_networking.md)」を参照してください。
 
 この演習の Web サイトは、コンテナー内で実行されている IIS でホストされています。 ポート 80 で Web サイトにアクセスするには、コンテナー ホスト IP アドレスのポート 80 をコンテナー IP アドレスのポート 80 にマッピングします。
 
@@ -241,7 +241,7 @@ PS C:\> Remove-ContainerImage -Name WindowsServerCoreIIS -Force
 
 ## Hyper-V コンテナー
 
-Hyper-V コンテナーは、Windows Server コンテナー上に分離したレイヤーを追加します。 各 Hyper-V コンテナーは、高度に最適化された仮想マシン内に作成されます。 Windows Server コンテナーは、コンテナー ホストや、そのホスト上で実行されているその他すべての Windows Server コンテナーとカーネルを共有していますが、Hyper-V コンテナーは他のコンテナーと完全に独立しています。 Hyper-V コンテナーは、複数の Windows Server コンテナーに対して同じ方法で作成および管理されます。 Hyper-V コンテナーの詳細については、[Hyper-V コンテナーの管理](../management/hyperv_container.md)に関するページを参照してください。
+Hyper-V コンテナーは、Windows Server コンテナー上に分離したレイヤーを追加します。 各 Hyper-V コンテナーは、高度に最適化された仮想マシン内に作成されます。 Windows Server コンテナーは、コンテナー ホストや、そのホスト上で実行されているその他すべての Windows Server コンテナーとカーネルを共有していますが、Hyper-V コンテナーは他のコンテナーと完全に独立しています。 Hyper-V コンテナーは、 Windows Server コンテナーと同じ方法で作成され、管理されます。 Hyper-V コンテナーの詳細については、「[Managing Hyper-V Containers (Hyper-V コンテナーの管理)](../management/hyperv_container.md)」を参照してください。
 
 >Microsoft Azure は、Hyper-V コンテナーをサポートしていません。 Hyper-V コンテナーの演習を完了するには、オンプレミスのコンテナー ホストが必要です。
 
@@ -272,7 +272,7 @@ HYPV Off   00:00:00 NanoServer
 
 ### 共有フォルダーの作成
 
-共有フォルダーは、コンテナー ホストからコンテナーに対して直接公開されます。 共有フォルダーを作成すると、共有フォルダーに配置したすべてのファイルはコンテナーで使用できるようになります。 この例では、共有フォルダーを使用して、Nano Server IIS パッケージをコンテナーにコピーします。 これらのパッケージを使用して、IIS をインストールします。 共有フォルダーの詳細については、[コンテナー データの管理](../management/manage_data.md)に関するページを参照してください。
+共有フォルダーは、コンテナー ホストからコンテナーに対して直接公開されます。 共有フォルダーを作成すると、共有フォルダーに配置したすべてのファイルはコンテナーで使用できるようになります。 この例では、共有フォルダーを使用して、Nano Server IIS パッケージをコンテナーにコピーします。 これらのパッケージを使用して、IIS をインストールします。 共有フォルダーの詳細については、「[コンテナー共有フォルダー](../management/manage_data.md)」を参照してください。
 
 コンテナー ホストに `c:\share\en-us` というディレクトリを作成します。
 
@@ -323,7 +323,7 @@ d-----       11/18/2015   5:27 PM                en-us
 
 ### IIS イメージの作成
 
-コンテナーは Nano Server OS イメージを実行しているため、Nano Server IIS パッケージは IIS をインストールする必要があります。 これらのパッケージは、Windows Server 2016 TP4 インストール メディアの `NanoServer\Packages` ディレクトリにあります。
+コンテナーは Nano Server OS イメージを実行しているため、IIS をインストールするには Nano Server IIS パッケージが必要です。 これらのパッケージは、Windows Server 2016 TP4 インストール メディアの `NanoServer\Packages` ディレクトリにあります。
 
 `Microsoft-NanoServer-IIS-Package.cab` を `NanoServer\Packages` からコンテナー ホストの `c:\share` にコピーします。
 

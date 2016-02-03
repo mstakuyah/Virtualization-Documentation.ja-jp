@@ -1,4 +1,4 @@
-## コンテナー ホストの展開
+# コンテナー ホストの展開
 
 **この記事は暫定的な内容であり、変更される可能性があります。**
 
@@ -7,15 +7,15 @@ Windows コンテナー ホストの展開手順は、オペレーティング �
 システム要件の詳細については、「[Windows Container Host System Requirements (Windows コンテナー ホスト システムの要件)](./system_requirements.md)」を参照してください。
 
 PowerShell スクリプトを使用すると、Windows コンテナー ホストの展開を自動化できます。
-- [新しい Hyper-V 仮想マシンでコンテナー ホストを展開する](../quick_start/container_setup.md)
-- [既存のシステムにコンテナー ホストを展開する](../quick_start/inplace_setup.md)
-- [Azure でコンテナー ホストを展開する](../quick_start/azure_setup.md)
+- [新しい Hyper-V 仮想マシンでコンテナー ホストを展開する](../quick_start/container_setup.md)。
+- [既存のシステムにコンテナー ホストを展開する](../quick_start/inplace_setup.md)。
+- [Azure でコンテナー ホストを展開する](../quick_start/azure_setup.md)。
 
 ### Windows Server ホスト
 
-次の表に示された手順を使用して、Windows Server 2016 TP4 および Windows Server Core 2016 にコンテナー ホストを展開できます。 Windows Server コンテナーと Hyper-V コンテナーの両方に必要な構成が含まれています。
+次の表に示された手順を使用して、Windows Server 2016 および Windows Server 2016 Core にコンテナー ホストを展開できます。 Windows Server コンテナーと Hyper-V コンテナーの両方に必要な構成が含まれています。
 
-\ * Hyper-V コンテナーを展開する場合にのみ必要です。  
+\ * Hyper-V コンテナーを展開する場合にのみ必要です。
 \*\* Docker を使用して、コンテナーの作成と管理を行う場合にのみ必要です。
 
 <table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:100%" cellpadding="5" cellspacing="5">
@@ -34,6 +34,10 @@ PowerShell スクリプトを使用すると、Windows コンテナー ホスト
 <tr>
 <td>[仮想プロセッサの構成 *](#proc)</td>
 <td>コンテナー ホスト自体が Hyper-V 仮想マシンの場合、少なくとも 2 つの仮想プロセッサを構成する必要があります。</td>
+</tr>
+<tr>
+<td>[動的メモリの無効化 *](#dyn)</td>
+<td>コンテナー ホスト自体が Hyper-V 仮想マシンの場合、動的メモリを無効にする必要があります。</td>
 </tr>
 <tr>
 <td>[Hyper-V の役割の有効化 *](#hypv) </td>
@@ -65,7 +69,7 @@ PowerShell スクリプトを使用すると、Windows コンテナー ホスト
 
 次の表に示された手順を使用して、Nano Server にコンテナー ホストを展開できます。 Windows Server コンテナーと Hyper-V コンテナーの両方に必要な構成が含まれています。
 
-\ * Hyper-V コンテナーを展開する場合にのみ必要です。  
+\ * Hyper-V コンテナーを展開する場合にのみ必要です。
 \*\* Docker を使用して、コンテナーの作成と管理を行う場合にのみ必要です。
 
 <table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:100%" cellpadding="5" cellspacing="5">
@@ -86,6 +90,10 @@ PowerShell スクリプトを使用すると、Windows コンテナー ホスト
 <td>コンテナー ホスト自体が Hyper-V 仮想マシンの場合、少なくとも 2 つの仮想プロセッサを構成する必要があります。</td>
 </tr>
 <tr>
+<tr>
+<td>[動的メモリの無効化 *](#dyn)</td>
+<td>コンテナー ホスト自体が Hyper-V 仮想マシンの場合、動的メモリを無効にする必要があります。</td>
+</tr>
 <td>[仮想スイッチの作成](#vswitch)</td>
 <td>コンテナーは、ネットワーク接続のために仮想スイッチに接続します。</td>
 </tr>
@@ -167,10 +175,10 @@ PS C:\> New-NanoServerImage -MediaPath $WindowsMedia -BasePath c:\nano -TargetPa
 
 コンテナー ホスト自体が Hyper-V 仮想マシン上で実行され、Hyper-V コンテナーもホストする場合、入れ子になった仮想化を有効にする必要があります。 この処理は、次の PowerShell コマンドを使って完了できます。
 
-> このコマンドを実行するときには、仮想マシンをオフにする必要があります。
+>このコマンドを実行するときには、仮想マシンをオフにする必要があります。
 
 ```powershell
-PS C:\> Set-VMProcessor -VMName <container host vm> -ExposeVirtualizationExtensions $true
+PS C:\> Set-VMProcessor -VMName <VM Name> -ExposeVirtualizationExtensions $true
 ```
 
 ### <a name=proc></a>仮想プロセッサの構成
@@ -179,6 +187,16 @@ PS C:\> Set-VMProcessor -VMName <container host vm> -ExposeVirtualizationExtensi
 
 ```poweshell
 PS C:\> Set-VMProcessor –VMName <VM Name> -Count 2
+```
+
+### <a name=dyn></a>動的メモリの無効化
+
+コンテナー ホスト自体が Hyper-V 仮想マシンの場合、コンテナー ホストの仮想マシンで動的メモリを無効にする必要があります。 これは、仮想マシンの設定を通じて、または次の PowerShell スクリプトを使って構成できます。
+
+>このコマンドを実行するときには、仮想マシンをオフにする必要があります。
+
+```poweshell
+PS C:\> Set-VMMemory <VM Name> -DynamicMemoryEnabled $false
 ```
 
 ### <a name=hypv></a>Hyper-V の役割の有効化
@@ -223,7 +241,7 @@ Active                           : True
 <a name=mac></a>最後に、コンテナー ホストが Hyper-V 仮想マシンの内部で実行されている場合には、MAC スプーフィングを有効化する必要があります。これにより、各コンテナーが IP アドレスを受け取れるようになります。MAC アドレスのスプーフィングを有効にするには、Hyper-V ホストで次のコマンドを実行します。VMName プロパティは、コンテナー ホストの名前になります。
 
 ```powershell
-PS C:\> Get-VMNetworkAdapter -VMName <contianer host vm> | Set-VMNetworkAdapter -MacAddressSpoofing On
+PS C:\> Get-VMNetworkAdapter -VMName <VM Name> | Set-VMNetworkAdapter -MacAddressSpoofing On
 ```
 
 ### <a name=img></a>OS イメージのインストール
@@ -255,7 +273,7 @@ Downloaded in 0 hours, 0 minutes, 10 seconds.
 
 このコマンドは、Windows Server Core ベースの OS イメージも同様にダウンロードしてインストールします。
 
-> **問題:** リモート PowerShell セッションから実行する Save-ContainerImage コマンドレットと Install-ContainerImage コマンドレットが、WindowsServerCore コンテナー イメージの操作に失敗します。<br />**回避策:** リモート デスクトップを使用してマシンにログオンし、直接 Save-ContainerImage コマンドレットを使用します。
+>**問題:** リモート PowerShell セッションから実行する Save-ContainerImage コマンドレットと Install-ContainerImage コマンドレットが、WindowsServerCore コンテナー イメージの操作に失敗します。<br />**回避策:** リモート デスクトップを使用してマシンにログオンし、直接 Save-ContainerImage コマンドレットを使用します。
 
 ```powershell
 PS C:\> Install-ContainerImage -Name WindowsServerCore -Version 10.0.10586.0
@@ -277,8 +295,8 @@ WindowsServerCore CN=Microsoft 10.0.10586.0 True
 
 ### <a name=docker></a>Docker のインストール
 
-Docker デーモンとコマンド ライン インターフェイスは、Windows に付属していません。また、Windows コンテナー機能と一緒にインストールされません。 Docker は、Windows コンテナーを使用するための要件ではありません。 Docker をインストールする場合は、この記事「[Docker and Windows (Docker と Windows)](./docker_windows.md)」の手順に従います。
+Docker デーモンとコマンド ライン インターフェイスは、Windows に付属していません。また、Windows コンテナー機能と一緒にインストールされません。 Docker は、Windows コンテナーを使用するための要件ではありません。 Docker をインストールする場合は、この記事「[Docker と Windows](./docker_windows.md)」の手順に従います。
 
 
 
-
+<!--HONumber=Jan16_HO1-->

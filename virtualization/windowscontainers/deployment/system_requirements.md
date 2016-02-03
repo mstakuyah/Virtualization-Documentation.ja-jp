@@ -9,11 +9,14 @@
 Windows Server Technical Preview 4 は、Windows Server Core と Nano Server という 2 つのコンテナー OS イメージで提供されます。 一部の構成は、どちらの OS イメージもサポートしていません。 サポートされている構成を次の表に示します。
 
 <table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:75%" cellpadding="5" cellspacing="5">
+<thead>
 <tr valign="top">
-<td><center>**ホスト オペレーティング システム**</center></td>
-<td><center>**Windows Server コンテナー**</center></td>
-<td><center>**Hyper-V コンテナー**</center></td>
+<th><center>ホスト オペレーティング システム</center></th>
+<th><center>Windows Server コンテナー</center></th>
+<th><center>Hyper-V コンテナー</center></th>
 </tr>
+</thead>
+<tbody>
 <tr valign="top">
 <td><center>Windows Server 2016 フル UI</center></td>
 <td><center>Core OS イメージ</center></td>
@@ -29,6 +32,7 @@ Windows Server Technical Preview 4 は、Windows Server Core と Nano Server と
 <td><center> Nano OS イメージ</center></td>
 <td><center>Nano OS イメージ</center></td>
 </tr>
+</tbody>
 </table>
 
 ## Hyper-V コンテナーの要件
@@ -44,3 +48,4 @@ Windows コンテナー ホストが Hyper-V 仮想マシンから実行され�
 
 
 
+<!--HONumber=Jan16_HO1-->

@@ -12,9 +12,9 @@
 
 ## [Azure 内のコンテナー](quick_start/azure_setup.md)
 
-## [新しい Hyper-V 仮想マシン内のコンテナー](quick_start/container_setup.md)
+## [新しい Hyper-V VM 内のコンテナー](quick_start/container_setup.md)
 
-## [既存の仮想または物理システムのコンテナー](quick_start/inplace_setup.md)
+## [既存システム内のコンテナー](quick_start/inplace_setup.md)
 
 ## [PowerShell クイック スタート](quick_start/manage_powershell.md)
 
@@ -38,7 +38,7 @@
 
 ## [コンテナーのネットワーク](management/container_networking.md)
 
-## [コンテナー データ](management/manage_data.md)
+## [コンテナー共有フォルダー](management/manage_data.md)
 
 ## [コンテナー リソース コントロール](management/manage_resources.md)
 
@@ -60,6 +60,9 @@
 
 ## [アプリケーションの互換性](reference/app_compat.md)
 
-# [EULA](EULA.md)
+# [Windows Server EULA](EULA.md)
+
+# [Nano Server EULA](Nano_EULA.md)
 
 
+<!--HONumber=Jan16_HO1-->

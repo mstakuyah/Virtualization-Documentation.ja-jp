@@ -8,8 +8,8 @@ Windows コンテナー ホストの既存の物理システムまたは仮想�
 
 このクイック スタートの **Windows Server** および **Hyper-V コンテナー**の演習を完了するには、以下が必要です。
 
-* Windows 10 ビルド 1056 以降または Windows Server Technical Preview 4 以降を実行しているシステム。
-* Hyper-V の役割が有効になっていること ([手順を参照](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install#UsingPowerShell))。
+* Windows 10 ビルド 10586 以降または Windows Server Technical Preview 4 以降を実行しているシステム。
+* Hyper-V の役割が有効になっていること ([手順を参照](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install#UsingPowerShell)))。
 * コンテナー ホスト イメージ、OS ベース イメージ、セットアップ スクリプトに使用可能な 20 GB の記憶域。
 * Hyper-V ホストに対する管理者権限。
 
@@ -39,7 +39,7 @@ PS C:\> Get-VMSwitch | where {$_.SwitchType –eq “External”}
 PS C:\> wget -uri https://aka.ms/tp4/New-ContainerHost -OutFile c:\New-ContainerHost.ps1
 ```
 
-コンテナー ホストを作成して構成するには、次のコマンドを実行します。`<containerhost>` は仮想マシンの名前を指定します。
+コンテナー ホストを作成して構成するには、次のコマンドを実行します。`&lt;containerhost&gt;` は仮想マシンの名前を指定します。
 
 ``` powershell
 PS C:\> c:\New-ContainerHost.ps1 –VmName <containerhost> -WindowsImage ServerDatacenterCore -Hyperv
@@ -71,3 +71,5 @@ license terms. Please confirm you have accepted and agree to the license terms.
 
 
 
+
+<!--HONumber=Jan16_HO2-->
