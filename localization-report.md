@@ -3341,14 +3341,14 @@
 
 ##### <a name='aa26c5fc60bcdfd7cd521799700e2f6eea48eb17234'></a> Source: [virtualization\windowscontainers\Nano_EULA.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e8c2522788395c01addc4987c89d49f6ff1889a8/virtualization/windowscontainers/Nano_EULA.md)
 * Status: InSyncHandedBackSuccess
-* Target File: [virtualization\windowscontainers\Nano_EULA.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/616423cf500a937e2d67cbe85e83b422c075a8d4/virtualization/windowscontainers/Nano_EULA.md)
+* Target File: [virtualization\windowscontainers\Nano_EULA.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/1377083cf806efef730408c2bbfa8916c13a782a/virtualization/windowscontainers/Nano_EULA.md)
 * Handoff File: [Nano_EULA.dc5fd75e218dabebc3dde5de2ed83d8f59835aa5.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/48918532b6125e71313021884c6ff30af8c12da5/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/Nano_EULA.dc5fd75e218dabebc3dde5de2ed83d8f59835aa5.ja-jp.xlf)
 * Handoff Datetime: 2016-01-05 20:41:18
 * Handoff Reason: Include
 * Archive File: 
 * Archive Datetime: 0001-01-01 00:00:00
-* Handback File: [Nano_EULA.dc5fd75e218dabebc3dde5de2ed83d8f59835aa5.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/35061974794e89c1e0a15ed06583a9cae7e9861d/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/Nano_EULA.dc5fd75e218dabebc3dde5de2ed83d8f59835aa5.ja-jp.xlf)
-* Handback Datetime: 2016-02-05 03:18:08
+* Handback File: [Nano_EULA.dc5fd75e218dabebc3dde5de2ed83d8f59835aa5.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/2edec616472e751269656219e868e5b4d466f10a/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/Nano_EULA.dc5fd75e218dabebc3dde5de2ed83d8f59835aa5.ja-jp.xlf)
+* Handback Datetime: 2016-02-08 19:38:57
 * [Back to Top](#report-top)
 
 ##### <a name='fe1d5c6d1027b1b77b130a3293033f3236af555f235'></a> Source: [virtualization\windowscontainers\quick_start\azure_setup.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/3acac522bad06bc7b010e0dd9810e32dae9ab7d0/virtualization/windowscontainers/quick_start/azure_setup.md)
