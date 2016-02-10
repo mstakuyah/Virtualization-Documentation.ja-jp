@@ -4,7 +4,7 @@
 
 ネットワークに関して言えば、Windows コンテナーの機能は仮想マシンと似ています。 それぞれのコンテナーが仮想ネットワーク アダプターを備え、それが仮想スイッチに接続され、そこで受信トラフィックと送信トラフィックが転送されます。 ネットワークの構成には次の 2 種類があります。
 
-- **ネットワーク アドレス変換モード** – 各コンテナーは内部仮想スイッチに接続され、内部 IP アドレスを受信します。 この内部アドレスは、NAT 構成によってコンテナー ホストの外部アドレスに変換されます。
+- **ネットワーク アドレス変換モード** – 各コンテナーは内部の仮想スイッチに接続され、内部 IP アドレスを受信します。 この内部アドレスは、NAT 構成によってコンテナー ホストの外部アドレスに変換されます。
 
 - **透過モード** – 各コンテナーは外部の仮想スイッチに接続され、DHCP サーバーから IP アドレスを受け取ります。
 
@@ -70,7 +70,7 @@ Add-NetNatStaticMapping -NatName "Nat" -Protocol TCP -ExternalIPAddress 0.0.0.0 
 ```powershell
 Add-NetNatStaticMapping -NatName "Nat" -Protocol TCP -ExternalIPAddress 0.0.0.0 -InternalIPAddress 172.16.0.3 -InternalPort 80 -ExternalPort 82
 ```
->対応するファイアウォール規則が、外部ポートごとに必要となります。 これは、`New-NetFirewallRule` で作成できます。 詳細については、[New-NetFirewallRule のリファレンス](https://technet.microsoft.com/en-us/library/jj554908.aspx)を参照してください。
+> 対応するファイアウォール規則が、外部ポートごとに必要となります。 これは、`New-NetFirewallRule` で作成できます。 詳細については、[New-NetFirewallRule のリファレンス](https://technet.microsoft.com/en-us/library/jj554908.aspx)を参照してください。
 
 ポート マッピングの作成後、コンテナーのホスト (物理または仮想) に割り当てられている IP アドレスと公開されている外部ポートを使用して、コンテナーのアプリケーションにアクセスすることができます。 たとえば、以下の図は、コンテナー ホストの外部ポート **82** を要求の宛先とした NAT 構成を表しています。 この要求は、ポート マッピングに基づいて、コンテナー 2 でホストされているアプリケーションを返します。
 
@@ -117,7 +117,7 @@ Docker daemon –D –b “Virtual Switch” -H 0.0.0.0:2375
 Stop-Service docker
 ```
 
-構成ファイルは `c:\programdata\docker\runDockerDaemon.cmd’ にあります。 次の行を編集します。`Virtual Switch` の部分は、Docker サービスで使用する仮想スイッチの名前に置き換えてください。
+構成ファイルは `c:\programdata\docker\runDockerDaemon.cmd` にあります。 次の行を編集します。`Virtual Switch` の部分は、Docker サービスで使用する仮想スイッチの名前に置き換えてください。
 
 ```powershell
 docker daemon -D -b “New Switch Name"
@@ -137,16 +137,16 @@ Start-Service docker
 - Add-ContainerNetworkAdapter - コンテナーにネットワーク アダプターを追加します。
 - Set-ContainerNetworkAdapter - コンテナーのネットワーク アダプターに変更を加えます。
 - Remove-ContainerNetworkAdapter - コンテナーのネットワーク アダプターを削除します。
-- Get-ContainerNetworkAdapter - コンテナーのネットワーク アダプターに関するデータを取得します。
+- Get-ContainerNetworkAdapter - コンテナーのネットワーク アダプターに関するデータを返します。
 
 コンテナーのネットワーク アダプターと仮想スイッチとの間の接続を管理する
 
 - Connect-ContainerNetworkAdapter - コンテナーを仮想スイッチに接続します。
-- Disconect-ContainerNetworkAdapter - コンテナーを仮想スイッチから切断します。
+- Disconnect-ContainerNetworkAdapter - コンテナーを仮想スイッチから切断します。
 
 それぞれのコマンドの詳細については、[コンテナーの PowerShell リファレンス](https://technet.microsoft.com/en-us/library/mt433069.aspx)を参照してください。
 
 
 
 
-<!--HONumber=Jan16_HO1-->
+<!--HONumber=Feb16_HO1-->

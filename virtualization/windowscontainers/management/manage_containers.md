@@ -10,7 +10,7 @@ Docker による Windows コンテナーの管理に関するドキュメント�
 
 ### コンテナーの作成
 
-新しいコンテナーを作成する場合、コンテナー ベースとして使用するコンテナー イメージの名前が必要です。 これは、`Get-ContainerImageName` コマンドを使用して見つけることができます。
+新しいコンテナーを作成する場合、コンテナー ベースとして使用するコンテナー イメージの名前が必要です。 これは、`Get-ContainerImage` コマンドを使用して見つけることができます。
 
 ```powershell
 PS C:\> Get-ContainerImage
@@ -48,7 +48,7 @@ DHCP External   Microsoft Hyper-V Network Adapter
 NAT  NAT
 ```
 
-`Connect-ContainerNetowkrAdapter` を使用して、ネットワーク アダプターを仮想スイッチに接続します。 注: この操作は、コンテナーの作成時に、–SwitchName パラメーターを使用して実行することもできます。
+`Connect-ContainerNetworkAdapter` を使用して、ネットワーク アダプターを仮想スイッチに接続します。 注: この操作は、コンテナーの作成時に、–SwitchName パラメーターを使用して実行することもできます。
 
 ```powershell
 PS C:\> Connect-ContainerNetworkAdapter -ContainerName TST -SwitchName NAT
@@ -90,7 +90,7 @@ PS C:\> Enter-PSSession -ContainerName TST –RunAsAdministrator
 [TST]: PS C:\>
 ```
 
-永続的な PowerShell セッションを作成せずに、コンテナーに対してコマンドを実行することもできます。 そうするには、`Invoke-Command` を実行します。
+永続的な PowerShell セッションを作成せずに、コンテナーに対してコマンドを実行することもできます。 それには、`Invoke-Command` を実行します。
 
 次の例では、コンテナー内に 'Application' という名前のフォルダーを作成します。
 
@@ -198,3 +198,4 @@ Docker rm コマンドの詳細については、[Docker rm リファレンス](
 
 
 
+<!--HONumber=Feb16_HO1-->

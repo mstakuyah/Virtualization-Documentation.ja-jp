@@ -1,6 +1,6 @@
 # Windows コンテナー クイック スタート -PowerShell
 
-Windows コンテナーを使用すると、1 つのコンピューター システムに多数の独立したアプリケーションを短時間でデプロイできます。 このクイック スタートでは、PowerShell を使用した Windows Server と Hyper-V 両方のコンテナーのデプロイメントと管理について説明します。 この演習では、Windows Server と Hyper-V コンテナーの両方で動作するとても単純な "hello world" アプリケーションを 1 から構築します。 この処理中、コンテナー イメージを作成し、コンテナー共有フォルダーを操作し、コンテナー ライフサイクルを管理します。 完了すると、Windows コンテナーのデプロイメントと管理の基本について理解できます。
+Windows コンテナーを使用すると、1 つのコンピューター システムに多数の独立したアプリケーションを短時間でデプロイできます。 このクイック スタートでは、PowerShell を使用した Windows Server と Hyper-V 両方のコンテナーのデプロイメントと管理について説明します。 この演習では、Windows Server と Hyper-V コンテナーの両方で動作するとても単純な "hello world" アプリケーションを 1 から構築します。 この処理中、コンテナー イメージを作成し、コンテナー共有フォルダーを操作し、コンテナー ライフサイクルを管理します。 完了すると、Windows コンテナーの展開と管理の基本について理解できます。
 
 このチュートリアルでは、Windows Server コンテナーと Hyper-V コンテナーの両方について説明します。 コンテナーの種類によって基本的な必要条件は異なります。 Windows コンテナー ドキュメントには、コンテナー ホストを簡単にデプロイする手順が記載されています。 Windows コンテナーを初めて使用するときは、これが最も簡単な方法です。 コンテナー ホストをお持ちでない場合は、「[Container Host Deployment Quick Start (コンテナー ホストの展開のクイック スタート)](./container_setup.md)」を参照してください。
 
@@ -15,7 +15,7 @@ Windows コンテナーを使用すると、1 つのコンピューター シス
 - 仮想化の入れ子に対応した Windows コンテナー ホスト。
 - Windows Server 2016 メディア - [ダウンロード](https://aka.ms/tp4/serveriso)。
 
->Microsoft Azure は、Hyper-V コンテナーをサポートしていません。 Hyper-V の演習を完了するには、オンプレミスのコンテナー ホストが必要です。
+> Microsoft Azure は、Hyper-V コンテナーをサポートしていません。 Hyper-V の演習を完了するには、オンプレミスのコンテナー ホストが必要です。
 
 ## Windows Server コンテナー
 
@@ -56,7 +56,7 @@ Name    State Uptime   ParentImageName
 TP4Demo Off   00:00:00 WindowsServerCore
 ```
 
-既存のコンテナーを視覚的に確認するには、`Get-Container` コマンドを使用します。
+既存のコンテナーを視覚化するには、`Get-Container` コマンドを使用します。
 
 ```powershell
 PS C:\> Get-Container
@@ -243,7 +243,7 @@ PS C:\> Remove-ContainerImage -Name WindowsServerCoreIIS -Force
 
 Hyper-V コンテナーは、Windows Server コンテナー上に分離したレイヤーを追加します。 各 Hyper-V コンテナーは、高度に最適化された仮想マシン内に作成されます。 Windows Server コンテナーは、コンテナー ホストや、そのホスト上で実行されているその他すべての Windows Server コンテナーとカーネルを共有していますが、Hyper-V コンテナーは他のコンテナーと完全に独立しています。 Hyper-V コンテナーは、 Windows Server コンテナーと同じ方法で作成され、管理されます。 Hyper-V コンテナーの詳細については、「[Managing Hyper-V Containers (Hyper-V コンテナーの管理)](../management/hyperv_container.md)」を参照してください。
 
->Microsoft Azure は、Hyper-V コンテナーをサポートしていません。 Hyper-V コンテナーの演習を完了するには、オンプレミスのコンテナー ホストが必要です。
+> Microsoft Azure は、Hyper-V コンテナーをサポートしていません。 Hyper-V コンテナーの演習を完了するには、オンプレミスのコンテナー ホストが必要です。
 
 ### コンテナーの作成
 
@@ -288,7 +288,7 @@ d-----       11/18/2015   5:27 PM                en-us
 
 `Add-ContainerSharedFolder` コマンドを使用して、新しいコンテナーに新しい共有フォルダーを作成します。
 
->共有フォルダーを作成するときは、コンテナーが停止した状態である必要があります。
+> 共有フォルダーを作成するときは、コンテナーが停止した状態である必要があります。
 
 ```powershell
 PS C:\> Add-ContainerSharedFolder -ContainerName HYPV -SourcePath c:\share -DestinationPath c:\iisinstall
@@ -517,4 +517,4 @@ exit
 
 
 
-<!--HONumber=Jan16_HO1-->
+<!--HONumber=Feb16_HO1-->

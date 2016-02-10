@@ -1,6 +1,6 @@
-# 新しい管理サービスの作成
+# 独自の統合サービスを作成する
 
-Windows 10 以降、Hyper-V により、ネットワーク接続に依存せずに、Hyper-V ゲストとホスト間で登録済みソケット接続が可能です。 Hyper-V ソケットを使用することで、サービスはネットワーク スタックと関係なく実行でき、すべてのデータが同じ物理メモリ上に格納されます。
+Windows 10 から、Hyper-V ホストとそこで実行されている仮想マシンの間にある新しいソケット ベースの通信チャネルを使用して、インボックスの Hyper-V 統合サービスとよく似たサービスを作成できるようになりました。 この Hyper-V ソケットを使用することで、サービスはネットワーク スタックと関係なく実行でき、すべてのデータが同じ物理メモリ上に格納されます。
 
 このドキュメントでは、Hyper-V ソケット上に構築された簡単なアプリケーションの作成とそれらの使用を開始する方法の手順について説明します。
 
@@ -29,9 +29,9 @@ Windows 10 以降、Hyper-V により、ネットワーク接続に依存せず�
 現在、Hyper-V ソケットは、ネイティブ コード (C++) で使用できます。
 
 簡単なアプリケーションを作成するには、次が必要です。
-* C コンパイラ。 ない場合は、[Visual Studio Code](https://aka.ms/vs) を確認してください。
+* C コンパイラ。 お持ちではない場合は、[Visual Studio Code](https://aka.ms/vs) を確認してください。
 * Hyper-V と仮想マシンを実行しているコンピューター。
-* ホストおよびゲスト (VM) OS は、Windows 10、Windows Server Technical Preview 3 以降である必要があります。
+  * ホストおよびゲスト (VM) OS は、Windows 10、Windows Server Technical Preview 3 以降である必要があります。
 * Windows SDK - ここに、`hvsocket.h` を含む [Win10 SDK](https://dev.windows.com/en-us/downloads/windows-10-sdk) のリンクを示します。
 
 ## 新しいアプリケーションの登録
@@ -66,7 +66,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 
 サービスごとのレジストリ内の情報:
 * `サービス GUID`
-* `ElementName (REG_SZ)` - これは、サービスのフレンドリ名です。
+    * `ElementName (REG_SZ)` - これは、サービスのフレンドリ名です。
 
 独自のサービスを登録するには、独自の GUID とフレンドリ名を使用して新しいレジストリ キーを作成します。
 
@@ -81,7 +81,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
         ElementName REG_SZ  Your Service Friendly Name
 ```
 
->** ヒント:** PowerShell で GUID を生成し、それをクリップボードにコピーするには、次を実行します。
+> ** ヒント:** PowerShell で GUID を生成し、それをクリップボードにコピーするには、次を実行します。
 ``` PowerShell
 [System.Guid]::NewGuid().ToString() | clip.exe
 ```
@@ -105,7 +105,7 @@ SOCKET WSAAPI socket(
 Hyper-V ソケットの場合:
 * アドレス ファミリ - `AF_HYPERV`
 * 種類 - `SOCK_STREAM`、`SOCK_DGRAM`、または `SOCK_RAW`
-* プロトコル – `HV_PROTOCOL_RAW`
+* プロトコル - `HV_PROTOCOL_RAW`
 
 
 これは宣言/インスタンスの例です。
@@ -118,7 +118,7 @@ SOCKET sock = socket(AF_HYPERV, SOCK_STREAM, HV_PROTOCOL_RAW);
 
 バインドは、ソケットと接続情報を関連付けます。
 
-便宜上、下に関数定義をコピーしていますが、バインドの詳細については[ここ](https://msdn.microsoft.com/en-us/library/windows/desktop/ms737550.aspx)を参照してください。
+便宜上、下に関数定義をコピーしていますが、バインドの詳細については[こちら](https://msdn.microsoft.com/en-us/library/windows/desktop/ms737550.aspx)を参照してください。
 
 ``` C
 int bind(
@@ -165,12 +165,12 @@ IP またはホスト名の代わりに、AF_HYPERV エンドポイントは 2 �
 | HV_GUID_PARENT| a42e7cda-d03f-480c-9cc2-a4de20abb878| 親アドレス。この VmId を使用して、コネクタの親パーティションに接続します。*|
 
 
-***HV_GUID_PARENT**
-仮想マシンの親は、そのホストです。 コンテナーの親は、コンテナーのホストです。
-仮想マシンで実行しているコンテナーからの接続は、コンテナーをホストしている仮想マシンに接続します。
-この VmId でリッスンし、次からの接続を受け入れます。
-(コンテナー内): コンテナー ホスト。
-(VM 内: コンテナー ホスト/コンテナーなし): VM ホスト。
+***HV_GUID_PARENT**  
+仮想マシンの親は、そのホストです。 コンテナーの親は、コンテナーのホストです。  
+仮想マシンで実行しているコンテナーからの接続は、コンテナーをホストしている仮想マシンに接続します。  
+この VmId でリッスンし、次からの接続を受け入れます。  
+(コンテナー内): コンテナー ホスト。  
+(VM 内: コンテナー ホスト/コンテナーなし): VM ホスト。  
 (VM 内でない: コンテナー ホスト/コンテナーなし): サポートされていません。
 
 ## サポートされているソケット コマンド
@@ -191,4 +191,5 @@ Accept()
 
 
 
-<!--HONumber=Dec15_HO1-->
+
+<!--HONumber=Feb16_HO1-->

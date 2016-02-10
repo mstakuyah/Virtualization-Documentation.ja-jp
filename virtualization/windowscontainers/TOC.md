@@ -14,7 +14,7 @@
 
 ## [新しい Hyper-V VM 内のコンテナー](quick_start/container_setup.md)
 
-## [既存システム内のコンテナー](quick_start/inplace_setup.md)
+## [既存のシステム内のコンテナー](quick_start/inplace_setup.md)
 
 ## [PowerShell クイック スタート](quick_start/manage_powershell.md)
 
@@ -24,9 +24,11 @@
 
 ## [システム要件](deployment/system_requirements.md)
 
-## [コンテナー ホストの展開](deployment/deployment.md)
+## [Windows Server のコンテナー](deployment/deployment.md)
 
-## [Windows での Docker の展開](deployment/docker_windows.md)
+## [Nano Server のコンテナー](deployment/deployment_nano.md)
+
+## [Windows 上の Docker](deployment/docker_windows.md)
 
 # Windows コンテナーの管理
 
@@ -65,4 +67,4 @@
 # [Nano Server EULA](Nano_EULA.md)
 
 
-<!--HONumber=Jan16_HO1-->
+<!--HONumber=Feb16_HO1-->

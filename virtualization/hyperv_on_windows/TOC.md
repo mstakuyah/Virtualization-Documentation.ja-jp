@@ -1,6 +1,6 @@
 # Windows の Hyper-V について
 
-## [Windows の Hyper-V](./windows_welcome.md)
+## [Windows 10 の Hyper-V](./windows_welcome.md)
 
 ## [Hyper-V の概要](./about/hyperv_on_windows.md)
 
@@ -32,7 +32,7 @@
 
 ## [エクスポートとインポート](user_guide/export_import.md)
 
-## [PowerShell Direct](user_guide/vmsession.md)
+## [PowerShell ダイレクト](user_guide/vmsession.md)
 
 ## [リモート管理](user_guide/remote_host_management.md)
 
@@ -46,14 +46,15 @@
 
 ## [PowerShell の例](develop/powershell_snippets.md)
 
-## [管理サービス](develop/make_mgmt_service.md)
+## [統合サービスの構築](develop/make_mgmt_service.md)
 
 ## [Hyper-V WMI プロバイダー (V2)](https://msdn.microsoft.com/library/hh850319.aspx)
 
-## [Hyper-V アーキテクチャ](https://msdn.microsoft.com/en-us/library/cc768520(v=bts.10).aspx)
+## [Hyper-V のアーキテクチャ](https://msdn.microsoft.com/en-us/library/cc768520(v=bts.10).aspx)
 
 # コミュニティとサポートへの接続
 
 ## [Hyper-V フォーラム](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home?forum=winserverhyperv)
 
 
+<!--HONumber=Feb16_HO1-->
