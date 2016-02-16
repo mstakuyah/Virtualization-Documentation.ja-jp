@@ -2,7 +2,7 @@
 
 Windows コンテナーは、1 つのシステムで複数の独立したアプリケーションを実行できるようにする、オペレーティング システム レベルの仮想化を実現します。 この機能では、2 種類のコンテナー ランタイムを使用します。それぞれ、アプリケーションの分離の度合いが異なります。 Windows Server コンテナーは、名前空間とプロセスの分離によって分離を実現します。 Hyper-V コンテナーは、軽量の仮想マシンで各コンテナーをカプセル化します。 2 種類のランタイムに加えて、この両方を PowerShell または Docker で管理できます。 このドキュメント セットでは、クイック スタート ガイド、展開ガイド、管理操作に関する詳しい技術情報を提供します。
 
-<table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:80%" cellpadding="25" cellspacing="5">
+<table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:90%" cellpadding="25" cellspacing="5">
 <tr>
 <td><center>![](media/try.png)</center></td>
 <td>**クイック スタート**<br /><br />
@@ -43,6 +43,16 @@ Windows Server 2016 と Nano Server での Windows コンテナーの管理に�
 </td>
 </tr>
 <tr>
+<td><center>![](media/video.png)</center></td>
+<td>**動画**<br /><br />
+Windows コンテナー チームのデモとインタビューをご覧になりますか?<br /><br />
+<ul>
+<li>[Containers Channel (コンテナー チャンネル)](https://channel9.msdn.com/Blogs/containers)</li>
+</ul>
+<br />
+</td>
+</tr>
+<tr>
 <td><center>![](media/question.png)</center></td>
 <td>**コミュニティ**<br /><br />
 コミュニティでやり取りしたり、サンプルを試してみたりできるほか、その他のリソースを探すこともできます。<br /><br />
@@ -58,3 +68,4 @@ Windows Server 2016 と Nano Server での Windows コンテナーの管理に�
 
 
 
+<!--HONumber=Feb16_HO1-->

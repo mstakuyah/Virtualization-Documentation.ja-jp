@@ -1,20 +1,20 @@
 # Azure クイック スタート
 
-Azure で Windows Server コンテナーの作成と管理をするには、事前に、Windows Server コンテナー機能にあらかじめ構成されている Windows Server 2016 Technical Preview イメージを展開する必要があります。 このガイドでは、このプロセスについて説明します。
+Azure で Windows Server コンテナーの作成と管理をするには、事前に、Windows Server コンテナー機能にあらかじめ構成されている Windows Server 2016 Technical Preview イメージをデプロイする必要があります。 このガイドでは、このプロセスについて説明します。
 
 > Microsoft Azure は、Hyper-V コンテナーをサポートしていません。 Hyper-V コンテナーの演習を完了するには、オンプレミスのコンテナー ホストが必要です。
 
 ## Azure ポータルの使用を開始する
 
-Azure アカウントをお持ちの場合は、この手順をスキップして[コンテナー ホスト VM の作成](#CreateacontainerhostVM)に移動します。
+Azure アカウントをお持ちの場合は、「[コンテナー ホスト VM の作成](#CreateacontainerhostVM)」に移動します。
 
 1. [azure.com](https://azure.com) に移動して、[Azure 無料試用版](https://azure.microsoft.com/en-us/pricing/free-trial/)の手順に従います。
 2. Microsoft アカウントを使用してサインインします。
-3. ご自分のアカウントが利用できる場合は、[Azure 管理ポータル](https://portal.azure.com)にサインインします。
+3. ご自分のアカウントが利用できる場合は、[Microsoft Azure 管理ポータル](https://portal.azure.com)にサインインします。
 
 ## コンテナー ホスト VM の作成
 
-Azure Marketplace で検索で「containers」を検索すると、「Windows Server 2016 Core with Containers Tech Preview 4」という検索結果が返されます。
+Azure Marketplace で「containers」を検索すると、「Windows Server 2016 Core with Containers Tech Preview 4」という検索結果が返されます。
 
 ![](./media/newazure1.png)
 
@@ -30,11 +30,11 @@ Azure Marketplace で検索で「containers」を検索すると、「Windows Se
 
 ![](./media/newazure3.png)
 
-`[作成]` ボタンを選択して、仮想マシンの展開プロセスを開始します。
+`[作成]` ボタンを選択して、仮想マシンのデプロイメント プロセスを開始します。
 
 ![](media/newazure2.png)
 
-VM の展開が完了したら、[接続] ボタンを選択し、Windows Server コンテナー ホストとの RDP セッションを開始します。
+VM のデプロイが完了したら、[接続] ボタンを選択し、Windows Server コンテナー ホストとの RDP セッションを開始します。
 
 ![](media/newazure6.png)
 
@@ -56,3 +56,4 @@ VM の作成ウィザードで指定したユーザー名とパスワードを�
 
 
 
+<!--HONumber=Feb16_HO1-->

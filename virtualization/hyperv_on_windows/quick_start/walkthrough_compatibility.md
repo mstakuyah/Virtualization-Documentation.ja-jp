@@ -16,7 +16,7 @@ Hyper-V のロールは、次のバージョンにはインストールできま
 - Windows 10 Mobile
 - Windows 10 Mobile Enterprise
 
-> Windows 10 Home Edition は、Windows 10 Professional にアップグレードすることができます。 アップグレードを行うには、**[設定]**、**[更新とセキュリティ]**、**[アクティブ化]** の順に開きます。 ここでストアにアクセスして、アップグレードを購入することができます。
+>Windows 10 Home Edition は、Windows 10 Professional にアップグレードすることができます。 アップグレードを行うには、**[設定]**、**[更新とセキュリティ]**、**[アクティブ化]** の順に開きます。 ここでストアにアクセスして、アップグレードを購入することができます。
 
 ## ハードウェア要件
 
@@ -45,8 +45,9 @@ Hyper-V Requirements: A hypervisor has been detected. Features required for Hype
 
 ## 次のステップ - Hyper-V のインストール
 
-[次のステップ - Hyper-V のインストール](walkthrough_install.md)
+[Hyper-V をインストールする](walkthrough_install.md)
 
 
 
 
+<!--HONumber=Feb16_HO2-->

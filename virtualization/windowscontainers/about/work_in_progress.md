@@ -93,6 +93,57 @@ PS C:\> Start-Container test2
 **回避策: **  
 複数のエンドポイントをコンテナーに公開する必要がある場合、NAT ポート マッピングを使用します。
 
+
+### 静的な NAT マッピングが Docker を使用したポート マッピングと競合する可能性がある
+
+Windows PowerShell を使用してコンテナーを作成し、静的な NAT マッピングを追加している場合は、`docker -p &lt;src&gt;:&lt;dst&gt;` を使用してコンテナーを開始する前に削除しないと、競合が発生する場合があります。
+
+これはポート 80 での静的マッピングとの競合の例です。
+```
+PS C:\IISDemo> Add-NetNatStaticMapping -NatName "ContainerNat" -Protocol TCP -ExternalIPAddress 0.0.0.0 -InternalIPAddress
+ 172.16.0.2 -InternalPort 80 -ExternalPort 80
+
+
+StaticMappingID               : 1
+NatName                       : ContainerNat
+Protocol                      : TCP
+RemoteExternalIPAddressPrefix : 0.0.0.0/0
+ExternalIPAddress             : 0.0.0.0
+ExternalPort                  : 80
+InternalIPAddress             : 172.16.0.2
+InternalPort                  : 80
+InternalRoutingDomainId       : {00000000-0000-0000-0000-000000000000}
+Active                        : True
+
+
+
+PS C:\IISDemo> docker run -it -p 80:80 microsoft/iis cmd
+docker: Error response from daemon: Cannot start container 30b17cbe85539f08282340cc01f2797b42517924a70c8133f9d8db83707a2c66: 
+HCSShim::CreateComputeSystem - Win32 API call returned error r1=2147942452 err=You were not connected because a 
+duplicate name exists on the network. If joining a domain, go to System in Control Panel to change the computer name
+ and try again. If joining a workgroup, choose another workgroup name. 
+ id=30b17cbe85539f08282340cc01f2797b42517924a70c8133f9d8db83707a2c66 configuration= {"SystemType":"Container",
+ "Name":"30b17cbe85539f08282340cc01f2797b42517924a70c8133f9d8db83707a2c66","Owner":"docker","IsDummy":false,
+ "VolumePath":"\\\\?\\Volume{4b239270-c94f-11e5-a4c6-00155d016f0a}","Devices":[{"DeviceType":"Network","Connection":
+ {"NetworkName":"Virtual Switch","EnableNat":false,"Nat":{"Name":"ContainerNAT","PortBindings":[{"Protocol":"TCP",
+ InternalPort":80,"ExternalPort":80}]}},"Settings":null}],"IgnoreFlushesDuringBoot":true,
+ "LayerFolderPath":"C:\\ProgramData\\docker\\windowsfilter\\30b17cbe85539f08282340cc01f2797b42517924a70c8133f9d8db83707a2c66",
+ "Layers":[{"ID":"4b91d267-ecbc-53fa-8392-62ac73812c7b","Path":"C:\\ProgramData\\docker\\windowsfilter\\39b8f98ccaf1ed6ae267fa3e98edcfe5e8e0d5414c306f6c6bb1740816e536fb"},
+ {"ID":"ff42c322-58f2-5dbe-86a0-8104fcb55c2a",
+"Path":"C:\\ProgramData\\docker\\windowsfilter\\6a182c7eba7e87f917f4806f53b2a7827d2ff0c8a22d200706cd279025f830f5"},
+{"ID":"84ea5d62-64ed-574d-a0b6-2d19ec831a27",
+"Path":"C:\\ProgramData\\Microsoft\\Windows\\Images\\CN=Microsoft_WindowsServerCore_10.0.10586.0"}],
+"HostName":"30b17cbe8553","MappedDirectories":[],"SandboxPath":"","HvPartition":false}.
+```
+
+
+***軽減策***
+これは、PowerShell を使用してポート マッピングを削除することで解決できる場合があります。 これにより、上の例で発生しているポート 80 の競合が解消されます。
+```powershell
+Get-NetNatStaticMapping | ? ExternalPort -eq 80 | Remove-NetNatStaticMapping
+```
+
+
 ### Windows コンテナーが IP を取得しない
 
 DHCP VM スイッチで Windows コンテナーに接続する場合、コンテナー ホストが IP を受信し、コンテナーが受信しないという状況が発生します。
@@ -237,6 +288,7 @@ Nano Server コンテナー ホスト内のコンテナーを終了する場合�
 マイクロソフトは、サービスとアプリケーションが Active Directory を使用する方法、およびコンテナーへのそれらの展開の共通部分について、フィードバックを慎重に検討しています。最善な方法の詳細な例をご存知の方は是非、[フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)でお知らせください。
 
 これらの種類のシナリオをサポートするソリューションを積極的に探しています。
+
 
 
 

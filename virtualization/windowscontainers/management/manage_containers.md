@@ -21,14 +21,14 @@ NanoServer        CN=Microsoft 10.0.10584.1000 True
 WindowsServerCore CN=Microsoft 10.0.10584.1000 True
 ```
 
-新しいコンテナーを作成するには、`New-Container` コマンドを使用します。
+新しいコンテナーを作成するには、`New-Container` コマンドを使用します。 `- ContainerComputerName` パラメーターを使用して、コンテナーに NetBIOS 名を指定することもできます。
 
 ```powershell
-PS C:\> New-Container -Name TST -ContainerImageName WindowsServerCore
+PS C:\> New-Container -ContainerImageName WindowsServerCore -Name demo -ContainerComputerName demo
 
 Name State Uptime   ParentImageName
 ---- ----- ------   ---------------
-TST  Off   00:00:00 WindowsServerCore
+demo  Off   00:00:00 WindowsServerCore
 ```
 
 コンテナーが作成されたら、コンテナーにネットワーク アダプターを追加します。
@@ -48,7 +48,7 @@ DHCP External   Microsoft Hyper-V Network Adapter
 NAT  NAT
 ```
 
-`Connect-ContainerNetworkAdapter` を使用して、ネットワーク アダプターを仮想スイッチに接続します。 注: この操作は、コンテナーの作成時に、–SwitchName パラメーターを使用して実行することもできます。
+`Connect-ContainerNetworkAdapter` を使用して、ネットワーク アダプターを仮想スイッチに接続します。 **注:** この操作は、コンテナーの作成時に、–SwitchName パラメーターを使用して実行することもできます。
 
 ```powershell
 PS C:\> Connect-ContainerNetworkAdapter -ContainerName TST -SwitchName NAT
@@ -162,6 +162,7 @@ Docker によってコンテナーを停止するには、`docker stop` コマ�
 
 ```powershell
 PS C:\> docker stop tender_panini
+
 tender_panini
 ```
 

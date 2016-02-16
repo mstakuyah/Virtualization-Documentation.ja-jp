@@ -73,8 +73,12 @@ C:\> docker run –it --cpu-shares 2 --name dockerdemo windowsservercore cmd
 - 現在、CPU と IO リソース制御は、Hyper-V コンテナーでサポートされていません。
 - 現在、IO リソース制御は、コンテナー共有フォルダーでサポートされていません。
 
+## ビデオ チュートリアル
+
+<iframe src="https://channel9.msdn.com/Blogs/containers/Container-Fundamentals--Part-4-Resource-Management/player" width="800" height="450"  allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
 
 
 
 
-<!--HONumber=Jan16_HO1-->
+
+<!--HONumber=Feb16_HO1-->

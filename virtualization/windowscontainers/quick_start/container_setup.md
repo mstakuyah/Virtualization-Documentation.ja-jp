@@ -42,7 +42,7 @@ PS C:\> wget -uri https://aka.ms/tp4/New-ContainerHost -OutFile c:\New-Container
 コンテナー ホストを作成して構成するには、次のコマンドを実行します。`&lt;containerhost&gt;` は仮想マシンの名前を指定します。
 
 ``` powershell
-PS C:\> c:\New-ContainerHost.ps1 –VmName <containerhost> -WindowsImage ServerDatacenterCore -Hyperv
+PS C:\> powershell.exe -NoProfile c:\New-ContainerHost.ps1 –VmName testcont -WindowsImage ServerDatacenterCore -Hyperv
 ```
 
 スクリプトの開始時に、パスワードの入力を求めるメッセージが表示されます。 これは管理者アカウントに割り当てられているパスワードになります。
@@ -72,4 +72,4 @@ license terms. Please confirm you have accepted and agree to the license terms.
 
 
 
-<!--HONumber=Jan16_HO2-->
+<!--HONumber=Feb16_HO2-->

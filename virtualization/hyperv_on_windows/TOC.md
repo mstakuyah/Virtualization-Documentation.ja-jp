@@ -10,7 +10,7 @@
 
 ## [Hyper-V の Linux と FreeBSD](https://technet.microsoft.com/library/dn531030.aspx)
 
-# Hyper-V の概要
+# Windows クイック スタートの Hyper-V
 
 ## [システム要件](quick_start/walkthrough_compatibility.md)
 
@@ -22,7 +22,7 @@
 
 ## [Hyper-V と PowerShell](quick_start/walkthrough_powershell.md)
 
-# ユーザー ガイド
+# Windows での Hyper-V の管理
 
 ## [仮想マシンの移行とアップグレード](user_guide/migrating_vms.md)
 
@@ -40,7 +40,11 @@
 
 ## [トラブルシューティング](user_guide/troubleshooting.md)
 
-# 開発
+# コミュニティとサポート
+
+## [Hyper-V フォーラム](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home?forum=winserverhyperv)
+
+# 参照先
 
 ## [Hyper-V PowerShell](https://technet.microsoft.com/library/hh848559.aspx)
 
@@ -52,9 +56,5 @@
 
 ## [Hyper-V のアーキテクチャ](https://msdn.microsoft.com/en-us/library/cc768520(v=bts.10).aspx)
 
-# コミュニティとサポートへの接続
 
-## [Hyper-V フォーラム](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home?forum=winserverhyperv)
-
-
-<!--HONumber=Feb16_HO1-->
+<!--HONumber=Feb16_HO2-->

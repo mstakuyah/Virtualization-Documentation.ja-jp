@@ -73,7 +73,10 @@ PS C:\> docker run -it -v c:\source:c:\destination 1f62aaf73140 cmd
 
 Docker によるコンテナー内のデータの管理の詳細については、[Docker.com の Docker ボリューム](https://docs.docker.com/userguide/dockervolumes/)に関するドキュメントを参照してください。
 
+## ビデオ チュートリアル
+
+<iframe src="https://channel9.msdn.com/Blogs/containers/Container-Fundamentals--Part-3-Shared-Folders/player" width="800" height="450"  allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
 
 
 
-
+<!--HONumber=Feb16_HO1-->

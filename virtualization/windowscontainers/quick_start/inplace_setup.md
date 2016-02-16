@@ -2,7 +2,7 @@
 
 このドキュメントでは、PowerShell スクリプトを使用して既存の物理システムまたは仮想システムに Windows コンテナー ロールを展開および構成する手順を説明します。
 
-Windows コンテナー ホストとして構成された新しい Hyper-V 仮想マシンのスクリプト化された展開の手順を実行するには、「[New Hyper-V Windows Container Host (新しい Hyper-V Windows コンテナー ホスト)](./container_setup.md)」を参照してください。
+Windows コンテナー ホストとして構成された新しい Hyper-V 仮想マシンのスクリプト化された展開の手順を実行するには、「[新しい Hyper-V 仮想マシンへの Windows コンテナー ホストの展開](./container_setup.md)」を参照してください。
 
 **コンテナー OS イメージのインストール前にお読みください。**Microsoft Windows Server のプレリリース版ソフトウェア (「ライセンス条項」) のライセンス条項が、Microsoft Windows コンテナー OS イメージの追加機能 (以下「追加ソフトウェア」) の使用に適用されます。 追加ソフトウェアをダウンロードして使用することで、ライセンス条項に同意したことになります。ライセンス条項に同意していない場合、そのソフトウェアを使用することはできません。 Windows Server のプレリリース版ソフトウェアと追加ソフトウェアはどちらも、米国 Microsoft Corporation によってライセンス供与されています。
 
@@ -34,24 +34,24 @@ PS C:\> start-process powershell -Verb runas
 PS C:\> wget -uri https://aka.ms/tp4/Install-ContainerHost -OutFile C:\Install-ContainerHost.ps1
 ```
 
-ダウンロードが完了したら、スクリプトを実行します。
+ ダウンロードが完了したら、スクリプトを実行します。
 ``` PowerShell
-PS C:\> C:\Install-ContainerHost.ps1 -HyperV
+PS C:\> powershell.exe -NoProfile C:\Install-ContainerHost.ps1 -HyperV
 ```
 
 同意すると、スクリプトによって Windows コンテナー コンポーネントのダウンロードと構成が開始されます。 これは大規模なダウンロードのため、このプロセスにはかなり時間がかかる場合があります。 処理中に、コンピューターが再起動する場合があります。 プロセスが完了すると、マシンが構成され、PowerShell と Docker の両方を使用して、Windows コンテナーと Windows コンテナー イメージの作成および管理ができるようになります。
 
-これらの項目が完了すると、システムは Windows コンテナー対応となります。
+ これらの項目が完了すると、システムは Windows コンテナー対応となります。
 
 ## 次の手順 - コンテナーの使用開始
 
 これで Windows Server コンテナーの機能を実行する Windows Server 2016 システムが準備できたので、Windows Server コンテナーおよび Hyper-V コンテナーの使用を開始するには、次のガイドに移動します。
 
-[ Windows コンテナー クイック スタート - Docker](./manage_docker.md)
+[Quick Start: Windows Containers and Docker (クイック スタート: Windows コンテナーと Docker)](./manage_docker.md)
 
 [Quick Start: Windows Containers and PowerShell (クイック スタート: Windows コンテナーと PowerShell)](./manage_powershell.md)
 
 
 
 
-<!--HONumber=Jan16_HO1-->
+<!--HONumber=Feb16_HO2-->
