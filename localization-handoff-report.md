@@ -6,30 +6,15 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\about\work_in_progress.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f14befebe979751cc2269c7749b983d8167f2804/virtualization/windowscontainers/about/work_in_progress.md) | OutofSyncHandedBackSuccess | [Details](#fefdd95609280b008c9c5e885c7d44d09d486bdd210)
- [virtualization\windowscontainers\deployment\media\nssm1.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f14befebe979751cc2269c7749b983d8167f2804/virtualization/windowscontainers/deployment/media/nssm1.png) | OutofSyncHandedBackSuccess | [Details](#22320b32fb8af15c2e7125ec4f50c2b19643b9bf215)
+ [virtualization\windowscontainers\deployment\media\nssm1.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/8a2a778a892708ab35f0395c1b2f370dd560b245/virtualization/windowscontainers/deployment/media/nssm1.png) | OutofSyncHandedBackSuccess | [Details](#22320b32fb8af15c2e7125ec4f50c2b19643b9bf215)
+ [virtualization\windowscontainers\Examples\dotnet35.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/8a2a778a892708ab35f0395c1b2f370dd560b245/virtualization/windowscontainers/Examples/dotnet35.md) | OutofSyncHandedBackSuccess | [Details](#ea7ce9566e4745f7c2e295ab271afad83cba54bd221)
 
 ## Item Details
-##### <a name='fefdd95609280b008c9c5e885c7d44d09d486bdd210'></a> Source: [virtualization\windowscontainers\about\work_in_progress.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f14befebe979751cc2269c7749b983d8167f2804/virtualization/windowscontainers/about/work_in_progress.md)
+##### <a name='22320b32fb8af15c2e7125ec4f50c2b19643b9bf215'></a> Source: [virtualization\windowscontainers\deployment\media\nssm1.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/8a2a778a892708ab35f0395c1b2f370dd560b245/virtualization/windowscontainers/deployment/media/nssm1.png)
 * Status: OutofSyncHandedBackSuccess
 * Target File: 
-* Handoff File: [work_in_progress.4d0e298514e64fd94d18eb197e270fbbf7e07fd8.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/c332d5e90cfdb62b5d7493afe46f191e18132a0a/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/work_in_progress.4d0e298514e64fd94d18eb197e270fbbf7e07fd8.ja-jp.xlf)
-* Handoff Datetime: 2016-02-25 19:16:08
-* Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\about\work_in_progress.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ba32e0ddfbabbc7225547802f26d26fda25ccc98/virtualization/windowscontainers/about/work_in_progress.md)
-* Current Handback File: [work_in_progress.4d0e298514e64fd94d18eb197e270fbbf7e07fd8.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/09f1536ce2d82ebd557e6089965e2e6f58c00025/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/work_in_progress.4d0e298514e64fd94d18eb197e270fbbf7e07fd8.ja-jp.xlf)
-* Current Handback Datetime: 2016-02-16 21:20:55
-* [Back to Top](#report-top)
-
-##### <a name='22320b32fb8af15c2e7125ec4f50c2b19643b9bf215'></a> Source: [virtualization\windowscontainers\deployment\media\nssm1.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f14befebe979751cc2269c7749b983d8167f2804/virtualization/windowscontainers/deployment/media/nssm1.png)
-* Status: OutofSyncHandedBackSuccess
-* Target File: 
-* Handoff File: [22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/c332d5e90cfdb62b5d7493afe46f191e18132a0a/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png)
-* Handoff Datetime: 2016-02-25 19:16:08
+* Handoff File: [22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/2085e36266728d5fd73059fb8d54589712587973/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png)
+* Handoff Datetime: 2016-02-25 22:26:39
 * Handoff Reason: IsDependency
 * Archive File: 
 * Archive Datetime: 0001-01-01 00:00:00
@@ -39,6 +24,21 @@
 * Current Handback File: [312f08a0f7c0c08c7a7f0c005b76bc4ee38d6bc4.png](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/9d0bbf00d55082604cea81ecc6b4c0b49a49a53e/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/312f08a0f7c0c08c7a7f0c005b76bc4ee38d6bc4.png)
 * Current Handback Datetime: 2016-01-04 21:48:05
 * Dependency From: virtualization\windowscontainers\deployment\docker_windows.md
+* [Back to Top](#report-top)
+
+##### <a name='ea7ce9566e4745f7c2e295ab271afad83cba54bd221'></a> Source: [virtualization\windowscontainers\Examples\dotnet35.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/8a2a778a892708ab35f0395c1b2f370dd560b245/virtualization/windowscontainers/Examples/dotnet35.md)
+* Status: OutofSyncHandedBackSuccess
+* Target File: 
+* Handoff File: [dotnet35.07ba43b81e23427621b2039de6e95ef8c10ba9ab.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/2085e36266728d5fd73059fb8d54589712587973/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/dotnet35.07ba43b81e23427621b2039de6e95ef8c10ba9ab.ja-jp.xlf)
+* Handoff Datetime: 2016-02-25 22:26:39
+* Handoff Reason: Include
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Current Target File: [virtualization\windowscontainers\Examples\dotnet35.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ce086504dcef43cdbc99582c5e09c0e3015652a5/virtualization/windowscontainers/Examples/dotnet35.md)
+* Current Handback File: [dotnet35.07ba43b81e23427621b2039de6e95ef8c10ba9ab.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/9d0bbf00d55082604cea81ecc6b4c0b49a49a53e/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/dotnet35.07ba43b81e23427621b2039de6e95ef8c10ba9ab.ja-jp.xlf)
+* Current Handback Datetime: 2016-01-04 21:48:05
 * [Back to Top](#report-top)
 
 
