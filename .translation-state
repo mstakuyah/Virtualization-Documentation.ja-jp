@@ -1,6 +1,6 @@
 {
   "LastProcessedCommit": "7ed376b24c1960faea6625fea79c2f9e11574d28",
-  "LastTranslatedCommit": "c4c994f53f88d7bb2f28ac05d4e43453c5dd10bb",
+  "LastTranslatedCommit": "ae31cd7755e2faa2869d1d79d62f4313f95af9d7",
   "Items": {
     "5090f6d60b5cbdce0990242d795d9e4e3736e791": {
       "FileHash": "5090f6d60b5cbdce0990242d795d9e4e3736e791",
@@ -7445,14 +7445,14 @@
       "HandoffPriority": "",
       "HandoffException": null,
       "HandoffFailureTimes": 0,
-      "TargetFileCommit": "efd76b7f4ac24efd93bd9db6b17fc575e5582827",
+      "TargetFileCommit": "ae31cd7755e2faa2869d1d79d62f4313f95af9d7",
       "TargetFilePath": "virtualization\\windowscontainers\\deployment\\deployment.md",
       "HandbackFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf",
-      "HandbackFileCommit": "6d7031f62bfd599d84c5240e28e41ab1aefed6e7",
-      "HandbackDateTime": "2016-03-09T01:08:52.5263439Z",
+      "HandbackFileCommit": "f7320af49886c60451c7fe1fb0933023ed1254d8",
+      "HandbackDateTime": "2016-03-09T08:02:54.8482989Z",
       "HandbackException": null,
       "HandbackFailureTimes": 0,
-      "UpdatedDateTime": "2016-03-09T01:08:52.5263439Z",
+      "UpdatedDateTime": "2016-03-09T08:02:54.8482989Z",
       "ArchiveFilePath": "ol-handoff\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\archive\\deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf",
       "ArchiveFileCommit": "e6fda2053d9eaa367d983c6a534992ae9176a083",
       "ArchiveFileDateTime": "2016-02-29T06:56:29.4706785Z",

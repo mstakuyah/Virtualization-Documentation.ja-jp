@@ -6,20 +6,19 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\deployment\media\nssm1.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/7ed376b24c1960faea6625fea79c2f9e11574d28/virtualization/windowscontainers/deployment/media/nssm1.png) | InSyncHandedBackSuccess | [Details](#22320b32fb8af15c2e7125ec4f50c2b19643b9bf215)
+ [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f7294e19184c78d256a04bae8ccfff459871eb14/virtualization/windowscontainers/deployment/deployment.md) | InSyncHandedBackSuccess | [Details](#78be50da5eab1ffe3adba755e26ab092d2e4e024212)
 
 ## Item Details
-##### <a name='22320b32fb8af15c2e7125ec4f50c2b19643b9bf215'></a> Source: [virtualization\windowscontainers\deployment\media\nssm1.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/7ed376b24c1960faea6625fea79c2f9e11574d28/virtualization/windowscontainers/deployment/media/nssm1.png)
+##### <a name='78be50da5eab1ffe3adba755e26ab092d2e4e024212'></a> Source: [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f7294e19184c78d256a04bae8ccfff459871eb14/virtualization/windowscontainers/deployment/deployment.md)
 * Status: InSyncHandedBackSuccess
-* Target File: [virtualization\windowscontainers\deployment\media\nssm1.png](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/c4c994f53f88d7bb2f28ac05d4e43453c5dd10bb/virtualization/windowscontainers/deployment/media/nssm1.png)
-* Handoff File: [22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/30ddc59a45fd3d0f49763dd429fc21a0da075b94/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png)
-* Handoff Datetime: 2016-03-07 06:11:46
-* Handoff Reason: IsDependency
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: [22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/3d50eacca8d1b14725c6b8aeb3d999c6c67591e4/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png)
-* Handback Datetime: 2016-03-09 08:01:40
-* Dependency From: virtualization\windowscontainers\deployment\docker_windows.md
+* Target File: [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ae31cd7755e2faa2869d1d79d62f4313f95af9d7/virtualization/windowscontainers/deployment/deployment.md)
+* Handoff File: [deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/b3695fa82aeffc79dd6677ee93836187bdbce2ce/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf)
+* Handoff Datetime: 2016-02-23 21:56:43
+* Handoff Reason: Include
+* Archive File: [deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/e6fda2053d9eaa367d983c6a534992ae9176a083/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/archive/deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf)
+* Archive Datetime: 2016-02-29 06:56:29
+* Handback File: [deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/f7320af49886c60451c7fe1fb0933023ed1254d8/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf)
+* Handback Datetime: 2016-03-09 08:02:54
 * [Back to Top](#report-top)
 
 
