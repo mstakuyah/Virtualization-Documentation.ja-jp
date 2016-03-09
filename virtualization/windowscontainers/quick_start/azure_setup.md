@@ -1,18 +1,22 @@
+
+
+
+
 # Azure クイック スタート
 
 Azure で Windows Server コンテナーの作成と管理をするには、事前に、Windows Server コンテナー機能にあらかじめ構成されている Windows Server 2016 Technical Preview イメージをデプロイする必要があります。 このガイドでは、このプロセスについて説明します。
 
 > Microsoft Azure は、Hyper-V コンテナーをサポートしていません。 Hyper-V コンテナーの演習を完了するには、オンプレミスのコンテナー ホストが必要です。
 
-## Azure ポータルの使用を開始する
+## Azure ポータルの使用を開始します。
 
-Azure アカウントをお持ちの場合は、「[コンテナー ホスト VM の作成](#CreateacontainerhostVM)」に移動します。
+Azure アカウントをお持ちの場合は、この手順をスキップして[コンテナー ホスト VM の作成](#CreateacontainerhostVM)に移動します。
 
 1. [azure.com](https://azure.com) に移動して、[Azure 無料試用版](https://azure.microsoft.com/en-us/pricing/free-trial/)の手順に従います。
-2. Microsoft アカウントを使用してサインインします。
-3. ご自分のアカウントが利用できる場合は、[Microsoft Azure 管理ポータル](https://portal.azure.com)にサインインします。
+2. Microsoft アカウントでサインインします。
+3. アカウントの準備ができたら、[Azure 管理ポータル](https://portal.azure.com)にサインインします。
 
-## コンテナー ホスト VM の作成
+## コンテナーのホスト仮想マシンを作成します。
 
 Azure Marketplace で「containers」を検索すると、「Windows Server 2016 Core with Containers Tech Preview 4」という検索結果が返されます。
 
@@ -22,23 +26,23 @@ Azure Marketplace で「containers」を検索すると、「Windows Server 2016
 
 ![](./media/tp41.png)
 
-仮想マシンの名前を指定し、ユーザー名とパスワードを選択します。
+により、仮想マシンの名前は、ユーザー名とパスワードを選択します。
 
 ![](media/newazure2.png)
 
-[オプションの構成]、[エンドポイント] の順に選択し、以下に示すように、プライベート ポートとパブリック ポートが 80 の HTTP エンドポイントを入力します。 完了したら、[OK] を 2 回クリックします。
+オプションの構成の選択 > エンドポイント > 以下に示すように、プライベートおよびパブリック ポートは 80 の HTTP エンドポイントを入力します。 ときに完了した] をクリックには、2 回が [ok] です。
 
 ![](./media/newazure3.png)
 
-`[作成]` ボタンを選択して、仮想マシンのデプロイメント プロセスを開始します。
+`[作成]` ボタンを選択して、仮想マシンのデプロイ プロセスを開始します。
 
 ![](media/newazure2.png)
 
-VM のデプロイが完了したら、[接続] ボタンを選択し、Windows Server コンテナー ホストとの RDP セッションを開始します。
+VM の展開が完了すると、Windows Server のコンテナーのホストで RDP セッションを開始する [接続] ボタンを選択します。
 
 ![](media/newazure6.png)
 
-VM の作成ウィザードで指定したユーザー名とパスワードを使用して、VM にログインします。 ログインすると、Windows コマンド プロンプトが表示されます。
+ユーザー名と、VM の作成ウィザードの中に指定されたパスワードを使用して VM にログインします。 Windows のコマンド プロンプトで、そのでする検索は 1 回ログに記録します。
 
 ![](media/newazure7.png)
 
@@ -56,4 +60,4 @@ VM の作成ウィザードで指定したユーザー名とパスワードを�
 
 
 
-<!--HONumber=Feb16_HO1-->
+<!--HONumber=Feb16_HO3-->

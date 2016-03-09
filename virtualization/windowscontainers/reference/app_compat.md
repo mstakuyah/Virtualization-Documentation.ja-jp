@@ -1,12 +1,16 @@
+
+
+
+
 # Windows のコンテナーでのアプリケーションの互換性
 
 これはプレビューです。 Windows で実行されるアプリケーションは、最終的にはコンテナーでも実行できるようになるはずですが、これは現時点でのアプリケーションの互換性の状態を確認するためのものです。
 
 このドキュメントは、私たちの経験を共有することのみを目的としています。
 
-この一覧に載っていないものがある場合、 またはご使用の環境での失敗や成功があれば、[フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)を通じてお知らせください。
+何かこの一覧にでしょうか。 ご使用の環境での失敗や成功があれば、[フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)を通じてお知らせください。
 
-## Windows サーバー コンテナー
+## Windows Server のコンテナー
 
 Windows Server コンテナー内では、次のアプリケーションの実行を試みました。 これらの結果は、アプリケーションが正しく機能することを保証するものではありません。
 
@@ -14,8 +18,8 @@ Windows Server コンテナー内では、次のアプリケーションの実�
 |:-----|:-----|:-----|:-----|:-----|
 | .NET| 3.5| はい| Unknown| |
 | .NET| 4.6| はい| Unknown| |
-| .NET CLR| 5 beta 6| はい| はい| X64 と x86 の両方|
-| Active Python| 3.4.1| はい| はい| |
+| .NET CLR| 5 beta 6| はい| はい| X64 および x86 の両方、|
+| アクティブな Python| 3.4.1| はい| はい| |
 | Apache Cassandra| | はい| Unkown|
 | Apache CouchDB| 1.6.1| いいえ| いいえ| |
 | Apache Hadoop| | はい| いいえ| |
@@ -38,11 +42,11 @@ Windows Server コンテナー内では、次のアプリケーションの実�
 | R| 3.2.1| いいえ| いいえ| |
 | RabbitMQ| 3.5.x| はい| Unknown| |
 | Redis| 2.8.2101| はい| はい| |
-| Ruby| 2.2.2| はい| はい| X64 と x86 の両方|
+| Ruby| 2.2.2| はい| はい| X64 および x86 の両方、|
 | Ruby on Rails| 4.2.3| はい| はい| |
 | SQLite| 3.8.11.1| はい| いいえ| |
 | Search Server Express| 2014 LocalDB| いいえ| いいえ| |
-| Sysinternals ツール| *| はい| はい| GUI を必要としないもののみ試しました。PsExec は、現在の設計では機能しません|
+| Sysinternals ツール| *| はい| はい| のみ、GUI を必要としないものをしようとしました。PsExec は、現在の設計では機能しません|
 
 ## Hyper-V コンテナー
 
@@ -62,14 +66,15 @@ Hyper-V コンテナー内では、次のアプリケーションの実行を試
 | Node.js| 0.12.6| 部分的| NPM は、パッケージのダウンロードに失敗します。|
 | Python| 3.4.3| はい| イメージが DockerFile を使用して作成され、python バイナリがその一部としてコピーされている場合、Python は動作しません。コンテナーを起動し、python バイナリをコピーします。|
 | Redis| 2.8.2101| はい| |
-| Ruby| 2.2.2| はい| X64 と x86 の両方|
+| Ruby| 2.2.2| はい| X64 および x86 の両方、|
 | Ruby on Rails| 4.2.3| はい| |
 | Sysinternals ツール| | はい| GUI を必要としないもののみ試しました。PsExec は、現在の設計では機能しません。|
 
 ## 経験談をお知らせください
 
-この一覧に載っていないものがある場合、 またはご使用の環境での失敗や成功があれば、[フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)を通じてお知らせください。
+何かこの一覧にでしょうか。 ご使用の環境での失敗や成功があれば、[フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)を通じてお知らせください。
 
 
 
 
+<!--HONumber=Feb16_HO3-->

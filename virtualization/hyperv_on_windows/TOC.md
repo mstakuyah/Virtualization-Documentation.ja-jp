@@ -10,7 +10,7 @@
 
 ## [Hyper-V の Linux と FreeBSD](https://technet.microsoft.com/library/dn531030.aspx)
 
-# Windows クイック スタートの Hyper-V
+# Windows の Hyper-V のクイック スタート
 
 ## [システム要件](quick_start/walkthrough_compatibility.md)
 
@@ -22,7 +22,7 @@
 
 ## [Hyper-V と PowerShell](quick_start/walkthrough_powershell.md)
 
-# Windows での Hyper-V の管理
+# Windows の Hyper-V の管理
 
 ## [仮想マシンの移行とアップグレード](user_guide/migrating_vms.md)
 
@@ -56,5 +56,7 @@
 
 ## [Hyper-V のアーキテクチャ](https://msdn.microsoft.com/en-us/library/cc768520(v=bts.10).aspx)
 
+## [ハイパーバイザー TLFS](develop/tlfs.md)
 
-<!--HONumber=Feb16_HO2-->
+
+<!--HONumber=Feb16_HO3-->
