@@ -1,26 +1,11 @@
 # <a name='report-top'></a> Localization Handback Report
 
 ## Summary
- Total Files | 1
+ Total Files | 0
 
 ## File List
- Source File | Status | Details 
- ----------- | ------ | ------- 
- [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f7294e19184c78d256a04bae8ccfff459871eb14/virtualization/windowscontainers/deployment/deployment.md) | InSyncHandedBackSuccess | [Details](#78be50da5eab1ffe3adba755e26ab092d2e4e024212)
 
 ## Item Details
-##### <a name='78be50da5eab1ffe3adba755e26ab092d2e4e024212'></a> Source: [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f7294e19184c78d256a04bae8ccfff459871eb14/virtualization/windowscontainers/deployment/deployment.md)
-* Status: InSyncHandedBackSuccess
-* Target File: [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ae31cd7755e2faa2869d1d79d62f4313f95af9d7/virtualization/windowscontainers/deployment/deployment.md)
-* Handoff File: [deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/b3695fa82aeffc79dd6677ee93836187bdbce2ce/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf)
-* Handoff Datetime: 2016-02-23 21:56:43
-* Handoff Reason: Include
-* Archive File: [deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/e6fda2053d9eaa367d983c6a534992ae9176a083/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/archive/deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf)
-* Archive Datetime: 2016-02-29 06:56:29
-* Handback File: [deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/f7320af49886c60451c7fe1fb0933023ed1254d8/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf)
-* Handback Datetime: 2016-03-09 08:02:54
-* [Back to Top](#report-top)
-
 
 ## Error Details
 
