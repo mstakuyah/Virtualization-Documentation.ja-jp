@@ -16,7 +16,7 @@
 
 ## おすすめコンテンツ
 
-* [Announcing the release of Hyper-V Containers in Windows Server 2016 Technical Preview 4 (Hyper-V Containers in Windows Server 2016 Technical Preview 4 での Hyper-V コンテナーのリリースの発表)](http://blogs.technet.com/b/virtualization/archive/2015/11/19/announcing-the-release-of-hyper-v-containers-in-windows-server-2016-technical-preview-4.aspx)
+* [Announcing the release of Hyper-V Containers in Windows Server 2016 Technical Preview 4 (Hyper-V Containers in Windows Server 2016 Technical Preview 4 での Hyper-V コンテナーのリリースの発表/)](http://blogs.technet.com/b/virtualization/archive/2015/11/19/announcing-the-release-of-hyper-v-containers-in-windows-server-2016-technical-preview-4.aspx)
 * [Early look at containers in Windows Server, Hyper-V and Azure – with Mark Russinovich (Mark Russinovich による Windows Server、Hyper-V、Azure 内のコンテナーに関する初期レビュー)](https://youtu.be/YoA_MMlGPRc)
 * [Announcing Windows Server 2016 Containers Preview (Windows Server 2016 コンテナー発表のプレビュー)](http://weblogs.asp.net/scottgu/announcing-windows-server-2016-containers-preview)
 * [Docker -Introducing the Technical Preview of Docker Enging for Windows Server 2016 (Docker - Windows Server 2016 用 Docker エンジンの Technical Preview の紹介)](http://blog.docker.com/2015/08/tp-docker-engine-windows-server-2016/)
