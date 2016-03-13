@@ -79,7 +79,7 @@ Docker によるコンテナー内のデータの管理の詳細については�
 
 ## ビデオ チュートリアル
 
-<iframe src="https://channel9.msdn.com/Blogs/containers/Container-Fundamentals--Part-3-Shared-Folders/player" width="800" height="450"  allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
+<iframe src="https://channel9.msdn.com/Blogs/containers/Container-Fundamentals--Part-3-Shared-Folders/player#ccLang=ja" width="800" height="450"  allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
 
 
 
