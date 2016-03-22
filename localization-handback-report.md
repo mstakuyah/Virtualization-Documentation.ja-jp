@@ -6,10 +6,10 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/15511c52f04190aa859959e50e2e95160dfc0c91/virtualization/hyperv_on_windows/user_guide/vmsession.md) | HandedBackFailed | [Details](#d3997f4f512580be5e28fbafa51f1bbd6a0a4b44196)
+ [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/15511c52f04190aa859959e50e2e95160dfc0c91/virtualization/hyperv_on_windows/user_guide/vmsession.md) | HandedBackFailed | [Details](#d3997f4f512580be5e28fbafa51f1bbd6a0a4b44197)
 
 ## Item Details
-##### <a name='d3997f4f512580be5e28fbafa51f1bbd6a0a4b44196'></a> Source: [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/15511c52f04190aa859959e50e2e95160dfc0c91/virtualization/hyperv_on_windows/user_guide/vmsession.md)
+##### <a name='d3997f4f512580be5e28fbafa51f1bbd6a0a4b44197'></a> Source: [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/15511c52f04190aa859959e50e2e95160dfc0c91/virtualization/hyperv_on_windows/user_guide/vmsession.md)
 * Status: HandedBackFailed
 * Target File: 
 * Handoff File: [vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/7f0885b8d482578fdef66e46fcac71e871367fa7/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.ja-jp.xlf)
@@ -19,7 +19,7 @@
 * Archive Datetime: 2016-03-03 08:11:53
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
-* Handback Error: [handback_transform_failed](#d3997f4f512580be5e28fbafa51f1bbd6a0a4b44196handback_transform_failed)
+* Handback Error: [handback_transform_failed](#d3997f4f512580be5e28fbafa51f1bbd6a0a4b44197handback_transform_failed)
 * Current Target File: [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/af3389eba3640e2d12a3507ae30269f560536ad9/virtualization/hyperv_on_windows/user_guide/vmsession.md)
 * Current Handback File: [vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/46d178f038b0b50cb871e5ddb37acb152c11ebff/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.ja-jp.xlf)
 * Current Handback Datetime: 2016-02-03 21:57:55
@@ -27,7 +27,7 @@
 
 
 ## Error Details
-##### <a name='d3997f4f512580be5e28fbafa51f1bbd6a0a4b44196handback_transform_failed'></a> Source: [virtualization\hyperv_on_windows\user_guide\vmsession.md](#d3997f4f512580be5e28fbafa51f1bbd6a0a4b44196)
+##### <a name='d3997f4f512580be5e28fbafa51f1bbd6a0a4b44197handback_transform_failed'></a> Source: [virtualization\hyperv_on_windows\user_guide\vmsession.md](#d3997f4f512580be5e28fbafa51f1bbd6a0a4b44197)
 * Error Code: handback_transform_failed
 * Error Message: Handback file: C:\ol\master\VDP.handback\0e62d1\ol-handback\Microsoft\Virtualization-Documentation-Private.ja-jp\live\vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.ja-jp.xlf failed.
 * Retriable: False
