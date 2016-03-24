@@ -45,7 +45,7 @@ Windows Server コンテナー内では、次のアプリケーションの実�
 | Ruby| 2.2.2| はい| はい| X64 および x86 の両方、|
 | Ruby on Rails| 4.2.3| はい| はい| |
 | SQLite| 3.8.11.1| はい| いいえ| |
-| Search Server Express| 2014 LocalDB| いいえ| いいえ| |
+| SQL Server Express| 2014| はい| Unknown の中から 1 つ以上を指定します| SQL Express 2014 をインストールする、[コミュニティから提供された Dockerfile](https://github.com/brogersyh/Dockerfiles-for-windows/tree/master/sqlexpress) を作成することによって、すばやく開始できます。|
 | Sysinternals ツール| *| はい| はい| のみ、GUI を必要としないものをしようとしました。PsExec は、現在の設計では機能しません|
 
 ## Hyper-V コンテナー
