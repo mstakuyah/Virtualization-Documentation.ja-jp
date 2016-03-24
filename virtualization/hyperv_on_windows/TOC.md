@@ -56,7 +56,7 @@
 
 ## [Hyper-V のアーキテクチャ](https://msdn.microsoft.com/en-us/library/cc768520(v=bts.10).aspx)
 
-## [ハイパーバイザー TLFS](develop/tlfs.md)
+## [ハイパーバイザーの仕様](develop/tlfs.md)
 
 
-<!--HONumber=Feb16_HO3-->
+<!--HONumber=Mar16_HO2-->
