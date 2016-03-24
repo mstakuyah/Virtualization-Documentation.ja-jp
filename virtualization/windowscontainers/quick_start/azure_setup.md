@@ -1,6 +1,6 @@
-
-
-
+---
+author: neilpeterson
+---
 
 # Azure クイック スタート
 
@@ -46,6 +46,16 @@ VM の展開が完了すると、Windows Server のコンテナーのホスト�
 
 ![](media/newazure7.png)
 
+## Docker エンジンの更新
+
+`docker pull` を Azure Windows コンテナー Technical Preview イメージで使用するには、Docker エンジンを更新する必要があります。 この更新を実行するには、次の PowerShell コマンドを Azure 仮想マシンで実行します。
+
+```powershell
+PS C:\> wget https://raw.githubusercontent.com/Microsoft/Virtualization-Documentation/live/windows-server-container-tools/Update-ContainerHost/Update-ContainerHost.ps1 -OutFile Update-ContainerHost.ps1
+
+PS C:\> ./Update-ContainerHost.ps1
+```
+
 ## ビデオ チュートリアル
 
 <iframe src="https://channel9.msdn.com/Blogs/containers/Quick-Start-Configure-Windows-Server-Containers-in-Microsoft-Azure/player#ccLang=ja" width="800" height="450"  allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
@@ -60,4 +70,4 @@ VM の展開が完了すると、Windows Server のコンテナーのホスト�
 
 
 
-<!--HONumber=Feb16_HO3-->
+<!--HONumber=Mar16_HO3-->
