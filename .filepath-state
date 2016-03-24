@@ -349,9 +349,6 @@
   "85f4deddc94ea3c722d257b14472238df91d5c3e": [
     "virtualization\\windowscontainers\\quick_start\\azure_setup.md"
   ],
-  "f6afbf888146ad5823b5ff11999af862dc5b5c26": [
-    "virtualization\\windowscontainers\\quick_start\\azure_setup.md"
-  ],
   "7eaf82d3cdd0a4881f239ce4071eb262b3104dfd": [
     "virtualization\\windowscontainers\\quick_start\\media\\newazure1.png"
   ],
@@ -509,9 +506,6 @@
     "virtualization\\windowscontainers\\media\\video.png"
   ],
   "08d829c05c04924e27a1d697bc5d4c4e8218f3f5": [
-    "virtualization\\hyperv_on_windows\\develop\\tlfs.md"
-  ],
-  "661df39d6c6677dcb12e5eecf27aee86afb629fa": [
     "virtualization\\hyperv_on_windows\\develop\\tlfs.md"
   ],
   "224b91fc286f31a5c23fe3d7c9d36b178f6b04c3": [
