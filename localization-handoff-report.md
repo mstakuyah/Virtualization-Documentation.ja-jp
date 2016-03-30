@@ -1,11 +1,45 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 0
+ Total Files | 2
 
 ## File List
+ Source File | Status | Details 
+ ----------- | ------ | ------- 
+ [virtualization\hyperv_on_windows\develop\make_mgmt_service.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e9cd754b3d43e6696cf361710f834a39f2dda062/virtualization/hyperv_on_windows/develop/make_mgmt_service.md) | OutofSyncHandedBackSuccess | [Details](#ed006e592bfabb237a07c51902680b8b094732f986)
+ [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e9cd754b3d43e6696cf361710f834a39f2dda062/virtualization/windowscontainers/deployment/deployment.md) | OutofSyncHandedBackSuccess | [Details](#e84c73578509ab5bbc3762d75775b1dcd838e043214)
 
 ## Item Details
+##### <a name='ed006e592bfabb237a07c51902680b8b094732f986'></a> Source: [virtualization\hyperv_on_windows\develop\make_mgmt_service.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e9cd754b3d43e6696cf361710f834a39f2dda062/virtualization/hyperv_on_windows/develop/make_mgmt_service.md)
+* Status: OutofSyncHandedBackSuccess
+* Target File: 
+* Handoff File: [make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/75277d5c2838d2e54747aee722c62a299a05e69c/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.ja-jp.xlf)
+* Handoff Datetime: 2016-03-30 20:47:55
+* Handoff Reason: Include
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Current Target File: [virtualization\hyperv_on_windows\develop\make_mgmt_service.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/08466cdb6c1637439a0c224c424de7fb40768557/virtualization/hyperv_on_windows/develop/make_mgmt_service.md)
+* Current Handback File: [make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/815bf212830738301357efd4bbfbfa99e15e5e22/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.ja-jp.xlf)
+* Current Handback Datetime: 2016-02-10 22:39:35
+* [Back to Top](#report-top)
+
+##### <a name='e84c73578509ab5bbc3762d75775b1dcd838e043214'></a> Source: [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e9cd754b3d43e6696cf361710f834a39f2dda062/virtualization/windowscontainers/deployment/deployment.md)
+* Status: OutofSyncHandedBackSuccess
+* Target File: 
+* Handoff File: [deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/75277d5c2838d2e54747aee722c62a299a05e69c/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf)
+* Handoff Datetime: 2016-03-30 20:47:55
+* Handoff Reason: Include
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Current Target File: [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/4d9f1e57941d5a95d52ced7f3548dd06e7b857d3/virtualization/windowscontainers/deployment/deployment.md)
+* Current Handback File: [deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/f619523ece6d3c1171097907bc098821c50cedee/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf)
+* Current Handback Datetime: 2016-03-13 04:01:53
+* [Back to Top](#report-top)
+
 
 ## Error Details
 
