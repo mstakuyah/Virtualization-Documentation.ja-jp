@@ -6,19 +6,22 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\management\docker-powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4702a00b81676fd8b48fcf2bcae98b7d014d2a26/virtualization/windowscontainers/management/docker-powershell.md) | HandedOffSuccess | [Details](#728b5360b934220b0e78d8359f82b30c6adb7ad0225)
+ [virtualization\hyperv_on_windows\develop\make_mgmt_service.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/b0eef21d3130973b0df15cd0d71c62befe105c04/virtualization/hyperv_on_windows/develop/make_mgmt_service.md) | OutofSyncHandedBackSuccess | [Details](#90d44fb267e701f0238afbbb473073d159eb33a586)
 
 ## Item Details
-##### <a name='728b5360b934220b0e78d8359f82b30c6adb7ad0225'></a> Source: [virtualization\windowscontainers\management\docker-powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4702a00b81676fd8b48fcf2bcae98b7d014d2a26/virtualization/windowscontainers/management/docker-powershell.md)
-* Status: HandedOffSuccess
+##### <a name='90d44fb267e701f0238afbbb473073d159eb33a586'></a> Source: [virtualization\hyperv_on_windows\develop\make_mgmt_service.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/b0eef21d3130973b0df15cd0d71c62befe105c04/virtualization/hyperv_on_windows/develop/make_mgmt_service.md)
+* Status: OutofSyncHandedBackSuccess
 * Target File: 
-* Handoff File: [docker-powershell.b8c99396eda5392c8607d68151efd8b4c3a9cbba.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/7d49df7b63c9eceec41c3a7cc5efcfcfbd89d6f4/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/docker-powershell.b8c99396eda5392c8607d68151efd8b4c3a9cbba.ja-jp.xlf)
-* Handoff Datetime: 2016-04-01 16:18:40
+* Handoff File: [make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/7a46edcc3e9cc2f6ffd5fdc457b4cd0a8d6c2d8b/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.ja-jp.xlf)
+* Handoff Datetime: 2016-04-01 18:18:46
 * Handoff Reason: Include
 * Archive File: 
 * Archive Datetime: 0001-01-01 00:00:00
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
+* Current Target File: [virtualization\hyperv_on_windows\develop\make_mgmt_service.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/08466cdb6c1637439a0c224c424de7fb40768557/virtualization/hyperv_on_windows/develop/make_mgmt_service.md)
+* Current Handback File: [make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/815bf212830738301357efd4bbfbfa99e15e5e22/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.ja-jp.xlf)
+* Current Handback Datetime: 2016-02-10 22:39:35
 * [Back to Top](#report-top)
 
 
