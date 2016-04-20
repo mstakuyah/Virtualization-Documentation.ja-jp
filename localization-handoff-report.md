@@ -6,22 +6,22 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/2406c784e44f16dd03a88b5376d7873aeffad5b7/virtualization/hyperv_on_windows/user_guide/vmsession.md) | OutofSyncHandedBackSuccess | [Details](#c5cb251e1ace2ac1cb135b2d06278522b6270474203)
+ [virtualization\hyperv_on_windows\user_guide\nesting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/bf9c401921d3a6e7c6ea8cd6fcdf7f7a8667b166/virtualization/hyperv_on_windows/user_guide/nesting.md) | OutofSyncHandedBackSuccess | [Details](#cd904696e077578d89d9b7408f2f24fca9e2fcf7200)
 
 ## Item Details
-##### <a name='c5cb251e1ace2ac1cb135b2d06278522b6270474203'></a> Source: [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/2406c784e44f16dd03a88b5376d7873aeffad5b7/virtualization/hyperv_on_windows/user_guide/vmsession.md)
+##### <a name='cd904696e077578d89d9b7408f2f24fca9e2fcf7200'></a> Source: [virtualization\hyperv_on_windows\user_guide\nesting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/bf9c401921d3a6e7c6ea8cd6fcdf7f7a8667b166/virtualization/hyperv_on_windows/user_guide/nesting.md)
 * Status: OutofSyncHandedBackSuccess
 * Target File: 
-* Handoff File: [vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/d8f620d9e822fb7b7abd0436aa88078d1a63f722/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.ja-jp.xlf)
-* Handoff Datetime: 2016-04-20 23:11:40
+* Handoff File: [nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/d7dc8efce4d5f2bf8d8197719afe76d7dc63e21e/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.ja-jp.xlf)
+* Handoff Datetime: 2016-04-20 23:43:14
 * Handoff Reason: Include
 * Archive File: 
 * Archive Datetime: 0001-01-01 00:00:00
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/af3389eba3640e2d12a3507ae30269f560536ad9/virtualization/hyperv_on_windows/user_guide/vmsession.md)
-* Current Handback File: [vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/46d178f038b0b50cb871e5ddb37acb152c11ebff/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.ja-jp.xlf)
-* Current Handback Datetime: 2016-02-03 21:57:55
+* Current Target File: [virtualization\hyperv_on_windows\user_guide\nesting.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ce086504dcef43cdbc99582c5e09c0e3015652a5/virtualization/hyperv_on_windows/user_guide/nesting.md)
+* Current Handback File: [nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/9d0bbf00d55082604cea81ecc6b4c0b49a49a53e/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.ja-jp.xlf)
+* Current Handback Datetime: 2016-01-04 21:48:05
 * [Back to Top](#report-top)
 
 
