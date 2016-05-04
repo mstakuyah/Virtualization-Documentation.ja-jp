@@ -1,10 +1,14 @@
+---
+author: neilpeterson
+---
+
 # 新しい Hyper-V 仮想マシンへの Windows コンテナー ホストの展開
 
 このドキュメントでは、PowerShell スクリプトを使用して、Windows コンテナー ホストとして構成される、新しい Hyper-V 仮想マシンを展開する手順を説明します。
 
 Windows コンテナー ホストの既存の物理システムまたは仮想システムへのスクリプトによる展開を進めるには、[Windows コンテナー ホストのインプレース展開](./inplace_setup.md)に関するページを参照してください。
 
-**コンテナー OS イメージのインストール前にお読みください。**Microsoft Windows Server のプレリリース版ソフトウェア (「ライセンス条項」) のライセンス条項が、Microsoft Windows コンテナー OS イメージの追加機能 (以下「追加ソフトウェア」) の使用に適用されます。 追加ソフトウェアをダウンロードして使用することで、ライセンス条項に同意したことになります。ライセンス条項に同意していない場合、そのソフトウェアを使用することはできません。 Windows Server のプレリリース版ソフトウェアと追加ソフトウェアはどちらも、米国 Microsoft Corporation によってライセンス供与されています。
+**コンテナー OS イメージのインストール前にお読みください。**Microsoft Windows Server のプレリリース版ソフトウェア (「ライセンス条項」) のライセンス条項が、Microsoft Windows コンテナー OS イメージの追加機能 (以下「追加ソフトウェア」) の使用に適用されます。 をダウンロードして、追加のソフトウェアを使用して、ライセンス条項に同意して、ライセンス条項に同意していない場合に使用できません。 Windows Server のプレリリース版ソフトウェアと追加ソフトウェアはどちらも、米国 Microsoft Corporation によってライセンス供与されています。
 
 このクイック スタートの **Windows Server** および **Hyper-V コンテナー**の演習を完了するには、以下が必要です。
 
@@ -30,7 +34,7 @@ PS C:\> start-process powershell -Verb runAs
 外部仮想スイッチの一覧を返すには、次を実行します。 何も返されない場合は、新しい外部仮想スイッチを作成し、このガイドの次の手順に進みます。
 
 ```powershell
-PS C:\> Get-VMSwitch | where {$_.SwitchType –eq “External”}
+PS C:\> Get-VMSwitch | where {$_.SwitchType -eq “External”}
 ```
 
 構成スクリプトをダウンロードするには、次のコマンドを使用します。 このスクリプトは、[構成スクリプト](https://aka.ms/tp4/New-ContainerHost)から手動でダウンロードすることもできます。
@@ -42,7 +46,7 @@ PS C:\> wget -uri https://aka.ms/tp4/New-ContainerHost -OutFile c:\New-Container
 コンテナー ホストを作成して構成するには、次のコマンドを実行します。`&lt;containerhost&gt;` は仮想マシンの名前を指定します。
 
 ``` powershell
-PS C:\> powershell.exe -NoProfile c:\New-ContainerHost.ps1 –VmName testcont -WindowsImage ServerDatacenterCore -Hyperv
+PS C:\> powershell.exe -NoProfile c:\New-ContainerHost.ps1 -VMName testcont -WindowsImage ServerDatacenterCore -Hyperv
 ```
 
 スクリプトの開始時に、パスワードの入力を求めるメッセージが表示されます。 これは管理者アカウントに割り当てられているパスワードになります。
@@ -66,10 +70,20 @@ license terms. Please confirm you have accepted and agree to the license terms.
 
 これで Windows Server コンテナーの機能を実行する Windows Server 2016 システムが準備できたので、Windows Server コンテナーおよび Hyper-V コンテナーの使用を開始するには、次のガイドに移動します。
 
+Hyper-V 管理ホストで `Enter-PSSession` コマンドを使用して、コンテナー ホストに接続できます。
+
+```powershell
+PS C:\> Enter-PSSession -VMName <VM Name>
+```
+
 [Quick Start: Windows Containers and PowerShell (クイック スタート: Windows コンテナーと PowerShell)](./manage_powershell.md)  
 [Quick Start: Windows Containers and Docker (クイック スタート: Windows コンテナーと Docker)](./manage_docker.md)
 
 
 
 
-<!--HONumber=Feb16_HO2-->
+
+
+<!--HONumber=Mar16_HO3-->
+
+
