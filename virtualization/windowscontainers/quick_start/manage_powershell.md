@@ -1,3 +1,7 @@
+---
+author: neilpeterson
+---
+
 # Windows コンテナー クイック スタート -PowerShell
 
 Windows コンテナーを使用すると、1 つのコンピューター システムに多数の独立したアプリケーションを短時間でデプロイできます。 このクイック スタートでは、PowerShell を使用した Windows Server と Hyper-V 両方のコンテナーのデプロイメントと管理について説明します。 この演習では、Windows Server と Hyper-V コンテナーの両方で動作するとても単純な "hello world" アプリケーションを 1 から構築します。 この処理中、コンテナー イメージを作成し、コンテナー共有フォルダーを操作し、コンテナー ライフサイクルを管理します。 完了すると、Windows コンテナーの展開と管理の基本について理解できます。
@@ -277,7 +281,7 @@ HYPV Off   00:00:00 NanoServer
 コンテナー ホストに `c:\share\en-us` というディレクトリを作成します。
 
 ```powershell
-S C:\> New-Item -Type Directory c:\share\en-us
+PS C:\> New-Item -Type Directory c:\share\en-us
 
     Directory: C:\share
 
@@ -496,7 +500,7 @@ PS C:\> Enter-PSSession -ContainerName IISApp -RunAsAdministrator
 次のコマンドを実行して、IIS スプラッシュ画面を削除します。
 
 ```powershell
-[IIS]: PS C:\> del C:\inetpub\wwwroot\iisstart.htm
+[IISApp]: PS C:\> del C:\inetpub\wwwroot\iisstart.htm
 ```
 次のコマンドを実行して、既定の IIS サイトを新しい静的サイトに置き換えます。
 
@@ -517,4 +521,8 @@ exit
 
 
 
-<!--HONumber=Feb16_HO1-->
+
+
+<!--HONumber=Mar16_HO1-->
+
+
