@@ -6,15 +6,16 @@ Windows 10 から、Hyper-V ホストとそこで実行されている仮想マ�
 
 [PowerShell Direct](../user_guide/vmsession.md) は Hyper-V ソケットを使用して通信するアプリケーション (この例では、インボックス Windows サービス) の例です。
 
-**サポートされるホスト OS**
-* Windows 10
-* Windows Server Technical Preview 3
-* 今後のリリース (Server 2016 以上)
+**サポートされているホスト OS**
+* Windows 10 ビルド 14290 以降
+* Windows Server Technical Preview 4 以降
+* 今後のリリース (サーバー 2016年 +)
 
 **サポートされるゲスト OS**
 * Windows 10
-* Windows Server Technical Preview 3
-* 今後のリリース (Server 2016 以上)
+* Windows Server Technical Preview 4 以降
+* 今後のリリース (サーバー 2016年 +)
+* Linux ゲストと Linux 統合サービス (「[Supported Linux and FreeBSD virtual machines for Hyper-V on Windows (Windows 上の Hyper-V 向けにサポートされる Linux と FreeBSD 仮想マシン)](https://technet.microsoft.com/library/dn531030(ws.12).aspx))」をご覧ください
 
 **機能と制限事項**
 * カーネル モードまたはユーザー モード操作をサポート
@@ -32,7 +33,22 @@ Windows 10 から、Hyper-V ホストとそこで実行されている仮想マ�
 * C コンパイラ。 お持ちではない場合は、[Visual Studio Code](https://aka.ms/vs) を確認してください。
 * Hyper-V と仮想マシンを実行しているコンピューター。
   * ホストおよびゲスト (VM) OS は、Windows 10、Windows Server Technical Preview 3 以降である必要があります。
-* Windows SDK - ここに、`hvsocket.h` を含む [Win10 SDK](https://dev.windows.com/en-us/downloads/windows-10-sdk) のリンクを示します。
+* Hyper-V ホストにインストールされた [Windows 10 SDK](http://aka.ms/flightingSDK)
+
+**Windows SDK の詳細**
+
+Windows SDK へのリンク:
+* [Windows 10 SDK for Insider Preview](http://aka.ms/flightingSDK)
+* [Windows 10 SDK](https://dev.windows.com/en-us/downloads/windows-10-sdk)
+
+Hyper-V ソケット用 API が Windows 10 ビルド 14290 でご利用いただけるようになりました。フライティング ダウンロードは、最新の Insider Fast Track フライティング ビルドと一致します。  
+奇妙な動作をする場合、[TechNet フォーラム](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home "TechNet フォーラム")でお知らせください。 投稿に、以下を含めてください。
+* 予期しない動作
+* ホスト、ゲスト、SDK の OS とビルド番号。
+
+  SDK ビルド番号は、SDK インストーラーのタイトルに表示されます。  
+  ![](./media/flightingSDK.png)
+
 
 ## 新しいアプリケーションの登録
 
@@ -49,7 +65,7 @@ $friendlyName = "HV Socket Demo"
 
 # Create a new random GUID and add it to the services list then add the name as a value
 
-$service = New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\GuestCommunicationServices" -Name ([System.Guid]::NewGuid().ToString())
+$service = New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\GuestCommunicationServices" -Name ((New-Guid).Guid)
 
 $service.SetValue("ElementName", $friendlyName)
 
@@ -57,14 +73,14 @@ $service.SetValue("ElementName", $friendlyName)
 $service.PSChildName | clip.exe
 ```
 
-** レジストリの場所と情報 **
+** は、レジストリの場所と情報 **
 
 ``` 
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\GuestCommunicationServices\
 ```
-このレジストリの場所には、いくつかの GUID が表示されます。 それらはインボックス サービスです。
+このレジストリの場所には、いくつかの GUID が表示されます。 これらは、マイクロソフトのボックスでのサービスです。
 
-サービスごとのレジストリ内の情報:
+サービスごとのレジストリ内の情報。
 * `サービス GUID`
     * `ElementName (REG_SZ)` - これは、サービスのフレンドリ名です。
 
@@ -83,7 +99,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 
 > ** ヒント:** PowerShell で GUID を生成し、それをクリップボードにコピーするには、次を実行します。
 ``` PowerShell
-[System.Guid]::NewGuid().ToString() | clip.exe
+(New-Guid).Guid | clip.exe
 ```
 
 ## Hyper-V ソケットの作成
@@ -104,7 +120,7 @@ SOCKET WSAAPI socket(
 
 Hyper-V ソケットの場合:
 * アドレス ファミリ - `AF_HYPERV`
-* 種類 - `SOCK_STREAM`、`SOCK_DGRAM`、または `SOCK_RAW`
+* 種類 - `SOCK_STREAM`
 * プロトコル - `HV_PROTOCOL_RAW`
 
 
@@ -145,7 +161,7 @@ struct SOCKADDR_HV
 ```
 
 IP またはホスト名の代わりに、AF_HYPERV エンドポイントは 2 つの GUID に大きく依存します。
-* VM ID – これは、VM ごとに割り当てられる一意の ID です。 VM の ID は、次の PowerShell スニペットを使用して見つけることができます。
+* VM ID – これは、VM あたりに割り当てられた一意の ID です。 VM の ID は、次の PowerShell スニペットを使用して見つけることができます。
   ```PowerShell
   (Get-VM -Name $VMName).Id
   ```
@@ -192,4 +208,8 @@ Accept()
 
 
 
-<!--HONumber=Feb16_HO1-->
+
+
+<!--HONumber=Mar16_HO4-->
+
+
