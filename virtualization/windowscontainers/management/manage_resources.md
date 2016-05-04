@@ -1,3 +1,7 @@
+
+
+
+
 # コンテナーのリソース管理
 
 **この記事は暫定的な内容であり、変更される可能性があります。**
@@ -11,7 +15,7 @@ Windows コンテナーには、コンテナーが消費できる CPU 使用量�
 コンテナー メモリの制限は、`New-Container` コマンドの `-MaximumMemoryBytes` パラメーターを使用してコンテナーを作成するときに設定できます。 この例では、256 MB の最大メモリを設定します。
 
 ```powershell
-PS C:\> New-Container –Name TestContainer –MaximumMemoryBytes 256MB -ContainerimageName WindowsServerCore
+PS C:\> New-Container -Name TestContainer -MaximumMemoryBytes 256MB -ContainerimageName WindowsServerCore
 ```
 `Set-ContainerMemory` コマンドレットを使用して、既存のコンテナーのメモリ制限を設定することもできます。
 
@@ -26,7 +30,7 @@ PS C:\> Set-ContainerMemory -ContainerName TestContainer -MaximumBytes 256mb
 次の例では、最大帯域幅を 100 Mbps に設定しています。
 
 ```powershell
-PS C:\> Set-ContainerNetworkAdapter –ContainerName TestContainer –MaximumBandwidth 100000000
+PS C:\> Set-ContainerNetworkAdapter -ContainerName TestContainer -MaximumBandwidth 100000000
 ```
 
 ### CPU
@@ -36,10 +40,10 @@ PS C:\> Set-ContainerNetworkAdapter –ContainerName TestContainer –MaximumBan
 次の例では、コンテナーの相対的な重みを 1000 に設定します。 コンテナーの既定の重みは 100 なので、既定に設定されているコンテナーの 10 倍の優先度になります。 最大値は、10000 です。
 
 ```powershell
-PS C:\> Set-ContainerProcessor -ContainerName Container1 –RelativeWeight 10000
+PS C:\> Set-ContainerProcessor -ContainerName Container1 -RelativeWeight 10000
 ```
 
-また、コンテナーが使用できる CPU 量のハードの制限を、CPU 時間の割合単位で設定することもできます。 既定では、コンテナーは 100% の CPU を使用できます。 次の例では、コンテナーが使用できる CPU の最大割合を 30% に設定しています。 –Maximum フラグを使用すると、自動的に RelativeWeight は 100 に設定されます。
+また、コンテナーが使用できる CPU 量のハードの制限を、CPU 時間の割合単位で設定することもできます。 既定では、コンテナーは 100% の CPU を使用できます。 次の例では、コンテナーが使用できる CPU の最大割合を 30% に設定しています。 -Maximum フラグを使用すると、自動的に RelativeWeight は 100 に設定されます。
 
 ```powershell
 PS C:\> Set-ContainerProcessor -ContainerName Container1 -Maximum 30
@@ -62,10 +66,10 @@ Docker でコンテナー リソースの一部を管理する機能がありま
 
 ### CPU
 
-複数のコンテナー間の CPU 共有は、ランタイムで --cpu-shares フラグを指定して管理できます。 既定では、すべてのコンテナーが同割合の CPU 時間を利用します。 コンテナーが使用する CPU の相対的な共有量を変更するには、--cpu-shares フラグを 1 から 10000 の値を指定して実行します。 既定では、すべてのコンテナーに 5000 の重みが与えられます。 CPU 共有の制約に関する詳細については、[Docker Run のリファレンス](https://docs.docker.com/engine/reference/run/#cpu-share-constraint)を参照してください。
+複数のコンテナー間の CPU 共有は、ランタイムで --cpu-shares フラグを指定して管理できます。 既定では、すべてのコンテナーが同割合の CPU 時間を利用します。 コンテナーが使用する CPU の相対的な共有量を変更するには、--cpu-shares フラグを 1 から 10000 の値を指定して実行します。 既定では、すべてのコンテナーに 5000 の重みが与えられます。 CPU 共有の制約に関する詳細については、[Docker Run のリファレンス](https://docs.docker.com/engine/reference/run/#cpu-share-constraint)をご覧ください。
 
 ```powershell 
-C:\> docker run –it --cpu-shares 2 --name dockerdemo windowsservercore cmd
+C:\> docker run -it --cpu-shares 2 --name dockerdemo windowsservercore cmd
 ```
 
 ## の既知の問題
@@ -75,10 +79,14 @@ C:\> docker run –it --cpu-shares 2 --name dockerdemo windowsservercore cmd
 
 ## ビデオ チュートリアル
 
-<iframe src="https://channel9.msdn.com/Blogs/containers/Container-Fundamentals--Part-4-Resource-Management/player" width="800" height="450"  allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
+<iframe src="https://channel9.msdn.com/Blogs/containers/Container-Fundamentals--Part-4-Resource-Management/player#ccLang=ja" width="800" height="450"  allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
 
 
 
 
 
-<!--HONumber=Feb16_HO1-->
+
+
+<!--HONumber=Feb16_HO4-->
+
+

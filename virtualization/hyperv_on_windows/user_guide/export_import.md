@@ -28,7 +28,7 @@ PowerShell を使用して仮想マシンをエクスポートするには、**E
 Export-VM -Name <vm name> -Path <path>
 ```
 
-Windows PowerShell を使用して仮想マシンをエクスポートする方法の詳細については、「[EXPORT-VM](https://technet.microsoft.com/library/hh848491.aspx)」を参照してください。
+Windows PowerShell を使用して仮想マシンをエクスポートする方法の詳細については、「[Export-VM](https://technet.microsoft.com/library/hh848491.aspx)」をご覧ください。
 
 ## 仮想マシンのインポート
 
@@ -68,7 +68,7 @@ Hyper-V には、次の 3 種類のインポートがあります。
 
 3. エラーの一覧を作成します。 この一覧には再構成が必要な項目が示されており、それによって次にウィザードに表示されるページが決まります。
 
-4. 一度に 1 つのカテゴリずつ、関連ページが表示されます。 このウィザードでは、新しいホストとの互換性を確保するために仮想マシンを再構成できるように、各非互換性について説明します。
+4. 関連性のページでは、一度に 1 つのカテゴリが表示されます。 ウィザードでは、新しいホストと互換性があるために、仮想マシンを再構成するための各非互換性について説明します。
 
 5. 構成ファイルのコピーを削除します。 この処理が完了すると、仮想マシンが起動可能な状態になります。
 
@@ -92,10 +92,15 @@ Import-VM -Path ‘C:\<vm export path>\2B91FEB3-F1E0-4FFF-B8BE-29CED892A95A.vmcx
 コピーのインポートを完了して、仮想マシン ファイルを既定の Hyper-V の場所に移動する場合、コマンドは次のようになります。
 
 ``` PowerShell
-Import-VM -Path 'C:\<vm export path>\2B91FEB3-F1E0-4FFF-B8BE-29CED892A95A.vmcx' –Copy -GenerateNewId
+Import-VM -Path 'C:\<vm export path>\2B91FEB3-F1E0-4FFF-B8BE-29CED892A95A.vmcx' -Copy -GenerateNewId
 ```
 
-詳細については、「[Import-VM](https://technet.microsoft.com/library/hh848495.aspx)」を参照してください。
+詳細については、「[Import-VM](https://technet.microsoft.com/library/hh848495.aspx)」をご覧ください。
 
+
+
+
+
+<!--HONumber=Feb16_HO4-->
 
 

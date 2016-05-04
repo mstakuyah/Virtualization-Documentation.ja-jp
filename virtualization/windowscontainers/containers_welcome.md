@@ -1,3 +1,7 @@
+
+
+
+
 # Windows コンテナーに関するドキュメント
 
 Windows コンテナーは、1 つのシステムで複数の独立したアプリケーションを実行できるようにする、オペレーティング システム レベルの仮想化を実現します。 この機能では、2 種類のコンテナー ランタイムを使用します。それぞれ、アプリケーションの分離の度合いが異なります。 Windows Server コンテナーは、名前空間とプロセスの分離によって分離を実現します。 Hyper-V コンテナーは、軽量の仮想マシンで各コンテナーをカプセル化します。 2 種類のランタイムに加えて、この両方を PowerShell または Docker で管理できます。 このドキュメント セットでは、クイック スタート ガイド、展開ガイド、管理操作に関する詳しい技術情報を提供します。
@@ -10,7 +14,7 @@ Windows Server コンテナーと Hyper-V コンテナーを試す場合は、�
 <ul>
 <li>[Azure クイック スタート](quick_start/azure_setup.md)<br /><br /></li>
 <li>[新しいコンテナー ホストの展開](quick_start/container_setup.md)<br /><br /></li>
-<li>[既存のシステムでのホストの展開](quick_start/inplace_setup.md)<br /><br /></li>
+<li>[既存システム内のホストの展開](quick_start/inplace_setup.md)<br /><br /></li>
 <li>[PowerShell クイック スタート](quick_start/manage_powershell.md)<br /><br /></li>
 <li>[Docker クイック スタート](quick_start/manage_docker.md)<br /><br /></li>
 </ul>
@@ -44,10 +48,10 @@ Windows Server 2016 と Nano Server での Windows コンテナーの管理に�
 </tr>
 <tr>
 <td><center>![](media/video.png)</center></td>
-<td>**動画**<br /><br />
-Windows コンテナー チームのデモとインタビューをご覧になりますか?<br /><br />
+<td>**視聴する**<br /><br />
+Windows コンテナー チームのデモとインタビューに関心がありますか?<br /><br />
 <ul>
-<li>[Containers Channel (コンテナー チャンネル)](https://channel9.msdn.com/Blogs/containers)</li>
+<li>[Containers Channel](https://channel9.msdn.com/Blogs/containers)</li>
 </ul>
 <br />
 </td>
@@ -57,8 +61,8 @@ Windows コンテナー チームのデモとインタビューをご覧にな�
 <td>**コミュニティ**<br /><br />
 コミュニティでやり取りしたり、サンプルを試してみたりできるほか、その他のリソースを探すこともできます。<br /><br />
 <ul>
-<li>[コンテナーのフォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)<br /><br /></li>
-<li>[コミュニティ リソース](https://msdn.microsoft.com/virtualization/community/community_overview)<br /><br /></li>
+<li>[コンテナー フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)<br /><br /></li>
+<li>[コンテナー リソース](https://msdn.microsoft.com/virtualization/community/community_overview)<br /><br /></li>
 <li>[サンプルとスクリプト](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-server-container-samples)<br /><br /></li>
 </ul>
 </td>
@@ -68,4 +72,8 @@ Windows コンテナー チームのデモとインタビューをご覧にな�
 
 
 
-<!--HONumber=Feb16_HO1-->
+
+
+<!--HONumber=Feb16_HO3-->
+
+

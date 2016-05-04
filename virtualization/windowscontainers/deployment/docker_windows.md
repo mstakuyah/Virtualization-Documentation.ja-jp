@@ -1,3 +1,7 @@
+
+
+
+
 # Docker と Windows
 
 **この記事は暫定的な内容であり、変更される可能性があります。**
@@ -70,7 +74,7 @@ PS C:\> start-process nssm install
 
 - **スタートアップ ディレクトリ:** C:\Windows\System32
 
-- **引数:** /s /c C:\ProgramData\docker\runDockerDaemon.cmd
+- **引数:** /s /c C:\ProgramData\docker\runDockerDaemon.cmd < nul
 
 - **サービス名:** Docker
 
@@ -174,4 +178,8 @@ docker daemon -D -H <ip address of Nano Server>:2375
 
 
 
-<!--HONumber=Jan16_HO3-->
+
+
+<!--HONumber=Feb16_HO4-->
+
+

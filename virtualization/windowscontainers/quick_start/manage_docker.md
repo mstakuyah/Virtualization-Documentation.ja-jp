@@ -1,3 +1,7 @@
+
+
+
+
 # Windows コンテナー クイック スタート -Docker
 
 Windows コンテナーを使用すると、単一のコンピューター システムに多数の独立したアプリケーションを短時間で展開できます。 この演習では、Docker を使用した Windows コンテナーの作成と管理の方法を示します。 完了すると、Docker と Windows コンテナーを統合する方法の基本的な理解が得られ、テクノロジを実際に体験できるはずです。
@@ -35,7 +39,7 @@ nanoserver          10.0.10586.0        8572198a60f1        2 weeks ago         
 nanoserver          latest              8572198a60f1        2 weeks ago         0 B
 ```
 
-この例では、Windows Server Core イメージを使用してコンテナーを作成します。 これは、`docker run コマンド`で行います。 `docker run` の詳細については、[docker.com の Docker Run リファレンス](https://docs.docker.com/engine/reference/run/)を参照してください。
+この例では、Windows Server Core イメージを使用してコンテナーを作成します。 これは、`docker run コマンド`で行います。 `docker run` の詳細については、[docker.com の Docker Run リファレンス](https://docs.docker.com/engine/reference/run/)をご覧ください。
 
 この例では、`iisbase` という名前のコンテナーを作成し、コンテナーとの対話型セッションを開始します。
 
@@ -82,12 +86,10 @@ nanoserver             latest              8572198a60f1        2 weeks ago      
 
 ### ネットワークの構成
 
-Docker でコンテナーを作成する前に、コンテナーへのネットワーク接続を許可する Windows ファイアウォールのルールを作成する必要があります。 次の PowerShell スクリプトを実行して、ポート 80 のルールを作成します。 注: これは PowerShell セッションから実行する必要があります。
+Docker でコンテナーを作成する前に、コンテナーへのネットワーク接続を許可する Windows ファイアウォールのルールを作成する必要があります。 次を実行して、ポート 80 のルールを作成します。
 
 ```powershell
-if (!(Get-NetFirewallRule | where {$_.Name -eq "TCP80"})) {
-    New-NetFirewallRule -Name "TCP80" -DisplayName "HTTP on TCP/80" -Protocol tcp -LocalPort 80 -Action Allow -Enabled True
-}
+powershell.exe "if(!(Get-NetFirewallRule | where {$_.Name -eq 'TCP80'})) { New-NetFirewallRule -Name 'TCP80' -DisplayName 'HTTP on TCP/80' -Protocol tcp -LocalPort 80 -Action Allow -Enabled True }" 
 ```
 
 コンテナー ホスト IP アドレスを書き留めておく必要がある場合もあります。 これは、この演習を通して使用します。
@@ -96,7 +98,7 @@ if (!(Get-NetFirewallRule | where {$_.Name -eq "TCP80"})) {
 
 IIS 対応の運用環境を展開するために使用できる、IIS を含むコンテナー イメージが作成されました。
 
-新しいイメージからコンテナーを作成するには、`docker run` コマンドを使用します。今回は IIS のイメージの名前を指定します。 この例ではパラメーター `-p 80:80` を指定していることに注意してください。 コンテナーは、ネットワーク アドレス変換を介して、IP を提供している仮想スイッチに接続されているため、ポートはコンテナー ホストから、コンテナーの NAT IP アドレス上のポートにマップされる必要があります。 `-p` の詳細については、 [docker.com の Docker Run リファレンス](https://docs.docker.com/engine/reference/run/)を参照してください。
+新しいイメージからコンテナーを作成するには、`docker run` コマンドを使用します。今回は IIS のイメージの名前を指定します。 この例ではパラメーター `-p 80:80` を指定していることに注意してください。 コンテナーは、ネットワーク アドレス変換を介して、IP を提供している仮想スイッチに接続されているため、ポートはコンテナー ホストから、コンテナーの NAT IP アドレス上のポートにマップされる必要があります。 `-p` の詳細については、[docker.com の Docker Run リファレンス](https://docs.docker.com/engine/reference/run/)をご覧ください。
 
 ```powershell
 C:\> docker run --name iisdemo -it -p 80:80 windowsservercoreiis cmd
@@ -159,7 +161,7 @@ C:\> powershell new-item c:\build\dockerfile -Force
 C:\> notepad c:\build\dockerfile
 ```
 
-dockerfile に次のテキストをコピーし、ファイルを保存します。 これらのコマンドは、`windowsservercore` をベースとして使用して新しいイメージを作成し、`RUN` で指定した変更を加えるように Docker に指示します。 Dockerfile の詳細については、[docker.com の Dockerfile リファレンス](http://docs.docker.com/engine/reference/builder/)を参照してください。
+dockerfile に次のテキストをコピーし、ファイルを保存します。 これらのコマンドは、`windowsservercore` をベースとして使用して新しいイメージを作成し、`RUN` で指定した変更を加えるように Docker に指示します。 Dockerfile の詳細については、[docker.com の Dockerfile リファレンス](http://docs.docker.com/engine/reference/builder/)をご覧ください。
 
 ```powershell
 FROM windowsservercore
@@ -348,4 +350,8 @@ C:\> exit
 
 
 
-<!--HONumber=Feb16_HO2-->
+
+
+<!--HONumber=Feb16_HO4-->
+
+

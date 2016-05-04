@@ -1,3 +1,7 @@
+
+
+
+
 # Windows Server コンテナー管理
 
 **この記事は暫定的な内容であり、変更される可能性があります。**
@@ -21,7 +25,7 @@ NanoServer        CN=Microsoft 10.0.10584.1000 True
 WindowsServerCore CN=Microsoft 10.0.10584.1000 True
 ```
 
-新しいコンテナーを作成するには、`New-Container` コマンドを使用します。 `- ContainerComputerName` パラメーターを使用して、コンテナーに NetBIOS 名を指定することもできます。
+新しいコンテナーを作成するには、`New-Container` コマンドを使用します。 `-ContainerComputerName` パラメーターを使用して、コンテナーに NetBIOS 名を指定することもできます。
 
 ```powershell
 PS C:\> New-Container -ContainerImageName WindowsServerCore -Name demo -ContainerComputerName demo
@@ -34,7 +38,7 @@ demo  Off   00:00:00 WindowsServerCore
 コンテナーが作成されたら、コンテナーにネットワーク アダプターを追加します。
 
 ```powershell
-PS C:\> Add-ContainerNetworkAdapter -ContainerName TST
+PS C:\> Add-ContainerNetworkAdapter -ContainerName demo
 ```
 
 コンテナーのネットワーク アダプターを仮想スイッチに接続するには、スイッチ名が必要です。 `Get-VMSwitch` を使用すると、仮想スイッチの一覧が返されます。
@@ -48,10 +52,10 @@ DHCP External   Microsoft Hyper-V Network Adapter
 NAT  NAT
 ```
 
-`Connect-ContainerNetworkAdapter` を使用して、ネットワーク アダプターを仮想スイッチに接続します。 **注:** この操作は、コンテナーの作成時に、–SwitchName パラメーターを使用して実行することもできます。
+`Connect-ContainerNetworkAdapter` を使用して、ネットワーク アダプターを仮想スイッチに接続します。 **注** – この操作は、コンテナーの作成時に、–SwitchName パラメーターを使用して実行することもできます。
 
 ```powershell
-PS C:\> Connect-ContainerNetworkAdapter -ContainerName TST -SwitchName NAT
+PS C:\> Connect-ContainerNetworkAdapter -ContainerName demo -SwitchName NAT
 ```
 
 ### コンテナーの開始
@@ -59,7 +63,7 @@ PS C:\> Connect-ContainerNetworkAdapter -ContainerName TST -SwitchName NAT
 コンテナーを開始するには、そのコンテナーを表す PowerShell オブジェクトを列挙します。 これを行うには、`Get-Container` の出力を PowerShell 変数に配置します。
 
 ```powershell
-PS C:\> $container = Get-Container -Name TST
+PS C:\> $container = Get-Container -Name demo
 ```
 
 このデータは、コンテナーを開始する `Start-Container` コマンドで使用できます。
@@ -81,13 +85,13 @@ PowerShell Direct を使用して、コンテナーに接続できます。 こ�
 コンテナーとの対話型セッションを作成するには、`Enter-PSSession` コマンドを使用します。
 
  ```powershell
-PS C:\> Enter-PSSession -ContainerName TST –RunAsAdministrator
+PS C:\> Enter-PSSession -ContainerName demo -RunAsAdministrator
  ```
 
 リモート PowerShell セッションが作成されると、シェル プロンプトがコンテナー名を反映するように変更されます。
 
 ```powershell
-[TST]: PS C:\>
+[demo]: PS C:\>
 ```
 
 永続的な PowerShell セッションを作成せずに、コンテナーに対してコマンドを実行することもできます。 それには、`Invoke-Command` を実行します。
@@ -96,12 +100,12 @@ PS C:\> Enter-PSSession -ContainerName TST –RunAsAdministrator
 
 ```powershell
 
-PS C:\> Invoke-Command -ContainerName TST -ScriptBlock {New-Item -ItemType Directory -Path c:\application }
+PS C:\> Invoke-Command -ContainerName demo -ScriptBlock {New-Item -ItemType Directory -Path c:\application }
 
 Directory: C:\
 Mode                LastWriteTime         Length Name                                                 PSComputerName
 ----                -------------         ------ ----                                                 --------------
-d-----       10/28/2015   3:31 PM                application                                          TST
+d-----       10/28/2015   3:31 PM                application                                          demo
 ```
 
 ### コンテナーの停止
@@ -109,7 +113,7 @@ d-----       10/28/2015   3:31 PM                application                    
 コンテナーを停止するには、そのコンテナーを表す PowerShell オブジェクトが必要です。 これを行うには、`Get-Container` の出力を PowerShell 変数に配置します。
 
 ```powershell
-PS C:\> $container = Get-Container -Name TST
+PS C:\> $container = Get-Container -Name demo
 ```
 
 これは、コンテナーを停止する `Stop-Container` コマンドで使用できます。
@@ -129,7 +133,7 @@ PS C:\> Get-Container | Stop-Container
 コンテナーが不要になった場合は、削除できます。 コンテナーを削除するには、停止状態にする必要があり、コンテナーを表す PowerShell オブジェクトを作成する必要かあります。
 
 ```powershell
-PS C:\> $container = Get-Container -Name TST
+PS C:\> $container = Get-Container -Name demo
 ```
 
 コンテナーを削除するには、`Remove-Container` コマンドを使用します。
@@ -199,4 +203,8 @@ Docker rm コマンドの詳細については、[Docker rm リファレンス](
 
 
 
-<!--HONumber=Feb16_HO1-->
+
+
+<!--HONumber=Feb16_HO4-->
+
+

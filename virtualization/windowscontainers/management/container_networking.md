@@ -1,3 +1,7 @@
+
+
+
+
 # コンテナーのネットワーク
 
 **この記事は暫定的な内容であり、変更される可能性があります。**
@@ -106,7 +110,7 @@ Get-VMNetworkAdapter -VMName DemoVM | Set-VMNetworkAdapter -MacAddressSpoofing O
 Docker デーモンを起動するときに、ネットワーク ブリッジを選択できます。 Docker を Windows で実行している場合、外部仮想スイッチまたは NAT 仮想スイッチが該当します。 次の例では、`Virtual Switch` という名前の仮想スイッチを指定して Docker デーモンを起動しています。
 
 ```powershell
-Docker daemon –D –b “Virtual Switch” -H 0.0.0.0:2375
+Docker daemon -D -b “Virtual Switch” -H 0.0.0.0:2375
 ```
 
 コンテナーのホストが展開済みで、かつ Windows コンテナー クイック スタートで提供されているスクリプトを使用して Docker を展開してある場合、NAT タイプの内部仮想スイッチが作成され、Docker サービスが作成されてそのスイッチを使用するように事前構成されます。 Docker サービスで使用する仮想スイッチを変更するには、Docker サービスを停止し、構成ファイルに変更を加えてから、もう一度サービスを開始する必要があります。
@@ -149,4 +153,8 @@ Start-Service docker
 
 
 
-<!--HONumber=Feb16_HO1-->
+
+
+<!--HONumber=Feb16_HO4-->
+
+

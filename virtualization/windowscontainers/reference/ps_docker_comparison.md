@@ -1,21 +1,25 @@
+
+
+
+
 # Windows コンテナーを管理するための PowerShell と Docker の比較
 
 インボックス Windows ツール (このプレビューでは PowerShell) とオープン ソース管理ツール (Docker など) の両方を使用して Windows コンテナーを管理するには、さまざまな方法があります。  
-それぞれの概要を示す次のガイドを参照してください。
-* [Manage Windows Containers with Docker (Docker を使用した Windows コンテナーの管理)](../quick_start/manage_docker.md)
-* [Manage Windows Containers with PowerShell (PowerShell を使用した Windows コンテナーの管理)](../quick_start/manage_powershell.md)
+ここではアウトラインの両方を個別に使用可能なガイド:
+* [Docker を使用した Windows コンテナーの管理](../quick_start/manage_docker.md)
+* [PowerShell を使用した Windows コンテナーの管理](../quick_start/manage_powershell.md)
 
-このページでは、Docker ツールと PowerShell 管理ツールについて、両者を比較しながら詳しく説明します。
+このページでは、Docker ツールと PowerShell 管理ツールの比較の深さの参照になります。
 
 ## コンテナー用 PowerShell と Hyper-V VM
 
 PowerShell コマンドレットを使用して、Windows コンテナーを作成、実行、および操作することができます。 作業を開始するのに必要なものはすべて、インボックスで提供されています。
 
-Hyper-V PowerShell を使用したことがあれば、コマンドレットの設計はわかりやすいはずです。 ワークフローの多くの部分は、Hyper-V モジュールを使用して仮想マシンを管理する方法に似ています。 `New-VM`、`Get-VM`、`Start-VM`、`Stop-VM` の代わりに、`New-Container`、`Get-Container`、`Start-Container`、`Stop-Container` を使用します。 さまざまなコンテナー固有のコマンドレットおよびパラメーターがありますが、Windows コンテナーの全般的なライフ サイクルと管理は、Hyper-V VM の場合とほぼ同じです。
+PowerShell の HYPER-V を使用した場合、コマンドレットの設計がよく知っている場合があります。 ワークフローの多くは、HYPER-V モジュールを使用して、仮想マシンを管理する方法に似ています。 `New-VM`、`Get-VM`、`Start-VM`、`Stop-VM` の代わりに、`New-Container`、`Get-Container`、`Start-Container`、`Stop-Container` を使用します。 多くのコンテナーに固有のコマンドレットとパラメーターが、全般的なライフ サイクルがあるし、Windows コンテナーの管理は、HYPER-V の仮想マシンの場合と同様にほぼ探します。
 
-## PowerShell 管理を Docker の場合と比較してみましょう。
+## PowerShell 管理は Docker にどのような比較をするでしょうか。
 
-コンテナー PowerShell コマンドレットは API を公開しますが、これは Docker の API とまったく同じわけではありません。一般的に、コマンドレットの方が操作が細やかです。 次のように、一部の Docker コマンドは基本的に PowerShell に似ています。
+Docker の; とまったく同じではない API を公開する、コンテナーの PowerShell コマンドレット一般的な規則として、コマンドレットは、さらに詳細に操作します。 Docker のいくつかのコマンドでは、PowerShell で緯線の非常に簡単ですがあります。
 
 | Docker コマンド| PowerShell コマンドレット|
 |----|----|
@@ -25,38 +29,38 @@ Hyper-V PowerShell を使用したことがあれば、コマンドレットの�
 | `docker rmi`| `Remove-ContainerImage`|
 | `docker create`| `New-Container`|
 | `docker commit <コンテナー ID>`| `New-ContainerImage -Container <コンテナー>`|
-| `docker load <tarball>`| `Import-ContainerImage <AppX パッケージ>`|
+| `docker load &lt;tarball&gt;`| `Import-ContainerImage <AppX パッケージ>`|
 | `docker save`| `Export-ContainerImage`|
 | `docker start`| `Start-Container`|
 | `docker stop`| `Stop-Container`|
 
 PowerShell コマンドレットは完全なパリティではなく、PowerShell による代替が提供されていないコマンドも多く存在します* (特に `docker build` や `docker cp`)。 中でも、`docker run` に対して 1 行の代替が提供されていないことは意外かもしれません。
 
-\* 変更されることがあります。
+\ * 変更される可能性があります。
 
-### docker run の機能を実現するには
+### Docker 必要がありますが、実行します。何が起こっているでしょうか。
 
-PowerShell を既に使いこなしているユーザー向けに、わかりやすい操作モデルを次に示します。 docker の機能に慣れている場合は、少し視点を変えてみましょう。
+PowerShell には、その方法を既に知っているユーザーに若干の他の一般的な対話モデルを提供する次の点をここで行ってきました。 もちろん、docker の動作に慣れて、これは少し観念の移行のなります。
 
-1.  PowerShell モデルのコンテナーのライフサイクルはわずかに異なります。 コンテナー PowerShell モジュールでは、`New-Container` (停止している新しいコンテナーを作成する) および `Start-Container` のより細やかな操作を公開します。
+1.  PowerShell のモデルのコンテナーのライフ サイクルは若干異なります。 コンテナー PowerShell モジュールでは、`New-Container` (停止している新しいコンテナーを作成する) および `Start-Container` のより細やかな操作を公開します。
 
-    コンテナーを作成してから起動するまでに、コンテナーの設定を構成することもできます。TP3 では、公開する予定の他の唯一の構成は、コンテナーに対してネットワーク接続を設定する機能です。 その場合、(Add/Remove/Connect/Disconnect/Get/Set)-ContainerNetworkAdapter コマンドレットを使用します。
+  作成して、コンテナーの開始、間に、コンテナーの設定を構成することもTP3、コンテナーのネットワーク接続を設定する機能は、その他の構成のみを公開することを計画してです。 (追加/削除/接続/切断/取得/設定) を使用して-ContainerNetworkAdapter コマンドレットです。
 
-2.  現在のところ、起動時にコンテナー内で実行するコマンドを渡すことはできません。ただし、`Enter-PSSession -ContainerId <実行中のコンテナーの ID>` を使用して、実行中のコンテナーに対して対話型の PowerShell セッションを取得したり、`Invoke-Command -ContainerId <コンテナー ID> -ScriptBlock {コンテナー内で実行するコード}` または `Invoke-Command -ContainerId <コンテナー ID> -FilePath <スクリプトのパス>` を使用して、実行中のコンテナー内でコマンドを実行することはできます。  
-    これらのコマンドは両方とも、権限の高いアクションに対して省略可能な `-RunAsAdministrator` フラグを使用できます。
+2.  現在、コンテナー内の起動時に実行するコマンドを渡すことはできません。ただし、`Enter-PSSession -ContainerId <実行中のコンテナーの ID>` を使用して、実行中のコンテナーに対して対話型の PowerShell セッションを取得したり、`Invoke-Command -ContainerId <コンテナー ID> -ScriptBlock {コンテナー内で実行するコード}` または `Invoke-Command -ContainerId <コンテナー ID> -FilePath <スクリプトのパス>` を使用して、実行中のコンテナー内でコマンドを実行することはできます。  
+これらのコマンドは両方とも、権限の高いアクションに対して省略可能な `-RunAsAdministrator` フラグを使用できます。
 
 
 ## 注意事項と既知の問題
 
-1.  現在のところ、コンテナー コマンドレットは、Docker を使用して作成されたコンテナーやイメージについて何も認識せず、Docker は、PowerShell を使用して作成されたコンテナーやイメージについて何も認識しません。 Docker で作成した場合は Docker で管理し、PowerShell で作成した場合は PowerShell で管理します。
+1.  現在、コンテナーのコマンドレットを使用しないため、コンテナーまたは Docker、によって作成されたイメージに関するに関する知識を持って Docker が認識していないすべてのコンテナーとイメージ、PowerShell を使用して作成します。 Docker 内で作成した場合は Docker; で管理します。powershell で作成した場合は、PowerShell を使って管理します。
 
-2.  エラー メッセージの向上、進行状況レポートの向上、無効なイベント文字列など、エンド ユーザー エクスペリエンスを向上させるために実行すべき作業はかなりあります。 より多くの情報や、より良質の情報が必要になった場合は、ご提案をフォーラムまでお送りください。
+2.  多くの作業をエラー メッセージの向上より優れた進行状況レポート、無効なイベント文字列、およびなど--、エンド ユーザー エクスペリエンスを向上させるために必要があります。 状況の詳細を受け取っている場合に実行した場合や、情報の向上、ご自由にフォーラムをご提案を送信します。
 
-## 概要
+## クイック runthrough
 
-次に、一般的なワークフローについて説明します。
+ここでは、いくつかの一般的なワークフローの説明です。
 
-ここでは、"ServerDatacenterCore" という名前の OS コンテナー イメージをインストールしており、"Virtual Switch" という名前の仮想スイッチを作成した (New-VMSwitch を使用) と仮定します。
+これには、"ServerDatacenterCore"という名前の OS コンテナー イメージをインストールし、「仮想スイッチ」(New-vmswitch を使用) という名前の仮想スイッチを作成したと仮定しています。
 
 ``` PowerShell
 ### 1. Enumerating images
@@ -146,16 +150,16 @@ Import-ContainerImage -Path C:\exports\CN=Test_Image1_1.0.0.0.appx
 Start-Container -Container $container2 
 ```
 
-### 各自のサンプルの作成
+### 独自のサンプルをビルドします。
 
-`Get-Command -Module Containers` を使用して、すべてのコンテナー コマンドレットを表示できます。 ここで説明されていないその他のコマンドレットについては、各自でご確認ください。    
+`Get-Command -Module Containers` を使用して、すべてのコンテナー コマンドレットを表示できます。 これは、いくつか他のコマンドレットは、ここで説明されていない、自分でについて学習するためのままにします。    
 **注** これにより、コア PowerShell に含まれる `Enter-PSSession` および `Invoke-Command` コマンドレットは返されません。
 
-`Get-Help [コマンドレット名]`、または同等の `[コマンドレット名] -?` を使用して、任意のコマンドレットに関するヘルプを表示することもできます。 現時点では、ヘルプ出力は自動生成され、コマンドの構文のみが示されます。コマンドレット設計の最終処理が近づいたら、さらに詳細なドキュメントを追加する予定です。
+`Get-Help [コマンドレット名]`、または同等の `[コマンドレット名] -?` を使用して、任意のコマンドレットに関するヘルプを表示することもできます。 今日では、ヘルプの出力は自動生成され、コマンドの構文を知らせるだけ追加される予定さらにドキュメント、コマンドレットのデザインを最終処理中に近づくにつれて、します。
 
-PowerShell をあまり使用したことがない場合はご存知ないかもしれませんが、構文を検出するより良い方法として、PowerShell ISE があります。 ISE を許可する SKU 上で実行している場合は、コマンド ウィンドウを開き、「コンテナー」モジュールを選択して、ISE を起動してみてください。これにより、コマンドレットとそのパラメーター セットがグラフィック表示されます。
+構文を検出するより良い方法は、可能性がありますいないを調べる前に PowerShell は非常によく使用することがない場合を PowerShell ISE にです。 これを可能にするための SKU で実行している場合は、ISE で、コマンド ウィンドウを開くと、コマンドレットとそのパラメーターのセットがグラフィック表示を表示する「コンテナー」モジュールを選択するを起動してみてください。
 
-PS: 次に、この操作が可能であることを証明するために、既に確認したいくつかのコマンドレットから代用の `docker run` を構成する PowerShell 関数を示します (これは概念を証明するもので、アクティブに開発しているものではありません)。
+PS: 次に、この操作が可能であることを証明するために、既に確認したいくつかのコマンドレットから代用の `docker run` を構成する PowerShell 関数を示します (確かに、これは、アクティブな開発ではなく、概念実証) です。
 
 ``` PowerShell
 function Run-Container ([string]$ContainerImageName, [string]$Name="fancy_name", [switch]$Remove, [switch]$Interactive, [scriptblock]$Command) {
@@ -179,11 +183,16 @@ function Run-Container ([string]$ContainerImageName, [string]$Name="fancy_name",
 
 ## Docker
 
-Windows コンテナーは、Docker コマンドを使用して管理できます。 Windows コンテナーは対応する Linux コンテナーと同等であり、Docker を使用して同じ管理エクスペリエンスが得られるはずですが、Docker コマンドの中には、Windows コンテナーでは機能しないものがあります。 また、まだテストしていないものもあります (今後テスト予定です)。
+Windows コンテナーは、Docker コマンドを使用して管理できます。 Windows コンテナーは対応する Linux コンテナーと同等であり、Docker を使用して同じ管理エクスペリエンスが得られるはずですが、Docker コマンドの中には、Windows コンテナーでは機能しないものがあります。 他のユーザーだけではまだされてテスト (取得があります)。
 
-Docker で利用可能な API ドキュメントが重複しないよう、その管理 API のリンクを示します。 これは非常に有用なチュートリアルです。
+いない Docker で利用可能な API のドキュメントを複製するために、次に、管理 Api へのリンクを示します。 そのチュートリアルではすばらしいです。
 
-当社の「進行中の作業」のドキュメントでは、Docker API で機能する操作と機能しない操作を追跡しています。
+いるものと、進行中の作業の文書の Docker Api では機能しない管理するいるとします。
 
+
+
+
+
+<!--HONumber=Feb16_HO3-->
 
 
