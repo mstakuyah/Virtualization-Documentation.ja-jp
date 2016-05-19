@@ -1,24 +1,43 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 1
+ Total Files | 2
 
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\docker\manage_windows_dockerfile.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/d4bc6b9d336445357aeceac9e4d827dbd17779ff/virtualization/windowscontainers/docker/manage_windows_dockerfile.md) | HandedOffSuccess | [Details](#bcccbe39268110cbaed0a60dc822873144456d84244)
+ [virtualization\windowscontainers\deployment\deployment_nano.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/9378def28565462f060c895127358f91767299a7/virtualization/windowscontainers/deployment/deployment_nano.md) | OutofSyncHandedBackSuccess | [Details](#4662cb70e773ef30b5fac1bcf9ddff37e072b46a225)
+ [virtualization\windowscontainers\deployment\system_requirements.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/0b8c404f34827aaf23441a0a1d8451392ec2ca31/virtualization/windowscontainers/deployment/system_requirements.md) | OutofSyncHandedBackSuccess | [Details](#4177b83725906276a193f20c7d2f153bffd8bdf2242)
 
 ## Item Details
-##### <a name='bcccbe39268110cbaed0a60dc822873144456d84244'></a> Source: [virtualization\windowscontainers\docker\manage_windows_dockerfile.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/d4bc6b9d336445357aeceac9e4d827dbd17779ff/virtualization/windowscontainers/docker/manage_windows_dockerfile.md)
-* Status: HandedOffSuccess
+##### <a name='4662cb70e773ef30b5fac1bcf9ddff37e072b46a225'></a> Source: [virtualization\windowscontainers\deployment\deployment_nano.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/9378def28565462f060c895127358f91767299a7/virtualization/windowscontainers/deployment/deployment_nano.md)
+* Status: OutofSyncHandedBackSuccess
 * Target File: 
-* Handoff File: [manage_windows_dockerfile.cf56579c9136245b4cbef41fabc5df7a6ab9832a.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/b7c66785b08e58ccf2f1c1e236f9e79625d8908a/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/manage_windows_dockerfile.cf56579c9136245b4cbef41fabc5df7a6ab9832a.ja-jp.xlf)
-* Handoff Datetime: 2016-05-19 18:02:51
+* Handoff File: [deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/2b60d1f17fa4334ff798214a48391320458056c3/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf)
+* Handoff Datetime: 2016-05-19 22:03:56
 * Handoff Reason: Include
 * Archive File: 
 * Archive Datetime: 0001-01-01 00:00:00
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
+* Current Target File: [virtualization\windowscontainers\deployment\deployment_nano.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/2ff74fc3f303c334e1f4851d49807af4e2da30ce/virtualization/windowscontainers/deployment/deployment_nano.md)
+* Current Handback File: [deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/52f88421b8d3bfe92db2ac57dff2f6144a511eac/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf)
+* Current Handback Datetime: 2016-05-04 01:41:41
+* [Back to Top](#report-top)
+
+##### <a name='4177b83725906276a193f20c7d2f153bffd8bdf2242'></a> Source: [virtualization\windowscontainers\deployment\system_requirements.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/0b8c404f34827aaf23441a0a1d8451392ec2ca31/virtualization/windowscontainers/deployment/system_requirements.md)
+* Status: OutofSyncHandedBackSuccess
+* Target File: 
+* Handoff File: [system_requirements.579a5475e3bd1d3d3fd9d5b53488ab4ae55a4423.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/2b60d1f17fa4334ff798214a48391320458056c3/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/system_requirements.579a5475e3bd1d3d3fd9d5b53488ab4ae55a4423.ja-jp.xlf)
+* Handoff Datetime: 2016-05-19 22:03:56
+* Handoff Reason: Include
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Current Target File: [virtualization\windowscontainers\deployment\system_requirements.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/01e5cf75148b4f88ee8bc072377356dcb7b6d299/virtualization/windowscontainers/deployment/system_requirements.md)
+* Current Handback File: [system_requirements.579a5475e3bd1d3d3fd9d5b53488ab4ae55a4423.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/633a28c5bb3cb2df95ec4b10020de6a41d0abe8e/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/system_requirements.579a5475e3bd1d3d3fd9d5b53488ab4ae55a4423.ja-jp.xlf)
+* Current Handback Datetime: 2016-05-04 01:38:24
 * [Back to Top](#report-top)
 
 
