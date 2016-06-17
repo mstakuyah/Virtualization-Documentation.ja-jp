@@ -1,3 +1,16 @@
+---
+title: &1762507220 Windows 10 上に Hyper-V をインストールする
+description: Windows 10 上に Hyper-V をインストールする
+keywords: windows 10, hyper-v
+author: neilpeterson
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: &2138124249 windows-10-hyperv
+ms.service: windows-10-hyperv
+ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
+---
+
 # Windows 10 上に Hyper-V をインストールする
 
 Windows 10 上に仮想マシンを作成する前に、Hyper-V の役割を有効にする必要があります。 Windows 10 のコントロール パネル、PowerShell、または展開イメージのサービスと管理 (DISM) ツールを使用して、有効にすることができます。 このドキュメントでは、この手順について説明します。
@@ -54,6 +67,6 @@ DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
 
 
 
-<!--HONumber=Feb16_HO4-->
+<!--HONumber=May16_HO1-->
 
 

@@ -1,3 +1,16 @@
+---
+title: &1343351183 ハイパーバイザーの仕様
+description: ハイパーバイザーの仕様
+keywords: windows 10, hyper-v
+author: scooley
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: &252787435 windows-10-hyperv
+ms.service: windows-10-hyperv
+ms.assetid: aee64ad0-752f-4075-a115-2d6b983b4f49
+---
+
 # ハイパーバイザーの仕様
 
 ## ハイパーバイザーのトップレベル機能仕様
@@ -25,4 +38,8 @@ Windows オペレーティング システムには、ゲスト仮想マシン�
 
 
 
-<!--HONumber=Mar16_HO2-->
+
+
+<!--HONumber=May16_HO1-->
+
+

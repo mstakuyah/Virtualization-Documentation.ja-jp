@@ -1,3 +1,16 @@
+---
+title: &505039109 PowerShell スニペット
+description: PowerShell スニペット
+keywords: windows 10, hyper-v
+author: scooley
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: &1561959008 windows-10-hyperv
+ms.service: windows-10-hyperv
+ms.assetid: dc33c703-c5bc-434e-893b-0c0976b7cb88
+---
+
 # PowerShell スニペット
 
 PowerShell は、Hyper-V 用の優れたスクリプティング、自動化、および管理のツールです。ここでは、PowerShell のいくつかの優れた機能を紹介します。
@@ -60,14 +73,14 @@ Hyper-V スクリプトでは、多くの場合、1 つまたは複数の仮想�
 PowerShell ダイレクトまたは標準の PowerShell リモート処理を使用すると、次の複数の方法でこの操作を実行できます。
 
 1. 1 つ目の (そして最も単純な) 方法としては、ホストとゲスト、またはローカル ホストとリモート ホストで同じユーザー資格情報を有効にしておきます。  
-    Microsoft アカウントでログインしているか、またはドメイン環境にいる場合、この方法は非常に簡単です。  
-    このシナリオでは、`Invoke-Command -VMName "test" {get-process}` を実行するだけで済みます。
+  Microsoft アカウントでログインしているか、またはドメイン環境にいる場合、この方法は非常に簡単です。  
+  このシナリオでは、`Invoke-Command -VMName "test" {get-process}` を実行するだけで済みます。
 
 2. PowerShell に、資格情報を求めるプロンプトを表示させる  
-    資格情報が一致しない場合、資格情報を求めるプロンプトが自動的に表示されて、仮想マシンの適切な資格情報を指定できます。
+  資格情報が一致しない場合、資格情報を求めるプロンプトが自動的に表示されて、仮想マシンの適切な資格情報を指定できます。
 
 3. 資格情報を再利用するために変数に格納します。
-    次のように単純なコマンドを実行します。
+  次のように単純なコマンドを実行します。
   ``` PowerShell
   $localCred = Get-Credential
   ```
@@ -78,9 +91,9 @@ PowerShell ダイレクトまたは標準の PowerShell リモート処理を使
   つまり、スクリプト /PowerShell セッションごとに 1 回のみプロンプトが表示されます。
 
 4. 資格情報をスクリプトにコーディングします。 **実際のワークロードやシステムに対しては、この操作を行わないでください。**
-    > 警告: 実稼働システムではこの操作を行わないでください。 実際のパスワードを使用してこの操作を行わないでください。
+> 警告: 実稼働システムではこの操作を行わないでください。 実際のパスワードを使用してこの操作を行わないでください。
 
-    次のようなコードを使用して、PSCredential オブジェクトを作成できます。
+  次のようなコードを使用して、PSCredential オブジェクトを作成できます。
   ``` PowerShell
   $localCred = New-Object -typename System.Management.Automation.PSCredential -argumentlist "Administrator", (ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force) 
   ```
@@ -88,5 +101,10 @@ PowerShell ダイレクトまたは標準の PowerShell リモート処理を使
 
 
 
+
+
+
+
+<!--HONumber=May16_HO1-->
 
 

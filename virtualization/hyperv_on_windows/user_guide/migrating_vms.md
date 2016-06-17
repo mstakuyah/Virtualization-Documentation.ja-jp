@@ -1,3 +1,7 @@
+---
+redirect_url: http://aka.ms/upgradevmconfig
+---
+
 # 仮想マシンの移行とアップグレード
 
 Windows 8.1 以前で Hyper-V を使用して作成した仮想マシンを Windows 10 ホストに移行する場合、仮想マシン構成バージョンを手動で更新するまで、新しい仮想マシンの機能は使用できません。
@@ -106,5 +110,10 @@ Windows 8.1 を実行するホストから Windows 10 で Hyper-V を実行す�
 
 
 
+
+
+
+
+<!--HONumber=May16_HO1-->
 
 
