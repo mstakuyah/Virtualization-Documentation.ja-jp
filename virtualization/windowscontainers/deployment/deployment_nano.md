@@ -1,242 +1,194 @@
 ---
+title: Nano Server での Windows コンテナーの展開
+description: Nano Server での Windows コンテナーの展開
+keywords: docker, containers
 author: neilpeterson
+manager: timlt
+ms.date: 05/26/2016
+ms.topic: article
+ms.prod: windows-containers
+ms.service: windows-containers
+ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 ---
-
 
 # コンテナー ホストの展開 - Nano Server
 
-**この記事は暫定的な内容であり、変更される可能性があります。**
+**この記事は暫定的な内容であり、変更される可能性があります。** 
 
-Windows コンテナー ホストの展開手順は、オペレーティング システムやホスト システムの種類 (物理または仮想) によって異なります。 このドキュメントの手順は、物理または仮想システム上で、Nano Server に Windows コンテナー ホストを展開するために使用します。 Windows Server に Windows コンテナー ホストをインストールするには、「[コンテナー ホストの展開 - Windows Server](./deployment.md)」をご覧ください。
+Nano Server で Windows コンテナーの構成を開始するには、Nano Server を実行するシステムが必要です。また、このシステムとのリモート PowerShell 接続も必要です。
 
-システム要件の詳細については、「[Windows コンテナー ホスト システムの要件](./system_requirements.md)」をご覧ください。
+Nano Server の展開と接続の詳細については、「[Getting Started with Nano Server]( https://technet.microsoft.com/en-us/library/mt126167.aspx)」 (Nano Server の概要) を参照してください。
 
-PowerShell スクリプトを使用すると、Windows コンテナー ホストの展開を自動化できます。
-- [新しい Hyper-V 仮想マシンへのコンテナー ホストの展開](../quick_start/container_setup.md)。
-- [既存のシステムへのコンテナー ホストの展開](../quick_start/inplace_setup.md)。
+Nano Server の評価版については、[こちら](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/nano_eula)を参照してください。
 
+## コンテナー機能のインストール
 
-# Nano Server ホスト
+Nano Server パッケージ管理プロバイダーをインストールします。
 
-次の表に示された手順を使用して、Nano Server にコンテナー ホストを展開できます。 Windows Server コンテナーと Hyper-V コンテナーの両方に必要な構成が含まれています。
-
-<table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:100%" cellpadding="5" cellspacing="5">
-<tr valign="top">
-<td width="30%"><strong>展開の操作</strong></td>
-<td width="70%"><strong>詳細情報</strong></td>
-</tr>
-<tr>
-<td>[コンテナーのための Nano Server の準備](#nano)</td>
-<td>コンテナーと Hyper-V の機能を持つ Nano Server VHD を準備します。</td>
-</tr>
-<tr>
-<td>[仮想スイッチの作成](#vswitch)</td>
-<td>コンテナーは、ネットワーク接続のために仮想スイッチに接続します。</td>
-</tr>
-<tr>
-<td>[NAT の構成](#nat)</td>
-<td>仮想スイッチが Network Address Translation (NAT) を使用して構成されている場合、NAT 自体に構成が必要です。</td>
-</tr>
-<tr>
-<td>[コンテナー OS イメージのインストール](#img)</td>
-<td>OS イメージは、コンテナー展開の基盤を提供します。</td>
-</tr>
-<tr>
-<td>[Docker のインストール](#docker)</td>
-<td>省略可能ですが、Docker を使用して Windows コンテナーの作成と管理を行うためには必要です。 </td>
-</tr>
-</table>
-
-Hyper-V コンテナーを使用するには、次の手順を行う必要があります。 * でマークされている手順は、コンテナー ホスト自体が Hyper-V 仮想マシンである場合にのみ必要であることにご注意ください。
-
-<table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:100%" cellpadding="5" cellspacing="5">
-<tr valign="top">
-<td width="30%"><strong>展開の操作</strong></td>
-<td width="70%"><strong>詳細情報</strong></td>
-</tr>
-<tr>
-<td>[Hyper-V の役割の有効化](#hypv) </td>
-<td>Hyper-V は Hyper-V コンテナーを使用する場合にのみ必要です。</td>
-</tr>
-<tr>
-<td>[入れ子になった仮想化の有効化 *](#nest)</td>
-<td>コンテナー ホスト自体が Hyper-V 仮想マシンの場合、入れ子になった仮想化を有効にする必要があります。</td>
-</tr>
-<tr>
-<td>[仮想プロセッサの構成 *](#proc)</td>
-<td>コンテナー ホスト自体が Hyper-V 仮想マシンの場合、少なくとも 2 つの仮想プロセッサを構成する必要があります。</td>
-</tr>
-<tr>
-<td>[動的メモリの無効化 *](#dyn)</td>
-<td>コンテナー ホスト自体が Hyper-V 仮想マシンの場合、動的メモリを無効にする必要があります。</td>
-</tr>
-<tr>
-<td>[MAC アドレスのスプーフィングの構成 *](#mac)</td>
-<td>コンテナー ホストが仮想化されている場合、MAC スプーフィングを有効にする必要があります。</td>
-</tr>
-</table>
-
-## 展開の手順
-
-### <a name=nano></a>Nano Server の準備
-
-Nano Server の展開には、準備された仮想ハード ドライブの作成が含まれます。このドライブには、Nano Server オペレーティング システムと追加の機能パッケージが含まれます。 このガイドでは、Windows コンテナーに使用できる Nano Server 仮想ハード ドライブの準備について簡単に説明します。 Nano Server に関する詳細、および Nano Server のさまざまな展開オプションについては、[Nano Server のドキュメント](https://technet.microsoft.com/en-us/library/mt126167.aspx)をご覧ください。
-
-`nano` という名前のフォルダーを作成します。
-
-```powershell
-PS C:\> New-Item -ItemType Directory c:\nano
+```none
+Install-PackageProvider NanoServerPackage
 ```
 
-Windows Server メディア上の Nano Server フォルダーから `NanoServerImageGenerator.psm1` と `Convert WindowsImage.ps1` のファイルを見つけます。 これらのファイルを `c:\nano` にコピーします。
+パッケージ プロバイダーがインストールされたら、コンテナー機能をインストールします。
 
-```powershell
-#Set path to Windows Server 2016 Media
-PS C:\> $WindowsMedia = "C:\Users\Administrator\Desktop\TP4 Release Media"
-
-PS C:\> Copy-Item $WindowsMedia\NanoServer\Convert-WindowsImage.ps1 c:\nano
-
-PS C:\> Copy-Item $WindowsMedia\NanoServer\NanoServerImageGenerator.psm1 c:\nano
-```
-次を実行して Nano Server 仮想ハード ドライブを作成します。 `-Containers` パラメーターは、コンテナー パッケージがインストールされることを示し、`-Compute` パラメーターは Hyper-V パッケージを処理します。 Hyper-V は Hyper-V コンテナーを使用する場合にのみ必要です。
-
-```powershell
-PS C:\> Import-Module C:\nano\NanoServerImageGenerator.psm1
-
-PS C:\> New-NanoServerImage -MediaPath $WindowsMedia -BasePath c:\nano -TargetPath C:\nano\NanoContainer.vhdx -MaxSize 10GB -GuestDrivers -ReverseForwarders -Compute -Containers
-```
-完了したら、`NanoContainer.vhdx` ファイルから仮想マシンを作成します。 この仮想マシンは、オプションのパッケージとともに Nano Server OS を実行します。
-
-### <a name=vswitch></a>仮想スイッチの作成
-
-各コンテナーは、ネットワーク経由で通信するために仮想スイッチに接続する必要があります。 仮想スイッチは、`New-VMSwitch` コマンドで作成されます。 コンテナーは、`外部`または `NAT` の種類の仮想スイッチをサポートします。 Windows コンテナーのネットワークの詳細については、「[コンテナーのネットワーク](../management/container_networking.md)」をご覧ください。
-
-この例では、種類が NAT で、NAT サブネットが 172.16.0.0/12 の “Virtual Switch” という名前の仮想スイッチを作成します。
-
-```powershell
-PS C:\> New-VMSwitch -Name "Virtual Switch" -SwitchType NAT -NATSubnetAddress "172.16.0.0/12"
+```none
+Install-NanoServerPackage -Name Microsoft-NanoServer-Containers-Package
 ```
 
-### <a name=nat></a>NAT の構成
+これらの機能がインストールされたら、Nano Server ホストを再起動する必要があります。
 
-仮想スイッチの作成に加え、スイッチの種類が NAT の場合には、NAT オブジェクトを作成する必要があります。 これは `New-NetNat` コマンドを使用することで完了できます。 この例では、`ContainerNat` という名前の NAT オブジェクトと、コンテナー スイッチに割り当てられる NAT サブネットに一致するアドレスのプレフィックスを作成します。
+## Docker のインストール
 
-```powershell
-PS C:\> New-NetNat -Name ContainerNat -InternalIPInterfaceAddressPrefix "172.16.0.0/12"
+Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。 次の手順を使用して、Docker デーモンをインストールします。
 
-Name                             : ContainerNat
-ExternalIPInterfaceAddressPrefix :
-InternalIPInterfaceAddressPrefix : 172.16.0.0/12
-IcmpQueryTimeout                 : 30
-TcpEstablishedConnectionTimeout  : 1800
-TcpTransientConnectionTimeout    : 120
-TcpFilteringBehavior             : AddressDependentFiltering
-UdpFilteringBehavior             : AddressDependentFiltering
-UdpIdleSessionTimeout            : 120
-UdpInboundRefresh                : False
-Store                            : Local
-Active                           : True
+Docker デーモンをダウンロードし、コンテナー ホストの `$env:SystemRoot\system32\` にコピーします。 Nano Server では現在、`Invoke-Webrequest` はサポートされていないため、リモート システムからこれを実行する必要があります。
+
+```none
+Invoke-WebRequest https://aka.ms/tp5/b/dockerd -OutFile .\dockerd.exe
 ```
 
-### <a name=img></a>OS イメージのインストール
+Windows サービスとして Docker をインストールします。
 
-OS イメージは、任意の Windows Server コンテナーまたは Hyper-V コンテナーのベースとして使用されます。 このイメージは、コンテナーの展開に使用されます。展開されたコンテナーは、変更が可能で、新しいコンテナー イメージにキャプチャできます。 OS イメージは、基になるオペレーティング システムとして Windows Server Core と Nano Server の両方で作成されています。
-
-コンテナー OS イメージは、ContainerProvider PowerShell モジュールを使用して検索およびインストールできます。 このモジュールを使用するには、先にインストールする必要があります。 モジュールをインストールするには、次のコマンドを使用できます。
-
-```powershell
-PS C:\> Install-PackageProvider ContainerProvider -Force
+```none
+dockerd.exe --register-service
 ```
 
-`Find-ContainerImage` を使用して、PowerShell OneGet パッケージ マネージャーからイメージの一覧を返します。
+Docker サービスを開始します。
 
-```powershell
-PS C:\> Find-ContainerImage
-
-Name                 Version                 Description
-----                 -------                 -----------
-NanoServer           10.0.10586.0            Container OS Image of Windows Server 2016 Techn...
-WindowsServerCore    10.0.10586.0            Container OS Image of Windows Server 2016 Techn...
-```
-**注記** - 現時点では、Nano Server OS イメージのみ Nano Server コンテナー ホストとの互換性があります。 Nano Server ベースの OS イメージをダウンロードしてインストールするには、次を実行します。
-
-```powershell
-PS C:\> Install-ContainerImage -Name NanoServer -Version 10.0.10586.0
-
-Downloaded in 0 hours, 0 minutes, 10 seconds.
+```none
+Start-Service Docker
 ```
 
-`Get-ContainerImage` コマンドを使用して、イメージがインストールされていることを確認します。
+## コンテナーの基本イメージのインストール
 
-```powershell
-PS C:\> Get-ContainerImage
+基本 OS イメージは、任意の Windows Server または Hyper-V コンテナーのベースとして使用されます。 基本 OS イメージは、基となるオペレーティング システムとして Windows Server Core と Nano Server の両方で使用でき、コンテナー イメージ プロバイダーを使用してインストールすることができます。 Windows コンテナー イメージの詳細については、[コンテナー イメージの管理](../management/manage_images.md)に関するページを参照してください。
 
-Name              Publisher    Version      IsOSImage
-----              ---------    -------      ---------
-NanoServer        CN=Microsoft 10.0.10586.0 True
+コンテナー イメージ プロバイダーは、次のコマンドを使用してインストールできます。
+
+```none
+Install-PackageProvider ContainerImage -Force
 ```
-コンテナー イメージ管理の詳細については、「[Windows コンテナー イメージ](../management/manage_images.md)」をご覧ください。
 
+Nano Server の基本イメージをダウンロードしてインストールするには、次を実行します。
 
-### <a name=docker></a>Docker のインストール
+```none
+Install-ContainerImage -Name NanoServer
+```
 
-Docker デーモンとコマンド ライン インターフェイスは、Windows に付属していません。また、Windows コンテナー機能と一緒にインストールされません。 Docker は、Windows コンテナーを使用するための要件ではありません。 Docker をインストールする場合は、この記事「[Docker と Windows](./docker_windows.md)」の手順に従います。
+**注** - 現時点では、Nano Server コンテナー ホストと互換性があるのは Nano Server 基本イメージのみです。
 
-Hyper-V 管理ホストで `Enter-PSSession` コマンドを使用して、コンテナー ホストに接続できます。
+Docker サービスを再起動します。
 
-```powershell
-PS C:\> Enter-PSSession -VMName <VM Name>
+```none
+Restart-Service Docker
+```
+
+最後に、イメージに '最新' バージョンであることを示すタグを付ける必要があります。 これを行うために、次のコマンドを実行します。
+
+```none
+docker tag nanoserver:10.0.14300.1010 nanoserver:latest
 ```
 
 ## Hyper-V コンテナー ホスト
 
-### <a name=hypv></a>Hyper-V の役割の有効化
+Hyper-V コンテナーを展開するには、Hyper-V ロールが必要になります。 Windows コンテナー ホスト自体が Hyper-V 仮想マシンの場合、Hyper-V ロールをインストールする前に、入れ子になった仮想化を有効にする必要があります。 入れ子になった仮想化の詳細については、「入れ子になった仮想化」を参照してください。
 
-Nano サーバーでは、Nano Server イメージを作成するときにこれを実行できます。 これらの手順については、「[コンテナー用の Nano Server の準備](#nano)」をご覧ください。
+### 入れ子になった仮想化
 
-### <a name=nest></a>入れ子になった仮想化
+次のスクリプトでは、コンテナー ホストの入れ子になった仮想化を構成します。 このスクリプトは、コンテナー ホストの仮想マシンをホストする Hyper-V マシンで実行します。 このスクリプトを実行する場合は、必ず、コンテナー ホストの仮想マシンを無効にしてください。
 
-コンテナー ホスト自体が Hyper-V 仮想マシン上で実行され、Hyper-V コンテナーもホストする場合、入れ子になった仮想化を有効にする必要があります。 この処理は、次の PowerShell コマンドを使って完了できます。
+```none
+#replace with the virtual machine name
+$vm = "<virtual-machine>"
 
-**注記** - このコマンドを実行するときには、仮想マシンをオフにする必要があります。
+#configure virtual processor
+Set-VMProcessor -VMName $vm -ExposeVirtualizationExtensions $true -Count 2
 
-```powershell
-PS C:\> Set-VMProcessor -VMName <VM Name> -ExposeVirtualizationExtensions $true
+#disable dynamic memory
+Set-VMMemory $vm -DynamicMemoryEnabled $false
+
+#enable mac spoofing
+Get-VMNetworkAdapter -VMName $vm | Set-VMNetworkAdapter -MacAddressSpoofing On
 ```
 
-### <a name=proc></a>仮想プロセッサの構成
+### Hyper-V ロールの有効化
 
-コンテナー ホスト自体が Hyper-V 仮想マシン上で実行され、Hyper-V コンテナーもホストする場合、仮想マシンには少なくとも 2 つのプロセッサが必要になります。 これは、仮想マシンの設定を通じて、または次のコマンドを使って構成できます。
-
-**注記** - このコマンドを実行するときには、仮想マシンをオフにする必要があります。
-
-```poweshell
-PS C:\> Set-VMProcessor -VMName <VM Name> -Count 2
+```none
+Install-NanoServerPackage Microsoft-NanoServer-Compute-Package
 ```
 
-### <a name=dyn></a>動的メモリの無効化
+## Nano Server の Docker の管理
 
-コンテナー ホスト自体が Hyper-V 仮想マシンの場合、コンテナー ホストの仮想マシンで動的メモリを無効にする必要があります。 これは、仮想マシンの設定を通じて、または次のコマンドを使って構成できます。
+**Docker デーモンを次のように準備します。**
 
-**注記** - このコマンドを実行するときには、仮想マシンをオフにする必要があります。
+最適な結果を得るために、リモート システムから Nano Server の Docker を管理します。 そのためには、以下の作業を行う必要があります。
 
-```poweshell
-PS C:\> Set-VMMemory <VM Name> -DynamicMemoryEnabled $false
+Docker 接続用のコンテナー ホストにファイアウォール規則を作成します。 セキュリティで保護されていない接続の場合はポート `2375`、セキュリティで保護されている接続の場合はポート `2376` になります。
+
+```none
+netsh advfirewall firewall add rule name="Docker daemon " dir=in action=allow protocol=TCP localport=2376
 ```
 
-### <a name=mac></a>MAC アドレスのスプーフィング
+TCP 経由で着信接続を受け入れるように、Docker デーモンを構成します。
 
-最後に、コンテナー ホストが Hyper-V 仮想マシンの内部で実行されている場合には、MAC スプーフィングを有効化する必要があります。 これにより、各コンテナーが IP アドレスを受け取れるようになります。 MAC アドレスのスプーフィングを有効にするには、Hyper-V ホストで次のコマンドを実行します。 VMName プロパティは、コンテナー ホストの名前になります。
+まず、`c:\ProgramData\docker\config\daemon.json` で `daemon.json` ファイルを作成します。
 
-```powershell
-PS C:\> Get-VMNetworkAdapter -VMName <VM Name> | Set-VMNetworkAdapter -MacAddressSpoofing On
+```none
+new-item -Type File c:\ProgramData\docker\config\daemon.json
 ```
 
+次に、この JSON をファイルにコピーします。 これにより、TCP ポート 2375 経由で着信接続を受け入れるように、Docker デーモンが構成されます。 これはセキュリティで保護されていない接続であるため、お勧めできませんが、分離されたテストで使用することはできます。
 
+```none
+{
+    "hosts": ["tcp://0.0.0.0:2375", "npipe://"]
+}
+```
 
+次の例では、セキュリティで保護されたリモート接続を構成します。 TLS 証明書を作成して、適切な場所にコピーする必要があります。 詳細については、「[Docker Daemon on Windows](./docker_windows.md)」 (Windows 上の Docker デーモン) を参照してください。
 
+```none
+{
+    "hosts": ["tcp://0.0.0.0:2376", "npipe://"],
+    "tlsverify": true,
+    "tlscacert": "C:\\ProgramData\\docker\\certs.d\\ca.pem",
+    "tlscert": "C:\\ProgramData\\docker\\certs.d\\server-cert.pem",
+    "tlskey": "C:\\ProgramData\\docker\\certs.d\\server-key.pem",
+}
+```
 
+Docker サービスを再起動します。
 
-<!--HONumber=Mar16_HO3-->
+```none
+Restart-Service docker
+```
+
+**Docker クライアントを次のように準備します。**
+
+リモート管理システムに Docker クライアントをダウンロードします。
+
+```none
+Invoke-WebRequest https://aka.ms/tp5/b/docker -OutFile $env:SystemRoot\system32\docker.exe
+```
+
+完了したら、`Docker -H` パラメーターを使用して Docker デーモンにアクセスすることができます。
+
+```none
+docker -H tcp://10.0.0.5:2376 run -it nanoserver cmd
+```
+
+`-H` パラメーター要件は、環境変数 `DOCKER_HOST` を作成して削除することができます。 その場合、次の PowerShell コマンドを使用することができます。
+
+```none
+$env:DOCKER_HOST = "tcp://<ipaddress of server:2376"
+```
+
+この変数を設定すると、コマンドは次のようになります。
+
+```none
+docker run -it nanoserver cmd
+```
+
+<!--HONumber=May16_HO5-->
 
 

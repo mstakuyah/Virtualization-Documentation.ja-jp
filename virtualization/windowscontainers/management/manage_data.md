@@ -1,86 +1,111 @@
+---
+title: コンテナー データ ボリューム
+description: Windows コンテナーでデータ ボリュームを作成して管理します。
+keywords: docker, containers
+author: neilpeterson
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: windows-containers
+ms.service: windows-containers
+ms.assetid: f5998534-917b-453c-b873-2953e58535b1
+---
 
+# コンテナー データ ボリューム
 
+**この記事は暫定的な内容であり、変更される可能性があります。** 
 
+コンテナーを作成するときに、場合によっては、新しいデータ ディレクトリを作成したり、既存のディレクトリをコンテナーに追加したりする必要があります。 このような場合は、データ ボリュームを追加して対応できます。 データ ボリュームは、コンテナーとコンテナー ホストの両方から参照できるので、双方でデータを共有できます。 また、データ ボリュームは、同じコンテナー ホスト上の複数のコンテナーで共有できます。 このドキュメントでは、データ ボリュームの作成、検査、および削除について詳しく説明します。
 
-# コンテナー共有フォルダー
+## データ ボリューム
 
-**この記事は暫定的な内容であり、変更される可能性があります。**
+### 新しいデータ ボリュームを作成する
 
-共有フォルダーにより、コンテナー ホストとコンテナー間でデータを共有できます。 共有フォルダーが作成されていると、コンテナー内で共有フォルダーを使用できるようになります。 ホストから共有フォルダーに配置されたすべてのデータを、コンテナー内で使用できます。 コンテナー内から共有フォルダーに配置されたすべてのデータを、ホストで使用できまます。 ホスト上の単一のフォルダーを多くのコンテナーで共有でき、この構成では、実行中のコンテナー間でデータを共有できます。
+`docker run` コマンドの `-v` パラメーターを使用して、新しいデータ ボリュームを作成します。 既定では、新しいデータ ボリュームはホストの 'c:\ProgramData\Docker\volumes' に保存されます。
 
-## データの管理 - PowerShell
+この例では、'new-data-volume' というデータ ボリュームを作成します。 このデータ ボリュームには、実行されているコンテナーの 'c:\new-data-volume' でアクセスできます。
 
-### 共有フォルダーの作成
-
-共有フォルダーを作成するには、`Add-ContainerSharedFolder` コマンドを使用します。 下の例では、コンテナーにディレクトリ `c:\shared_data` を作成し、それがホスト上のディレクトリ `c:\data_source` にマップされます。
-
-> 共有フォルダーを追加する場合は、コンテナーが停止状態である必要があります。
-
-```powershell
-PS C:\> Add-ContainerSharedFolder -ContainerName DEMO -SourcePath c:\data_source -DestinationPath c:\shared_data
-
-ContainerName SourcePath       DestinationPath AccessMode
-------------- ----------       --------------- ----------
-DEMO          c:\data_source   c:\shared_data  ReadWrite
+```none
+docker run -it -v c:\new-data-volume windowsservercore cmd
 ```
 
-### 読み取り専用共有フォルダー
+ボリュームの作成の詳細については、[docker.com のコンテナーのデータ管理に関するページ](https://docs.docker.com/engine/userguide/containers/dockervolumes/#data-volumes)を参照してください。
 
-```powershell
-PS C:\> Add-ContainerSharedFolder -ContainerName DEMO -SourcePath c:\sf1 -DestinationPath c:\sf2 -AccessMode ReadOnly
+### 既存のディレクトリをマウントする
 
-ContainerName SourcePath DestinationPath AccessMode
-------------- ---------- --------------- ----------
-DEMO         c:\sf1     c:\sf2          ReadOnly
+新しいデータ ボリュームを作成するだけでなく、ホストの既存のディレクトリをコンテナーに渡したい場合があります。 この処理は、`docker run` コマンドの `-v` パラメーターで実行することもできます。 ホスト ディレクトリ内のすべてのファイルは、コンテナーでも使用できます。 マウントされたボリュームにコンテナーが作成したファイルは、ホストで使用できます。 1 つのディレクトリを多数のコンテナーにマウントすることができます。 この構成では、コンテナー間でデータを共有できます。
+
+この例では、'c:\source' という同じディレクトリが、'c:\destination' としてコンテナーにマウントされています。
+
+```none
+docker run -it -v c:\source:c:\destination windowsservercore cmd
 ```
 
-### 共有フォルダーの一覧表示
+ホスト ディレクトリのマウントの詳細については、[docker.com のコンテナーのデータ管理に関するページ](https://docs.docker.com/engine/userguide/containers/dockervolumes/#mount-a-host-directory-as-a-data-volume)を参照してください。
 
-特定のコンテナーの共有フォルダーの一覧を表示するには、`Get-ContainerSharedFolder` コマンドを使用します。
+### 単一ファイルをマウントする
 
-```powershell
-PS C:\> Get-ContainerSharedFolder -ContainerName DEMO2
+ファイル名を明示的に指定して、単一ファイルをコンテナーにマウントすることができます。 この例では、共有されているディレクトリには多数のファイルがありますが、コンテナー内では 'config.ini' ファイルのみを使用できます。 
 
-ContainerName SourcePath DestinationPath AccessMode
-------------- ---------- --------------- ----------
-DEMO         c:\source  c:\source       ReadWrite
+```none
+docker run -it -v c:\container-share\config.ini windowsservercore cmd
 ```
 
-### 共有フォルダーの変更
+実行中のコンテナー内では、config.ini のみを参照できます。
 
-既存の共有フォルダーの構成を変更するには、`Set-ContainerSharedFolder` コマンドを使用します。
+```none
+c:\container-share>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 7CD5-AC14
 
-```powershell
-PS C:\> Set-ContainerSharedFolder -ContainerName SFRO -SourcePath c:\sf1 -DestinationPath c:\sf1
+ Directory of c:\container-share
+
+04/04/2016  12:53 PM    <DIR>          .
+04/04/2016  12:53 PM    <DIR>          ..
+04/04/2016  12:53 PM    <SYMLINKD>     config.ini
+               0 File(s)              0 bytes
+               3 Dir(s)  21,184,208,896 bytes free
 ```
 
-### 共有フォルダーの削除
+単一ファイルのマウントの詳細については、[docker.com のコンテナーのデータ管理に関するページ](https://docs.docker.com/engine/userguide/containers/dockervolumes/#mount-a-host-directory-as-a-data-volume)を参照してください。
 
-共有フォルダーを削除するには、`Remove-ContainerSharedFolder` コマンドを使用します。
+### データ ボリューム コンテナー
 
-> 共有フォルダーを作成する場合、コンテナーは停止状態である必要があります。
+データ ボリュームを他の実行中のコンテナーから継承するには、`docker run` コマンドの `--volumes-from` パラメーターを使用します。 この継承を使用して、コンテナー化されたアプリケーション用にデータ ボリュームをホストするという明確な目的でコンテナーを作成できます。 
 
-```powershell
-PS C:\> Remove-ContainerSharedFolder -ContainerName DEMO2 -SourcePath c:\source -DestinationPath c:\source
-```
-## データの管理 - Docker
+この例では、’cocky_bell’ というコンテナーからデータ ボリュームを新しいコンテナーにマウントします。 新しいコンテナーを起動すると、このボリュームのデータは、コンテナー内で実行されるアプリケーションに使用できるようになります。  
 
-### ボリュームのマウント
-
-Docker を使用して Windows コンテナーを管理する場合、`-v` オプションを使用して、ボリュームをマウントできます。
-
-下の例では、マウント元のフォルダーは c:\source で、マウント先のフォルダーは c:\destination です。
-
-```powershell
-PS C:\> docker run -it -v c:\source:c:\destination 1f62aaf73140 cmd
+```none
+docker run -it --volumes-from cocky_bell windowsservercore cmd
 ```
 
-Docker によるコンテナー内のデータの管理の詳細については、[Docker.com の Docker ボリューム](https://docs.docker.com/userguide/dockervolumes/)に関するドキュメントをご覧ください。
+データベース コンテナーの詳細については、[docker.com のコンテナーのデータ管理に関するページ](https://docs.docker.com/engine/userguide/containers/dockervolumes/#mount-a-host-file-as-a-data-volume)を参照してください。
 
-## ビデオ チュートリアル
+### 共有データ ボリュームを検査する
 
-<iframe src="https://channel9.msdn.com/Blogs/containers/Container-Fundamentals--Part-3-Shared-Folders/player#ccLang=ja" width="800" height="450"  allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
+マウントされているボリュームは、`docker inspect` コマンドを使用して表示できます。
+
+```none
+docker inspect backstabbing_kowalevski
+```
+
+このコマンドを実行すると、’Mounts’ というセクションなど、コンテナーに関する情報が返されます。たとえば、ソース ディレクトリ、対象ディレクトリなど、マウントされたボリュームに関するデータなどです。
+
+```none
+"Mounts": [
+    {
+        "Source": "c:\\container-share",
+        "Destination": "c:\\data",
+        "Mode": "",
+        "RW": true,
+        "Propagation": ""
+}
+```
+
+ボリュームの検査の詳細については、[docker.com のコンテナーのデータ管理に関するページ](https://docs.docker.com/engine/userguide/containers/dockervolumes/#locating-a-volume)を参照してください。
 
 
 
-<!--HONumber=Feb16_HO3-->
+<!--HONumber=May16_HO4-->
+
+
