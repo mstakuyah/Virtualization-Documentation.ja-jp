@@ -1,3 +1,16 @@
+---
+title: &450027534 サポートされる Windows ゲスト
+description: サポートされる Windows ゲスト
+keywords: windows 10, hyper-v
+author: scooley
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: &1791510302 windows-10-hyperv
+ms.service: windows-10-hyperv
+ms.assetid: ae4a18ed-996b-4104-90c5-539c90798e4c
+---
+
 # サポートされる Windows ゲスト
 
 この記事では、Windows 上の Hyper-V でサポートされているオペレーティング システムの組み合わせを一覧に示します。 また、サポートされる統合サービスやその他のファクターの概要も紹介します。
@@ -9,7 +22,7 @@
 以下の表に示されているゲスト オペレーティング システムは、Microsoft でサポートされます。
 * Microsoft のオペレーティング システムと統合サービスの問題は、Microsoft サポートによってサポートされます。
 * オペレーティング システム ベンダーによって Hyper-V の実行が認定されている、他のオペレーティング システムで検出された問題については、ベンダーによってサポートが提供されます。
-* その他のオペレーティング システムの問題は、Microsoft がマルチベンダー サポート コミュニティ [TSANet](http://www.tsanet.org/) に問題を提出します。
+* その他のオペレーティング システムの問題は、Microsoft がマルチベンダー サポート コミュニティ <g id="2CapsExtId1" ctype="x-link"><g id="2CapsExtId2" ctype="x-linkText">TSANet</g><g id="2CapsExtId3" ctype="x-title"></g></g> に問題を提出します。
 
 サポートされるようにするは、Hyper-V ホストとゲストの両方を、Windows Update を通じて、利用可能なすべての重要な更新プログラムで更新する必要があります。
 
@@ -39,15 +52,20 @@
 
 | ゲスト オペレーティング システム| |
 |:-----|:------|
-| [CentOS と Red Hat Enterprise Linux ](https://technet.microsoft.com/library/dn531026.aspx)| |
-| [Hyper-V の Debian 仮想マシン](https://technet.microsoft.com/library/dn614985.aspx)| |
-| [SUSE](https://technet.microsoft.com/en-us/library/dn531027.aspx)| |
-| [Oracle Linux](https://technet.microsoft.com/en-us/library/dn609828.aspx)| |
-| [Ubuntu](https://technet.microsoft.com/en-us/library/dn531029.aspx)| |
-| [FreeBSD](https://technet.microsoft.com/library/dn848318.aspx)| |
+| <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">CentOS と Red Hat Enterprise Linux </g><g id="1CapsExtId3" ctype="x-title"></g></g>| |
+| <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Hyper-V の Debian 仮想マシン</g><g id="1CapsExtId3" ctype="x-title"></g></g>| |
+| <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">SUSE</g><g id="1CapsExtId3" ctype="x-title"></g></g>| |
+| <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Oracle Linux</g><g id="1CapsExtId3" ctype="x-title"></g></g>| |
+| <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Ubuntu</g><g id="1CapsExtId3" ctype="x-title"></g></g>| |
+| <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">FreeBSD</g><g id="1CapsExtId3" ctype="x-title"></g></g>| |
 
-過去のバージョンの Hyper-V におけるサポート情報などの詳細については、「[Hyper-V の Linux と FreeBSD 仮想マシン](https://technet.microsoft.com/library/dn531030.aspx)」を参照してください。
+過去のバージョンの Hyper-V におけるサポート情報などの詳細については、「<g id="2CapsExtId1" ctype="x-link"><g id="2CapsExtId2" ctype="x-linkText">Hyper-V の Linux と FreeBSD 仮想マシン</g><g id="2CapsExtId3" ctype="x-title"></g></g>」を参照してください。
 
 
+
+
+
+
+<!--HONumber=May16_HO1-->
 
 

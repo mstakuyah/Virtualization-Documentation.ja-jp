@@ -1,8 +1,12 @@
-# Windows 10 の Hyper-V でチェックポイントを使用する
+---
+redirect_url: ../user_guide/checkpoints
+---
 
-**このドキュメントは廃止されました。**
+# リダイレクト - 無題
 
-チェックポイントについては、[こちらのユーザー ガイド](../user_guide/checkpoints.md)を参照してください。
 
+
+
+<!--HONumber=May16_HO1-->
 
 

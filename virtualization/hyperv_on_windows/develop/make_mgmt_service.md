@@ -1,23 +1,36 @@
+---
+title: 独自の統合サービスを作成する
+description: Windows 10 の統合サービス。
+keywords: windows 10, hyper-v
+author: scooley
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: &140390760 windows-10-hyperv
+ms.service: windows-10-hyperv
+ms.assetid: 1ef8f18c-3d76-4c06-87e4-11d8d4e31aea
+---
+
 # 独自の統合サービスを作成する
 
 Windows 10 から、Hyper-V ホストとそこで実行されている仮想マシンの間にある新しいソケット ベースの通信チャネルを使用して、インボックスの Hyper-V 統合サービスとよく似たサービスを作成できるようになりました。 この Hyper-V ソケットを使用することで、サービスはネットワーク スタックと関係なく実行でき、すべてのデータが同じ物理メモリ上に格納されます。
 
 このドキュメントでは、Hyper-V ソケット上に構築された簡単なアプリケーションの作成とそれらの使用を開始する方法の手順について説明します。
 
-[PowerShell Direct](../user_guide/vmsession.md) は Hyper-V ソケットを使用して通信するアプリケーション (この例では、インボックス Windows サービス) の例です。
+<g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">PowerShell Direct</g><g id="1CapsExtId3" ctype="x-title"></g></g> は Hyper-V ソケットを使用して通信するアプリケーション (この例では、インボックス Windows サービス) の例です。
 
-**サポートされているホスト OS**
+<g id="1" ctype="x-strong">サポートされているホスト OS</g>
 * Windows 10 ビルド 14290 以降
 * Windows Server Technical Preview 4 以降
 * 今後のリリース (サーバー 2016年 +)
 
-**サポートされるゲスト OS**
+<g id="1" ctype="x-strong">サポートされるゲスト OS</g>
 * Windows 10
 * Windows Server Technical Preview 4 以降
 * 今後のリリース (サーバー 2016年 +)
-* Linux ゲストと Linux 統合サービス (「[Supported Linux and FreeBSD virtual machines for Hyper-V on Windows (Windows 上の Hyper-V 向けにサポートされる Linux と FreeBSD 仮想マシン)](https://technet.microsoft.com/library/dn531030(ws.12).aspx))」をご覧ください
+* Linux ゲストと Linux 統合サービス (「<g id="2CapsExtId1" ctype="x-link"><g id="2CapsExtId2" ctype="x-linkText">Supported Linux and FreeBSD virtual machines for Hyper-V on Windows (Windows 上の Hyper-V 向けにサポートされる Linux と FreeBSD 仮想マシン)</g><g id="2CapsExtId3" ctype="x-title"></g></g>」をご覧ください
 
-**機能と制限事項**
+<g id="1" ctype="x-strong">機能と制限事項</g>
 * カーネル モードまたはユーザー モード操作をサポート
 * データ ストリームのみ
 * ブロック メモリなし (バックアップ/ビデオに最適でない)
@@ -30,24 +43,24 @@ Windows 10 から、Hyper-V ホストとそこで実行されている仮想マ�
 現在、Hyper-V ソケットは、ネイティブ コード (C++) で使用できます。
 
 簡単なアプリケーションを作成するには、次が必要です。
-* C コンパイラ。 お持ちではない場合は、[Visual Studio Code](https://aka.ms/vs) を確認してください。
+* C コンパイラ。 お持ちではない場合は、<g id="2CapsExtId1" ctype="x-link"><g id="2CapsExtId2" ctype="x-linkText">Visual Studio コミュニティ</g><g id="2CapsExtId3" ctype="x-title"></g></g>を確認してください
 * Hyper-V と仮想マシンを実行しているコンピューター。
   * ホストおよびゲスト (VM) OS は、Windows 10、Windows Server Technical Preview 3 以降である必要があります。
-* Hyper-V ホストにインストールされた [Windows 10 SDK](http://aka.ms/flightingSDK)
+* Hyper-V ホストにインストールされた <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Windows 10 SDK</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-**Windows SDK の詳細**
+<g id="1" ctype="x-strong">Windows SDK の詳細</g>
 
 Windows SDK へのリンク:
-* [Windows 10 SDK for Insider Preview](http://aka.ms/flightingSDK)
-* [Windows 10 SDK](https://dev.windows.com/en-us/downloads/windows-10-sdk)
+* <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Windows 10 SDK for Insider Preview</g><g id="1CapsExtId3" ctype="x-title"></g></g>
+* <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Windows 10 SDK</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
 Hyper-V ソケット用 API が Windows 10 ビルド 14290 でご利用いただけるようになりました。フライティング ダウンロードは、最新の Insider Fast Track フライティング ビルドと一致します。  
-奇妙な動作をする場合、[TechNet フォーラム](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home "TechNet フォーラム")でお知らせください。 投稿に、以下を含めてください。
+奇妙な動作をする場合、<g id="2CapsExtId1" ctype="x-link"><g id="2CapsExtId2" ctype="x-linkText">TechNet フォーラム</g><g id="2CapsExtId3" ctype="x-title">TechNet フォーラム</g></g>でお知らせください。 投稿に、以下を含めてください。
 * 予期しない動作
 * ホスト、ゲスト、SDK の OS とビルド番号。
 
   SDK ビルド番号は、SDK インストーラーのタイトルに表示されます。  
-  ![](./media/flightingSDK.png)
+  <g id="1" ctype="x-linkText"></g>
 
 
 ## 新しいアプリケーションの登録
@@ -73,7 +86,7 @@ $service.SetValue("ElementName", $friendlyName)
 $service.PSChildName | clip.exe
 ```
 
-** は、レジストリの場所と情報 **
+<g id="1" ctype="x-em">* は、レジストリの場所と情報 *</g>
 
 ``` 
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\GuestCommunicationServices\
@@ -81,8 +94,8 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 このレジストリの場所には、いくつかの GUID が表示されます。 これらは、マイクロソフトのボックスでのサービスです。
 
 サービスごとのレジストリ内の情報。
-* `サービス GUID`
-    * `ElementName (REG_SZ)` - これは、サービスのフレンドリ名です。
+* <g id="1" ctype="x-code">サービス GUID</g>
+    * <g id="1" ctype="x-code">ElementName (REG_SZ)</g> - これは、サービスのフレンドリ名です。
 
 独自のサービスを登録するには、独自の GUID とフレンドリ名を使用して新しいレジストリ キーを作成します。
 
@@ -97,7 +110,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
         ElementName REG_SZ  Your Service Friendly Name
 ```
 
-> ** ヒント:** PowerShell で GUID を生成し、それをクリップボードにコピーするには、次を実行します。
+> <g id="1" ctype="x-em">* ヒント:*</g> PowerShell で GUID を生成し、それをクリップボードにコピーするには、次を実行します。
 ``` PowerShell
 (New-Guid).Guid | clip.exe
 ```
@@ -119,9 +132,9 @@ SOCKET WSAAPI socket(
 ```
 
 Hyper-V ソケットの場合:
-* アドレス ファミリ - `AF_HYPERV`
-* 種類 - `SOCK_STREAM`
-* プロトコル - `HV_PROTOCOL_RAW`
+* アドレス ファミリ - <g id="2" ctype="x-code">AF_HYPERV</g>
+* 種類 - <g id="2" ctype="x-code">SOCK_STREAM</g>
+* プロトコル - <g id="2" ctype="x-code">HV_PROTOCOL_RAW</g>
 
 
 これは宣言/インスタンスの例です。
@@ -134,7 +147,7 @@ SOCKET sock = socket(AF_HYPERV, SOCK_STREAM, HV_PROTOCOL_RAW);
 
 バインドは、ソケットと接続情報を関連付けます。
 
-便宜上、下に関数定義をコピーしていますが、バインドの詳細については[こちら](https://msdn.microsoft.com/en-us/library/windows/desktop/ms737550.aspx)を参照してください。
+便宜上、下に関数定義をコピーしていますが、バインドの詳細については<g id="2CapsExtId1" ctype="x-link"><g id="2CapsExtId2" ctype="x-linkText">こちら</g><g id="2CapsExtId3" ctype="x-title"></g></g>を参照してください。
 
 ``` C
 int bind(
@@ -144,7 +157,7 @@ int bind(
 );
 ```
 
-ホスト マシンの IP アドレスとそのホスト上のポート番号から構成される標準インターネット プロトコル アドレス ファミリ (`AF_INET`) のソケット アドレス (sockaddr) と対照的に、`AF_HYPERV` のソケット アドレスでは、仮想マシンの ID と上に定義したアプリケーション ID を使用して、接続を確立します。
+ホスト マシンの IP アドレスとそのホスト上のポート番号から構成される標準インターネット プロトコル アドレス ファミリ (<g id="2" ctype="x-code">AF_INET</g>) のソケット アドレス (sockaddr) と対照的に、<g id="4" ctype="x-code">AF_HYPERV</g> のソケット アドレスでは、仮想マシンの ID と上に定義したアプリケーション ID を使用して、接続を確立します。
 
 Hyper-V ソケットは、ネットワーク スタック、TCP/IP、DNS などに依存しないため、ソケット エンドポイントには、引き続きあいまいに接続を記述する、ホスト名ではない非 IP 形式が必要です。
 
@@ -165,7 +178,7 @@ IP またはホスト名の代わりに、AF_HYPERV エンドポイントは 2 �
   ```PowerShell
   (Get-VM -Name $VMName).Id
   ```
-* サービス ID - アプリケーションを Hyper-V ホスト レジストリに登録するための[上記](#RegisterANewApplication)の GUID。
+* サービス ID - アプリケーションを Hyper-V ホスト レジストリに登録するための<g id="2CapsExtId1" ctype="x-link"><g id="2CapsExtId2" ctype="x-linkText">上記</g><g id="2CapsExtId3" ctype="x-title"></g></g>の GUID。
 
 接続が特定の仮想マシンとの接続でない場合は、一連の VMID ワイルドカードを使用することもできます。
 
@@ -181,7 +194,7 @@ IP またはホスト名の代わりに、AF_HYPERV エンドポイントは 2 �
 | HV_GUID_PARENT| a42e7cda-d03f-480c-9cc2-a4de20abb878| 親アドレス。この VmId を使用して、コネクタの親パーティションに接続します。*|
 
 
-***HV_GUID_PARENT**  
+<g id="1" ctype="x-strong">*HV_GUID_PARENT</g>  
 仮想マシンの親は、そのホストです。 コンテナーの親は、コンテナーのホストです。  
 仮想マシンで実行しているコンテナーからの接続は、コンテナーをホストしている仮想マシンに接続します。  
 この VmId でリッスンし、次からの接続を受け入れます。  
@@ -198,7 +211,7 @@ Send()
 Listen()
 Accept()
 
-[完全な WinSock API](https://msdn.microsoft.com/en-us/library/windows/desktop/ms741394.aspx)
+<g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">完全な WinSock API</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
 ## 進行中の作業
 
@@ -210,6 +223,6 @@ Accept()
 
 
 
-<!--HONumber=Mar16_HO4-->
+<!--HONumber=May16_HO1-->
 
 

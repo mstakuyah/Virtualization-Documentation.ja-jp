@@ -1,62 +1,66 @@
-# Windows の Hyper-V について
+# Hyper-V について
 
-## [Windows 10 の Hyper-V](./windows_welcome.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Windows 10 の Hyper-V</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [Hyper-V の概要](./about/hyperv_on_windows.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Hyper-V の概要</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [Windows 10 の新機能](./about/whats_new.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">サポートされるゲスト OS</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [サポートされるゲスト OS](about/supported_guest_os.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Hyper-V の Linux と FreeBSD</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [Hyper-V の Linux と FreeBSD](https://technet.microsoft.com/library/dn531030.aspx)
+# Hyper-V クイック スタート
 
-# Windows の Hyper-V のクイック スタート
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">システム要件</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [システム要件](quick_start/walkthrough_compatibility.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Hyper-V をインストールする</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [Hyper-V をインストールする](quick_start/walkthrough_install.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">仮想スイッチを作成する</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [仮想スイッチを作成する](quick_start/walkthrough_virtual_switch.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">仮想マシンを作成する</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [仮想マシンを作成する](quick_start/walkthrough_create_vm.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Hyper-V と PowerShell</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [Hyper-V と PowerShell](quick_start/walkthrough_powershell.md)
+# Hyper-V を使用した仮想マシンの管理
 
-# Windows の Hyper-V の管理
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">仮想マシンの移行とアップグレード</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [仮想マシンの移行とアップグレード](user_guide/migrating_vms.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">統合サービスの管理</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [統合サービスの管理](user_guide/managing_ics.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">チェックポイントの操作</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [チェックポイントの操作](user_guide/checkpoints.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">仮想マシンのエクスポートとインポート</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [エクスポートとインポート](user_guide/export_import.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">PowerShell ダイレクトとの接続</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [PowerShell ダイレクト](user_guide/vmsession.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">プレリリース VM の作成</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [リモート管理](user_guide/remote_host_management.md)
+# Hyper-V ホストの管理
 
-## [入れ子になった仮想化](user_guide/nesting.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">リモート Hyper-V ホストの管理</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [トラブルシューティング](user_guide/troubleshooting.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">入れ子になった仮想化の有効化</g><g id="1CapsExtId3" ctype="x-title"></g></g>
+
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">NAT ネットワークの設定</g><g id="1CapsExtId3" ctype="x-title"></g></g>
+
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">統合サービスの構築</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
 # コミュニティとサポート
 
-## [Hyper-V フォーラム](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home?forum=winserverhyperv)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Hyper-V フォーラム</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
 # 参照先
 
-## [Hyper-V PowerShell](https://technet.microsoft.com/library/hh848559.aspx)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Hyper-V PowerShell</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [PowerShell の例](develop/powershell_snippets.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Hyper-V WMI プロバイダー (V2)</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [統合サービスの構築](develop/make_mgmt_service.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Hyper-V のアーキテクチャ</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
-## [Hyper-V WMI プロバイダー (V2)](https://msdn.microsoft.com/library/hh850319.aspx)
-
-## [Hyper-V のアーキテクチャ](https://msdn.microsoft.com/en-us/library/cc768520(v=bts.10).aspx)
-
-## [ハイパーバイザーの仕様](develop/tlfs.md)
+## <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">ハイパーバイザーの仕様</g><g id="1CapsExtId3" ctype="x-title"></g></g>
 
 
-<!--HONumber=Mar16_HO2-->
+
+
+<!--HONumber=May16_HO1-->
+
+

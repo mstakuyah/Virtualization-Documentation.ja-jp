@@ -1,34 +1,6 @@
-# Windows 10 の Hyper-V の新機能
-
-このトピックでは、Windows 10 の Hyper-V の新機能と変更された機能について説明します。
-
-## Windows PowerShell ダイレクト
-
-ホスト オペレーティング システムから仮想マシン内で Windows PowerShell コマンドを簡単かつ確実な方法で実行できるようになりました。 ネットワークまたはファイアウォールの要件や特別な構成はありません。 
-リモート管理構成に関係なく動作します。 これを使用するには、ホストと仮想マシンのゲスト オペレーティング システムで Windows 10 または Windows Server Technical Preview を実行する必要があります。
-
-PowerShell ダイレクト セッションを作成するには、次のコマンドのいずれかを使用します。
-
-``` PowerShell
-Enter-PSSession -VMName VMName
-Invoke-Command -VMName VMName -ScriptBlock { commands }
-```
-
-現在、Hyper-V は 2 つの分類のツールを利用し、Hyper-V ホストの仮想マシンに接続しています。
-- PowerShell またはリモート デスクトップなどのリモート管理ツール
-- Hyper-V 仮想マシン接続 (VM Connect)
-
-これらのテクノロジのいずれも十分に機能しますが、Hyper-V の展開が大規模になるとそれぞれに短所が現れます。 VMConnect は信頼性が高いですが、自動化が難しくなります。 リモート PowerShell は高性能ですが、設定と保守管理が難しくなります。
-
-Windows PowerShell ダイレクトは高性能なスクリプト作成と自動化を備えながら、VMConnect のように簡単です。 Windows PowerShell ダイレクトはホストと仮想マシンの間で実行されるため、ネットワークに接続したり、リモート管理を有効にする必要がありません。 ゲスト資格情報がなくても仮想マシンにログインできます。
-
-### 要件
-
-- Windows 10 または Windows Server Technical Preview をゲストとして実行する仮想マシンで Windows 10 または Windows Server Technical Preview ホストに接続する必要があります。
-- ホストで Hyper-V Administrator 資格情報でログインする必要があります。
-- 仮想マシンのユーザーの資格情報が必要です。
-- 接続する仮想マシンを起動する必要があります。
-
+---
+redirect_url: https://msdn.microsoft.com/virtualization/hyperv_on_windows/windows_welcome
+---
 
 ## ネットワーク アダプターとメモリのホット アドとホット リムーブ
 
@@ -41,19 +13,19 @@ Windows PowerShell ダイレクトは高性能なスクリプト作成と自動�
 運用チェックポイントを利用すると、仮想マシンの「ある時点」のイメージを簡単に作成できます。このイメージを後に、あらゆる運用ワークロードで完全に復元できます。 これは、保存された状態を利用する代わりに、ゲスト内のバックアップ技術を利用してチェックポイントを作成することで行います。 運用チェックポイントでは、ボリューム スナップショット サービス (VSS) が Windows 仮想マシン内で使用されます。 Linux 仮想マシンはシステム バッファーを消去し、ファイル システムで一貫性のあるチェックポイントを作成します。 「保存された状態」技術でチェックポイントを作成する場合、仮想マシンに標準のチェックポイントを使用するように選択できます。
 
 
-> **重要:** 新しい仮想マシンの既定では、標準のチェックポイントにフォールバックするように運用チェックポイントが作成されます。
+> <g id="1" ctype="x-strong">重要:</g> 新しい仮想マシンの既定では、標準のチェックポイントにフォールバックするように運用チェックポイントが作成されます。
 
 
 ## Hyper-V マネージャーの機能強化
 
-- **代替の資格情報のサポート** – 別の Windows 10 Technical Preview リモート ホストに接続するとき、Hyper-V マネージャーで別セットの資格情報を使用できるようになりました。 後で簡単にログオンできるようにこれらの資格情報を保存することもできます。
+- <g id="1" ctype="x-strong">代替の資格情報のサポート</g> – 別の Windows 10 Technical Preview リモート ホストに接続するとき、Hyper-V マネージャーで別セットの資格情報を使用できるようになりました。 後で簡単にログオンできるようにこれらの資格情報を保存することもできます。
 
-- **ダウンレベルの管理** - Hyper-V マネージャーを利用し、さらに多くのバージョンの Hyper-V を管理できるようになりました。 Windows 10 Technical Preview で Hyper-V マネージャーを利用すると、Windows Server 2012、Windows 8、Windows Server 2012 R2、Windows 8.1 で Hyper-V を実行しているコンピューターを管理できます。
+- <g id="1" ctype="x-strong">ダウンレベルの管理</g> - Hyper-V マネージャーを利用し、さらに多くのバージョンの Hyper-V を管理できるようになりました。 Windows 10 Technical Preview で Hyper-V マネージャーを利用すると、Windows Server 2012、Windows 8、Windows Server 2012 R2、Windows 8.1 で Hyper-V を実行しているコンピューターを管理できます。
 
-- **管理プロトコルの更新** - Hyper-V マネージャーが更新され、CredSSP、Kerberos、NTLM 認証を許可する WS-MAN プロトコルを利用してリモート Hyper-V ホストと通信できるようになりました。 CredSSP を利用してリモート Hyper-V ホストに接続するとき、Active Directory で最初に制約付き委任を有効にしなくてもライブ マイグレーションを実行できます。 また、WS MAN ベースのインフラストラクチャでは、リモート管理でホストを有効にするために必要な構成が簡単です。 WS-MAN はポート 80 で接続します。このポートは既定で開かれています。
+- <g id="1" ctype="x-strong">管理プロトコルの更新</g> - Hyper-V マネージャーが更新され、CredSSP、Kerberos、NTLM 認証を許可する WS-MAN プロトコルを利用してリモート Hyper-V ホストと通信できるようになりました。 CredSSP を利用してリモート Hyper-V ホストに接続するとき、Active Directory で最初に制約付き委任を有効にしなくてもライブ マイグレーションを実行できます。 また、WS MAN ベースのインフラストラクチャでは、リモート管理でホストを有効にするために必要な構成が簡単です。 WS-MAN はポート 80 で接続します。このポートは既定で開かれています。
 
 
-## コネクト スタンバイの導入
+## コネクト スタンバイの互換性
 
 Always On/Always Connected (AOAC) 電源モデルを使用するコンピューターで Hyper-V が有効になっているとき、コネクト スタンバイ電源状態が利用できるようになりました。
 
@@ -65,14 +37,14 @@ https://support.microsoft.com/en-us/kb/2973536) を参照してください。
 
 第 2 世代仮想マシンで実行される Linux オペレーティング システムで、セキュア ブート オプションを有効にして起動できる Linux オペレーティング システムの数が増えました。 Ubuntu 14.04 以降と SUSE Linux Enterprise Server 12 が Technical Preview を実行するホストでセキュア ブートできます。 初めて仮想マシンを起動する前に、仮想マシンで Microsoft UEFI 証明機関を使用するように指定する必要があります。 管理者特権で Windows PowerShell ウィンドウを開き、次のように入力します。
 
-    Set-VMFirmware vmname -SecureBootTemplate MicrosoftUEFICertificateAuthority
+    Set-VMFirmware [-VMName] <VMName> [-SecureBootTemplate] <MicrosoftUEFICertificateAuthority>
 
-Hyper-V で実行する Linux 仮想マシンの詳細については、「[Hyper-V の Linux と FreeBSD 仮想マシン](http://technet.microsoft.com/library/dn531030.aspx)」を参照してください。
+Hyper-V で実行する Linux 仮想マシンの詳細については、「<g id="2CapsExtId1" ctype="x-link"><g id="2CapsExtId2" ctype="x-linkText">Hyper-V の Linux と FreeBSD 仮想マシン</g><g id="2CapsExtId3" ctype="x-title"></g></g>」を参照してください。
 
 
 ## 仮想マシン構成バージョン
 
-Windows 8.1 を実行するホストから Windows 10 で Hyper-V を実行するホストに仮想マシンを移動またはインポートするとき、仮想マシンの構成ファイルは自動的にアップグレードされません。 このため、Windows 8.1 を実行するホストに仮想マシンを戻すことができます。 仮想マシンの構成バージョンを手動で更新するまで、新しい仮想マシンの機能にアクセスすることはできません。
+Windows 8.1 を実行するホストから Windows 10 で Hyper-V を実行するホストに仮想マシンを移動またはインポートするとき、仮想マシンの構成ファイルは自動的にアップグレードされません。 このため、Windows 8.1 を実行するホストに仮想マシンを戻すことができます。 仮想マシンの構成バージョンを手動で更新するまで、仮想マシンで新しい Hyper-V 機能を使用することはできません。
 
 仮想マシンの構成バージョンは、仮想マシンの構成、保存された状態、スナップショット ファイルとの間で互換性がある Hyper-V のバージョンを示しています。 構成バージョン 5 の仮想マシンは Windows 8.1 との間に互換性があり、Windows 8.1 と Windows 10 の両方で実行できます。 構成バージョン 6 の仮想マシンは Windows 10 との間に互換性があり、Windows 8.1 では実行できません。
 
@@ -86,66 +58,36 @@ Get-VM * | Format-Table Name, Version
 
 ### 構成バージョンのアップグレード
 
-管理者特権の Windows PowerShell コマンド プロンプトで、次のコマンドのいずれかを実行します。
+管理者特権の Windows PowerShell プロンプトで、次のコマンドのいずれかを実行します。
 
-``` PowerShell
-Update-VmConfigurationVersion <vmname>
+``` 
+Update-VmConfigurationVersion <VMName>
 ```
 
 または
 
-``` PowerShell
-Update-VmConfigurationVersion <vmobject>
+``` 
+Update-VmConfigurationVersion <VMObject>
 ```
 
-**重要: **
+> <g id="1" ctype="x-strong">重要:</g>
+
 - 仮想マシンの構成バージョンをアップグレードした後、Windows 8.1 を実行するホストに仮想マシンを移動することはできません。
 - バージョン 6 からバージョン 5 に仮想マシンの構成バージョンをダウングレードすることはできません。
 - 仮想マシンの構成をアップグレードするには、仮想マシンをオフにする必要があります。
-- アップグレード後、仮想マシンは新しい構成ファイル形式を使用します。 詳細については、「新しい仮想マシン構成ファイル形式」を参照してください。
+- アップグレード後、仮想マシンは新しい構成ファイル形式を使用します。 詳細については、「<g id="2CapsExtId1" ctype="x-link"><g id="2CapsExtId2" ctype="x-linkText">構成ファイルの形式</g><g id="2CapsExtId3" ctype="x-title"></g></g>」を参照してください。
 
 
-## 構成ファイル形式
+## <g id="1" ctype="x-html"></g><g id="2" ctype="x-html"></g>構成ファイルの形式
 
 仮想マシンの構成ファイル形式が新しくなりました。仮想マシン構成データを読み書きするときの効率を上げるように設計されています。 ストレージが故障した場合にデータが壊れる可能性を減らすようにも設計されています。 新しい構成ファイルでは、仮想マシン構成データに .VMCX 拡張子が、ランタイム状態データに .VMRS 拡張子が使用されます。
 
-
-> **重要:** .VMCX ファイルはバイナリ形式です。 .VMCX ファイルと .VMRS ファイルは直接編集できません。
-
-## Windows Update による統合サービス
-
-Windows ゲストの統合サービスの更新プログラムは Windows Update から配布されるようになりました。
-
-統合コンポーネント (別名、統合サービス) は、仮想マシンとホスト オペレーティング システムとの通信を可能にする統合ドライバーのセットです。 これにより、同期からゲスト ファイル コピーまで、さまざまなサービスが制御されます。 統合コンポーネントのインストールと更新プログラムについては、この 1 年、それがアップグレード プロセスの妨げになることを顧客に説明してきました。
+> <g id="1" ctype="x-strong">重要:</g> .VMCX ファイルはバイナリ形式です。 .VMCX ファイルと .VMRS ファイルは直接編集できません。
 
 
-今までも、Hyper-V のすべての新しいバージョンに新しい統合コンポーネントが含まれています。 Hyper-V をアップグレードするとき、仮想マシンで統合コンポーネントもアップグレードする必要がありました。 新しい統合コンポーネントは Hyper-V ホストで追加され、vmguest.iso で仮想マシンにインストールされました。 このプロセスでは仮想マシンを再起動する必要があり、他の Windows 更新プログラムで一括処理することはできませんでした。 Hyper-V 管理者は vmguest.iso を支給する必要があり、仮想マシン管理者はそれをインストールする必要があったため、統合コンポーネントのアップグレードでは、通常とは異なり、Hyper-V 管理者に仮想マシンの管理者資格情報を与える必要がありました。
-　　
 
 
-Windows 10 以降では、その他の重要な更新プログラムと共に、すべての統合コンポーネントが Windows Update 経由で仮想マシンに配布されます。
 
-
-現在、次を実行する仮想マシンの更新プログラムを利用できます。
-*  Windows Server 2012
-*  Windows Server 2008 R2
-*  Windows 8
-*  Windows 7
-
-仮想マシンは Windows Update または WSUS サーバーに接続する必要があります。 将来、統合コンポーネントの更新プログラムにはカテゴリ ID が与えられます。今回のリリースでは、KB として一覧に記載されています。
-
-適用方針については、この[ブログ投稿](http://blogs.technet.com/b/virtualization/archive/2014/11/24/integration-components-how-we-determine-windows-update-applicability.aspx)を参照してください。
-
-
-統合サービスの詳しいインストール手順については、[このブログ](http://blogs.msdn.com/b/virtual_pc_guy/archive/2014/11/12/updating-integration-components-over-windows-update.aspx)投稿を参照してください。
-
-
-> **重要:** 統合コンポーネントを更新する際、ISO イメージ ファイルの vmguest.iso は不要になりました。 Windows 10 の Hyper-V では追加されません。
-
-
-## 次のステップ
-
-[Windows 10 の Hyper-v の段階的説明](..\quick_start\walkthrough.md)
-
+<!--HONumber=May16_HO1-->
 
 

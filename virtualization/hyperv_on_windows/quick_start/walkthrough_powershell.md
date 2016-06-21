@@ -1,10 +1,23 @@
-# 手順 8: Hyper-V と Windows PowerShell の使用
+---
+title: &1033283708 Hyper-V と Windows PowerShell の使用
+description: Hyper-V と Windows PowerShell の使用
+keywords: windows 10, hyper-v
+author: neilpeterson
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: &1248108713 windows-10-hyperv
+ms.service: windows-10-hyperv
+ms.assetid: 6d1ae036-0841-4ba5-b7e0-733aad31e9a7
+---
+
+# Hyper-V と Windows PowerShell の使用
 
 Hyper-V の展開、仮想マシンの作成、仮想マシンの管理の基本を確認できたので、次は PowerShell でこれらの作業の大半を自動化する方法について説明します。
 
 ### HYPER-V のコマンドの一覧を返します
 
-1.  Windows の [スタート] ボタンをクリックし、「**PowerShell**」と入力します。
+1.  Windows の [スタート] ボタンをクリックし、「<g id="2" ctype="x-strong">PowerShell</g>」と入力します。
 2.  次のコマンドを実行すると、Hyper-V PowerShell モジュールで利用できる PowerShell コマンドの検索可能な一覧が表示されます
 
  ```powershell
@@ -12,21 +25,21 @@ get-command -module hyper-v | out-gridview
  ```
   次のような一覧になります。
 
-  ![](media\command_grid.png)
+  <g id="1" ctype="x-linkText"></g>
 
-3. 特定の PowerShell コマンドの詳細を確認するには、`get-help` を使用します。 たとえば、次のコマンドを実行すると、`get-vm` Hyper-V コマンドに関する情報が返されます。
+3. 特定の PowerShell コマンドの詳細を確認するには、<g id="2" ctype="x-code">get-help</g> を使用します。 たとえば、次のコマンドを実行すると、<g id="2" ctype="x-code">get-vm</g> Hyper-V コマンドに関する情報が返されます。
 
   ```powershell
 get-help get-vm
   ```
  コマンドを構築する方法、必須と任意のパラメーター、および使用できるエイリアスが出力されます。
 
- ![](media\get_help.png)
+ <g id="1" ctype="x-linkText"></g>
 
 
 ### 仮想マシンの一覧を返す
 
-仮想マシンの一覧を返すには、`get-vm` コマンドを使用します。
+仮想マシンの一覧を返すには、<g id="2" ctype="x-code">get-vm</g> コマンドを使用します。
 
 1. PowerShell で次のコマンドを実行します。
 
@@ -35,9 +48,9 @@ get-vm
  ```
  次のような出力が表示されます。
 
- ![](media\get_vm.png)
+ <g id="1" ctype="x-linkText"></g>
 
-2. 電源がオンになっている仮想マシンのみの一覧を返す場合、`get-vm` コマンドにフィルターを追加します。 フィルターは where-object コマンドを利用して追加できます。 フィルター処理の詳細については、[Where-Object の使用](https://technet.microsoft.com/en-us/library/ee177028.aspx)に関するドキュメントをご覧ください。
+2. 電源がオンになっている仮想マシンのみの一覧を返す場合、<g id="2" ctype="x-code">get-vm</g> コマンドにフィルターを追加します。 フィルターは where-object コマンドを利用して追加できます。 フィルター処理の詳細については、<g id="2CapsExtId1" ctype="x-link"><g id="2CapsExtId2" ctype="x-linkText">Where-Object の使用</g><g id="2CapsExtId3" ctype="x-title"></g></g>に関するドキュメントをご覧ください。
 
  ```powershell
  get-vm | where {$_.State -eq ‘Running’}
@@ -69,7 +82,7 @@ get-vm
 
 ### VM チェックポイントを作成する
 
-PowerShell を使用してチェックポイントを作成するには、`get-vm` コマンドを使用して仮想マシンを選択し、それを `checkpoint-vm` コマンドに渡します。 最後に、`-snapshotname` を使用してチェックポイントに名前を付けます。 完全なコマンドは次のようになります。
+PowerShell を使用してチェックポイントを作成するには、<g id="2" ctype="x-code">get-vm</g> コマンドを使用して仮想マシンを選択し、それを <g id="4" ctype="x-code">checkpoint-vm</g> コマンドに渡します。 最後に、<g id="2" ctype="x-code">-snapshotname</g> を使用してチェックポイントに名前を付けます。 完全なコマンドは次のようになります。
 
  ```powershell
  get-vm -Name <VM Name> | checkpoint-vm -snapshotname <name for snapshot>
@@ -78,8 +91,8 @@ PowerShell を使用してチェックポイントを作成するには、`get-v
 
 次の例は、PowerShell Integrated Scripting Environment (ISE) で新しい仮想マシンを作成する方法を示すものです。 これは単純な例であり、拡張して PowerShell 機能やより高度な VM 展開を追加できます。
 
-1. PowerShell ISE を開くには、[開始] をクリックし、「**PowerShell ISE**」と入力します。
-2. 次のコードを実行し、仮想マシンを作成します。 New-VM コマンドについて詳しくは、[New-VM](https://technet.microsoft.com/en-us/library/hh848537.aspx) ドキュメントをご覧ください。
+1. PowerShell ISE を開くには、[開始] をクリックし、「<g id="2" ctype="x-strong">PowerShell ISE</g>」と入力します。
+2. 次のコードを実行し、仮想マシンを作成します。 New-VM コマンドについて詳しくは、<g id="2CapsExtId1" ctype="x-link"><g id="2CapsExtId2" ctype="x-linkText">New-VM</g><g id="2CapsExtId3" ctype="x-title"></g></g> ドキュメントをご覧ください。
 
   ```powershell
  $VMName = "VMNAME"
@@ -100,13 +113,13 @@ PowerShell を使用してチェックポイントを作成するには、`get-v
 
 ## ラップし、参照
 
-このドキュメントはいくつかのサンプル シナリオと同様に、HYPER-V の PowerShell モジュールに、エクスプ ローラーにいくつかの簡単な手順を説明しました。 Hyper-V PowerShell モジュールの詳細については、「[Windows PowerShell リファレンスの Hyper-V コマンドレット](https://technet.microsoft.com/%5Clibrary/Hh848559.aspx)」をご覧ください。
+このドキュメントはいくつかのサンプル シナリオと同様に、HYPER-V の PowerShell モジュールに、エクスプ ローラーにいくつかの簡単な手順を説明しました。 Hyper-V PowerShell モジュールの詳細については、「<g id="2CapsExtId1" ctype="x-link"><g id="2CapsExtId2" ctype="x-linkText">Windows PowerShell リファレンスの Hyper-V コマンドレット</g><g id="2CapsExtId3" ctype="x-title"></g></g>」をご覧ください。
 
 
 
 
 
 
-<!--HONumber=Feb16_HO4-->
+<!--HONumber=May16_HO1-->
 
 
