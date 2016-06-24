@@ -101,14 +101,14 @@ RUN ["<executable", "<param 1>", "<param 2>"
 RUN <command>
 ```
 
-実行と シェル フォーム間の差異。`RUN` 命令の実行方法で示します。 exec メソッドを使用すると、指定したプログラムが明示的に実行されます。 
+exec とシェル フォーム間の違いは、`RUN` 命令の実行方法です。 exec フォームを使用すると、指定したプログラムが明示的に実行されます。 
 
-次の例では、実行 形式を使用しました。
+次の例では、exec フォームを使用しています。
 
 ```none
 FROM windowsservercore
 
-RUN ["powershell","New-Item","c:/test"]
+RUN ["powershell", "New-Item", "c:/test"]
 ```
 
 結果のイメージを確認して、実行されたコマンドは `powershell new-item c:/test` です。
@@ -142,7 +142,7 @@ IMAGE               CREATED             CREATED BY                              
 Windows では、exec 形式で `RUN` 命令を使用する場合、バックスラッシュをエスケープする必要があります。
 
 ```none
-RUN ["powershell","New-Item","c:\\test"]
+RUN ["powershell", "New-Item", "c:\\test"]
 ```
 
 **例**
@@ -179,7 +179,7 @@ COPY ["<source>" "<destination>"]
 
 **Windows に関する考慮事項**
  
-Windows では、変換先形式でスラッシュを使用する必要があります。 たとえば、次に有効な `ADD` 命令を示します。
+Windows では、変換先形式でスラッシュを使用する必要があります。 たとえば、次に有効な `COPY` 命令を示します。
 
 ```none
 COPY test1.txt /temp/
@@ -203,6 +203,8 @@ COPY source /sqlite/
 ```none
 COPY config* c:/temp/
 ```
+
+`COPY` 命令の詳細については、[Docker.com の COPY リファレンス]( https://docs.docker.com/engine/reference/builder/#copy)をご覧ください。
 
 ### 追加
 
@@ -297,7 +299,7 @@ WORKDIR c:\\Apache24\\bin
 ```none
 # exec form
 
-CMD ["<executable";"<param>"]
+CMD ["<executable", "<param>"]
 
 # shell form
 
@@ -311,7 +313,7 @@ Windows では、`CMD` 命令に指定されたファイル パスにはフォ�
 ```none
 # exec form
 
-CMD ["c:\\Apache24\\bin\\httpd.exe","-w"]
+CMD ["c:\\Apache24\\bin\\httpd.exe", "-w"]
 
 # shell form
 
@@ -381,7 +383,7 @@ RUN powershell.exe -executionpolicy bypass c:\windows\temp\script.ps1
 
 ## Docker のビルド 
 
-Dockerfile が作成され、ディスクに保存されると、`docker build` を実行して新しいイメージを作成できます。 `docker build` コマンドには、いくつかの省略可能なパラメーターと、Dockerfile のパスを指定できます。 すべてのビルド オプションの一覧を含め、Docker のビルドの詳細については、[Docker.com のビルドに関するページ](https://docs.docker.com/engine/reference/commandline/build/#build-with)を参照してください。
+Dockerfile が作成され、ディスクに保存されると、`docker build` を実行して新しいイメージを作成できます。 `docker build` コマンドには、いくつかの省略可能なパラメーターと、Dockerfile のパスを指定できます。 すべてのビルド オプションの一覧を含め、Docker のビルドの詳細については、[Docker.com のビルドに関するページ](https://docs.docker.com/engine/reference/commandline/build/#build)をご覧ください。
 
 ```none
 Docker build [OPTIONS] PATH
@@ -440,6 +442,6 @@ windowsservercore   latest              6801d964fda5        4 months ago        
 [Docker.com の Dockerfile リファレンス](https://docs.docker.com/engine/reference/builder/)
 
 
-<!--HONumber=May16_HO4-->
+<!--HONumber=Jun16_HO3-->
 
 

@@ -13,19 +13,23 @@ ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
 
 # コンテナー ホストの展開 - Windows Server
 
-**この記事は暫定的な内容であり、変更される可能性があります。** 
+**この記事は暫定的な内容であり、変更される可能性があります。**
 
 Windows コンテナー ホストの展開手順は、オペレーティング システムやホスト システムの種類 (物理または仮想) によって異なります。 このドキュメントでは、物理または仮想システム上で、Windows Server 2016 または Windows Server Core 2016 のいずれかに対して Windows コンテナー ホストを展開する方法を詳しく説明します。
 
 ## コンテナー機能のインストール
 
-コンテナー機能は、Windows コンテナーを使用する前に有効にする必要があります。 そのためには、管理者特権の PowerShell セッションで次のコマンドを実行します。 
+コンテナー機能は、Windows コンテナーを使用する前に有効にする必要があります。 そのためには、管理者特権の PowerShell セッションで次のコマンドを実行します。
 
 ```none
 Install-WindowsFeature containers
 ```
 
 機能のインストールが完了したら、コンピューターを再起動します。
+
+```none
+Restart-Computer -Force
+```
 
 ## Docker のインストール
 
@@ -71,17 +75,17 @@ Start-Service Docker
 
 ## コンテナーの基本イメージのインストール
 
-コンテナーを展開する前に、コンテナーの基本 OS イメージをダウンロードする必要があります。 次の例では、Windows Server Core のベース OS イメージをダウンロードします。 これと同じ手順を実行して、Nano Server 基本イメージをインストールすることができます。 これと同じ手順を実行して、Nano Server 基本イメージをインストールすることができます。 Windows コンテナー イメージの詳細については、[コンテナー イメージの管理](../management/manage_images.md)に関するページを参照してください。
-    
+コンテナーを展開する前に、コンテナーの基本 OS イメージをダウンロードする必要があります。 次の例では、Windows Server Core のベース OS イメージをダウンロードします。 これと同じ手順を実行して、Nano Server 基本イメージをインストールすることができます。 Windows コンテナー イメージの詳細については、[コンテナー イメージの管理](../management/manage_images.md)に関するページを参照してください。
+
 まず、コンテナー イメージ パッケージ プロバイダーをインストールします。
 
 ```none
 Install-PackageProvider ContainerImage -Force
 ```
 
-次に、Windows Server Core のイメージをインストールします。 このプロセスには時間がかかる場合があるため、一休みして、ダウンロードが完了したら作業に戻ってください。
+次に、Windows Server Core のイメージをインストールします。 このプロセスには時間がかかる場合があるため、しばらく待ち、ダウンロードが完了したら作業に戻ってください。
 
-```none 
+```none
 Install-ContainerImage -Name WindowsServerCore    
 ```
 
@@ -99,11 +103,11 @@ docker tag windowsservercore:10.0.14300.1000 windowsservercore:latest
 
 ## Hyper-V コンテナー ホスト
 
-Hyper-V コンテナーを展開するには、Hyper-V ロールが必要になります。 Windows コンテナー ホスト自体が Hyper-V 仮想マシンの場合、Hyper-V ロールをインストールする前に、入れ子になった仮想化を有効にする必要があります。 入れ子になった仮想化の詳細については、「[入れ子になった仮想化]( https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting)」を参照してください。
+Hyper-V コンテナーを実行するには、Hyper-V ロールが必要になります。 Windows コンテナー ホスト自体が Hyper-V 仮想マシンの場合、Hyper-V ロールをインストールする前に、入れ子になった仮想化を有効にする必要があります。 入れ子になった仮想化の詳細については、「[入れ子になった仮想化]( https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting)」を参照してください。
 
 ### 入れ子になった仮想化
 
-次のスクリプトでは、コンテナー ホストの入れ子になった仮想化を構成します。 このスクリプトは、コンテナー ホストの仮想マシンをホストする Hyper-V マシンで実行します。 このスクリプトを実行する場合は、必ず、コンテナー ホストの仮想マシンを無効にしてください。
+次のスクリプトでは、コンテナー ホストの入れ子になった仮想化を構成します。 このスクリプトは親 Hyper-V マシンで実行されます。 このスクリプトを実行する場合は、必ず、コンテナー ホストの仮想マシンを無効にしてください。
 
 ```none
 #replace with the virtual machine name
@@ -128,7 +132,6 @@ Install-WindowsFeature hyper-v
 ```
 
 
-
-<!--HONumber=May16_HO4-->
+<!--HONumber=Jun16_HO2-->
 
 

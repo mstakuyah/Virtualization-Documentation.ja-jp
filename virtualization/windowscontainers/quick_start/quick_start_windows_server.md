@@ -13,9 +13,9 @@ ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 
 # Windows Server の Windows コンテナー
 
-**この記事は暫定的な内容であり、変更される可能性があります。** 
+**この記事は暫定的な内容であり、変更される可能性があります。**
 
-この演習では、Windows Server の Windows コンテナー機能の基本的な展開と使用について段階的に確認します。 完了後、コンテナー ロールがインストールされ、シンプルな Windows Server コンテナーが展開されます。 このクイック スタートを始める前に、コンテナーの基本的な概念と用語を理解しておいてください。 情報は[クイック スタートの概要](./quick_start.md)にあります。 
+この演習では、Windows Server の Windows コンテナー機能の基本的な展開と使用について段階的に確認します。 完了後、コンテナー ロールがインストールされ、シンプルな Windows Server コンテナーが展開されます。 このクイック スタートを始める前に、コンテナーの基本的な概念と用語を理解しておいてください。 情報は[クイック スタートの概要](./quick_start.md)にあります。
 
 このクイック スタートは Windows Server 2016 の Windows Server コンテナーのみに適用されます。 このページの左側の目次に追加のクイック スタート文書があります。
 
@@ -25,13 +25,17 @@ ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 
 ## 1.コンテナー機能のインストール
 
-コンテナー機能は、Windows コンテナーを使用する前に有効にする必要があります。 そのためには、管理者特権の PowerShell セッションで次のコマンドを実行します。 
+コンテナー機能は、Windows コンテナーを使用する前に有効にする必要があります。 そのためには、管理者特権の PowerShell セッションで次のコマンドを実行します。
 
 ```none
 Install-WindowsFeature containers
 ```
 
 機能のインストールが完了したら、コンピューターを再起動します。
+
+```none
+Restart-Computer -Force
+```
 
 ## 2.Docker のインストール
 
@@ -70,22 +74,22 @@ dockerd --register-service
 インストールされたら、サービスを開始することができます。
 
 ```none
-Start-Service Docker
+Start-Service docker
 ```
 
 ## 3.コンテナーの基本イメージのインストール
 
-Windows コンテナーは、テンプレートまたはイメージから展開されます。 コンテナーを展開する前に、基本 OS イメージをダウンロードする必要があります。 次のコマンドは、Windows Server Core のベース イメージをダウンロードします。 
-    
+Windows コンテナーは、テンプレートまたはイメージから展開されます。 コンテナーを展開する前に、基本 OS イメージをダウンロードする必要があります。 次のコマンドは、Windows Server Core のベース イメージをダウンロードします。
+
 まず、コンテナー イメージ パッケージ プロバイダーをインストールします。
 
 ```none
 Install-PackageProvider ContainerImage -Force
 ```
 
-次に、Windows Server Core のイメージをインストールします。 このプロセスには時間がかかる場合があるため、一休みして、ダウンロードが完了したら作業に戻ってください。
+次に、Windows Server Core のイメージをインストールします。 このプロセスには時間がかかる場合があるため、しばらく待ち、ダウンロードが完了したら作業に戻ってください。
 
-```none 
+```none
 Install-ContainerImage -Name WindowsServerCore    
 ```
 
@@ -175,6 +179,8 @@ CONTAINER ID    IMAGE                             COMMAND               CREATED 
 
 別のコンピューターから、Web ブラウザーを開き、コンテナー ホストの IP アドレスを入力してください。 すべてが正しく構成されていれば、IIS のスプラッシュ画面が表示されます。 これは、Windows コンテナーでホストされている IIS インスタンスからサービスが提供されている状態です。
 
+**注:** Azure で作業している場合、ポート 80 経由のトラフィックを許可するために、ネットワーク セキュリティ グループ ルールを設定する必要があります。 詳細については、「[既存の NSG に規則を作成する]( https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-create-nsg-arm-pportal/#create-rules-in-an-existing-nsg)」をご覧ください。
+
 ![](media/iis1.png)
 
 コンテナー ホストに戻り、`docker rm` コマンドを使用してコンテナーを削除します。 注記 – この例のコンテナー名を実際のコンテナー名に置き換えます。
@@ -189,6 +195,6 @@ docker rm -f grave_jang
 [Windows 10 の Windows コンテナー](./quick_start_windows_10.md)
 
 
-<!--HONumber=May16_HO4-->
+<!--HONumber=Jun16_HO3-->
 
 

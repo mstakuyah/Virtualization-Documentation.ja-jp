@@ -52,7 +52,7 @@ Set-VM -Name <vmname> -CheckpointType Standard
 Set-VM -Name <vmname> -CheckpointType Production
 ```
 
-運用チェックポイントに設定するには、次のコマンドを使用します。運用チェックポイントの設定に失敗しても、標準のチェックポイントは作成されません。 
+運用チェックポイントに設定するには、次のコマンドを使用します。運用チェックポイントの設定に失敗した場合、標準のチェックポイントは作成されません。 
 ```powershell
 Set-VM -Name <vmname> -CheckpointType ProductionOnly
 ```
@@ -162,7 +162,7 @@ Remove-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name>
 
 **PowerShell を使用**
 ``` powershell
-Export-VMCheckpoint -VMName <virtual machine name>  -Name <checkpoint name> -Path <path for export>
+Export-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name> -Path <path for export>
 ```
 
 ## チェックポイントを有効または無効にする
@@ -245,6 +245,6 @@ This folder will contain the .VMRS file with the runtime and saved state data an
 2. テキスト ファイルが復元されていることを確認します。 ただし、標準チェックポイントとは異なり、メモ帳は開かれていません。   
 
 
-<!--HONumber=May16_HO3-->
+<!--HONumber=Jun16_HO3-->
 
 

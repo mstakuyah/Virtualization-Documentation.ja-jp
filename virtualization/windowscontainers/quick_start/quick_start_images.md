@@ -48,6 +48,8 @@ echo "Hello World From a Windows Server Container" > C:\inetpub\wwwroot\index.ht
 
 別のシステムから、コンテナー ホストの IP アドレスを参照します。 ‘Hello World’ アプリケーションが表示されるはずです。
 
+**注:** Azure で作業している場合、ポート 80 経由のトラフィックを許可するために、ネットワーク セキュリティ グループ ルールを設定する必要があります。 詳細については、「[既存の NSG に規則を作成する]( https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-create-nsg-arm-pportal/#create-rules-in-an-existing-nsg)」をご覧ください。
+
 ![](media/hello.png)
 
 コンテナーに戻り、対話型のコンテナー セッションを終了します。
@@ -159,6 +161,6 @@ docker rm -f cranky_brown
 
 [Windows 10 の Windows コンテナー](./quick_start_windows_10.md)
 
-<!--HONumber=May16_HO4-->
+<!--HONumber=Jun16_HO2-->
 
 
