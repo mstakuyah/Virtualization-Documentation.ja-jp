@@ -24,12 +24,12 @@ Windows 10 Hyper-V では、仮想ネットワークのネイティブ ネット
 * Windows ビルド 14295 以降
 * Hyper-V ロールが有効になっている (指示は[ここ](../quick_start/walkthrough_create_vm.md))
 
-> **注記:**  現在のところ、Hyper-V では、NAT ネットワークを 1 つだけ作成できます。
+> **注記:**  現在のところ、Hyper-V では、NAT ネットワークを 1 つだけ作成できます。 Windows NAT (WinNAT) の実装、機能、制限事項の詳細については、「[WinNAT 機能と制限事項のブログ (ブログの投稿)](https://blogs.technet.microsoft.com/virtualization/2016/05/25/windows-nat-winnat-capabilities-and-limitations/)」をご覧ください
 
 ## NAT 概要
-NAT は、ホスト コンピューターの IP アドレスとポートを利用することで、ネットワーク リソースへのアクセスを仮想マシンに与えます。
+NAT は、ホスト コンピューターの IP アドレスと内部 Hyper-V 仮想スイッチを通じてポートを利用することで、ネットワーク リソースへのアクセスを仮想マシンに与えます。
 
-ネットワーク アドレス変換 (NAT) は IP アドレスを節約するように設計されているネットワーキング モードです。外部の IP アドレスとポートをより大きな内部 IP アドレス セットにマッピングします。  基本的に、NAT スイッチは NAT マッピング テーブルを利用し、IP アドレスとポート番号からネットワーク上のデバイス (仮想マシン、コンピューター、コンテナーなど) に関連付けられている正しい内部 IP アドレスにトラフィックを送ります。
+ネットワーク アドレス変換 (NAT) は IP アドレスを節約するように設計されているネットワーキング モードです。外部の IP アドレスとポートをより大きな内部 IP アドレス セットにマッピングします。  基本的に、NAT はフロー テーブルを利用し、外部 (ホスト) IP アドレスとポート番号からネットワーク上のエンドポイント (仮想マシン、コンピューター、コンテナーなど) に関連付けられている正しい内部 IP アドレスにトラフィックを送ります
 
 また、NAT を利用すれば、同じ (内部) 通信ポートを必要とするアプリケーションを複数の仮想マシンがホストできます。アプリケーションを一意の外部ポートにマッピングします。
 
@@ -121,6 +121,88 @@ NAT は、ホスト コンピューターの IP アドレスとポートを利�
 
 仮想マシンを新しい NAT ネットワークに接続するには、VM 設定メニューを利用し、[NAT ネットワークの設定](setup_nat_network.md#create-a-nat-virtual-network)の最初の手順で作成した内部スイッチを仮想マシンに接続します。
 
+WinNAT は単独でエンドポイント (例: VM) に IP アドレスを割り当てることがないため、VM 自体から手動でこの作業を行う必要があります。つまり、NAT 内部プレフィックスの範囲内で IP アドレスを設定し、既定のゲートウェイ IP アドレスを設定し、DNS サーバー情報を設定します。 ただし、エンドポイントがコンテナーにアタッチされる場合には、注意が必要です。 この場合、ホスト ネットワーク サービス (HNS) はホスト コンピューティング サービス (HCS) を割り当てて使用し、IP アドレス、ゲートウェイ IP、DNS 情報をコンテナーに直接割り当てます。
+
+
+## 構成の例: NAT ネットワークへの VM とコンテナーのアタッチ
+_複数の VM とコンテナーを 1 つの NAT にアタッチする場合は、NAT 内部サブネットのプレフィックスが別のアプリケーションまたはサービス (例: Docker for Windows や Windows コンテナー – HNS) によって割り当てられている IP の範囲を網羅するのに十分な大きさになっている必要があります。 この場合、IP とネットワーク構成のアプリケーション レベルの割り当てか、手動構成のいずれかが必要になります。手動構成の場合は、管理者が操作を行い、同一ホスト上の既存の IP 割り当てを再使用しないようにする必要があります。_
+
+### Docker for Windows (Linux VM) と Windows コンテナー
+次のソリューションでは、Docker for Windows (Linux コンテナーを実行する Linux VM) と Windows コンテナーの両方が、別の内部 vSwitch が使用する同じ WinNAT インスタンスを共有できます。 接続は Linux コンテナーと Windows コンテナーの両方で機能します。
+
+ユーザーは “VMNAT” という名前の内部 vSwitch を通じて VM を NAT ネットワークにしており、次に Docker エンジンを使用して Windows コンテナー機能をインストールしようと考えています
+```none
+PS C:\> Get-NetNat “VMNAT”| Remove-NetNat (this will remove the NAT but keep the internal vSwitch).
+Install Windows Container Feature
+DO NOT START Docker Service (daemon)
+Edit the arguments passed to the docker daemon (dockerd) by adding –fixed-cidr=<container prefix> parameter. This tells docker to create a default nat network with the IP subnet <container prefix> (e.g. 192.168.1.0/24) so that HNS can allocate IPs from this prefix.
+PS C:\> Start-Service Docker; Stop-Service Docker
+PS C:\> Get-NetNat | Remove-NetNAT (again, this will remove the NAT but keep the internal vSwitch)
+PS C:\> New-NetNat -Name SharedNAT -InternalIPInterfaceAddressPrefix <shared prefix>
+PS C:\> Start-Service docker
+```
+Docker/HNS は <container prefix> から Windows コンテナーに IP アドレスを割り当てます。管理者は、<shared prefix> の別のセットから IP を VM に割り当てます。 <container prefix>
+
+ユーザーは実行中の docker エンジンを使用して Windows コンテナー機能をインストールしました。次に、NAT ネットワークに VM を接続しようと考えています
+```none
+PS C:\> Stop-Service docker
+PS C:\> Get-ContainerNetwork | Remove-ContainerNetwork -force
+PS C:\> Get-NetNat | Remove-NetNat (this will remove the NAT but keep the internal vSwitch)
+Edit the arguments passed to the docker daemon (dockerd) by adding -b “none” option to the end of docker daemon (dockerd) command to tell docker not to create a default NAT network.
+PS C:\> New-ContainerNetwork –name nat –Mode NAT –subnetprefix <container prefix> (create a new NAT and internal vSwitch – HNS will allocate IPs to container endpoints attached to this network from the <container prefix>)
+PS C:\> Get-Netnat | Remove-NetNAT (again, this will remove the NAT but keep the internal vSwitch)
+PS C:\> New-NetNat -Name SharedNAT -InternalIPInterfaceAddressPrefix <shared prefix>
+PS C:\> New-VirtualSwitch -Type internal (attach VMs to this new vSwitch)
+PS C:\> Start-Service docker
+```
+Docker/HNS は <container prefix> から Windows コンテナーに IP アドレスを割り当てます。管理者は、<shared prefix> の別のセットから IP を VM に割り当てます。 <container prefix>
+
+最後に、2 つの内部 VM スイッチを設定し、そのスイッチ間で共有する NetNat を 1 つ設定する必要があります。
+
+## トラブルシューティング
+NAT が 1 つだけであることを確認します。
+```none
+Get-NetNat
+```
+NAT が既に存在する場合、それを削除してください。
+```none
+Get-NetNat | Remove-NetNat
+```
+アプリケーションまたは機能 (例: Windows コンテナー) ごとに「内部」vmSwitch が 1 つだけ設定されていることを確認します。 vSwitch の名前を記録します
+```none
+Get-VMSwitch
+```
+以前の NAT のプライベート IP アドレス (例: NAT の既定のゲートウェイ IP Address - 通常 *.1) がアダプターに割り当てられていないか確認します
+```none
+Get-NetIPAddress -InterfaceAlias "vEthernet(<name of vSwitch>)"
+```
+古いプライベート IP アドレスが使用されている場合、それを削除してください。
+```none
+Remove-NetIPAddress -InterfaceAlias "vEthernet(<name of vSwitch>)" -IPAddress <IPAddress>
+```
+複数の NAT を削除すると、複数の NAT ネットワークが誤って作成されてしまうと報告されています。 これは、最新のビルド (Windows Server 2016 Technical Preview 5 や Windows 10 Insider Preview ビルドなど) のバグが原因です。 複数の NAT ネットワークがある場合は、docker ネットワーク ls や Get-ContainerNetwork を実行した後に、管理者特権の PowerShell から次を実行してください。
+
+```none
+PS> $KeyPath = "HKLM:\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\SwitchList"
+PS> $keys = get-childitem $KeyPath
+PS> foreach($key in $keys)
+PS> {
+PS>    if ($key.GetValue("FriendlyName") -eq 'nat')
+PS>    {
+PS>       $newKeyPath = $KeyPath+"\"+$key.PSChildName
+PS>       Remove-Item -Path $newKeyPath -Recurse
+PS>    }
+PS> }
+PS> remove-netnat -Confirm:$false
+PS> Get-ContainerNetwork | Remove-ContainerNetwork
+PS> Get-VmSwitch -Name nat | Remove-VmSwitch (_failure is expected_)
+PS> Stop-Service docker
+PS> Set-Service docker -StartupType Disabled
+Reboot Host
+PS> Get-NetNat | Remove-NetNat
+PS> Set-Service docker -StartupType automaticac
+PS> Start-Service docker 
+```
 
 ## トラブルシューティング
 
@@ -190,6 +272,6 @@ NAT は、ホスト コンピューターの IP アドレスとポートを利�
 NAT ネットワークの詳細は[ここ](https://en.wikipedia.org/wiki/Network_address_translation)を参照してください。
 
 
-<!--HONumber=May16_HO5-->
+<!--HONumber=Jun16_HO1-->
 
 

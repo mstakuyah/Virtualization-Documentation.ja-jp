@@ -52,7 +52,7 @@ Stop-Service docker
 この構成ファイルは `c:\programdata\docker\runDockerDaemon.cmd` にあります。 以下の行を、次を追加して編集してください。 `-b "none"`
 
 ```none
-dockerd -b "none"
+dockerd <options> -b “none”
 ```
 
 サービスを再起動します。
@@ -102,24 +102,47 @@ IsDeleted          : False
 
 ### NAT ネットワーク
 
-**ネットワーク アドレス変換** – このネットワーク モードは、コンテナーにすばやくプライベート IP アドレスを割り当てるのに便利です。 コンテナーへの外部アクセスは、外部 IP アドレスとポート (コンテナー ホスト) 間のポートと、内部 IP アドレスとコンテナー ポート間のマッピングによって提供されます。 外部の IP アドレスとポートの組み合わせで受信されたすべてのネットワーク トラフィックは、WinNAT ポートのマッピング テーブルと比較され、適切なコンテナーの IP アドレスとポートに転送されます。 また、NAT では、同じ (内部) 通信ポートを使用するアプリケーションを、一意の外部ポートにマッピングすることにより、複数のコンテナーでホストできます。 TP5 では、NAT ネットワークは 1 つのみ存在できます。
+**ネットワーク アドレス変換** – このネットワーク モードは、コンテナーにすばやくプライベート IP アドレスを割り当てるのに便利です。 コンテナーへの外部アクセスは、外部 IP アドレスとポート (コンテナー ホスト) 間のポートと、内部 IP アドレスとコンテナー ポート間のマッピングによって提供されます。 外部の IP アドレスとポートの組み合わせで受信されたすべてのネットワーク トラフィックは、WinNAT ポートのマッピング テーブルと比較され、適切なコンテナーの IP アドレスとポートに転送されます。 また、NAT では、同じ (内部) 通信ポートを使用するアプリケーションを、一意の外部ポートにマッピングすることにより、複数のコンテナーでホストできます。 ホストごとに NAT ネットワーク内部プレフィックスを使用できるのは、Windows のみです。 詳細については、「[WinNAT の機能と制限事項 (ブログの投稿)](https://blogs.technet.microsoft.com/virtualization/2016/05/25/windows-nat-winnat-capabilities-and-limitations/)」をご覧ください 
 
-> TP5 では、すべての NAT のポートの静的マッピングに対し、ファイアウォール規則が自動作成されます。 このファイアウォール規則は、コンテナー ホストに対してグローバルであり、特定のコンテナーのエンドポイント、またはネットワーク アダプターにはローカライズされません。
+> TP5 以降では、すべての NAT のポートの静的マッピングに対し、ファイアウォール規則が自動作成されます。 このファイアウォール規則は、コンテナー ホストに対してグローバルであり、特定のコンテナーのエンドポイント、またはネットワーク アダプターにはローカライズされません。
 
 #### ホストの構成 <!--1-->
 
-NAT ネットワーク モードを使用するには、ドライバー名が 'nat' のコンテナー ネットワークを作成します。
+NAT ネットワーク モードを使用するには、ドライバー名が 'nat' のコンテナー ネットワークを作成します。 
+
+> ホストごとに作成できる _nat_ 既定ネットワークは 1 つのみであるため、他のすべての NAT ネットワークを削除し、docker デーモンを '-b "none"' オプションを使用して実行した場合にのみ、新しい NAT ネットワークを作成するようにしてください。 また、単に NAT で使用する内部 IP ネットワークを制御するだけなら、_--fixed-cidr=<NAT internal prefix / mask>_ オプションを C:\ProgramData\docker\runDockerDaemon.cmd にある dockerd コマンドに追加します。
 
 ```none
-docker network create -d nat MyNatNetwork
+docker network create -d nat MyNatNetwork [--subnet=<string[]>] [--gateway=<string[]>]
 ```
-
-Docker の network create コマンドに、ゲートウェイ IP アドレス (--gateway=<string[]>) およびサブネット プレフィックス (--subnet=<string[]>) などの追加のパラメーターを追加することができます。 詳細については、以下を参照してください。
 
 PowerShell を使用した NAT ネットワークを作成するには、次の構文を使用します。 PowerShell では、DNSServers や DNSSuffix などの追加のパラメーターを指定することもできます。 指定しない場合、これらの設定はコンテナー ホストから継承されます。
 
 ```none
 New-ContainerNetwork -Name MyNatNetwork -Mode NAT -SubnetPrefix "172.16.0.0/12" [-GatewayAddress <address>] [-DNSServers <address>] [-DNSSuffix <string>]
+```
+
+> Windows Server 2016 Technical Preview 5 と最新の Windows Insider Preview (WIP) "flighted" ビルドには既知のバグがあります。このバグでは、新しいビルドにアップグレードすると、コンテナー ネットワークと vSwitch が重複 (「漏洩」) します。 この問題に対処するには、次のスクリプトを実行してください。
+```none
+PS> $KeyPath = "HKLM:\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\SwitchList"
+PS> $keys = get-childitem $KeyPath
+PS> foreach($key in $keys)
+PS> {
+PS>    if ($key.GetValue("FriendlyName") -eq 'nat')
+PS>    {
+PS>       $newKeyPath = $KeyPath+"\"+$key.PSChildName
+PS>       Remove-Item -Path $newKeyPath -Recurse
+PS>    }
+PS> }
+PS> remove-netnat -Confirm:$false
+PS> Get-ContainerNetwork | Remove-ContainerNetwork
+PS> Get-VmSwitch -Name nat | Remove-VmSwitch (_failure is expected_)
+PS> Stop-Service docker
+PS> Set-Service docker -StartupType Disabled
+Reboot Host
+PS> Get-NetNat | Remove-NetNat
+PS> Set-Service docker -StartupType automaticac
+PS> Start-Service docker 
 ```
 
 ### 透過ネットワーク
@@ -140,18 +163,14 @@ docker network create -d transparent MyTransparentNetwork
 docker network create -d transparent --gateway=10.50.34.1 "MyTransparentNet"
 ```
 
-PowerShell コマンドは、次のようになります。
-
-```none
-New-ContainerNetwork -Name MyTransparentNet -Mode Transparent -NetworkAdapterName "Ethernet"
-```
-
 コンテナーのホストが仮想化されており、IP の割り当てに DHCP を使用したい場合は、仮想マシンのネットワーク アダプターで MACAddressSpoofing を有効にする必要があります。
 
 ```none
 Get-VMNetworkAdapter -VMName ContainerHostVM | Set-VMNetworkAdapter -MacAddressSpoofing On
 ```
 
+> 複数の透過 (L2 ブリッジ) ネットワークを作成する場合は、外部 Hyper-V Virtual Switch (自動作成) をバインドする (仮想) ネットワーク アダプターを指定する必要があります。
+ 
 ### L2 ブリッジ ネットワーク
 
 **L2 ブリッジ ネットワーク** - この構成では、コンテナー ホストの仮想フィルタリング プラットフォーム (VFP) の vSwitch 拡張機能がブリッジとして機能し、必要に応じてレイヤー 2 アドレス変換 (MAC アドレスの書き直し) を実行します。 レイヤー 3 の IP アドレスおよびレイヤー 4 のポートは変更されません。 物理ネットワークの IP サブネット プレフィックスに対応するよう、または Microsoft のプライベート クラウドを展開している場合には、仮想ネットワークのサブネット プレフィックスの IP を使用して、IP アドレスを静的に割り当てることができます。
@@ -164,12 +183,6 @@ L2 ブリッジ ネットワーク モードを使用するには、ドライバ
 docker network create -d l2bridge --subnet=192.168.1.0/24 --gateway=192.168.1.1 MyBridgeNetwork
 ```
 
-PowerShell コマンドは、次のようになります。
-
-```none
-New-ContainerNetwork -Name MyBridgeNetwork -Mode L2Bridge -NetworkAdapterName "Ethernet"
-```
-
 ## ネットワークの削除
 
 コンテナー ネットワークを削除するには、`docker network rm` を使用します。
@@ -179,16 +192,11 @@ docker network rm "<network name>"
 ```
 または PowerShell には `Remove-ContainerNetwork` を使用します。
 
-PowerShell の使用
-```
-Remove-ContainerNetwork -Name <network name>
-```
-
 これはコンテナー ネットワークが使用したすべての HYPER-V 仮想スイッチと、nat コンテナー ネットワーク用に作成されたすべてのネットワーク アドレス変換オブジェクトをクリーンアップします。
 
 ## ネットワーク オプション
 
-コンテナー ネットワークの作成時またはコンテナー自体の作成時には、別のネットワーク オプションを指定できます。 コンテナー ネットワークを作成する際にネットワーク モードを指定する場合、-d (--driver=<network mode>) オプションに加え、--gateway、--subnet および -o オプションも使用できます。
+コンテナー ネットワークの作成時またはコンテナー自体の作成時には、別のネットワーク オプションを指定できます。 コンテナー ネットワークを作成する際には、ネットワーク モードを指定する -d (--driver=<network mode>) オプションに加え、--gateway、--subnet、-o オプションも使用できます。
 
 ### 追加オプション
 
@@ -217,7 +225,6 @@ docker network create -d transparent -o com.docker.network.windowsshim.interface
 以下のことに注意して、1 つのコンテナー ホストに複数のコンテナー ネットワークを作成できます。
 * 1 つのコンテナー ホストには、NAT ネットワークを 1 つのみ作成できます。
 * 複数のネットワーク (例: 透過、L2 ブリッジ、または L2 トンネル) が接続に外部の vSwitch を使用する場合、それぞれが独自のネットワーク アダプターを使用する必要があります。
-* ネットワークごとに異なる vSwitches を使用する必要があります。
 
 ### ネットワークの選択
 
@@ -231,7 +238,7 @@ docker run -it --net=MyTransparentNet windowsservercore cmd
 
 ### 静的 IP アドレス
 
-静的 IP アドレスは、NAT、透過、L2 ブリッジ ネットワークのモードでのみサポートされ、コンテナーのネットワーク アダプターに設定します。 また、既定の"nat" ネットワークに Docker を使用して静的な IP を割り当てることはできません。
+静的 IP アドレスは、NAT、透過、([PR](https://github.com/docker/docker/pull/22208) は保留)、L2 ブリッジ ネットワークのモードでのみサポートされ、コンテナーのネットワーク アダプターに設定します。 また、既定の"nat" ネットワークに Docker を使用して静的な IP を割り当てることはできません。
 
 ```none
 docker run -it --net=MyTransparentNet --ip=10.80.123.32 windowsservercore cmd
@@ -303,7 +310,6 @@ bbf72109b1fc        windowsservercore   "cmd"               6 seconds ago       
 
 ![](./media/PortMapping.png)
 
-
 ## 注意事項と潜在的な問題
 
 ### ファイアウォール
@@ -327,6 +333,6 @@ ICMP (Ping) と DHCP を有効にするには、コンテナー ホストに特�
  * --internal
  * --ip-range
 
-<!--HONumber=May16_HO3-->
+<!--HONumber=Jun16_HO1-->
 
 
