@@ -327,6 +327,40 @@ CMD c:\Apache24\bin\httpd.exe -w
 
 `CMD` 命令の詳細については、[Docker.com の CMD リファレンス]( https://docs.docker.com/engine/reference/builder/#cmd)を参照してください。 
 
+## エスケープ文字
+
+多くの場合、Dockerfile の命令は複数の行にまたがる必要があります。このためには、エスケープ文字を使用します。 既定の Dockerfile のエスケープ文字はバックスラッシュ `\` です。 バックスラッシュは Windows でのファイル パス区切り文字でもあるため、問題が生じる場合があります。 パーサー ディレクティブを使用して、既定のエスケープ文字を変更することもできます。 パーサー ディレクティブについて詳しくは、[Docker.com のパーサー ディレクティブに関する記事]( https://docs.docker.com/engine/reference/builder/#parser-directives)を参照してください。
+
+次の例は、既定のエスケープ文字を使用した複数の行にまたがる単一の RUN 命令を示しています。
+
+```none
+FROM windowsservercore
+
+RUN powershell.exe -Command \
+    $ErrorActionPreference = 'Stop'; \
+    wget https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe -OutFile c:\python-3.5.1.exe ; \
+    Start-Process c:\python-3.5.1.exe -ArgumentList '/quiet InstallAllUsers=1 PrependPath=1' -Wait ; \
+    Remove-Item c:\python-3.5.1.exe -Force
+```
+
+エスケープ文字を変更するには、エスケープ パーサー ディレクティブを Dockerfile の最初の行に配置します。 次のようになります。
+
+> エスケープ文字として使用できる値は `\` と `` ` `` の 2 つだけであることに注意してください。
+
+```none
+# escape=`
+
+FROM windowsservercore
+
+RUN powershell.exe -Command `
+    $ErrorActionPreference = 'Stop'; `
+    wget https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe -OutFile c:\python-3.5.1.exe ; `
+    Start-Process c:\python-3.5.1.exe -ArgumentList '/quiet InstallAllUsers=1 PrependPath=1' -Wait ; `
+    Remove-Item c:\python-3.5.1.exe -Force
+```
+
+エスケープ パーサー ディレクティブについて詳しくは、[Docker.com のエスケープ パーサー ディレクティブに関する記事]( https://docs.docker.com/engine/reference/builder/#escape)を参照してください。
+
 ## Dockerfile の PowerShell
 
 ### PowerShell コマンド
@@ -442,6 +476,6 @@ windowsservercore   latest              6801d964fda5        4 months ago        
 [Docker.com の Dockerfile リファレンス](https://docs.docker.com/engine/reference/builder/)
 
 
-<!--HONumber=Jun16_HO3-->
+<!--HONumber=Jun16_HO4-->
 
 
