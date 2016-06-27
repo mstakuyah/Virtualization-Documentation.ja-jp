@@ -120,12 +120,6 @@
   "2d1679ffe4876ddd4eefe1b457098e8797899492": [
     "virtualization\\hyperv_on_windows\\user_guide\\nesting.md"
   ],
-  "7270493b8c42935434f72b01524530079d5fb539": [
-    "virtualization\\hyperv_on_windows\\user_guide\\nesting.md"
-  ],
-  "b76ef12cd63c3abdcbef6e587232eb33e6c42d78": [
-    "virtualization\\hyperv_on_windows\\user_guide\\nesting.md"
-  ],
   "060c57fb79f3009dc486d1bd500361ec7b22e735": [
     "virtualization\\hyperv_on_windows\\user_guide\\remote_host_management.md"
   ],
@@ -330,9 +324,6 @@
     "virtualization\\hyperv_on_windows\\user_guide\\create_pre-release_vm.md"
   ],
   "71e0fb430498f8a5ae4ac5b297cf5e4a2c904098": [
-    "virtualization\\windowscontainers\\docker\\manage_windows_dockerfile.md"
-  ],
-  "9e12a0a1ff4e77ddcd4933dea1828bea87b5f3b6": [
     "virtualization\\windowscontainers\\docker\\manage_windows_dockerfile.md"
   ],
   "4822ff2f0248b2d7752299ea55b08e3499e2e2f7": [
