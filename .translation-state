@@ -20805,9 +20805,9 @@
       "ArchiveFileCommit": "73ea3c9be29b8da91071d7f88f109fab3dab24db",
       "ArchiveFileDateTime": "2016-06-23T19:28:40.9999545Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.ja-jp.xlf",
+      "BilingualFileCommit": "f5ff5d86e8fb697c9b25e73c41e6e56dafca130b",
+      "BilingualDateTime": "2016-06-28T08:07:56.0320975Z",
       "BilingualException": null
     },
     "f2790186aa641378b1981a1f946665ca46fdbd73": {
@@ -20840,9 +20840,9 @@
       "ArchiveFileCommit": "73ea3c9be29b8da91071d7f88f109fab3dab24db",
       "ArchiveFileDateTime": "2016-06-23T19:28:40.9999545Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf",
+      "BilingualFileCommit": "f5ff5d86e8fb697c9b25e73c41e6e56dafca130b",
+      "BilingualDateTime": "2016-06-28T08:07:56.0320975Z",
       "BilingualException": null
     },
     "7270493b8c42935434f72b01524530079d5fb539": {
@@ -20980,9 +20980,9 @@
       "ArchiveFileCommit": "73ea3c9be29b8da91071d7f88f109fab3dab24db",
       "ArchiveFileDateTime": "2016-06-23T19:28:40.9999545Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\manage_images.6d8d709cbc19bb63cc7d4553991616c57920cdfd.ja-jp.xlf",
+      "BilingualFileCommit": "f5ff5d86e8fb697c9b25e73c41e6e56dafca130b",
+      "BilingualDateTime": "2016-06-28T08:07:56.0320975Z",
       "BilingualException": null
     },
     "71e0fb430498f8a5ae4ac5b297cf5e4a2c904098": {
