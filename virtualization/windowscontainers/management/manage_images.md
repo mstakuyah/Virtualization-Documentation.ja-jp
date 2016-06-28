@@ -1,6 +1,6 @@
 ---
-title: Windows コンテナー イメージ
-description: Windows コンテナーでコンテナー イメージを作成および管理します。
+title: "Windows コンテナー イメージ"
+description: "Windows コンテナーでコンテナー イメージを作成および管理します。"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
@@ -9,6 +9,9 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: d8163185-9860-4ee4-9e96-17b40fb508bc
+ms.sourcegitcommit: 3db43b433e7b1a9484d530cf209ea80ef269a307
+ms.openlocfilehash: 505cc64fa19fb9fc8c2d5c109830f460f09332dd
+
 ---
 
 # Windows コンテナー イメージ
@@ -197,7 +200,6 @@ Docker Hub から使用できるイメージの一覧を表示するには、`do
 
 このようなイメージの多くは、Windows Server Core バージョンや Nano Server バージョンです。 特定のバージョンを取得するには、":windowsservercore" または ":nanoserver" というタグを追加します。 "latest" タグが指定されていると、Nano Server バージョンが使用できる場合以外は、既定で Windows Server Core バージョンが返されます。
 
-> "nano-" で始まるイメージは、Nano Server のベース OS イメージに依存しています。
 
 ```none
 docker search *
@@ -219,7 +221,9 @@ microsoft/sample-ruby    Ruby installed in a Windows Server Core ba...   1      
 microsoft/sample-sqlite  SQLite installed in a Windows Server Core ...   1                    [OK]
 ```
 
-Docker Hub からイメージをダウンロードするには、`docker pull` を使用します。
+### Docker Pull
+
+Docker Hub からイメージをダウンロードするには、`docker pull` を使用します。 詳細については、[Docker.com の Docker Pull のページ](https://docs.docker.com/engine/reference/commandline/pull/)を参照してください。
 
 ```none
 docker pull microsoft/aspnet
@@ -242,8 +246,50 @@ windowsservercore   10.0.14300.1000     6801d964fda5        2 weeks ago         
 windowsservercore   latest              6801d964fda5        2 weeks ago         0 B
 ```
 
+> Docker Pull が失敗した場合は、最新の累積的な更新プログラムがコンテナー ホストに適用されていることを確認します。 TP5 更新プログラムは [KB3157663]( https://support.microsoft.com/en-us/kb/3157663) にあります。
+
+### Docker Push
+
+コンテナー イメージを Docker Hub または Docker Trusted Registry にアップロードすることもできます。 いったんアップロードされたイメージは、ダウンロードすることができ、さまざまな Windows コンテナー環境で再利用できます。
+
+Docker Hub にコンテナー イメージをアップロードするには、まずレジストリにログインします。 詳細については、[Docker.com の Docker Login のページ]( https://docs.docker.com/engine/reference/commandline/login/)を参照してください。
+
+```none
+docker login
+
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: username
+Password:
+
+Login Succeeded
+```
+
+Docker Hub または Docker Trusted Regstry にログインしたら、`docker push` を使用してコンテナー イメージをアップロードします。 コンテナー イメージは名前または ID で参照できます。 詳細については、[Docker.com の Docker Push のページ]( https://docs.docker.com/engine/reference/commandline/push/)を参照してください。
+
+```none
+docker push username/containername
+
+The push refers to a repository [docker.io/username/containername]
+b567cea5d325: Pushed
+00f57025c723: Pushed
+2e05e94480e9: Pushed
+63f3aa135163: Pushed
+469f4bf35316: Pushed
+2946c9dcfc7d: Pushed
+7bfd967a5e43: Pushed
+f64ea92aaebc: Pushed
+4341be770beb: Pushed
+fed398573696: Pushed
+latest: digest: sha256:ae3a2971628c04d5df32c3bbbfc87c477bb814d5e73e2787900da13228676c4f size: 2410
+```
+
+この時点で、コンテナー イメージが使用可能になり、`docker pull` を使用してアクセスできます。
 
 
-<!--HONumber=May16_HO4-->
+
+
+
+
+<!--HONumber=Jun16_HO3-->
 
 
