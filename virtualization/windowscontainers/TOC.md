@@ -1,6 +1,5 @@
 # Windows コンテナーについて
 ## [Windows コンテナーの概要](about/about_overview.md)
-## [進行中の作業](about/work_in_progress.md)
 ## [FAQ](about/faq.md)
 
 # コンテナーのクイック スタート
@@ -42,6 +41,6 @@
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO4-->
 
 

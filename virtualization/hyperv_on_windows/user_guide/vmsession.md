@@ -1,6 +1,6 @@
 ---
-title: PowerShell ダイレクトでの Windows Virtual Machines の管理
-description: PowerShell ダイレクトでの Windows Virtual Machines の管理
+title: "PowerShell ダイレクトでの Windows Virtual Machines の管理"
+description: "PowerShell ダイレクトでの Windows Virtual Machines の管理"
 keywords: windows 10, hyper-v
 author: scooley
 manager: timlt
@@ -9,6 +9,10 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: fb228e06-e284-45c0-b6e6-e7b0217c3a49
+translationtype: Human Translation
+ms.sourcegitcommit: 6eb26eda92217917a3abe7d9dd4c77c48283c8dc
+ms.openlocfilehash: 91927b751021efa9ba2cf696516ba50af28c6e05
+
 ---
 
 # PowerShell ダイレクトでの Windows Virtual Machines の管理
@@ -276,6 +280,7 @@ PowerShell ダイレクトでは JEA (Just Enough Administration) をサポー�
 実際の環境で PowerShell Direct を使用する方法を示すさまざまな例や、PowerShell で Hyper-V スクリプトを記述するためのヒントとコツについては、「[PowerShell スニペット](../develop/powershell_snippets.md)」を参照してください。
 
 
-<!--HONumber=May16_HO4-->
+
+<!--HONumber=Jun16_HO4-->
 
 

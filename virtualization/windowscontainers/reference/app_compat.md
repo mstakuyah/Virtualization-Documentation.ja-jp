@@ -1,6 +1,6 @@
 ---
-title: Windows のコンテナーでのアプリケーションの互換性
-description: Windows のコンテナーでのアプリケーションの互換性。
+title: "Windows のコンテナーでのアプリケーションの互換性"
+description: "Windows のコンテナーでのアプリケーションの互換性。"
 keywords: docker, containers
 author: scooley
 manager: timlt
@@ -9,6 +9,10 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 3e524458-bd03-400e-913f-210335add8dc
+translationtype: Human Translation
+ms.sourcegitcommit: cfa3c14e932f8b86edf6667200ac028ea0a16b67
+ms.openlocfilehash: 2830dc81317311dd54dfcca45251b668f3d2cc29
+
 ---
 
 # Windows のコンテナーでのアプリケーションの互換性
@@ -85,6 +89,7 @@ Hyper-V コンテナー内では、次のアプリケーションの実行を試
 何かこの一覧にでしょうか。  ご使用の環境での失敗や成功があれば、[フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)を通じてお知らせください。
 
 
-<!--HONumber=May16_HO3-->
+
+<!--HONumber=Jun16_HO4-->
 
 
