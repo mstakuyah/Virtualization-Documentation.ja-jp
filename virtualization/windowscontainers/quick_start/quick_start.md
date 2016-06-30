@@ -1,6 +1,6 @@
 ---
-title: Windows コンテナー クイック スタート
-description: Windows コンテナー クイック スタート
+title: "Windows コンテナー クイック スタート"
+description: "Windows コンテナー クイック スタート"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
@@ -9,6 +9,10 @@ ms.topic: article
 ms.prod: windows-contianers
 ms.service: windows-containers
 ms.assetid: 4878f5d2-014f-4f3c-9933-97f03348a147
+translationtype: Human Translation
+ms.sourcegitcommit: 4ea609a6e4636e53cc8632bb700e37ba58f3cc72
+ms.openlocfilehash: c0176d4f5445263a5fd522a80ce2a9dca7ac90e6
+
 ---
 
 # Windows コンテナー クイック スタート
@@ -55,6 +59,7 @@ Windows コンテナーには、2 つの異なるタイプのコンテナー (�
 
 
 
-<!--HONumber=May16_HO4-->
+
+<!--HONumber=Jun16_HO4-->
 
 

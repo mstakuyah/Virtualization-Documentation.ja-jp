@@ -1,6 +1,6 @@
 ---
-title: チェックポイントの使用
-description: チェックポイントの使用
+title: "チェックポイントの使用"
+description: "チェックポイントの使用"
 keywords: windows 10, hyper-v
 author: scooley
 manager: timlt
@@ -9,6 +9,10 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d9c398c4-ee72-45c6-9ce8-4f06569dae6c
+translationtype: Human Translation
+ms.sourcegitcommit: 4cdf81cace246c5de041d378391dca9b9d318dd5
+ms.openlocfilehash: bd0ee06f4e5eab4f33bb7e7c6dd71119dddde5c9
+
 ---
 
 # チェックポイントを使用して仮想マシンを以前の状態に戻す
@@ -245,6 +249,7 @@ This folder will contain the .VMRS file with the runtime and saved state data an
 2. テキスト ファイルが復元されていることを確認します。 ただし、標準チェックポイントとは異なり、メモ帳は開かれていません。   
 
 
-<!--HONumber=Jun16_HO3-->
+
+<!--HONumber=Jun16_HO4-->
 
 

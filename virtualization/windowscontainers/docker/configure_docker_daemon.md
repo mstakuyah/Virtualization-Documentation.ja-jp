@@ -1,6 +1,6 @@
 ---
-title: Windows で Docker を構成する
-description: Windows で Docker を構成する
+title: "Windows で Docker を構成する"
+description: "Windows で Docker を構成する"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
@@ -9,7 +9,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
+ms.sourcegitcommit: 7113f1dc1e9a0a18d4eb25e6d604e89f96f826c4
+ms.openlocfilehash: 1fddaff6fc260c0cf91c8626a60d768a06995e53
+
 ---
+
+# Windows 上の Docker デーモン
 
 Docker エンジンは Windows に含まれていないため、個別にインポートして構成する必要があります。 また、Docker デーモンは多くのカスタム構成を受け入れることができます。 たとえば、デーモンで受信要求を受け入れる方法、既定のネットワークキング オプション、デバッグ/ログの設定の構成などです。 Windows でこのような構成を指定するには、構成ファイルまたは Windows サービス コントロール マネージャーを使用します。 このドキュメントでは、Docker デーモンのインストールおよび構成方法について説明します。また、一般的に使用される構成例も紹介します。
 
@@ -151,6 +156,7 @@ Docker ホストにログインし、Docker コマンドをローカルで実行
 ```
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=Jun16_HO4-->
 
 

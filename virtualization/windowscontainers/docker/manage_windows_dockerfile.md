@@ -1,6 +1,6 @@
 ---
-title: Dockerfile コンテナーと Windows コンテナー
-description: Windows コンテナー用に Dockerfile を作成します。
+title: "Dockerfile コンテナーと Windows コンテナー"
+description: "Windows コンテナー用に Dockerfile を作成します。"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
@@ -9,6 +9,10 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
+translationtype: Human Translation
+ms.sourcegitcommit: 960b40e8c1eda9c19ebff0972df2c87e70c7e8f6
+ms.openlocfilehash: 71e0fb430498f8a5ae4ac5b297cf5e4a2c904098
+
 ---
 
 # Windows 上の Dockerfile
@@ -474,6 +478,7 @@ windowsservercore   latest              6801d964fda5        4 months ago        
 [Optimize Dockerfiles and Docker build for Windows (Windows の Dockerfile と Docker ビルドの最適化)] (./optimize_windows_dockerfile.md)
 
 [Docker.com の Dockerfile リファレンス](https://docs.docker.com/engine/reference/builder/)
+
 
 
 <!--HONumber=Jun16_HO4-->
