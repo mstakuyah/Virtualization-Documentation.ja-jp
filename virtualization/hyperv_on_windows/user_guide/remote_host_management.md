@@ -1,28 +1,31 @@
 ---
-title: &1033283708 Hyper-V マネージャーを使用したリモート Hyper-V ホストの管理
-description: Hyper-V マネージャーを使用したリモート Hyper-V ホストの管理
+title: "Hyper-V マネージャーを使用したリモート Hyper-V ホストの管理"
+description: "Hyper-V マネージャーを使用したリモート Hyper-V ホストの管理"
 keywords: windows 10, hyper-v
 author: scooley
 manager: timlt
 ms.date: 05/02/2016
 ms.topic: article
-ms.prod: &2079497967 windows-10-hyperv
+ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 2d34e98c-6134-479b-8000-3eb360b8b8a3
+translationtype: Human Translation
+ms.sourcegitcommit: eb6c8e904b9cd2c5d1ed25583ffbcdbdf0b9139c
+ms.openlocfilehash: fee2b24469b45efae982f4dfca4afb9f737b5bdf
+
 ---
 
 # Hyper-V マネージャーを使用したリモート Hyper-V ホストの管理
 
-Hyper-V マネージャーは、ローカル Hyper-V ホストおよび少数のリモート ホストを診断および管理するためのインボックス ツールです。 この記事では、サポートされているすべての構成で、Hyper-V マネージャーを使用して Hyper-V ホストに接続するための構成手順について説明します。
+Hyper-V マネージャーは、ローカル Hyper-V ホストおよび少数のリモート ホストを診断および管理するためのインボックス ツールです。  この記事では、サポートされているすべての構成で、Hyper-V マネージャーを使用して Hyper-V ホストに接続するための構成手順について説明します。
 
-> Hyper-V マネージャーは、<g id="6CapsExtId1" ctype="x-link"><g id="6CapsExtId2" ctype="x-linkText">Hyper-V が含まれているすべての Windows OS</g><g id="6CapsExtId3" ctype="x-title"></g></g> 上で、<g id="2" ctype="x-strong">[プログラムと機能]</g> にある <g id="4" ctype="x-strong">[Hyper-V 管理ツール]</g> として使用できます。 リモート ホストを管理するために、Hyper-V プラットフォームを有効にする必要はありません。
+> Hyper-V マネージャーは、[Hyper-V が含まれているすべての Windows OS](../quick_start/walkthrough_compatibility.md#OperatingSystemRequirements) 上で、**[プログラムと機能]** にある **[Hyper-V 管理ツール]** として使用できます。  リモート ホストを管理するために、Hyper-V プラットフォームを有効にする必要はありません。
 
-Hyper-V マネージャーで Hyper-V ホストに接続するには、左側のウィンドウで <g id="2" ctype="x-strong">[Hyper-V マネージャー]</g> が選択されていることを確認してから、右側のウィンドウで <g id="4" ctype="x-strong">[サーバーへの接続]</g> を選択します。
+Hyper-V マネージャーで Hyper-V ホストに接続するには、左側のウィンドウで **[Hyper-V マネージャー]** が選択されていることを確認してから、右側のウィンドウで **[サーバーへの接続]** を選択します。
 
-<g id="1" ctype="x-linkText"></g>
+![](media/HyperVManager-ConnectToHost.png)
 
 ## サポートされている Hyper-V ホストと Hyper-V マネージャーとの組み合わせ
-
 Windows 10 の Hyper-V マネージャーでは、次の Hyper-V ホストを管理できます。
 * Windows 10
 * Windows 8.1
@@ -41,85 +44,85 @@ Windows 8 および Windows Server 2012 の Hyper-V マネージャーでは、�
 * Windows 8
 * Windows 2012 + Windows Server Core、Datacenter、および Hyper-V Server
 
-Windows 8 より、Windows で Hyper-V を利用できるようになりました。 Windows 8.1/Server 2012 より前には、Hyper-V マネージャーはバージョンが一致する Hyper-V のみを管理していました。
+Windows 8 より、Windows で Hyper-V を利用できるようになりました。  Windows 8.1/Server 2012 より前には、Hyper-V マネージャーはバージョンが一致する Hyper-V のみを管理していました。
 
-> <g id="1" ctype="x-strong">注:</g> Hyper-V マネージャーの機能は、管理しているバージョンで使用できる機能と一致します。 つまり、Server 2012R2 からリモート Server 2012 ホストを管理している場合、2012R2 の新しい Hyper-V マネージャー ツールは使用できません。
+> **注:** Hyper-V マネージャーの機能は、管理しているバージョンで使用できる機能と一致します。  つまり、Server 2012R2 からリモート Server 2012 ホストを管理している場合、2012R2 の新しい Hyper-V マネージャー ツールは使用できません。
 
-## ローカル ホストの管理
+## ローカル ホストの管理 ##
+Hyper-V ホストとしてローカル ホストを Hyper-V マネージャーに追加するには、**[コンピューターの選択]** ダイアログ ボックスで **[ローカル コンピューター]** を選択します。
 
-Hyper-V ホストとしてローカル ホストを Hyper-V マネージャーに追加するには、<g id="4" ctype="x-strong">[コンピューターの選択]</g> ダイアログ ボックスで <g id="2" ctype="x-strong">[ローカル コンピューター]</g> を選択します。
-
-<g id="1" ctype="x-linkText"></g>
+![](media/HyperVManager-ConnectToLocalHost.png)
 
 接続を確立できない場合は、次の手順に従います。
 *  Hyper-V プラットフォーム ロールが有効になっていることを確認します。  
-  Hyper-V がサポートされているかどうかを確認するには、<g id="2CapsExtId1" ctype="x-link"><g id="2CapsExtId2" ctype="x-linkText">互換性を確認するためのチュートリアル セクション</g><g id="2CapsExtId3" ctype="x-title"></g></g>を参照してください。
+  Hyper-V がサポートされているかどうかを確認するには、[互換性を確認するためのチュートリアル セクション](../quick_start/walkthrough_compatibility.md)をご覧ください。
 *  ユーザー アカウントが Hyper-V 管理者グループに含まれることを確認します。
 
 
-## 同じドメイン内の別の Hyper-V ホストの管理
+## 同じドメイン内の別の Hyper-V ホストの管理 ##
 
-リモート Hyper-V ホストを Hyper-V マネージャーに追加するには、<g id="4" ctype="x-strong">[コンピューターの選択]</g> ダイアログ ボックスで <g id="2" ctype="x-strong">[別のコンピューター]</g> を選択し、テキスト フィールドにリモート ホストのホスト名 NetBIOS または FQDN を入力します。
+リモート Hyper-V ホストを Hyper-V マネージャーに追加するには、**[コンピューターの選択]** ダイアログ ボックスで **[別のコンピューター]** を選択し、テキスト フィールドにリモート ホストのホスト名 NetBIOS または FQDN を入力します。
 
-<g id="1" ctype="x-linkText"></g>
+![](media/HyperVManager-ConnectToRemoteHost.png)
 
 リモート Hyper-V ホストを管理するには、ローカル コンピューターとリモート ホストの両方でリモート管理を有効にする必要があります。
 
-この操作を行うには、<g id="2" ctype="x-code">[システムのプロパティ]、[リモート管理の設定]</g> の順に選択するか、管理者として次の PowerShell コマンドを実行します。
+この操作を行うには、`System Properties -> Remote Management Settings` を選択するか、管理者として次の PowerShell コマンドを実行します。  
 
 ``` PowerShell
 winrm quickconfig
 ```
 
-現在のユーザー アカウントがリモート ホスト上の Hyper-V 管理者アカウントと一致する場合は、<g id="2" ctype="x-strong">[OK]</g> をクリックして接続します。
+現在のユーザー アカウントがリモート ホスト上の Hyper-V 管理者アカウントと一致する場合は、**[OK]** をクリックして接続します。  
 
 > これは、Windows 8 または Windows 8.1 の Hyper-V マネージャーでリモート ホストを管理するためにサポートされている唯一の方法です。
 
 
 Windows 10 では、リモート接続の種類の有効な組み合わせが大幅に拡張されています。  
-ホスト名または IP アドレスを使用して、リモート Windows 10 以降のホストに接続できるようになりました。 Hyper-V マネージャーでは、代替ユーザー資格情報もサポートされるようになりました。
+ホスト名または IP アドレスを使用して、リモート Windows 10 以降のホストに接続できるようになりました。  Hyper-V マネージャーでは、代替ユーザー資格情報もサポートされるようになりました。  
 
 
 ### 別のユーザーとしてリモート ホストに接続する
-
 > この操作は、Windows 10 または Server 2016 Technical Preview 3 以降のリモート ホストに接続する場合にのみ可能です。
 
 Windows 10 では、リモート ホスト用の正しいユーザー アカウントで実行していない場合、代替資格情報で別のユーザーとして接続できます。
 
-リモート Hyper-V ホストの資格情報を指定するには、<g id="2" ctype="x-strong">[コンピューターの選択]** ダイアログ ボックスで **[別のユーザーとして接続する]</g> を選択し、<g id="4" ctype="x-strong">[ユーザーの設定]</g> を選択します。
+リモート Hyper-V ホストの資格情報を指定するには、**[コンピューターの選択]** ダイアログ ボックスで **[別のユーザーとして接続する]** を選択し、**[ユーザーの設定]** を選択します。
 
-<g id="1" ctype="x-linkText"></g>
+![](media/HyperVManager-ConnectToRemoteHostAltCreds.png)
 
 
 ### IP アドレスを使用してリモート ホストに接続する
-
 > この操作は、Windows 10 または Server 2016 Technical Preview 3 以降のリモート ホストに接続する場合にのみ可能です。
 
-ホスト名の代わりに IP アドレスを使用して接続する方が容易な場合があります。 Windows 10 では、この方法のみが可能です。
+ホスト名の代わりに IP アドレスを使用して接続する方が容易な場合があります。  Windows 10 では、この方法のみが可能です。
 
-IP アドレスを使用して接続するには、<g id="2" ctype="x-strong">[別のコンピューター]</g> テキスト フィールドに IP アドレスを入力します。
+IP アドレスを使用して接続するには、**[別のコンピューター]** テキスト フィールドに IP アドレスを入力します。
 
 
-## ドメインの外部 (またはドメインなし) で Hyper-V ホストを管理する
-
+## ドメインの外部 (またはドメインなし) で Hyper-V ホストを管理する ##
 > この操作は、Windows 10 または Server 2016 Technical Preview 3 以降のリモート ホストに接続する場合にのみ可能です。
 
 管理対象の Hyper-V ホストで、管理者として次を実行します。
 
-1.  <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Enable-PSRemoting</g><g id="1CapsExtId3" ctype="x-title"></g></g>
-  * <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Enable-PSRemoting</g><g id="1CapsExtId3" ctype="x-title"></g></g> は、<g id="3" ctype="x-em">プライベート</g> ネットワーク ゾーンに必要なファイアウォール規則を作成します。 パブリック ゾーンでこのアクセスを許可するには、CredSSP および WinRM のルールを有効にする必要があります。
-2. Set-Item WSMan:\localhost\Client\TrustedHosts -value "fqdn-of-managing-pc"
+1.  [Enable-PSRemoting](https://technet.microsoft.com/en-us/library/hh849694.aspx)
+  * [Enable-PSRemoting](https://technet.microsoft.com/en-us/library/hh849694.aspx) は、*プライベート* ネットワーク ゾーンに必要なファイアウォール規則を作成します。 パブリック ゾーンでこのアクセスを許可するには、CredSSP および WinRM のルールを有効にする必要があります。
+2.  [Enable-WSManCredSSP](https://technet.microsoft.com/en-us/library/hh849872.aspx) -Role server
+
+管理している PC で、次のコマンドを管理者として実行します。
+
+1. Set-Item WSMan:\localhost\Client\TrustedHosts -value "fqdn-of-hyper-v-host"
   * 代わりに、管理用にすべてのホストを信頼することを許可できます。
   * Set-Item WSMan:\localhost\Client\TrustedHosts -value * -force
-3. <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Enable-WSManCredSSP</g><g id="1CapsExtId3" ctype="x-title"></g></g> -Role client -DelegateComputer "fqdn-of-managing-pc"
+2. [Enable-WSManCredSSP](https://technet.microsoft.com/en-us/library/hh849872.aspx) -Role client -DelegateComputer "fqdn-of-hyper-v-host"
   * 代わりに、管理用にすべてのホストを信頼することを許可できます。
-  * <g id="1CapsExtId1" ctype="x-link"><g id="1CapsExtId2" ctype="x-linkText">Enable-WSManCredSSP</g><g id="1CapsExtId3" ctype="x-title"></g></g> -Role client -DelegateComputer *
+  * [Enable-WSManCredSSP](https://technet.microsoft.com/en-us/library/hh849872.aspx) -Role client -DelegateComputer *
+3. 次のグループ ポリシーを構成する必要もあります: ** コンピューターの構成 | 管理用テンプレート | システム | 資格情報の委任 | NTLM のみのサーバー認証で新しい資格情報を許可する**
+    * **[有効]** をクリックし、*wsman/fqdn-of-hyper-v-host* を追加します。
+    * 代わりに、_wsman/*_ を追加して、管理用にすべてのホストを信頼することを許可できます。
 
 
 
-
-
-
-<!--HONumber=May16_HO1-->
+<!--HONumber=Jun16_HO5-->
 
 

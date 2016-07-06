@@ -1,6 +1,6 @@
 ---
-title: コンテナー展開のクイック スタート - イメージ
-description: コンテナー展開のクイック スタート
+title: "コンテナー展開のクイック スタート - イメージ"
+description: "コンテナー展開のクイック スタート"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,17 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
+translationtype: Human Translation
+ms.sourcegitcommit: eae45c2c81c7edc94d963da69dcdee2b6f08f37d
+ms.openlocfilehash: ac9596d210e72b9fd576f728e8e6bbdc293597d7
+
 ---
 
 # Windows Server のコンテナー イメージ
 
 **この記事は暫定的な内容であり、変更される可能性があります。** 
 
-前の Windows Server クイック スタートでは、Windows コンテナーが既存のコンテナー イメージから作成されました。 この演習では、独自のコンテナー イメージを手動で作成する方法と Dockerfile でイメージを作成する方法を詳しく説明します。
+前の Windows Server クイック スタートでは、Windows コンテナーが既存のコンテナー イメージから作成されました。 この演習では、カスタム コンテナー イメージを手動で作成する方法と Dockerfile を使用する方法を詳しく説明します。
 
 このクイック スタートは Windows Server 2016 の Windows Server コンテナーのみに適用されます。 このページの左側の目次に追加のクイック スタート文書があります。 
 
@@ -161,6 +165,7 @@ docker rm -f cranky_brown
 
 [Windows 10 の Windows コンテナー](./quick_start_windows_10.md)
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=Jun16_HO5-->
 
 

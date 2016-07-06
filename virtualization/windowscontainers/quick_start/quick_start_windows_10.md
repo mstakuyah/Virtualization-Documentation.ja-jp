@@ -1,14 +1,18 @@
 ---
-title: Windows 10 の Windows コンテナー
-description: コンテナー展開のクイック スタート
+title: "Windows 10 の Windows コンテナー"
+description: "コンテナー展開のクイック スタート"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
-ms.date: 05/26/2016
+ms.date: 06/28/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
+translationtype: Human Translation
+ms.sourcegitcommit: 3fc388632dee4d714ab5a7869fa852c079c11910
+ms.openlocfilehash: e2d86c6f1aba07c7c40d1f932b3884c99bfd8f0a
+
 ---
 
 # Windows 10 の Windows コンテナー
@@ -160,7 +164,13 @@ Docker Run コマンドの詳細については、Docker.com の「[Docker Run �
 docker run --isolation=hyperv --rm microsoft/sample-dotnet
 ```
 
-このコマンドを実行すると、結果的に、Hyper-V コンテナーが sample-dotnet イメージから作成され、サンプル アプリケーションが実行されます (出力がシェルにエコーされます)。それから、コンテナーが停止し、削除されます。 後続の Windows 10 とコンテナーのクイック スタートでは、Windows 10 のコンテナーでアプリケーションを作成し、展開する方法について説明します。
+**注** - タイムアウト イベントを示すエラーがスローされる場合は、次の PowerShell スクリプトを実行して操作をやり直してください。
+
+```none
+Set-ItemProperty -Path 'HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\Containers' -Name VSmbDisableOplocks -Type DWord -Value 1 -Force
+```
+
+`docker run` コマンドを実行すると、結果的に、Hyper-V コンテナーが sample-dotnet イメージから作成され、サンプル アプリケーションが実行されます (出力がシェルにエコーされます)。それから、コンテナーが停止し、削除されます。 後続の Windows 10 とコンテナーのクイック スタートでは、Windows 10 のコンテナーでアプリケーションを作成し、展開する方法について説明します。
 
 ## 次の手順
 
@@ -169,6 +179,7 @@ docker run --isolation=hyperv --rm microsoft/sample-dotnet
 
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=Jun16_HO4-->
 
 

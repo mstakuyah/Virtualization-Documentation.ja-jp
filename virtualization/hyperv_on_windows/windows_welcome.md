@@ -1,21 +1,25 @@
 ---
-title: &153667218 Windows 10 の Hyper-V
-description: Windows 10 の Hyper-V
+title: "Windows 10 の Hyper-V"
+description: "Windows 10 の Hyper-V"
 keywords: windows 10, hyper-v
 author: neilpeterson
 manager: timlt
 ms.date: 05/02/2016
 ms.topic: article
-ms.prod: &985793767 windows-10-hyperv
+ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 05269ce0-a54f-4ad8-af75-2ecf5142b866
+translationtype: Human Translation
+ms.sourcegitcommit: e14ede0a2b13de08cea0a955b37a21a150fb88cf
+ms.openlocfilehash: 4d5c2ad7515b8b536da30ad2dd3b4ffc2cee5832
+
 ---
 
-# Windows 10 の Hyper-V
+# Windows 10 の Hyper-V 
 
 Windows 10 の多くのバージョンに Hyper-V 仮想化テクノロジが含まれています。 Hyper-V を利用すれば、物理ホストの上で仮想化されたコンピューター システムを実行できます。 仮想化されたコンピューター システムはあたかも物理コンピューター システムであるかのように使用し、管理できますが、実際は仮想化され、分離された環境に存在します。 ハイパーバイザーと呼ばれる特別なソフトウェアが仮想システムと物理ハードウェア リソース間のアクセスを管理します。 仮想化により、コンピューター システムを短時間で展開したり、以前の良好な状態にシステムをすばやく戻したり、物理ホスト間でシステムを移行したりできます。
 
-次のドキュメントでは、Windows 10 における Hyper-V 機能について説明し、クイック スタート ガイドを提供します。また、詳しいリソースやコミュニティ フォーラムのリンクを紹介します。
+次のドキュメントでは、Windows 10 における Hyper-V 機能について説明し、クイック スタート ガイドを提供します。また、詳しいリソースやコミュニティ フォーラムのリンクを紹介します。 
 
 <table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:100%" cellpadding="15" cellspacing="3">
     <tr valign="top">
@@ -50,7 +54,7 @@ Windows 10 の多くのバージョンに Hyper-V 仮想化テクノロジが含
             <p>テクニカル サポートとコミュニティからも情報が得られます。</p>
             <ul>
                 <li class="unordered">[Hyper-V フォーラム](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home?forum=winserverhyperv)<br /><br /></li>
-                <li class="unordered">[Hyper-V と Windows のコンテナーのコミュニティ リソース](/virtualization/community/community_overview)<br /><br /></li>
+                <li class="unordered">[Hyper-V と Windows コンテナーのコミュニティ リソース](/virtualization/community/community_overview)<br /><br /></li>
             </ul>   
         </td>
     </tr>
@@ -58,9 +62,6 @@ Windows 10 の多くのバージョンに Hyper-V 仮想化テクノロジが含
 
 
 
-
-
-
-<!--HONumber=May16_HO1-->
+<!--HONumber=Jun16_HO4-->
 
 

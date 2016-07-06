@@ -1,6 +1,10 @@
+---
+author: scooley
+translationtype: Human Translation
+ms.sourcegitcommit: af065ec180f1b5de9e40ef269e7278a16b0c3b7f
+ms.openlocfilehash: 5463412d44bd7c657401c55558bb817df4cc1eb2
 
-
-
+---
 
 # コンテナー用 PowerShell
 
@@ -13,7 +17,7 @@
 Windows Server または HYPER-V のコンテナーで使用するためのコンテナーの OS イメージとして指定した wim ファイルをインストールします。
 
 
-**構文**
+**SYNTAX**  
 ``` PowerShell  
 Install-ContainerOSImage [-WimPath] <String> [-Force] [< CommonParameters >]
 ```
@@ -21,7 +25,7 @@ Install-ContainerOSImage [-WimPath] <String> [-Force] [< CommonParameters >]
 **説明**  
 Windows Server と HYPER-V のコンテナーの機能のサーバーの全体の共有のイメージ ストアに、WIM ファイルからの基本イメージをインストールします。
 
-**パラメーター**
+**PARAMETERS**
 ``` PowerShell
     -WimPath <String>
         A path to the WIM file that will be installed.
@@ -70,14 +74,14 @@ PS C:\>Install-ContainerOSImage c:\baseimage.wim
 **概要**  
 以前にインストールされたコンテナーの OS イメージを削除します。
 
-**構文**
+**SYNTAX**   
 ```PowerShell
 Uninstall-ContainerOSImage [-ImageName] <string> [-Force]  [< CommonParameters >]
 
 Uninstall-ContainerOSImage [-ContainerImage] <Object> [-Force]  [< CommonParameters >]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -ContainerImage <Object>
 
@@ -123,15 +127,15 @@ System.Object
 **エイリアス**  
 None
 
-## 追加 ContainerNetworkAdapter
+## 追加 ContainerNetworkAdapter ##
 
 **名前**  
 追加 ContainerNetworkAdapter
 
 **概要**  
-新しいネットワーク アダプタを既存のコンテナーに追加します。
+新しいネットワーク アダプターを既存のコンテナーに追加します。
 
-**構文**
+**SYNTAX** 
 ``` PowerShell  
 Add-ContainerNetworkAdapter [-ContainerName] <string[]> [-CimSession <CimSession[]>] [-ComputerName <string[]>]
     [-Credential <pscredential[]>] [-SwitchName <string>] [-Name <string>] [-DynamicMacAddress] [-StaticMacAddress
@@ -141,7 +145,7 @@ Add-ContainerNetworkAdapter [-ContainerName] <string[]> [-CimSession <CimSession
     [-DynamicMacAddress] [-StaticMacAddress <string>] [-Passthru] [-WhatIf] [-Confirm]  [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -CimSession <CimSession[]>
 
@@ -279,7 +283,7 @@ None
 **概要**  
 コンテナーのネットワーク アダプターを仮想スイッチに接続します。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Connect-ContainerNetworkAdapter [-ContainerName] <string[]> [[-Name] <string[]>] [-SwitchName] <string>
     [-Passthru] [-CimSession <CimSession[]>] [-ComputerName <string[]>] [-Credential <pscredential[]>] [-WhatIf]
@@ -289,7 +293,7 @@ None
     [-WhatIf] [-Confirm]  [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -CimSession <CimSession[]>
 
@@ -407,7 +411,7 @@ None
 **概要**  
 コンテナーのネットワーク アダプターを仮想スイッチから切断します。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Disconnect-ContainerNetworkAdapter [-ContainerName] <string[]> [[-Name] <string[]>] [-CimSession <CimSession[]>]
     [-ComputerName <string[]>] [-Credential <pscredential[]>] [-Passthru] [-WhatIf] [-Confirm]  [<CommonParameters>]
@@ -416,7 +420,7 @@ None
     [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -CimSession <CimSession[]>
 
@@ -525,7 +529,7 @@ None
 **概要**  
 ローカル ストアからコンテナーのイメージをコピーします。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Export-ContainerImage [[-Name] <string>] [-Path] <string> [[-Version] <version>] [-CimSession <CimSession[]>]
     [-ComputerName <string[]>] [-Credential <pscredential[]>] [-AsJob] [-Passthru] [-WhatIf] [-Confirm]
@@ -535,7 +539,7 @@ None
     [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**
 ``` PowerShell
     -AsJob
 
@@ -671,7 +675,7 @@ Get コンテナー
 **概要**  
 現在のシステムでのコンテナーを列挙します。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Get-Container [[-Name] <string[]>] [-CimSession <CimSession[]>] [-ComputerName <string[]>] [-Credential
     <pscredential[]>]  [<CommonParameters>]
@@ -680,7 +684,7 @@ Get コンテナー
     <pscredential[]>]  [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -CimSession <CimSession[]>
 
@@ -754,14 +758,14 @@ Get ContainerHost
 **概要**  
 コンテナーのホストのホスト オブジェクトを取得します。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Get-ContainerHost [[-ComputerName] <string[]>] [[-Credential] <pscredential[]>]  [<CommonParameters>]
 
     Get-ContainerHost [-CimSession] <CimSession[]>  [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -CimSession <CimSession[]>
 
@@ -800,7 +804,7 @@ Get ContainerHost
 **入力**  
 Microsoft.Management.Infrastructure.CimSession\[\]  
 System.String\[\]  
-System.Management.Automation.PSCredential\
+System.Management.Automation.PSCredential\[]
 
 
 **出力**  
@@ -818,13 +822,13 @@ Get ContainerImage
 **概要**  
 コンテナーのホストでコンテナーのイメージの表示
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
 Get-ContainerImage [[-Name] <string>] [[-Publisher] <string>] [[-Version] <version>] [-ChildOf <ContainerImage>]
 [-CimSession <CimSession[]>] [-ComputerName <string[]>] [-Credential <pscredential[]>]  [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -ChildOf <ContainerImage>
 
@@ -915,7 +919,7 @@ Get ContainerNetworkAdapter
 **概要**  
 コンテナーに関連付けられているネットワーク アダプターを一覧表示
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Get-ContainerNetworkAdapter [-ContainerName] <string[]> [[-Name] <string>] [-CimSession <CimSession[]>]
     [-ComputerName <string[]>] [-Credential <pscredential[]>]  [<CommonParameters>]
@@ -923,7 +927,7 @@ Get ContainerNetworkAdapter
     Get-ContainerNetworkAdapter [-Container] <Container[]> [[-Name] <string>]  [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -CimSession <CimSession[]>
 
@@ -988,15 +992,15 @@ Get ContainerNetworkAdapter
 
 **入力**  
 Microsoft.Containers.PowerShell.Objects.Container\[\]  
-System.String\[\]
+System.String\[\]  
 
 
 **出力**  
-Microsoft.Containers.PowerShell.Objects.ContainerNetworkAdapter
+Microsoft.Containers.PowerShell.Objects.ContainerNetworkAdapter  
 
 
 **エイリアス**  
-None
+None  
 
 ## インポート ContainerImage
 
@@ -1006,13 +1010,13 @@ None
 **概要**  
 別のコンピューターからエクスポートされたコンテナーのイメージをインポートします。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Import-ContainerImage [-Path] <string> [-AsJob] [-CimSession <CimSession[]>] [-ComputerName <string[]>]
     [-Credential <pscredential[]>] [-WhatIf] [-Confirm]  [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -AsJob
 
@@ -1101,15 +1105,15 @@ None
 移動 ContainerImageRepository
 
 **概要**  
-コンテナーのイメージを格納する場所を変更します。 ローカル ディスク上の場所にある必要があります。 イメージが、システムに存在しない場合のみ変更されたことができます。
+コンテナーのイメージを格納する場所を変更します。  ローカル ディスク上の場所にある必要があります。  イメージが、システムに存在しない場合のみ変更されたことができます。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Move-ContainerImageRepository [-Path] <string> [-AsJob] [-Passthru] [-CimSession <CimSession[]>] [-ComputerName
     <string[]>] [-Credential <pscredential[]>] [-WhatIf] [-Confirm]  [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -AsJob
 
@@ -1198,8 +1202,7 @@ None
 Microsoft.HyperV.PowerShell.VMHost
 
 
-**エイリアス**
-None
+**エイリアス** None
 
 ## 新しいコンテナー
 
@@ -1209,7 +1212,7 @@ None
 **概要**  
 新しいコンテナーを作成します。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     New-Container [[-Name] <string>] -ContainerImageName <string> [-ContainerImagePublisher <string>]
     [-ContainerImageVersion <version>] [-CimSession <CimSession[]>] [-ComputerName <string[]>] [-Credential
@@ -1220,7 +1223,7 @@ None
     <string>] [-Path <string>] [-AsJob] [-WhatIf] [-Confirm]  [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -AsJob
 
@@ -1374,7 +1377,7 @@ ContainerImage で新しい
 **概要**  
 既存のコンテナーからの新しいイメージをコンテナーの作成します。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     New-ContainerImage [-ContainerName] <string> [-Name] <string> [-Publisher] <string> [-Version] <version>
     [-CimSession <CimSession[]>] [-ComputerName <string[]>] [-Credential <pscredential[]>] [-WhatIf] [-Confirm]
@@ -1388,7 +1391,7 @@ ContainerImage で新しい
     [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -CimSession <CimSession[]>
 
@@ -1515,7 +1518,7 @@ None
 **概要**  
 システムから、既存のコンテナーを削除します。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Remove-Container [-Name] <string[]> [-CimSession <CimSession[]>] [-ComputerName <string[]>] [-Credential
     <pscredential[]>] [-Force] [-AsJob] [-Passthru] [-WhatIf] [-Confirm]  [<CommonParameters>]
@@ -1524,7 +1527,7 @@ None
     [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -AsJob
 
@@ -1643,7 +1646,7 @@ None
 **概要**  
 コンテナーのホストからコンテナーのイメージを削除します。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Remove-ContainerImage [[-Name] <string>] [[-Publisher] <string>] [[-Version] <version>] [-CimSession
     <CimSession[]>] [-ComputerName <string[]>] [-Credential <pscredential[]>] [-Force] [-WhatIf] [-Confirm]
@@ -1652,7 +1655,7 @@ None
     Remove-ContainerImage [-Image] <ContainerImage> [-Force] [-WhatIf] [-Confirm]  [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -CimSession <CimSession[]>
 
@@ -1767,9 +1770,9 @@ None
 削除 ContainerNetworkAdapter
 
 **概要**  
-ネットワーク アダプタをコンテナーから削除します。
+ネットワーク アダプターをコンテナーから削除します。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Remove-ContainerNetworkAdapter [-ContainerName] <string[]> [-CimSession <CimSession[]>] [-ComputerName <string[]>]
     [-Credential <pscredential[]>] [-Name <string>] [-Passthru] [-WhatIf] [-Confirm]  [<CommonParameters>]
@@ -1781,7 +1784,7 @@ None
     [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -CimSession <CimSession[]>
 
@@ -1901,7 +1904,7 @@ None
 **概要**  
 コンテナー内のネットワーク アダプターで MAC アドレスを設定します。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Set-ContainerNetworkAdapter [-ContainerName] <string> [-CimSession <CimSession[]>] [-ComputerName <string[]>]
     [-Credential <pscredential[]>] [-Name <string>] [-DynamicMacAddress] [-StaticMacAddress <string>] [-Passthru]
@@ -1914,7 +1917,7 @@ None
     <string>] [-Passthru] [-WhatIf] [-Confirm]  [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -CimSession <CimSession[]>
 
@@ -2052,7 +2055,7 @@ None
 **概要**  
 コンテナーを開始します。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Start-Container [-Name] <string[]> [-CimSession <CimSession[]>] [-ComputerName <string[]>] [-Credential
     <pscredential[]>] [-AsJob] [-Passthru] [-WhatIf] [-Confirm]  [<CommonParameters>]
@@ -2060,7 +2063,7 @@ None
     Start-Container [-Container] <Container[]> [-AsJob] [-Passthru] [-WhatIf] [-Confirm]  [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -AsJob
 
@@ -2170,7 +2173,7 @@ None
 **概要**  
 コンテナーを停止します。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Stop-Container [-Name] <string[]> [-CimSession <CimSession[]>] [-ComputerName <string[]>] [-Credential
     <pscredential[]>] [-TurnOff] [-AsJob] [-Passthru] [-WhatIf] [-Confirm]  [<CommonParameters>]
@@ -2179,7 +2182,7 @@ None
     [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -AsJob
 
@@ -2298,7 +2301,7 @@ None
 **概要**  
 コンテナーのホスト システムにコンテナーのイメージを検証します。
 
-**構文**
+**SYNTAX**  
 ``` PowerShell
     Test-ContainerImage [[-Name] <string>] [[-Publisher] <string>] [[-Version] <version>] [-CimSession <CimSession[]>]
     [-ComputerName <string[]>] [-Credential <pscredential[]>] [-AsJob] [-WhatIf] [-Confirm]  [<CommonParameters>]
@@ -2306,7 +2309,7 @@ None
     Test-ContainerImage [-Image] <ContainerImage> [-AsJob] [-WhatIf] [-Confirm]  [<CommonParameters>]
 ```
 
-**パラメーター**
+**PARAMETERS**  
 ``` PowerShell
     -AsJob
 
@@ -2417,9 +2420,6 @@ Microsoft.Containers.PowerShell.Objects.ContainerImageReport
 None
 
 
-
-
-
-<!--HONumber=Feb16_HO3-->
+<!--HONumber=Jun16_HO4-->
 
 

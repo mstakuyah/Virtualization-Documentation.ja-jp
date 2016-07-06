@@ -1,14 +1,18 @@
 ---
-title: &1762507220 Windows 10 上に Hyper-V をインストールする
-description: Windows 10 上に Hyper-V をインストールする
+title: "Windows 10 上に Hyper-V をインストールする"
+description: "Windows 10 上に Hyper-V をインストールする"
 keywords: windows 10, hyper-v
 author: neilpeterson
 manager: timlt
 ms.date: 05/02/2016
 ms.topic: article
-ms.prod: &2138124249 windows-10-hyperv
+ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
+translationtype: Human Translation
+ms.sourcegitcommit: e14ede0a2b13de08cea0a955b37a21a150fb88cf
+ms.openlocfilehash: 9e2b16f3e6c9882246a5a4c21683112eaa089ce8
+
 ---
 
 # Windows 10 上に Hyper-V をインストールする
@@ -23,7 +27,7 @@ Windows 10 上に仮想マシンを作成する前に、Hyper-V の役割を有�
 
 2. **[Windows の機能の有効化または無効化]** を選択します。
 
-3. **[Hyper-V]** を選択して、**[OK]** をクリックします。
+3. **[Hyper-V]** を選択して、**[OK]** をクリックします。  
 
 ![](media/enable_role_upd.png)
 
@@ -44,7 +48,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 
 ## DISM での Hyper-V のインストール
 
-展開イメージのサービスと管理 (DISM) ツールは、Windows イメージのサービスおよび Windows プレインストール環境の準備に使用されます。 また、DISM では、オペレーティング システムの実行中に、Windows の機能を有効にすることもできます。 詳細については、「[DISM テクニカル リファレンス](https://technet.microsoft.com/en-us/library/hh824821.aspx)」をご覧ください。
+展開イメージのサービスと管理 (DISM) ツールは、Windows イメージのサービスおよび Windows プレインストール環境の準備に使用されます。 また、DISM では、オペレーティング システムの実行中に、Windows の機能を有効にすることもできます。 詳細については、[DISM テクニカル リファレンス](https://technet.microsoft.com/en-us/library/hh824821.aspx)をご覧ください。
 
 DISM を使用して、HYPER-V ロールを有効にします。
 
@@ -59,14 +63,10 @@ DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
 
 
 ## 次のステップ - 仮想スイッチの作成
-
 [仮想スイッチを作成する](walkthrough_virtual_switch.md)
 
 
 
-
-
-
-<!--HONumber=May16_HO1-->
+<!--HONumber=Jun16_HO4-->
 
 

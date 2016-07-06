@@ -1,6 +1,6 @@
 ---
-title: 入れ子になった仮想化
-description: 入れ子になった仮想化
+title: "入れ子になった仮想化"
+description: "入れ子になった仮想化"
 keywords: windows 10, hyper-v
 author: theodthompson
 manager: timlt
@@ -9,11 +9,14 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 68c65445-ce13-40c9-b516-57ded76c1b15
+ms.sourcegitcommit: 26a8adb426a7cf859e1a9813da2033e145ead965
+ms.openlocfilehash: d17413fc572e59ec21ff513ef5de994c6716aa08
+
 ---
 
 # 入れ子になった仮想化による仮想マシンでの Hyper-V の実行
 
-入れ子になった仮想化は、Hyper-V 仮想マシン内での Hyper-V の実行を可能にする機能です。 つまり、入れ子になった仮想化により、Hyper-V ホスト自体を仮想化することができます。 入れ子になった仮想化の使用例として、仮想化されたコンテナー ホストで Hyper-V コンテナーを実行したり、仮想化環境に Hyper-V ラボをセットアップしたり、個別のハードウェアを必要とせずに複数コンピューターのシナリオをテストしたりする方法があります。 このドキュメントは、ソフトウェアとハードウェアの前提条件、および構成手順について詳しく説明し、トラブルシューティングの詳細を提供します。
+入れ子になった仮想化は、Hyper-V 仮想マシン内での Hyper-V の実行を可能にする機能です。 つまり、入れ子になった仮想化により、Hyper-V ホスト自体を仮想化することができます。 入れ子になった仮想化の使用例として、仮想化されたコンテナー ホストで Hyper-V コンテナーを実行したり、仮想化環境に Hyper-V ラボをセットアップしたり、個別のハードウェアを必要とせずに複数コンピューターのシナリオをテストしたりする方法があります。 このドキュメントは、ソフトウェアとハードウェアの前提条件、および構成手順について詳しく説明し、トラブルシューティングの詳細を提供します。 Hyper-V を Windows Insider Preview ビルド 14361 以降で実行する場合は、[Windows Insider: ビルド 14361+ の入れ子になった仮想化プレビュー](https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting#nested-virtualization-preview-for-windows-insiders-builds-14361-)をご覧ください。
 
 ## 必要条件
 
@@ -86,7 +89,51 @@ Netsh interface ip add dnsserver “Ethernet” address=<my DNS server>
 
 Windows フィードバック アプリ、[仮想化フォーラム](https://social.technet.microsoft.com/Forums/windowsserver/En-us/home?forum=winserverhyperv)、または [GitHub](https://github.com/Microsoft/Virtualization-Documentation) を使用してその他の問題を報告してください。
 
+##Windows Insider: ビルド 14361+ の入れ子になった仮想化プレビュー
+数か月前に、HYPER-V で入れ子になった仮想化の初期プレビューがビルド 10565 で発表されました。 期待されていた機能がついに発表されました。Windows Insider で更新プログラムを共有しましょう。
 
-<!--HONumber=Jun16_HO3-->
+###入れ子になった仮想化に必要な新しい VM バージョン
+14361 ビルド以降、入れ子になった仮想化が有効な VMには、バージョン 8.0 が必要になります。 このため、以前のホストで作成された VM の入れ子を有効にするには、バージョンの更新が必要になります。 
+
+####VM バージョンの更新
+入れ子になった仮想化の使用を続けるには、VM バージョンを 8.0 に更新する必要があります。 つまり、保存された状態を削除し、VM をシャット ダウンする必要があります。 次の PowerShell コマンドレットを実行すると VM バージョンが更新されます。
+```none
+Update-VMVersion -Name <VMName>
+```
+####入れ子になった仮想化の無効化
+VM を更新しない場合でも、入れ子になった仮想化を無効にすれば VM を起動できます。
+```none
+Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $false
+```
+
+###VM バージョン 8.0 の新しい動作 
+このプレビューでは、入れ子が有効な VM の動作方法に、いくつかの変更があります。
+-   チェックポイントの作成と適用が、入れ子になった仮想化が有効な VM で動作するようになりました。
+-   入れ子が有効な VM を保存および開始できるようになりました。
+-   入れ子になった仮想化が有効な VM を、仮想化ベースのセキュリティ対応のホストで実行できるようになりました (デバイス ガード、資格情報のガードなど)。
+-   既存の制限事項に関するエラー メッセージが改善されました。
+
+###機能上の制限事項
+-   入れ子になった仮想化は、HYPER-V 仮想マシン内で HYPER-V を実行するように設計されています。 サード パーティの仮想化アプリケーションはサポートされていないため、HYPER-V VM に失敗する可能性があります。
+-   動的メモリは入れ子になった仮想化と互換性がありません。 VM 内部で HYPER-V を実行すると、VM は実行時にそのメモリを変更できません。 
+-   ランタイム メモリのサイズ変更は入れ子になった仮想化と互換性がありません。 HYPER-V を内部で実行する場合、VM メモリのサイズは変更できません。 
+-   入れ子になった仮想化は、Intel システムでのみサポートされます。
+
+###既知の問題
+ビルド 14361 には、第 2 世代の VM が次のエラーで起動に失敗する既知の問題があります。
+```none
+“Cannot modify property without enabling VirtualizationBasedSecurityOptOut”
+```
+この問題は、入れ子になった仮想化を無効にするか、仮想化ベースのセキュリティを無効にすることで一時的に修正できます。
+```none
+Set-VMSecurity -VMName <vmname> -VirtualizationBasedSecurityOptOut $true
+```
+
+###ご意見をお寄せください
+いつものように、Windows フィードバック アプリからフィードバックをお送りください。 ご質問がある場合は、[GitHub](https://github.com/Microsoft/Virtualization-Documentation) ページのドキュメントでご報告ください。 
+
+
+
+<!--HONumber=Jun16_HO4-->
 
 
