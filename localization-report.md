@@ -9,8 +9,8 @@
 [ Archive Failed Files ](#archive-failed-list)| 0
 [ Archive Success Files ](#archive-success-list)| 0
 [ Handback Failed Files ](#handback-failed-list)| 1
-[ Out Of Sync Handback Files ](#outofsync-handback-success-list)| 51
-[ In Sync Handback Files ](#insync-handback-success-list)| 84
+[ Out Of Sync Handback Files ](#outofsync-handback-success-list)| 50
+[ In Sync Handback Files ](#insync-handback-success-list)| 85
 [ Ignored Files ](#ignored-list)| 331
 
 ## <a name='handoff-failed-list'></a> Handoff Failed File List
@@ -77,7 +77,6 @@
  [virtualization\windowscontainers\deployment\media\nssm2.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/76b070fd7dea610d055c6368c3fafd57f119d29b/virtualization/windowscontainers/deployment/media/nssm2.png) | OutofSyncHandedBackSuccess | [Details](#6c179de0c9cfec25e8fa46d3c4e35062789a9c35240)
  [virtualization\windowscontainers\deployment\media\nssm3.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/76b070fd7dea610d055c6368c3fafd57f119d29b/virtualization/windowscontainers/deployment/media/nssm3.png) | OutofSyncHandedBackSuccess | [Details](#a653bcff2897c8e5d5ba6475acb1187625f34a1a241)
  [virtualization\windowscontainers\docker\configure_docker_daemon.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/7113f1dc1e9a0a18d4eb25e6d604e89f96f826c4/virtualization/windowscontainers/docker/configure_docker_daemon.md) | OutofSyncHandedBackSuccess | [Details](#1fddaff6fc260c0cf91c8626a60d768a06995e53247)
- [virtualization\windowscontainers\EULA.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4cff38fe495e9237285d2895bf3e45b99aaf5c6d/virtualization/windowscontainers/EULA.md) | OutofSyncHandedBackSuccess | [Details](#f2cb1cdc1a98bf328a24610af6f7313a1071b079250)
  [virtualization\windowscontainers\management\media\nat1.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/5f58ef2766a4580fbe6dca31a0242335e6b7c085/virtualization/windowscontainers/management/media/nat1.png) | OutofSyncHandedBackSuccess | [Details](#4d662bf6e123797b4670dfdf6a6aee32e4e95e54261)
  [virtualization\windowscontainers\management\media\PortMapping.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/abddb07247f520c8824620135302711c10714fa6/virtualization/windowscontainers/management/media/PortMapping.png) | OutofSyncHandedBackSuccess | [Details](#1d21dac1815f54f70a991c693ab882575f601e8d263)
  [virtualization\windowscontainers\quick_start\media\dockerfile2.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/2b589764b88c5ee18288777f4e57e29d52a39535/virtualization/windowscontainers/quick_start/media/dockerfile2.png) | OutofSyncHandedBackSuccess | [Details](#24a79a8377a34797a7b590421167fc4e5f843e60296)
@@ -137,6 +136,7 @@
  [virtualization\windowscontainers\deployment\system_requirements.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/cc216f56acd5e547d05a48beea57450ba5fcb28b/virtualization/windowscontainers/deployment/system_requirements.md) | InSyncHandedBackSuccess | [Details](#12ae565f012dc87a2cab883c0486322db42b1dcc245)
  [virtualization\windowscontainers\docker\manage_windows_dockerfile.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/960b40e8c1eda9c19ebff0972df2c87e70c7e8f6/virtualization/windowscontainers/docker/manage_windows_dockerfile.md) | InSyncHandedBackSuccess | [Details](#71e0fb430498f8a5ae4ac5b297cf5e4a2c904098248)
  [virtualization\windowscontainers\docker\optimize_windows_dockerfile.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/cc216f56acd5e547d05a48beea57450ba5fcb28b/virtualization/windowscontainers/docker/optimize_windows_dockerfile.md) | InSyncHandedBackSuccess | [Details](#4822ff2f0248b2d7752299ea55b08e3499e2e2f7249)
+ [virtualization\windowscontainers\EULA.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4cff38fe495e9237285d2895bf3e45b99aaf5c6d/virtualization/windowscontainers/EULA.md) | InSyncHandedBackSuccess | [Details](#f2cb1cdc1a98bf328a24610af6f7313a1071b079250)
  [virtualization\windowscontainers\management\container_networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/cd344ef02f03149129171b99bfdd92338ffdf24f/virtualization/windowscontainers/management/container_networking.md) | InSyncHandedBackSuccess | [Details](#161aaeed6c625d92b45be59dde4357836934956b251)
  [virtualization\windowscontainers\management\docker-powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/9d9bd347e20cdd57bf107b9d859ac0fe096e359e/virtualization/windowscontainers/management/docker-powershell.md) | InSyncHandedBackSuccess | [Details](#03ceaa83723db0870623cbc579d81b8d4ee6e813252)
  [virtualization\windowscontainers\management\hcs_powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/cfa3c14e932f8b86edf6667200ac028ea0a16b67/virtualization/windowscontainers/management/hcs_powershell.md) | InSyncHandedBackSuccess | [Details](#413b9de08d182635908bc11ce3efc7623bb440e4253)
@@ -3661,15 +3661,15 @@
 * [Back to Top](#report-top)
 
 ##### <a name='f2cb1cdc1a98bf328a24610af6f7313a1071b079250'></a> Source: [virtualization\windowscontainers\EULA.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4cff38fe495e9237285d2895bf3e45b99aaf5c6d/virtualization/windowscontainers/EULA.md)
-* Status: OutofSyncHandedBackSuccess
-* Target File: [virtualization\windowscontainers\EULA.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ce086504dcef43cdbc99582c5e09c0e3015652a5/virtualization/windowscontainers/EULA.md)
+* Status: InSyncHandedBackSuccess
+* Target File: [virtualization\windowscontainers\EULA.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/0e4d11e9a80279a2279798b60e90a401b4592aca/virtualization/windowscontainers/EULA.md)
 * Handoff File: [EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/00a4416c1a184ca2a20e6287cdac83c7684326cf/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf)
 * Handoff Datetime: 2016-06-28 17:44:48
 * Handoff Reason: Include
 * Archive File: [EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/dd6364cfc026a0950163ab43b3ae2c2834fadb8d/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/archive/EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf)
 * Archive Datetime: 2016-06-30 07:21:33
-* Handback File: [EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/9d0bbf00d55082604cea81ecc6b4c0b49a49a53e/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf)
-* Handback Datetime: 2016-01-04 21:48:05
+* Handback File: [EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/0ca8b427301096ae61836f041ebee24a6cb69710/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf)
+* Handback Datetime: 2016-07-06 02:42:52
 * Bilingual File: [EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/9d0bbf00d55082604cea81ecc6b4c0b49a49a53e/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf)
 * Bilingual Datetime: 2016-06-16 07:47:53
 * [Back to Top](#report-top)
