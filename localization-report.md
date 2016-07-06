@@ -3670,8 +3670,8 @@
 * Archive Datetime: 2016-06-30 07:21:33
 * Handback File: [EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/0ca8b427301096ae61836f041ebee24a6cb69710/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf)
 * Handback Datetime: 2016-07-06 02:42:52
-* Bilingual File: [EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/9d0bbf00d55082604cea81ecc6b4c0b49a49a53e/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf)
-* Bilingual Datetime: 2016-06-16 07:47:53
+* Bilingual File: [EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/0ca8b427301096ae61836f041ebee24a6cb69710/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/EULA.0ba9560e121100b89b5825e4c97105b9c4695644.ja-jp.xlf)
+* Bilingual Datetime: 2016-07-06 02:43:19
 * [Back to Top](#report-top)
 
 ##### <a name='161aaeed6c625d92b45be59dde4357836934956b251'></a> Source: [virtualization\windowscontainers\management\container_networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/cd344ef02f03149129171b99bfdd92338ffdf24f/virtualization/windowscontainers/management/container_networking.md)
