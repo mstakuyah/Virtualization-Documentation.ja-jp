@@ -6,14 +6,14 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/fec3dc5a03ca45601cdd2ac41a99bd8ce08fab27/virtualization/windowscontainers/quick_start/quick_start_windows_10.md) | OutofSyncHandedBackSuccess | [Details](#926c79a41f44072c9b0a24526c69aa656229327c317)
+ [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/5f42cae373b1f8f0484ffac82f5ebc761c37d050/virtualization/windowscontainers/quick_start/quick_start_windows_10.md) | OutofSyncHandedBackSuccess | [Details](#9ef41ff031e8b7bc463e71f39ee6a3b8e4fd846e317)
 
 ## Item Details
-##### <a name='926c79a41f44072c9b0a24526c69aa656229327c317'></a> Source: [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/fec3dc5a03ca45601cdd2ac41a99bd8ce08fab27/virtualization/windowscontainers/quick_start/quick_start_windows_10.md)
+##### <a name='9ef41ff031e8b7bc463e71f39ee6a3b8e4fd846e317'></a> Source: [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/5f42cae373b1f8f0484ffac82f5ebc761c37d050/virtualization/windowscontainers/quick_start/quick_start_windows_10.md)
 * Status: OutofSyncHandedBackSuccess
 * Target File: 
-* Handoff File: [quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/dc0ad918fbcfb1fc012168d3b892c19ae510fa98/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.ja-jp.xlf)
-* Handoff Datetime: 2016-07-07 22:12:41
+* Handoff File: [quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/0da4db48a0f51e95368fa9c08747547a47034342/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.ja-jp.xlf)
+* Handoff Datetime: 2016-07-11 05:46:43
 * Handoff Reason: Include
 * Archive File: 
 * Archive Datetime: 0001-01-01 00:00:00
