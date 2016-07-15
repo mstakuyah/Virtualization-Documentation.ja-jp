@@ -1,7 +1,7 @@
 ---
 title: "PowerShell ダイレクトでの Windows Virtual Machines の管理"
 description: "PowerShell ダイレクトでの Windows Virtual Machines の管理"
-keywords: windows 10, hyper-v
+keywords: windows 10, hyper-v, powershell, integration services, integration components, automation, powershell direct
 author: scooley
 manager: timlt
 ms.date: 05/02/2016
@@ -10,19 +10,19 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: fb228e06-e284-45c0-b6e6-e7b0217c3a49
 translationtype: Human Translation
-ms.sourcegitcommit: 6eb26eda92217917a3abe7d9dd4c77c48283c8dc
-ms.openlocfilehash: 91927b751021efa9ba2cf696516ba50af28c6e05
+ms.sourcegitcommit: 87f8fb2ae8958c9c6177f6eda90678708054fce7
+ms.openlocfilehash: 75186d48346efbaaac264b00f0f92fe82fcfe424
 
 ---
 
-# PowerShell ダイレクトでの Windows Virtual Machines の管理
+# PowerShell を使用した仮想マシンの自動化と管理
  
-PowerShell のダイレクトを使用すると、Windows 10 または Windows Server テクニカル プレビュー HYPER-V ホストから 10 の Windows または Windows Server に関するテクニカル プレビューの仮想マシンをリモートで管理します。 PowerShell ダイレクトでは、Hyper-V ホストまたは仮想マシンのいずれかにおけるネットワーク構成またはリモート管理設定に関係なく、仮想マシン内の PowerShell の管理ができます。 これにより、Hyper-V 管理者は管理タスクと構成タスクを簡単に自動化およびスクリプト化できるようになります。
+PowerShell ダイレクトを使用すると、ネットワークの構成やリモート管理の設定に関係なく、Hyper-V ホストから、Windows 10 仮想マシンまたは Windows Server Technical Preview 仮想マシンで任意の PowerShell を実行することができます。
 
 **PowerShell ダイレクトを実行する方法:**  
 * 対話型セッションとして -- Enter-PSSession を使用して対話型 PowerShell セッションを作成および終了するには、[ここをクリック](vmsession.md#create-and-exit-an-interactive-powershell-session)してください。
 * 単一のコマンドまたはスクリプトを実行する一時使用セッションとして -- Invoke-Command を使用してスクリプトまたはコマンド実行するには[ここをクリック](vmsession.md#run-a-script-or-command-with-invoke-command)してください。
-* 永続的なセッションとして (ビルド 14280 およびそれ以降) -- New-PSSession を使用して永続的なセッションを作成するには[ここをクリック](vmsession.md#copy-files-with-New-PSSession-and-Copy-Item)してください。  
+* 永続的なセッションとして (ビルド 14280 以降) -- New-PSSession を使用して永続的なセッションを作成するには[ここをクリック](vmsession.md#copy-files-with-New-PSSession-and-Copy-Item)してください。  
 続行するには、Copy-Item を使用してファイルを仮想マシンにコピーおよび仮想マシンからコピーし、接続を切断するには Remove-PSSession を使用します。
 
 ## 要件
@@ -281,6 +281,6 @@ PowerShell ダイレクトでは JEA (Just Enough Administration) をサポー�
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Jul16_HO1-->
 
 

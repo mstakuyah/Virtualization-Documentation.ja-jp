@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
 translationtype: Human Translation
-ms.sourcegitcommit: 960b40e8c1eda9c19ebff0972df2c87e70c7e8f6
-ms.openlocfilehash: 71e0fb430498f8a5ae4ac5b297cf5e4a2c904098
+ms.sourcegitcommit: daf82c943f9e19ec68e37207bba69fb0bf46f46f
+ms.openlocfilehash: ace5fd12856cdcff3a380eb35e4982c4c1ce4c5a
 
 ---
 
@@ -98,7 +98,7 @@ RUN 命令の形式は、次のとおりです。
 ```none
 # exec form
 
-RUN ["<executable", "<param 1>", "<param 2>"
+RUN ["<executable", "<param 1>", "<param 2>"]
 
 # shell form
 
@@ -149,6 +149,8 @@ Windows では、exec 形式で `RUN` 命令を使用する場合、バックス
 RUN ["powershell", "New-Item", "c:\\test"]
 ```
 
+ターゲット プログラムが Windows インストーラーである場合は、追加の手順として `/x:<directory>` フラグを使用したセットアップの抽出を行ってから、実際の (サイレント) インストール プロシージャを起動する必要があります。 さらに、コマンドが終了するまで待機する必要があります。 そうしないと、プロセスは何もインストールせずに途中で終了してしまいます。 詳細については、次の例を参照してください。
+
 **例**
 
 この例では、DISM を使用してコンテナー イメージに IIS をインストールします。
@@ -160,6 +162,13 @@ RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
 ```none
 RUN powershell.exe -Command c:\vcredist_x86.exe /quiet
 ``` 
+
+この例では、.NET Framework 4.5.2 Developer Pack をインストールするために、まずそれの抽出を行ってから、実際のインストーラーを起動しています。 
+```none
+RUN start /wait C:\temp\NDP452-KB2901951-x86-x64-DevPack.exe /q /x:C:\temp\NDP452DevPackSetupDir && \
+    start /wait C:\temp\NDP452DevPackSetupDir\Setup.exe /norestart /q /log %TEMP%\ndp452_install_log.txt && \
+    rmdir /s /q C:\temp\NDP452DevPackSetupDir
+```
 
 RUN 命令の詳細については、[Docker.com の RUN リファレンス]( https://docs.docker.com/engine/reference/builder/#run)を参照してください。 
 
@@ -481,6 +490,6 @@ windowsservercore   latest              6801d964fda5        4 months ago        
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Jul16_HO1-->
 
 

@@ -9,8 +9,9 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
-ms.sourcegitcommit: 7113f1dc1e9a0a18d4eb25e6d604e89f96f826c4
-ms.openlocfilehash: 1fddaff6fc260c0cf91c8626a60d768a06995e53
+translationtype: Human Translation
+ms.sourcegitcommit: 2d6f2c24624883457302c925c2bb47e6c867b730
+ms.openlocfilehash: 533f3a3277e3d9654f0d425c9c0f442c93e2d24a
 
 ---
 
@@ -156,7 +157,20 @@ Docker ホストにログインし、Docker コマンドをローカルで実行
 ```
 
 
+## ログの収集
+Docker デーモンは、ファイルではなく Windows 'アプリケーション' イベント ログに記録します。 これらのログは、Windows PowerShell を使用することで、簡単に読み取り、並べ替え、およびフィルター処理することができます。
 
-<!--HONumber=Jun16_HO4-->
+たとえば、過去 5 分間の Docker デーモン ログを古い順に表示できます。
+```
+Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-5) | Sort-Object Time 
+```
+
+また、別のツールで読み取り可能な CSV ファイル、またはスプレッドシートに簡単にパイプすることができます。
+```
+Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-30)  | Sort-Object Time | Export-CSV ~/last30minutes.csv ```
+
+
+
+<!--HONumber=Jul16_HO1-->
 
 

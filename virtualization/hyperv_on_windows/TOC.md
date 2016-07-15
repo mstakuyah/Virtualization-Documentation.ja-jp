@@ -26,10 +26,11 @@
 # 参照先
 ## [Hyper-V PowerShell](https://technet.microsoft.com/library/hh848559.aspx)
 ## [Hyper-V WMI プロバイダー (V2)](https://msdn.microsoft.com/library/hh850319.aspx)
+## [Hyper-V 統合サービス](reference/ic_info.md)
 ## [Hyper-V のアーキテクチャ](https://msdn.microsoft.com/en-us/library/cc768520(v=bts.10).aspx)
-## [ハイパーバイザーの仕様](develop/tlfs.md)
+## [ハイパーバイザーの仕様](reference/tlfs.md)
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Jun16_HO5-->
 
 

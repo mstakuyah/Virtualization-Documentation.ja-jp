@@ -1,7 +1,7 @@
 ---
 title: "Hyper-V 統合サービスの管理"
 description: "Hyper-V 統合サービスの管理"
-keywords: windows 10, hyper-v
+keywords: windows 10, hyper-v, integration services, integration components
 author: scooley
 manager: timlt
 ms.date: 05/02/2016
@@ -10,16 +10,18 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 9cafd6cb-dbbe-4b91-b26c-dee1c18fd8c2
 translationtype: Human Translation
-ms.sourcegitcommit: ef9ce04b2532fd314a21920b9cc5c28459c9a438
-ms.openlocfilehash: d2fbf3b714ac70e096ba80aadd9533c62cf0c34e
+ms.sourcegitcommit: 852f7fafe7192d85b0e9840ea3767a1206a1c285
+ms.openlocfilehash: e7abf05c899e2acca07312813b7808a5db00a9f7
 
 ---
 
 # Hyper-V 統合サービスの管理
 
-統合サービス (多くの場合、統合コンポーネントと呼ばれます) は、仮想マシンから Hyper-V ホストに通信できるようにするサービスです。 このようなサービスの多くは便利なものですが (ゲスト ファイル コピーなど)、ゲスト オペレーティング システムが正しく機能するために重要なサービスもあります (時間の同期)。
+統合サービス (多くの場合、統合コンポーネントと呼ばれます) は、仮想マシンから Hyper-V ホストに通信できるようにするサービスです。 このようなサービスの多くは便利なものですが (ゲスト ファイル コピーなど)、仮想マシンが正しく機能するために重要なサービスもあります (時間の同期)。
 
-この記事では、Hyper-V マネージャーと PowerShell の両方を Windows 10 で使用して、統合サービスを管理する方法について説明します。 各統合サービスの詳細については、「[Integration Services (統合サービス)]( https://technet.microsoft.com/en-us/library/dn798297.aspx)」を参照してください。
+この記事では、Hyper-V マネージャーと PowerShell の両方を Windows 10 で使用して、統合サービスを管理する方法について説明します。  
+
+各統合サービスの詳細については、「[Integration Services](../reference/ic_info.md)」 (統合サービス) を参照してください。
 
 ## Hyper-V マネージャーを使用して統合サービスを有効または無効にする
 
@@ -41,33 +43,33 @@ ms.openlocfilehash: d2fbf3b714ac70e096ba80aadd9533c62cf0c34e
 1. 実行中の統合サービスを確認します
   
   ``` PowerShell
-  Get-VMIntegrationService -VMName "demovm"
+  Get-VMIntegrationService -VMName "DemoVM"
   ```
 
   出力は次のようになります。  
   ``` PowerShell
   VMName      Name                    Enabled PrimaryStatusDescription SecondaryStatusDescription
   ------      ----                    ------- ------------------------ --------------------------
-  demovm      Guest Service Interface False   OK
-  demovm      Heartbeat               True    OK                       OK
-  demovm      Key-Value Pair Exchange True    OK
-  demovm      Shutdown                True    OK
-  demovm      Time Synchronization    True    OK
-  demovm      VSS                     True    OK
+  DemoVM      Guest Service Interface False   OK
+  DemoVM      Heartbeat               True    OK                       OK
+  DemoVM      Key-Value Pair Exchange True    OK
+  DemoVM      Shutdown                True    OK
+  DemoVM      Time Synchronization    True    OK
+  DemoVM      VSS                     True    OK
   ```
 
 2. `Guest Service Interface` 統合サービスを有効にします。
 
    ``` PowerShell
-   Enable-VMIntegrationService -VMName "demovm" -Name "Guest Service Interface"
+   Enable-VMIntegrationService -VMName "DemoVM" -Name "Guest Service Interface"
    ```
    
-   `Get-VMIntegrationService -VMName "demovm"` を実行すると、そのゲスト サービス インターフェイス統合サービスが有効と表示されます。
+   `Get-VMIntegrationService -VMName "DemoVM"` を実行すると、そのゲスト サービス インターフェイス統合サービスが有効と表示されます。
  
 3. `Guest Service Interface` 統合サービスを無効にします。
 
    ``` PowerShell
-   Disable-VMIntegrationService -VMName "demovm" -Name "Guest Service Interface"
+   Disable-VMIntegrationService -VMName "DemoVM" -Name "Guest Service Interface"
    ```
    
 統合サービスが機能するには、ホストとゲストの両方で有効にする必要があるように設計されました。  すべての統合サービスは Windows ゲスト オペレーティング システムの既定で有効ですが、無効にすることもできます。  その方法については、次のセクションを参照してください。
@@ -193,7 +195,9 @@ sudo hv_kvp_daemon
 
 ## 統合サービスのメンテナンス
 
-可能な限り最高の仮想マシンのパフォーマンスと機能を実現するには、統合サービスを最新の状態に保ちます。
+Windows 10 での統合サービスのメンテナンスは、既定では、仮想マシンが Windows Update から重要な更新プログラムを受信できる限り実行されます。  
+
+統合サービスを最新の状態に保つことで、仮想マシンのパフォーマンスと機能を最大限に引き出すことができます。
 
 **Windows 10 ホストで実行されている仮想マシンの場合:**
 
@@ -226,19 +230,19 @@ sudo hv_kvp_daemon
 |:---------|:---------|:---------|
 | Windows 10 | Windows Update | |
 | Windows 8.1 | Windows Update | |
-| Windows 8 | 統合サービス ディスク | |
-| Windows 7 | 統合サービス ディスク | |
-| Windows Vista (SP 2) | 統合サービス ディスク | |
-| Windows XP (SP 2、SP 3) | 統合サービス ディスク | |
+| Windows 8 | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows 7 | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows Vista (SP 2) | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows XP (SP 2、SP 3) | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
 | - | | |
 | Windows Server 2012 R2 | Windows Update | |
-| Windows Server 2012 | 統合サービス ディスク | |
-| Windows Server 2008 R2 | 統合サービス ディスク | |
-| Windows Server 2008 (SP 2) | 統合サービス ディスク | |
-| Windows Home Server 2011 | 統合サービス ディスク | |
-| Windows Small Business Server 2011 | 統合サービス ディスク | |
-| Windows Server 2003 R2 (SP 2) | 統合サービス ディスク | |
-| Windows Server 2003 (SP 2) | 統合サービス ディスク | |
+| Windows Server 2012 | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows Server 2008 R2 | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows Server 2008 (SP 2) | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows Home Server 2011 | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows Small Business Server 2011 | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows Server 2003 R2 (SP 2) | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows Server 2003 (SP 2) | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
 | - | | |
 | Linux ゲスト | パッケージ マネージャー | Linux 用の統合コンポーネントはディストリビューションに組み込まれていますが、オプションで更新プログラムを使用できる場合があります。 ** |
 
@@ -248,29 +252,26 @@ sudo hv_kvp_daemon
 | ゲスト OS | 更新方法 | メモ |
 |:---------|:---------|:---------|
 | Windows 8.1 | Windows Update | |
-| Windows 8 | 統合サービス ディスク | |
-| Windows 7 | 統合サービス ディスク | |
-| Windows Vista (SP 2) | 統合サービス ディスク | |
-| Windows XP (SP 2、SP 3) | 統合サービス ディスク | |
+| Windows 8 | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows 7 | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows Vista (SP 2) | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows XP (SP 2、SP 3) | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
 | - | | |
 | Windows Server 2012 R2 | Windows Update | |
-| Windows Server 2012 | 統合サービス ディスク | |
-| Windows Server 2008 R2 | 統合サービス ディスク | |
-| Windows Server 2008 (SP 2) | 統合サービス ディスク | |
-| Windows Home Server 2011 | 統合サービス ディスク | |
-| Windows Small Business Server 2011 | 統合サービス ディスク | |
-| Windows Server 2003 R2 (SP 2) | 統合サービス ディスク | |
-| Windows Server 2003 (SP 2) | 統合サービス ディスク | |
+| Windows Server 2012 | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows Server 2008 R2 | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。|
+| Windows Server 2008 (SP 2) | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows Home Server 2011 | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows Small Business Server 2011 | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows Server 2003 R2 (SP 2) | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
+| Windows Server 2003 (SP 2) | 統合サービス ディスク | 利用可能な手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。 |
 | - | | |
 | Linux ゲスト | パッケージ マネージャー | Linux 用の統合コンポーネントはディストリビューションに組み込まれていますが、オプションで更新プログラムを使用できる場合があります。 ** |
-
-
-Windows 8 および Windows 8.1 用統合サービス ディスクを使用した更新手順については、[こちら](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4)を参照してください。
 
  > Linux ゲストの詳細については、[こちら](https://technet.microsoft.com/en-us/library/dn531030.aspx)を参照してください。 
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Jul16_HO1-->
 
 
