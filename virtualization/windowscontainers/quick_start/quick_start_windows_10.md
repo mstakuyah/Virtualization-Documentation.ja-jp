@@ -4,14 +4,14 @@ description: "コンテナー展開のクイック スタート"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
-ms.date: 06/28/2016
+ms.date: 07/07/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 translationtype: Human Translation
-ms.sourcegitcommit: 5980babe886024de93f6d6c5f04eaed47407209d
-ms.openlocfilehash: 188c85a9e6f5d1c334e51853efd8fa3ca461837c
+ms.sourcegitcommit: 5f42cae373b1f8f0484ffac82f5ebc761c37d050
+ms.openlocfilehash: 9ef41ff031e8b7bc463e71f39ee6a3b8e4fd846e
 
 ---
 
@@ -19,7 +19,7 @@ ms.openlocfilehash: 188c85a9e6f5d1c334e51853efd8fa3ca461837c
 
 **この記事は暫定的な内容であり、変更される可能性があります。** 
 
-この演習では、Windows 10 の Windows コンテナー機能の基本的な展開と使用について段階的に確認します (Insider ビルド 14352 以降)。 完了後、コンテナー ロールがインストールされ、シンプルな Hyper-V コンテナーが展開されます。 このクイック スタートを始める前に、コンテナーの基本的な概念と用語を理解しておいてください。 情報は[クイック スタートの概要](./quick_start.md)にあります。 
+この演習では、Windows 10 の Windows コンテナー機能の基本的な展開と使用について段階的に確認します (Insider ビルド 14372 以降)。 完了後、コンテナー ロールがインストールされ、シンプルな Hyper-V コンテナーが展開されます。 このクイック スタートを始める前に、コンテナーの基本的な概念と用語を理解しておいてください。 情報は[クイック スタートの概要](./quick_start.md)にあります。 
 
 このクイック スタートは Windows 10 の Hyper-V コンテナーのみに適用されます。 このページの左側の目次に追加のクイック スタート文書があります。
 
@@ -36,7 +36,7 @@ ms.openlocfilehash: 188c85a9e6f5d1c334e51853efd8fa3ca461837c
 Enable-WindowsOptionalFeature -Online -FeatureName containers -All
 ```
 
-Windows 10 は Hyper-V コンテナーにのみ対応しているため、Hyper-V 機能も有効にする必要があります。 PowerShell を使用してHyper-V 機能を有効にするには、管理者特権の PowerShell セッションで次のコマンドを実行します。
+Windows 10 は Hyper-V コンテナーにのみ対応しているため、Hyper-V 機能も有効にする必要があります。 PowerShell を使用して Hyper-V 機能を有効にするには、管理者特権の PowerShell セッションで次のコマンドを実行します。
 
 ```none
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
@@ -61,19 +61,19 @@ New-Item -Type Directory -Path $env:ProgramFiles\docker\
 Docker デーモンをダウンロードします。
 
 ```none
-Invoke-WebRequest https://aka.ms/tp5/b/dockerd -OutFile $env:ProgramFiles\docker\dockerd.exe
+Invoke-WebRequest https://master.dockerproject.org/windows/amd64/dockerd.exe -OutFile $env:ProgramFiles\docker\dockerd.exe
 ```
 
 Docker クライアントをダウンロードします。
 
 ```none
-Invoke-WebRequest https://aka.ms/tp5/b/docker -OutFile $env:ProgramFiles\docker\docker.exe
+Invoke-WebRequest https://master.dockerproject.org/windows/amd64/docker.exe -OutFile $env:ProgramFiles\docker\docker.exe
 ```
 
 Docker ディレクトリをシステム パスに追加します。
 
 ```none
-[Environment]::SetEnvironmentVariable("Path", $env:Path + ";$env:ProgramFiles\docker\\Docker", [EnvironmentVariableTarget]::Machine)
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";$env:ProgramFiles\docker\", [EnvironmentVariableTarget]::Machine)
 ```
 
 変更されたパスが認識されるように、PowerShell セッションを再起動します。
@@ -94,28 +94,18 @@ Start-Service Docker
 
 Windows コンテナーは、テンプレートまたはイメージから展開されます。 コンテナーを展開する前に、コンテナーの基本 OS イメージをダウンロードする必要があります。 次のコマンドは、Nano Server のベース イメージをダウンロードします。
     
-現在の PowerShell プロセスの PowerShell 実行ポリシーを設定します。 これは現在の PowerShell セッションで実行されているスクリプトにのみ適用されますが、実行ポリシーを変更するときは注意が必要です。
+> この手順は、14372 より番号が大きい Windows Insider ビルドに適用されますが、'Docker Pull' が機能するまでの一時的なものとなります。
+
+Nano Server ベース イメージをダウンロードします。 
 
 ```none
-Set-ExecutionPolicy Bypass -scope Process
+Start-BitsTransfer https://aka.ms/tp5/6b/docker/nanoserver -Destination nanoserver.tar.gz
 ```
 
-コンテナー イメージ パッケージ プロバイダーをインストールします。
+基本イメージをインストールします。
 
 ```none  
-Install-PackageProvider ContainerImage -Force
-```
-
-次に、Nano Server イメージをインストールします。
-
-```none
-Install-ContainerImage -Name NanoServer
-```
-
-基本イメージがインストールされたら、Docker サービスを再起動する必要があります。
-
-```none
-Restart-Service docker
+docker load -i nanoserver.tar.gz
 ```
 
 この段階では、`docker images` を実行すると、インストールされたイメージの一覧が返されます。この場合、Nano Server のイメージです。
@@ -124,13 +114,13 @@ Restart-Service docker
 docker images
 
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-nanoserver          10.0.14300.1016     3f5112ddd185        3 weeks ago         810.2 MB
+nanoserver          10.0.14300.1030     3f5112ddd185        3 weeks ago         810.2 MB
 ```
 
 続行前に、このイメージに '最新' バージョンであることを示すタグを付ける必要があります。 これを行うために、次のコマンドを実行します。
 
 ```none
-docker tag nanoserver:10.0.14300.1016 nanoserver:latest
+docker tag microsoft/nanoserver:10.0.14300.1030 nanoserver:latest
 ```
 
 Windows コンテナー イメージの詳細については、[コンテナー イメージの管理](../management/manage_images.md)に関するページを参照してください。
@@ -148,11 +138,11 @@ docker pull microsoft/sample-dotnet
 この状態は `docker images` コマンドで確認できます。
 
 ```none
-docker images
+docker 
 
 REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
 microsoft/sample-dotnet  latest              28da49c3bff4        41 hours ago        918.3 MB
-nanoserver               10.0.14300.1016     3f5112ddd185        3 weeks ago         810.2 MB
+nanoserver               10.0.14300.1030     3f5112ddd185        3 weeks ago         810.2 MB
 nanoserver               latest              3f5112ddd185        3 weeks ago         810.2 MB
 ```
 
@@ -180,6 +170,6 @@ Set-ItemProperty -Path 'HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtua
 
 
 
-<!--HONumber=Jul16_HO1-->
+<!--HONumber=Jul16_HO2-->
 
 
