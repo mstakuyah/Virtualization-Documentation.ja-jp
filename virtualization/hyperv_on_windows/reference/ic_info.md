@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 18930864-476a-40db-aa21-b03dfb4fda98
 translationtype: Human Translation
-ms.sourcegitcommit: eae8f504039a1b3732ecfb31b8068667aab104f9
-ms.openlocfilehash: 633a6b2f3fe737a6e7515fd3f923335e39cf9d17
+ms.sourcegitcommit: 94e00095a41163c5f635685af01c215f4b4efce5
+ms.openlocfilehash: e1c0404ee45ad8e775dc2319359cd16c6487ef12
 
 ---
 
@@ -21,13 +21,20 @@ ms.openlocfilehash: 633a6b2f3fe737a6e7515fd3f923335e39cf9d17
 
 この記事は、Windows で利用可能な各統合サービスに関するリファレンスです。  また、特定の統合サービスまたはそれらの履歴に関連する情報の出発点としての役割も果たしています。
 
+**ユーザー ガイド:**  
+* [Hyper-V ホストからの統合サービスを有効または無効にする](../user_guide/managing_ics.md#enable-or-disable-integration-services-using-powershell)
+* 仮想マシン内部から統合サービスを有効または無効にする
+  * [Windows](../user_guide/managing_ics.md#manage-integration-services-from-guest-os-windows)
+  * [Linux](../user_guide/managing_ics.md#manage-integration-services-from-guest-os-linux)
+* [統合サービスの更新とメンテナンス](../user_guide/managing_ics.md#integration-service-maintenance)
+
 
 ## クイック リファレンス
 
 | 名前 | Windows サービス名 | Linux デーモン名 |  説明 | 無効にした場合に VM に与える影響 |
 |:---------|:---------|:---------|:---------|:---------|
 | [Hyper-V ハートビート サービス](#hyper-v-heartbeat-service) |  vmicheartbeat | hv_utils | 仮想マシンが正しく動作していることを報告します。 | 不定 |
-| [Hyper-V ゲスト シャットダウン サービス](#hyper-v-guest-shutdown-service) | vmicshutdown | hv_utils |  ホストが仮想マシンのシャット ダウンをトリガーするのを許可します。 | **高** |
+| [Hyper-V ゲスト シャットダウン サービス](#hyper-v-guest-shutdown-service) | vmicshutdown | hv_utils |  ホストが仮想マシンのシャットダウンをトリガーするのを許可します。 | **高** |
 | [Hyper-V 時刻の同期サービス](#hyper-v-time-synchronization-service) | vmictimesync | hv_utils | 仮想マシンのクロックをホスト コンピューターのクロックに同期します。 | **高** |
 | [Hyper-V データ交換サービス (KVP)](#hyper-v-data-exchange-service-kvp) | vmickvpexchange | hv_kvp_daemon | 仮想マシンとホストとの間で基本的なメタデータを交換する手段を提供します。 | 中 |
 | [Hyper-V ボリューム シャドウ コピー リクエスター](#hyper-v-volume-shadow-copy-requestor) | vmicvss | hv_vss_daemon | 仮想マシンをシャットダウンすることなく仮想マシンのバックアップを作成することをボリューム シャドウ コピー サービスに許可します。 | 不定 |
@@ -69,7 +76,7 @@ DemoVM  Running  Operating normally
 
 **Windows サービス名:** vmicshutdown  
 **Linux デーモン名:** hv_utils  
-**説明:** Hyper-V が仮想マシンのシャットダウンを要求できるようにします。  ホストはいつでも仮想マシンに停止するよう要求するすることができますが、それはシャットダウンを選択するのではなく、電源スイッチをオフするようなものです。
+**説明:** Hyper-V が仮想マシンのシャットダウンを要求できるようにします。  ホストはいつでも仮想マシンを強制的に停止させることができますが、それはシャットダウンを選択するのではなく、電源スイッチをオフにするようなものです。
 **追加先:** Windows Server 2012、Windows 8  
 **影響:** **影響: 大**  無効にした場合、ホストは仮想マシンで安全なシャットダウンをトリガーできなくなります。  シャットダウンはすべて、ハード上の電源オフ操作であり、データの損失またはデータの破損を引き起こす可能性があります。
 
@@ -149,16 +156,7 @@ PowerShell ダイレクトの詳細については、[こちら](../user_guide/v
 * [仮想マシンとの間でのファイルのコピー](../user_guide/vmsession.md#copy-files-with-new-pssession-and-copy-item)
 
 
-## その他のリソース
 
-**ユーザー ガイド:**  
-* [Hyper-V ホストからの統合サービスを有効または無効にする](../user_guide/managing_ics.md#enable-or-disable-integration-services-using-powershell)
-* 仮想マシンから統合サービスを有効または無効にする。
-** [Windows](../user_guide/managing_ics.md#manage-integration-services-from-guest-os-windows)
-** [Linux](../user_guide/managing_ics.md#manage-integration-services-from-guest-os-linux)
-* [統合サービスの更新とメンテナンス](../user_guide/managing_ics.md#integration-service-maintenance)
-
-
-<!--HONumber=Jul16_HO1-->
+<!--HONumber=Jul16_HO2-->
 
 
