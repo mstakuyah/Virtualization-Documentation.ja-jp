@@ -2730,8 +2730,8 @@
 * Current Target File: [virtualization\hyperv_on_windows\reference\ic_info.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/6b7ac5390d29e4606296b1baab15e77e855da3dd/virtualization/hyperv_on_windows/reference/ic_info.md)
 * Current Handback File: [ic_info.98dd018260e2c766210a8b9aa82efa377f584781.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/59858fc1578e18a2e84eecf7ca7e04114b986e7b/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/ic_info.98dd018260e2c766210a8b9aa82efa377f584781.ja-jp.xlf)
 * Current Handback Datetime: 2016-07-19 10:24:43
-* Bilingual File: [ic_info.98dd018260e2c766210a8b9aa82efa377f584781.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/2b99b57231d1ced6c5c439a584517bdf21e0653a/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/ic_info.98dd018260e2c766210a8b9aa82efa377f584781.ja-jp.xlf)
-* Bilingual Datetime: 2016-07-15 05:30:42
+* Bilingual File: [ic_info.98dd018260e2c766210a8b9aa82efa377f584781.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/59858fc1578e18a2e84eecf7ca7e04114b986e7b/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/ic_info.98dd018260e2c766210a8b9aa82efa377f584781.ja-jp.xlf)
+* Bilingual Datetime: 2016-07-19 10:25:14
 * [Back to Top](#report-top)
 
 ##### <a name='49fd4f7f5a035c68975e3c38b2daabeed8e7dd5f180'></a> Source: [virtualization\hyperv_on_windows\reference\tlfs.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e62373c30c6e233ab1db94720c5b2a1512dfb936/virtualization/hyperv_on_windows/reference/tlfs.md)
