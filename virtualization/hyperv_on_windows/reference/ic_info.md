@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 18930864-476a-40db-aa21-b03dfb4fda98
 translationtype: Human Translation
-ms.sourcegitcommit: 94e00095a41163c5f635685af01c215f4b4efce5
-ms.openlocfilehash: e1c0404ee45ad8e775dc2319359cd16c6487ef12
+ms.sourcegitcommit: 03c3ede85ff8b2fe4783581c717c1c97810b3bdd
+ms.openlocfilehash: a2fc8845bdc3e5f977d50b99ca9687b3dafd0cb6
 
 ---
 
@@ -76,9 +76,9 @@ DemoVM  Running  Operating normally
 
 **Windows サービス名:** vmicshutdown  
 **Linux デーモン名:** hv_utils  
-**説明:** Hyper-V が仮想マシンのシャットダウンを要求できるようにします。  ホストはいつでも仮想マシンを強制的に停止させることができますが、それはシャットダウンを選択するのではなく、電源スイッチをオフにするようなものです。
+**説明:** Hyper-V が仮想マシンのシャットダウンを要求できるようにします。  ホストはいつでも仮想マシンを強制的に停止させることができますが、それはシャットダウンを選択するのではなく、電源スイッチをオフにするようなものです。  
 **追加先:** Windows Server 2012、Windows 8  
-**影響:** **影響: 大**  無効にした場合、ホストは仮想マシンで安全なシャットダウンをトリガーできなくなります。  シャットダウンはすべて、ハード上の電源オフ操作であり、データの損失またはデータの破損を引き起こす可能性があります。
+**影響:** **影響: 大**  無効にした場合、ホストは仮想マシンで安全なシャットダウンをトリガーできなくなります。  シャットダウンはすべて、ハード上の電源オフ操作であり、データの損失またはデータの破損を引き起こす可能性があります。  
 
 
 ## Hyper-V 時刻の同期サービス
@@ -96,7 +96,7 @@ DemoVM  Running  Operating normally
 **Linux デーモン名:** hv_kvp_daemon  
 **説明:** 仮想マシンとホストとの間で基本的なメタデータを交換する手段を提供します。  
 **追加先:** Windows Server 2012、Windows 8  
-**影響:** 無効にした場合、Windows 8、Windows Server 2012 またはそれ以前のバージョンを実行する仮想マシンは、Hyper-V 統合サービスに対する更新プログラムを受信しません。  データ交換を無効にすると、一部の種類のモニタリングおよびホスト側の診断に影響を与える場合もあります。
+**影響:** 無効にした場合、Windows 8、Windows Server 2012 またはそれ以前のバージョンを実行する仮想マシンは、Hyper-V 統合サービスに対する更新プログラムを受信しません。  データ交換を無効にすると、一部の種類のモニタリングおよびホスト側の診断に影響を与える場合もあります。  
 
 データ交換サービス (KVP とも呼ばれる) では、仮想マシンと Hyper-V との間で、キー/値ペア (KVP) を使用し Windows レジストリを介して少量のマシン情報を共有します。  同じメカニズムを使用して、仮想マシンとホストとの間でカスタマイズされたデータを共有することもできます。
 
@@ -106,7 +106,7 @@ DemoVM  Running  Operating normally
 
 
 **ユーザー ガイド:**  
-* [キー/値ペアを使用して Hyper-V 上のホストとゲストの間で情報を共有する](https://technet.microsoft.com/en-us/library/dn798287.aspx)。
+* [キー/値ペアを使用して Hyper-V 上のホストとゲストの間で情報を共有する](https://technet.microsoft.com/en-us/library/dn798287.aspx)。  
 
 
 ## Hyper-V ボリューム シャドウ コピー リクエスター
