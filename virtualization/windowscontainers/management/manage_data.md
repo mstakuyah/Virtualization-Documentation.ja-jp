@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: f5998534-917b-453c-b873-2953e58535b1
 translationtype: Human Translation
-ms.sourcegitcommit: 111a4ca9f5d693cd1159f7597110409d670f0f5c
-ms.openlocfilehash: b8eca51e347f17e787095b7e4349337cc3ae69a7
+ms.sourcegitcommit: 493b669bc47fc589486a82cfea73a0bb1e88cf79
+ms.openlocfilehash: 26c010e79a4913b2e138f6d1d78f9406dbacbc6b
 
 ---
 
@@ -73,6 +73,20 @@ c:\container-share>dir
 
 単一ファイルのマウントの詳細については、[docker.com のコンテナーのデータ管理に関するページ](https://docs.docker.com/engine/userguide/containers/dockervolumes/#mount-a-host-directory-as-a-data-volume)を参照してください。
 
+### 完全なドライブをマウントする
+
+次のようなコマンドを使用して、完全なドライブをマウントできます。 バックスラッシュは含めないでください。
+
+```none
+docker run -it -v d: windowsservercore cmd
+```
+
+この時点で、ドライブ 2 を部分的にマウントすることはできません。 たとえば、次のことはできません。
+
+```none
+docker run -it -v d:\source:d:\destination windowsservercore cmd
+```
+
 ### データ ボリューム コンテナー
 
 データ ボリュームを他の実行中のコンテナーから継承するには、`docker run` コマンドの `--volumes-from` パラメーターを使用します。 この継承を使用して、コンテナー化されたアプリケーション用にデータ ボリュームをホストするという明確な目的でコンテナーを作成できます。 
@@ -111,6 +125,6 @@ docker inspect backstabbing_kowalevski
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Jul16_HO3-->
 
 

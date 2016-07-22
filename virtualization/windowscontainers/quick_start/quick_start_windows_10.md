@@ -4,14 +4,14 @@ description: "コンテナー展開のクイック スタート"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
-ms.date: 07/07/2016
+ms.date: 07/13/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 translationtype: Human Translation
-ms.sourcegitcommit: 5f42cae373b1f8f0484ffac82f5ebc761c37d050
-ms.openlocfilehash: 9ef41ff031e8b7bc463e71f39ee6a3b8e4fd846e
+ms.sourcegitcommit: edf2c2597e57909a553eb5e6fcc75cdb820fce68
+ms.openlocfilehash: b37d402f2e6c950db061f5de0c86f0e9aace62b4
 
 ---
 
@@ -46,6 +46,12 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 
 ```none
 Restart-Computer -Force
+```
+
+バックアップを作成したら、次のコマンドを使用して、Windows コンテナーのテクニカル プレビューで既知の問題を解決します。  
+
+ ```none
+Set-ItemProperty -Path 'HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\Containers' -Name VSmbDisableOplocks -Type DWord -Value 1 -Force
 ```
 
 ## 2.Docker のインストール
@@ -127,40 +133,51 @@ Windows コンテナー イメージの詳細については、[コンテナー 
 
 ## 4.最初のコンテナーの展開
 
-この単純な例のために、.NET Core イメージが事前に作成されています。 `docker pull` コマンドを利用し、このイメージをダウンロードします。
+この簡単な例では、"Hello World" というコンテナー イメージを作成して展開します。 最適なパフォーマンスでご利用いただくために、管理者特権で起動した Windows CMD シェルで以下のコマンドを実行します。
 
-実行すると、コンテナーが開始されます。シンプルな .NET Core アプリケーションが実行されます。そして、コンテナーが終了となります。 
-
-```none
-docker pull microsoft/sample-dotnet
-```
-
-この状態は `docker images` コマンドで確認できます。
+まず、`nanoserver` イメージから対話型セッションでコンテナーを起動します。 コンテナーが起動すると、コンテナーからコマンド シェルが表示されます。  
 
 ```none
-docker 
-
-REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
-microsoft/sample-dotnet  latest              28da49c3bff4        41 hours ago        918.3 MB
-nanoserver               10.0.14300.1030     3f5112ddd185        3 weeks ago         810.2 MB
-nanoserver               latest              3f5112ddd185        3 weeks ago         810.2 MB
+docker run -it nanoserver cmd
 ```
 
-`docker run` コマンドでコンテナーを実行します。 次の例では、`--rm` パラメーターが指定されています。このパラメーターは、コンテナーが実行されなくなったら、コンテナーを削除するように Docker エンジンに指示します。 
-
-Docker Run コマンドの詳細については、Docker.com の「[Docker Run リファレンス]( https://docs.docker.com/engine/reference/run/)」をご覧ください。
+コンテナー内で、"Hello World" という簡単なスクリプトを作成することにします。
 
 ```none
-docker run --isolation=hyperv --rm microsoft/sample-dotnet
-```
+powershell.exe Add-Content C:\helloworld.ps1 'Write-Host "Hello World"'
+```   
 
-**注** - タイムアウト イベントを示すエラーがスローされる場合は、次の PowerShell スクリプトを実行して操作をやり直してください。
+スクリプトが完成したら、コンテナーを終了します。
 
 ```none
-Set-ItemProperty -Path 'HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\Containers' -Name VSmbDisableOplocks -Type DWord -Value 1 -Force
+exit
 ```
 
-`docker run` コマンドを実行すると、結果的に、Hyper-V コンテナーが sample-dotnet イメージから作成され、サンプル アプリケーションが実行されます (出力がシェルにエコーされます)。それから、コンテナーが停止し、削除されます。 後続の Windows 10 とコンテナーのクイック スタートでは、Windows 10 のコンテナーでアプリケーションを作成し、展開する方法について説明します。
+次に、変更したコンテナーから新しいコンテナー イメージを作成します。 コンテナーの一覧を表示するために、次を実行します。該当するコンテナー ID をメモします。
+
+```none
+docker ps -a
+```
+
+次のコマンドを実行して、"HelloWorld" というイメージを新たに作成します。 <containerid> を目的のコンテナーの ID に置き換えます。
+
+```none
+docker commit <containerid> helloworld
+```
+
+操作を完了すると、hello world スクリプトを含むカスタム イメージが作成されます。 これは、次のコマンドで確認できます。
+
+```none
+docker images
+```
+
+最後に、コンテナーを実行するには、`docker run` コマンドを使用します。
+
+```none
+docker run --rm helloworld powershell c:\helloworld.ps1
+```
+
+`docker run` コマンドを実行すると、結果的に、Hyper-V コンテナーが "Hello World" イメージから作成され、サンプル スクリプト "Hello World" が実行されます (出力がシェルにエコーされます)。次に、コンテナーが停止し、削除されます。 後続の Windows 10 とコンテナーのクイック スタートでは、Windows 10 のコンテナーでアプリケーションを作成し、展開する方法について説明します。
 
 ## 次の手順
 

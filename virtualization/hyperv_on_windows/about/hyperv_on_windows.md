@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: eb2b827c-4a6c-4327-9354-50d14fee7ed8
 translationtype: Human Translation
-ms.sourcegitcommit: 53539a0325b3f07e542ca1dd0a4352239e8a65b3
-ms.openlocfilehash: 25295b8a2888e25090439a3490c9ff7c3214f23a
+ms.sourcegitcommit: c3e7cc07ac7e7d4e1c5f1827deb5951daa1e3749
+ms.openlocfilehash: ad84961d0a79853e2aadcf9ed0e37e340103835a
 
 ---
 
@@ -48,7 +48,7 @@ Hyper-V のシステムの要件と、コンピューター上で Hyper-V が実
 
 
 ## オペレーティング システムの仮想マシンで実行することができます。
-"Guest" という用語は、仮想マシンを参照し、"host"は、仮想マシンを実行するコンピューターを参照します。 Windows の Hyper-V は、Linux、FreeBSD、および Windows の各種リリースを含むさまざまなゲスト オペレーティング システムをサポートします。 
+"Guest" という用語は、仮想マシンを参照し、"host" は、仮想マシンを実行するコンピューターを参照します。 Windows の Hyper-V は、Linux、FreeBSD、および Windows の各種リリースを含むさまざまなゲスト オペレーティング システムをサポートします。 
 
 なおに、仮想マシンで使用するすべてのオペレーティング システムの有効なライセンスを持っている必要があります。 
 

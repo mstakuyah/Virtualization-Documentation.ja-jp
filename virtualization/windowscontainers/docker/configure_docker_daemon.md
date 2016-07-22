@@ -4,14 +4,14 @@ description: "Windows で Docker を構成する"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
-ms.date: 06/02/2016
+ms.date: 07/15/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
 translationtype: Human Translation
-ms.sourcegitcommit: 2d6f2c24624883457302c925c2bb47e6c867b730
-ms.openlocfilehash: 533f3a3277e3d9654f0d425c9c0f442c93e2d24a
+ms.sourcegitcommit: 475240afdf97af117519cfaa287f1e4fec8837a5
+ms.openlocfilehash: 5b86442643fb5937b62a67d144ae0d1c98373b41
 
 ---
 
@@ -121,8 +121,6 @@ Windows で Docker デーモンを構成するには、構成ファイルを使�
 }
 ```
 
-
-
 ## サービス コントロール マネージャ
 
 `sc config` を使用して Docker サービスを変更することで、Docker デーモンを構成することもできます。 この方法の場合、Docker デーモンのフラグは Docker サービスに直接設定されます。
@@ -156,6 +154,21 @@ Docker ホストにログインし、Docker コマンドをローカルで実行
 }
 ```
 
+## プロキシの構成
+
+`docker search` と `docker pull` のプロキシ情報を設定するには、`HTTP_PROXY` または `HTTPS_PROXY` という名前と、プロキシ情報の値を使用して Windows 環境変数を作成します。 そのためには、PowerShell で次のようなコマンドを実行します。
+
+```none
+[Environment]::SetEnvironmentVariable("HTTP_PROXY”, “http://username:password@proxy:port/”, [EnvironmentVariableTarget]::Machine)
+```
+
+変数が設定されたら、Docker サービスを再起動します。
+
+```none
+restart-service docker
+```
+
+詳細については、[Docker.com のデーモン ソケット オプション](https://docs.docker.com/v1.10/engine/reference/commandline/daemon/#daemon-socket-option)に関するページを参照してください。
 
 ## ログの収集
 Docker デーモンは、ファイルではなく Windows 'アプリケーション' イベント ログに記録します。 これらのログは、Windows PowerShell を使用することで、簡単に読み取り、並べ替え、およびフィルター処理することができます。
@@ -171,6 +184,6 @@ Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-3
 
 
 
-<!--HONumber=Jul16_HO1-->
+<!--HONumber=Jul16_HO3-->
 
 
