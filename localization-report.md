@@ -3338,8 +3338,8 @@
 * Handoff File: [deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/efd053dcde82dd2662e3de9bf5abb23fae856e58/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf)
 * Handoff Datetime: 2016-08-02 04:10:31
 * Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
+* Archive File: [deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/2f747d04e1c53ef6e9067770211a57f9be67ddad/ol-archive/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.ja-jp.xlf)
+* Archive Datetime: 2016-08-04 07:20:12
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Current Target File: [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ed007c36febc1544797b1528161849fd7857eb68/virtualization/windowscontainers/deployment/deployment.md)
@@ -3668,8 +3668,8 @@
 * Handoff File: [container_networking.7cf72391b3aa727681997232feeeb0a32d363edc.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/a2ae96c0c83c6a96411b2cd3bfd01d50cc5bc2d0/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/container_networking.7cf72391b3aa727681997232feeeb0a32d363edc.ja-jp.xlf)
 * Handoff Datetime: 2016-07-29 20:10:27
 * Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
+* Archive File: [container_networking.7cf72391b3aa727681997232feeeb0a32d363edc.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/2f747d04e1c53ef6e9067770211a57f9be67ddad/ol-archive/Microsoft/Virtualization-Documentation-Private.ja-jp/live/container_networking.7cf72391b3aa727681997232feeeb0a32d363edc.ja-jp.xlf)
+* Archive Datetime: 2016-08-04 07:20:12
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Current Target File: [virtualization\windowscontainers\management\container_networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/6e0b70a779ea1cbcf8543d88cfc64c5963593cac/virtualization/windowscontainers/management/container_networking.md)
@@ -4514,8 +4514,8 @@
 * Handoff File: [quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/efd053dcde82dd2662e3de9bf5abb23fae856e58/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.ja-jp.xlf)
 * Handoff Datetime: 2016-08-02 04:10:31
 * Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
+* Archive File: [quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/2f747d04e1c53ef6e9067770211a57f9be67ddad/ol-archive/Microsoft/Virtualization-Documentation-Private.ja-jp/live/quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.ja-jp.xlf)
+* Archive Datetime: 2016-08-04 07:20:12
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Current Target File: [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/4bdfe6995f935e67350ec1f599ce7dc299215a95/virtualization/windowscontainers/quick_start/quick_start_windows_10.md)
@@ -4531,8 +4531,8 @@
 * Handoff File: [quick_start_windows_server.08fee0ad7baa994cf3e7a42d3d35aeda89c5e556.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/efd053dcde82dd2662e3de9bf5abb23fae856e58/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/quick_start_windows_server.08fee0ad7baa994cf3e7a42d3d35aeda89c5e556.ja-jp.xlf)
 * Handoff Datetime: 2016-08-02 04:10:31
 * Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
+* Archive File: [quick_start_windows_server.08fee0ad7baa994cf3e7a42d3d35aeda89c5e556.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/2f747d04e1c53ef6e9067770211a57f9be67ddad/ol-archive/Microsoft/Virtualization-Documentation-Private.ja-jp/live/quick_start_windows_server.08fee0ad7baa994cf3e7a42d3d35aeda89c5e556.ja-jp.xlf)
+* Archive Datetime: 2016-08-04 07:20:12
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Current Target File: [virtualization\windowscontainers\quick_start\quick_start_windows_server.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/ed007c36febc1544797b1528161849fd7857eb68/virtualization/windowscontainers/quick_start/quick_start_windows_server.md)
