@@ -1,7 +1,7 @@
 ---
 title: "Windows Server に Windows コンテナーを展開する"
 description: "Windows Server に Windows コンテナーを展開する"
-keywords: docker, containers
+keywords: "Docker, コンテナー"
 author: neilpeterson
 manager: timlt
 ms.date: 05/26/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
 translationtype: Human Translation
-ms.sourcegitcommit: eae45c2c81c7edc94d963da69dcdee2b6f08f37d
-ms.openlocfilehash: cbbff2bf4a68ee348bcc33979ef4469daf54a8a7
+ms.sourcegitcommit: 6c7ce9f1767c6c6391cc6d33a553216bd815ff72
+ms.openlocfilehash: ce387b29f1bd311c70c17f3e7a98ae4f625bd3c2
 
 ---
 
@@ -47,22 +47,16 @@ Restart-Computer -Force
 
 Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。 この演習では、両方をインストールします。
 
-Docker の実行可能ファイル用のフォルダーを作成します。
+Docker エンジンとクライアントを 1 つの zip アーカイブとしてダウンロードします。
 
 ```none
-New-Item -Type Directory -Path 'C:\Program Files\docker\'
+Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile "$env:TEMP\docker-1.12.0.zip" -UseBasicParsing
 ```
 
-Docker デーモンをダウンロードします。
+この zip アーカイブを展開して Program Files に出力します。アーカイブの内容は既に docker ディレクトリに入っています。
 
 ```none
-Invoke-WebRequest https://aka.ms/tp5/b/dockerd -OutFile $env:ProgramFiles\docker\dockerd.exe
-```
-
-Docker クライアントをダウンロードします。
-
-```none
-Invoke-WebRequest https://aka.ms/tp5/b/docker -OutFile $env:ProgramFiles\docker\docker.exe
+Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:ProgramFiles
 ```
 
 Docker ディレクトリをシステム パスに追加します。
@@ -76,7 +70,7 @@ Docker ディレクトリをシステム パスに追加します。
 Windows サービスとして Docker をインストールするには、以下を実行します。
 
 ```none
-dockerd --register-service
+& $env:ProgramFiles\docker\dockerd.exe --register-service
 ```
 
 インストールされたら、サービスを開始することができます。
@@ -145,6 +139,6 @@ Install-WindowsFeature hyper-v
 
 
 
-<!--HONumber=Jun16_HO5-->
+<!--HONumber=Aug16_HO1-->
 
 
