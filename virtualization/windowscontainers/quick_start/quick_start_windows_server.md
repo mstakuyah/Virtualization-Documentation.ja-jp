@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: 6c7ce9f1767c6c6391cc6d33a553216bd815ff72
-ms.openlocfilehash: 4e7123dcff2564bd264c91f228941e86a0723674
+ms.sourcegitcommit: b3f273d230344cff28d4eab7cebf96bac14f68c2
+ms.openlocfilehash: 808436ba179daa09fbc45ee7f7708a505bd1b4c8
 
 ---
 
@@ -83,39 +83,21 @@ Start-Service docker
 
 ## 3.コンテナーの基本イメージのインストール
 
-Windows コンテナーは、テンプレートまたはイメージから展開されます。 コンテナーを展開する前に、基本 OS イメージをダウンロードする必要があります。 次のコマンドは、Windows Server Core のベース イメージをダウンロードします。
-
-まず、コンテナー イメージ パッケージ プロバイダーをインストールします。
+Windows コンテナーは、テンプレートまたはイメージから展開されます。 コンテナーを展開する前に、基本 OS イメージをダウンロードする必要があります。 次のコマンドを実行すると、Windows Server Core 基本イメージがダウンロードされます。
 
 ```none
-Install-PackageProvider ContainerImage -Force
+docker pull microsoft/windowsservercore
 ```
 
-次に、Windows Server Core のイメージをインストールします。 このプロセスには時間がかかる場合があるため、しばらく待ち、ダウンロードが完了したら作業に戻ってください。
+このプロセスには多少時間がかかるため、ここで休憩しましょう。ダウンロードが完了したら再開します。
 
-```none
-Install-ContainerImage -Name WindowsServerCore    
-```
-
-基本イメージがインストールされたら、Docker サービスを再起動する必要があります。
-
-```none
-Restart-Service docker
-```
-
-この段階では、`docker images` を実行すると、インストールされたイメージの一覧が返されます。この場合、Windows Server Core のイメージです。
+イメージの pull が完了したら、`docker images` を実行するとインストール済みのイメージのリストが返されます。この場合は Windows Server Core のイメージです。
 
 ```none
 docker images
 
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-windowsservercore   10.0.14300.1000     dbfee88ee9fd        7 weeks ago         9.344 GB
-```
-
-続行前に、このイメージに '最新' バージョンであることを示すタグを付ける必要があります。 これを行うために、次のコマンドを実行します。
-
-```none
-docker tag windowsservercore:10.0.14300.1000 windowsservercore:latest
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+microsoft/windowsservercore   latest              02cb7f65d61b        7 weeks ago         7.764 GB
 ```
 
 Windows コンテナー イメージの詳細については、[コンテナー イメージの管理](../management/manage_images.md)に関するページを参照してください。
