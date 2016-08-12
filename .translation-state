@@ -22800,9 +22800,9 @@
       "ArchiveFileCommit": "08fac55a450b74404a3370fc970955f0eddd2677",
       "ArchiveFileDateTime": "2016-08-11T07:08:58.1736141Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\quick_start_windows_server.08fee0ad7baa994cf3e7a42d3d35aeda89c5e556.ja-jp.xlf",
+      "BilingualFileCommit": "1ccadd1da61ebc26f43af216ed18f252219e5a33",
+      "BilingualDateTime": "2016-08-12T13:31:42.9078901Z",
       "BilingualException": null
     },
     "0ee1231b923e25975a4dfddb70c16366a86c9565": {
@@ -22835,9 +22835,9 @@
       "ArchiveFileCommit": "08fac55a450b74404a3370fc970955f0eddd2677",
       "ArchiveFileDateTime": "2016-08-11T07:08:58.1736141Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.ja-jp.xlf",
+      "BilingualFileCommit": "1ccadd1da61ebc26f43af216ed18f252219e5a33",
+      "BilingualDateTime": "2016-08-12T13:31:42.9078901Z",
       "BilingualException": null
     },
     "e680dac160c5da92a2329babefb397faa8654c91": {
@@ -22870,9 +22870,9 @@
       "ArchiveFileCommit": "08fac55a450b74404a3370fc970955f0eddd2677",
       "ArchiveFileDateTime": "2016-08-11T07:08:58.1736141Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\container_networking.7cf72391b3aa727681997232feeeb0a32d363edc.ja-jp.xlf",
+      "BilingualFileCommit": "1ccadd1da61ebc26f43af216ed18f252219e5a33",
+      "BilingualDateTime": "2016-08-12T13:31:42.9078901Z",
       "BilingualException": null
     },
     "5a1cb0964034db491481e2d6db84221730264fa0": {
