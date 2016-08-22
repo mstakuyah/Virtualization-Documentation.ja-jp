@@ -4,14 +4,14 @@ description: "Windows コンテナーの要件"
 keywords: "メタデータ、コンテナー"
 author: neilpeterson
 manager: timlt
-ms.date: 05/26/2016
+ms.date: 08/17/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
 translationtype: Human Translation
-ms.sourcegitcommit: 6f1d9c09774adde047508835caf9dcf54deab9d2
-ms.openlocfilehash: 9d015a570a0b1a9d7304e601daa7ace73df4e827
+ms.sourcegitcommit: fac57150de3ffd6c7d957dd628b937d5c41c1b35
+ms.openlocfilehash: f76dc45e6035c72fd7b07f25d4b4c55f2a95aafb
 
 ---
 
@@ -23,7 +23,7 @@ ms.openlocfilehash: 9d015a570a0b1a9d7304e601daa7ace73df4e827
 
 ## OS 要件
 
-- Windows コンテナーの機能は、Windows Server 2016 (Core、デスクトップ エクスペリエンス搭載)、Nano Server、Windows 10 Professional および Enterprise (Insider ビルド 14352 以降) でのみ使用できます。
+- Windows コンテナーの機能は、Windows Server 2016 (Core、デスクトップ エクスペリエンス搭載)、Nano Server、Windows 10 Professional および Enterprise (Anniversary Edition) でのみ使用できます。
 - Hyper-V コンテナーを実行するには、Hyper-V の役割をインストールする必要があります。
 - Windows Server コンテナー ホストでは、Windows を c: \\ にインストールする必要があります。 Hyper-V コンテナーのみを展開する場合、この制限は適用されません。
 
@@ -65,7 +65,7 @@ Windows Server Technical Preview 5 は、Windows Server Core と Nano Server と
 <td><center>Nano Server イメージ</center></td>
 </tr>
 <tr valign="top">
-<td><center>Windows 10 Insider Releases</center></td>
+<td><center>Windows 10 Anniversary Edition</center></td>
 <td><center>利用不可</center></td>
 <td><center>Nano Server イメージ</center></td>
 </tr>
@@ -74,6 +74,6 @@ Windows Server Technical Preview 5 は、Windows Server Core と Nano Server と
 
 
 
-<!--HONumber=Jul16_HO3-->
+<!--HONumber=Aug16_HO3-->
 
 

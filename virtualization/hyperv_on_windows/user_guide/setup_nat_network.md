@@ -1,7 +1,7 @@
 ---
 title: "NAT ネットワークの設定"
 description: "NAT ネットワークの設定"
-keywords: windows 10, hyper-v
+keywords: "windows 10、hyper-v"
 author: jmesser81
 manager: timlt
 ms.date: 05/02/2016
@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1f8a691c-ca75-42da-8ad8-a35611ad70ec
 translationtype: Human Translation
-ms.sourcegitcommit: b22150198f199f9b2be38a9c08e0e08972781f6e
-ms.openlocfilehash: d98445932ccbe77b6a4e798c3c2edb9c63bd351b
+ms.sourcegitcommit: 03a72e6608c08d6adcf32fc5665533831904a032
+ms.openlocfilehash: 5a1cb0964034db491481e2d6db84221730264fa0
 
 ---
 
@@ -129,6 +129,7 @@ WinNAT は単独でエンドポイント (例: VM) に IP アドレスを割り�
 
 
 ## 構成の例: NAT ネットワークへの VM とコンテナーのアタッチ
+
 _複数の VM とコンテナーを 1 つの NAT にアタッチする場合は、NAT 内部サブネットのプレフィックスが別のアプリケーションまたはサービス (例: Docker for Windows や Windows コンテナー – HNS) によって割り当てられている IP の範囲を網羅するのに十分な大きさになっている必要があります。 この場合、IP とネットワーク構成のアプリケーション レベルの割り当てか、手動構成のいずれかが必要になります。手動構成の場合は、管理者が操作を行い、同一ホスト上の既存の IP 割り当てを再使用しないようにする必要があります。_
 
 ### Docker for Windows (Linux VM) と Windows コンテナー
@@ -163,84 +164,6 @@ Docker/HNS は <container prefix> から Windows コンテナーに IP アドレ
 
 最後に、2 つの内部 VM スイッチを設定し、そのスイッチ間で共有する NetNat を 1 つ設定する必要があります。
 
-## トラブルシューティング
-NAT が 1 つだけであることを確認します。
-```none
-Get-NetNat
-```
-NAT が既に存在する場合、それを削除してください。
-```none
-Get-NetNat | Remove-NetNat
-```
-アプリケーションまたは機能 (例: Windows コンテナー) ごとに「内部」vmSwitch が 1 つだけ設定されていることを確認します。 vSwitch の名前を記録します
-```none
-Get-VMSwitch
-```
-以前の NAT のプライベート IP アドレス (例: NAT の既定のゲートウェイ IP Address - 通常 *.1) がアダプターに割り当てられていないか確認します
-```none
-Get-NetIPAddress -InterfaceAlias "vEthernet(<name of vSwitch>)"
-```
-古いプライベート IP アドレスが使用されている場合、それを削除してください。
-```none
-Remove-NetIPAddress -InterfaceAlias "vEthernet(<name of vSwitch>)" -IPAddress <IPAddress>
-```
-複数の NAT を削除すると、複数の NAT ネットワークが誤って作成されてしまうと報告されています。 これは、最新のビルド (Windows Server 2016 Technical Preview 5 や Windows 10 Insider Preview ビルドなど) のバグが原因です。 複数の NAT ネットワークがある場合は、docker ネットワーク ls や Get-ContainerNetwork を実行した後に、管理者特権の PowerShell から次を実行してください。
-
-```none
-PS> $KeyPath = "HKLM:\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\SwitchList"
-PS> $keys = get-childitem $KeyPath
-PS> foreach($key in $keys)
-PS> {
-PS>    if ($key.GetValue("FriendlyName") -eq 'nat')
-PS>    {
-PS>       $newKeyPath = $KeyPath+"\"+$key.PSChildName
-PS>       Remove-Item -Path $newKeyPath -Recurse
-PS>    }
-PS> }
-PS> remove-netnat -Confirm:$false
-PS> Get-ContainerNetwork | Remove-ContainerNetwork
-PS> Get-VmSwitch -Name nat | Remove-VmSwitch (_failure is expected_)
-PS> Stop-Service docker
-PS> Set-Service docker -StartupType Disabled
-Reboot Host
-PS> Get-NetNat | Remove-NetNat
-PS> Set-Service docker -StartupType automaticac
-PS> Start-Service docker 
-```
-
-## トラブルシューティング
-
-このワークフローでは、ホストに他には NAT がないものと想定されています。 ただし、複数のアプリケーションまたはサービスで NAT の使用が必要になることがあります。 Windows (WinNAT) でサポートされる内部 NAT サブネット プレフィックスは 1 つだけです。複数の NAT を作成しようとすると、システムが不明状態になります。
-
-### トラブルシューティングの手順
-1. NAT が 1 つだけであることを確認します。
-
-  ``` PowerShell
-  Get-NetNat
-  ```
-2. NAT が既に存在する場合、それを削除してください。
-
-  ``` PowerShell
-  Get-NetNat | Remove-NetNat
-  ```
-
-3. NAT の "内部" vmSwitch が 1 つだけであることを確認します。 手順 4 の vSwitch の名前を記録します。
-
-  ``` PowerShell
-  Get-VMSwitch
-  ```
-
-4. 以前の NAT のプライベート IP アドレス (例: NAT の既定の ゲートウェイ IP Address - 通常 *.1) がアダプターに割り当てられていないか確認します。
-
-  ``` PowerShell
-  Get-NetIPAddress -InterfaceAlias "vEthernet(<name of vSwitch>)"
-  ```
-
-5. 古いプライベート IP アドレスが使用されている場合、それを削除してください。  
-   ``` PowerShell
-  Remove-NetIPAddress -InterfaceAlias "vEthernet(<name of vSwitch>)" -IPAddress <IPAddress>
-  ```
-
 ## 複数のアプリケーションで同じ NAT を使用する
 
 複数のアプリケーションまたはサービスで同じ NAT を使用することが必要になる場合もあります。 そのような場合、複数のアプリケーションまたはサービスでより大きな NAT 内部サブネット プレフィックスを使えるように、次のワークフローに従う必要があります。
@@ -272,11 +195,67 @@ PS> Start-Service docker
 最終的に、2 つの内部 vSwitches が与えられるはずです。1 つは「DockerNAT」という名前で、もう 1 つは「nat」という名前です。 Get-NetNat を実行すると、NAT ネットワークが 1 つだけ確定します (10.0.0.0/17)。 Windows コンテナーの IP アドレスが Windows Host Network Service (HNS) により 10.0.76.0/24 サブネットから割り当てられます。 既存の MobyLinux.ps1 スクリプトに基づき、Docker 4 Windows の IP アドレスが 10.0.75.0/24 サブネットから割り当てられます。
 
 
+## トラブルシューティング
+
+### サポートされない複数の NAT ネットワーク  
+このガイドでは、ホストに他に NAT がないものと想定しています。 ただし、アプリケーションまたはサービスで NAT の使用が必要であり、設定の一環として作成される場合があります。 Windows (WinNAT) でサポートされる内部 NAT サブネット プレフィックスは 1 つだけです。複数の NAT を作成しようとすると、システムが不明状態になります。
+
+この問題があるかを確認するには、NAT が 1 つだけであることを確認します。
+``` PowerShell
+Get-NetNat
+```
+
+NAT が既に存在する場合はそれを削除します。
+``` PowerShell
+Get-NetNat | Remove-NetNat
+```
+アプリケーションまたは機能 (例: Windows コンテナー) ごとに「内部」vmSwitch が 1 つだけ設定されていることを確認します。 vSwitch の名前を記録します
+``` PowerShell
+Get-VMSwitch
+```
+
+以前の NAT のプライベート IP アドレス (例: NAT の既定のゲートウェイ IP Address - 通常 *.1) がアダプターに割り当てられていないか確認します
+``` PowerShell
+Get-NetIPAddress -InterfaceAlias "vEthernet(<name of vSwitch>)"
+```
+
+古いプライベート IP アドレスが使用されている場合、それを削除してください。
+``` PowerShell
+Remove-NetIPAddress -InterfaceAlias "vEthernet(<name of vSwitch>)" -IPAddress <IPAddress>
+```
+
+**複数の NAT の削除**  
+複数の NAT ネットワークが誤って作成されてしまうと報告されています。 これは、最新のビルド (Windows Server 2016 Technical Preview 5 や Windows 10 Insider Preview ビルドなど) のバグが原因です。 複数の NAT ネットワークがある場合は、docker ネットワーク ls や Get-ContainerNetwork を実行した後に、管理者特権の PowerShell から次を実行してください。
+
+```none
+PS> $KeyPath = "HKLM:\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\SwitchList"
+PS> $keys = get-childitem $KeyPath
+PS> foreach($key in $keys)
+PS> {
+PS>    if ($key.GetValue("FriendlyName") -eq 'nat')
+PS>    {
+PS>       $newKeyPath = $KeyPath+"\"+$key.PSChildName
+PS>       Remove-Item -Path $newKeyPath -Recurse
+PS>    }
+PS> }
+PS> remove-netnat -Confirm:$false
+PS> Get-ContainerNetwork | Remove-ContainerNetwork
+PS> Get-VmSwitch -Name nat | Remove-VmSwitch (_failure is expected_)
+PS> Stop-Service docker
+PS> Set-Service docker -StartupType Disabled
+Reboot Host
+PS> Get-NetNat | Remove-NetNat
+PS> Set-Service docker -StartupType automaticac
+PS> Start-Service docker 
+```
+
+NAT 環境を必要に応じて再構築するには、セットアップ ガイド「[複数のアプリケーションで同じ NAT を使用する](setup_nat_network.md#multiple-applications-using-the-same-nat)」をご覧ください。 
+
 ## 参考資料
 NAT ネットワークの詳細は[ここ](https://en.wikipedia.org/wiki/Network_address_translation)を参照してください。
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Aug16_HO2-->
 
 

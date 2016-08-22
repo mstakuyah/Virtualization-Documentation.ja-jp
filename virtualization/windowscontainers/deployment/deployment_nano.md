@@ -1,7 +1,7 @@
 ---
 title: "Nano Server での Windows コンテナーの展開"
 description: "Nano Server での Windows コンテナーの展開"
-keywords: docker, containers
+keywords: "Docker, コンテナー"
 author: neilpeterson
 manager: timlt
 ms.date: 07/06/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 translationtype: Human Translation
-ms.sourcegitcommit: e035a45e22eee04263861d935b338089d8009e92
-ms.openlocfilehash: 876ffb4f4da32495fb77b735391203c33c78cff3
+ms.sourcegitcommit: fac57150de3ffd6c7d957dd628b937d5c41c1b35
+ms.openlocfilehash: d2f19e96f06ba18ab7e23e62652f569265c6f43f
 
 ---
 
@@ -74,7 +74,7 @@ Restart-Computer
 
 ## Docker のインストール
 
-Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。 次の手順を使用して、Docker デーモンおよびクライアントをインストールします。
+Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。 次の手順を使用して、Docker エンジンおよびクライアントをインストールします。
 
 Nano Server ホストに Docker 実行可能ファイル用のフォルダーを作成します。
 
@@ -82,7 +82,7 @@ Nano Server ホストに Docker 実行可能ファイル用のフォルダーを
 New-Item -Type Directory -Path $env:ProgramFiles'\docker\'
 ```
 
-Docker デーモンおよびクライアントをダウンロードし、これらをコンテナー ホストの 'C:\Program Files\docker\' にコピーします。 
+Docker エンジンおよびクライアントをダウンロードし、これらをコンテナー ホストの 'C:\Program Files\docker\' にコピーします。 
 
 **注** - Nano Server では現在、`Invoke-WebRequest` がサポートされていないため、リモート システムからダウンロードを実行し、その内容を Nano Server ホストにコピーする必要があります。
 
@@ -96,7 +96,7 @@ Docker クライアントをダウンロードします。
 Invoke-WebRequest https://aka.ms/tp5/b/docker -OutFile .\docker.exe
 ```
 
-Docker デーモンとクライアントがダウンロードされたら、Nano Server コンテナー ホストの 'C:\Program Files\docker\' フォルダーにコピーします。 着信 SMB 接続が許可されるように Nano Server ファイアウォールを構成する必要があります。 この構成は、PowerShell または Nano Server 回復コンソールのどちらでも実行できます。 
+Docker エンジンとクライアントがダウンロードされたら、Nano Server コンテナー ホストの 'C:\Program Files\docker\' フォルダーにコピーします。 着信 SMB 接続が許可されるように Nano Server ファイアウォールを構成する必要があります。 この構成は、PowerShell または Nano Server 回復コンソールのどちらでも実行できます。 
 
 ```none
 Set-NetFirewallRule -Name FPS-SMB-In-TCP -Enabled True
@@ -158,7 +158,7 @@ Docker 接続用のコンテナー ホストにファイアウォール規則を
 netsh advfirewall firewall add rule name="Docker daemon " dir=in action=allow protocol=TCP localport=2376
 ```
 
-TCP 経由で着信接続を受け入れるように、Docker デーモンを構成します。
+TCP 経由で着信接続を受け入れるように、Docker エンジンを構成します。
 
 最初に、Nano Server ホストの `c:\ProgramData\docker\config\daemon.json` に `daemon.json` ファイルを作成します。
 
@@ -166,7 +166,7 @@ TCP 経由で着信接続を受け入れるように、Docker デーモンを構
 new-item -Type File c:\ProgramData\docker\config\daemon.json
 ```
 
-次のコマンドを実行して `daemon.json` ファイルに接続構成を追加します。 これにより、TCP ポート 2375 経由で着信接続を受け入れるように、Docker デーモンが構成されます。 これはセキュリティで保護されていない接続であるため、お勧めできませんが、分離されたテストで使用することはできます。 この接続をセキュリティで保護する方法の詳細については、「[Protect the Docker Daemon on Docker.com](https://docs.docker.com/engine/security/https/)」 (Docker.com で Docker デーモンを保護する) を参照してください。
+次のコマンドを実行して `daemon.json` ファイルに接続構成を追加します。 これにより、TCP ポート 2375 経由で着信接続を受け入れるように、Docker エンジンが構成されます。 これはセキュリティで保護されていない接続であるため、お勧めできませんが、分離されたテストで使用することはできます。 この接続をセキュリティで保護する方法の詳細については、「[Protect the Docker Daemon on Docker.com](https://docs.docker.com/engine/security/https/)」 (Docker.com で Docker デーモンを保護する) を参照してください。
 
 ```none
 Add-Content 'c:\programdata\docker\config\daemon.json' '{ "hosts": ["tcp://0.0.0.0:2375", "npipe://"] }'
@@ -238,6 +238,6 @@ Restart-Computer
 ```
 
 
-<!--HONumber=Jul16_HO1-->
+<!--HONumber=Aug16_HO3-->
 
 

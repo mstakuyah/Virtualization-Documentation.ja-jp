@@ -4,14 +4,14 @@ description: "コンテナー展開のクイック スタート"
 keywords: "Docker, コンテナー"
 author: neilpeterson
 manager: timlt
-ms.date: 07/13/2016
+ms.date: 08/17/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 translationtype: Human Translation
-ms.sourcegitcommit: 9aa443b24e5c8a004b08203f67e578dd2d104746
-ms.openlocfilehash: 0ee1231b923e25975a4dfddb70c16366a86c9565
+ms.sourcegitcommit: fac57150de3ffd6c7d957dd628b937d5c41c1b35
+ms.openlocfilehash: 57d35f9e871bdd3bd0798833bcbaf6a7948a65f2
 
 ---
 
@@ -19,7 +19,7 @@ ms.openlocfilehash: 0ee1231b923e25975a4dfddb70c16366a86c9565
 
 **この記事は暫定的な内容であり、変更される可能性があります。** 
 
-この演習では、Windows 10 の Windows コンテナー機能の基本的な展開と使用について段階的に確認します (Insider ビルド 14372 以降)。 完了後、コンテナー ロールがインストールされ、シンプルな Hyper-V コンテナーが展開されます。 このクイック スタートを始める前に、コンテナーの基本的な概念と用語を理解しておいてください。 情報は[クイック スタートの概要](./quick_start.md)にあります。 
+この演習では、Windows 10 Professional または Enterprise (Anniversary Edition) の Windows コンテナー機能の基本的な展開と使用について段階的に確認します。 完了後、コンテナー ロールがインストールされ、シンプルな Hyper-V コンテナーが展開されます。 このクイック スタートを始める前に、コンテナーの基本的な概念と用語を理解しておいてください。 情報は[クイック スタートの概要](./quick_start.md)にあります。 
 
 このクイック スタートは Windows 10 の Hyper-V コンテナーのみに適用されます。 このページの左側の目次に追加のクイック スタート文書があります。
 
@@ -169,6 +169,6 @@ docker run --rm helloworld powershell c:\helloworld.ps1
 
 
 
-<!--HONumber=Aug16_HO1-->
+<!--HONumber=Aug16_HO3-->
 
 
