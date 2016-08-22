@@ -22905,9 +22905,9 @@
       "ArchiveFileCommit": "0bb13e1e418ceb1d1dfc380c5278aa823196bcf5",
       "ArchiveFileDateTime": "2016-08-18T07:16:30.258545Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\setup_nat_network.910a966b84616e203e5739d5dde1b65115f14a37.ja-jp.xlf",
+      "BilingualFileCommit": "197002aad36fbd3280c7ac806c922204f698a918",
+      "BilingualDateTime": "2016-08-22T11:27:35.5096528Z",
       "BilingualException": null
     },
     "eb7d2c25d929cb51abfad17c26a89105f6574a48": {
@@ -22940,9 +22940,9 @@
       "ArchiveFileCommit": "0bb13e1e418ceb1d1dfc380c5278aa823196bcf5",
       "ArchiveFileDateTime": "2016-08-18T07:16:30.258545Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\container_networking.7cf72391b3aa727681997232feeeb0a32d363edc.ja-jp.xlf",
+      "BilingualFileCommit": "197002aad36fbd3280c7ac806c922204f698a918",
+      "BilingualDateTime": "2016-08-22T11:27:35.5096528Z",
       "BilingualException": null
     },
     "d2f19e96f06ba18ab7e23e62652f569265c6f43f": {
@@ -22975,9 +22975,9 @@
       "ArchiveFileCommit": "0bb13e1e418ceb1d1dfc380c5278aa823196bcf5",
       "ArchiveFileDateTime": "2016-08-18T07:16:30.258545Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf",
+      "BilingualFileCommit": "197002aad36fbd3280c7ac806c922204f698a918",
+      "BilingualDateTime": "2016-08-22T11:27:35.5096528Z",
       "BilingualException": null
     },
     "f76dc45e6035c72fd7b07f25d4b4c55f2a95aafb": {
@@ -23010,9 +23010,9 @@
       "ArchiveFileCommit": "0bb13e1e418ceb1d1dfc380c5278aa823196bcf5",
       "ArchiveFileDateTime": "2016-08-18T07:16:30.258545Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\system_requirements.579a5475e3bd1d3d3fd9d5b53488ab4ae55a4423.ja-jp.xlf",
+      "BilingualFileCommit": "197002aad36fbd3280c7ac806c922204f698a918",
+      "BilingualDateTime": "2016-08-22T11:27:35.5096528Z",
       "BilingualException": null
     },
     "7ba03dbcedbe42d54c955ff321e9f3f180a5a674": {
@@ -23045,9 +23045,9 @@
       "ArchiveFileCommit": "0bb13e1e418ceb1d1dfc380c5278aa823196bcf5",
       "ArchiveFileDateTime": "2016-08-18T07:16:30.258545Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.ja-jp.xlf",
+      "BilingualFileCommit": "197002aad36fbd3280c7ac806c922204f698a918",
+      "BilingualDateTime": "2016-08-22T11:27:35.5096528Z",
       "BilingualException": null
     },
     "57d35f9e871bdd3bd0798833bcbaf6a7948a65f2": {
@@ -23080,9 +23080,9 @@
       "ArchiveFileCommit": "0bb13e1e418ceb1d1dfc380c5278aa823196bcf5",
       "ArchiveFileDateTime": "2016-08-18T07:16:30.258545Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.ja-jp.xlf",
+      "BilingualFileCommit": "197002aad36fbd3280c7ac806c922204f698a918",
+      "BilingualDateTime": "2016-08-22T11:27:35.5096528Z",
       "BilingualException": null
     },
     "34184dec1e86a3fdecb704ed04ed10a98d92f9d9": {
