@@ -1,7 +1,7 @@
 ---
 title: "コンテナー展開のクイック スタート - イメージ"
 description: "コンテナー展開のクイック スタート"
-keywords: docker, containers
+keywords: "Docker, コンテナー"
 author: neilpeterson
 manager: timlt
 ms.date: 05/26/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
 translationtype: Human Translation
-ms.sourcegitcommit: eae45c2c81c7edc94d963da69dcdee2b6f08f37d
-ms.openlocfilehash: ac9596d210e72b9fd576f728e8e6bbdc293597d7
+ms.sourcegitcommit: f2a3eec656acf5a3cd48a2be71169b76ce25400b
+ms.openlocfilehash: a9bc0b1511e161ef9b648bfafd4d0456966d8f9f
 
 ---
 
@@ -35,7 +35,7 @@ ms.openlocfilehash: ac9596d210e72b9fd576f728e8e6bbdc293597d7
 コンテナー イメージを手動で作成するための最初の手順はコンテナーを展開することです。 この例では、事前に作成した IIS イメージから IIS イメージを展開します。 コンテナーが展開されたら、コンテナー内からシェル セッションで操作します。 対話型セッションが `-it` フラグで開始されます。 Docker Run コマンドの詳細については、Docker.com の「[Docker Run Reference]( https://docs.docker.com/engine/reference/run/)」を参照してください。 
 
 ```none
-docker run -it -p 80:80 microsoft/iis:windowsservercore cmd
+docker run -it -p 80:80 microsoft/iis cmd
 ```
 
 次に、コンテナーが変更されます。 次のコマンドを実行して、IIS スプラッシュ画面を削除します。
@@ -68,7 +68,7 @@ exit
 docker ps -a
 
 CONTAINER ID     IMAGE                             COMMAND   CREATED             STATUS   PORTS   NAMES
-489b0b447949     microsoft/iis:windowsservercore   "cmd"     About an hour ago   Exited           pedantic_lichterman
+489b0b447949     microsoft/iis   "cmd"     About an hour ago   Exited           pedantic_lichterman
 ```
 
 新しいコンテナー イメージを作成するには、`docker commit` コマンドを使用します。 Docker コミットの形式は “docker commit container-name new-image-name” になります。 注記 – この例のコンテナー名を実際のコンテナー名に置き換えます。
@@ -112,7 +112,7 @@ Dockerfile に次のテキストをコピーし、ファイルを保存します
 Dockerfile の詳細については、「[Dockerfiles on Windows](../docker/manage_windows_dockerfile.md)」 (Windows 上の Dockerfile) を参照してください。
 
 ```none
-FROM microsoft/iis:windowsservercore
+FROM microsoft/iis
 RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 ```
 
@@ -166,6 +166,7 @@ docker rm -f cranky_brown
 [Windows 10 の Windows コンテナー](./quick_start_windows_10.md)
 
 
-<!--HONumber=Jun16_HO5-->
+
+<!--HONumber=Aug16_HO3-->
 
 

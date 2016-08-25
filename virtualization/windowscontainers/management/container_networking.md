@@ -4,14 +4,14 @@ description: "Windows コンテナーのネットワークを構成します。"
 keywords: "Docker, コンテナー"
 author: jmesser81
 manager: timlt
-ms.date: 05/02/2016
+ms.date: 08/22/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
 translationtype: Human Translation
-ms.sourcegitcommit: c412171773e9c66569eab2252b5adfc187eedafd
-ms.openlocfilehash: eb7d2c25d929cb51abfad17c26a89105f6574a48
+ms.sourcegitcommit: 7b5cf299109a967b7e6aac839476d95c625479cd
+ms.openlocfilehash: 2e26177f3e653e9102dc91070b987e28ef713bed
 
 ---
 
@@ -37,7 +37,7 @@ Docker エンジンは、dockerd サービスの初回実行時に、既定で n
 
 - **L2 トンネル** - _: このモードは Microsoft Cloud スタックでのみ使用する必要があります_。
 
-> Microsoft SDN スタックを使用してオーバーレイの仮想ネットワークをコンテナー エンドポイントに接続する方法については、「[Attaching Containers to a Virtual Network](location)」 (仮想ネットワークにコンテナーを接続する) のトピックをご覧ください。
+> Microsoft SDN スタックを使用してオーバーレイの仮想ネットワークをコンテナー エンドポイントに接続する方法については、「[Attaching Containers to a Virtual Network](https://technet.microsoft.com/en-us/windows-server-docs/networking/sdn/manage/connect-container-endpoints-to-a-tenant-virtual-network)」 (仮想ネットワークにコンテナーを接続する) のトピックをご覧ください。
 
 ## 単一ノード
 
@@ -182,7 +182,7 @@ C:\> docker network create -d l2bridge --subnet=192.168.1.0/24 --gateway=192.168
 
 l2bridge ネットワークでは、静的な IP の割り当てのみがサポートされています。 
 
-> SDN ファブリックで l2bridge ネットワークを使用する場合、動的な IP の割り当てのみがサポートされています。 詳細については、「[Attaching Containers to a Virtual Network](location)」 (仮想ネットワークにコンテナーを接続する) をご覧ください。
+> SDN ファブリックで l2bridge ネットワークを使用する場合、動的な IP の割り当てのみがサポートされています。 詳細については、「[Attaching Containers to a Virtual Network](https://technet.microsoft.com/en-us/windows-server-docs/networking/sdn/manage/connect-container-endpoints-to-a-tenant-virtual-network)」 (仮想ネットワークにコンテナーを接続する) をご覧ください。
 
 ## その他の操作と構成
 
@@ -291,6 +291,6 @@ Start-Service docker
 
 
 
-<!--HONumber=Aug16_HO3-->
+<!--HONumber=Aug16_HO4-->
 
 

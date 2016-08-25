@@ -12,6 +12,7 @@
 ## [システム要件](deployment/system_requirements.md)
 ## [コンテナー ホスト - Windows Server](deployment/deployment.md)
 ## [コンテナー ホスト - Nano Server](deployment/deployment_nano.md)
+## [ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 
 # Windows 上の Docker
 ## [Windows 上の Docker エンジン](docker/configure_docker_daemon.md)
@@ -30,17 +31,13 @@
 ## [Dockerfile - Nano Server](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/nanoserver)
 
 # コミュニティとサポート
-## [コンテナーのフォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)
+## [コンテナー フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)
 
-# リファレンス
-## [コンテナー イメージ プロバイダー](https://github.com/PowerShell/ContainerProvider)
-## [アプリケーションの互換性](reference/app_compat.md)
-## [ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 # [Windows Server EULA](EULA.md)
 # [Nano Server EULA](Nano_EULA.md)
 
 
 
-<!--HONumber=Aug16_HO3-->
+<!--HONumber=Aug16_HO4-->
 
 
