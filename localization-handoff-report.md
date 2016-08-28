@@ -1,11 +1,31 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 0
+ Total Files | 1
 
 ## File List
+ Source File | Status | Details 
+ ----------- | ------ | ------- 
+ [virtualization\windowscontainers\deployment\deployment_nano.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/9d60abb3519c582b9f389a65f8774c45e24bab7f/virtualization/windowscontainers/deployment/deployment_nano.md) | HandedOffSuccess | [Details](#b7394519f8275aacc995f72ff085f47484b57821228)
 
 ## Item Details
+##### <a name='b7394519f8275aacc995f72ff085f47484b57821228'></a> Source: [virtualization\windowscontainers\deployment\deployment_nano.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/9d60abb3519c582b9f389a65f8774c45e24bab7f/virtualization/windowscontainers/deployment/deployment_nano.md)
+* Status: HandedOffSuccess
+* Target File: 
+* Handoff File: [deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/f5ff3970477cf2a495c09082ee0ac12e29f3111b/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf)
+* Handoff Datetime: 2016-08-28 18:15:17
+* Handoff Reason: Include
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Current Target File: [virtualization\windowscontainers\deployment\deployment_nano.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/f346618fe3d3a3a70ef9ef8d54dfed9718a51f82/virtualization/windowscontainers/deployment/deployment_nano.md)
+* Current Handback File: [deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/197002aad36fbd3280c7ac806c922204f698a918/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf)
+* Current Handback Datetime: 2016-08-22 11:26:31
+* Bilingual File: [deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/197002aad36fbd3280c7ac806c922204f698a918/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf)
+* Bilingual Datetime: 2016-08-22 11:27:35
+* [Back to Top](#report-top)
+
 
 ## Error Details
 
