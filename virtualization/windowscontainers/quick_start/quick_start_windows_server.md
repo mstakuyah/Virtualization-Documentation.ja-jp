@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: b3f273d230344cff28d4eab7cebf96bac14f68c2
-ms.openlocfilehash: 808436ba179daa09fbc45ee7f7708a505bd1b4c8
+ms.sourcegitcommit: 2319649d1dd39677e59a9431fbefaf82982492c6
+ms.openlocfilehash: 6c92f5fea1b9344aa160feaf8444a57a1a05fa08
 
 ---
 
@@ -57,22 +57,26 @@ Docker エンジンとクライアントを 1 つの zip アーカイブとし�
 Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile "$env:TEMP\docker-1.12.0.zip" -UseBasicParsing
 ```
 
-この zip アーカイブを展開して Program Files に出力します。アーカイブの内容は既に docker ディレクトリに入っています。
+zip アーカイブをプログラム ファイルに展開します。
 
 ```none
 Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:ProgramFiles
 ```
 
-Docker ディレクトリをシステム パスに追加します。 完了したら、変更されたパスが認識されるように、PowerShell セッションを再起動します。
+Docker ディレクトリをシステム パスに追加します。
 
 ```none
+# for quick use, does not require shell to be restarted
+$env:path += ";c:\program files\docker"
+
+# for persistent use, will apply even after a reboot 
 [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Docker", [EnvironmentVariableTarget]::Machine)
 ```
 
 Windows サービスとして Docker をインストールするには、以下を実行します。
 
 ```none
-& $env:ProgramFiles\docker\dockerd.exe --register-service
+dockerd --register-service
 ```
 
 インストールされたら、サービスを開始することができます。
@@ -97,7 +101,7 @@ docker pull microsoft/windowsservercore
 docker images
 
 REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
-microsoft/windowsservercore   latest              02cb7f65d61b        7 weeks ago         7.764 GB
+microsoft/windowsservercore   latest              02cb7f65d61b        8 weeks ago         7.764 GB
 ```
 
 Windows コンテナー イメージの詳細については、[コンテナー イメージの管理](../management/manage_images.md)に関するページを参照してください。
@@ -111,26 +115,32 @@ Windows コンテナー イメージの Docker Hub を検索するには、`dock
 ```none
 docker search microsoft
 
-NAME                                         DESCRIPTION                                     
-microsoft/sample-django:windowsservercore    Django installed in a Windows Server Core ...   
-microsoft/dotnet35:windowsservercore         .NET 3.5 Runtime installed in a Windows Se...   
-microsoft/sample-golang:windowsservercore    Go Programming Language installed in a Win...   
-microsoft/sample-httpd:windowsservercore     Apache httpd installed in a Windows Server...   
-microsoft/iis:windowsservercore              Internet Information Services (IIS) instal...   
-microsoft/sample-mongodb:windowsservercore   MongoDB installed in a Windows Server Core...   
-microsoft/sample-mysql:windowsservercore     MySQL installed in a Windows Server Core b...   
-microsoft/sample-nginx:windowsservercore     Nginx installed in a Windows Server Core b...  
-microsoft/sample-python:windowsservercore    Python installed in a Windows Server Core ...   
-microsoft/sample-rails:windowsservercore     Ruby on Rails installed in a Windows Serve...  
-microsoft/sample-redis:windowsservercore     Redis installed in a Windows Server Core b...   
-microsoft/sample-ruby:windowsservercore      Ruby installed in a Windows Server Core ba...   
-microsoft/sample-sqlite:windowsservercore    SQLite installed in a Windows Server Core ...  
+NAME                                         DESCRIPTION
+microsoft/aspnet                             ASP.NET is an open source server-side Web ...
+microsoft/dotnet                             Official images for working with .NET Core...
+mono                                         Mono is an open source implementation of M...
+microsoft/azure-cli                          Docker image for Microsoft Azure Command L...
+microsoft/iis                                Internet Information Services (IIS) instal...
+microsoft/mssql-server-2014-express-windows  Microsoft SQL Server 2014 Express installe...
+microsoft/nanoserver                         Nano Server base OS image for Windows cont...
+microsoft/windowsservercore                  Windows Server Core base OS image for Wind...
+microsoft/oms                                Monitor your containers using the Operatio...
+microsoft/dotnet-preview                     Preview bits for microsoft/dotnet image
+microsoft/dotnet35
+microsoft/applicationinsights                Application Insights for Docker helps you ...
+microsoft/sample-redis                       Redis installed in Windows Server Core and...
+microsoft/sample-node                        Node installed in a Nano Server based cont...
+microsoft/sample-nginx                       Nginx installed in Windows Server Core and...
+microsoft/sample-httpd                       Apache httpd installed in Windows Server C...
+microsoft/sample-dotnet                      .NET Core running in a Nano Server container
+microsoft/sqlite                             SQLite installed in a Windows Server Core ...
+...
 ```
 
 `docker pull` を利用し、IIS イメージをダウンロードします。  
 
 ```none
-docker pull microsoft/iis:windowsservercore
+docker pull microsoft/iis
 ```
 
 イメージ ダウンロードは `docker images` コマンドで確認できます。 ここでは、ベース イメージ (windowsservercore) と IIS イメージの両方が表示されることに注意してください。
@@ -138,16 +148,15 @@ docker pull microsoft/iis:windowsservercore
 ```none
 docker images
 
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-microsoft/iis       windowsservercore   c26f4ceb81db        2 weeks ago         9.48 GB
-windowsservercore   10.0.14300.1000     dbfee88ee9fd        8 weeks ago         9.344 GB
-windowsservercore   latest              dbfee88ee9fd        8 weeks ago         9.344 GB
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+microsoft/iis                 latest              accd044753c1        11 days ago         7.907 GB
+microsoft/windowsservercore   latest              02cb7f65d61b        8 weeks ago         7.764 GB
 ```
 
 `docker run` を使用し、IIS コンテナーを展開します。
 
 ```none
-docker run -d -p 80:80 microsoft/iis:windowsservercore ping -t localhost
+docker run -d -p 80:80 microsoft/iis ping -t localhost
 ```
 
 このコマンドは IIS イメージをバックグラウンド サービス (-d) として実行し、コンテナー ホストのポート 80 がコンテナーのポート 80 にマッピングされるようにネットワーキングを構成します。
@@ -159,8 +168,8 @@ Docker Run コマンドの詳細については、Docker.com の「[Docker Run �
 ```none
 docker ps
 
-CONTAINER ID    IMAGE                             COMMAND               CREATED              STATUS   PORTS                NAMES
-9cad3ea5b7bc    microsoft/iis:windowsservercore   "ping -t localhost"   About a minute ago   Up       0.0.0.0:80->80/tcp   grave_jang
+CONTAINER ID  IMAGE          COMMAND              CREATED             STATUS             PORTS               NAME
+09c9cc6e4f83  microsoft/iis  "ping -t localhost"  About a minute ago  Up About a minute  0.0.0.0:80->80/tcp  big_jang
 ```
 
 別のコンピューターから、Web ブラウザーを開き、コンテナー ホストの IP アドレスを入力してください。 すべてが正しく構成されていれば、IIS のスプラッシュ画面が表示されます。 これは、Windows コンテナーでホストされている IIS インスタンスからサービスが提供されている状態です。
@@ -172,7 +181,7 @@ CONTAINER ID    IMAGE                             COMMAND               CREATED 
 コンテナー ホストに戻り、`docker rm` コマンドを使用してコンテナーを削除します。 注記 – この例のコンテナー名を実際のコンテナー名に置き換えます。
 
 ```none
-docker rm -f grave_jang
+docker rm -f big_jang
 ```
 ## 次の手順
 
@@ -182,6 +191,6 @@ docker rm -f grave_jang
 
 
 
-<!--HONumber=Aug16_HO1-->
+<!--HONumber=Aug16_HO4-->
 
 

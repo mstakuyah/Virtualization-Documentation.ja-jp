@@ -4,14 +4,14 @@ description: "Nano Server での Windows コンテナーの展開"
 keywords: "Docker, コンテナー"
 author: neilpeterson
 manager: timlt
-ms.date: 07/06/2016
+ms.date: 08/23/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 translationtype: Human Translation
-ms.sourcegitcommit: fac57150de3ffd6c7d957dd628b937d5c41c1b35
-ms.openlocfilehash: d2f19e96f06ba18ab7e23e62652f569265c6f43f
+ms.sourcegitcommit: 2319649d1dd39677e59a9431fbefaf82982492c6
+ms.openlocfilehash: a79469987879656117812ff6f9563046584172c0
 
 ---
 
@@ -29,22 +29,20 @@ ms.openlocfilehash: d2f19e96f06ba18ab7e23e62652f569265c6f43f
 
 まず Nano Server 評価版 VHD を[ここ](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/nano_eula)からダウンロードします。 この VHD で仮想マシンを作成し、その仮想マシンを起動します。次に、Hyper-V 接続オプション、または使用中の仮想化プラットフォームに基づく同等の接続オプションを使用して仮想マシンに接続します。
 
-次に、管理者のパスワードを設定する必要があります。 そのためには、Nano Server 回復コンソールで `F11` を押します。 これにより、[パスワードの変更] ダイアログ ボックスが表示されます。
-
 ### リモート PowerShell セッションを作成する
 
-Nano Server は対話型のログオン機能を備えていないので、管理はすべてリモート PowerShell セッションから実行されます。 リモート セッションを作成するには、Nano Server 回復コンソールのネットワーキング セクションを使用してシステムの IP アドレスを取得し、リモート ホストで次のコマンドを実行します。 IPADDRESS を Nano Server システムの実際の IP アドレスに置き換えます。
+Nano Server は対話型のログオン機能を備えていないため、管理はすべて PowerShell を使用してリモート システムから実行されます。
 
-Nano Server システムを信頼できるホストに追加します。
+Nano Server システムをリモート システムの信頼できるホストに追加します。 IP アドレスをこの Nano Server の IP アドレスで置き換えます。
 
 ```none
-set-item WSMan:\localhost\Client\TrustedHosts IPADDRESS -Force
+Set-Item WSMan:\localhost\Client\TrustedHosts 192.168.1.50 -Force
 ```
 
 リモート PowerShell セッションを作成します。
 
 ```none
-Enter-PSSession -ComputerName IPADDRESS -Credential ~\Administrator
+Enter-PSSession -ComputerName 192.168.1.50 -Credential ~\Administrator
 ```
 
 上記の手順が完了すると、Nano Server システムではリモート PowerShell セッションの状態になります。 このドキュメントの残りの部分では、特に記載のない限り、リモート セッションから作業を行います。
@@ -74,7 +72,13 @@ Restart-Computer
 
 ## Docker のインストール
 
-Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。 次の手順を使用して、Docker エンジンおよびクライアントをインストールします。
+Windows コンテナーを使用するには、Docker エンジンが必要です。 次の手順を使用して、Docker エンジンをインストールします。
+
+最初に、SMB で Nano Server ファイアウォールが構成されていることを確認します。 そのためには、Nano Server ホストで次のコマンドを実行します。
+
+```none
+Set-NetFirewallRule -Name FPS-SMB-In-TCP -Enabled True
+```
 
 Nano Server ホストに Docker 実行可能ファイル用のフォルダーを作成します。
 
@@ -84,30 +88,34 @@ New-Item -Type Directory -Path $env:ProgramFiles'\docker\'
 
 Docker エンジンおよびクライアントをダウンロードし、これらをコンテナー ホストの 'C:\Program Files\docker\' にコピーします。 
 
-**注** - Nano Server では現在、`Invoke-WebRequest` がサポートされていないため、リモート システムからダウンロードを実行し、その内容を Nano Server ホストにコピーする必要があります。
+> Nano Server は現在、`Invoke-WebRequest` をサポートしていません。 ダウンロードはリモート システムで完了し、ファイルを Nano Server ホストにコピーする必要があります。
 
 ```none
-Invoke-WebRequest https://aka.ms/tp5/b/dockerd -OutFile .\dockerd.exe
+Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile .\docker-1.12.0.zip -UseBasicParsing
 ```
 
-Docker クライアントをダウンロードします。
+ダウンロードしたパッケージを解凍します。 完了すると、ディレクトリには **dockerd.exe** と **docker.exe** が含まれます。 これらの両方を Nano Server コンテナー ホストの **C:\Program Files\docker\** フォルダーにコピーします。 
 
 ```none
-Invoke-WebRequest https://aka.ms/tp5/b/docker -OutFile .\docker.exe
+Expand-Archive .\docker-1.12.0.zip
 ```
 
-Docker エンジンとクライアントがダウンロードされたら、Nano Server コンテナー ホストの 'C:\Program Files\docker\' フォルダーにコピーします。 着信 SMB 接続が許可されるように Nano Server ファイアウォールを構成する必要があります。 この構成は、PowerShell または Nano Server 回復コンソールのどちらでも実行できます。 
+Docker ディレクトリを Nano Server のシステム パスに追加します。
+
+> リモートの Nano Server のセッションに切り替えて戻ってください。
 
 ```none
-Set-NetFirewallRule -Name FPS-SMB-In-TCP -Enabled True
+# for quick use, does not require shell to be restarted
+$env:path += “;C:\program files\docker”
+
+# for persistent use, will apply even after a reboot 
+setx PATH $env:path /M
 ```
 
-これで、SMB ファイルの標準的なコピー方法を使用してファイルをコピーできるようになりました。
-
-dockerd.exe ファイルをホストにコピーし場合は、次のコマンドを実行して Windows サービスとして Docker をインストールします。
+Windows サービスとして Docker をインストールします。
 
 ```none
-& $env:ProgramFiles'\docker\dockerd.exe' --register-service
+dockerd --register-service
 ```
 
 Docker サービスを開始します。
@@ -118,33 +126,15 @@ Start-Service Docker
 
 ## コンテナーの基本イメージのインストール
 
-基本 OS イメージは、任意の Windows Server または Hyper-V コンテナーのベースとして使用されます。 基本 OS イメージは、基となるオペレーティング システムとして Windows Server Core と Nano Server の両方で使用でき、コンテナー イメージ プロバイダーを使用してインストールすることができます。 Windows コンテナー イメージの詳細については、[コンテナー イメージの管理](../management/manage_images.md)に関するページを参照してください。
-
-コンテナー イメージ プロバイダーは、次のコマンドを使用してインストールできます。
-
-```none
-Install-PackageProvider ContainerImage -Force
-```
+基本 OS イメージは、任意の Windows Server または Hyper-V コンテナーのベースとして使用されます。 基本 OS イメージは、基となるオペレーティング システムとして Windows Server Core と Nano Server の両方で使用でき、`docker pull` を使用してインストールすることができます。 Windows コンテナー イメージの詳細については、[コンテナー イメージの管理](../management/manage_images.md)に関するページを参照してください。
 
 Nano Server の基本イメージをダウンロードしてインストールするには、次を実行します。
 
 ```none
-Install-ContainerImage -Name NanoServer
+docker pull microsoft/nanoserver
 ```
 
-**注** - 現時点では、Nano Server コンテナー ホストと互換性があるのは Nano Server 基本イメージのみです。
-
-Docker サービスを再起動します。
-
-```none
-Restart-Service Docker
-```
-
-Nano Server ベース イメージに最新のタグを付けます。
-
-```none
-& $env:ProgramFiles'\docker\docker.exe' tag nanoserver:10.0.14300.1016 nanoserver:latest
-```
+> 現時点では、Nano Server コンテナー ホストと互換性があるのは Nano Server 基本イメージのみです。
 
 ## Nano Server の Docker の管理
 
@@ -155,7 +145,7 @@ Nano Server ベース イメージに最新のタグを付けます。
 Docker 接続用のコンテナー ホストにファイアウォール規則を作成します。 セキュリティで保護されていない接続の場合はポート `2375`、セキュリティで保護されている接続の場合はポート `2376` になります。
 
 ```none
-netsh advfirewall firewall add rule name="Docker daemon " dir=in action=allow protocol=TCP localport=2376
+netsh advfirewall firewall add rule name="Docker daemon " dir=in action=allow protocol=TCP localport=2375
 ```
 
 TCP 経由で着信接続を受け入れるように、Docker エンジンを構成します。
@@ -180,25 +170,27 @@ Restart-Service docker
 
 ### リモート クライアントを準備する
 
-作業するリモート システム上で、Docker クライアントを保持するディレクトリを作成します。
+作業するリモート システム上で、Docker クライアントをダウンロードします。
 
 ```none
-New-Item -Type Directory -Path 'C:\Program Files\docker\'
+Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile "$env:TEMP\docker-1.12.0.zip" -UseBasicParsing
 ```
 
-このディレクトリに Docker クライアントをダウンロードします。
+圧縮されたパッケージを解凍します。
 
 ```none
-Invoke-WebRequest https://aka.ms/tp5/b/docker -OutFile "$env:ProgramFiles\docker\docker.exe"
+Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:ProgramFiles
 ```
 
-Docker ディレクトリをシステム パスに追加します。
+次の 2 つのコマンドを実行して、Docker ディレクトリをシステム パスに追加します。
 
 ```none
-$env:Path += ";$env:ProgramFiles\Docker"
-```
+# for quick use, does not require shell to be restarted
+$env:path += ";c:\program files\docker"
 
-変更されたパスが認識されるように、PowerShell またはコマンド セッションを再起動します。
+# for persistent use, will apply even after a reboot 
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Docker", [EnvironmentVariableTarget]::Machine)
+```
 
 完了したら、`docker -H` パラメーターを使用してリモート Docker ホストにアクセスすることができます。
 
@@ -238,6 +230,6 @@ Restart-Computer
 ```
 
 
-<!--HONumber=Aug16_HO3-->
+<!--HONumber=Aug16_HO4-->
 
 

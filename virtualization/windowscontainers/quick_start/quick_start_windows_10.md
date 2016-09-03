@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 translationtype: Human Translation
-ms.sourcegitcommit: fac57150de3ffd6c7d957dd628b937d5c41c1b35
-ms.openlocfilehash: 57d35f9e871bdd3bd0798833bcbaf6a7948a65f2
+ms.sourcegitcommit: 2319649d1dd39677e59a9431fbefaf82982492c6
+ms.openlocfilehash: 8d3c8263819688d1a47893726619458ee44be59b
 
 ---
 
@@ -25,7 +25,7 @@ ms.openlocfilehash: 57d35f9e871bdd3bd0798833bcbaf6a7948a65f2
 
 **前提条件:**
 
-- [Windows 10 Insider リリース](https://insider.windows.com/)で実行されている 1 台の物理コンピューター システム。   
+- Windows 10 Anniversary Edition (Professional または Enterprise) を実行する 1 台の物理コンピューター システム。   
 - このクイック スタートは Windows 10 仮想マシンで実行できますが、入れ子の仮想化を有効にする必要があります。 詳細については、「[Nested Virtualization Guide](https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting)」 (入れ子になった仮想化ガイド) を参照してください。
 
 ## 1.コンテナー機能のインストール
@@ -63,19 +63,23 @@ Docker は Windows コンテナーで使用するために必要です。 Docker
 Docker エンジンとクライアントを 1 つの zip アーカイブとしてダウンロードします。
 
 ```none
-Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile "$env:TEMP\docker-1.12.0.zip" -UseBasicParsing
+Invoke-WebRequest "https://master.dockerproject.org/windows/amd64/docker-1.13.0-dev.zip" -OutFile "$env:TEMP\docker-1.13.0-dev.zip" -UseBasicParsing
 ```
 
 この zip アーカイブを展開して Program Files に出力します。アーカイブの内容は既に docker ディレクトリに入っています。
 
 ```none
-Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:ProgramFiles
+Expand-Archive -Path "$env:TEMP\docker-1.13.0-dev.zip" -DestinationPath $env:ProgramFiles
 ```
 
 Docker ディレクトリをシステム パスに追加します。
 
 ```none
-[Environment]::SetEnvironmentVariable("Path", $env:Path + ";$env:ProgramFiles\docker\", [EnvironmentVariableTarget]::Machine)
+# for quick use, does not require shell to be restarted
+$env:path += ";c:\program files\docker"
+
+# for persistent use, will apply even after a reboot 
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Docker", [EnvironmentVariableTarget]::Machine)
 ```
 
 変更されたパスが認識されるように、PowerShell セッションを再起動します。
@@ -83,7 +87,7 @@ Docker ディレクトリをシステム パスに追加します。
 Windows サービスとして Docker をインストールするには、以下を実行します。
 
 ```none
-& $env:ProgramFiles\docker\dockerd.exe --register-service
+dockerd --register-service
 ```
 
 インストールされたら、サービスを開始することができます。
@@ -120,7 +124,7 @@ Windows コンテナー イメージの詳細については、[コンテナー 
 まず、`nanoserver` イメージから対話型セッションでコンテナーを起動します。 コンテナーが起動すると、コンテナーからコマンド シェルが表示されます。  
 
 ```none
-docker run -it nanoserver cmd
+docker run -it microsoft/nanoserver cmd
 ```
 
 コンテナー内で、"Hello World" という簡単なスクリプトを作成することにします。
@@ -169,6 +173,6 @@ docker run --rm helloworld powershell c:\helloworld.ps1
 
 
 
-<!--HONumber=Aug16_HO3-->
+<!--HONumber=Aug16_HO4-->
 
 

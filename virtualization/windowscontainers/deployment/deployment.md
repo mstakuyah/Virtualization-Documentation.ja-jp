@@ -4,14 +4,14 @@ description: "Windows Server に Windows コンテナーを展開する"
 keywords: "Docker, コンテナー"
 author: neilpeterson
 manager: timlt
-ms.date: 05/26/2016
+ms.date: 08/22/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
 translationtype: Human Translation
-ms.sourcegitcommit: 6c7ce9f1767c6c6391cc6d33a553216bd815ff72
-ms.openlocfilehash: ce387b29f1bd311c70c17f3e7a98ae4f625bd3c2
+ms.sourcegitcommit: 2319649d1dd39677e59a9431fbefaf82982492c6
+ms.openlocfilehash: b60329a09ea0f119446fa2aa20de68e3edc2b245
 
 ---
 
@@ -59,9 +59,13 @@ Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zi
 Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:ProgramFiles
 ```
 
-Docker ディレクトリをシステム パスに追加します。
+次の 2 つのコマンドを実行して、Docker ディレクトリをシステム パスに追加します。
 
 ```none
+# for quick use, does not require shell to be restarted
+$env:path += ";c:\program files\docker"
+
+# for persistent use, will apply even after a reboot 
 [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Docker", [EnvironmentVariableTarget]::Machine)
 ```
 
@@ -70,7 +74,7 @@ Docker ディレクトリをシステム パスに追加します。
 Windows サービスとして Docker をインストールするには、以下を実行します。
 
 ```none
-& $env:ProgramFiles\docker\dockerd.exe --register-service
+dockerd --register-service
 ```
 
 インストールされたら、サービスを開始することができます。
@@ -81,30 +85,18 @@ Start-Service Docker
 
 ## コンテナーの基本イメージのインストール
 
-コンテナーを展開する前に、コンテナーの基本 OS イメージをダウンロードする必要があります。 次の例では、Windows Server Core のベース OS イメージをダウンロードします。 これと同じ手順を実行して、Nano Server 基本イメージをインストールすることができます。 Windows コンテナー イメージの詳細については、[コンテナー イメージの管理](../management/manage_images.md)に関するページを参照してください。
+Windows コンテナーを使用する前に、基本イメージをインストールする必要があります。 基本イメージは、基になるオペレーティング システムとして Windows Server Core と Nano Server の両方で使用できます。 Windows コンテナー イメージの詳細については、[コンテナー イメージの管理](../management/manage_images.md)に関するページを参照してください。
 
-まず、コンテナー イメージ パッケージ プロバイダーをインストールします。
+Windows Server Core 基本イメージをインストールするには、次のコマンドを実行します。
 
 ```none
-Install-PackageProvider ContainerImage -Force
+docker pull microsoft/windowsservercore
 ```
 
-次に、Windows Server Core のイメージをインストールします。 このプロセスには時間がかかる場合があるため、しばらく待ち、ダウンロードが完了したら作業に戻ってください。
+Nano Server 基本イメージをインストールするには、次のコマンドを実行します。
 
 ```none
-Install-ContainerImage -Name WindowsServerCore    
-```
-
-基本イメージがインストールされたら、Docker サービスを再起動する必要があります。
-
-```none
-Restart-Service docker
-```
-
-最後に、イメージに '最新' バージョンであることを示すタグを付ける必要があります。 これを行うために、次のコマンドを実行します。
-
-```none
-docker tag windowsservercore:10.0.14300.1000 windowsservercore:latest
+docker pull microsoft/nanoserver
 ```
 
 ## Hyper-V コンテナー ホスト
@@ -139,6 +131,6 @@ Install-WindowsFeature hyper-v
 
 
 
-<!--HONumber=Aug16_HO1-->
+<!--HONumber=Aug16_HO4-->
 
 

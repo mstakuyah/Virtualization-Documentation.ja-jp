@@ -1,17 +1,17 @@
 ---
 title: "Windows コンテナー イメージ"
 description: "Windows コンテナーでコンテナー イメージを作成および管理します。"
-keywords: docker, containers
+keywords: "Docker, コンテナー"
 author: neilpeterson
 manager: timlt
-ms.date: 05/02/2016
+ms.date: 08/22/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: d8163185-9860-4ee4-9e96-17b40fb508bc
 translationtype: Human Translation
-ms.sourcegitcommit: 3db43b433e7b1a9484d530cf209ea80ef269a307
-ms.openlocfilehash: 505cc64fa19fb9fc8c2d5c109830f460f09332dd
+ms.sourcegitcommit: 7b5cf299109a967b7e6aac839476d95c625479cd
+ms.openlocfilehash: 8b9ec6370d1f9f9187fbb6d74168e9e88391b657
 
 ---
 
@@ -19,148 +19,34 @@ ms.openlocfilehash: 505cc64fa19fb9fc8c2d5c109830f460f09332dd
 
 **この記事は暫定的な内容であり、変更される可能性があります。** 
 
-コンテナー イメージは、コンテナーを展開するために使用します。 これらのイメージには、オペレーティング システム、アプリケーション、およびすべてのアプリケーションの依存関係を含めることができます。 たとえば、Nano Server、IIS、および IIS で実行するアプリケーションによって事前に構成されたコンテナー イメージを開発できます。 このコンテナー イメージは、後で使用するためにコンテナー レジストリに保存したり、任意の Windows コンテナー ホスト (オンプレミス、クラウド、またはコンテナー サービス) に展開したり、新しいコンテナー イメージのベースとして使用したりすることができます。
+>Windows コンテナーは、Docker を使用して管理されます。 Windows コンテナー ドキュメントは、[docker.com](https://www.docker.com/) のドキュメントを補完するものです。
 
-2 つの種類のコンテナー イメージがあります。
-
-**ベース OS イメージ** - Microsoft によって提供されます。コア OS コンポーネントが含まれます。 
-
-**コンテナー イメージ** - ベース OS イメージから派生したカスタム コンテナー イメージです。
-
-## ベース OS イメージ
+コンテナー イメージは、コンテナーを展開するために使用します。 これらのイメージには、アプリケーションとすべてのアプリケーションの依存関係を含めることができます。 たとえば、Nano Server、IIS、および IIS で実行するアプリケーションによって事前に構成されたコンテナー イメージを開発できます。 このコンテナー イメージは、後で使用するためにコンテナー レジストリに保存したり、任意の Windows コンテナー ホスト (オンプレミス、クラウド、またはコンテナー サービス) に展開したり、新しいコンテナー イメージのベースとして使用したりすることができます。
 
 ### イメージのインストール
 
-コンテナー OS イメージは、ContainerImage PowerShell モジュールを使用して検索およびインストールできます。 このモジュールを使用するには、先にインストールする必要があります。 モジュールをインストールするために、次のコマンドを使用できます。 Container Image OneGet PowerShell モジュールの使用方法については、[コンテナー イメージ プロバイダー](https://github.com/PowerShell/ContainerProvider)を参照してください。 
+Windows コンテナーを使用する前に、基本イメージをインストールする必要があります。 基本イメージは、基になるオペレーティング システムとして Windows Server Core と Nano Server の両方で使用できます。 サポートされる構成については、[Windows コンテナーのシステム要件](../deployment/system_requirements.md)に関する記事を参照してください。
+
+Windows Server Core 基本イメージをインストールするには、次のコマンドを実行します。
 
 ```none
-Install-PackageProvider ContainerImage -Force
+docker pull microsoft/windowsservercore
 ```
 
-インストールすると、`Find-ContainerImage` を使用してベース OS イメージの一覧を返せるようになります。
+Nano Server 基本イメージをインストールするには、次のコマンドを実行します。
 
 ```none
-Find-ContainerImage
-
-Name                 Version          Source           Summary
-----                 -------          ------           -------
-NanoServer           10.0.14300.1010  ContainerImag... Container OS Image of Windows Server 2016 Technical...
-WindowsServerCore    10.0.14300.1000  ContainerImag... Container OS Image of Windows Server 2016 Technical...
+docker pull microsoft/nanoserver
 ```
-
-Nano Server ベースの OS イメージをダウンロードしてインストールするには、次を実行します。 `-version` パラメーターはオプションです。 ベース OS イメージのバージョンを指定しない場合は、最新のバージョンがインストールされます。
-
-```none
-Install-ContainerImage -Name NanoServer -Version 10.0.14300.1010
-```
-
-このコマンドは、Windows Server Core ベース OS イメージも同様にダウンロードしてインストールします。 `-version` パラメーターはオプションです。 ベース OS イメージのバージョンを指定しない場合は、最新のバージョンがインストールされます。
-
-```none
-Install-ContainerImage -Name WindowsServerCore -Version 10.0.14300.1000
-```
-
-`docker images` コマンドを使用して、イメージがインストールされていることを確認します。 
-
-```none
-docker images
-
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-nanoserver          10.0.14300.1010     40356b90dc80        2 weeks ago         793.3 MB
-windowsservercore   10.0.14304.1000     7837d9445187        2 weeks ago         9.176 GB
-```  
-
-インストールした後に、イメージに ’latest’ タグを付けることもできます。 これらの手順の詳細については、以下のタグに関するセクションを参照してください。
-
-> ベース OS イメージがダウンロードされているのに `docker images` の実行時に表示されない場合は、[サービス] コントロール パネル アプレットを使用するか、コマンド 'sc stop docker' および 'sc start docker' を順番に使用して、Docker サービスを再起動します
-
-### タグ イメージ
-
-名前でコンテナー イメージを参照すると、Docker エンジンは最新バージョンのイメージを検索します。 最新のバージョンを特定できない場合は、次のエラーがスローされます。
-
-```none
-docker run -it windowsservercore cmd
-
-Unable to find image 'windowsservercore:latest' locally
-Pulling repository docker.io/library/windowsservercore
-C:\Windows\system32\docker.exe: Error: image library/windowsservercore not found.
-```
-
-Windows Server Core または Nano Server のベース OS イメージのインストール後、これらのイメージには 'latest' バージョンのタグが付けられる必要があります。 この場合は、`docker tag` コマンドを使用します。 
-
-`docker tag` の詳細については、[docker.com のイメージのタグ付け、プッシュ、およびプルに関するページ](https://docs.docker.com/mac/step_six/)を参照してください。 
-
-```none
-docker tag <image id> windowsservercore:latest
-```
-
-タグ付けすると、`docker images` の出力により同じイメージの 2 つのバージョンが表示されます。1 つはイメージのバージョンのタグが付けられたもの、もう 1 つは 'latest' のタグが付けられたものです。 これで、イメージを名前で参照できるようになりました。
-
-```none
-docker images
-
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-nanoserver          10.0.14300.1010     df03a4b28c50        2 days ago          783.2 MB
-windowsservercore   10.0.14300.1000     290ab6758cec        2 days ago          9.148 GB
-windowsservercore   latest              290ab6758cec        2 days ago          9.148 GB
-```
-
-### オフライン インストール
-
-インターネットに接続しないでベース OS イメージをインストールすることもできます。 この場合、インターネット接続を使用してコンピューターにイメージをダウンロードし、ターゲット システムにコピーし、`Install-ContainerOSImages` コマンドを使用してイメージをインポートします。
-
-ベース OS イメージをダウンロードする前に、次のコマンドを実行して、コンテナー イメージ プロバイダーで**インターネット接続された**システムを準備します。
-
-```none
-Install-PackageProvider ContainerImage -Force
-```
-
-PowerShell OneGet パッケージ マネージャーからイメージの一覧が返されます。
-
-```none
-Find-ContainerImage
-```
-
-出力:
-
-```none
-Name                 Version                 Description
-----                 -------                 -----------
-NanoServer           10.0.14300.1010         Container OS Image of Windows Server 2016 Techn...
-WindowsServerCore    10.0.14300.1000         Container OS Image of Windows Server 2016 Techn...
-```
-
-イメージをダウンロードするには、`Save-ContainerImage` コマンドを使用します。
-
-```none
-Save-ContainerImage -Name NanoServer -Path c:\container-image
-```
-
-ダウンロードしたコンテナー イメージは、**オフライン コンテナー ホスト**にコピーし、`Install-ContainerOSImage` コマンドを使用してインストールできるようになります。
-
-```none
-Install-ContainerOSImage -WimPath C:\container-image\NanoServer.wim -Force
-```
-
-### OS イメージのアンインストール
-
-ベース OS イメージをアンインストールするには、`Uninstall-ContainerOSImage` コマンドを使用します。 次の例では、NanoServer のベース OS イメージをアンインストールします。
-
-```none
-Uninstall-ContainerOSImage -FullName CN=Microsoft_NanoServer_10.0.14304.1003
-```
-
-## コンテナー イメージ
 
 ### イメージの一覧表示
 
 ```none
 docker images
 
-REPOSITORY             TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
-windowsservercoreiis   latest              ca40b33453f8        About a minute ago   44.88 MB
-windowsservercore      10.0.14300.1000     6801d964fda5        2 weeks ago          0 B
-nanoserver             10.0.14300.1010     8572198a60f1        2 weeks ago          0 B
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+microsoft/windowsservercore   latest              02cb7f65d61b        9 weeks ago         7.764 GB
+microsoft/nanoserver          latest              3a703c6e97a2        9 weeks ago         969.8 MB
 ```
 
 ### 新しいイメージの作成
@@ -291,6 +177,6 @@ latest: digest: sha256:ae3a2971628c04d5df32c3bbbfc87c477bb814d5e73e2787900da1322
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Aug16_HO4-->
 
 
