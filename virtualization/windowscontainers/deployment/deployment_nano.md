@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 translationtype: Human Translation
-ms.sourcegitcommit: 2319649d1dd39677e59a9431fbefaf82982492c6
-ms.openlocfilehash: a79469987879656117812ff6f9563046584172c0
+ms.sourcegitcommit: deaed93924d4c8bff55e1f95342381bf4621076e
+ms.openlocfilehash: 4e71c39c98a61365b3b4f9c0ac55ace9c47cf10c
 
 ---
 
@@ -105,10 +105,10 @@ Docker ディレクトリを Nano Server のシステム パスに追加しま�
 > リモートの Nano Server のセッションに切り替えて戻ってください。
 
 ```none
-# for quick use, does not require shell to be restarted
+# For quick use, does not require shell to be restarted.
 $env:path += “;C:\program files\docker”
 
-# for persistent use, will apply even after a reboot 
+# For persistent use, will apply even after a reboot.
 setx PATH $env:path /M
 ```
 
@@ -185,10 +185,10 @@ Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:Program
 次の 2 つのコマンドを実行して、Docker ディレクトリをシステム パスに追加します。
 
 ```none
-# for quick use, does not require shell to be restarted
+# For quick use, does not require shell to be restarted.
 $env:path += ";c:\program files\docker"
 
-# for persistent use, will apply even after a reboot 
+# For persistent use, will apply even after a reboot. 
 [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Docker", [EnvironmentVariableTarget]::Machine)
 ```
 
