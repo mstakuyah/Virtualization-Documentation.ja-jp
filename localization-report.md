@@ -3155,8 +3155,8 @@
 * Archive Datetime: 2016-06-30 07:21:33
 * Handback File: [about_overview.128dd77ccb6c6a944b03f43ade40980cc30f0f48.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/a2dd2d0c878b5d52fb4f9eb35d5f7dcf73660fe1/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/about_overview.128dd77ccb6c6a944b03f43ade40980cc30f0f48.ja-jp.xlf)
 * Handback Datetime: 2016-09-07 00:08:00
-* Bilingual File: [about_overview.128dd77ccb6c6a944b03f43ade40980cc30f0f48.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/a8fa1aafa5dda781de75a3fd329a1bb3dbda2bfa/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/about_overview.128dd77ccb6c6a944b03f43ade40980cc30f0f48.ja-jp.xlf)
-* Bilingual Datetime: 2016-09-03 00:42:15
+* Bilingual File: [about_overview.128dd77ccb6c6a944b03f43ade40980cc30f0f48.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/a2dd2d0c878b5d52fb4f9eb35d5f7dcf73660fe1/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/about_overview.128dd77ccb6c6a944b03f43ade40980cc30f0f48.ja-jp.xlf)
+* Bilingual Datetime: 2016-09-07 00:10:37
 * [Back to Top](#report-top)
 
 ##### <a name='1aad093c2c4e1c64200fcc1c10cbdee6c93b80c5212'></a> Source: [virtualization\windowscontainers\about\container_ecosystem.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/cfa3c14e932f8b86edf6667200ac028ea0a16b67/virtualization/windowscontainers/about/container_ecosystem.md)
