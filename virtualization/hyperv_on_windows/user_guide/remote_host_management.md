@@ -1,7 +1,7 @@
 ---
 title: "Hyper-V マネージャーを使用したリモート Hyper-V ホストの管理"
 description: "Hyper-V マネージャーを使用したリモート Hyper-V ホストの管理"
-keywords: windows 10, hyper-v
+keywords: "windows 10、hyper-v"
 author: scooley
 manager: timlt
 ms.date: 05/02/2016
@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 2d34e98c-6134-479b-8000-3eb360b8b8a3
 translationtype: Human Translation
-ms.sourcegitcommit: eb6c8e904b9cd2c5d1ed25583ffbcdbdf0b9139c
-ms.openlocfilehash: fee2b24469b45efae982f4dfca4afb9f737b5bdf
+ms.sourcegitcommit: 07a07c790484c05ea49229a770ef75c80fad3cfa
+ms.openlocfilehash: 8a84da80199479907c3bf4cf0c7b1cfb1b44bf9d
 
 ---
 
@@ -117,12 +117,12 @@ IP アドレスを使用して接続するには、**[別のコンピュータ�
 2. [Enable-WSManCredSSP](https://technet.microsoft.com/en-us/library/hh849872.aspx) -Role client -DelegateComputer "fqdn-of-hyper-v-host"
   * 代わりに、管理用にすべてのホストを信頼することを許可できます。
   * [Enable-WSManCredSSP](https://technet.microsoft.com/en-us/library/hh849872.aspx) -Role client -DelegateComputer *
-3. 次のグループ ポリシーを構成する必要もあります: ** コンピューターの構成 | 管理用テンプレート | システム | 資格情報の委任 | NTLM のみのサーバー認証で新しい資格情報を許可する**
+3. 加えて、次のグループ ポリシーの構成が必要になる可能性があります: ** コンピューターの構成 | 管理用テンプレート | システム | 資格情報の委任 | NTLM のみのサーバー認証で新しい資格情報の委任を許可する **
     * **[有効]** をクリックし、*wsman/fqdn-of-hyper-v-host* を追加します。
     * 代わりに、_wsman/*_ を追加して、管理用にすべてのホストを信頼することを許可できます。
 
 
 
-<!--HONumber=Jun16_HO5-->
+<!--HONumber=Aug16_HO5-->
 
 

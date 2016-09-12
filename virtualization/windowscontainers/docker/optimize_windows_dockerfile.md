@@ -1,7 +1,7 @@
 ---
 title: "Windows Dockerfile を最適化する"
 description: "Windows コンテナー用に Dockerfile を最適化します。"
-keywords: docker, containers
+keywords: "Docker, コンテナー"
 author: neilpeterson
 manager: timlt
 ms.date: 05/26/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
 translationtype: Human Translation
-ms.sourcegitcommit: cc216f56acd5e547d05a48beea57450ba5fcb28b
-ms.openlocfilehash: 4822ff2f0248b2d7752299ea55b08e3499e2e2f7
+ms.sourcegitcommit: 7ebd83d5d3a098fc8760f5dfba7e350c3f167232
+ms.openlocfilehash: 19a363aa013b51e0c80d56572de77e94f27e546f
 
 ---
 # Windows Dockerfile を最適化する
@@ -65,7 +65,7 @@ Dockerfile のベスト プラクティスについては、「[Best practices f
 
 次に示す 2 つの例の操作は、同じ機能を持つコンテナー イメージを作成しますが、2 つの Dockerfile の構成は異なります。 結果のイメージも比較します。  
 
-1 番目の例は、Visual Studio の再頒布可能パッケージをダウンロードし、抽出して、クリーンアップします。 これらの各アクションは、それぞれの `RUN` 命令で実行されます。
+最初の例では、Python for Windows をダウンロードしてインストールします。最後にクリーンアップとして、ダウンロード済みのセットアップ ファイルを削除します。 これらの各アクションは、それぞれの `RUN` 命令で実行されます。
 
 ```none
 FROM windowsservercore
@@ -305,6 +305,6 @@ RUN powershell -Command \
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Aug16_HO5-->
 
 
