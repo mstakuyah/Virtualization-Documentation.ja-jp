@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 translationtype: Human Translation
-ms.sourcegitcommit: deaed93924d4c8bff55e1f95342381bf4621076e
-ms.openlocfilehash: 4e71c39c98a61365b3b4f9c0ac55ace9c47cf10c
+ms.sourcegitcommit: 939a1b69f159504b998792adb95ccabc326db333
+ms.openlocfilehash: 538fb27d6170f0a8dab5c189b90040e40c546e14
 
 ---
 
@@ -195,7 +195,7 @@ $env:path += ";c:\program files\docker"
 完了したら、`docker -H` パラメーターを使用してリモート Docker ホストにアクセスすることができます。
 
 ```none
-docker -H tcp://<IPADDRESS>:2375 run -it nanoserver cmd
+docker -H tcp://<IPADDRESS>:2375 run -it microsoft/nanoserver cmd
 ```
 
 `-H` パラメーター要件は、環境変数 `DOCKER_HOST` を作成して削除することができます。 その場合、次の PowerShell コマンドを使用することができます。
@@ -207,7 +207,7 @@ $env:DOCKER_HOST = "tcp://<ipaddress of server>:2375"
 この変数を設定すると、コマンドは次のようになります。
 
 ```none
-docker run -it nanoserver cmd
+docker run -it microsoft/nanoserver cmd
 ```
 
 ## Hyper-V コンテナー ホスト
@@ -230,6 +230,7 @@ Restart-Computer
 ```
 
 
-<!--HONumber=Aug16_HO4-->
+
+<!--HONumber=Sep16_HO2-->
 
 
