@@ -24235,9 +24235,9 @@
       "ArchiveFileCommit": "2a73be0bf96e66c821b6435b498371ebc2205caf",
       "ArchiveFileDateTime": "2016-09-13T00:13:24.7193479Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf",
+      "BilingualFileCommit": "a99df56f6c35e8e66847476057b443d135adcf51",
+      "BilingualDateTime": "2016-09-13T01:10:33.5466514Z",
       "BilingualException": null
     }
   }
