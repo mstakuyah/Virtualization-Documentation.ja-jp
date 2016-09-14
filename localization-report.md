@@ -3753,9 +3753,9 @@
 * Archive Datetime: 0001-01-01 00:00:00
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\management\manage_data.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/4bdfe6995f935e67350ec1f599ce7dc299215a95/virtualization/windowscontainers/management/manage_data.md)
-* Current Handback File: [manage_data.126a73641d5e96ee6d89d8d64e7ecfbdcacd6929.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/1cdbcc3812641ecaf4d8c740a72dbf179dab527c/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/manage_data.126a73641d5e96ee6d89d8d64e7ecfbdcacd6929.ja-jp.xlf)
-* Current Handback Datetime: 2016-07-22 09:13:52
+* Current Target File: [virtualization\windowscontainers\management\manage_data.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/d81f7f98d43e2cd3f87a3798d4df37db8128148a/virtualization/windowscontainers/management/manage_data.md)
+* Current Handback File: [manage_data.126a73641d5e96ee6d89d8d64e7ecfbdcacd6929.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/3bccddb81112edc8a0ac9d5dcad4ea9ed0873e07/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/manage_data.126a73641d5e96ee6d89d8d64e7ecfbdcacd6929.ja-jp.xlf)
+* Current Handback Datetime: 2016-09-14 17:46:52
 * Bilingual File: [manage_data.126a73641d5e96ee6d89d8d64e7ecfbdcacd6929.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/1cdbcc3812641ecaf4d8c740a72dbf179dab527c/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/manage_data.126a73641d5e96ee6d89d8d64e7ecfbdcacd6929.ja-jp.xlf)
 * Bilingual Datetime: 2016-07-22 09:14:35
 * [Back to Top](#report-top)
