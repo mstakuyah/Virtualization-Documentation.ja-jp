@@ -1,7 +1,7 @@
 ---
 title: "コンテナー データ ボリューム"
 description: "Windows コンテナーでデータ ボリュームを作成して管理します。"
-keywords: docker, containers
+keywords: "Docker, コンテナー"
 author: neilpeterson
 manager: timlt
 ms.date: 05/02/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: f5998534-917b-453c-b873-2953e58535b1
 translationtype: Human Translation
-ms.sourcegitcommit: 493b669bc47fc589486a82cfea73a0bb1e88cf79
-ms.openlocfilehash: 26c010e79a4913b2e138f6d1d78f9406dbacbc6b
+ms.sourcegitcommit: 960f523b7ff72bbb1eff6db5172c20b253fc7182
+ms.openlocfilehash: bd7e6af1dabadce2b89a48b916596849371026a8
 
 ---
 
@@ -49,36 +49,24 @@ docker run -it -v c:\source:c:\destination windowsservercore cmd
 
 ### 単一ファイルをマウントする
 
-ファイル名を明示的に指定して、単一ファイルをコンテナーにマウントすることができます。 この例では、共有されているディレクトリには多数のファイルがありますが、コンテナー内では 'config.ini' ファイルのみを使用できます。 
+単一ファイルを Windows コンテナーにマウントすることはできません。 次のコマンドの実行は失敗しませんが、結果のコンテナーにファイルが含まれていません。 
 
 ```none
-docker run -it -v c:\container-share\config.ini windowsservercore cmd
+docker run -it -v c:\config\config.ini microsoft/windowsservercore cmd
 ```
 
-実行中のコンテナー内では、config.ini のみを参照できます。
+回避策として、コンテナーにマウントするすべてのファイルをディレクトリからマウントする必要があります。
 
 ```none
-c:\container-share>dir
- Volume in drive C has no label.
- Volume Serial Number is 7CD5-AC14
-
- Directory of c:\container-share
-
-04/04/2016  12:53 PM    <DIR>          .
-04/04/2016  12:53 PM    <DIR>          ..
-04/04/2016  12:53 PM    <SYMLINKD>     config.ini
-               0 File(s)              0 bytes
-               3 Dir(s)  21,184,208,896 bytes free
+docker run -it -v c:\config:c:\config microsoft/windowsservercore cmd
 ```
-
-単一ファイルのマウントの詳細については、[docker.com のコンテナーのデータ管理に関するページ](https://docs.docker.com/engine/userguide/containers/dockervolumes/#mount-a-host-directory-as-a-data-volume)を参照してください。
 
 ### 完全なドライブをマウントする
 
-次のようなコマンドを使用して、完全なドライブをマウントできます。 バックスラッシュは含めないでください。
+次のようなコマンドを使用して、完全なドライブをマウントできます。
 
 ```none
-docker run -it -v d: windowsservercore cmd
+docker run -it -v d:\:d: windowsservercore cmd
 ```
 
 この時点で、ドライブ 2 を部分的にマウントすることはできません。 たとえば、次のことはできません。
@@ -125,6 +113,6 @@ docker inspect backstabbing_kowalevski
 
 
 
-<!--HONumber=Jul16_HO3-->
+<!--HONumber=Sep16_HO2-->
 
 
