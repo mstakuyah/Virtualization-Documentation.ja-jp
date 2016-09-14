@@ -3770,9 +3770,9 @@
 * Archive Datetime: 0001-01-01 00:00:00
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\management\manage_images.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/bf463c7fc7f2b4f1678c9120b30f2ef08bbb192f/virtualization/windowscontainers/management/manage_images.md)
-* Current Handback File: [manage_images.6d8d709cbc19bb63cc7d4553991616c57920cdfd.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/7e543185a38f503f4ac67ac2873b454773ff458c/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/manage_images.6d8d709cbc19bb63cc7d4553991616c57920cdfd.ja-jp.xlf)
-* Current Handback Datetime: 2016-09-03 11:25:39
+* Current Target File: [virtualization\windowscontainers\management\manage_images.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/3257e0d76ce5d0862d53472f57f9cd0e388fa25b/virtualization/windowscontainers/management/manage_images.md)
+* Current Handback File: [manage_images.6d8d709cbc19bb63cc7d4553991616c57920cdfd.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/7292bcecfa0326bed4c0e28961db4d93abfcbe62/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/manage_images.6d8d709cbc19bb63cc7d4553991616c57920cdfd.ja-jp.xlf)
+* Current Handback Datetime: 2016-09-14 17:36:48
 * Bilingual File: [manage_images.6d8d709cbc19bb63cc7d4553991616c57920cdfd.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/7e543185a38f503f4ac67ac2873b454773ff458c/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/manage_images.6d8d709cbc19bb63cc7d4553991616c57920cdfd.ja-jp.xlf)
 * Bilingual Datetime: 2016-09-03 11:26:13
 * [Back to Top](#report-top)
