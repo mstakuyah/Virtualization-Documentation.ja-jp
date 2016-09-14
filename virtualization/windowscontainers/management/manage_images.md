@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: d8163185-9860-4ee4-9e96-17b40fb508bc
 translationtype: Human Translation
-ms.sourcegitcommit: 7b5cf299109a967b7e6aac839476d95c625479cd
-ms.openlocfilehash: 8b9ec6370d1f9f9187fbb6d74168e9e88391b657
+ms.sourcegitcommit: eccce83d7e376be592694162f54ccb67be9d3c12
+ms.openlocfilehash: bb99d0c15d6d1dd9e126fde05207431153b4f94a
 
 ---
 
@@ -19,7 +19,7 @@ ms.openlocfilehash: 8b9ec6370d1f9f9187fbb6d74168e9e88391b657
 
 **この記事は暫定的な内容であり、変更される可能性があります。** 
 
->Windows コンテナーは、Docker を使用して管理されます。 Windows コンテナー ドキュメントは、[docker.com](https://www.docker.com/) のドキュメントを補完するものです。
+>Windows コンテナーは、Docker を使用して管理されます。 Windows コンテナー ドキュメントは、[docs.docker.com](https://docs.docker.com/)に置かれているドキュメントの補足です。
 
 コンテナー イメージは、コンテナーを展開するために使用します。 これらのイメージには、アプリケーションとすべてのアプリケーションの依存関係を含めることができます。 たとえば、Nano Server、IIS、および IIS で実行するアプリケーションによって事前に構成されたコンテナー イメージを開発できます。 このコンテナー イメージは、後で使用するためにコンテナー レジストリに保存したり、任意の Windows コンテナー ホスト (オンプレミス、クラウド、またはコンテナー サービス) に展開したり、新しいコンテナー イメージのベースとして使用したりすることができます。
 
@@ -177,6 +177,6 @@ latest: digest: sha256:ae3a2971628c04d5df32c3bbbfc87c477bb814d5e73e2787900da1322
 
 
 
-<!--HONumber=Aug16_HO4-->
+<!--HONumber=Sep16_HO1-->
 
 
