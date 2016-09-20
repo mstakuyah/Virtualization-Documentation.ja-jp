@@ -3344,8 +3344,8 @@
 * Archive Datetime: 2016-09-15 00:14:08
 * Handback File: [containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/c3f5d7a5347b562ef83d45cb0d0fd84548496964/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.ja-jp.xlf)
 * Handback Datetime: 2016-09-20 08:07:06
-* Bilingual File: [containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/e84fc0834047f0c342b7a98a8f73c037896e99c2/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.ja-jp.xlf)
-* Bilingual Datetime: 2016-06-30 14:19:34
+* Bilingual File: [containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/c3f5d7a5347b562ef83d45cb0d0fd84548496964/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.ja-jp.xlf)
+* Bilingual Datetime: 2016-09-20 08:08:35
 * [Back to Top](#report-top)
 
 ##### <a name='cc662d0c688eadeef8011a2b97e212ec6399060a226'></a> Source: [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/39e480b8bf3f90cfe9b7d4d17141b9dbec5f93e5/virtualization/windowscontainers/deployment/deployment.md)
@@ -4629,8 +4629,8 @@
 * Archive Datetime: 2016-09-15 00:14:08
 * Handback File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/c3f5d7a5347b562ef83d45cb0d0fd84548496964/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf)
 * Handback Datetime: 2016-09-20 08:07:06
-* Bilingual File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/c5acd1248b92b16ca60156da747d45cd33c8d9f5/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf)
-* Bilingual Datetime: 2016-08-25 08:21:29
+* Bilingual File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/c3f5d7a5347b562ef83d45cb0d0fd84548496964/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf)
+* Bilingual Datetime: 2016-09-20 08:08:35
 * [Back to Top](#report-top)
 
 ##### <a name='51a0629b921281b1cfa0889e10d30fcfee4356a7325'></a> Source: [windows-container-samples\nanoserver\golang\Dockerfile](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/c27737578a7217e1bc680456c45242e685fcb9b6/windows-container-samples/nanoserver/golang/Dockerfile)
