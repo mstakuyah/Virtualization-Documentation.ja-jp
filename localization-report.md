@@ -5,9 +5,9 @@
  -------- | ----- 
  Total Files | 471
 [ Handoff Failed Files ](#handoff-failed-list)| 0
-[ Handoff Success Files ](#handoff-success-list)| 4
+[ Handoff Success Files ](#handoff-success-list)| 0
 [ Archive Failed Files ](#archive-failed-list)| 0
-[ Archive Success Files ](#archive-success-list)| 2
+[ Archive Success Files ](#archive-success-list)| 6
 [ Handback Failed Files ](#handback-failed-list)| 0
 [ Out Of Sync Handback Files ](#outofsync-handback-success-list)| 0
 [ In Sync Handback Files ](#insync-handback-success-list)| 132
@@ -16,19 +16,17 @@
 ## <a name='handoff-failed-list'></a> Handoff Failed File List
 
 ## <a name='handoff-success-list'></a> Handoff Success File List
- Source File | Status | Details 
- ----------- | ------ | ------- 
- [virtualization\hyperv_on_windows\user_guide\managing_ics.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/22d29dbde56319a2a9d7fbc8afd041d1dc224101/virtualization/hyperv_on_windows/user_guide/managing_ics.md) | HandedOffSuccess | [Details](#0779ef5b3f83bcf99f5681c13d445bcd33720dc6185)
- [virtualization\hyperv_on_windows\user_guide\nesting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4eb3e733990ca86f28620e23bf408ff71b879173/virtualization/hyperv_on_windows/user_guide/nesting.md) | HandedOffSuccess | [Details](#c94b7f2c9c90eaf2834a1d0c54fb1f9b2a8f9669205)
- [virtualization\hyperv_on_windows\user_guide\remote_host_management.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/c73e1fa48b21a4daf2821ba3aae756d9a46e9f94/virtualization/hyperv_on_windows/user_guide/remote_host_management.md) | HandedOffSuccess | [Details](#3fbcdb7b93941a0ccc1cdbe659e70f3881b9d0cd206)
- [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/16630b534367791114a4844c3c1f582f13d09d6d/virtualization/windowscontainers/quick_start/quick_start_windows_10.md) | HandedOffSuccess | [Details](#02b4e01e404fe5ab3a6fadbb3481c741cb4aa563317)
 
 ## <a name='archive-failed-list'></a> Archive Failed File List
 
 ## <a name='archive-success-list'></a> Archive Success File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
+ [virtualization\hyperv_on_windows\user_guide\managing_ics.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/22d29dbde56319a2a9d7fbc8afd041d1dc224101/virtualization/hyperv_on_windows/user_guide/managing_ics.md) | ArchivedSuccess | [Details](#0779ef5b3f83bcf99f5681c13d445bcd33720dc6185)
+ [virtualization\hyperv_on_windows\user_guide\nesting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4eb3e733990ca86f28620e23bf408ff71b879173/virtualization/hyperv_on_windows/user_guide/nesting.md) | ArchivedSuccess | [Details](#c94b7f2c9c90eaf2834a1d0c54fb1f9b2a8f9669205)
+ [virtualization\hyperv_on_windows\user_guide\remote_host_management.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/c73e1fa48b21a4daf2821ba3aae756d9a46e9f94/virtualization/hyperv_on_windows/user_guide/remote_host_management.md) | ArchivedSuccess | [Details](#3fbcdb7b93941a0ccc1cdbe659e70f3881b9d0cd206)
  [virtualization\windowscontainers\containers_welcome.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/59626096d428072dec098c7817e2d6b39c10e9cf/virtualization/windowscontainers/containers_welcome.md) | ArchivedSuccess | [Details](#2c9821ef7ac414640790b3cfdb7fd457710a67f4225)
+ [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/16630b534367791114a4844c3c1f582f13d09d6d/virtualization/windowscontainers/quick_start/quick_start_windows_10.md) | ArchivedSuccess | [Details](#02b4e01e404fe5ab3a6fadbb3481c741cb4aa563317)
  [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/59626096d428072dec098c7817e2d6b39c10e9cf/virtualization/windowscontainers/TOC.md) | ArchivedSuccess | [Details](#d7bdf3f8880e67873264399e3b2e6b6e768eb703324)
 
 ## <a name='handback-failed-list'></a> Handback Failed File List
@@ -2803,13 +2801,13 @@
 * [Back to Top](#report-top)
 
 ##### <a name='0779ef5b3f83bcf99f5681c13d445bcd33720dc6185'></a> Source: [virtualization\hyperv_on_windows\user_guide\managing_ics.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/22d29dbde56319a2a9d7fbc8afd041d1dc224101/virtualization/hyperv_on_windows/user_guide/managing_ics.md)
-* Status: HandedOffSuccess
+* Status: ArchivedSuccess
 * Target File: 
 * Handoff File: [managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/acaf99da57f292f286300d4684250004c2bd3ef2/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.ja-jp.xlf)
 * Handoff Datetime: 2016-09-19 14:08:57
 * Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
+* Archive File: [managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/b277dc24fae01771736328ae6b250c3a7a95fe00/ol-archive/Microsoft/Virtualization-Documentation-Private.ja-jp/live/managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.ja-jp.xlf)
+* Archive Datetime: 2016-09-20 00:19:00
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Current Target File: [virtualization\hyperv_on_windows\user_guide\managing_ics.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/93d4e6c2ed7c9dc1c73384e4f65b3efb3cc2be98/virtualization/hyperv_on_windows/user_guide/managing_ics.md)
@@ -3064,13 +3062,13 @@
 * [Back to Top](#report-top)
 
 ##### <a name='c94b7f2c9c90eaf2834a1d0c54fb1f9b2a8f9669205'></a> Source: [virtualization\hyperv_on_windows\user_guide\nesting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4eb3e733990ca86f28620e23bf408ff71b879173/virtualization/hyperv_on_windows/user_guide/nesting.md)
-* Status: HandedOffSuccess
+* Status: ArchivedSuccess
 * Target File: 
 * Handoff File: [nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/c37cfdeba1fc0818e8a33a3e2bfc8a4cb033a185/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.ja-jp.xlf)
 * Handoff Datetime: 2016-09-19 22:09:49
 * Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
+* Archive File: [nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/b277dc24fae01771736328ae6b250c3a7a95fe00/ol-archive/Microsoft/Virtualization-Documentation-Private.ja-jp/live/nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.ja-jp.xlf)
+* Archive Datetime: 2016-09-20 00:19:00
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Current Target File: [virtualization\hyperv_on_windows\user_guide\nesting.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/bc80f7e33d2a88dc00a7e41ba09bc5d66e7f48bd/virtualization/hyperv_on_windows/user_guide/nesting.md)
@@ -3081,13 +3079,13 @@
 * [Back to Top](#report-top)
 
 ##### <a name='3fbcdb7b93941a0ccc1cdbe659e70f3881b9d0cd206'></a> Source: [virtualization\hyperv_on_windows\user_guide\remote_host_management.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/c73e1fa48b21a4daf2821ba3aae756d9a46e9f94/virtualization/hyperv_on_windows/user_guide/remote_host_management.md)
-* Status: HandedOffSuccess
+* Status: ArchivedSuccess
 * Target File: 
 * Handoff File: [remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/c28e5f28ca3503fbf6c976797a3853d1d2514701/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.ja-jp.xlf)
 * Handoff Datetime: 2016-09-19 13:38:40
 * Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
+* Archive File: [remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/b277dc24fae01771736328ae6b250c3a7a95fe00/ol-archive/Microsoft/Virtualization-Documentation-Private.ja-jp/live/remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.ja-jp.xlf)
+* Archive Datetime: 2016-09-20 00:19:00
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Current Target File: [virtualization\hyperv_on_windows\user_guide\remote_host_management.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/53913fe8cfbe0349a13d09ff92fa0c01bc6a7f06/virtualization/hyperv_on_windows/user_guide/remote_host_management.md)
@@ -4519,13 +4517,13 @@
 * [Back to Top](#report-top)
 
 ##### <a name='02b4e01e404fe5ab3a6fadbb3481c741cb4aa563317'></a> Source: [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/16630b534367791114a4844c3c1f582f13d09d6d/virtualization/windowscontainers/quick_start/quick_start_windows_10.md)
-* Status: HandedOffSuccess
+* Status: ArchivedSuccess
 * Target File: 
 * Handoff File: [quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/c37cfdeba1fc0818e8a33a3e2bfc8a4cb033a185/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.ja-jp.xlf)
 * Handoff Datetime: 2016-09-19 22:09:49
 * Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
+* Archive File: [quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/b277dc24fae01771736328ae6b250c3a7a95fe00/ol-archive/Microsoft/Virtualization-Documentation-Private.ja-jp/live/quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.ja-jp.xlf)
+* Archive Datetime: 2016-09-20 00:19:00
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Current Target File: [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/a16ba8fb7c1a7cac1895176dbe8cd590950dd336/virtualization/windowscontainers/quick_start/quick_start_windows_10.md)
