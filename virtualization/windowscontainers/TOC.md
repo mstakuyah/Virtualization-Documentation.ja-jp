@@ -14,17 +14,11 @@
 ## [コンテナー ホスト - Nano Server](deployment/deployment_nano.md)
 ## [ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 
-# Windows 上の Docker
+# Windows 上の Docker の管理
 ## [Windows 上の Docker エンジン](docker/configure_docker_daemon.md)
 ## [Windows 上の Dockerfile](docker/manage_windows_dockerfile.md)
 ## [Dockerfile の最適化](docker/optimize_windows_dockerfile.md)
-
-# Windows コンテナーの管理
-## [Hyper-V コンテナー](management/hyperv_container.md)
-## [コンテナー イメージ](management/manage_images.md)
 ## [コンテナーのネットワーク](management/container_networking.md)
-## [コンテナー データ ボリューム](management/manage_data.md)
-## [コンテナー リソース コントロール](management/manage_resources.md)
 
 # コンテナーのサンプル
 ## [Dockerfile - Windows Server Core](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/windowsservercore)
@@ -38,6 +32,6 @@
 
 
 
-<!--HONumber=Aug16_HO4-->
+<!--HONumber=Sep16_HO2-->
 
 

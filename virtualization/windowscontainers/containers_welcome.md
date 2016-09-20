@@ -1,7 +1,7 @@
 ---
 title: "Windows コンテナーに関するドキュメント"
 description: "Windows コンテナーに関するドキュメント"
-keywords: docker, containers
+keywords: "Docker, コンテナー"
 author: neilpeterson
 manager: timlt
 ms.date: 05/02/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 74c9d604-0915-4d89-bc69-0263b76bc66b
 translationtype: Human Translation
-ms.sourcegitcommit: 9070126c8cc944f9db0f8bacee8dbf135a3a23db
-ms.openlocfilehash: b50c27e723fb8db13adec37d6b969e93d607243e
+ms.sourcegitcommit: 59626096d428072dec098c7817e2d6b39c10e9cf
+ms.openlocfilehash: 2c9821ef7ac414640790b3cfdb7fd457710a67f4
 
 ---
 
@@ -40,24 +40,25 @@ Windows Server 2016 と Nano Server で Windows コンテナーを展開する�
 <li>[システム要件](deployment/system_requirements.md)<br /><br /></li>
 <li>[コンテナー ホストの展開 - Windows Server](deployment/deployment.md)<br /><br /></li>
 <li>[コンテナー ホストの展開 - Nano Server](deployment/deployment_nano.md)<br /><br /></li>
-
+<li>[ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)<br /><br /></li>
 </ul>
 </td>
 </tr>
 
 <tr>
 <td ><center>![](media/explore.png)</center></td>
-<td>**Management**<br /><br />
-Windows Server 2016 と Nano Server での Windows コンテナーの管理について確認できます。<br /><br />
+<td>**Windows 上の Docker**<br /><br />
+Windows 上の Docker の管理について説明しています。<br /><br />
 <ul>
-<li>[イメージの管理](management/manage_images.md)<br /><br /></li>
-<li>[ネットワークの管理](management/container_networking.md)<br /><br /></li>
+<li>[Windows 上の Docker エンジン](docker/configure_docker_daemon.md)<br /><br /></li>
+<li>[Windows 上の Dockerfile](docker/manage_windows_dockerfile.md)<br /><br /></li>
 <li>[コンテナー データの管理](management/manage_data.md)<br /><br /></li>
-<li>[Hyper-V コンテナーの管理](management/hyperv_container.md)<br /><br /></li>
-<li>[コンテナー リソースの管理](management/manage_resources.md)<br /><br /></li>
+<li>[Dockerfile の最適化](docker/optimize_windows_dockerfile.md)<br /><br /></li>
+<li>[コンテナーのネットワーク](management/container_networking.md)<br /><br /></li>
 </ul>
 </td>
 </tr>
+
 <tr>
 <td ><center>![](media/video.png)</center></td>
 <td>**視聴する**<br /><br />
@@ -68,6 +69,7 @@ Windows コンテナー チームのデモとインタビューに関心があ�
 <br />
 </td>
 </tr>
+
 <tr>
 <td ><center>![](media/question.png)</center></td>
 <td>**コミュニティ**<br /><br />
@@ -82,6 +84,6 @@ Windows コンテナー チームのデモとインタビューに関心があ�
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Sep16_HO2-->
 
 
