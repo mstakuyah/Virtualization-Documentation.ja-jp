@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 2d34e98c-6134-479b-8000-3eb360b8b8a3
 translationtype: Human Translation
-ms.sourcegitcommit: 07a07c790484c05ea49229a770ef75c80fad3cfa
-ms.openlocfilehash: 8a84da80199479907c3bf4cf0c7b1cfb1b44bf9d
+ms.sourcegitcommit: c73e1fa48b21a4daf2821ba3aae756d9a46e9f94
+ms.openlocfilehash: 3fbcdb7b93941a0ccc1cdbe659e70f3881b9d0cd
 
 ---
 
@@ -30,26 +30,30 @@ Windows 10 の Hyper-V マネージャーでは、次の Hyper-V ホストを管
 * Windows 10
 * Windows 8.1
 * Windows 8
-* Windows Server 2016 + Windows Server Core、Nano Server、および Hyper-V Server
-* Windows Server 2012 R2 + Windows Server Core、Datacenter、および Hyper-V Server
-* Windows 2012 + Windows Server Core、Datacenter、および Hyper-V Server
+* Windows Server 2016 - すべてのエディションとインストール オプション (Nano Server を含む)、および対応するバージョンの Hyper-V Server
+* Windows Server 2012 R2 - すべてのエディションとインストール オプション、および対応するバージョンの Hyper-V Server
+* Windows Server 2012 - すべてのエディションとインストール オプション、および対応するバージョンの Hyper-V Server
 
-Windows 8.1 および Windows Server 2012 R2 の Hyper-V マネージャーでは、次を管理できます。
+Windows 8.1 および Windows Server 2012 R2 の Hyper-V マネージャーで管理できるものは次のとおりです。
 * Windows 8.1
 * Windows 8
-* Windows Server 2012 R2 + Windows Server Core、Datacenter、および Hyper-V Server
-* Windows 2012 + Windows Server Core、Datacenter、および Hyper-V Server
+* Windows Server 2012 R2 - すべてのエディションとインストール オプション、および対応するバージョンの Hyper-V Server
+* Windows Server 2012 - すべてのエディションとインストール オプション、および対応するバージョンの Hyper-V Server
 
-Windows 8 および Windows Server 2012 の Hyper-V マネージャーでは、次を管理できます。
+Windows 8 および Windows Server 2012 の Hyper-V マネージャーで管理できるものは次のとおりです。
 * Windows 8
-* Windows 2012 + Windows Server Core、Datacenter、および Hyper-V Server
+* Windows Server 2012 - すべてのエディションとインストール オプション、および対応するバージョンの Hyper-V Server
 
-Windows 8 より、Windows で Hyper-V を利用できるようになりました。  Windows 8.1/Server 2012 より前には、Hyper-V マネージャーはバージョンが一致する Hyper-V のみを管理していました。
+Windows 7 および Windows Server 2008 R2 の Hyper-V マネージャーで管理できるものは次のとおりです。
+* Windows Server 2008 R2 - すべてのエディションとインストール オプション、および対応するバージョンの Hyper-V Server
 
-> **注:** Hyper-V マネージャーの機能は、管理しているバージョンで使用できる機能と一致します。  つまり、Server 2012R2 からリモート Server 2012 ホストを管理している場合、2012R2 の新しい Hyper-V マネージャー ツールは使用できません。
+Windows Vista および Windows Server 2008 の Hyper-V マネージャーで管理できるものは次のとおりです。
+* Windows Server 2008 - すべてのエディションとインストール オプション、および対応するバージョンの Hyper-V Server
+
+> **注:** Hyper-V マネージャーの機能は、管理しているバージョンで使用できる機能と一致します。 つまり、リモートの Windows Server 2012 ホストを Windows Server 2012 R2 から管理する場合に、Windows Server 2012 R2 の Hyper-V マネージャーにある新しい機能を使用することはできません。
 
 ## ローカル ホストの管理 ##
-Hyper-V ホストとしてローカル ホストを Hyper-V マネージャーに追加するには、**[コンピューターの選択]** ダイアログ ボックスで **[ローカル コンピューター]** を選択します。
+ローカル ホストを Hyper-V ホストとして Hyper-V マネージャーに追加するには、**[コンピューターの選択]** ダイアログ ボックスで **[ローカル コンピューター]** を選択します。
 
 ![](media/HyperVManager-ConnectToLocalHost.png)
 
@@ -70,7 +74,7 @@ Hyper-V ホストとしてローカル ホストを Hyper-V マネージャー�
 この操作を行うには、`System Properties -> Remote Management Settings` を選択するか、管理者として次の PowerShell コマンドを実行します。  
 
 ``` PowerShell
-winrm quickconfig
+Enable-PSRemoting
 ```
 
 現在のユーザー アカウントがリモート ホスト上の Hyper-V 管理者アカウントと一致する場合は、**[OK]** をクリックして接続します。  
@@ -83,7 +87,7 @@ Windows 10 では、リモート接続の種類の有効な組み合わせが大
 
 
 ### 別のユーザーとしてリモート ホストに接続する
-> この操作は、Windows 10 または Server 2016 Technical Preview 3 以降のリモート ホストに接続する場合にのみ可能です。
+> このことができるのは、Windows 10 または Windows Server 2016 Technical Preview 3 以降のリモート ホストに接続する場合のみです。
 
 Windows 10 では、リモート ホスト用の正しいユーザー アカウントで実行していない場合、代替資格情報で別のユーザーとして接続できます。
 
@@ -93,15 +97,15 @@ Windows 10 では、リモート ホスト用の正しいユーザー アカウ�
 
 
 ### IP アドレスを使用してリモート ホストに接続する
-> この操作は、Windows 10 または Server 2016 Technical Preview 3 以降のリモート ホストに接続する場合にのみ可能です。
+> このことができるのは、Windows 10 または Windows Server 2016 Technical Preview 3 以降のリモート ホストに接続する場合のみです。
 
-ホスト名の代わりに IP アドレスを使用して接続する方が容易な場合があります。  Windows 10 では、この方法のみが可能です。
+場合によっては、ホスト名よりも IP アドレスを使って接続するほうが簡単です。Windows 10 ではこれだけが可能です。
 
 IP アドレスを使用して接続するには、**[別のコンピューター]** テキスト フィールドに IP アドレスを入力します。
 
 
 ## ドメインの外部 (またはドメインなし) で Hyper-V ホストを管理する ##
-> この操作は、Windows 10 または Server 2016 Technical Preview 3 以降のリモート ホストに接続する場合にのみ可能です。
+> このことができるのは、Windows 10 または Windows Server 2016 Technical Preview 3 以降のリモート ホストに接続する場合のみです。
 
 管理対象の Hyper-V ホストで、管理者として次を実行します。
 
@@ -123,6 +127,6 @@ IP アドレスを使用して接続するには、**[別のコンピュータ�
 
 
 
-<!--HONumber=Aug16_HO5-->
+<!--HONumber=Sep16_HO3-->
 
 

@@ -1,7 +1,7 @@
 ---
 title: "Hyper-V 統合サービスの管理"
 description: "Hyper-V 統合サービスの管理"
-keywords: windows 10, hyper-v, integration services, integration components
+keywords: "windows 10, hyper-v, 統合サービス, 統合コンポーネント"
 author: scooley
 manager: timlt
 ms.date: 05/02/2016
@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 9cafd6cb-dbbe-4b91-b26c-dee1c18fd8c2
 translationtype: Human Translation
-ms.sourcegitcommit: 852f7fafe7192d85b0e9840ea3767a1206a1c285
-ms.openlocfilehash: e7abf05c899e2acca07312813b7808a5db00a9f7
+ms.sourcegitcommit: 22d29dbde56319a2a9d7fbc8afd041d1dc224101
+ms.openlocfilehash: 0779ef5b3f83bcf99f5681c13d445bcd33720dc6
 
 ---
 
@@ -32,7 +32,9 @@ ms.openlocfilehash: e7abf05c899e2acca07312813b7808a5db00a9f7
   
   ![](./media/HyperVManager-IntegrationServices.png)
   
-  このタブには、Hyper-V ホストで使用できるすべての統合サービスが表示されます。  表示されているすべての統合サービスをゲスト オペレーティング システムがサポートしているかどうかを注意してください。
+  このタブには、Hyper-V ホストで使用できるすべての統合サービスが表示されます。  表示されているすべての統合サービスをゲスト オペレーティング システムがサポートしているかどうかを注意してください。 ゲスト オペレーティング システムのバージョン情報を特定するには、ゲスト オペレーティング システムにログオンしてコマンド プロンプトから次のコマンドを実行します。
+
+REG QUERY "HKLM\Software\Microsoft\Virtual Machine\Auto" /v IntegrationServicesVersion
 
 ## PowerShell を使用して統合サービスを有効または無効にする
 
@@ -203,7 +205,7 @@ Windows 10 での統合サービスのメンテナンスは、既定では、仮
 
 > **注: **統合コンポーネントを更新する際、ISO イメージ ファイルの vmguest.iso は不要になりました。 Windows 10 の Hyper-V では追加されません。
 
-| ゲスト OS | 更新方法 | メモ |
+| ゲスト OS | 更新方法 | 注 |
 |:---------|:---------|:---------|
 | Windows 10 | Windows Update | |
 | Windows 8.1 | Windows Update | |
@@ -226,7 +228,7 @@ Windows 10 での統合サービスのメンテナンスは、既定では、仮
 
 **Windows 8.1 ホストで実行されている仮想マシンの場合:**
 
-| ゲスト OS | 更新方法 | メモ |
+| ゲスト OS | 更新方法 | 注 |
 |:---------|:---------|:---------|
 | Windows 10 | Windows Update | |
 | Windows 8.1 | Windows Update | |
@@ -272,6 +274,6 @@ Windows 10 での統合サービスのメンテナンスは、既定では、仮
 
 
 
-<!--HONumber=Jul16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 
