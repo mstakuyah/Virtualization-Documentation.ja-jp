@@ -2696,8 +2696,8 @@
 * Archive Datetime: 2016-09-21 00:07:32
 * Handback File: [walkthrough_powershell.f20d7c387d05f1e6da38e694c8255c1b0044b10b.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/7560556a3c9332136d2b613f6b1bd31258b3cd17/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/walkthrough_powershell.f20d7c387d05f1e6da38e694c8255c1b0044b10b.ja-jp.xlf)
 * Handback Datetime: 2016-09-26 14:25:42
-* Bilingual File: [walkthrough_powershell.f20d7c387d05f1e6da38e694c8255c1b0044b10b.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/85c1a34b8eaa72766a922a62f3fe7e8ad1d43c15/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/walkthrough_powershell.f20d7c387d05f1e6da38e694c8255c1b0044b10b.ja-jp.xlf)
-* Bilingual Datetime: 2016-07-06 02:30:05
+* Bilingual File: [walkthrough_powershell.f20d7c387d05f1e6da38e694c8255c1b0044b10b.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/7560556a3c9332136d2b613f6b1bd31258b3cd17/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/walkthrough_powershell.f20d7c387d05f1e6da38e694c8255c1b0044b10b.ja-jp.xlf)
+* Bilingual Datetime: 2016-09-26 14:26:33
 * [Back to Top](#report-top)
 
 ##### <a name='44470901a9149666c15982a728037a95fc28aaa5178'></a> Source: [virtualization\hyperv_on_windows\quick_start\walkthrough_virtual_switch.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4885ad982804d17c8b3643f8a855fb3f3f834505/virtualization/hyperv_on_windows/quick_start/walkthrough_virtual_switch.md)
@@ -3080,8 +3080,8 @@
 * Archive Datetime: 2016-09-21 00:07:32
 * Handback File: [remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/7560556a3c9332136d2b613f6b1bd31258b3cd17/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.ja-jp.xlf)
 * Handback Datetime: 2016-09-26 14:25:42
-* Bilingual File: [remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/20cf181896ec51a1dfa390dc32e1ef259e71c258/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.ja-jp.xlf)
-* Bilingual Datetime: 2016-09-23 13:11:08
+* Bilingual File: [remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/7560556a3c9332136d2b613f6b1bd31258b3cd17/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.ja-jp.xlf)
+* Bilingual Datetime: 2016-09-26 14:26:33
 * [Back to Top](#report-top)
 
 ##### <a name='5a1cb0964034db491481e2d6db84221730264fa0207'></a> Source: [virtualization\hyperv_on_windows\user_guide\setup_nat_network.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/03a72e6608c08d6adcf32fc5665533831904a032/virtualization/hyperv_on_windows/user_guide/setup_nat_network.md)
