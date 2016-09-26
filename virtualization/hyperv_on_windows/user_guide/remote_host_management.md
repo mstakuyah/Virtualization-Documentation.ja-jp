@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 2d34e98c-6134-479b-8000-3eb360b8b8a3
 translationtype: Human Translation
-ms.sourcegitcommit: c73e1fa48b21a4daf2821ba3aae756d9a46e9f94
-ms.openlocfilehash: 3fbcdb7b93941a0ccc1cdbe659e70f3881b9d0cd
+ms.sourcegitcommit: e0d957ebb953f1e5b3e56de9764c7c3e560024c1
+ms.openlocfilehash: 852800b19fb39737f0d7104eb2d50521b6cca982
 
 ---
 
@@ -60,7 +60,7 @@ Windows Vista および Windows Server 2008 の Hyper-V マネージャーで管
 接続を確立できない場合は、次の手順に従います。
 *  Hyper-V プラットフォーム ロールが有効になっていることを確認します。  
   Hyper-V がサポートされているかどうかを確認するには、[互換性を確認するためのチュートリアル セクション](../quick_start/walkthrough_compatibility.md)をご覧ください。
-*  ユーザー アカウントが Hyper-V 管理者グループに含まれることを確認します。
+*  ユーザー アカウントが Hyper-V Administrators グループに含まれていることを確認します。
 
 
 ## 同じドメイン内の別の Hyper-V ホストの管理 ##
@@ -99,7 +99,7 @@ Windows 10 では、リモート ホスト用の正しいユーザー アカウ�
 ### IP アドレスを使用してリモート ホストに接続する
 > このことができるのは、Windows 10 または Windows Server 2016 Technical Preview 3 以降のリモート ホストに接続する場合のみです。
 
-場合によっては、ホスト名よりも IP アドレスを使って接続するほうが簡単です。Windows 10 ではこれだけが可能です。
+ホスト名の代わりに IP アドレスを使用して接続する方が容易な場合があります。 Windows 10 では、この方法のみが可能です。
 
 IP アドレスを使用して接続するには、**[別のコンピューター]** テキスト フィールドに IP アドレスを入力します。
 
@@ -115,15 +115,10 @@ IP アドレスを使用して接続するには、**[別のコンピュータ�
 
 管理している PC で、次のコマンドを管理者として実行します。
 
-1. Set-Item WSMan:\localhost\Client\TrustedHosts -value "fqdn-of-hyper-v-host"
-  * 代わりに、管理用にすべてのホストを信頼することを許可できます。
-  * Set-Item WSMan:\localhost\Client\TrustedHosts -value * -force
+1. Set-Item WSMan:\localhost\Client\TrustedHosts -Value "fqdn-of-hyper-v-host"
 2. [Enable-WSManCredSSP](https://technet.microsoft.com/en-us/library/hh849872.aspx) -Role client -DelegateComputer "fqdn-of-hyper-v-host"
-  * 代わりに、管理用にすべてのホストを信頼することを許可できます。
-  * [Enable-WSManCredSSP](https://technet.microsoft.com/en-us/library/hh849872.aspx) -Role client -DelegateComputer *
 3. 加えて、次のグループ ポリシーの構成が必要になる可能性があります: ** コンピューターの構成 | 管理用テンプレート | システム | 資格情報の委任 | NTLM のみのサーバー認証で新しい資格情報の委任を許可する **
     * **[有効]** をクリックし、*wsman/fqdn-of-hyper-v-host* を追加します。
-    * 代わりに、_wsman/*_ を追加して、管理用にすべてのホストを信頼することを許可できます。
 
 
 
