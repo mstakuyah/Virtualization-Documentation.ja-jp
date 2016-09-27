@@ -1,7 +1,7 @@
 ---
 title: "Windows コンテナーに関する FAQ"
 description: "Windows コンテナーに関する FAQ"
-keywords: docker, containers
+keywords: "Docker, コンテナー"
 author: scooley
 manager: timlt
 ms.date: 05/02/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
 translationtype: Human Translation
-ms.sourcegitcommit: cfa3c14e932f8b86edf6667200ac028ea0a16b67
-ms.openlocfilehash: c3a7decaf087741c82419a8a541867ae01f0f4da
+ms.sourcegitcommit: f721639b1b10ad97cc469df413d457dbf8d13bbe
+ms.openlocfilehash: 68f563d62090097b6fe2dd335c7841ae5ba4a9f5
 
 ---
 
@@ -63,10 +63,6 @@ Windows Server コンテナーと Hyper-V コンテナーにはどちらも Wind
 Docker プラットフォームを大幅に簡略化し、コンテナー オプション間で作業のエクスペリエンスを強化します。 Windows Server のコンテナーを使用して開発されたアプリケーションは、変更されることがなく、HYPER-V のコンテナーとして展開することができます。
 
 
-**Windows コンテナーを ESXi や別の非 Hyper-V ハイパーバイザー上で実行することはできますか。**
-
-はい。Windows コンテナーは任意の TP3 Server Core インストールで実行できます。  [インプレースでコンテナー機能を有効にする](../quick_start/inplace_setup.md)手順に従います。
-
 ## Microsoft のオープン エコシステム
 
 **Microsoft は Open Container Initiative (OCI) に参加していますか。**
@@ -84,6 +80,6 @@ Docker は次の 2 つのプロジェクトおよび Docker、会社のオープ
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Sep16_HO4-->
 
 

@@ -1,7 +1,7 @@
 ---
 title: "Dockerfile コンテナーと Windows コンテナー"
 description: "Windows コンテナー用に Dockerfile を作成します。"
-keywords: docker, containers
+keywords: "Docker, コンテナー"
 author: neilpeterson
 manager: timlt
 ms.date: 05/26/2016
@@ -10,14 +10,12 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
 translationtype: Human Translation
-ms.sourcegitcommit: 97a7d5fdd25f755d73e05bfc5f3c4a80a7b6b8c5
-ms.openlocfilehash: 84baad10511eb070e654f1ee7d71eb547d3f2ee7
+ms.sourcegitcommit: f721639b1b10ad97cc469df413d457dbf8d13bbe
+ms.openlocfilehash: ea84ac6c688fa258c9b72f50565ec6e21e8051db
 
 ---
 
 # Windows 上の Dockerfile
-
-**この記事は暫定的な内容であり、変更される可能性があります。** 
 
 Docker エンジンには、コンテナー イメージの作成を自動化するツールが含まれています。 `docker commit` コマンドを使用して手動でコンテナー イメージを作成することもできますが、イメージの自動作成プロセスを使用すると、次のような多くの利点があります。
 
@@ -484,6 +482,6 @@ windowsservercore   latest              6801d964fda5        4 months ago        
 
 
 
-<!--HONumber=Jul16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 
