@@ -4,14 +4,14 @@ description: "Nano Server での Windows コンテナーの展開"
 keywords: "Docker, コンテナー"
 author: neilpeterson
 manager: timlt
-ms.date: 08/23/2016
+ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 translationtype: Human Translation
-ms.sourcegitcommit: 939a1b69f159504b998792adb95ccabc326db333
-ms.openlocfilehash: 538fb27d6170f0a8dab5c189b90040e40c546e14
+ms.sourcegitcommit: 185c83b69972765a72af2dbbf5d0c7d2551212ce
+ms.openlocfilehash: 6ada7de02bbdfab8986fdfeeda60b6373a6e2d96
 
 ---
 
@@ -91,13 +91,13 @@ Docker エンジンおよびクライアントをダウンロードし、これ�
 > Nano Server は現在、`Invoke-WebRequest` をサポートしていません。 ダウンロードはリモート システムで完了し、ファイルを Nano Server ホストにコピーする必要があります。
 
 ```none
-Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile .\docker-1.12.0.zip -UseBasicParsing
+Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile .\docker.zip -UseBasicParsing
 ```
 
 ダウンロードしたパッケージを解凍します。 完了すると、ディレクトリには **dockerd.exe** と **docker.exe** が含まれます。 これらの両方を Nano Server コンテナー ホストの **C:\Program Files\docker\** フォルダーにコピーします。 
 
 ```none
-Expand-Archive .\docker-1.12.0.zip
+Expand-Archive .\docker.zip
 ```
 
 Docker ディレクトリを Nano Server のシステム パスに追加します。
@@ -126,15 +126,19 @@ Start-Service Docker
 
 ## コンテナーの基本イメージのインストール
 
-基本 OS イメージは、任意の Windows Server または Hyper-V コンテナーのベースとして使用されます。 基本 OS イメージは、基となるオペレーティング システムとして Windows Server Core と Nano Server の両方で使用でき、`docker pull` を使用してインストールすることができます。 Windows コンテナー イメージの詳細については、[コンテナー イメージの管理](../management/manage_images.md)に関するページを参照してください。
+基本 OS イメージは、任意の Windows Server または Hyper-V コンテナーのベースとして使用されます。 基本 OS イメージは、基となるオペレーティング システムとして Windows Server Core と Nano Server の両方で使用でき、`docker pull` を使用してインストールすることができます。 Docker コンテナー イメージの詳細については、「[Build your own images on docker.com](https://docs.docker.com/engine/tutorials/dockerimages/)」(docker.com で独自のイメージを構築する) を参照してください。
 
-Nano Server の基本イメージをダウンロードしてインストールするには、次を実行します。
+Windows Server と Nano Server の基本イメージをダウンロードしてインストールするには、次のコマンドを実行します。
 
 ```none
 docker pull microsoft/nanoserver
 ```
 
-> 現時点では、Nano Server コンテナー ホストと互換性があるのは Nano Server 基本イメージのみです。
+```none
+docker pull microsoft/windowsservercore
+```
+
+> Windows Containers OS Image 使用許諾契約書 (EULA) を参照してください。こちらの「[EULA](../Images_EULA.md)」に掲載されています。
 
 ## Nano Server の Docker の管理
 
@@ -173,13 +177,13 @@ Restart-Service docker
 作業するリモート システム上で、Docker クライアントをダウンロードします。
 
 ```none
-Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile "$env:TEMP\docker-1.12.0.zip" -UseBasicParsing
+Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
 ```
 
 圧縮されたパッケージを解凍します。
 
 ```none
-Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:ProgramFiles
+Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
 ```
 
 次の 2 つのコマンドを実行して、Docker ディレクトリをシステム パスに追加します。
@@ -231,6 +235,6 @@ Restart-Computer
 
 
 
-<!--HONumber=Sep16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

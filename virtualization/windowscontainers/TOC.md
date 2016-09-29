@@ -1,12 +1,14 @@
 # Windows コンテナーについて
 ## [Windows コンテナーの概要](about/about_overview.md)
-## [FAQ](about/faq.md)
 
-# コンテナーのクイック スタート
-## [1 - 概念と用語](quick_start/quick_start.md)
-## [2 - Windows Server のクイック スタート](quick_start/quick_start_windows_server.md)
-## [3 - Windows Server のイメージ](quick_start/quick_start_images.md)
-## [4 - Windows 10 のクイック スタート](quick_start/quick_start_windows_10.md)
+# Windows Server のクイック スタート
+## [手順 1 - 概念](quick_start/quick_start.md)
+## [手順 2 - 最初のコンテナー](quick_start/quick_start_windows_server.md)
+## [手順 3 - コンテナー イメージ](quick_start/quick_start_images.md)
+
+# Windows 10 のクイック スタート
+## [手順 1 - 概念](quick_start/quick_start.md)
+## [手順 2 - 最初のコンテナー](quick_start/quick_start_windows_10.md)
 
 # Windows コンテナーの展開
 ## [システム要件](deployment/system_requirements.md)
@@ -27,11 +29,9 @@
 # コミュニティとサポート
 ## [コンテナー フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)
 
-# [Windows Server EULA](EULA.md)
-# [Nano Server EULA](Nano_EULA.md)
+# [コンテナー OS イメージの使用許諾契約書 (EULA)](Images_EULA.md)
 
 
-
-<!--HONumber=Sep16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

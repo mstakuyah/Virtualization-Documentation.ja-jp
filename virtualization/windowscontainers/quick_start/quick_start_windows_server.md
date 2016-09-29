@@ -4,20 +4,18 @@ description: "コンテナー展開のクイック スタート"
 keywords: "Docker, コンテナー"
 author: neilpeterson
 manager: timlt
-ms.date: 05/26/2016
+ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: d4b509054aebf510b650ec21ede4df2515a87827
-ms.openlocfilehash: 6e2232c8a043d482c0d6b734a66762c2d22003fe
+ms.sourcegitcommit: 891c9e9805bf2089fd11f86420de5ed251916c3f
+ms.openlocfilehash: 77dca1499abf406b1d599c28afdb19dd823b8401
 
 ---
 
 # Windows Server の Windows コンテナー
-
-**この記事は暫定的な内容であり、変更される可能性があります。**
 
 この演習では、Windows Server の Windows コンテナー機能の基本的な展開と使用について段階的に確認します。 完了後、コンテナー ロールがインストールされ、シンプルな Windows Server コンテナーが展開されます。 このクイック スタートを始める前に、コンテナーの基本的な概念と用語を理解しておいてください。 情報は[クイック スタートの概要](./quick_start.md)にあります。
 
@@ -25,13 +23,7 @@ ms.openlocfilehash: 6e2232c8a043d482c0d6b734a66762c2d22003fe
 
 **前提条件:**
 
-[Windows Server 2016 Technical Preview 5](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-technical-preview) を実行している 1 台のコンピューター システム (物理または仮想)。
-
-完全に構成された Windows Server イメージは Azure で利用できます。 このイメージを利用するには、下のボタンをクリックして仮想マシンをデプロイします。 デプロイには 10 分ほどかかります。 完了したら、Azure 仮想マシンにログインし、このチュートリアルの手順 4 に進みます。 
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2FVirtualization-Documentation%2Fmaster%2Fwindows-server-container-tools%2Fcontainers-azure-template%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
-</a>
+Windows Server 2016 を実行している 1 台のコンピューター システム (物理または仮想)。 Windows Server 2016 TP5 を使用している場合は、[Window Server 2016 Evaluation](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 ) に更新してください。 
 
 ## 1.コンテナー機能のインストール
 
@@ -51,16 +43,16 @@ Restart-Computer -Force
 
 Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。 この演習では、両方をインストールします。
 
-Docker エンジンとクライアントを 1 つの zip アーカイブとしてダウンロードします。
+zip アーカイブ形式の Commercially Supported Docker Engine とクライアントのリリース候補をダウンロードします。
 
 ```none
-Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.1.zip" -OutFile "$env:TEMP\docker-1.12.1.zip" -UseBasicParsing
+Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
 ```
 
 zip アーカイブをプログラム ファイルに展開します。
 
 ```none
-Expand-Archive -Path "$env:TEMP\docker-1.12.1.zip" -DestinationPath $env:ProgramFiles
+Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
 ```
 
 Docker ディレクトリをシステム パスに追加します。
@@ -76,7 +68,7 @@ $env:path += ";c:\program files\docker"
 Windows サービスとして Docker をインストールするには、以下を実行します。
 
 ```none
-dockerd --register-service
+dockerd.exe --register-service
 ```
 
 インストールされたら、サービスを開始することができます。
@@ -85,104 +77,61 @@ dockerd --register-service
 Start-Service docker
 ```
 
-## 3.コンテナーの基本イメージのインストール
+## 3.最初のコンテナーの展開
 
-Windows コンテナーは、テンプレートまたはイメージから展開されます。 コンテナーを展開する前に、基本 OS イメージをダウンロードする必要があります。 次のコマンドを実行すると、Windows Server Core 基本イメージがダウンロードされます。
+この演習では、事前作成された .NET サンプル イメージを Docker Hub レジストリからダウンロードし、.NET Hello World アプリケーションを実行するシンプルなコンテナーを展開します。  
 
-```none
-docker pull microsoft/windowsservercore
-```
-
-このプロセスには多少時間がかかるため、ここで休憩しましょう。ダウンロードが完了したら再開します。
-
-イメージの pull が完了したら、`docker images` を実行するとインストール済みのイメージのリストが返されます。この場合は Windows Server Core のイメージです。
+`docker run` を使用し、.NET コンテナーを展開します。 この操作でコンテナー イメージもダウンロードされるので、処理に数分かかる可能性があります。
 
 ```none
-docker images
-
-REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
-microsoft/windowsservercore   latest              02cb7f65d61b        8 weeks ago         7.764 GB
+docker run microsoft/sample-dotnet
 ```
 
-Windows コンテナー イメージの詳細については、[コンテナー イメージの管理](../management/manage_images.md)に関するページを参照してください。
-
-## 4.最初のコンテナーの展開
-
-この演習では、事前作成された IIS イメージを Docker Hub レジストリからダウンロードし、IIS を実行するシンプルなコンテナーを展開します。  
-
-Windows コンテナー イメージの Docker Hub を検索するには、`docker search Microsoft` を実行します。  
+コンテナーが起動し、hello world メッセージが出力され、終了します。
 
 ```none
-docker search microsoft
-
-NAME                                         DESCRIPTION
-microsoft/aspnet                             ASP.NET is an open source server-side Web ...
-microsoft/dotnet                             Official images for working with .NET Core...
-mono                                         Mono is an open source implementation of M...
-microsoft/azure-cli                          Docker image for Microsoft Azure Command L...
-microsoft/iis                                Internet Information Services (IIS) instal...
-microsoft/mssql-server-2014-express-windows  Microsoft SQL Server 2014 Express installe...
-microsoft/nanoserver                         Nano Server base OS image for Windows cont...
-microsoft/windowsservercore                  Windows Server Core base OS image for Wind...
-microsoft/oms                                Monitor your containers using the Operatio...
-microsoft/dotnet-preview                     Preview bits for microsoft/dotnet image
-microsoft/dotnet35
-microsoft/applicationinsights                Application Insights for Docker helps you ...
-microsoft/sample-redis                       Redis installed in Windows Server Core and...
-microsoft/sample-node                        Node installed in a Nano Server based cont...
-microsoft/sample-nginx                       Nginx installed in Windows Server Core and...
-microsoft/sample-httpd                       Apache httpd installed in Windows Server C...
-microsoft/sample-dotnet                      .NET Core running in a Nano Server container
-microsoft/sqlite                             SQLite installed in a Windows Server Core ...
-...
+       Welcome to .NET Core!
+    __________________
+                      \
+                       \
+                          ....
+                          ....'
+                           ....
+                        ..........
+                    .............'..'..
+                 ................'..'.....
+               .......'..........'..'..'....
+              ........'..........'..'..'.....
+             .'....'..'..........'..'.......'.
+             .'..................'...   ......
+             .  ......'.........         .....
+             .                           ......
+            ..    .            ..        ......
+           ....       .                 .......
+           ......  .......          ............
+            ................  ......................
+            ........................'................
+           ......................'..'......    .......
+        .........................'..'.....       .......
+     ........    ..'.............'..'....      ..........
+   ..'..'...      ...............'.......      ..........
+  ...'......     ...... ..........  ......         .......
+ ...........   .......              ........        ......
+.......        '...'.'.              '.'.'.'         ....
+.......       .....'..               ..'.....
+   ..       ..........               ..'........
+          ............               ..............
+         .............               '..............
+        ...........'..              .'.'............
+       ...............              .'.'.............
+      .............'..               ..'..'...........
+      ...............                 .'..............
+       .........                        ..............
+        .....
 ```
 
-`docker pull` を利用し、IIS イメージをダウンロードします。  
-
-```none
-docker pull microsoft/iis
-```
-
-イメージ ダウンロードは `docker images` コマンドで確認できます。 ここでは、ベース イメージ (windowsservercore) と IIS イメージの両方が表示されることに注意してください。
-
-```none
-docker images
-
-REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
-microsoft/iis                 latest              accd044753c1        11 days ago         7.907 GB
-microsoft/windowsservercore   latest              02cb7f65d61b        8 weeks ago         7.764 GB
-```
-
-`docker run` を使用し、IIS コンテナーを展開します。
-
-```none
-docker run -d -p 80:80 microsoft/iis ping -t localhost
-```
-
-このコマンドは IIS イメージをバックグラウンド サービス (-d) として実行し、コンテナー ホストのポート 80 がコンテナーのポート 80 にマッピングされるようにネットワーキングを構成します。
 Docker Run コマンドの詳細については、Docker.com の「[Docker Run リファレンス]( https://docs.docker.com/engine/reference/run/)」をご覧ください。
 
-
-実行中のコンテナーは `docker ps` コマンドで確認できます。 コンテナーの名前をメモしてください。後の手順で使用されます。
-
-```none
-docker ps
-
-CONTAINER ID  IMAGE          COMMAND              CREATED             STATUS             PORTS               NAME
-09c9cc6e4f83  microsoft/iis  "ping -t localhost"  About a minute ago  Up About a minute  0.0.0.0:80->80/tcp  big_jang
-```
-
-別のコンピューターから、Web ブラウザーを開き、コンテナー ホストの IP アドレスを入力してください。 すべてが正しく構成されていれば、IIS のスプラッシュ画面が表示されます。 これは、Windows コンテナーでホストされている IIS インスタンスからサービスが提供されている状態です。
-
-**注:** Azure を使用している場合、仮想マシンの外部 IP アドレスと、構成されているネットワーク セキュリティが必要になります。 詳細については、「[既存の NSG に規則を作成する]( https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-create-nsg-arm-pportal/#create-rules-in-an-existing-nsg)」をご覧ください。
-
-![](media/iis1.png)
-
-コンテナー ホストに戻り、`docker rm` コマンドを使用してコンテナーを削除します。 注記 – この例のコンテナー名を実際のコンテナー名に置き換えます。
-
-```none
-docker rm -f big_jang
-```
 ## 次の手順
 
 [Windows Server のコンテナー イメージ](./quick_start_images.md)
@@ -190,7 +139,6 @@ docker rm -f big_jang
 [Windows 10 の Windows コンテナー](./quick_start_windows_10.md)
 
 
-
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 
