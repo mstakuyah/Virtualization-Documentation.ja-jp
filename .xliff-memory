@@ -117,8 +117,8 @@
       "IsArchived": true,
       "ArchivedDateTime": "2016-09-27T12:10:14.19521Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\f3eceaa84de7dfb4e6783835939a498a3e798e91.c7901efc7ecb58fd572652d065a4694b7065cb0a.xml",
-      "LocXliff": null,
-      "LocXliffCommit": null
+      "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.ja-jp.xlf",
+      "LocXliffCommit": "6a5cfd8a35169a415a0fd254e75cee152723ebcc"
     },
     "virtualization\\windowscontainers\\about\\faq.md.57342b06a509cd6f145601531627c16addaa5bd4.HT": {
       "SourceFilename": "virtualization\\windowscontainers\\about\\faq.md",
@@ -137,8 +137,8 @@
       "IsArchived": true,
       "ArchivedDateTime": "2016-09-27T12:10:14.2246518Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\a17a0e4eca2596c8cebbef93ea91c854f09d0b76.12b459b9d21fd61625aff169adb791087f375435.xml",
-      "LocXliff": null,
-      "LocXliffCommit": null
+      "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\system_requirements.579a5475e3bd1d3d3fd9d5b53488ab4ae55a4423.ja-jp.xlf",
+      "LocXliffCommit": "6a5cfd8a35169a415a0fd254e75cee152723ebcc"
     },
     "virtualization\\windowscontainers\\quick_start\\quick_start.md.56854398e13c7e98c5359c173031ccdde9f390da.HT": {
       "SourceFilename": "virtualization\\windowscontainers\\quick_start\\quick_start.md",
