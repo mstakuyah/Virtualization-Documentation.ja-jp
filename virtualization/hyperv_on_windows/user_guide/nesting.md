@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 68c65445-ce13-40c9-b516-57ded76c1b15
 translationtype: Human Translation
-ms.sourcegitcommit: 4eb3e733990ca86f28620e23bf408ff71b879173
-ms.openlocfilehash: c94b7f2c9c90eaf2834a1d0c54fb1f9b2a8f9669
+ms.sourcegitcommit: 6f003c6e78fb6a0977f30611b7da135a30268f51
+ms.openlocfilehash: 46c43a38dc3a3ee56ac3136cda60c41019cc733d
 
 ---
 
@@ -30,8 +30,9 @@ ms.openlocfilehash: c94b7f2c9c90eaf2834a1d0c54fb1f9b2a8f9669
 
 1. 仮想マシンを作成します。 必要な OS と VM のバージョンについては、前述の前提条件をご覧ください。
 2. 仮想マシンがオフ状態のときに、次のコマンドを物理的 Hyper-V ホスト上で実行します。 これで、この仮想マシンに対して入れ子になった仮想化が有効になります。
+
 ```none
-    Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true
+Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true
 ```
 3. 仮想マシンを開始します。
 4. Hyper-V を仮想マシン内にインストールします。方法は物理サーバーの場合と同様です。 Hyper-V のインストールの詳細については、[Hyper-V のインストール]( https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/quick_start/walkthrough_install)に関するページを参照してください。
@@ -79,6 +80,6 @@ Hyper-V 以外の仮想化アプリケーションは Hyper-V 仮想マシンで
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 
