@@ -4,20 +4,18 @@ description: "Nano Server での Windows コンテナーの展開"
 keywords: "Docker, コンテナー"
 author: neilpeterson
 manager: timlt
-ms.date: 09/26/2016
+ms.date: 09/28/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 translationtype: Human Translation
-ms.sourcegitcommit: 185c83b69972765a72af2dbbf5d0c7d2551212ce
-ms.openlocfilehash: 6ada7de02bbdfab8986fdfeeda60b6373a6e2d96
+ms.sourcegitcommit: df9723e3a9d9ada778d01d43dcb36c99813dea8f
+ms.openlocfilehash: 9af33e6bce21aa339109f060100b2c7ab3c1eb91
 
 ---
 
 # コンテナー ホストの展開 - Nano Server
-
-**この記事は暫定的な内容であり、変更される可能性があります。** 
 
 このドキュメントでは、Windows コンテナー機能を使用した基本的な Nano Server の展開を順番に説明します。 これは上級レベルのトピックであり、Windows および Windows コンテナーの概要を理解していることを前提としています。 Windows コンテナーの概要については、「[Windows コンテナー クイック スタート](../quick_start/quick_start.md)」を参照してください。
 
@@ -27,7 +25,7 @@ ms.openlocfilehash: 6ada7de02bbdfab8986fdfeeda60b6373a6e2d96
 
 ### Nano Server VM を作成する
 
-まず Nano Server 評価版 VHD を[ここ](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/nano_eula)からダウンロードします。 この VHD で仮想マシンを作成し、その仮想マシンを起動します。次に、Hyper-V 接続オプション、または使用中の仮想化プラットフォームに基づく同等の接続オプションを使用して仮想マシンに接続します。
+まず Nano Server 評価版 VHD を[ここ](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016)からダウンロードします。 この VHD で仮想マシンを作成し、その仮想マシンを起動します。次に、Hyper-V 接続オプション、または使用中の仮想化プラットフォームに基づく同等の接続オプションを使用して仮想マシンに接続します。
 
 ### リモート PowerShell セッションを作成する
 
@@ -47,6 +45,22 @@ Enter-PSSession -ComputerName 192.168.1.50 -Credential ~\Administrator
 
 上記の手順が完了すると、Nano Server システムではリモート PowerShell セッションの状態になります。 このドキュメントの残りの部分では、特に記載のない限り、リモート セッションから作業を行います。
 
+### Windows の更新プログラムをインストールする
+
+Windows コンテナー機能が動作するためには、重要な更新プログラムが必要です。 これらの更新プログラムをインストールするには、次のコマンドを実行します。
+
+```none
+$sess = New-CimInstance -Namespace root/Microsoft/Windows/WindowsUpdate -ClassName MSFT_WUOperationsSession
+Invoke-CimMethod -InputObject $sess -MethodName ApplyApplicableUpdates
+```
+
+更新プログラムが適用されたら、システムを再起動します。
+
+```none
+Restart-Computer
+```
+
+バックアップが作成されたら、リモート PowerShell 接続を再び確立します。
 
 ## コンテナー機能のインストール
 
@@ -74,35 +88,19 @@ Restart-Computer
 
 Windows コンテナーを使用するには、Docker エンジンが必要です。 次の手順を使用して、Docker エンジンをインストールします。
 
-最初に、SMB で Nano Server ファイアウォールが構成されていることを確認します。 そのためには、Nano Server ホストで次のコマンドを実行します。
+Docker エンジンとクライアントを 1 つの zip アーカイブとしてダウンロードします。
 
 ```none
-Set-NetFirewallRule -Name FPS-SMB-In-TCP -Enabled True
+Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
 ```
 
-Nano Server ホストに Docker 実行可能ファイル用のフォルダーを作成します。
+この zip アーカイブを展開して Program Files に出力します。アーカイブの内容は既に docker ディレクトリに入っています。
 
 ```none
-New-Item -Type Directory -Path $env:ProgramFiles'\docker\'
-```
-
-Docker エンジンおよびクライアントをダウンロードし、これらをコンテナー ホストの 'C:\Program Files\docker\' にコピーします。 
-
-> Nano Server は現在、`Invoke-WebRequest` をサポートしていません。 ダウンロードはリモート システムで完了し、ファイルを Nano Server ホストにコピーする必要があります。
-
-```none
-Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile .\docker.zip -UseBasicParsing
-```
-
-ダウンロードしたパッケージを解凍します。 完了すると、ディレクトリには **dockerd.exe** と **docker.exe** が含まれます。 これらの両方を Nano Server コンテナー ホストの **C:\Program Files\docker\** フォルダーにコピーします。 
-
-```none
-Expand-Archive .\docker.zip
+Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
 ```
 
 Docker ディレクトリを Nano Server のシステム パスに追加します。
-
-> リモートの Nano Server のセッションに切り替えて戻ってください。
 
 ```none
 # For quick use, does not require shell to be restarted.
@@ -235,6 +233,6 @@ Restart-Computer
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 
