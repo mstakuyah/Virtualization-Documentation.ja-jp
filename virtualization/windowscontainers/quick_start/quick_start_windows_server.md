@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: 891c9e9805bf2089fd11f86420de5ed251916c3f
-ms.openlocfilehash: 77dca1499abf406b1d599c28afdb19dd823b8401
+ms.sourcegitcommit: 0fae34a5a85678a25c47b0312650e67aa6cd7efd
+ms.openlocfilehash: 4d02d6423cc910c2bd2fe0691cbb62bddcabb117
 
 ---
 
@@ -24,6 +24,8 @@ ms.openlocfilehash: 77dca1499abf406b1d599c28afdb19dd823b8401
 **前提条件:**
 
 Windows Server 2016 を実行している 1 台のコンピューター システム (物理または仮想)。 Windows Server 2016 TP5 を使用している場合は、[Window Server 2016 Evaluation](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 ) に更新してください。 
+
+> Windows コンテナー機能が動作するためには、重要な更新プログラムが必要です。 すべての更新プログラムをインストールしてから、このチュートリアルを進めてください。
 
 ## 1.コンテナー機能のインストール
 
@@ -139,6 +141,6 @@ Docker Run コマンドの詳細については、Docker.com の「[Docker Run �
 [Windows 10 の Windows コンテナー](./quick_start_windows_10.md)
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 
