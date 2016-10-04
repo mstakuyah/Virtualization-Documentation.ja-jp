@@ -10,8 +10,8 @@ ms.prod: windows-contianers
 ms.service: windows-containers
 ms.assetid: 4878f5d2-014f-4f3c-9933-97f03348a147
 translationtype: Human Translation
-ms.sourcegitcommit: f721639b1b10ad97cc469df413d457dbf8d13bbe
-ms.openlocfilehash: f795cfde1174a62b85aefd58c6bd07e81e196718
+ms.sourcegitcommit: b5e52d567bcfafbdd412d4fcf24a14481f51c080
+ms.openlocfilehash: b11167ae429d4529a6bec679a4cd6b0ad6538e39
 
 ---
 
@@ -33,7 +33,7 @@ Windows コンテナーには、2 つの異なるタイプのコンテナー (�
 
 **Windows Server コンテナー** – プロセスと名前空間の分離テクノロジを使用してアプリケーションを分離します。 Windows Server コンテナーでは、コンテナー ホストおよびそのホスト上で実行されているすべてのコンテナーとの間でカーネルを共有します。
 
-**Hyper-V コンテナー** – 高度に最適化された仮想マシンで各コンテナーを実行することで、Windows Server コンテナーによって提供される分離性が拡張されます。 この構成では、コンテナー ホストのカーネルが Hyper-V でコンテナーと共有されません。
+**Hyper-V コンテナー** – 高度に最適化された仮想マシンで各コンテナーを実行することで、Windows Server コンテナーによって提供される分離性が拡張されます。 この構成では、コンテナー ホストのカーネルは他の Hyper-V コンテナーと共有されません。
 
 ## 3.コンテナーの基礎
 
@@ -58,6 +58,6 @@ Windows コンテナーには、2 つの異なるタイプのコンテナー (�
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 
