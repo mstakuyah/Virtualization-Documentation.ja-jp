@@ -21,6 +21,7 @@
 ## [Windows 上の Dockerfile](docker/manage_windows_dockerfile.md)
 ## [Dockerfile の最適化](docker/optimize_windows_dockerfile.md)
 ## [コンテナーのネットワーク](management/container_networking.md)
+## [PowerShell での Docker の管理](https://github.com/Microsoft/Docker-PowerShell)
 
 # コンテナーのサンプル
 ## [Dockerfile - Windows Server Core](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/windowsservercore)
@@ -32,6 +33,6 @@
 # [コンテナー OS イメージの使用許諾契約書 (EULA)](Images_EULA.md)
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 
