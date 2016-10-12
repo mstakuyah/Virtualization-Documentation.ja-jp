@@ -24,8 +24,13 @@
 ## [PowerShell での Docker の管理](https://github.com/Microsoft/Docker-PowerShell)
 
 # コンテナーのサンプル
-## [Dockerfile - Windows Server Core](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/windowsservercore)
-## [Dockerfile - Nano Server](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/nanoserver)
+## [アプリケーション フレームワーク](samples.md#Application-Frameworks)
+## [プログラミング言語](samples.md#Programing-Languages)
+## [データベース](samples.md#Databases)
+## [インフラストラクチャと CI ツール](samples.md#Infrastructure-and-CI-Tools)
+## [遊び](samples.md#Just-for-Fun)
+## [その他](samples.md#Other)
+
 
 # コミュニティとサポート
 ## [コンテナー フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)
