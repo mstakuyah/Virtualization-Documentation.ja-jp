@@ -1,11 +1,31 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 0
+ Total Files | 1
 
 ## File List
+ Source File | Status | Details 
+ ----------- | ------ | ------- 
+ [virtualization\windowscontainers\quick_start\quick_start_windows_server.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/8550076fe34a141440c8cd32b59d7deb47c2c874/virtualization/windowscontainers/quick_start/quick_start_windows_server.md) | HandedOffSuccess | [Details](#f02daf18858df760b4c01e919957ac50da256b9d315)
 
 ## Item Details
+##### <a name='f02daf18858df760b4c01e919957ac50da256b9d315'></a> Source: [virtualization\windowscontainers\quick_start\quick_start_windows_server.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/8550076fe34a141440c8cd32b59d7deb47c2c874/virtualization/windowscontainers/quick_start/quick_start_windows_server.md)
+* Status: HandedOffSuccess
+* Target File: 
+* Handoff File: [quick_start_windows_server.08fee0ad7baa994cf3e7a42d3d35aeda89c5e556.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/b05580a2136209c17fcc1e0c70d5223775c9b53e/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/quick_start_windows_server.08fee0ad7baa994cf3e7a42d3d35aeda89c5e556.ja-jp.xlf)
+* Handoff Datetime: 2016-10-14 18:12:06
+* Handoff Reason: Include
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Current Target File: [virtualization\windowscontainers\quick_start\quick_start_windows_server.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/395941038baa77f4c066cfe2cc5e918f4c42c05e/virtualization/windowscontainers/quick_start/quick_start_windows_server.md)
+* Current Handback File: [quick_start_windows_server.08fee0ad7baa994cf3e7a42d3d35aeda89c5e556.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/6d5016f08487e7f71a052faef6a5ca0309212edc/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/quick_start_windows_server.08fee0ad7baa994cf3e7a42d3d35aeda89c5e556.ja-jp.xlf)
+* Current Handback Datetime: 2016-10-13 12:19:49
+* Bilingual File: [quick_start_windows_server.08fee0ad7baa994cf3e7a42d3d35aeda89c5e556.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/6d5016f08487e7f71a052faef6a5ca0309212edc/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/quick_start_windows_server.08fee0ad7baa994cf3e7a42d3d35aeda89c5e556.ja-jp.xlf)
+* Bilingual Datetime: 2016-10-13 12:20:43
+* [Back to Top](#report-top)
+
 
 ## Error Details
 
