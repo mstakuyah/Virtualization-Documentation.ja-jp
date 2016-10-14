@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 translationtype: Human Translation
-ms.sourcegitcommit: 0fae34a5a85678a25c47b0312650e67aa6cd7efd
-ms.openlocfilehash: 74686f222e8eec1daacd45a9e388d94abf6381f4
+ms.sourcegitcommit: c1c16d94bade83e8623ad89aae0abb356a829e1e
+ms.openlocfilehash: 4322b650b511a8b2a8e926c1fca69971528dc07c
 
 ---
 
@@ -26,7 +26,9 @@ ms.openlocfilehash: 74686f222e8eec1daacd45a9e388d94abf6381f4
 - Windows 10 Anniversary Edition (Professional または Enterprise) を実行する 1 台の物理コンピューター システム。   
 - このクイック スタートは Windows 10 仮想マシンで実行できますが、入れ子の仮想化を有効にする必要があります。 詳細については、「[Nested Virtualization Guide](https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting)」 (入れ子になった仮想化ガイド) を参照してください。
 
-> Windows コンテナー機能が動作するためには、重要な更新プログラムが必要です。 すべての更新プログラムをインストールしてから、このチュートリアルを進めてください。
+> Windows コンテナーが機能するには、重要な更新プログラムがインストールされている必要があります。 
+> 使用している OS のバージョンを確認するには、`winver.exe` を実行し、表示されたバージョンを「[Windows 10 の更新履歴](https://support.microsoft.com/en-us/help/12387/windows-10-update-history)」と比較してください。 
+> 14393.222 以降であることを確認してから、次に進んでください。
 
 ## 1.コンテナー機能のインストール
 
@@ -166,6 +168,6 @@ docker run --rm helloworld powershell c:\helloworld.ps1
 
 
 
-<!--HONumber=Sep16_HO5-->
+<!--HONumber=Oct16_HO2-->
 
 

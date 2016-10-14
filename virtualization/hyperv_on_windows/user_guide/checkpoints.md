@@ -1,7 +1,7 @@
 ---
 title: "チェックポイントの使用"
 description: "チェックポイントの使用"
-keywords: windows 10, hyper-v
+keywords: "windows 10、hyper-v"
 author: scooley
 manager: timlt
 ms.date: 05/02/2016
@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d9c398c4-ee72-45c6-9ce8-4f06569dae6c
 translationtype: Human Translation
-ms.sourcegitcommit: 4cdf81cace246c5de041d378391dca9b9d318dd5
-ms.openlocfilehash: bd0ee06f4e5eab4f33bb7e7c6dd71119dddde5c9
+ms.sourcegitcommit: 54f3855efd820d77b17c171b5b4c2a0c66957bc3
+ms.openlocfilehash: d3340019629a3ad92f856372345e4c2ceef85b6c
 
 ---
 
@@ -21,14 +21,14 @@ ms.openlocfilehash: bd0ee06f4e5eab4f33bb7e7c6dd71119dddde5c9
 
 Windows 10 Hyper-V には、次の 2 種類のチェックポイントが含まれています。
 
-* **標準チェックポイント** – チェックポイントの開始時に、仮想マシンのスナップショットおよび仮想マシンのメモリ状態を取得します。 スナップショットは完全なバックアップではなく、Active Directory などの異なるノード間でデータをレプリケートするシステムで、データの整合性に関する問題が発生する場合があります。  Windows 10 より前の Hyper-V で提供されていたのは、標準のチェックポイントのみでした (以前はスナップショットと呼ばれていました)。
+* **標準チェックポイント** – チェックポイントの開始時に、仮想マシンのスナップショットおよび仮想マシンのメモリ状態を取得します。 スナップショットは完全なバックアップではなく、ノード間でデータをレプリケートするシステム (たとえば Active Directory) でのデータ整合性に関する問題の原因となることがあります。  Windows 10 より前の Hyper-V で提供されていたのは、標準のチェックポイントのみでした (以前はスナップショットと呼ばれていました)。
 
-* **運用チェックポイント** – Linux 仮想マシン上でボリューム シャドウ コピー サービスまたはファイル システムの凍結を使用して、仮想マシンの整合性のあるバックアップ データを作成します。 仮想マシンのメモリの状態のスナップショットは取得されません。
+* **運用チェックポイント** – Linux 仮想マシン上でボリューム シャドウ コピー サービスまたはファイル システムの凍結を使用して、仮想マシンのバックアップをデータ整合性のある状態で作成します。 仮想マシンのメモリの状態のスナップショットは取得されません。
 
 運用チェックポイントは既定で選択されていますが、Hyper-V マネージャーまたは PowerShell のいずれかを使用して変更することができます。
 
 > **注:** Hyper-V PowerShell モジュールには、チェックポイントとスナップショットを置き換えて使用できるように、いくつかのエイリアスが用意されています。  
-  このドキュメントではチェックポイントを使用していますが、スナップショットという用語を使用して、同様のコマンドが表示される場合があることに注意してください。
+  このドキュメントではチェックポイントを使用していますが、類似のコマンドにスナップショットという用語が使用される場合があることに注意してください。
 
 ## チェックポイントの種類の変更
 
@@ -250,6 +250,6 @@ This folder will contain the .VMRS file with the runtime and saved state data an
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Oct16_HO2-->
 
 
