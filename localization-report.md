@@ -4535,8 +4535,8 @@
 * Archive Datetime: 2016-10-18 00:11:41
 * Handback File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/52ccf6b24ccd7fb0aec5d6f8fa7030ec207903a5/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf)
 * Handback Datetime: 2016-10-18 22:35:05
-* Bilingual File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/0b5c8e02eace48528c1c8642ece3de40377dcd77/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf)
-* Bilingual Datetime: 2016-10-12 22:39:39
+* Bilingual File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/52ccf6b24ccd7fb0aec5d6f8fa7030ec207903a5/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf)
+* Bilingual Datetime: 2016-10-18 22:35:48
 * [Back to Top](#report-top)
 
 ##### <a name='b13bdde63b55be50771d63bb0baa146cf4661e66319'></a> Source: [virtualization\windowscontainers\troubleshooting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/38d9f06af87cf1d69529d28e30cab60f16e0982b/virtualization/windowscontainers/troubleshooting.md)
