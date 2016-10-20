@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 translationtype: Human Translation
-ms.sourcegitcommit: df9723e3a9d9ada778d01d43dcb36c99813dea8f
-ms.openlocfilehash: 9af33e6bce21aa339109f060100b2c7ab3c1eb91
+ms.sourcegitcommit: a2c78d3945f1d5b0ebe2a4af480802f8c0c656c2
+ms.openlocfilehash: a9d398de94cb0d6c54c2e82f4a024bb65de9806d
 
 ---
 
@@ -62,64 +62,28 @@ Restart-Computer
 
 バックアップが作成されたら、リモート PowerShell 接続を再び確立します。
 
-## コンテナー機能のインストール
-
-Nano Server パッケージ管理プロバイダーを使用すると、役割や機能を Nano Server にインストールすることができます。 次のコマンドを使用してプロバイダーをインストールします。
-
-```none
-Install-PackageProvider NanoServerPackage
-```
-
-パッケージ プロバイダーがインストールされたら、コンテナー機能をインストールします。
-
-```none
-Install-NanoServerPackage -Name Microsoft-NanoServer-Containers-Package
-```
-
-コンテナー機能がインストールされたら、Nano Server ホストを再起動する必要があります。 
-
-```none
-Restart-Computer
-```
-
-バックアップが作成されたら、リモート PowerShell 接続を再び確立します。
-
 ## Docker のインストール
 
-Windows コンテナーを使用するには、Docker エンジンが必要です。 次の手順を使用して、Docker エンジンをインストールします。
+Docker は Windows コンテナーで使用するために必要です。 Docker をインストールするには、[OneGet プロバイダー PowerShell モジュール](https://github.com/oneget/oneget)を使用します。 プロバイダーは、コンピューターでコンテナー機能を有効にして、Docker をインストールします。これには、再起動が必要です。 
 
-Docker エンジンとクライアントを 1 つの zip アーカイブとしてダウンロードします。
+リモート PowerShell セッションで次のコマンドを実行します。
+
+最初に、OneGet PowerShell モジュールをインストールします。
 
 ```none
-Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
+Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
 ```
 
-この zip アーカイブを展開して Program Files に出力します。アーカイブの内容は既に docker ディレクトリに入っています。
+次に、OneGet を使用して最新バージョンの Docker をインストールします。
 
 ```none
-Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
+Install-Package -Name docker -ProviderName DockerMsftProvider
 ```
 
-Docker ディレクトリを Nano Server のシステム パスに追加します。
+インストールが完了したら、コンピューターを再起動します。
 
 ```none
-# For quick use, does not require shell to be restarted.
-$env:path += “;C:\program files\docker”
-
-# For persistent use, will apply even after a reboot.
-setx PATH $env:path /M
-```
-
-Windows サービスとして Docker をインストールします。
-
-```none
-dockerd --register-service
-```
-
-Docker サービスを開始します。
-
-```none
-Start-Service Docker
+Restart-Computer -Force
 ```
 
 ## コンテナーの基本イメージのインストール
@@ -233,6 +197,6 @@ Restart-Computer
 
 
 
-<!--HONumber=Sep16_HO5-->
+<!--HONumber=Oct16_HO2-->
 
 

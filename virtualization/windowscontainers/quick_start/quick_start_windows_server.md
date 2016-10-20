@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: ac962391cd3b82be2dd18b145ee5e6d7a483a91a
-ms.openlocfilehash: 334f19fa645ad50eb59ad61890842f0b6a43dce2
+ms.sourcegitcommit: af648c1235ab9af181a88a65901401bfbd40656e
+ms.openlocfilehash: 791de65ac6e4222c4cae77fe9dd24f4e07e5a936
 
 ---
 
@@ -27,59 +27,30 @@ Windows Server 2016 を実行している 1 台のコンピューター シス�
 
 > Windows コンテナー機能が動作するためには、重要な更新プログラムが必要です。 すべての更新プログラムをインストールしてから、このチュートリアルを進めてください。
 
-## 1.コンテナー機能のインストール
+## 1.Docker のインストール
 
-コンテナー機能は、Windows コンテナーを使用する前に有効にする必要があります。 そのためには、管理者特権の PowerShell セッションで次のコマンドを実行します。
+Docker をインストールするには、[OneGet プロバイダー PowerShell モジュール](https://github.com/oneget/oneget)を使用します。 プロバイダーは、コンピューターでコンテナー機能を有効にして、Docker をインストールします。これには、再起動が必要です。 Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。
+
+管理者特権の PowerShell セッションを開き、次のコマンドを実行します。
+
+最初に、OneGet PowerShell モジュールをインストールします。
 
 ```none
-Install-WindowsFeature containers
+Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
 ```
 
-機能のインストールが完了したら、コンピューターを再起動します。
+次に、OneGet を使用して最新バージョンの Docker をインストールします。
+```none
+Install-Package -Name docker -ProviderName DockerMsftProvider
+```
+
+PowerShell でパッケージ ソース "DockerDefault" を信頼するかどうかの確認を求められたら、「A」と入力してインストールを続行します。 インストールが完了したら、コンピューターを再起動します。
 
 ```none
 Restart-Computer -Force
 ```
 
-## 2.Docker のインストール
-
-Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。 この演習では、両方をインストールします。
-
-zip アーカイブ形式の Commercially Supported Docker Engine とクライアントのリリース候補をダウンロードします。
-
-```none
-Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker-1.12.2.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
-```
-
-zip アーカイブをプログラム ファイルに展開します。
-
-```none
-Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
-```
-
-Docker ディレクトリをシステム パスに追加します。
-
-```none
-# For quick use, does not require shell to be restarted.
-$env:path += ";c:\program files\docker"
-
-# For persistent use, will apply even after a reboot. 
-[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Docker", [EnvironmentVariableTarget]::Machine)
-```
-
-Windows サービスとして Docker をインストールするには、以下を実行します。
-
-```none
-dockerd.exe --register-service
-```
-
-インストールされたら、サービスを開始することができます。
-
-```none
-Start-Service docker
-```
-
-## 3.最初のコンテナーの展開
+## 2.最初のコンテナーの展開
 
 この演習では、事前作成された .NET サンプル イメージを Docker Hub レジストリからダウンロードし、.NET Hello World アプリケーションを実行するシンプルなコンテナーを展開します。  
 
