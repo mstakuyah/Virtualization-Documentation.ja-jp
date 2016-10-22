@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
 translationtype: Human Translation
-ms.sourcegitcommit: 1c1ca88aaf383973a4cfb879580db5325f49a868
-ms.openlocfilehash: 7b4276dd8e961bf278bee2baea2449e04eef7a2f
+ms.sourcegitcommit: 38d9f06af87cf1d69529d28e30cab60f16e0982b
+ms.openlocfilehash: 185831094b63a1b7fb1931db7fb82a6c59c2b060
 
 ---
 
@@ -70,7 +70,7 @@ Docker を使用するには、先にコンテナー イメージをインスト
 
 Windows で Docker エンジンを構成するには、構成ファイルを使用する方法がお勧めです。 構成ファイルは、'c:\ProgramData\docker\config\daemon.json' にあります。 このファイルがまだ存在していない場合は、作成できます。
 
-注: Windows 上の Docker では、使用できない Docker 構成オプションもあります。 たとえば、次のオプションは使用できません。 Linux 用など、Docker エンジン構成の詳細なドキュメントについては、[Docker デーモン]( https://docs.docker.com/v1.10/engine/reference/commandline/daemon/)のページをご覧ください。
+注: Windows 上の Docker では、使用できない Docker 構成オプションもあります。 たとえば、次のオプションは使用できません。 Docker エンジン構成の詳細なドキュメントについては、[Docker デーモン構成ファイルのページ](https://docs.docker.com/engine/reference/commandline/dockerd/#/windows-configuration-file)をご覧ください。
 
 ```none
 {
@@ -177,23 +177,8 @@ restart-service docker
 
 詳細については、[Docker.com のデーモン ソケット オプション](https://docs.docker.com/v1.10/engine/reference/commandline/daemon/#daemon-socket-option)に関するページを参照してください。
 
-## ログの収集
-
-Docker エンジンは、ファイルではなく Windows 'アプリケーション' イベント ログに記録します。 これらのログは、Windows PowerShell を使用することで、簡単に読み取り、並べ替え、およびフィルター処理することができます。
-
-たとえば、過去 5 分間の Docker エンジン ログを古い順に表示できます。
-
-```
-Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-5) | Sort-Object Time 
-```
-
-また、別のツールで読み取り可能な CSV ファイル、またはスプレッドシートに簡単にパイプすることができます。
-
-```
-Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-30)  | Sort-Object Time | Export-CSV ~/last30minutes.csv ```
 
 
-
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Oct16_HO3-->
 
 
