@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
 translationtype: Human Translation
-ms.sourcegitcommit: 38d9f06af87cf1d69529d28e30cab60f16e0982b
-ms.openlocfilehash: 185831094b63a1b7fb1931db7fb82a6c59c2b060
+ms.sourcegitcommit: ea86e2dd88413569e4329ab27a8b6a4d3a7afca9
+ms.openlocfilehash: d2fe856b9d00c5f7ac33d683f1c2204dc06d4a11
 
 ---
 
@@ -166,7 +166,7 @@ Docker ホストにログインし、Docker コマンドをローカルで実行
 `docker search` と `docker pull` のプロキシ情報を設定するには、`HTTP_PROXY` または `HTTPS_PROXY` という名前と、プロキシ情報の値を使用して Windows 環境変数を作成します。 そのためには、PowerShell で次のようなコマンドを実行します。
 
 ```none
-[Environment]::SetEnvironmentVariable("HTTP_PROXY”, “http://username:password@proxy:port/”, [EnvironmentVariableTarget]::Machine)
+[Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://username:password@proxy:port/", [EnvironmentVariableTarget]::Machine)
 ```
 
 変数が設定されたら、Docker サービスを再起動します。
@@ -175,7 +175,8 @@ Docker ホストにログインし、Docker コマンドをローカルで実行
 restart-service docker
 ```
 
-詳細については、[Docker.com のデーモン ソケット オプション](https://docs.docker.com/v1.10/engine/reference/commandline/daemon/#daemon-socket-option)に関するページを参照してください。
+詳細については、[Docker.com の Windows 構成ファイルのページ](https://docs.docker.com/engine/reference/commandline/dockerd/#/windows-configuration-file)をご覧ください。
+
 
 
 
