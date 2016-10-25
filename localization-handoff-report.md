@@ -6,24 +6,24 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\docker\configure_docker_daemon.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ea86e2dd88413569e4329ab27a8b6a4d3a7afca9/virtualization/windowscontainers/docker/configure_docker_daemon.md) | HandedOffSuccess | [Details](#d2fe856b9d00c5f7ac33d683f1c2204dc06d4a11247)
+ [virtualization\windowscontainers\deployment\deployment_nano.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/fa073b0347ee6c580f0a658b3cbdb471f0bbf909/virtualization/windowscontainers/deployment/deployment_nano.md) | HandedOffSuccess | [Details](#ef5b189a56502ce8b76c094ecbd0c6174bb1bc4f230)
 
 ## Item Details
-##### <a name='d2fe856b9d00c5f7ac33d683f1c2204dc06d4a11247'></a> Source: [virtualization\windowscontainers\docker\configure_docker_daemon.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ea86e2dd88413569e4329ab27a8b6a4d3a7afca9/virtualization/windowscontainers/docker/configure_docker_daemon.md)
+##### <a name='ef5b189a56502ce8b76c094ecbd0c6174bb1bc4f230'></a> Source: [virtualization\windowscontainers\deployment\deployment_nano.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/fa073b0347ee6c580f0a658b3cbdb471f0bbf909/virtualization/windowscontainers/deployment/deployment_nano.md)
 * Status: HandedOffSuccess
 * Target File: 
-* Handoff File: [configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/1e853615b52f81968a81b44f7b1e1155dea657c1/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.ja-jp.xlf)
-* Handoff Datetime: 2016-10-19 18:10:52
+* Handoff File: [deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/6b8feb6d084f0df874493e315fc036e837c23f80/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf)
+* Handoff Datetime: 2016-10-25 18:34:10
 * Handoff Reason: Include
 * Archive File: 
 * Archive Datetime: 0001-01-01 00:00:00
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\docker\configure_docker_daemon.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/e658e4b715a70da83cc1e85bba94eaed145a659b/virtualization/windowscontainers/docker/configure_docker_daemon.md)
-* Current Handback File: [configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/257278abc69977e67ec6c090b6195a7cbd229d47/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.ja-jp.xlf)
-* Current Handback Datetime: 2016-10-14 13:27:01
-* Bilingual File: [configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/257278abc69977e67ec6c090b6195a7cbd229d47/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.ja-jp.xlf)
-* Bilingual Datetime: 2016-10-14 13:27:50
+* Current Target File: [virtualization\windowscontainers\deployment\deployment_nano.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/f813da6802aab2d0e3e463d52d815005487c1b2c/virtualization/windowscontainers/deployment/deployment_nano.md)
+* Current Handback File: [deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/ba34ed046f7362b4ac7a40c9cd3fc3557e9fc36d/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf)
+* Current Handback Datetime: 2016-10-20 09:16:24
+* Bilingual File: [deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/ba34ed046f7362b4ac7a40c9cd3fc3557e9fc36d/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.ja-jp.xlf)
+* Bilingual Datetime: 2016-10-20 09:17:02
 * [Back to Top](#report-top)
 
 
