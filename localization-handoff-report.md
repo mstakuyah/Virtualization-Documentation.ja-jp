@@ -6,24 +6,24 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\docker\configure_docker_daemon.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/78d91946bcbf5a86513be10c6fd643965a3c71f8/virtualization/windowscontainers/docker/configure_docker_daemon.md) | HandedOffSuccess | [Details](#79924db17adefceb1a19617768d31e5c66403c83248)
+ [virtualization\windowscontainers\management\container_networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f489d3e6f98fd77739a2016813506be6962b34d1/virtualization/windowscontainers/management/container_networking.md) | HandedOffSuccess | [Details](#499788666f306494c894b2e82f65ab68c9fc295a253)
 
 ## Item Details
-##### <a name='79924db17adefceb1a19617768d31e5c66403c83248'></a> Source: [virtualization\windowscontainers\docker\configure_docker_daemon.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/78d91946bcbf5a86513be10c6fd643965a3c71f8/virtualization/windowscontainers/docker/configure_docker_daemon.md)
+##### <a name='499788666f306494c894b2e82f65ab68c9fc295a253'></a> Source: [virtualization\windowscontainers\management\container_networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f489d3e6f98fd77739a2016813506be6962b34d1/virtualization/windowscontainers/management/container_networking.md)
 * Status: HandedOffSuccess
 * Target File: 
-* Handoff File: [configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/d964e6f83a186bd5273c6aa9e62b3f0cdb881632/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.ja-jp.xlf)
-* Handoff Datetime: 2016-10-26 23:35:49
+* Handoff File: [container_networking.7cf72391b3aa727681997232feeeb0a32d363edc.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/ea53dfded748af420a27ae0ea07d45176b6aca13/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/container_networking.7cf72391b3aa727681997232feeeb0a32d363edc.ja-jp.xlf)
+* Handoff Datetime: 2016-10-27 21:51:52
 * Handoff Reason: Include
 * Archive File: 
 * Archive Datetime: 0001-01-01 00:00:00
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\docker\configure_docker_daemon.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/f120e9c3c8c263fabf8398405c8d00830c9755f1/virtualization/windowscontainers/docker/configure_docker_daemon.md)
-* Current Handback File: [configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/fea4df73cc1b91dad62e711c5729c19133541c01/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.ja-jp.xlf)
-* Current Handback Datetime: 2016-10-24 17:30:50
-* Bilingual File: [configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/fea4df73cc1b91dad62e711c5729c19133541c01/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.ja-jp.xlf)
-* Bilingual Datetime: 2016-10-24 17:31:12
+* Current Target File: [virtualization\windowscontainers\management\container_networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/7f3e5d06ee68f8d0b6877eadea9cd042c8c57279/virtualization/windowscontainers/management/container_networking.md)
+* Current Handback File: [container_networking.7cf72391b3aa727681997232feeeb0a32d363edc.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/c5acd1248b92b16ca60156da747d45cd33c8d9f5/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/container_networking.7cf72391b3aa727681997232feeeb0a32d363edc.ja-jp.xlf)
+* Current Handback Datetime: 2016-08-25 08:18:39
+* Bilingual File: [container_networking.7cf72391b3aa727681997232feeeb0a32d363edc.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/c5acd1248b92b16ca60156da747d45cd33c8d9f5/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/container_networking.7cf72391b3aa727681997232feeeb0a32d363edc.ja-jp.xlf)
+* Bilingual Datetime: 2016-08-25 08:21:29
 * [Back to Top](#report-top)
 
 
