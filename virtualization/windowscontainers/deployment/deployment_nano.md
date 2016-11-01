@@ -2,16 +2,15 @@
 title: "Nano Server での Windows コンテナーの展開"
 description: "Nano Server での Windows コンテナーの展開"
 keywords: "Docker, コンテナー"
-author: neilpeterson
-manager: timlt
+author: enderb-ms
 ms.date: 09/28/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 translationtype: Human Translation
-ms.sourcegitcommit: a2c78d3945f1d5b0ebe2a4af480802f8c0c656c2
-ms.openlocfilehash: a9d398de94cb0d6c54c2e82f4a024bb65de9806d
+ms.sourcegitcommit: fa073b0347ee6c580f0a658b3cbdb471f0bbf909
+ms.openlocfilehash: ef5b189a56502ce8b76c094ecbd0c6174bb1bc4f
 
 ---
 
@@ -90,11 +89,13 @@ Restart-Computer -Force
 
 基本 OS イメージは、任意の Windows Server または Hyper-V コンテナーのベースとして使用されます。 基本 OS イメージは、基となるオペレーティング システムとして Windows Server Core と Nano Server の両方で使用でき、`docker pull` を使用してインストールすることができます。 Docker コンテナー イメージの詳細については、「[Build your own images on docker.com](https://docs.docker.com/engine/tutorials/dockerimages/)」(docker.com で独自のイメージを構築する) を参照してください。
 
-Windows Server と Nano Server の基本イメージをダウンロードしてインストールするには、次のコマンドを実行します。
+Windows Nano Server の基本イメージをダウンロードしてインストールするには、次のコマンドを実行します。
 
 ```none
 docker pull microsoft/nanoserver
 ```
+
+Hyper-V コンテナーを使用する予定があり、Hyper-V ハイパーバイザーを Nano Server ホストにインストールする場合は、Server Core イメージもプルできます。 Azure Gallery Server 2016 Nano を実行する場合は、Hyper-V がインストールされないことに注意してください。
 
 ```none
 docker pull microsoft/windowsservercore
@@ -197,6 +198,6 @@ Restart-Computer
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Oct16_HO4-->
 
 

@@ -2,16 +2,15 @@
 title: "Windows Server の Windows コンテナー"
 description: "コンテナー展開のクイック スタート"
 keywords: "Docker, コンテナー"
-author: neilpeterson
-manager: timlt
+author: enderb-ms
 ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: af648c1235ab9af181a88a65901401bfbd40656e
-ms.openlocfilehash: 791de65ac6e4222c4cae77fe9dd24f4e07e5a936
+ms.sourcegitcommit: 6c85bb2ac3922dac4b09939d3ea71d7fbb5e16ad
+ms.openlocfilehash: d06f38ddc9abf40a2842089203462c26765be672
 
 ---
 
@@ -50,7 +49,35 @@ PowerShell でパッケージ ソース "DockerDefault" を信頼するかどう
 Restart-Computer -Force
 ```
 
-## 2.最初のコンテナーの展開
+## 2.Windows の更新プログラムをインストールする
+
+Windows Server システムを最新の状態に保つために、Windows の更新プログラムをインストールします。次のコマンドを実行してください。
+
+```none
+sconfig
+```
+
+テキスト ベースの構成メニューが表示されます。オプション 6 "更新プログラムのダウンロードとインストール" を選択します。
+
+```none
+===============================================================================
+                         Server Configuration
+===============================================================================
+
+1) Domain/Workgroup:                    Workgroup:  WORKGROUP
+2) Computer Name:                       WIN-HEFDK4V68M5
+3) Add Local Administrator
+4) Configure Remote Management          Enabled
+
+5) Windows Update Settings:             DownloadOnly
+6) Download and Install Updates
+7) Remote Desktop:                      Disabled
+...
+```
+
+画面の指示に従い、オプション A を選択してすべての更新プログラムをダウンロードします。
+
+## 3.最初のコンテナーの展開
 
 この演習では、事前作成された .NET サンプル イメージを Docker Hub レジストリからダウンロードし、.NET Hello World アプリケーションを実行するシンプルなコンテナーを展開します。  
 
@@ -113,6 +140,6 @@ Docker Run コマンドの詳細については、Docker.com の「[Docker Run �
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Oct16_HO4-->
 
 
