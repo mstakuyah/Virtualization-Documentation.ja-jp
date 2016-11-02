@@ -48,16 +48,10 @@
   "a4cc2907c88894d1eb02fdbf3a1d39459269925c": [
     "virtualization\\hyperv_on_windows\\quick_start\\walkthrough_compatibility.md"
   ],
-  "8edc64d2e3851d81d2d844ebf3465e76579f82c7": [
-    "virtualization\\hyperv_on_windows\\quick_start\\walkthrough_compatibility.md"
-  ],
   "c830f164a513bd6125dc1a30f7cf1990e1c9470a": [
     "virtualization\\hyperv_on_windows\\quick_start\\media\\SystemInfo_upd.png"
   ],
   "2b644f56829d6f92822875e77ba53e5b68d2f1ef": [
-    "virtualization\\hyperv_on_windows\\quick_start\\walkthrough_create_vm.md"
-  ],
-  "206521ae366d5e0f5f7ca2ca510736cc178557fe": [
     "virtualization\\hyperv_on_windows\\quick_start\\walkthrough_create_vm.md"
   ],
   "b638099bf81d9a6f9d3c31f83364d60032084c48": [
@@ -75,9 +69,6 @@
   "7bf27630a2d429116b694b5c9bc93cf0505b735b": [
     "virtualization\\hyperv_on_windows\\quick_start\\walkthrough_install.md"
   ],
-  "9e2b16f3e6c9882246a5a4c21683112eaa089ce8": [
-    "virtualization\\hyperv_on_windows\\quick_start\\walkthrough_install.md"
-  ],
   "1323985a77d40a39f3191207c703e3b426a55795": [
     "virtualization\\hyperv_on_windows\\quick_start\\media\\enable_role_upd.png"
   ],
@@ -90,9 +81,6 @@
   "520ef410eddad61c40d31655e6bf7ede7846d4b2": [
     "virtualization\\hyperv_on_windows\\quick_start\\walkthrough_powershell.md"
   ],
-  "8b688e666c7189888af3a7f182002f06fa2e2c0b": [
-    "virtualization\\hyperv_on_windows\\quick_start\\walkthrough_powershell.md"
-  ],
   "44a0686f5ce5d1544b8a61bcad0a06eb1e1ce9d4": [
     "virtualization\\hyperv_on_windows\\quick_start\\media\\command_grid.png"
   ],
@@ -103,9 +91,6 @@
     "virtualization\\hyperv_on_windows\\quick_start\\media\\get_vm.png"
   ],
   "5747543dde2a24c52178adbdec5b4d7f0b71037f": [
-    "virtualization\\hyperv_on_windows\\quick_start\\walkthrough_virtual_switch.md"
-  ],
-  "44470901a9149666c15982a728037a95fc28aaa5": [
     "virtualization\\hyperv_on_windows\\quick_start\\walkthrough_virtual_switch.md"
   ],
   "d71d2800e3c9442a264de165813142157420b5f6": [
@@ -184,9 +169,6 @@
     "virtualization\\hyperv_on_windows\\user_guide\\vmsession.md"
   ],
   "d9d43bb2b3e7f8955d374905cc3050a37a585fe1": [
-    "virtualization\\hyperv_on_windows\\windows_welcome.md"
-  ],
-  "4d5c2ad7515b8b536da30ad2dd3b4ffc2cee5832": [
     "virtualization\\hyperv_on_windows\\windows_welcome.md"
   ],
   "215adae041390b1edb10b314dc7ce21f6b39592e": [

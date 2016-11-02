@@ -48,7 +48,7 @@
       "ArchivedDateTime": "2016-10-29T00:07:06.6786218Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\520ef410eddad61c40d31655e6bf7ede7846d4b2.66715676ecf7c8f13663a41b3664cfc94da8a339.xml",
       "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\walkthrough_powershell.f20d7c387d05f1e6da38e694c8255c1b0044b10b.ja-jp.xlf",
-      "LocXliffCommit": "7560556a3c9332136d2b613f6b1bd31258b3cd17"
+      "LocXliffCommit": "3e0256b0e11c75214227ece64c9a24bf123d88ec"
     },
     "virtualization\\hyperv_on_windows\\user_guide\\remote_host_management.md.3a175dbaede45dcc7bdb4d30df1b614254770549.HT": {
       "SourceFilename": "virtualization\\hyperv_on_windows\\user_guide\\remote_host_management.md",
@@ -577,8 +577,8 @@
       "IsArchived": true,
       "ArchivedDateTime": "2016-10-29T00:07:06.6583115Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\a4cc2907c88894d1eb02fdbf3a1d39459269925c.2e3ea13ed5f295d6c2ab4eebf3b45a279ca3e8b1.xml",
-      "LocXliff": null,
-      "LocXliffCommit": null
+      "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\walkthrough_compatibility.b81630a3813897e1115f050cb3fb67a3db007cf8.ja-jp.xlf",
+      "LocXliffCommit": "3e0256b0e11c75214227ece64c9a24bf123d88ec"
     },
     "virtualization\\hyperv_on_windows\\reference\\ic_info.md.913d7972dbc37dde328dc3a7f3eb67e8941a7809.HT": {
       "SourceFilename": "virtualization\\hyperv_on_windows\\reference\\ic_info.md",
@@ -667,8 +667,8 @@
       "IsArchived": true,
       "ArchivedDateTime": "2016-10-29T00:07:06.6895606Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\d9d43bb2b3e7f8955d374905cc3050a37a585fe1.05f1071e1e621c3ad4ef7f0ebf4c93dae0f75da8.xml",
-      "LocXliff": null,
-      "LocXliffCommit": null
+      "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\windows_welcome.5cc1a907523a3cc51d983b8dc14732d35513e54e.ja-jp.xlf",
+      "LocXliffCommit": "3e0256b0e11c75214227ece64c9a24bf123d88ec"
     },
     "virtualization\\hyperv_on_windows\\quick_start\\walkthrough_install.md.b564c445ad4e392170637492fdefe7cfd250ad6c.HT": {
       "SourceFilename": "virtualization\\hyperv_on_windows\\quick_start\\walkthrough_install.md",
@@ -677,8 +677,8 @@
       "IsArchived": true,
       "ArchivedDateTime": "2016-10-29T00:07:06.6474748Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\7bf27630a2d429116b694b5c9bc93cf0505b735b.43856d528e5b5af469430a7975a8b24d69997314.xml",
-      "LocXliff": null,
-      "LocXliffCommit": null
+      "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.ja-jp.xlf",
+      "LocXliffCommit": "3e0256b0e11c75214227ece64c9a24bf123d88ec"
     },
     "virtualization\\hyperv_on_windows\\reference\\tlfs.md.f2c12d27bd66f40a00545086026b1d2005806dc0.HT": {
       "SourceFilename": "virtualization\\hyperv_on_windows\\reference\\tlfs.md",
@@ -727,8 +727,8 @@
       "IsArchived": true,
       "ArchivedDateTime": "2016-10-29T00:07:06.6895606Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\5747543dde2a24c52178adbdec5b4d7f0b71037f.4e4aa4d4047b434288a62ecbdb30db3d8f972d9c.xml",
-      "LocXliff": null,
-      "LocXliffCommit": null
+      "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\walkthrough_virtual_switch.27dde78ebf41bbbdb946f00af1eb221b79cbb05a.ja-jp.xlf",
+      "LocXliffCommit": "3e0256b0e11c75214227ece64c9a24bf123d88ec"
     },
     "virtualization\\hyperv_on_windows\\quick_start\\walkthrough_export_import.md.da39a3ee5e6b4b0d3255bfef95601890afd80709.HT": {
       "SourceFilename": "virtualization\\hyperv_on_windows\\quick_start\\walkthrough_export_import.md",
@@ -747,8 +747,8 @@
       "IsArchived": true,
       "ArchivedDateTime": "2016-10-29T00:07:06.6786218Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\2b644f56829d6f92822875e77ba53e5b68d2f1ef.77c87d79a2501f88ff7a70ca3b56d1d30d9b2c17.xml",
-      "LocXliff": null,
-      "LocXliffCommit": null
+      "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\walkthrough_create_vm.698a46fb78fa92b3f275f4115d4b77072fff0ed6.ja-jp.xlf",
+      "LocXliffCommit": "3e0256b0e11c75214227ece64c9a24bf123d88ec"
     }
   }
 }
