@@ -2771,8 +2771,8 @@
 * Archive Datetime: 2016-10-29 00:07:06
 * Handback File: [walkthrough_export_import.357da837e16b81b7e63ec02325c79b3b0eb2e511.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/a1ee376594907dd52ef5e943cb5206ece350feb7/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/walkthrough_export_import.357da837e16b81b7e63ec02325c79b3b0eb2e511.ja-jp.xlf)
 * Handback Datetime: 2016-11-02 11:29:42
-* Bilingual File: [walkthrough_export_import.357da837e16b81b7e63ec02325c79b3b0eb2e511.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/85c1a34b8eaa72766a922a62f3fe7e8ad1d43c15/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/walkthrough_export_import.357da837e16b81b7e63ec02325c79b3b0eb2e511.ja-jp.xlf)
-* Bilingual Datetime: 2016-07-06 02:30:05
+* Bilingual File: [walkthrough_export_import.357da837e16b81b7e63ec02325c79b3b0eb2e511.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/a1ee376594907dd52ef5e943cb5206ece350feb7/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/walkthrough_export_import.357da837e16b81b7e63ec02325c79b3b0eb2e511.ja-jp.xlf)
+* Bilingual Datetime: 2016-11-02 11:31:57
 * [Back to Top](#report-top)
 
 ##### <a name='7bf27630a2d429116b694b5c9bc93cf0505b735b182'></a> Source: [virtualization\hyperv_on_windows\quick_start\walkthrough_install.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ffdf89b0ae346197b9ae631ee5260e0565261c55/virtualization/hyperv_on_windows/quick_start/walkthrough_install.md)
@@ -3471,8 +3471,7 @@
 * Archive Datetime: 2016-10-29 00:07:06
 * Handback File: [work_in_progress.4d0e298514e64fd94d18eb197e270fbbf7e07fd8.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/a1ee376594907dd52ef5e943cb5206ece350feb7/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/work_in_progress.4d0e298514e64fd94d18eb197e270fbbf7e07fd8.ja-jp.xlf)
 * Handback Datetime: 2016-11-02 11:29:42
-* Bilingual File: [work_in_progress.4d0e298514e64fd94d18eb197e270fbbf7e07fd8.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/11bc55913633cc8c0b60bf0516df77593055c4f9/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/work_in_progress.4d0e298514e64fd94d18eb197e270fbbf7e07fd8.ja-jp.xlf)
-* Bilingual Datetime: 2016-09-27 13:24:32
+* Bilingual Error:[bilingual_uploading_failed](#38dc2f5257196adfdf3be04e77f0ea74a77bfcff230bilingual_uploading_failed)
 * [Back to Top](#report-top)
 
 ##### <a name='144532bf835f8f8a67d378ec03e707b9517d5653231'></a> Source: [virtualization\windowscontainers\containers_welcome.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ffdf89b0ae346197b9ae631ee5260e0565261c55/virtualization/windowscontainers/containers_welcome.md)
