@@ -27802,9 +27802,9 @@
       "ArchiveFileCommit": "92a91d2a1bb036ec37867dba6b29c3cf533bcfe3",
       "ArchiveFileDateTime": "2016-10-29T00:07:06.5958096Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\walkthrough_compatibility.b81630a3813897e1115f050cb3fb67a3db007cf8.ja-jp.xlf",
+      "BilingualFileCommit": "3e0256b0e11c75214227ece64c9a24bf123d88ec",
+      "BilingualDateTime": "2016-11-02T12:03:19.6917667Z",
       "BilingualException": null
     },
     "2b644f56829d6f92822875e77ba53e5b68d2f1ef": {
@@ -27840,8 +27840,16 @@
       "ArchiveException": null,
       "BilingualFilePath": null,
       "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
-      "BilingualException": null
+      "BilingualDateTime": "2016-11-02T12:03:19.6917667Z",
+      "BilingualException": {
+        "internal_error_code": "bilingual_uploading_failed",
+        "internal_error_message": "Bilingual file: ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\walkthrough_create_vm.698a46fb78fa92b3f275f4115d4b77072fff0ed6.ja-jp.xlf with commit: 3e0256b0e11c75214227ece64c9a24bf123d88ec failed.",
+        "internal_error_retriable": false,
+        "exception_message": "HTTP POST http://oltm.azurewebsites.net//trainxliff?sourceLocale=en-US&targetLocale=ja-jp&correlation=2b644f56829d6f92822875e77ba53e5b68d2f1ef&tenant=ol timed out after 10000 milliseconds.",
+        "exception_type": "System.Net.WebException",
+        "stack_trace": "   at Microsoft.OpenLocalization.RestClientCore.<ExecuteAsync>d__18.MoveNext() in C:\\Jenkins\\workspace\\OpenLocalization-Prod\\src\\OpenLocalization.Common\\RestClient.cs:line 169\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()\r\n   at Microsoft.OpenLocalization.Common.Bilingual.BilingualTrainer.<TrainXliffInternal>d__6.MoveNext() in C:\\Jenkins\\workspace\\OpenLocalization-Prod\\src\\OpenLocalization.Common\\Bilingual\\BilingualTrainer.cs:line 57\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   at Microsoft.OpenLocalization.Common.Bilingual.BilingualTrainer.<TrainXliff>d__7.MoveNext() in C:\\Jenkins\\workspace\\OpenLocalization-Prod\\src\\OpenLocalization.Common\\Bilingual\\BilingualTrainer.cs:line 85",
+        "extended_information": null
+      }
     },
     "5f9bd47898d4249346449681fbb74d65101d4dc7": {
       "FileHash": "5f9bd47898d4249346449681fbb74d65101d4dc7",
@@ -27910,9 +27918,9 @@
       "ArchiveFileCommit": "92a91d2a1bb036ec37867dba6b29c3cf533bcfe3",
       "ArchiveFileDateTime": "2016-10-29T00:07:06.5958096Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.ja-jp.xlf",
+      "BilingualFileCommit": "3e0256b0e11c75214227ece64c9a24bf123d88ec",
+      "BilingualDateTime": "2016-11-02T12:03:19.6917667Z",
       "BilingualException": null
     },
     "520ef410eddad61c40d31655e6bf7ede7846d4b2": {
@@ -27946,9 +27954,9 @@
       "ArchiveFileCommit": "92a91d2a1bb036ec37867dba6b29c3cf533bcfe3",
       "ArchiveFileDateTime": "2016-10-29T00:07:06.5958096Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\walkthrough_powershell.f20d7c387d05f1e6da38e694c8255c1b0044b10b.ja-jp.xlf",
+      "BilingualFileCommit": "3e0256b0e11c75214227ece64c9a24bf123d88ec",
+      "BilingualDateTime": "2016-11-02T12:03:19.6917667Z",
       "BilingualException": null
     },
     "5747543dde2a24c52178adbdec5b4d7f0b71037f": {
@@ -27982,9 +27990,9 @@
       "ArchiveFileCommit": "92a91d2a1bb036ec37867dba6b29c3cf533bcfe3",
       "ArchiveFileDateTime": "2016-10-29T00:07:06.5958096Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\walkthrough_virtual_switch.27dde78ebf41bbbdb946f00af1eb221b79cbb05a.ja-jp.xlf",
+      "BilingualFileCommit": "3e0256b0e11c75214227ece64c9a24bf123d88ec",
+      "BilingualDateTime": "2016-11-02T12:03:19.6917667Z",
       "BilingualException": null
     },
     "71ec8f80e721a0c66dc8709473a427792df1cf24": {
@@ -28414,9 +28422,9 @@
       "ArchiveFileCommit": "92a91d2a1bb036ec37867dba6b29c3cf533bcfe3",
       "ArchiveFileDateTime": "2016-10-29T00:07:06.5958096Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\windows_welcome.5cc1a907523a3cc51d983b8dc14732d35513e54e.ja-jp.xlf",
+      "BilingualFileCommit": "3e0256b0e11c75214227ece64c9a24bf123d88ec",
+      "BilingualDateTime": "2016-11-02T12:03:19.6917667Z",
       "BilingualException": null
     },
     "f4e1102cc7338739e396dadba17150e41716ed93": {
@@ -28558,18 +28566,10 @@
       "ArchiveFileCommit": "92a91d2a1bb036ec37867dba6b29c3cf533bcfe3",
       "ArchiveFileDateTime": "2016-10-29T00:07:06.5958096Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "2016-11-02T11:31:57.2508735Z",
-      "BilingualException": {
-        "internal_error_code": "bilingual_uploading_failed",
-        "internal_error_message": "Bilingual file: ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\work_in_progress.4d0e298514e64fd94d18eb197e270fbbf7e07fd8.ja-jp.xlf with commit: a1ee376594907dd52ef5e943cb5206ece350feb7 failed.",
-        "internal_error_retriable": false,
-        "exception_message": "HTTP POST http://oltm.azurewebsites.net//trainxliff?sourceLocale=en-US&targetLocale=ja-jp&correlation=38dc2f5257196adfdf3be04e77f0ea74a77bfcff&tenant=ol timed out after 10000 milliseconds.",
-        "exception_type": "System.Net.WebException",
-        "stack_trace": "   at Microsoft.OpenLocalization.RestClientCore.<ExecuteAsync>d__18.MoveNext() in C:\\Jenkins\\workspace\\OpenLocalization-Prod\\src\\OpenLocalization.Common\\RestClient.cs:line 169\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()\r\n   at Microsoft.OpenLocalization.Common.Bilingual.BilingualTrainer.<TrainXliffInternal>d__6.MoveNext() in C:\\Jenkins\\workspace\\OpenLocalization-Prod\\src\\OpenLocalization.Common\\Bilingual\\BilingualTrainer.cs:line 57\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   at Microsoft.OpenLocalization.Common.Bilingual.BilingualTrainer.<TrainXliff>d__7.MoveNext() in C:\\Jenkins\\workspace\\OpenLocalization-Prod\\src\\OpenLocalization.Common\\Bilingual\\BilingualTrainer.cs:line 85",
-        "extended_information": null
-      }
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\work_in_progress.4d0e298514e64fd94d18eb197e270fbbf7e07fd8.ja-jp.xlf",
+      "BilingualFileCommit": "a1ee376594907dd52ef5e943cb5206ece350feb7",
+      "BilingualDateTime": "2016-11-02T12:03:19.6917667Z",
+      "BilingualException": null
     },
     "144532bf835f8f8a67d378ec03e707b9517d5653": {
       "FileHash": "144532bf835f8f8a67d378ec03e707b9517d5653",
