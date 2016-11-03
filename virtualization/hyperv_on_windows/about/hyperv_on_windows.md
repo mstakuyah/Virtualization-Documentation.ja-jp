@@ -1,17 +1,16 @@
 ---
 title: "Windows 10 の Hyper-V の概要"
 description: "Windows 10 の Hyper-V の概要。"
-keywords: windows 10, hyper-v
+keywords: "windows 10、hyper-v"
 author: scooley
-manager: timlt
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: eb2b827c-4a6c-4327-9354-50d14fee7ed8
 translationtype: Human Translation
-ms.sourcegitcommit: c3e7cc07ac7e7d4e1c5f1827deb5951daa1e3749
-ms.openlocfilehash: ad84961d0a79853e2aadcf9ed0e37e340103835a
+ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
+ms.openlocfilehash: 702894a9f1d89d1f6a5846048f9dd794d9d1a59c
 
 ---
 
@@ -24,7 +23,7 @@ ms.openlocfilehash: ad84961d0a79853e2aadcf9ed0e37e340103835a
 ## 仮想化を使用する理由
 仮想化により、だれでも同じ物理的なコンピューター上で複数のオペレーティング システム、ソフトウェア構成、およびハードウェア構成を実行することができます。  Hyper-V では、仮想化と、仮想マシンを管理するためのツールをサポートしています。
 
-Hyper-V は、さまざまな方法で使用できます。 たとえば、
+Hyper-V は、さまざまな方法で使用できます。 たとえば、次のように入力します。
 
 * 以前のバージョンの Windows または Windows 以外のオペレーティング システムを必要とするソフトウェアを実行します。 
 
@@ -83,6 +82,6 @@ Windows 10 の Hyper-V に関する[最新情報](whats_new.md)をご確認く�
 
 
 
-<!--HONumber=Jul16_HO2-->
+<!--HONumber=Oct16_HO4-->
 
 

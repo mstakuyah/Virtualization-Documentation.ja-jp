@@ -1,17 +1,16 @@
 ---
 title: "仮想マシンのエクスポートとインポート"
 description: "仮想マシンのエクスポートとインポート"
-keywords: windows 10, hyper-v
-author: neilpeterson
-manager: timlt
+keywords: "windows 10、hyper-v"
+author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 7fd996f5-1ea9-4b16-9776-85fb39a3aa34
 translationtype: Human Translation
-ms.sourcegitcommit: 8006ec4d71159113efce497d70ba591da2b84de9
-ms.openlocfilehash: e11c8d1a8fabc6e8282c9396a8efcbc448b9a6d4
+ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
+ms.openlocfilehash: 620a2c38514488100bae4eb71d0683e3994801b4
 
 ---
 
@@ -37,7 +36,7 @@ Hyper-V のエクスポート機能とインポート機能を使うと、仮想
 
 エクスポートが完了すると、エクスポート場所にエクスポートされたファイルがすべて表示されます。
 
-### PowerShell を使用
+### PowerShell の使用
 
 PowerShell を使用して仮想マシンをエクスポートするには、**Export-VM** コマンドを使用します。 
 
@@ -85,12 +84,12 @@ Hyper-V には、次の 3 種類のインポートがあります。
 
 3. エラーの一覧を作成します。 この一覧には再構成が必要な項目が示されており、それによって次にウィザードに表示されるページが決まります。
 
-4. 関連性のページでは、一度に 1 つのカテゴリが表示されます。 ウィザードでは、新しいホストと互換性があるために、仮想マシンを再構成するための各非互換性について説明します。
+4. 一度に 1 つのカテゴリずつ、関連ページが表示されます。 このウィザードでは、新しいホストとの互換性を確保するために仮想マシンを再構成できるように、各非互換性について説明します。
 
 5. 構成ファイルのコピーを削除します。 この処理が完了すると、仮想マシンが起動可能な状態になります。
 
 
-### PowerShell を使用
+### PowerShell の使用
 
 PowerShell を使用して仮想マシンをインポートするには、**Import-VM** コマンドを使用します。  次のコマンドでは、PowerShell を使用して 3 つの種類のインポートについてそれぞれ 1 つのインポートを行います。
 
@@ -116,6 +115,6 @@ Import-VM -Path 'C:\<vm export path>\2B91FEB3-F1E0-4FFF-B8BE-29CED892A95A.vmcx' 
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Oct16_HO4-->
 
 

@@ -1,17 +1,16 @@
 ---
 title: "コンテナー エコシステム"
 description: "コンテナー エコシステムの構築。"
-keywords: metadata, containers
-author: scooley
-manager: timlt
+keywords: "メタデータ、コンテナー"
+author: PatrickLang
 ms.date: 04/20/2016
 ms.topic: about-article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 29fbe13a-228a-4eaa-9d4d-90ae60da5965
 translationtype: Human Translation
-ms.sourcegitcommit: cfa3c14e932f8b86edf6667200ac028ea0a16b67
-ms.openlocfilehash: 1aad093c2c4e1c64200fcc1c10cbdee6c93b80c5
+ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
+ms.openlocfilehash: 02e6869b2f242df29aed13fcc8a69ed641958727
 
 ---
 
@@ -25,7 +24,7 @@ ms.openlocfilehash: 1aad093c2c4e1c64200fcc1c10cbdee6c93b80c5
 
 この一般的なテクノロジは、任意のホストに対して、同じ管理コマンドを提供することにより管理を合理化するだけでなく、シームレスな DevOps の貴重な機会も作成されます。
 
-テスト マシンを一連の実稼働コンピューターの場合は、任意の環境全体にわたる秒単位で同じ展開は Docker のイメージを作成することができます開発者のデスクトップから。 この話は、大規模なが作成され、Docker を保持する、パブリック コンテナー詰めアプリケーション レジストリ DockerHub を使用して、Docker コンテナーでパッケージ化するアプリケーションのエコシステムを拡大します。
+開発者のデスクトップからテスト マシン、実稼働コンピューター群に至るまで、環境全体にまったく同じように展開する Docker イメージを作成できます。 この話は、大規模なが作成され、Docker を保持する、パブリック コンテナー詰めアプリケーション レジストリ DockerHub を使用して、Docker コンテナーでパッケージ化するアプリケーションのエコシステムを拡大します。
 
 Docker では、開発のための優れた基盤を提供します。
 
@@ -48,6 +47,6 @@ Microsoft は、これらの次世代のアプリを構築すると、開発者�
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Oct16_HO4-->
 
 
