@@ -1,28 +1,11 @@
 # <a name='report-top'></a> Localization Bilingual Report
 
 ## Summary
- Total Files | 1
+ Total Files | 0
 
 ## File List
- Source File | Status | Details 
- ----------- | ------ | ------- 
- [virtualization\hyperv_on_windows\quick_start\walkthrough_create_vm.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ffdf89b0ae346197b9ae631ee5260e0565261c55/virtualization/hyperv_on_windows/quick_start/walkthrough_create_vm.md) | InSyncHandedBackSuccess | [Details](#2b644f56829d6f92822875e77ba53e5b68d2f1ef180)
 
 ## Item Details
-##### <a name='2b644f56829d6f92822875e77ba53e5b68d2f1ef180'></a> Source: [virtualization\hyperv_on_windows\quick_start\walkthrough_create_vm.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ffdf89b0ae346197b9ae631ee5260e0565261c55/virtualization/hyperv_on_windows/quick_start/walkthrough_create_vm.md)
-* Status: InSyncHandedBackSuccess
-* Target File: [virtualization\hyperv_on_windows\quick_start\walkthrough_create_vm.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/1c2477aff05195b99d91b333b6c43f5da89b5139/virtualization/hyperv_on_windows/quick_start/walkthrough_create_vm.md)
-* Handoff File: [walkthrough_create_vm.698a46fb78fa92b3f275f4115d4b77072fff0ed6.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/c4dfb14d678a36839a4e66cb9fa28d8eca8becac/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/walkthrough_create_vm.698a46fb78fa92b3f275f4115d4b77072fff0ed6.ja-jp.xlf)
-* Handoff Datetime: 2016-10-28 22:58:34
-* Handoff Reason: Include
-* Archive File: [walkthrough_create_vm.698a46fb78fa92b3f275f4115d4b77072fff0ed6.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/92a91d2a1bb036ec37867dba6b29c3cf533bcfe3/ol-archive/Microsoft/Virtualization-Documentation-Private.ja-jp/live/walkthrough_create_vm.698a46fb78fa92b3f275f4115d4b77072fff0ed6.ja-jp.xlf)
-* Archive Datetime: 2016-10-29 00:07:06
-* Handback File: [walkthrough_create_vm.698a46fb78fa92b3f275f4115d4b77072fff0ed6.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/3e0256b0e11c75214227ece64c9a24bf123d88ec/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/walkthrough_create_vm.698a46fb78fa92b3f275f4115d4b77072fff0ed6.ja-jp.xlf)
-* Handback Datetime: 2016-11-02 12:01:26
-* Bilingual File: [walkthrough_create_vm.698a46fb78fa92b3f275f4115d4b77072fff0ed6.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/3e0256b0e11c75214227ece64c9a24bf123d88ec/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/walkthrough_create_vm.698a46fb78fa92b3f275f4115d4b77072fff0ed6.ja-jp.xlf)
-* Bilingual Datetime: 2016-11-02 14:13:27
-* [Back to Top](#report-top)
-
 
 ## Error Details
 
