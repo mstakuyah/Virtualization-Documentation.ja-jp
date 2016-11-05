@@ -1,17 +1,16 @@
 ---
 title: "Hyper-V 統合サービス"
 description: "Hyper-V 統合サービスの参照"
-keywords: windows 10, hyper-v, integration services, integration components
+keywords: "windows 10, hyper-v, 統合サービス, 統合コンポーネント"
 author: scooley
-manager: timlt
 ms.date: 05/25/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 18930864-476a-40db-aa21-b03dfb4fda98
 translationtype: Human Translation
-ms.sourcegitcommit: 03c3ede85ff8b2fe4783581c717c1c97810b3bdd
-ms.openlocfilehash: a2fc8845bdc3e5f977d50b99ca9687b3dafd0cb6
+ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
+ms.openlocfilehash: 71ec8f80e721a0c66dc8709473a427792df1cf24
 
 ---
 
@@ -36,7 +35,7 @@ ms.openlocfilehash: a2fc8845bdc3e5f977d50b99ca9687b3dafd0cb6
 | [Hyper-V ハートビート サービス](#hyper-v-heartbeat-service) |  vmicheartbeat | hv_utils | 仮想マシンが正しく動作していることを報告します。 | 不定 |
 | [Hyper-V ゲスト シャットダウン サービス](#hyper-v-guest-shutdown-service) | vmicshutdown | hv_utils |  ホストが仮想マシンのシャットダウンをトリガーするのを許可します。 | **高** |
 | [Hyper-V 時刻の同期サービス](#hyper-v-time-synchronization-service) | vmictimesync | hv_utils | 仮想マシンのクロックをホスト コンピューターのクロックに同期します。 | **高** |
-| [Hyper-V データ交換サービス (KVP)](#hyper-v-data-exchange-service-kvp) | vmickvpexchange | hv_kvp_daemon | 仮想マシンとホストとの間で基本的なメタデータを交換する手段を提供します。 | 中 |
+| [Hyper-V データ交換サービス (KVP)](#hyper-v-data-exchange-service-kvp) | vmickvpexchange | hv_kvp_daemon | 仮想マシンとホストとの間で基本的なメタデータを交換する手段を提供します。 | 中間 |
 | [Hyper-V ボリューム シャドウ コピー リクエスター](#hyper-v-volume-shadow-copy-requestor) | vmicvss | hv_vss_daemon | 仮想マシンをシャットダウンすることなく仮想マシンのバックアップを作成することをボリューム シャドウ コピー サービスに許可します。 | 不定 |
 | [Hyper-V ゲスト サービス インターフェイス](#hyper-v-powershell-direct-service) | vmicguestinterface | hv_fcopy_daemon | Hyper-V ホストが仮想マシンとの間でファイルをコピーするのに必要なインターフェイスを提供します。 | 低 |
 | [Hyper-V PowerShell ダイレクト サービス](#hyper-v-powershell-direct-service) | vmicvmsession | 利用不可 | ネットワークに接続することなく PowerShell を使用して仮想マシンを管理する方法を提供します。 | 低 |  
@@ -157,6 +156,6 @@ PowerShell ダイレクトの詳細については、[こちら](../user_guide/v
 
 
 
-<!--HONumber=Jul16_HO2-->
+<!--HONumber=Oct16_HO4-->
 
 

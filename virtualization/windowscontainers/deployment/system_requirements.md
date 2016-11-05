@@ -2,16 +2,15 @@
 title: "Windows コンテナーの要件"
 description: "Windows コンテナーの要件"
 keywords: "メタデータ、コンテナー"
-author: neilpeterson
-manager: timlt
+author: enderb-ms
 ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
 translationtype: Human Translation
-ms.sourcegitcommit: d4c453e800d4057b3ad0be06c28e7f23b81443f0
-ms.openlocfilehash: 008eff4731a8835b0b3f664edc9955f85c12a629
+ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
+ms.openlocfilehash: af8d8a05fc953dcc93672a0f936caca5e37f0de3
 
 ---
 
@@ -89,6 +88,6 @@ PS C:\Users\Administrator> (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows N
 コンテナーとホストの間でカーネルを共有する Windows Server コンテナーとは異なり、各 Hyper-V コンテナーは専用の Windows カーネル インスタンスを利用します。  このため、コンテナー ホストのバージョンとコンテナー イメージのバージョンが一致しないことがあります。  現時点では、ビルド番号が Windows Server 2016 GA (10.0.14393.206) と等しいかそれより大きいビルドは、リビジョン番号に関わらず、サポートされる構成において、Windows Server Core または Nano Server のどちらの Windows Server 2016 GA イメージでも実行できます。  将来的には、ユーザーのフィードバックに基づいて、どのくらい離れたビルド番号までが許容されるのかについて、詳しいガイダンスを提供します。  Windows Update によって完全な機能、信頼性、セキュリティが確実に提供されるようにするには、すべてのシステムを最新バージョンに維持する必要があることを理解しておくことが重要です。  
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Oct16_HO4-->
 
 
