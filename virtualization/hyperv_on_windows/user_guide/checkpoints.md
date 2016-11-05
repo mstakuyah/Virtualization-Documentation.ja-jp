@@ -9,8 +9,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d9c398c4-ee72-45c6-9ce8-4f06569dae6c
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: ed4a2cb6fb3cd4006a5085e4ce8e058a3f201e41
+ms.sourcegitcommit: 8f08c85921b9d41f10f3b8cff5e4bafe945bd4af
+ms.openlocfilehash: 4e887dc8c284dd189dc59a71aa9d22d6c8a231ea
 
 ---
 
@@ -62,7 +62,7 @@ Set-VM -Name <vmname> -CheckpointType ProductionOnly
 
 ## チェックポイントの作成
 
-仮想マシン用に構成された種類のチェックポイントを作成します。 この種類を変更する方法の手順については、このドキュメントで既に説明した「[チェックポイントの種類の構成](checkpoints.md#changing-the-checkpoint-type-for-a-VM)」セクションをご覧ください。
+仮想マシン用に構成された種類のチェックポイントを作成します。 この種類を変更する方法の手順については、このドキュメントで既に説明した「[チェックポイントの種類の構成](checkpoints.md#changing-the-checkpoint-type)」セクションをご覧ください。
 
 **Hyper-V マネージャーの使用**
 
@@ -201,7 +201,7 @@ This folder will contain the .VMRS file with the runtime and saved state data an
 
 1. 仮想マシンにログインして、デスクトップにテキスト ファイルを作成します。
 2. メモ帳でファイルを開き、「これは標準チェックポイントです」というテキストを入力します。 **ファイルは保存せず、メモ帳も閉じないでください**。  
-3. [こちら](checkpoints.md#changing-the-checkpoint-type-using-hyper-V-manager)の手順に従ってチェックポイントを "標準" に変更します。
+3. [こちら](checkpoints.md#changing-the-checkpoint-type)の手順に従ってチェックポイントを "標準" に変更します。
 4. 新しいチェックポイントを作成します。
 
 <br />
@@ -249,6 +249,6 @@ This folder will contain the .VMRS file with the runtime and saved state data an
 
 
 
-<!--HONumber=Oct16_HO4-->
+<!--HONumber=Nov16_HO1-->
 
 

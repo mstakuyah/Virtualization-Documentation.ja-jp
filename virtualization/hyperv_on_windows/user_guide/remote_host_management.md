@@ -9,8 +9,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 2d34e98c-6134-479b-8000-3eb360b8b8a3
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: 7d7aee3d87237b93887ac7303c70cf6c9a02285d
+ms.sourcegitcommit: 8f08c85921b9d41f10f3b8cff5e4bafe945bd4af
+ms.openlocfilehash: c562e1a1370e9286680afa1b498d625195edebb2
 
 ---
 
@@ -18,7 +18,7 @@ ms.openlocfilehash: 7d7aee3d87237b93887ac7303c70cf6c9a02285d
 
 Hyper-V マネージャーは、ローカル Hyper-V ホストおよび少数のリモート ホストを診断および管理するためのインボックス ツールです。  この記事では、サポートされているすべての構成で、Hyper-V マネージャーを使用して Hyper-V ホストに接続するための構成手順について説明します。
 
-> Hyper-V マネージャーは、[Hyper-V が含まれているすべての Windows OS](../quick_start/walkthrough_compatibility.md#OperatingSystemRequirements) 上で、**[プログラムと機能]** にある **[Hyper-V 管理ツール]** として使用できます。  リモート ホストを管理するために、Hyper-V プラットフォームを有効にする必要はありません。
+> Hyper-V マネージャーは、[Hyper-V が含まれているすべての Windows OS](../quick_start/walkthrough_compatibility.md#operating-system-requirements) 上で、**[プログラムと機能]** にある **[Hyper-V 管理ツール]** として使用できます。  リモート ホストを管理するために、Hyper-V プラットフォームを有効にする必要はありません。
 
 Hyper-V マネージャーで Hyper-V ホストに接続するには、左側のウィンドウで **[Hyper-V マネージャー]** が選択されていることを確認してから、右側のウィンドウで **[サーバーへの接続]** を選択します。
 
@@ -121,6 +121,6 @@ IP アドレスを使用して接続するには、**[別のコンピュータ�
 
 
 
-<!--HONumber=Oct16_HO4-->
+<!--HONumber=Nov16_HO1-->
 
 
