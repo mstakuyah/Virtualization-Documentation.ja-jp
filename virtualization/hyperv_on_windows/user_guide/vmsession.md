@@ -1,17 +1,16 @@
 ---
 title: "PowerShell ダイレクトでの Windows Virtual Machines の管理"
 description: "PowerShell ダイレクトでの Windows Virtual Machines の管理"
-keywords: windows 10, hyper-v, powershell, integration services, integration components, automation, powershell direct
+keywords: "windows 10, hyper-v, powershell, 統合サービス, 統合コンポーネント, 自動化, powershell ダイレクト"
 author: scooley
-manager: timlt
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: fb228e06-e284-45c0-b6e6-e7b0217c3a49
 translationtype: Human Translation
-ms.sourcegitcommit: 87f8fb2ae8958c9c6177f6eda90678708054fce7
-ms.openlocfilehash: 75186d48346efbaaac264b00f0f92fe82fcfe424
+ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
+ms.openlocfilehash: 16624e181bec81d90c960df30e89f25eab23f7ea
 
 ---
 
@@ -124,7 +123,7 @@ PowerShell ダイレクトと Invoke-Command コマンドの組み合わせは�
 
 > **注:** PowerShell ダイレクトでは、Windows ビルド 14280 以降でのみ永続的なセッションをサポートしています。
 
-永続的な PowerShell セッションは、1 つまたは複数のリモート コンピューターを対象にした動作を調整するスクリプトを記述する際に非常に便利です。  いったん作成された永続的なセッションは、それを削除するまで、バック グラウンドに保持されます。  すなわち、資格情報を渡さなくても`Invoke-Command` または `Enter-PSSession` を使用して、同じセッションを何度でも繰り返し参照することができます。
+永続的な PowerShell セッションは、1 つまたは複数のリモート コンピューターを対象にした動作を調整するスクリプトを記述する際にとても便利です。  いったん作成された永続的なセッションは、それを削除するまで、バック グラウンドに保持されます。  すなわち、資格情報を渡さなくても`Invoke-Command` または `Enter-PSSession` を使用して、同じセッションを何度でも繰り返し参照することができます。
 
 セッションは同じトークンにより状態を保持します。  永続的なセッションは存続するので、セッションで作成された変数またはセッションに渡された変数はいずれも複数回の呼び出しにわたり保持されます。 永続的なセッションでの作業で使用できるさまざまなツールがあります。  たとえば、[New-PSSession](https://technet.microsoft.com/en-us/library/hh849717.aspx) および [Copy-Item](https://technet.microsoft.com/en-us/library/hh849793.aspx) を使用して、ホストから仮想マシンへ、仮想マシンからホストへデータを移動することができます。
 
@@ -195,7 +194,7 @@ $PSVersionTable.PSVersionTable
 
 
 ### エラー: リモート セッションが終了した可能性がある
-> **注:**  
+> **注: **  
 10240 ～ 12400 のホスト ビルドでの Enter-PSSession の場合、以下に示すエラーはすべて、"リモート セッションが終了した可能性がある" とレポートされます。
 
 **エラー メッセージ:**
@@ -281,6 +280,6 @@ PowerShell ダイレクトでは JEA (Just Enough Administration) をサポー�
 
 
 
-<!--HONumber=Jul16_HO1-->
+<!--HONumber=Oct16_HO4-->
 
 
