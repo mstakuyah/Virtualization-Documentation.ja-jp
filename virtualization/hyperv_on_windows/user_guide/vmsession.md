@@ -9,8 +9,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: fb228e06-e284-45c0-b6e6-e7b0217c3a49
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: 16624e181bec81d90c960df30e89f25eab23f7ea
+ms.sourcegitcommit: 8f08c85921b9d41f10f3b8cff5e4bafe945bd4af
+ms.openlocfilehash: 807043a744c4735158720371ec3afb22ebe7fc24
 
 ---
 
@@ -21,7 +21,7 @@ PowerShell ダイレクトを使用すると、ネットワークの構成やリ
 **PowerShell ダイレクトを実行する方法:**  
 * 対話型セッションとして -- Enter-PSSession を使用して対話型 PowerShell セッションを作成および終了するには、[ここをクリック](vmsession.md#create-and-exit-an-interactive-powershell-session)してください。
 * 単一のコマンドまたはスクリプトを実行する一時使用セッションとして -- Invoke-Command を使用してスクリプトまたはコマンド実行するには[ここをクリック](vmsession.md#run-a-script-or-command-with-invoke-command)してください。
-* 永続的なセッションとして (ビルド 14280 以降) -- New-PSSession を使用して永続的なセッションを作成するには[ここをクリック](vmsession.md#copy-files-with-New-PSSession-and-Copy-Item)してください。  
+* 永続的なセッションとして (ビルド 14280 以降) -- New-PSSession を使用して永続的なセッションを作成するには[ここをクリック](vmsession.md#copy-files-with-new-pssession-and-copy-item)してください。  
 続行するには、Copy-Item を使用してファイルを仮想マシンにコピーおよび仮想マシンからコピーし、接続を切断するには Remove-PSSession を使用します。
 
 ## 要件
@@ -280,6 +280,6 @@ PowerShell ダイレクトでは JEA (Just Enough Administration) をサポー�
 
 
 
-<!--HONumber=Oct16_HO4-->
+<!--HONumber=Nov16_HO1-->
 
 

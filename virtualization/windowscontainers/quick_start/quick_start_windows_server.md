@@ -9,8 +9,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: 80a2efcb9fff58d357dc1630a335665fc91147cb
+ms.sourcegitcommit: 13a33a6003cfa77d81a6e8e2afdf1da8d017ee30
+ms.openlocfilehash: a5537a4cb56127e51e0a550220995cd5f6b93722
 
 ---
 
@@ -81,7 +81,7 @@ sconfig
 
 この演習では、事前作成された .NET サンプル イメージを Docker Hub レジストリからダウンロードし、.NET Hello World アプリケーションを実行するシンプルなコンテナーを展開します。  
 
-`docker run` を使用し、.NET コンテナーを展開します。 この操作でコンテナー イメージもダウンロードされるので、処理に数分かかる可能性があります。
+`docker run` を使用し、.Net コンテナーを展開します。 この操作でコンテナー イメージもダウンロードされるので、処理に数分かかる可能性があります。
 
 ```none
 docker run microsoft/sample-dotnet
@@ -140,6 +140,6 @@ Docker Run コマンドの詳細については、Docker.com の「[Docker Run �
 
 
 
-<!--HONumber=Oct16_HO4-->
+<!--HONumber=Nov16_HO1-->
 
 
