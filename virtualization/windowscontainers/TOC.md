@@ -34,11 +34,13 @@
 
 # コミュニティとサポート
 ## [コンテナー フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)
+## [コミュニティのビデオとブログ](communitylinks.md)
 ## [トラブルシューティング](troubleshooting.md)
+
 
 # [コンテナー OS イメージの使用許諾契約書 (EULA)](Images_EULA.md)
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Nov16_HO1-->
 
 
