@@ -15,6 +15,7 @@
 ## [コンテナー ホスト - Windows Server](deployment/deployment.md)
 ## [コンテナー ホスト - Nano Server](deployment/deployment_nano.md)
 ## [ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
+## [Active Directory サービス コンポーネント](management/manage_serviceaccounts.md)
 
 # Windows 上の Docker の管理
 ## [Windows 上の Docker エンジン](docker/configure_docker_daemon.md)
