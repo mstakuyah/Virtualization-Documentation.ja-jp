@@ -9,8 +9,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: 6603289599e7ca51558d54f35ab809528f53bcd7
+ms.sourcegitcommit: 31515396358c124212b53540af8a0dcdad3580e4
+ms.openlocfilehash: 20dcc6d263488673bf0a025058c3dee8d30168a2
 
 ---
 
@@ -43,7 +43,7 @@ Dockerfile の詳細については、[docker.com の Dockerfile リファレン
 # Sample Dockerfile
 
 # Indicates that the windowsservercore image will be used as the base image.
-FROM windowsservercore
+FROM microsoft/windowsservercore
 
 # Metadata indicating an image maintainer.
 MAINTAINER jshelton@contoso.com
@@ -51,7 +51,7 @@ MAINTAINER jshelton@contoso.com
 # Uses dism.exe to install the IIS role.
 RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
 
-# Creates an html file and adds content to this file.
+# Creates an HTML file and adds content to this file.
 RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 
 # Sets a command or process that will run each time a container is run from the new image.
@@ -66,7 +66,7 @@ Dockerfile 命令は、Docker エンジンに対して、コンテナー イメ�
 
 ### FROM
 
-`FROM` 命令。新しいイメージ作成プロセス中に使用されるコンテナー イメージを設定します。 たとえば、命令 `FROM windowsservercore` を使用すると、結果のイメージは Windows Server Core ベース OS イメージから派生し、依存します。 指定したイメージが、Docker ビルド プロセスが実行されているシステムに存在しない場合、Docker エンジンは、パブリックまたはプライベートのイメージ レジストリからイメージのダウンロードを試行します。
+`FROM` 命令では、新しいイメージ作成プロセス中に使用されるコンテナー イメージを設定します。 たとえば、命令 `FROM windowsservercore` を使用すると、結果のイメージは Windows Server Core ベース OS イメージから派生し、依存します。 指定したイメージが、Docker ビルド プロセスが実行されているシステムに存在しない場合、Docker エンジンは、パブリックまたはプライベートのイメージ レジストリからイメージのダウンロードを試行します。
 
 **Format (形式)**
 
@@ -112,7 +112,7 @@ FROM windowsservercore
 RUN ["powershell", "New-Item", "c:/test"]
 ```
 
-結果のイメージを確認して、実行されたコマンドは `powershell new-item c:/test` です。
+結果のイメージを確認して、実行されたコマンドは `powershell New-Item c:/test` です。
 
 ```none
 docker history doc-exe-method
@@ -126,16 +126,16 @@ b3452b13e472        2 minutes ago       powershell New-Item c:/test   30.76 MB
 ```none
 FROM windowsservercore
 
-RUN powershell new-item c:\test
+RUN powershell New-Item c:\test
 ```
 
-これは、`cmd /S /C powershell new-item c:\test` の実行命令の結果です。 
+これは、`cmd /S /C powershell New-Item c:\test` の実行命令の結果です。 
 
 ```none
 docker history doc-shell-method
 
 IMAGE               CREATED             CREATED BY                              SIZE                COMMENT
-062a543374fc        19 seconds ago      cmd /S /C powershell new-item c:\test   30.76 MB
+062a543374fc        19 seconds ago      cmd /S /C powershell New-Item c:\test   30.76 MB
 ```
 
 **Windows に関する考慮事項**
@@ -155,10 +155,10 @@ RUN ["powershell", "New-Item", "c:\\test"]
 RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
 ```
 
-この例では、Visual Studio 再頒布可能パッケージをインストールします。 ここで、インストーラーを実行するには、`start-process` と `-wait` パラメーターを使用してください。 これにより、Dockerfile の次の手順に進む前に、インストールを確実に完了することができます。
+この例では、Visual Studio 再頒布可能パッケージをインストールします。 ここで、インストーラーを実行するには、`Start-Process` と `-Wait` パラメーターを使用してください。 これにより、Dockerfile の次の手順に進む前に、インストールを確実に完了することができます。
 
 ```none
-RUN start-Process c:\vcredist_x86.exe -ArgumentList '/quiet' -Wait
+RUN Start-Process c:\vcredist_x86.exe -ArgumentList '/quiet' -Wait
 ``` 
 
 RUN 命令の詳細については、[Docker.com の RUN リファレンス]( https://docs.docker.com/engine/reference/builder/#run)を参照してください。 
@@ -294,7 +294,7 @@ WORKDIR c:\\Apache24\\bin
 
 ### CMD
 
-`CMD` 命令には、コンテナー イメージのインスタンスを展開するときに実行する既定のコマンドを設定します。 たとえば、コンテナーが NGINX Web サーバーをホストする場合、`CMD` には、`nginx.exe` など、Web サーバーを起動する命令を含めることができます。 Dockerfile に複数の `CMD` 命令を指定すると、最後の命令のみが評価されます。
+`CMD` 命令では、コンテナー イメージのインスタンスを展開するときに実行する既定のコマンドを設定します。 たとえば、コンテナーが NGINX Web サーバーをホストする場合、`CMD` には、`nginx.exe` など、Web サーバーを起動する命令を含めることができます。 Dockerfile に複数の `CMD` 命令を指定すると、最後の命令のみが評価されます。
 
 **Format (形式)**
 
@@ -481,6 +481,6 @@ windowsservercore   latest              6801d964fda5        4 months ago        
 
 
 
-<!--HONumber=Oct16_HO4-->
+<!--HONumber=Nov16_HO1-->
 
 
