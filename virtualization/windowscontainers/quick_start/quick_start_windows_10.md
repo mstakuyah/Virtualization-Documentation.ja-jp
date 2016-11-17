@@ -9,8 +9,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: 34ab361ea415ab2d8d5133927beafc7911f1aaf1
+ms.sourcegitcommit: b7cd9b43f001fe8625b0c4ea8cc507c8f11de7ef
+ms.openlocfilehash: 1b57ad289368fb7d5f628e605cfc320748854c30
 
 ---
 
@@ -31,7 +31,9 @@ ms.openlocfilehash: 34ab361ea415ab2d8d5133927beafc7911f1aaf1
 
 ## 1.コンテナー機能のインストール
 
-コンテナー機能は、Windows コンテナーを使用する前に有効にする必要があります。 そのためには、管理者特権の PowerShell セッションで次のコマンドを実行します。
+コンテナー機能は、Windows コンテナーを使用する前に有効にする必要があります。 そのためには、PowerShell セッションで、**管理者特権**で次のコマンドを実行します。
+
+`Enable-WindowsOptionalFeature` は存在しないというエラー メッセージが表示される場合は、PowerShell を管理者として実行していることを再度確認します。
 
 ```none
 Enable-WindowsOptionalFeature -Online -FeatureName containers -All
@@ -167,6 +169,6 @@ docker run --rm helloworld powershell c:\helloworld.ps1
 
 
 
-<!--HONumber=Oct16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 
