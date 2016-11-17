@@ -9,8 +9,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: ccd1e0fc96b96349a04e6f3f33b97e5dc28582cd
+ms.sourcegitcommit: 9b99982abfbbda12758bb1c922ed1bd431ecca20
+ms.openlocfilehash: b90120bb085f0f44fde2eadd13cfa1b93011c5a7
 
 ---
 
@@ -105,7 +105,9 @@ docker pull microsoft/windowsservercore
 
 ## Nano Server の Docker の管理
 
-最適な結果を得るために、またベスト プラクティスとして、リモート システムから Nano Server の Docker を管理します。 そのためには、以下の作業を行う必要があります。
+最適な結果を得るために、またベスト プラクティスとして、リモート システムから Nano Server の Docker を管理します。 これは、PowerShell リモート処理では現在、対話型コンテナー シェルの TTY ターミナルの出力を初期クライアントのプロンプトにリダイレクトできないためです。 `docker run -dt` を使用すると、コンテナーをデタッチして起動し、バックグラウンドで実行することはできますが、`docker run -it` を使用した場合、対話型コンテナーは正常に動作しません。 同様の理由で、PowerShell ISE の対話型出力でも問題が発生します。
+
+リモート Docker サーバーを管理するには、次の項目を完了する必要があります。
 
 ### コンテナー ホストを用意する
 
@@ -198,6 +200,6 @@ Restart-Computer
 
 
 
-<!--HONumber=Oct16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 
