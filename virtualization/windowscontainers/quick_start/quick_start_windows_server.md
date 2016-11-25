@@ -9,16 +9,16 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: 295199bbb8c93f26562ef918df30082e1dd78f6d
-ms.openlocfilehash: bb61ccfb9756b341be2e989cb7c5bbe571072aab
+ms.sourcegitcommit: f0584aecd1148300e4075dd6e2e84e0ff92d50d5
+ms.openlocfilehash: aa1af44908d623b43ea0095552d7d95b5a5236ac
 
 ---
 
 # Windows Server の Windows コンテナー
 
-この演習では、Windows Server の Windows コンテナー機能の基本的な展開と使用について段階的に確認します。 完了後、コンテナー ロールがインストールされ、シンプルな Windows Server コンテナーが展開されます。 このクイック スタートを始める前に、コンテナーの基本的な概念と用語を理解しておいてください。 情報は[クイック スタートの概要](./quick_start.md)にあります。
+この演習では、Windows Server 2016 の Windows コンテナー機能の基本的な展開と使用について段階的に確認します。 この演習では、コンテナーの役割をインストールし、単純な Windows Server コンテナーを展開します。 このクイック スタートを始める前に、コンテナーの基本的な概念と用語を理解しておいてください。 この情報は[クイック スタートの概要](./quick_start.md)にあります。
 
-このクイック スタートは Windows Server 2016 の Windows Server コンテナーのみに適用されます。 このページの左側の目次に追加のクイック スタート文書があります。
+このクイック スタートは Windows Server 2016 の Windows Server コンテナーのみに適用されます。 このページの左側の目次に、Windows 10 のコンテナーを含む追加のクイック スタート文書があります。
 
 **前提条件:**
 
@@ -34,7 +34,7 @@ Azure に展開する場合は、こちらの[テンプレート](https://github
 
 ## 1.Docker のインストール
 
-Docker をインストールするには、[OneGet プロバイダー PowerShell モジュール](https://github.com/oneget/oneget)を使用します。 プロバイダーは、コンピューターでコンテナー機能を有効にして、Docker をインストールします。これには、再起動が必要です。 Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。
+Docker をインストールするには、[OneGet プロバイダー PowerShell モジュール](https://github.com/oneget/oneget)を使用します。 プロバイダーは、コンピューターでコンテナーの機能を有効にします。 また、再起動が必要になる Docker をインストールします。 Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。
 
 管理者特権の PowerShell セッションを開き、次のコマンドを実行します。
 
@@ -57,13 +57,13 @@ Restart-Computer -Force
 
 ## 2.Windows の更新プログラムをインストールする
 
-Windows Server システムを最新の状態に保つために、Windows の更新プログラムをインストールします。次のコマンドを実行してください。
+次を実行して、Windows Server システムが最新の状態であることを確認します。
 
 ```none
 sconfig
 ```
 
-テキスト ベースの構成メニューが表示されます。オプション 6 "更新プログラムのダウンロードとインストール" を選択します。
+これによりテキスト ベースの構成メニューが表示されます。オプション 6 "更新プログラムのダウンロードとインストール" を選択します。
 
 ```none
 ===============================================================================
