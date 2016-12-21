@@ -1,11 +1,26 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 0
+ Total Files | 1
 
 ## File List
+ Source File | Status | Details 
+ ----------- | ------ | ------- 
+ [virtualization\community\contribute-to-docs.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/54eff4bb74ac9f4dc870d6046654bf918eac9bb5/virtualization/community/contribute-to-docs.md) | HandedOffSuccess | [Details](#d4fd2dbaf362ac3ad52667743177a203174b397d86)
 
 ## Item Details
+##### <a name='d4fd2dbaf362ac3ad52667743177a203174b397d86'></a> Source: [virtualization\community\contribute-to-docs.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/54eff4bb74ac9f4dc870d6046654bf918eac9bb5/virtualization/community/contribute-to-docs.md)
+* Status: HandedOffSuccess
+* Target File: 
+* Handoff File: [contribute-to-docs.642bd41476b28823a34d3acbe43d8704678f72cd.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/98d96db4fe0fc9231098500c464ba2d5fa038d60/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/contribute-to-docs.642bd41476b28823a34d3acbe43d8704678f72cd.ja-jp.xlf)
+* Handoff Datetime: 2016-12-21 20:57:44
+* Handoff Reason: Include
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* [Back to Top](#report-top)
+
 
 ## Error Details
 
