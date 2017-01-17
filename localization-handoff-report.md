@@ -1,11 +1,28 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 0
+ Total Files | 1
 
 ## File List
+ Source File | Status | Details 
+ ----------- | ------ | ------- 
+ [virtualization\hyper-v-on-windows\reference\integration-services.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/06782d73418afaa15d036c5cff09b3167cd3f1b6/virtualization/hyper-v-on-windows/reference/integration-services.md) | HandedOffSuccess | [Details](#647c47998334600dc4f143d2471c0104e5d4e9a9196)
 
 ## Item Details
+##### <a name='647c47998334600dc4f143d2471c0104e5d4e9a9196'></a> Source: [virtualization\hyper-v-on-windows\reference\integration-services.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/06782d73418afaa15d036c5cff09b3167cd3f1b6/virtualization/hyper-v-on-windows/reference/integration-services.md)
+* Status: HandedOffSuccess
+* Target File: 
+* Handoff File: [integration-services.813ccf046e3136730daeb29ece0fa5a3c4b801bb.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/9961130db6bafecfd0b132904e9a56998b66e684/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/integration-services.813ccf046e3136730daeb29ece0fa5a3c4b801bb.ja-jp.xlf)
+* Handoff Datetime: 2017-01-17 19:40:32
+* Handoff Reason: Include
+* Handoff Name: 
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Handback Name: 
+* [Back to Top](#report-top)
+
 
 ## Error Details
 
