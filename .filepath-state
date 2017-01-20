@@ -358,6 +358,9 @@
   "622c8f638a815e19a54aa75b6b5ea0688d966ae3": [
     "virtualization\\windowscontainers\\manage-containers\\container-base-images.md"
   ],
+  "d01d19c0bc7b783a533ce1e521e207221426fc89": [
+    "virtualization\\windowscontainers\\manage-containers\\container-networking.md"
+  ],
   "4be0143ebe3cd8503fe6ca723eaf073da3f4c6de": [
     "virtualization\\windowscontainers\\manage-containers\\container-networking.md"
   ],
