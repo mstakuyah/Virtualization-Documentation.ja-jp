@@ -2009,6 +2009,16 @@
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\d01d19c0bc7b783a533ce1e521e207221426fc89.f7581264e87f7623f387f0eba94f4d37171dbc7d.xml",
       "LocXliff": null,
       "LocXliffCommit": null
+    },
+    "virtualization\\windowscontainers\\manage-containers\\container-networking.md.35b6ea8f901136506b6a7cb4863ece5aa9b67992.HT": {
+      "SourceFilename": "virtualization\\windowscontainers\\manage-containers\\container-networking.md",
+      "XliffHash": "35b6ea8f901136506b6a7cb4863ece5aa9b67992",
+      "TranslationType": 1,
+      "IsArchived": false,
+      "ArchivedDateTime": "0001-01-01T00:00:00",
+      "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\aff515917e195008899382c491ab0af2ebdb3c13.bd4e101bb7ba5120c26286a331cb0cd0c094d86a.xml",
+      "LocXliff": null,
+      "LocXliffCommit": null
     }
   }
 }

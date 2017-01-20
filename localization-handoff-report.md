@@ -6,14 +6,14 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\manage-containers\container-networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/cec64a2b29682bf48f6ac6fe12c20986b9e4ee3f/virtualization/windowscontainers/manage-containers/container-networking.md) | HandedOffSuccess | [Details](#d01d19c0bc7b783a533ce1e521e207221426fc89285)
+ [virtualization\windowscontainers\manage-containers\container-networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/1cb6711fe9f0e1d0adf73ba3f9b5ffc4c30ab0a9/virtualization/windowscontainers/manage-containers/container-networking.md) | HandedOffSuccess | [Details](#aff515917e195008899382c491ab0af2ebdb3c13285)
 
 ## Item Details
-##### <a name='d01d19c0bc7b783a533ce1e521e207221426fc89285'></a> Source: [virtualization\windowscontainers\manage-containers\container-networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/cec64a2b29682bf48f6ac6fe12c20986b9e4ee3f/virtualization/windowscontainers/manage-containers/container-networking.md)
+##### <a name='aff515917e195008899382c491ab0af2ebdb3c13285'></a> Source: [virtualization\windowscontainers\manage-containers\container-networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/1cb6711fe9f0e1d0adf73ba3f9b5ffc4c30ab0a9/virtualization/windowscontainers/manage-containers/container-networking.md)
 * Status: HandedOffSuccess
 * Target File: 
-* Handoff File: [container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/937fa9e3862a81bf22e025ebaaafdf78ecc282d6/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.ja-jp.xlf)
-* Handoff Datetime: 2017-01-20 21:33:37
+* Handoff File: [container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/e2cb66c1a83924f3e893924d89435d6cc4e01bdd/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.ja-jp.xlf)
+* Handoff Datetime: 2017-01-20 23:33:47
 * Handoff Reason: Include
 * Handoff Name: 
 * Archive File: 
