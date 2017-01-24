@@ -32375,9 +32375,9 @@
       "ArchiveFileCommit": null,
       "ArchiveFileDateTime": "0001-01-01T00:00:00",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf",
+      "BilingualFileCommit": "fed52a9047d982027148173ebc1b9b8b8e3d1fef",
+      "BilingualDateTime": "2017-01-24T14:19:27.2448265Z",
       "BilingualException": null
     },
     "511ab57969bfce02048c2a0cf7986524910457fc": {

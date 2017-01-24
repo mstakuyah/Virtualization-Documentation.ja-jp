@@ -4807,6 +4807,8 @@
 * Handback File: [hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/fed52a9047d982027148173ebc1b9b8b8e3d1fef/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf)
 * Handback Datetime: 2017-01-24 14:17:34
 * Handback Name: 
+* Bilingual File: [hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/fed52a9047d982027148173ebc1b9b8b8e3d1fef/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf)
+* Bilingual Datetime: 2017-01-24 14:19:27
 * [Back to Top](#report-top)
 
 ##### <a name='00a43f8d4d27327c61e318f3a915047106ad2aca289'></a> Source: [virtualization\windowscontainers\manage-containers\manage-serviceaccounts.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/54eff4bb74ac9f4dc870d6046654bf918eac9bb5/virtualization/windowscontainers/manage-containers/manage-serviceaccounts.md)
