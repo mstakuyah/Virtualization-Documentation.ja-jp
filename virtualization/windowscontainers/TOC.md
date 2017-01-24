@@ -1,5 +1,4 @@
-# Windows コンテナーについて
-## [Windows コンテナーの概要](about/about_overview.md)
+# [Windows コンテナーについて](about/index.md)
 
 # Windows Server のクイック スタート
 ## [手順 1 - 概念](quick_start/quick_start.md)
@@ -42,6 +41,6 @@
 # [コンテナー OS イメージの使用許諾契約書 (EULA)](Images_EULA.md)
 
 
-<!--HONumber=Nov16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

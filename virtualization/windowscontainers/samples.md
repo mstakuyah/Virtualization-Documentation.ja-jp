@@ -1,3 +1,19 @@
+---
+title: "Windows コンテナーのサンプル"
+description: "Windows コンテナーを使用した一般的なプロジェクトとコードのサンプルへのリンクを確認してください。"
+keywords: "docker, コンテナー, windows, サンプル"
+author: enderb-ms
+ms.date: 12/19/2016
+ms.topic: article
+ms.prod: windows-containers
+ms.service: windows-containers
+ms.assetid: 5c6f6350-f8d6-4426-b53d-9fb09c2bf267
+translationtype: Human Translation
+ms.sourcegitcommit: b2950dca4b29e97eb951379645c118468a1fb403
+ms.openlocfilehash: eac2026cff552315a4cb256b595f1bd3317ee11c
+
+---
+
 # Windows コンテナーのサンプル
 
 これは、Windows チームおよびコミュニティのメンバーによって送信されたサンプルと例のコレクションです。  これらのサンプルは、"現状のまま"、保証なしで提供されています。  他のサンプルのご提供や、現在のセットの改善については、ご自由にお寄せください。
@@ -64,6 +80,7 @@
 ## その他
 
 
-<!--HONumber=Oct16_HO1-->
+
+<!--HONumber=Jan17_HO3-->
 
 

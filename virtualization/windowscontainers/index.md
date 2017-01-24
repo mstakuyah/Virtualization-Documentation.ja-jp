@@ -9,8 +9,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 74c9d604-0915-4d89-bc69-0263b76bc66b
 translationtype: Human Translation
-ms.sourcegitcommit: 1787637fdd2c3bf8ef453a7425dc965e65e5ce12
-ms.openlocfilehash: a1b876d01b8076ee9feb275bd09247775bfcef69
+ms.sourcegitcommit: 54eff4bb74ac9f4dc870d6046654bf918eac9bb5
+ms.openlocfilehash: 9b630e372b575ef1721c0d0926ec2caec3e5ec34
 
 ---
 
@@ -24,14 +24,14 @@ Windows コンテナーは、1 つのシステムで複数の独立したアプ�
 <td>**クイック スタート**<br /><br />
 Windows Server のクイック スタート<br /><br />
 <ul>
-<li>[手順 1 - 概念と用語](quick_start/quick_start.md)<br /><br /></li>
-<li>[手順 2 - Windows Server と最初のコンテナーを構成する](quick_start/quick_start_windows_server.md)<br /><br /></li>
-<li>[手順 3 - コンテナー イメージを作成してプッシュする](quick_start/quick_start_images.md)<br /><br /></li>
+<li>[手順 1 - 概念と用語](quick-start/index.md)<br /><br /></li>
+<li>[手順 2 - Windows Server と最初のコンテナーを構成する](quick-start/quick-start-windows-server.md)<br /><br /></li>
+<li>[手順 3 - コンテナー イメージを作成してプッシュする](quick-start/quick-start-images.md)<br /><br /></li>
 </ul>
 Windows 10 のクイック スタート<br /><br />
 <ul>
-<li>[手順 1 - 概念と用語](quick_start/quick_start.md)<br /><br /></li>
-<li>[手順 2 - Windows 10 と最初のコンテナーを構成する](quick_start/quick_start_windows_10.md)<br /><br /></li>
+<li>[手順 1 - 概念と用語](quick-start/index.md)<br /><br /></li>
+<li>[手順 2 - Windows 10 と最初のコンテナーを構成する](quick-start/quick-start-windows-10.md)<br /><br /></li>
 </ul>
 </td>
 </tr>
@@ -40,9 +40,9 @@ Windows 10 のクイック スタート<br /><br />
 <td>**展開**<br /><br />
 Windows Server 2016 と Nano Server で Windows コンテナーを展開する方法について確認できます。<br /><br />
 <ul>
-<li>[システム要件](deployment/system_requirements.md)<br /><br /></li>
-<li>[コンテナー ホストの展開 - Windows Server](deployment/deployment.md)<br /><br /></li>
-<li>[コンテナー ホストの展開 - Nano Server](deployment/deployment_nano.md)<br /><br /></li>
+<li>[システム要件](deploy-containers/system-requirements.md)<br /><br /></li>
+<li>[コンテナー ホストの展開 - Windows Server](deploy-containers/deploy-containers-on-server.md)<br /><br /></li>
+<li>[コンテナー ホストの展開 - Nano Server](deploy-containers/deploy-containers-on-nano.md)<br /><br /></li>
 <li>[ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)<br /><br /></li>
 </ul>
 </td>
@@ -53,11 +53,10 @@ Windows Server 2016 と Nano Server で Windows コンテナーを展開する�
 <td>**Windows 上の Docker**<br /><br />
 Windows 上の Docker の管理について説明しています。<br /><br />
 <ul>
-<li>[Windows 上の Docker エンジン](docker/configure_docker_daemon.md)<br /><br /></li>
-<li>[Windows 上の Dockerfile](docker/manage_windows_dockerfile.md)<br /><br /></li>
-<li>[コンテナー データの管理](management/manage_data.md)<br /><br /></li>
-<li>[Dockerfile の最適化](docker/optimize_windows_dockerfile.md)<br /><br /></li>
-<li>[コンテナーのネットワーク](management/container_networking.md)<br /><br /></li>
+<li>[Windows 上の Docker エンジン](manage-docker/configure-docker-daemon.md)<br /><br /></li>
+<li>[Windows 上の Dockerfile](manage-docker/manage-windows-dockerfile.md)<br /><br /></li>
+<li>[Dockerfile の最適化](manage-docker/optimize-windows-dockerfile.md)<br /><br /></li>
+<li>[コンテナーのネットワーク](manage-containers/container-networking.md)<br /><br /></li>
 </ul>
 </td>
 </tr>
@@ -88,6 +87,6 @@ Windows コンテナー チームのデモとインタビューに関心があ�
 
 
 
-<!--HONumber=Nov16_HO1-->
+<!--HONumber=Jan17_HO3-->
 
 

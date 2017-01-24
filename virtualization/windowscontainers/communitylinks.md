@@ -1,3 +1,19 @@
+---
+title: "コミュニティのビデオとブログ"
+description: "Windows コンテナーのコミュニティによって提供された有用なビデオとブログへのリンク"
+keywords: "docker, コンテナー, windows, サンプル"
+author: taylorb-microsoft
+ms.date: 12/19/2016
+ms.topic: article
+ms.prod: windows-containers
+ms.service: windows-containers
+ms.assetid: cfbb2542-fead-48e7-8318-4da92a7b5b6f
+translationtype: Human Translation
+ms.sourcegitcommit: b721971f1ba0ab5369dc8b0917f57dfe187a618c
+ms.openlocfilehash: 81f84901bdbd9764db8d73b8e01527f49beeb774
+
+---
+
 # コミュニティのビデオとブログ
 このページには、メンバーまたはコンテナーのコミュニティが作成したビデオとブログへのリンクが記載されています。  すばらしいリソースをご存じの場合や、ご自分でリソースを作成した場合は、このリストに追加するための PR を送信してください。
 
@@ -22,13 +38,15 @@
 
 [Image2Docker を使用して Windows ワークロードをコンテナー化する](https://blog.docker.com/2016/10/containerize-windows-workloads-image2docker/) - Mano Marks
 
-[Windows で Docker Compose とサービス検索を使用してマルチサービス コンテナー アプリケーションをスケールアウトする](https://blogs.technet.microsoft.com/virtualization/2016/10/18/use-docker-compose-and-service-discovery-on-windows-to-scale-out-your-multi-service-container-application/) - Kallie Bracken および Jason Messer
+[Use Docker Compose and Service Discovery on Windows to scale-out your multi-service container application](https://blogs.technet.microsoft.com/virtualization/2016/10/18/use-docker-compose-and-service-discovery-on-windows-to-scale-out-your-multi-service-container-application/) (Windows で Docker Compose とサービス検索を使用してマルチサービス コンテナー アプリケーションをスケールアウトする) - Kallie Bracken および Jason Messer
 
+[Running Neo4j in Windows Containers](http://glennsarti.github.io/blog/neo4j-nano-containers) (Windows コンテナーでの Neo4j の実行) - Glenn Sarti
 
 ## 構成と管理
-[TLS を使用して Windows 2016 Docker エンジンを保護する方法](https://stefanscherer.github.io/protecting-a-windows-2016-docker-engine-with-tls/) - Stefan Scherer
+[How to protect a Windows 2016 Docker engine with TLS](https://stefanscherer.github.io/protecting-a-windows-2016-docker-engine-with-tls/) (TLS を使用して Windows 2016 Docker エンジンを保護する方法) - Stefan Scherer
 
 
-<!--HONumber=Nov16_HO1-->
+
+<!--HONumber=Jan17_HO3-->
 
 
