@@ -1808,7 +1808,7 @@
       "ArchivedDateTime": "0001-01-01T00:00:00",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\3b043f0c8c50c0b92e7e3453bbaf9127bb5d41c7.520c1ac3aa3d5349af22d3b7f4cfe655952e86c9.xml",
       "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.ja-jp\\live\\hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf",
-      "LocXliffCommit": "8063c3e1030aaad7d80115fac104c95cc716dbfd"
+      "LocXliffCommit": "fed52a9047d982027148173ebc1b9b8b8e3d1fef"
     },
     "virtualization\\windowscontainers\\quick-start\\quick-start-images.md.06cd1ca1b264f7a351ebed54c98cbf7944c1df47.HT": {
       "SourceFilename": "virtualization\\windowscontainers\\quick-start\\quick-start-images.md",

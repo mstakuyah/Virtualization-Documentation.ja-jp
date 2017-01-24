@@ -5,12 +5,12 @@
  -------- | ----- 
  Total Files | 534
 [ Handoff Failed Files ](#handoff-failed-list)| 0
-[ Handoff Success Files ](#handoff-success-list)| 3
+[ Handoff Success Files ](#handoff-success-list)| 1
 [ Archive Failed Files ](#archive-failed-list)| 0
 [ Archive Success Files ](#archive-success-list)| 0
-[ Handback Failed Files ](#handback-failed-list)| 0
+[ Handback Failed Files ](#handback-failed-list)| 1
 [ Out Of Sync Handback Files ](#outofsync-handback-success-list)| 0
-[ In Sync Handback Files ](#insync-handback-success-list)| 159
+[ In Sync Handback Files ](#insync-handback-success-list)| 160
 [ Ignored Files ](#ignored-list)| 372
 
 ## <a name='handoff-failed-list'></a> Handoff Failed File List
@@ -19,14 +19,15 @@
  Source File | Status | Details 
  ----------- | ------ | ------- 
  [virtualization\windowscontainers\manage-containers\container-networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/1cb6711fe9f0e1d0adf73ba3f9b5ffc4c30ab0a9/virtualization/windowscontainers/manage-containers/container-networking.md) | HandedOffSuccess | [Details](#aff515917e195008899382c491ab0af2ebdb3c13287)
- [virtualization\windowscontainers\manage-containers\hyperv-container.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/54eff4bb74ac9f4dc870d6046654bf918eac9bb5/virtualization/windowscontainers/manage-containers/hyperv-container.md) | HandedOffSuccess | [Details](#3b043f0c8c50c0b92e7e3453bbaf9127bb5d41c7288)
- [virtualization\windowscontainers\management\docker-powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/54eff4bb74ac9f4dc870d6046654bf918eac9bb5/virtualization/windowscontainers/management/docker-powershell.md) | HandedOffSuccess | [Details](#1b4b36def403bbaf75c9828bf36d72e83f6114b5302)
 
 ## <a name='archive-failed-list'></a> Archive Failed File List
 
 ## <a name='archive-success-list'></a> Archive Success File List
 
 ## <a name='handback-failed-list'></a> Handback Failed File List
+ Source File | Status | Details 
+ ----------- | ------ | ------- 
+ [virtualization\windowscontainers\management\docker-powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/54eff4bb74ac9f4dc870d6046654bf918eac9bb5/virtualization/windowscontainers/management/docker-powershell.md) | HandedBackFailed | [Details](#1b4b36def403bbaf75c9828bf36d72e83f6114b5302)
 
 ## <a name='outofsync-handback-success-list'></a> Out Of Sync Handback Success File List
 
@@ -151,6 +152,7 @@
  [virtualization\windowscontainers\images-eula.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/54eff4bb74ac9f4dc870d6046654bf918eac9bb5/virtualization/windowscontainers/images-eula.md) | InSyncHandedBackSuccess | [Details](#3f83e598cf5328c31851fdd97d1bb1d03f56c24c283)
  [virtualization\windowscontainers\index.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/54eff4bb74ac9f4dc870d6046654bf918eac9bb5/virtualization/windowscontainers/index.md) | InSyncHandedBackSuccess | [Details](#9b630e372b575ef1721c0d0926ec2caec3e5ec34285)
  [virtualization\windowscontainers\manage-containers\container-base-images.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/fe1e5d1f35e088581d44c43108c843347111eaef/virtualization/windowscontainers/manage-containers/container-base-images.md) | InSyncHandedBackSuccess | [Details](#622c8f638a815e19a54aa75b6b5ea0688d966ae3286)
+ [virtualization\windowscontainers\manage-containers\hyperv-container.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/54eff4bb74ac9f4dc870d6046654bf918eac9bb5/virtualization/windowscontainers/manage-containers/hyperv-container.md) | InSyncHandedBackSuccess | [Details](#3b043f0c8c50c0b92e7e3453bbaf9127bb5d41c7288)
  [virtualization\windowscontainers\manage-containers\manage-serviceaccounts.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/54eff4bb74ac9f4dc870d6046654bf918eac9bb5/virtualization/windowscontainers/manage-containers/manage-serviceaccounts.md) | InSyncHandedBackSuccess | [Details](#00a43f8d4d27327c61e318f3a915047106ad2aca289)
  [virtualization\windowscontainers\manage-containers\media\nat1.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4d265fdd6611074afd9a244c67babf6d02abb3a1/virtualization/windowscontainers/manage-containers/media/nat1.png) | InSyncHandedBackSuccess | [Details](#4d662bf6e123797b4670dfdf6a6aee32e4e95e54292)
  [virtualization\windowscontainers\manage-containers\media\PortMapping.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4d265fdd6611074afd9a244c67babf6d02abb3a1/virtualization/windowscontainers/manage-containers/media/PortMapping.png) | InSyncHandedBackSuccess | [Details](#1d21dac1815f54f70a991c693ab882575f601e8d294)
@@ -4794,16 +4796,16 @@
 * [Back to Top](#report-top)
 
 ##### <a name='3b043f0c8c50c0b92e7e3453bbaf9127bb5d41c7288'></a> Source: [virtualization\windowscontainers\manage-containers\hyperv-container.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/54eff4bb74ac9f4dc870d6046654bf918eac9bb5/virtualization/windowscontainers/manage-containers/hyperv-container.md)
-* Status: HandedOffSuccess
-* Target File: 
+* Status: InSyncHandedBackSuccess
+* Target File: [virtualization\windowscontainers\management\hyperv_container.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/5f938b107b869f753dc9550ab2183fd967ef1cdb/virtualization/windowscontainers/management/hyperv_container.md)
 * Handoff File: [hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/82c43a07e0ec2d3d0ce509395666e0d1298b6ee7/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf)
 * Handoff Datetime: 2017-01-18 22:43:29
 * Handoff Reason: Include
 * Handoff Name: 
 * Archive File: 
 * Archive Datetime: 0001-01-01 00:00:00
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
+* Handback File: [hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/fed52a9047d982027148173ebc1b9b8b8e3d1fef/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf)
+* Handback Datetime: 2017-01-24 14:17:34
 * Handback Name: 
 * [Back to Top](#report-top)
 
@@ -5006,7 +5008,7 @@
 * [Back to Top](#report-top)
 
 ##### <a name='1b4b36def403bbaf75c9828bf36d72e83f6114b5302'></a> Source: [virtualization\windowscontainers\management\docker-powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/54eff4bb74ac9f4dc870d6046654bf918eac9bb5/virtualization/windowscontainers/management/docker-powershell.md)
-* Status: HandedOffSuccess
+* Status: HandedBackFailed
 * Target File: 
 * Handoff File: [docker-powershell.b8c99396eda5392c8607d68151efd8b4c3a9cbba.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/82c43a07e0ec2d3d0ce509395666e0d1298b6ee7/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/docker-powershell.b8c99396eda5392c8607d68151efd8b4c3a9cbba.ja-jp.xlf)
 * Handoff Datetime: 2017-01-18 22:43:29
@@ -5015,11 +5017,9 @@
 * Archive File: 
 * Archive Datetime: 0001-01-01 00:00:00
 * Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
+* Handback Datetime: 2017-01-24 14:17:34
 * Handback Name: 
-* Current Target File: [virtualization\windowscontainers\management\docker-powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/1e3bd54d4b6fd9d049c406af9f4cd6a45f42dda7/virtualization/windowscontainers/management/docker-powershell.md)
-* Current Handback File: [docker-powershell.d3ce200fffd2fd0087c054e83d7bed5afd76636c.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/8063c3e1030aaad7d80115fac104c95cc716dbfd/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/docker-powershell.d3ce200fffd2fd0087c054e83d7bed5afd76636c.ja-jp.xlf)
-* Current Handback Datetime: 2017-01-24 13:18:29
+* Handback Error: [handback_file_rejected](#1b4b36def403bbaf75c9828bf36d72e83f6114b5302handback_file_rejected)
 * Bilingual File: [docker-powershell.d3ce200fffd2fd0087c054e83d7bed5afd76636c.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/8063c3e1030aaad7d80115fac104c95cc716dbfd/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/docker-powershell.d3ce200fffd2fd0087c054e83d7bed5afd76636c.ja-jp.xlf)
 * Bilingual Datetime: 2017-01-24 13:21:26
 * [Back to Top](#report-top)
@@ -5036,6 +5036,9 @@
 * Handback File: [hyperv_container.081f9802174235940087cf2891a3f48eaec73707.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/8063c3e1030aaad7d80115fac104c95cc716dbfd/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/hyperv_container.081f9802174235940087cf2891a3f48eaec73707.ja-jp.xlf)
 * Handback Datetime: 2017-01-24 13:18:29
 * Handback Name: 
+* Current Target File: [virtualization\windowscontainers\management\hyperv_container.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/5f938b107b869f753dc9550ab2183fd967ef1cdb/virtualization/windowscontainers/management/hyperv_container.md)
+* Current Handback File: [hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/fed52a9047d982027148173ebc1b9b8b8e3d1fef/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf)
+* Current Handback Datetime: 2017-01-24 14:17:34
 * Bilingual File: [hyperv_container.081f9802174235940087cf2891a3f48eaec73707.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/8063c3e1030aaad7d80115fac104c95cc716dbfd/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/hyperv_container.081f9802174235940087cf2891a3f48eaec73707.ja-jp.xlf)
 * Bilingual Datetime: 2017-01-24 13:21:26
 * [Back to Top](#report-top)
@@ -8308,5 +8311,11 @@
 
 
 ## Error Details
+##### <a name='1b4b36def403bbaf75c9828bf36d72e83f6114b5302handback_file_rejected'></a> Source: [virtualization\windowscontainers\management\docker-powershell.md](#1b4b36def403bbaf75c9828bf36d72e83f6114b5302)
+* Error Code: handback_file_rejected
+* Error Message: file docker-powershell.b8c99396eda5392c8607d68151efd8b4c3a9cbba.ja-jp.xlf is out of handoff scope
+* Retriable: False
+* Error Details: {"internal_error_code":"handback_file_rejected","internal_error_message":"file docker-powershell.b8c99396eda5392c8607d68151efd8b4c3a9cbba.ja-jp.xlf is out of handoff scope","internal_error_retriable":false,"exception_message":"file docker-powershell.b8c99396eda5392c8607d68151efd8b4c3a9cbba.ja-jp.xlf is out of handoff scope","exception_type":"Microsoft.OpenLocalization.Common.ErrorHandling.OpenLocalizationException","stack_trace":null,"extended_information":null}
+
 
 Generated by OpenLocalization.

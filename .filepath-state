@@ -30,9 +30,6 @@
     "virtualization\\windowscontainers\\management\\hyperv_container.md",
     "virtualization\\windowscontainers\\manage-containers\\hyperv-container.md"
   ],
-  "349f9202173c6b79a8b91ffdce836e640fa290bd": [
-    "virtualization\\windowscontainers\\management\\hyperv_container.md"
-  ],
   "b6725f24beabb5331eff7d5243c2fe1c3c491001": [
     "virtualization\\windowscontainers\\management\\manage_containers.md",
     "virtualization\\windowscontainers\\quick_start\\quick_start.md"
