@@ -1,11 +1,33 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 0
+ Total Files | 1
 
 ## File List
+ Source File | Status | Details 
+ ----------- | ------ | ------- 
+ [virtualization\windowscontainers\manage-containers\container-networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/13c409e0d83850d3e99593497b3e338582d5be1e/virtualization/windowscontainers/manage-containers/container-networking.md) | HandedOffSuccess | [Details](#7205dce0aef50e9e907092f722232e866083b9a0287)
 
 ## Item Details
+##### <a name='7205dce0aef50e9e907092f722232e866083b9a0287'></a> Source: [virtualization\windowscontainers\manage-containers\container-networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/13c409e0d83850d3e99593497b3e338582d5be1e/virtualization/windowscontainers/manage-containers/container-networking.md)
+* Status: HandedOffSuccess
+* Target File: 
+* Handoff File: [container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/a808b0e624043c0e9bfced94efc35a7762b25f52/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.ja-jp.xlf)
+* Handoff Datetime: 2017-01-25 05:17:41
+* Handoff Reason: Include
+* Handoff Name: 
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Handback Name: 
+* Current Target File: [virtualization\windowscontainers\manage-containers\container-networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/1e3bd54d4b6fd9d049c406af9f4cd6a45f42dda7/virtualization/windowscontainers/manage-containers/container-networking.md)
+* Current Handback File: [container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/8063c3e1030aaad7d80115fac104c95cc716dbfd/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.ja-jp.xlf)
+* Current Handback Datetime: 2017-01-24 13:18:29
+* Bilingual File: [container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/8063c3e1030aaad7d80115fac104c95cc716dbfd/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.ja-jp.xlf)
+* Bilingual Datetime: 2017-01-24 13:21:26
+* [Back to Top](#report-top)
+
 
 ## Error Details
 
