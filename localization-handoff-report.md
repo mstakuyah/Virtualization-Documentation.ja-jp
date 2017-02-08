@@ -1,33 +1,11 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 1
+ Total Files | 0
 
 ## File List
- Source File | Status | Details 
- ----------- | ------ | ------- 
- [virtualization\windowscontainers\communitylinks.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/38e5f4bc123bbced543ad7b60918b61a43ffdab5/virtualization/windowscontainers/communitylinks.md) | HandedOffSuccess | [Details](#c3ae5589d389887921ec6ef37dec13549e0eab9a255)
 
 ## Item Details
-##### <a name='c3ae5589d389887921ec6ef37dec13549e0eab9a255'></a> Source: [virtualization\windowscontainers\communitylinks.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/38e5f4bc123bbced543ad7b60918b61a43ffdab5/virtualization/windowscontainers/communitylinks.md)
-* Status: HandedOffSuccess
-* Target File: 
-* Handoff File: [communitylinks.2bb7ea2ddbb713bc85f6355770d609c04778fa4e.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/bb2b26343a18a63075932d23f3d0fac178879986/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/communitylinks.2bb7ea2ddbb713bc85f6355770d609c04778fa4e.ja-jp.xlf)
-* Handoff Datetime: 2017-02-08 20:31:48
-* Handoff Reason: Include
-* Handoff Name: 
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Handback Name: 
-* Current Target File: [virtualization\windowscontainers\communitylinks.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/1e3bd54d4b6fd9d049c406af9f4cd6a45f42dda7/virtualization/windowscontainers/communitylinks.md)
-* Current Handback File: [communitylinks.2bb7ea2ddbb713bc85f6355770d609c04778fa4e.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/8063c3e1030aaad7d80115fac104c95cc716dbfd/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/communitylinks.2bb7ea2ddbb713bc85f6355770d609c04778fa4e.ja-jp.xlf)
-* Current Handback Datetime: 2017-01-24 13:18:29
-* Bilingual File: [communitylinks.2bb7ea2ddbb713bc85f6355770d609c04778fa4e.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/8063c3e1030aaad7d80115fac104c95cc716dbfd/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/communitylinks.2bb7ea2ddbb713bc85f6355770d609c04778fa4e.ja-jp.xlf)
-* Bilingual Datetime: 2017-01-24 13:21:26
-* [Back to Top](#report-top)
-
 
 ## Error Details
 
