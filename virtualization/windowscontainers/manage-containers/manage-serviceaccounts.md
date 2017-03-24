@@ -9,8 +9,9 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
 translationtype: Human Translation
-ms.sourcegitcommit: 804008c172b80a4f354a92cd4d12a4e23e1d4328
-ms.openlocfilehash: 00a43f8d4d27327c61e318f3a915047106ad2aca
+ms.sourcegitcommit: 1a327806514f1e1b5d2d234b0aa4ce300e26456f
+ms.openlocfilehash: 0e692f7521e4a15e3e56d4b98f7ca15fe94ee167
+ms.lasthandoff: 01/26/2017
 
 ---
 
@@ -38,7 +39,6 @@ Windows コンテナーをドメインに参加させることはできません
 4. データベースまたはファイル共有などの他のサービスで gMSA へのアクセスを許可します
 
 サービスを起動すると、ドメイン参加済みホストは、Active Directory から gMSA シークレットを自動的に取得し、そのアカウントを使用してサービスを実行します。 そのサービスは gMSA として実行されているため、gMSA が許可されたすべてのリソースにアクセスできます。
-
 
 Windows コンテナーは同様の手順に従います。
 
@@ -84,8 +84,5 @@ EXEC sp_addrolemember 'db_datareader', 'WebApplication1'
 EXEC sp_addrolemember 'db_datawriter', 'WebApplication1'
 ```
 
-
-
-<!--HONumber=Nov16_HO1-->
-
+実際の動作を確認するには、Microsoft Ignite 2016 のセッション ”Walk the Path to Containerization - transforming workloads into containers” (コンテナー化への道: ワークロードをコンテナーに変換する) の[録画デモ](https://youtu.be/cZHPz80I-3s?t=2672)をご覧ください。
 

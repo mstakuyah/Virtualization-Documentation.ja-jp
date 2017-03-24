@@ -9,8 +9,9 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 translationtype: Human Translation
-ms.sourcegitcommit: 54eff4bb74ac9f4dc870d6046654bf918eac9bb5
-ms.openlocfilehash: 8aba9f2ef619b79e7459d7fd55bd27cf107621b3
+ms.sourcegitcommit: 996d3b1a8f7c8325ac66d331e1d62208c0cf6b53
+ms.openlocfilehash: 091a3570291624a3be40e3aabb9f99a482cb6470
+ms.lasthandoff: 02/27/2017
 
 ---
 
@@ -60,13 +61,13 @@ Docker は Windows コンテナーで使用するために必要です。 Docker
 Docker エンジンとクライアントを 1 つの zip アーカイブとしてダウンロードします。
 
 ```none
-Invoke-WebRequest "https://test.docker.com/builds/Windows/x86_64/docker-1.13.0-rc4.zip" -OutFile "$env:TEMP\docker-1.13.0-rc4.zip" -UseBasicParsing
+Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-17.03.0-ce.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
 ```
 
 この zip アーカイブを展開して Program Files に出力します。アーカイブの内容は既に docker ディレクトリに入っています。
 
 ```none
-Expand-Archive -Path "$env:TEMP\docker-1.13.0-rc4.zip" -DestinationPath $env:ProgramFiles
+Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
 ```
 
 Docker ディレクトリをシステム パスに追加します。
@@ -167,9 +168,4 @@ docker run --rm helloworld powershell c:\helloworld.ps1
 ## 次の手順
 
 [Windows Server の Windows コンテナー](./quick-start-windows-server.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

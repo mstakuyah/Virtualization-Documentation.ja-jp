@@ -9,8 +9,9 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 68c65445-ce13-40c9-b516-57ded76c1b15
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: b0903a3e00b92bc60e26282dde072b66030ada09
+ms.sourcegitcommit: e714d4dc22c0049d3365d4a4f3c11d072f46a161
+ms.openlocfilehash: 7d16fcf22187ae3ace25fe1bedbc02f3c6b63eb8
+ms.lasthandoff: 02/14/2017
 
 ---
 
@@ -34,7 +35,7 @@ ms.openlocfilehash: b0903a3e00b92bc60e26282dde072b66030ada09
 Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true
 ```
 3. 仮想マシンを開始します。
-4. Hyper-V を仮想マシン内にインストールします。方法は物理サーバーの場合と同様です。 Hyper-V のインストールの詳細については、[Hyper-V のインストール]( https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/quick_start/walkthrough_install)に関するページを参照してください。
+4. Hyper-V を仮想マシン内にインストールします。方法は物理サーバーの場合と同様です。 Hyper-V のインストールの詳細については、[Hyper-V のインストール](../quick-start/enable-hyper-v.md)に関するページを参照してください。
 
 ## 入れ子になった仮想化の無効化
 停止している仮想マシンに対して、入れ子になった仮想化を無効にするには、次の PowerShell コマンドを使用します。
@@ -76,9 +77,4 @@ Netsh interface ip add dnsserver “Ethernet” address=<my DNS server>
 
 ## サード パーティの仮想化アプリ
 Hyper-V 以外の仮想化アプリケーションは Hyper-V 仮想マシンではサポートされず、ほとんどの場合は実行に失敗します。 これには、ハードウェア仮想化拡張機能を必要とするソフトウェアも含まれます。
-
-
-
-<!--HONumber=Oct16_HO4-->
-
 

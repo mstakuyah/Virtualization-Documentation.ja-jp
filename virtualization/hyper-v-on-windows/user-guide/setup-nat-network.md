@@ -9,8 +9,9 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1f8a691c-ca75-42da-8ad8-a35611ad70ec
 translationtype: Human Translation
-ms.sourcegitcommit: 2cf6d04c4a8de0148a2f981d21bec72cff23f6e8
-ms.openlocfilehash: 4e758b9ca6b318930e397685097a7769a9600099
+ms.sourcegitcommit: 57c69e8d19a9b87e230b760eb86b7b6b701ff983
+ms.openlocfilehash: 235d804310cac38a4628bc2d931371d390e2d991
+ms.lasthandoff: 02/16/2017
 
 ---
 
@@ -24,10 +25,10 @@ Windows 10 Hyper-V では、仮想ネットワークのネイティブ ネット
 * 仮想マシンが正しく接続されていることを確認する
 
 要件:
-* Windows ビルド 14295 以降
-* Hyper-V ロールが有効になっている (指示は[ここ](../quick-start/enable-hyper-v.md))
+* Windows 10 Anniversary Update 以降
+* Hyper-V が有効になっている (詳しくは[こちら](../quick-start/enable-hyper-v.md)をご覧ください)
 
-> **注記:**  現在のところ、Hyper-V では、NAT ネットワークを 1 つだけ作成できます。 Windows NAT (WinNAT) の実装、機能、制限事項の詳細については、「[WinNAT 機能と制限事項のブログ (ブログの投稿)](https://blogs.technet.microsoft.com/virtualization/2016/05/25/windows-nat-winnat-capabilities-and-limitations/)」をご覧ください
+> **注:** 現在のところ、ホストごとに 1 つの NAT ネットワークを作成できます。 Windows NAT (WinNAT) の実装、機能、制限事項のについて詳しくは、「[WinNAT 機能と制限事項のブログ (ブログの投稿)](https://blogs.technet.microsoft.com/virtualization/2016/05/25/windows-nat-winnat-capabilities-and-limitations/)」をご覧ください
 
 ## NAT 概要
 NAT は、ホスト コンピューターの IP アドレスと内部 Hyper-V 仮想スイッチを通じてポートを利用することで、ネットワーク リソースへのアクセスを仮想マシンに与えます。
@@ -239,8 +240,8 @@ PS>    }
 PS> }
 PS> remove-netnat -Confirm:$false
 PS> Get-ContainerNetwork | Remove-ContainerNetwork
-PS> Get-VmSwitch -Name nat | Remove-VmSwitch (_failure is expected_)
-PS> Stop-Service docker
+PS>    Get-VmSwitch -Name nat | Remove-VmSwitch (_failure is expected_)
+PS>    Stop-Service docker
 PS> Set-Service docker -StartupType Disabled
 Reboot Host
 PS> Get-NetNat | Remove-NetNat
@@ -252,9 +253,4 @@ NAT 環境を必要に応じて再構築するには、セットアップ ガイ
 
 ## 参考資料
 NAT ネットワークの詳細は[ここ](https://en.wikipedia.org/wiki/Network_address_translation)を参照してください。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

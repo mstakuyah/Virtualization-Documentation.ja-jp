@@ -9,8 +9,9 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
 translationtype: Human Translation
-ms.sourcegitcommit: 54eff4bb74ac9f4dc870d6046654bf918eac9bb5
-ms.openlocfilehash: 6e113b5ddc74b5a4e6ee23b06ef635a7ba0d4693
+ms.sourcegitcommit: c08793b0f9cc7e6f34696dd2e843ef6e6deea2a4
+ms.openlocfilehash: 12c7c713468618a9fedc82ec5a1c488f57edcfd7
+ms.lasthandoff: 02/08/2017
 
 ---
 
@@ -22,17 +23,17 @@ Windows コンテナー ホストの展開手順は、オペレーティング �
 
 Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。 
 
-Docker をインストールするには、[OneGet プロバイダー PowerShell モジュール](https://github.com/oneget/oneget)を使用します。 プロバイダーは、コンピューターでコンテナー機能を有効にして、Docker をインストールします。これには、再起動が必要です。 
+Docker をインストールするには、[OneGet プロバイダー PowerShell モジュール](https://github.com/OneGet/MicrosoftDockerProvider)を使用します。 プロバイダーは、コンピューターでコンテナー機能を有効にして、Docker をインストールします。これには、再起動が必要です。 
 
 管理者特権の PowerShell セッションを開き、次のコマンドを実行します。
 
-最初に、OneGet PowerShell モジュールをインストールします。
+OneGet PowerShell モジュールをインストールします。
 
 ```none
 Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
 ```
 
-次に、OneGet を使用して最新バージョンの Docker をインストールします。
+OneGet を使用して最新バージョンの Docker をインストールします。
 
 ```none
 Install-Package -Name docker -ProviderName DockerMsftProvider
@@ -46,7 +47,7 @@ Restart-Computer -Force
 
 ## コンテナーの基本イメージのインストール
 
-Windows コンテナーを使用する前に、基本イメージをインストールする必要があります。 基本イメージは、基になるオペレーティング システムとして Windows Server Core と Nano Server の両方で使用できます。 Docker コンテナー イメージの詳細については、「[Build your own images on docker.com](https://docs.docker.com/engine/tutorials/dockerimages/)」(docker.com で独自のイメージを構築する) を参照してください。
+Windows コンテナーを使用する前に、基本イメージをインストールする必要があります。 基本イメージは、コンテナー オペレーティング システムとして Windows Server Core と Nano Server の両方で使用できます。 Docker コンテナー イメージの詳細については、「[Build your own images on docker.com](https://docs.docker.com/engine/tutorials/dockerimages/)」(docker.com で独自のイメージを構築する) を参照してください。
 
 Windows Server Core 基本イメージをインストールするには、次のコマンドを実行します。
 
@@ -91,9 +92,4 @@ PowerShell を使用してHyper-V 機能を有効にするには、管理者特�
 ```none
 Install-WindowsFeature hyper-v
 ```
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

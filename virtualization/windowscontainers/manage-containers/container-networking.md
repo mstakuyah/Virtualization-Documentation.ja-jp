@@ -9,8 +9,9 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
 translationtype: Human Translation
-ms.sourcegitcommit: 00423dcb6aacdea43be4534560c54683c4cedb98
-ms.openlocfilehash: 8059037bb25373e98b871589f6fd9378f1159d4a
+ms.sourcegitcommit: 23d4b665da627f35cf5fce49c3c9974d0ef287dd
+ms.openlocfilehash: e56a5b984cc1c42e27628d00a5cd532788aef11c
+ms.lasthandoff: 02/10/2017
 
 ---
 
@@ -26,9 +27,11 @@ Docker エンジンは、dockerd サービスの初回実行時に、既定で N
 
 別のドライバー (例: transparent、l2bridge) を使用し、同じコンテナー ホストにネットワークを追加作成することができます。 次の表に、内部 (コンテナー間) および外部接続の各モードのネットワーク接続を指定する方法を示します。
 
-- **ネットワーク アドレス変換**: 各コンテナーは、内部のプライベート IP プレフィックス (例: 172.16.0.0/12) から IP アドレスを取得します。 コンテナー ホストからコンテナー エンドポイントへのポート転送およびマッピングがサポートされています。
+- **ネットワーク アドレス変換 (NAT)**: 各コンテナーは、内部のプライベート IP プレフィックス (例: 172.16.0.0/12) から IP アドレスを取得します。 コンテナー ホストからコンテナー エンドポイントへのポート転送およびマッピングがサポートされています。
 
 - **透過**: 各コンテナーのエンドポイントは、物理ネットワークに直接接続されています。 物理ネットワークの IP は、外部の DHCP サーバーを使用して静的または動的に割り当てることができます。
+
+- **[新機能] オーバーレイ**: Docker エンジンが [swarm モード](./swarm-mode.md)で動作している場合に、VXLAN テクノロジに基づくオーバーレイ ネットワークを使用すると、複数のコンテナー ホストにわたってコンテナーのエンドポイントを接続できます。 Swarm クラスター上に作成される各オーバーレイ ネットワークは、プライベート IP プレフィックスによって定義される独自の IP サブネットを使って作成されます。
 
 - **L2 ブリッジ**: 各コンテナーのエンドポイントは、コンテナー ホストと同じ IP サブネット内にあります。 IP アドレスは、コンテナー ホストと同じプレフィックスから静的に割り当てる必要があります。 ホスト上のすべてのコンテナーのエンドポイントは、レイヤー 2 のアドレス変換のために同じ MAC アドレスとなります。
 
@@ -41,8 +44,9 @@ Docker エンジンは、dockerd サービスの初回実行時に、既定で N
 |  | コンテナー間 | コンテナーから外部 |
 | :---: | :---------------     |  :---                |
 | nat | HYPER-V 仮想スイッチを介したブリッジ接続 | アドレス変換を適用し WinNAT を介してルーティング |
-| transparent | HYPER-V 仮想スイッチを介したブリッジ接続 | 物理ネットワークへ直接アクセス |
-| l2bridge | HYPER-V 仮想スイッチを介したブリッジ接続|  MAC アドレス変換を使用し物理ネットワークへアクセス|  
+| transparent | Hyper-V 仮想スイッチを介したブリッジ接続 | 物理ネットワークへ直接アクセス |
+| overlay | VXLAN カプセル化は、Hyper-V 仮想スイッチの VFP 転送拡張機能で行われ、*内部ホスト*通信は、Hyper-V 仮想スイッチを通じてブリッジ接続経由で行われる | アドレス変換を適用し WinNAT を介してルーティング
+| l2bridge | Hyper-V 仮想スイッチを介したブリッジ接続|  MAC アドレス変換を使用し物理ネットワークへアクセス|  
 
 
 
@@ -52,6 +56,7 @@ Docker エンジンは、dockerd サービスの初回実行時に、既定で N
 | :---: | :----       | :---------- |
 | nat | WinNAT を介してルーティングされた、アドレス変換が適用された、外部のコンテナーのホスト IP およびポートを参照する必要がある | WinNAT を介してルーティングされた、アドレス変換が適用された、外部のホストを参照する必要がある |
 | transparent | コンテナー IP エンドポイントを直接参照する必要がある | 物理ネットワークへ直接アクセス |
+| overlay | VXLAN カプセル化は、Hyper-V 仮想スイッチの VFP 転送拡張機能で行われ、*内部ホスト*通信は、IP エンドポイントを直接参照します。 | アドレス変換を適用し WinNAT を介してルーティング| 
 | l2bridge | コンテナー IP エンドポイントを直接参照する必要がある| MAC アドレス変換を使用し物理ネットワークへアクセス|
 
 
@@ -140,18 +145,6 @@ PS C:\> Get-VMNetworkAdapter -VMName ContainerHostVM | Set-VMNetworkAdapter -Mac
 
 > 複数の透過ネットワークを作成する場合は、外部 Hyper-V Virtual Switch (自動作成) をバインドする (仮想) ネットワーク アダプターを指定する必要があります。
 
-特定のネットワーク インターフェイスに (HYPER-V 仮想スイッチを介して接続されている) ネットワークをバインドするには、*-o com.docker.network.windowsshim.interface=<Interface>* オプションを使用します。
-
-```none
-# Create a transparent network which is attached to the "Ethernet 2" network interface
-C:\> docker network create -d transparent -o com.docker.network.windowsshim.interface="Ethernet 2" TransparentNet2
-```
-
-*com.docker.network.windowsshim.interface* の値は、次の方法で取得したアダプターの *Name* です。
-```none
-Get-NetAdapter
-```
-
 透過ネットワークに接続されているコンテナー エンドポイントの IP アドレスは、外部の DHCP サーバーから静的にまたは動的に割り当てることができます。
 
 IP を静的に割り当てる場合、ネットワークの作成時に、*--subnet* および *--gateway* パラメーターが指定されていることを最初に確認する必要があります。 サブネットとゲートウェイの IP アドレスは、コンテナー ホスト (つまり、物理ネットワーク) のネットワーク設定と同じにする必要があります。
@@ -160,7 +153,7 @@ IP を静的に割り当てる場合、ネットワークの作成時に、*--su
 # Create a transparent network corresponding to the physical network with IP prefix 10.123.174.0/23
 C:\> docker network create -d transparent --subnet=10.123.174.0/23 --gateway=10.123.174.1 TransparentNet3
 ```
-IP アドレスを指定するには、docker run コマンドで *--ip* オプションを使用します。
+IP アドレスを指定するには、`docker run` コマンドで *--ip* オプションを使います。
 
 ```none
 C:\> docker run -it --network=TransparentNet3 --ip 10.123.174.105 <image> <cmd>
@@ -169,6 +162,17 @@ C:\> docker run -it --network=TransparentNet3 --ip 10.123.174.105 <image> <cmd>
 > この IP アドレスは、物理ネットワーク上の他のネットワーク デバイスに割り当てられていないことを確認する必要があります。
 
 コンテナー エンドポイントは、物理ネットワークに直接接続されているため、ポートのマッピングを指定する必要はありません。
+
+### オーバーレイ ネットワーク
+
+*オーバーレイ ネットワーク モードを使うには、Docker ホストを swarm モードのマネージャー ノードとして実行して使う必要があります。* swarm モードの概要と、swarm マネージャーを初期化する方法について詳しくは、「[swarm モードの概要](./swarm-mode.md)」を参照してください。
+
+オーバーレイ ネットワークを作成するには、**swarm マネージャー ノード**から次のコマンドを実行します。
+
+```none
+# Create an overlay network from a swarm manager node, called "myOverlayNet"
+C:\> docker network create --driver=overlay myOverlayNet
+```
 
 ### L2 ブリッジ
 
@@ -202,7 +206,7 @@ d42516aa0250        none                null                local
 コンテナー ネットワークを削除するには、`docker network rm` を使用します。
 
 ```none
-C:\> docker network rm "<network name>"
+C:\> docker network rm <network name>
 ```
 
 これはコンテナー ネットワークが使用したすべての HYPER-V 仮想スイッチと、作成されたすべてのネットワーク アドレス変換 (WinNAT - NetNat インスタンス) をクリーンアップします。
@@ -213,6 +217,69 @@ C:\> docker network rm "<network name>"
 
 ```none
 C:\> docker network inspect <network name>
+```
+
+### HNS サービスへのネットワーク名の指定
+
+**通常、`docker network create` を使ってコンテナー ネットワークを作成した場合、使用したネットワーク名は Docker サービスでは使われますが、HNS サービスでは使われません。**
+
+ネットワークを作成する場合、`docker network create` コマンドで `-o com.docker.network.windowsshim.networkname=<network name>` オプションを使うと、HNS サービスから提供された名前を指定できます。 たとえば、次のコマンドを使用すると、HNSサービスに対して指定された名前を使って透過ネットワークを作成できます。
+
+```none
+C:\> docker network create -d transparent -o com.docker.network.windowsshim.networkname=MyTransparentNetwork MyTransparentNetwork
+```
+
+#### 例: HNS の既定の名前付け動作
+
+この名前付け動作のオプションをわかりやすくするために、下の画面キャプチャでは、名前付けオプションが*使われていない*場合に、HNS サービスがネットワークに名前を付ける方法を示します。 この例では、`docker network ls` コマンドで示すように、ネットワーク名 "MyTransparentNetwork" が Docker によって認識されます。 しかし、`Get-ContainerNetwork` Windows PowerShell コマンドで示すように、このネットワーク名は HNS サービスには認識されず、その代わりに、大きな英数字のネットワーク名が HNS によって自動的に生成されます。
+
+><figure>
+  <img src="media/SpecifyName_Capture.PNG">
+  <figcaption>例: HNS サービスに対してネットワーク名が<i>指定されていません</i>。 </figcaption>
+</figure>
+
+#### 例: HNS サービスへのネットワーク名の指定
+
+これに対し、`-o com.docker.network.windowsshim.networkname=<network name>` を*使用した場合*、生成された名前の代わりに、指定した名前が HNS によって使われます。 この動作を下の画面キャプチャに示します。
+
+><figure>
+  <img src="media/SpecifyName_Capture_2.PNG">
+  <figcaption>例: `-o com.docker.network.windowsshim.networkname=<network name>` オプションを使って、ネットワーク名を HNS サービスに指定しています。</figcaption>
+</figure>
+
+
+### 特定のネットワーク インターフェイスへのネットワークのバインド
+
+ネットワーク (Hyper-V 仮想スイッチを通じて接続された) を特定のネットワーク インターフェイスにバインドするには、`docker network create` コマンドで `-o com.docker.network.windowsshim.interface=<Interface>` オプションを使います。 たとえば、次のコマンドを使うと、"Ethernet 2" ネットワーク インターフェイスに接続された透過ネットワークを作成できます。
+
+```none
+C:\> docker network create -d transparent -o com.docker.network.windowsshim.interface="Ethernet 2" TransparentNet2
+```
+
+> 注: *com.docker.network.windowsshim.interface* の値は、ネットワーク アダプターの*名前*です。これは次のコマンドを使って確認できます。
+
+>```none
+PS C:\> Get-NetAdapter
+```
+
+### Set the VLAN ID for a Network
+
+To set a VLAN ID for a network, use the option, `-o com.docker.network.windowsshim.vlanid=<VLAN ID>` to the `docker network create` command. For instance, you might use the following command to create a transparent network with a VLAN ID of 11:
+
+```none
+C:\> docker network create -d transparent -o com.docker.network.windowsshim.vlanid=11 MyTransparentNetwork
+```
+ネットワークの VLAN ID を設定すると、そのネットワークに接続されるあらゆるコンテナー エンドポイントの VLAN 分離が設定されます。
+
+**注:** タグ付けされたすべてのトラフィックを正しい VLAN 上でアクセス モードの vNIC (コンテナ エンドポイント) ポートを持つ vSwitch によって処理するためには、(物理的) ホスト ネットワーク アダプターがトランク モードであることを確認します。
+
+
+### ネットワークの DNS サフィックスや DNS サーバーの指定
+
+ネットワークの DNS サフィックスを指定するには、オプション `-o com.docker.network.windowsshim.dnssuffix=<DNS SUFFIX>` を使い、ネットワークの DNS サーバーを指定するには、オプション `-o com.docker.network.windowsshim.dnsservers=<DNS SERVER/S>` を使います。 たとえば、次のコマンドを使用すると、ネットワークの DNS サフィックスが "example.com" に設定され、ネットワークの DNS サーバーが 4.4.4.4 と 8.8.8.8 に設定されます。
+
+```none
+C:\> docker network create -d transparent -o com.docker.network.windowsshim.dnssuffix=abc.com -o com.docker.network.windowsshim.dnsservers=4.4.4.4,8.8.8.8 MyTransparentNetwork
 ```
 
 ### 複数のコンテナー ネットワーク
@@ -227,7 +294,7 @@ C:\> docker network inspect <network name>
 新しい NAT ネットワークのパーティションは、大規模な内部 NAT ネットワーク プレフィックスの下で作成する必要があります。 PowerShell から次のコマンドを実行し、"InternalIPInterfaceAddressPrefix" フィールドを参照すると、プレフィックスが見つかります。
 
 ```none
-PS C:\> get-netnat
+PS C:\> Get-NetNAT
 ```
 
 たとえば、ホストの NAT ネットワークの内部プレフィックスを 172.16.0.0/12 にします。 その場合、*172.16.0.0/12 プレフィックスの下に入る限り*、Docker を利用して追加 NAT ネットワークを作成できます。 たとえば、IP プレフィックス 172.16.0.0/16 (ゲートウェイ、172.16.0.1) と 172.17.0.0/16 (ゲートウェイ、172.17.0.1) で 2 つの NAT ネットワークを作成できます。
@@ -295,6 +362,9 @@ Docker Compose を利用し、コンテナー ネットワークを定義/構成
 ### サービス検出
 Docker にはサービス検出が組み込まれています。これはサービス登録を処理し、コンテナーとサービスを対象に名前を IP (DNS) にマッピングします。サービス検出を利用すれば、すべてのコンテナー エンドポイントが互いを名前 (コンテナー名またはサービス名) で検出できます。 これは特に、複数のコンテナー エンドポイントを利用して 1 つのサービスを定義するような、スケールアウト シナリオで便利です。 そのような場合、サービス検出を利用すると、背後で実行しているコンテナーの数に関係なく、1 つのサービスが 1 つのエンティティとして見なされます。 複数コンテナーのサービスの場合、入ってくるネットワーク トラフィックがラウンドロビン方式で管理されます。この方式では、DNS 負荷分散を利用し、特定のサービスを実行するすべてのコンテナー インスタンスにトラフィックが均一に分散されます。
 
+## オーバーレイ ネットワークと Docker swarm モード (複数ノード コンテナーのネットワー キング)
+ネイティブのオーバーレイ ネットワーク ドライバーと Docker swarm モードを組み合わせて、Windows 上で複数ノード (クラスター) のシナリオをサポートできます。 オーバーレイと swarm モードについて詳しくは、Windows 10 Windows Insiders でのオーバーレイと swarm のリリースに伴う[ブログ記事](https://blogs.technet.microsoft.com/virtualization/2017/02/09/overlay-network-driver-with-support-for-docker-swarm-mode-now-available-to-windows-insiders-on-windows-10/)または「[swarm モードの概要](./swarm-mode.md)」のトピックをご覧ください。
+
 ## 注意事項と潜在的な問題
 
 ### 透過ネットワークの作成を阻む既存の vSwitch
@@ -316,7 +386,6 @@ PS C:\> restart-service docker
 ### サポートされていない機能
 
 現在、Docker CLI では次のネットワーク機能はサポートされていません。
- * 既定のオーバーレイ ネットワーク ドライバー
  * コンテナーのリンク (例: --link)
 
 現在、Windows Docker では次のネットワーク オプションはサポートされていません。
@@ -326,9 +395,4 @@ PS C:\> restart-service docker
  * --aux-address
  * --internal
  * --ip-range
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

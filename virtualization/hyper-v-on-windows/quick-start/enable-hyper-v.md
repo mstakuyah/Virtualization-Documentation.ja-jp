@@ -9,8 +9,9 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
 translationtype: Human Translation
-ms.sourcegitcommit: 2cf6d04c4a8de0148a2f981d21bec72cff23f6e8
-ms.openlocfilehash: c87e964aac32183eddf000d84d96ffa1122075f7
+ms.sourcegitcommit: 359e29de50a51e0d3db263c46861ae6814f277d2
+ms.openlocfilehash: 8b2f4103ad0048a99e9befeb47d370a9b5cd092f
+ms.lasthandoff: 03/01/2017
 
 ---
 
@@ -82,9 +83,4 @@ DISM について詳しくは、[DISM のテクニカル リファレンス](htt
 
 ## 次の手順 - ネットワークのセットアップ
 [インターネットに接続する](connect-to-network.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

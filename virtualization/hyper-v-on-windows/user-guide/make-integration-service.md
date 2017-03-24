@@ -1,7 +1,7 @@
 ---
 title: "独自の統合サービスを作成する"
 description: "Windows 10 の統合サービス。"
-keywords: "windows 10、hyper-v"
+keywords: windows 10, hyper-v, HVSocket, AF_HYPERV
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
@@ -9,60 +9,44 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1ef8f18c-3d76-4c06-87e4-11d8d4e31aea
 translationtype: Human Translation
-ms.sourcegitcommit: 54eff4bb74ac9f4dc870d6046654bf918eac9bb5
-ms.openlocfilehash: 9e4be610f02e12f48fb88464eb8075b97996d5b2
+ms.sourcegitcommit: b6b63318ed71931c2b49039e57685414f869a945
+ms.openlocfilehash: 19e8cf269b0bef127fb06d2c99391107cd8683b1
+ms.lasthandoff: 02/16/2017
 
 ---
 
 # 独自の統合サービスを作成する
 
-Windows 10 から、Hyper-V ホストとそこで実行されている仮想マシンの間にある新しいソケット ベースの通信チャネルを使用して、インボックスの Hyper-V 統合サービスとよく似たサービスを作成できるようになりました。  この Hyper-V ソケットを使用することで、サービスはネットワーク スタックと関係なく実行でき、すべてのデータが同じ物理メモリ上に格納されます。
+Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレス ファミリと仮想マシンを対象とした特殊なエンドポイントを備えた Windows ソケット) を使って Hyper-V ホストと仮想マシン間の通信を行うアプリケーションをだれでも作成できるようになりました。  Hyper-V を介したすべての通信はネットワークを使わずに実行され、すべてのデータは同じ物理メモリにとどまります。   Hyper-V ソケットを使うアプリケーションは、Hyper-V の統合サービスと似ています。
 
-このドキュメントでは、Hyper-V ソケット上に構築された簡単なアプリケーションの作成とそれらの使用を開始する方法の手順について説明します。
-
-[PowerShell Direct](../user-guide/powershell-direct.md) は Hyper-V ソケットを使用して通信するアプリケーション (この例では、インボックス Windows サービス) の例です。
+このドキュメントでは、Hyper-V ソケット上に単純なプログラムを構築する手順を説明します。
 
 **サポートされているホスト OS**
-* Windows 10 ビルド 14290 以降
-* Windows Server Technical Preview 4 以降
-* 今後のリリース (サーバー 2016年 +)
+* Windows 10 でサポート
+* Windows Server 2016
+* 今後のリリース (Server 2016 以上)
 
 **サポートされているゲスト OS**
 * Windows 10
 * Windows Server Technical Preview 4 以降
-* 今後のリリース (サーバー 2016年 +)
+* 今後のリリース (Server 2016 以上)
 * Linux ゲストと Linux 統合サービス (「[Supported Linux and FreeBSD virtual machines for Hyper-V on Windows (Windows 上の Hyper-V 向けにサポートされる Linux と FreeBSD 仮想マシン)](https://technet.microsoft.com/library/dn531030(ws.12).aspx)」をご覧ください)
 
 **機能と制限事項**  
 * カーネル モードまたはユーザー モード操作をサポート  
 * データ ストリームのみ      
-* ブロック メモリなし (バックアップ/ビデオに最適でない)   
+* ブロック メモリなし (バックアップ/ビデオに最適でない) 
 
 --------------
 
-## はじめに
-現在、Hyper-V ソケットは、ネイティブ コード (C++) で使用できます。  
+## 概要
 
-簡単なアプリケーションを作成するには、次が必要です。
-* C コンパイラ。  お持ちではない場合は、[Visual Studio コミュニティ](https://aka.ms/vs)を確認してください。
-* Hyper-V と仮想マシンを実行しているコンピューター。  
-  * ホストおよびゲスト (VM) OS は、Windows 10、Windows Server Technical Preview 3 以降である必要があります。
-* Hyper-V ホストにインストールされた [Windows 10 SDK](http://aka.ms/flightingSDK)
+要件:
+* C/C++ コンパイラ。  お持ちではない場合は、[Visual Studio コミュニティ](https://aka.ms/vs)を確認してください。
+* [Windows 10 SDK](https://developer.microsoft.com/windows/downloads/windows-10-sdk): Visual Studio 2015 with Update 3 以降でプレインストールされています。
+* 上記のいずれかのホスト オペレーティング システムと 1 つ以上の仮想マシンが実行されているコンピューター。 これは、アプリケーションのテスト用です。
 
-**Windows SDK の詳細**
-
-Windows SDK へのリンク:
-* [Windows 10 SDK for Insider Preview](http://aka.ms/flightingSDK)
-* [Windows 10 SDK](https://dev.windows.com/en-us/downloads/windows-10-sdk)
-
-Hyper-V ソケット用 API が Windows 10 ビルド 14290 でご利用いただけるようになりました。フライティング ダウンロードは、最新の Insider Fast Track フライティング ビルドと一致します。  
-奇妙な動作をする場合、[TechNet フォーラム](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home "TechNet Forums")でお知らせください。  投稿に、以下を含めてください。
-* 予期しない動作 
-* ホスト、ゲスト、SDK の OS とビルド番号。  
-  
-  SDK ビルド番号は、SDK インストーラーのタイトルに表示されます。  
-  ![](./media/flightingSDK.png)
-
+> **注:** Hyper-V ソケットの API は、Windows 10 で近日公開予定です。  HVSocket を使うアプリケーションは、あらゆる Widnows 10 ホストとゲストで実行できますが、開発には Windows SDK ビルド 14290 以降が必要です。  
 
 ## 新しいアプリケーションの登録
 Hyper-V ソケットを使用するには、アプリケーションを Hyper-V ホストのレジストリに登録する必要があります。
@@ -76,22 +60,22 @@ Hyper-V ソケットを使用するには、アプリケーションを Hyper-V 
 ``` PowerShell
 $friendlyName = "HV Socket Demo"
 
-# Create a new random GUID and add it to the services list then add the name as a value
-
+# Create a new random GUID.  Add it to the services list
 $service = New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\GuestCommunicationServices" -Name ((New-Guid).Guid)
 
+# Set a friendly name 
 $service.SetValue("ElementName", $friendlyName)
 
 # Copy GUID to clipboard for later use
 $service.PSChildName | clip.exe
 ```
 
-** レジストリの場所と情報 **  
 
+**レジストリの場所と情報:**  
 ``` 
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\GuestCommunicationServices\
 ```  
-このレジストリの場所には、いくつかの GUID が表示されます。  これらは、マイクロソフトのボックスでのサービスです。
+このレジストリの場所には、いくつかの GUID が表示されます。  それらはインボックス サービスです。
 
 サービスごとのレジストリ内の情報。
 * `Service GUID`   
@@ -105,12 +89,12 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 ```
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\GuestCommunicationServices\
     999E53D4-3D5C-4C3E-8779-BED06EC056E1\
-        ElementName REG_SZ  VM Session Service
+        ElementName    REG_SZ    VM Session Service
     YourGUID\
-        ElementName REG_SZ  Your Service Friendly Name
+        ElementName    REG_SZ    Your Service Friendly Name
 ```
 
-> ** ヒント:** PowerShell で GUID を生成し、それをクリップボードにコピーするには、次を実行します。  
+> **ヒント:** PowerShell で GUID を生成し、それをクリップボードにコピーするには、次を実行します。  
 ``` PowerShell
 (New-Guid).Guid | clip.exe
 ```
@@ -194,7 +178,7 @@ IP またはホスト名の代わりに、AF_HYPERV エンドポイントは 2 �
 | HV_GUID_PARENT | a42e7cda-d03f-480c-9cc2-a4de20abb878 | 親アドレス。 この VmId を使用して、コネクタの親パーティションに接続します。* |
 
 
-***HV_GUID_PARENT**  
+\* `HV_GUID_PARENT`  
 仮想マシンの親は、そのホストです。  コンテナーの親は、コンテナーのホストです。  
 仮想マシンで実行しているコンテナーからの接続は、コンテナーをホストしている仮想マシンに接続します。  
 この VmId でリッスンし、次からの接続を受け入れます。  
@@ -211,10 +195,7 @@ Send()
 Listen()  
 Accept()  
 
+## 役に立つリンク
 [完全な WinSock API](https://msdn.microsoft.com/en-us/library/windows/desktop/ms741394.aspx)
 
-
-
-<!--HONumber=Jan17_HO2-->
-
-
+[Hyper-V 統合サービスの参照](../reference/integration-services.md)

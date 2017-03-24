@@ -21,7 +21,9 @@
 ## [Windows 上の Dockerfile](docker/manage_windows_dockerfile.md)
 ## [Dockerfile の最適化](docker/optimize_windows_dockerfile.md)
 ## [コンテナーのネットワーク](management/container_networking.md)
+## [swarm モードの概要](manage-containers/swarm-mode.md)
 ## [PowerShell での Docker の管理](https://github.com/Microsoft/Docker-PowerShell)
+## [Windows Docker ホストのリモート管理](management/manage_remotehost.md)
 
 # コンテナーのサンプル
 ## [アプリケーション フレームワーク](samples.md#Application-Frameworks)
@@ -39,8 +41,3 @@
 
 
 # [コンテナー OS イメージの使用許諾契約書 (EULA)](Images_EULA.md)
-
-
-<!--HONumber=Jan17_HO3-->
-
-
