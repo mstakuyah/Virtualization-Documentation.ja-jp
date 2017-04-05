@@ -1,33 +1,11 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 1
+ Total Files | 0
 
 ## File List
- Source File | Status | Details 
- ----------- | ------ | ------- 
- [virtualization\windowscontainers\troubleshooting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/0ce90ef013a74eb3039cd2fa0a28c619b9eec1db/virtualization/windowscontainers/troubleshooting.md) | HandedOffSuccess | [Details](#4b0b56404a92f8dfe4bbc81e5215ef483afad58c381)
 
 ## Item Details
-##### <a name='4b0b56404a92f8dfe4bbc81e5215ef483afad58c381'></a> Source: [virtualization\windowscontainers\troubleshooting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/0ce90ef013a74eb3039cd2fa0a28c619b9eec1db/virtualization/windowscontainers/troubleshooting.md)
-* Status: HandedOffSuccess
-* Target File: 
-* Handoff File: [troubleshooting.fa8e0bf8c3816ab8e7080b2e3807e89993373b17.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/022c481e527d2c13dc29a659a91d1e99fe90dbe2/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/troubleshooting.fa8e0bf8c3816ab8e7080b2e3807e89993373b17.ja-jp.xlf)
-* Handoff Datetime: 2017-04-04 18:18:50
-* Handoff Reason: Include
-* Handoff Name: 
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Handback Name: 
-* Current Target File: [virtualization\windowscontainers\troubleshooting.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/1e3bd54d4b6fd9d049c406af9f4cd6a45f42dda7/virtualization/windowscontainers/troubleshooting.md)
-* Current Handback File: [troubleshooting.fa8e0bf8c3816ab8e7080b2e3807e89993373b17.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/8063c3e1030aaad7d80115fac104c95cc716dbfd/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/troubleshooting.fa8e0bf8c3816ab8e7080b2e3807e89993373b17.ja-jp.xlf)
-* Current Handback Datetime: 2017-01-24 13:18:29
-* Bilingual File: [troubleshooting.fa8e0bf8c3816ab8e7080b2e3807e89993373b17.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/8063c3e1030aaad7d80115fac104c95cc716dbfd/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/troubleshooting.fa8e0bf8c3816ab8e7080b2e3807e89993373b17.ja-jp.xlf)
-* Bilingual Datetime: 2017-01-24 13:21:26
-* [Back to Top](#report-top)
-
 
 ## Error Details
 
