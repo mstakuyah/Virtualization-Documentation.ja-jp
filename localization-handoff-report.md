@@ -1,11 +1,33 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 0
+ Total Files | 1
 
 ## File List
+ Source File | Status | Details 
+ ----------- | ------ | ------- 
+ [virtualization\windowscontainers\manage-containers\hyperv-container.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/fa56cb152977de952ec1e493005dfc0e62538b4f/virtualization/windowscontainers/manage-containers/hyperv-container.md) | HandedOffSuccess | [Details](#06f8f2e77ab0c89fe0efb2f4d859720d6c0d9d4c296)
 
 ## Item Details
+##### <a name='06f8f2e77ab0c89fe0efb2f4d859720d6c0d9d4c296'></a> Source: [virtualization\windowscontainers\manage-containers\hyperv-container.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/fa56cb152977de952ec1e493005dfc0e62538b4f/virtualization/windowscontainers/manage-containers/hyperv-container.md)
+* Status: HandedOffSuccess
+* Target File: 
+* Handoff File: [hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/49983de9bce1a80451c9491e5a962fc6b280507a/ol-handoff/Microsoft/Virtualization-Documentation-Private.ja-jp/live/hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf)
+* Handoff Datetime: 2017-04-06 16:11:46
+* Handoff Reason: Include
+* Handoff Name: 
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Handback Name: 
+* Current Target File: [virtualization\windowscontainers\management\hyperv_container.md](https://github.com/Microsoft/Virtualization-Documentation-Private.ja-jp/blob/5f938b107b869f753dc9550ab2183fd967ef1cdb/virtualization/windowscontainers/management/hyperv_container.md)
+* Current Handback File: [hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/fed52a9047d982027148173ebc1b9b8b8e3d1fef/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf)
+* Current Handback Datetime: 2017-01-24 14:17:34
+* Bilingual File: [hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/fed52a9047d982027148173ebc1b9b8b8e3d1fef/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/hyperv-container.6efb6edd096ba101404a96566195376441055473.ja-jp.xlf)
+* Bilingual Datetime: 2017-01-24 14:19:27
+* [Back to Top](#report-top)
+
 
 ## Error Details
 
