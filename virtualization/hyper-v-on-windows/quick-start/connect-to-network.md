@@ -8,25 +8,23 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 532195c6-564b-4954-97c2-5a5795368c09
-translationtype: Human Translation
-ms.sourcegitcommit: f6ff0ec825091ad30016be958ff7f55ff6a907ed
-ms.openlocfilehash: 67513f6ee7d990f4d9086dfd63fb719374377b1f
-ms.lasthandoff: 03/01/2017
-
+ms.openlocfilehash: 12792da23a9e9f85674e8878f5bf81f8bc7ab4e4
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
-
-# 仮想ネットワークを作成する
+# <a name="create-a-virtual-network"></a>仮想ネットワークを作成する
 
 仮想マシンでは、ネットワークをコンピューターと共有するための仮想ネットワークが必要になります。  仮想ネットワークの作成は必要に応じて実行できます。仮想マシンをインターネットやネットワークに接続する必要がない場合は、この後にある「[Windows 仮想マシンの作成](create-virtual-machine.md)」をご覧ください。
 
 
-## 仮想マシンをインターネットに接続する
+## <a name="connect-virtual-machines-to-the-internet"></a>仮想マシンをインターネットに接続する
 
 Hyper-V には、外部、内部、プライベートの 3 種類の仮想スイッチがあります。 コンピューターのネットワークを、そのネットワーク上で実行されている仮想マシンと共有するには、外部スイッチを作成します。
 
 この演習では、外部仮想スイッチを作成する手順について説明します。 この演習が完了すると、Hyper-V ホストに仮想スイッチが構成されます。この仮想スイッチによって、仮想マシンはコンピューターのネットワーク接続を経由してインターネットに接続することができます。 
 
-### Hyper-V マネージャーで仮想スイッチを作成する
+### <a name="create-a-virtual-switch-with-hyper-v-manager"></a>Hyper-V マネージャーで仮想スイッチを作成する
 
 1. Hyper-V マネージャーを開きます。  これをすばやく行うには、Windows ボタンまたは Windows キーを押してから、「Hyper-V マネージャー」と入力します。  
 検索で Hyper-V マネージャーが見つからない場合、Hyper-V または Hyper-V 管理ツールが有効になっていません。  [Hyper-V を有効にする](enable-hyper-v.md)手順をご覧ください。
@@ -56,7 +54,7 @@ Hyper-V には、外部、内部、プライベートの 3 種類の仮想スイ
 11. **[OK]** を選択し、仮想スイッチ マネージャーのウィンドウを閉じます。
 
 
-### PowerShell で仮想スイッチを作成する
+### <a name="create-a-virtual-switch-with-powershell"></a>PowerShell で仮想スイッチを作成する
 
 次の手順は、PowerShell を使用して仮想スイッチと外部接続を作成する際に使用されます。 
 
@@ -83,9 +81,9 @@ Hyper-V には、外部、内部、プライベートの 3 種類の仮想スイ
     New-VMSwitch -Name "External VM Switch" -AllowManagementOS $True -NetAdapterName $net.Name
     ```
 
-## ノート PC での仮想ネットワーク
+## <a name="virtual-networking-on-a-laptop"></a>ノート PC での仮想ネットワーク
 
-### NAT ネットワーク
+### <a name="nat-networking"></a>NAT ネットワーク
 ネットワーク アドレス変換 (NAT) を利用すると、仮想マシンは、ホスト コンピューターの IP アドレスと内部 Hyper-V 仮想スイッチを経由するポートを組み合わせることによってコンピューターのネットワークにアクセスすることができます。
 
 これには、便利な特徴がいくつかあります。
@@ -95,10 +93,9 @@ Hyper-V には、外部、内部、プライベートの 3 種類の仮想スイ
 
 NAT ネットワークをセットアップして、仮想マシンに接続するには、[NAT ネットワークのユーザー ガイド](../user-guide/setup-nat-network.md)の手順に従ってください。
 
-### 2 つのネットワークを切り替える方法
+### <a name="the-two-switch-approach"></a>2 つのネットワークを切り替える方法
 ノート PC で Windows 10 Hyper-V を実行しており、ワイヤレス (無線) ネットワークとワイヤード (有線) ネットワークを切り替えることが頻繁にある場合、イーサネットとワイヤレス ネットワーク カードの両方に対応した仮想スイッチを作成することができます。 この構成では、ネットワークへのノート PC の接続方法に応じて、これらのスイッチ間の仮想マシンを変更することができます。 仮想マシンが有線と無線を自動で切り替えることはありません。
 
 
-## 次の手順 - 仮想マシンを作成する
+## <a name="next-step---create-a-virtual-machine"></a>次の手順 - 仮想マシンを作成する
 [Windows 仮想マシンを作成する](create-virtual-machine.md)
-

@@ -8,13 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-translationtype: Human Translation
-ms.sourcegitcommit: 5d746be15856aad683bf684d2eef573d732ab457
-ms.openlocfilehash: 6add396bea629d5438cde5892458f6c8405bf644
-
+ms.openlocfilehash: 355daae1b673f0b05f08d0706664967a825de6f7
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
-
-# Windows Server のコンテナー イメージ
+# <a name="container-images-on-windows-server"></a>Windows Server のコンテナー イメージ
 
 前の Windows Server クイック スタートでは、以前に作成した .NET Core サンプルから Windows コンテナーを作成しました。 この演習では、カスタム コンテナー イメージを手動で作成する方法、Dockerfile を使用してコンテナー イメージの作成を自動化する方法、Docker Hub パブリック レジストリにコンテナー イメージを保存する方法について詳しく説明します。
 
@@ -26,7 +25,7 @@ ms.openlocfilehash: 6add396bea629d5438cde5892458f6c8405bf644
 - Windows コンテナー機能と Docker でこのシステムを構成します。 これらの手順のチュートリアルについては、「[Windows Containers on Windows Server](./quick-start-windows-server.md)」 (Windows Server の Windows コンテナー) を参照してください。
 - Docker ID。コンテナー イメージを Docker Hub にプッシュするために使用されます。 Docker ID がない場合は、[Docker Cloud](https://cloud.docker.com/) でサインアップしてください。
 
-## 1.コンテナー イメージ - 手動
+## <a name="1-container-image---manual"></a>1.コンテナー イメージ - 手動
 
 この演習は Windows コマンド シェル (cmd.exe) から実行すると、最も効果的です。
 
@@ -99,7 +98,7 @@ windowsservercore   latest              dbfee88ee9fd        8 weeks ago         
 
 これで、このイメージを展開できます。 結果的に生成されるコンテナーには、キャプチャされたすべての変更が含まれます。
 
-## 2.コンテナー イメージ - Dockerfile
+## <a name="2-container-image---dockerfile"></a>2.コンテナー イメージ - Dockerfile
 
 前回の演習によって、コンテナーが手動で作成され、変更されて、新しいコンテナー イメージにキャプチャされています。 Docker には、このプロセスを自動化するためのメソッドが含まれており、Dockerfile を使用します。 この演習の結果は前回とほぼ同じになりますが、今回はプロセスが自動化されます。 この演習には Docker ID が必要です。 Docker ID がない場合は、[Docker Cloud]( https://cloud.docker.com/) でサインアップしてください。
 
@@ -169,7 +168,7 @@ c1dc6c1387b9   iis-dockerfile   "ping -t localhost"   About a minute ago   Up Ab
 docker rm -f <container name>
 ```
 
-## 3.Docker Push
+## <a name="3-docker-push"></a>3.Docker Push
 
 Docker コンテナー イメージはコンテナー レジストリに保存できます。 イメージをレジストリに保存すると、後で多数のコンテナー ホストから取得して使用できるようになります。 Docker には、[Docker Hub](https://hub.docker.com/) にコンテナー イメージを保存できるパブリック レジストリがあります。
 
@@ -216,12 +215,6 @@ microsoft/iis             latest              e4525dda8206        3 hours ago   
 docker pull <user>/iis-dockerfile
 ```
 
-## 次の手順
+## <a name="next-steps"></a>次の手順
 
 [Windows 10 の Windows コンテナー](./quick-start-windows-10.md)
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-

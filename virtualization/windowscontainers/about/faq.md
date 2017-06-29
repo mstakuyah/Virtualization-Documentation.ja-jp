@@ -8,15 +8,14 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
-translationtype: Human Translation
-ms.sourcegitcommit: 2ab9a4b09a2db72e5e2be71ced5d5400761a5ad8
-ms.openlocfilehash: b084bf179d9360e4a72e8e88b4fec80eafb2906c
-
+ms.openlocfilehash: c4afd536fda9d741adc00eaeb5595f05833cef11
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
+# <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-# よく寄せられる質問
-
-## Windows コンテナーについて
+## <a name="about-windows-containers"></a>Windows コンテナーについて
 
 **Windows Server コンテナーとは**
 
@@ -54,7 +53,7 @@ Drawbridge は、コンテナーに関する貴重な情報を取得するのに
 Windows Server コンテナーと Hyper-V コンテナーにはどちらも Windows Server 2016 が必要です。 これらのテクノロジは、以前のバージョンの Windows では機能しません。
 
 
-## Windows コンテナー管理
+## <a name="windows-container-management"></a>Windows コンテナー管理
 
 **Hyper-V コンテナーは、Docker エコシステムでも利用できるようになりますか。**
 
@@ -62,7 +61,7 @@ Windows Server コンテナーと Hyper-V コンテナーにはどちらも Wind
 Docker プラットフォームを大幅に簡略化し、コンテナー オプション間で作業のエクスペリエンスを強化します。 Windows Server のコンテナーを使用して開発されたアプリケーションは、変更されることがなく、HYPER-V のコンテナーとして展開することができます。
 
 
-## Microsoft のオープン エコシステム
+## <a name="microsofts-open-ecosystem"></a>Microsoft のオープン エコシステム
 
 **Microsoft は Open Container Initiative (OCI) に参加していますか。**
 
@@ -76,9 +75,3 @@ Docker とのパートナーシップでは、作成、管理、および同じ 
 Docker は次の 2 つのプロジェクトおよび Docker、会社のオープン ソースのグループです。 私たちは、両方を含めるには、このパートナーシップを検討してください。 Docker 成功すると、一部をためは Docker コンテナー テクノロジに関する作成が強力なエコシステムです。 Docker プロジェクトは、Windows Server のコンテナーおよびコンテナーの HYPER-V のサポートを有効にするのには、Microsoft が関係しています。  
 
 詳細については、ブログの投稿「[New Windows Server containers and Azure support for Docker](http://azure.microsoft.com/blog/2014/10/15/new-windows-server-containers-and-azure-support-for-docker/?WT.mc_id=Blog_ServerCloud_Announce_TTD)」 (新しい Windows Server コンテナーおよび Azure による Docker のサポート) を参照してください。
-
-
-
-<!--HONumber=Nov16_HO1-->
-
-

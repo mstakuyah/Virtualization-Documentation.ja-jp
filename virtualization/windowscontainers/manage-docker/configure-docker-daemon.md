@@ -8,25 +8,24 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
-translationtype: Human Translation
-ms.sourcegitcommit: 54eff4bb74ac9f4dc870d6046654bf918eac9bb5
-ms.openlocfilehash: ee249bafe3c86ba7a7fb6f0335664e9ce485a74e
-
+ms.openlocfilehash: 9aa9e4a0415a89762438a8e8a85a901ca5360c6f
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
-
-# Windows 上の Docker エンジン
+# <a name="docker-engine-on-windows"></a>Windows 上の Docker エンジン
 
 Docker エンジンとクライアントは Windows に含まれていないため、個別にインポートして構成する必要があります。 また、Docker エンジンは多くのカスタム構成に対応できます。 たとえば、デーモンで受信要求を受け入れる方法、既定のネットワークキング オプション、デバッグ/ログの設定の構成などです。 Windows でこのような構成を指定するには、構成ファイルまたは Windows サービス コントロール マネージャーを使用します。 このドキュメントでは、Docker エンジンのインストールおよび構成方法について説明します。また、一般的に使用される構成例も紹介します。
 
 
-## Docker のインストール
+## <a name="install-docker"></a>Docker のインストール
 Windows コンテナーを使用するには Docker が必要です。 Docker は、Docker エンジン (dockerd.exe) と Docker クライアント (docker.exe) で構成されます。 すべてのものをインストールする最も簡単な方法は、クイック スタート ガイドで説明しています。 これらのガイドは、すべてのものをセットアップして最初のコンテナーを実行するのに役立ちます。 
 
 * [Windows Server 2016 の Windows コンテナー](../quick-start/quick-start-windows-server.md)
 * [Windows 10 の Windows コンテナー](../quick-start/quick-start-windows-10.md)
 
 
-### 手動インストール
+### <a name="manual-installation"></a>手動インストール
 Docker エンジンとクライアントについて開発中バージョンを代わりに使用する場合は、以下の手順を使用してください。 この手順では、Docker エンジンとクライアントの両方をインストールします。 新機能をテストする開発者、または Windows Insider ビルドを使用している開発者である場合は、開発中バージョンの Docker の使用が必要になることがあります。 それ以外の場合は、上記の「Docker のインストール」セクションの手順に従って、最新の製品版を入手してください。
 
 > Docker for Windows が既にインストールされている場合は、ここで説明する手動インストールの手順を実行する前に必ずアンインストールしてください。 
@@ -71,7 +70,7 @@ Start-Service Docker
 
 Docker を使用するには、先にコンテナー イメージをインストールする必要があります。 詳しくは、[イメージを使用するためのクイック スタート ガイド](../quick-start/quick-start-images.md)をご覧ください。
 
-## 構成ファイルを使用して Docker を構成する
+## <a name="configure-docker-with-configuration-file"></a>構成ファイルを使用して Docker を構成する
 
 Windows で Docker エンジンを構成するには、構成ファイルを使用する方法がお勧めです。 構成ファイルは、'c:\ProgramData\docker\config\daemon.json' にあります。 このファイルがまだ存在していない場合は、作成できます。
 
@@ -139,7 +138,7 @@ Windows で Docker エンジンを構成するには、構成ファイルを使�
 }
 ```
 
-## Docker サービスで Docker を構成する
+## <a name="configure-docker-on-the-docker-service"></a>Docker サービスで Docker を構成する
 
 `sc config` を使用して Docker サービスを変更することで、Docker エンジンを構成することもできます。 この方法の場合、Docker エンジンのフラグは Docker サービスに直接設定されます。 コマンド プロンプト (PowerShell ではなく cmd.exe) で、次のコマンドを実行します。
 
@@ -150,11 +149,11 @@ sc config docker binpath= "\"C:\Program Files\docker\dockerd.exe\" --run-service
 
 注: daemon.json ファイルに `"hosts": ["tcp://0.0.0.0:2375"]` というエントリが既に含まれている場合は、このコマンドを実行する必要はありません。
 
-## 一般的な構成
+## <a name="common-configuration"></a>一般的な構成
 
 次に、一般的な Docker 構成の構成ファイル例を示します。 これらの構成を 1 つの構成ファイルにまとめることができます。
 
-### 既定のネットワークの作成 
+### <a name="default-network-creation"></a>既定のネットワークの作成 
 
 既定の NAT ネットワークが作成されないように Docker エンジンを構成するには、次のコマンドを使用します。 詳細については、「[コンテナーのネットワーク](../manage-containers/container-networking.md)」を参照してください。
 
@@ -164,7 +163,7 @@ sc config docker binpath= "\"C:\Program Files\docker\dockerd.exe\" --run-service
 }
 ```
 
-### Docker セキュリティ グループの設定
+### <a name="set-docker-security-group"></a>Docker セキュリティ グループの設定
 
 Docker ホストにログインし、Docker コマンドをローカルで実行すると、名前付きパイプ経由でコマンドが実行されます。 既定では、Administrators グループのメンバーのみが、名前付きパイプ経由で Docker エンジンにアクセスできます。 このアクセス権を持つセキュリティ グループを指定するには、`group` フラグを使用します。
 
@@ -174,7 +173,7 @@ Docker ホストにログインし、Docker コマンドをローカルで実行
 }
 ```
 
-## プロキシの構成
+## <a name="proxy-configuration"></a>プロキシの構成
 
 `docker search` と `docker pull` のプロキシ情報を設定するには、`HTTP_PROXY` または `HTTPS_PROXY` という名前と、プロキシ情報の値を使用して Windows 環境変数を作成します。 そのためには、PowerShell で次のようなコマンドを実行します。
 
@@ -189,10 +188,4 @@ Restart-Service docker
 ```
 
 詳細については、[Docker.com の Windows 構成ファイルのページ](https://docs.docker.com/engine/reference/commandline/dockerd/#/windows-configuration-file)をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 

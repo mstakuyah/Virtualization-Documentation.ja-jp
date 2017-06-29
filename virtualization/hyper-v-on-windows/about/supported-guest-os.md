@@ -6,19 +6,17 @@ author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
-ms.service: windows-10-hyperv
 ms.assetid: ae4a18ed-996b-4104-90c5-539c90798e4c
-translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: f772a26f2ad52c8ed28d40ca35c91ed6f3eab872
-
+ms.openlocfilehash: 8b764cb06b94465f516f9e5e8f06860ced8b39bb
+ms.sourcegitcommit: d5f30aa1bdfb34dd9e1909d73b5bd9f4153d6b46
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
-
-# サポートされる Windows ゲスト 
+# <a name="supported-windows-guests"></a>サポートされる Windows ゲスト 
 
 この記事では、Windows 上の Hyper-V でサポートされているオペレーティング システムの組み合わせを一覧に示します。  また、サポートされる統合サービスやその他のファクターの概要も紹介します。
 
-## サポートの内容 
+## <a name="what-does-support-mean"></a>サポートの内容 
 サポートは、Microsoft がこれらのホスト/ゲストの組み合わせをテストしていることを意味します。  これらの組み合わせの問題は、製品サポート サービスから注意を受け取る可能性があります。
  
 以下の表に示されているゲスト オペレーティング システムは、Microsoft でサポートされます。
@@ -28,7 +26,7 @@ ms.openlocfilehash: f772a26f2ad52c8ed28d40ca35c91ed6f3eab872
 
 サポートされるようにするは、Hyper-V ホストとゲストの両方を、Windows Update を通じて、利用可能なすべての重要な更新プログラムで更新する必要があります。
 
-## サポートされているゲスト オペレーティング システム
+## <a name="supported-guest-operating-systems"></a>サポートされているゲスト オペレーティング システム
 
 サポートを受けるには、Windows ゲスト オペレーティング システムとホスト オペレーティング システムの両方を、Windows Update を通じて、利用可能なすべての重要な更新プログラムで最新にする必要があります。
 
@@ -36,10 +34,10 @@ ms.openlocfilehash: f772a26f2ad52c8ed28d40ca35c91ed6f3eab872
 |:-----|:-----|:-----|
 | Windows 10 | 32 | |
 | Windows 8.1 | 32 | |
-| Windows 8 | 32 |  |
+| Windows 8 | 32 |    |
 | Windows 7 Service Pack 1 (SP 1) | 4 | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
 | Windows 7 | 4 | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
-| Windows Vista Service Pack 2 (SP2) | 2 | Business、Enterprise、および Ultimate (N および KN エディションを含む)。 | 
+| WindowsVista Service Pack2 (SP2) | 2 | Business、Enterprise、および Ultimate (N および KN エディションを含む)。 | 
 | - | | |
 | Windows Server 2012 R2 | 64 | |
 | Windows Server 2012 | 64 | |
@@ -50,7 +48,7 @@ ms.openlocfilehash: f772a26f2ad52c8ed28d40ca35c91ed6f3eab872
   
  > Windows 10 は、Windows 8.1 と Windows Server 2012 R2 Hyper-V ホスト上でゲスト オペレーティング システムとして実行できます。
 
-## サポートされる Linux と FreeBSD
+## <a name="supported-linux-and-free-bsd"></a>サポートされる Linux と FreeBSD
 
 | ゲスト オペレーティング システム |  |
 |:-----|:------|
@@ -62,9 +60,3 @@ ms.openlocfilehash: f772a26f2ad52c8ed28d40ca35c91ed6f3eab872
 | [FreeBSD](https://technet.microsoft.com/library/dn848318.aspx) | |
 
 過去のバージョンの Hyper-V におけるサポート情報などの詳細については、「[Hyper V の Linux と FreeBSD 仮想マシン](https://technet.microsoft.com/library/dn531030.aspx)」をご覧ください。
-
-
-
-<!--HONumber=Oct16_HO4-->
-
-

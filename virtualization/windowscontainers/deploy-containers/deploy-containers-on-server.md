@@ -8,18 +8,16 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
-translationtype: Human Translation
-ms.sourcegitcommit: c08793b0f9cc7e6f34696dd2e843ef6e6deea2a4
-ms.openlocfilehash: 12c7c713468618a9fedc82ec5a1c488f57edcfd7
-ms.lasthandoff: 02/08/2017
-
+ms.openlocfilehash: b01c1112ed119908bdabfa0eeee16f4ba11a47f6
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
-
-# コンテナー ホストの展開 - Windows Server
+# <a name="container-host-deployment---windows-server"></a>コンテナー ホストの展開 - Windows Server
 
 Windows コンテナー ホストの展開手順は、オペレーティング システムやホスト システムの種類 (物理または仮想) によって異なります。 このドキュメントでは、物理または仮想システム上で、Windows Server 2016 または Windows Server Core 2016 のいずれかに対して Windows コンテナー ホストを展開する方法を詳しく説明します。
 
-## Docker のインストール
+## <a name="install-docker"></a>Docker のインストール
 
 Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。 
 
@@ -45,7 +43,7 @@ Install-Package -Name docker -ProviderName DockerMsftProvider
 Restart-Computer -Force
 ```
 
-## コンテナーの基本イメージのインストール
+## <a name="install-base-container-images"></a>コンテナーの基本イメージのインストール
 
 Windows コンテナーを使用する前に、基本イメージをインストールする必要があります。 基本イメージは、コンテナー オペレーティング システムとして Windows Server Core と Nano Server の両方で使用できます。 Docker コンテナー イメージの詳細については、「[Build your own images on docker.com](https://docs.docker.com/engine/tutorials/dockerimages/)」(docker.com で独自のイメージを構築する) を参照してください。
 
@@ -63,11 +61,11 @@ docker pull microsoft/nanoserver
 
 > Windows Containers OS Image 使用許諾契約書 (EULA) を参照してください。こちらの「[EULA](../images-eula.md)」に掲載されています。
 
-## Hyper-V コンテナー ホスト
+## <a name="hyper-v-container-host"></a>Hyper-V コンテナー ホスト
 
 Hyper-V コンテナーを実行するには、Hyper-V ロールが必要になります。 Windows コンテナー ホスト自体が Hyper-V 仮想マシンの場合、Hyper-V ロールをインストールする前に、入れ子になった仮想化を有効にする必要があります。 入れ子になった仮想化の詳細については、「[入れ子になった仮想化]( https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting)」を参照してください。
 
-### 入れ子になった仮想化
+### <a name="nested-virtualization"></a>入れ子になった仮想化
 
 次のスクリプトでは、コンテナー ホストの入れ子になった仮想化を構成します。 このスクリプトは親 Hyper-V マシンで実行されます。 このスクリプトを実行する場合は、必ず、コンテナー ホストの仮想マシンを無効にしてください。
 
@@ -85,11 +83,10 @@ Set-VMMemory $vm -DynamicMemoryEnabled $false
 Get-VMNetworkAdapter -VMName $vm | Set-VMNetworkAdapter -MacAddressSpoofing On
 ```
 
-### Hyper-V ロールの有効化
+### <a name="enable-the-hyper-v-role"></a>Hyper-V ロールの有効化
 
 PowerShell を使用してHyper-V 機能を有効にするには、管理者特権の PowerShell セッションで次のコマンドを実行します。
 
 ```none
 Install-WindowsFeature hyper-v
 ```
-

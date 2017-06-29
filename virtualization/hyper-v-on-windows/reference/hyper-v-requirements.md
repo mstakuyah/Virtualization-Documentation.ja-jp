@@ -8,17 +8,18 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 6e5e6b01-7a9d-4123-8cc7-f986e10cd372
-translationtype: Human Translation
-ms.sourcegitcommit: d1153f99c93df3b7c82cc8713fc51f368a886e5a
-ms.openlocfilehash: 2d8b0d14d4c57a2a224fdbf4ac58c457c8c080e7
-
+ms.openlocfilehash: 36f95049c227b1498540e1ee5c9194a09fbfeb83
+ms.sourcegitcommit: d5f30aa1bdfb34dd9e1909d73b5bd9f4153d6b46
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
+# <a name="windows-10-hyper-v-system-requirements"></a>Windows 10 Hyper-V のシステム要件
 
-# Windows 10 Hyper-V のシステム要件
+Hyper-V は、Windows 8 以降の 64 ビット版 Windows Professional、Enterprise、および Education のエディションでのみ使用できます。  Hyper-V には、第 2 レベルのアドレス変換 (SLAT) 機能が必要です。SLAT とは、Intel と AMD が提供する最新世代の 64 ビット プロセッサに搭載されている機能です。
 
-Windows 10 の Hyper-V は、オペレーティング システムとハードウェアの特定の一連の構成のみで動作します。 このドキュメントでは、Hyper-V の要件について、またシステムの互換性を確認する方法について説明します。
+4 GB の RAM を備えたホストでは基本的な仮想マシンを 3 つまたは 4 つ実行することができますが、仮想マシンが増えれば、より多くのリソースが必要となります。 一方で、物理ハードウェアの内容にもよりますが、32 のプロセッサと 512 GB の RAM を備えた大規模な仮想マシンを作成することもできます。
 
-## オペレーティング システムの要件
+## <a name="operating-system-requirements"></a>オペレーティング システムの要件
 
 Hyper-V のロールは、次のバージョンの Windows 10 で有効にすることができます。
 
@@ -34,7 +35,7 @@ Hyper-V のロールは、次のバージョンにはインストール**でき�
 
 >Windows 10 Home Edition は、Windows 10 Professional にアップグレードすることができます。 アップグレードを行うには、**[設定]** > **[更新とセキュリティ]** > **[アクティブ化]** の順に開きます。 ここでストアにアクセスして、アップグレードを購入することができます。
 
-## ハードウェア要件
+## <a name="hardware-requirements"></a>ハードウェア要件
 
 このドキュメントでは、Hyper-V と互換性のあるハードウェアをすべて一覧していませんが、次のアイテムが必要です。
     
@@ -46,7 +47,7 @@ Hyper-V のロールは、次のバージョンにはインストール**でき�
 - 仮想化テクノロジ (マザーボードの製造元によってラベルが異なる場合があります)
 - ハードウェアによるデータ実行防止
 
-## ハードウェアの互換性の検証
+## <a name="verify-hardware-compatibility"></a>ハードウェアの互換性の検証
 
 互換性を検証するには、PowerShell またはコマンド プロンプト (cmd.exe) を開いて、「**systeminfo**」と入力します。 一覧表示された Hyper-V の要件がすべて **Yes** である場合、使用しているシステムで Hyper-V のロールを実行できます。 いずれかの項目が **No** を返す場合、このドキュメントに一覧された要件を確認して、可能な限り調整を行います。
 
@@ -57,8 +58,3 @@ Hyper-V のロールは、次のバージョンにはインストール**でき�
 ```
 Hyper-V Requirements: A hypervisor has been detected. Features required for Hyper-V are not be displayed.
 ```
-
-
-<!--HONumber=Jan17_HO2-->
-
-

@@ -8,14 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
-translationtype: Human Translation
-ms.sourcegitcommit: 76e041aac426604280208f616f7994181112215a
-ms.openlocfilehash: 766a99a74738fa41ef77410c70aefa7e664f014e
-ms.lasthandoff: 03/01/2017
-
+ms.openlocfilehash: be51a89292f339c40b05bb48e0921777fd4a9801
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
-
-# Windows Server の Windows コンテナー
+# <a name="windows-containers-on-windows-server"></a>Windows Server の Windows コンテナー
 
 この演習では、Windows Server 2016 の Windows コンテナー機能の基本的な展開と使用について段階的に確認します。 この演習では、コンテナーの役割をインストールし、単純な Windows Server コンテナーを展開します。 このクイック スタートを始める前に、コンテナーの基本的な概念と用語を理解しておいてください。 この情報は[クイック スタートの概要](./index.md)にあります。
 
@@ -33,13 +31,13 @@ Azure に展開する場合は、こちらの[テンプレート](https://github
 </a>
 
 
-## 1.Docker のインストール
+## <a name="1-install-docker"></a>1.Docker のインストール
 
-Docker をインストールするには、[OneGet プロバイダー PowerShell モジュール](https://github.com/oneget/oneget)を使用します。 プロバイダーは、コンピューターでコンテナーの機能を有効にします。 また、再起動が必要になる Docker をインストールします。 Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。
+Docker をインストールするには、他のプロバイダー (ここでは [MicrosoftDockerProvider](https://github.com/OneGet/MicrosoftDockerProvider)) と連携してインストールを実行する [OneGet プロバイダー PowerShell モジュール](https://github.com/oneget/oneget)を使用します。 プロバイダーは、コンピューターでコンテナーの機能を有効にします。 また、再起動が必要になる Docker をインストールします。 Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。
 
 管理者特権の PowerShell セッションを開き、次のコマンドを実行します。
 
-まず、PowerShell ギャラリーから Docker-Microsoft PackageManagement Provider をインストールします。
+まず、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/DockerMsftProvider)から Docker-Microsoft PackageManagement Provider をインストールします。
 
 ```none
 Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
@@ -56,7 +54,12 @@ PowerShell でパッケージ ソース "DockerDefault" を信頼するかどう
 Restart-Computer -Force
 ```
 
-## 2.Windows の更新プログラムをインストールする
+> ヒント: 後で Docker を更新する場合は、
+>  - 次を実行して、インストールされているバージョンを確認します。 `Get-Package -Name Docker -ProviderName DockerMsftProvider`
+>  - 次を実行して、最新のバージョンを検索します。 `Find-Package -Name Docker -ProviderName DockerMsftProvider`
+>  - 準備ができたら、`Install-Package -Name Docker -ProviderName DockerMsftProvider -Update -Force` を実行してアップグレードした後、次を実行します。 `Start-Service Docker`
+
+## <a name="2-install-windows-updates"></a>2. Windows の更新プログラムをインストールする
 
 次を実行して、Windows Server システムが最新の状態であることを確認します。
 
@@ -84,7 +87,7 @@ sconfig
 
 画面の指示に従い、オプション A を選択してすべての更新プログラムをダウンロードします。
 
-## 3.最初のコンテナーの展開
+## <a name="3-deploy-your-first-container"></a>3.最初のコンテナーの展開
 
 この演習では、事前作成された .NET サンプル イメージを Docker Hub レジストリからダウンロードし、.NET Hello World アプリケーションを実行するシンプルなコンテナーを展開します。  
 
@@ -144,9 +147,8 @@ OS: Microsoft Windows 10.0.14393
 
 Docker Run コマンドの詳細については、Docker.com の「[Docker Run リファレンス]( https://docs.docker.com/engine/reference/run/)」をご覧ください。
 
-## 次の手順
+## <a name="next-steps"></a>次の手順
 
 [Windows Server のコンテナー イメージ](./quick-start-images.md)
 
 [Windows 10 の Windows コンテナー](./quick-start-windows-10.md)
-

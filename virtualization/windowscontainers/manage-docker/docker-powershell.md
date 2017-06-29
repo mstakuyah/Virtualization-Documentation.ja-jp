@@ -8,13 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 4a0e907d-0d07-42f8-8203-2593391071da
-translationtype: Human Translation
-ms.sourcegitcommit: 54eff4bb74ac9f4dc870d6046654bf918eac9bb5
-ms.openlocfilehash: 71d91e12ae843bf96e1b4001915ffb55bb352ffd
-
+ms.openlocfilehash: bcbc2e4e76c48a3d9a1a9720b09ef366a396bf30
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
-
-### Docker 用 PowerShell
+### <a name="powershell-for-docker"></a>Docker 用 PowerShell
 
 フォーラム、Twitter、GitHub を介したお客様との対話、さらには直接の対話を通して、"どうして PowerShell から Docker コンテナーを表示できないのか" という問いをよく耳にします。 
 
@@ -23,9 +22,3 @@ ms.openlocfilehash: 71d91e12ae843bf96e1b4001915ffb55bb352ffd
 優れた PowerShell モジュールをビルドするのは簡単なことではありません。すべてのコードを正しく記述してから、オブジェクトとパラメーター セットおよびコマンドレット名の適正なバランスを取るまでの作業はすべてとても重要です。  そのため、この新しいモジュールに着手しながら、エンド ユーザーや大規模な PowerShell と Docker のコミュニティに目を向け、このモジュールの形成に役立てています。  どのようなパラメーター セットが重要だと思いますか?  当社で "docker run" と同等のものを提供すべきでしょうか。それとも、お客様が new-container を start-container にパイプ処理するべきでしょうか。  このモジュールについての詳しい説明と開発への参加をご希望の場合は、当社の GitHub ページ (https://github.com/Microsoft/Docker-PowerShell/) にアクセスしてご参加ください。
 
 開発が進み、品質の安定したモジュールができしだい、PowerShell ギャラリーに投稿し、このページを更新して使用手順を提供し続ける予定です。
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-

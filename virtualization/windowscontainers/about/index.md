@@ -8,18 +8,16 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-translationtype: Human Translation
-ms.sourcegitcommit: 59621ca2db190d5c13034752a08c291e3dc19daa
-ms.openlocfilehash: d68be61b1d462b70986df5cfd6df052b388cec1d
-ms.lasthandoff: 02/08/2017
-
+ms.openlocfilehash: 1699bec6515608c722c28babd26719b27baa53c6
+ms.sourcegitcommit: b13a29758013a21215ee6e21e7e7ed7f58b62485
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
-
-# Windows コンテナー
+# <a name="windows-containers"></a>Windows コンテナー
 
 **この記事は暫定的な内容であり、変更される可能性があります。** 
 
-## コンテナーとは
+## <a name="what-are-containers"></a>コンテナーとは
 
 簡単な概要を見る: [Windows ベースのコンテナー: エンタープライズ レベルの制御を使用した最新のアプリ開発](https://youtu.be/Ryx3o0rD5lY)。
 
@@ -29,18 +27,18 @@ ms.lasthandoff: 02/08/2017
 
 コンテナーは、新しくインストールされた物理的なコンピューターまたは仮想マシンと同様に認識され、動作します。 Windows Server コンテナーは、他のコンテナーと同様、[Docker](https://www.docker.com/) によって管理できます。
 
-## Windows コンテナーの種類
+## <a name="windows-container-types"></a>Windows コンテナーの種類
 
 Windows コンテナーには、2 つの異なるタイプのコンテナー (ランタイム) が含まれます。
 
-**Windows Server コンテナー** – プロセスと名前空間の分離テクノロジを使用してアプリケーションを分離します。 Windows Server コンテナーは、コンテナー ホストとそのホストで実行されているすべてのコンテナーと、カーネルを共有します。
+**Windows Server コンテナー** – プロセスと名前空間の分離テクノロジを使用してアプリケーションを分離します。 Windows Server コンテナーでは、コンテナー ホストおよびそのホスト上で実行されているすべてのコンテナーとの間でカーネルを共有します。  これらのコンテナーは、敵対的なセキュリティ境界を提供しないため、信頼されていないコードを分離するために使用しないでください。
 
-**Hyper-V コンテナー** – 各コンテナーを大幅に最適化された仮想マシンで実行することで、Windows Server コンテナーによって提供される分離性が向上します。 この構成では、コンテナー ホストのカーネルが Hyper-V でコンテナーと共有されません。
+**Hyper-V による分離** – 各コンテナーを大幅に最適化された仮想マシンで実行することで、Windows Server コンテナーによって提供される分離性が向上します。 この構成では、コンテナー ホストのカーネルは同じホスト上の他のコンテナーと共有されません。  これらのコンテナーは、仮想マシンの同じセキュリティ保証により、敵対的なマルチテナント ホスティング向けに設計されています。
 
 
-## コンテナーの基礎
+## <a name="container-fundamentals"></a>コンテナーの基礎
 
-コンテナーの使用を開始すると、コンテナーと仮想マシンに多くの類似点があることがわかります。 コンテナーは、物理または仮想のコンピューター システムと同様に、オペレーティング システムを実行し、ファイル システムを持ち、ネットワーク経由でアクセスできます。 ただし、コンテナーの背後にあるテクノロジと概念は、仮想マシンのものとは大きく異なります。  
+コンテナーの使用を開始すると、コンテナーと仮想マシンに多くの類似点があることがわかります。 コンテナーは、オペレーティング システムを実行し、ファイル システムを保有しています。物理または仮想コンピューター システムと同様に、ネットワーク経由でアクセスできます。 ただし、コンテナーの背後にあるテクノロジと概念は、仮想マシンのものとは大きく異なります。  
 
 Mark Russinovich による[このブログ記事](http://azure.microsoft.com/blog/2015/08/17/containers-docker-windows-and-trends/)では、コンテナーについてよく説明されています。
 
@@ -58,7 +56,7 @@ Windows コンテナーの作成と使用を開始する際には、次の主要
 
 <center>![](media/containerfund.png)</center>
 
-## 開発者のためのコンテナー
+## <a name="containers-for-developers"></a>開発者のためのコンテナー
 
 テスト マシンを一連の実稼働コンピューターの場合は、任意の環境全体にわたる秒単位で同じ展開は Docker のイメージを作成することができます開発者のデスクトップから。 これにより、Docker コンテナーにパッケージ化された、大規模に拡大するエコシステムが作成されています。このエコシステムには、DockerHub と、Docker が保持するパブリック コンテナー化されたアプリケーション レジストリがあり、パブリック コミュニティ リポジトリには、現在、180,000 以上のアプリケーションが公開されています。  
 
@@ -70,20 +68,19 @@ Windows コンテナーの作成と使用を開始する際には、次の主要
 
 コンテナーは、開発者がより品質の高いアプリケーションをより短時間で作成して出荷することに役立ちます。
 
-## IT プロフェッショナル向けのコンテナー ##
+## <a name="containers-for-it-professionals"></a>IT プロフェッショナル向けのコンテナー ##
 
 IT プロフェッショナルは、コンテナーを使用して、開発、品質保証、運用の各チームに標準化された環境を提供することができます。 これにより、複雑なインストールと構成手順について心配する必要がなくなります。 コンテナーを使用して、システム管理者は、OS のインストールと基礎となるインフラストラクチャとの差を取り除きます。
 
 コンテナーでは、更新し、保守をより簡単であるインフラストラクチャを作成する管理者を支援します。
 
-## 概要に関するビデオ
+## <a name="video-overview"></a>概要に関するビデオ
 
 <iframe 
 src="https://channel9.msdn.com/Blogs/containers/Containers-101-with-Microsoft-and-Docker/player" width="800" height="450" allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
 
 
-## Windows Server のコンテナーを実行してください。
+## <a name="try-windows-server-containers"></a>Windows Server のコンテナーを実行してください。
 
 [コンテナーのクイック スタートの概要](../quick_start/quick_start.md)
-
 

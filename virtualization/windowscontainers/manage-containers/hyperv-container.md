@@ -8,13 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
-translationtype: Human Translation
-ms.sourcegitcommit: 54eff4bb74ac9f4dc870d6046654bf918eac9bb5
-ms.openlocfilehash: 3b043f0c8c50c0b92e7e3453bbaf9127bb5d41c7
-
+ms.openlocfilehash: 88c452117299d855073668d33e4323243d93e9d1
+ms.sourcegitcommit: fa56cb152977de952ec1e493005dfc0e62538b4f
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
-
-# Hyper-V コンテナー
+# <a name="hyper-v-containers"></a>Hyper-V コンテナー
 
 **この記事は暫定的な内容であり、変更される可能性があります。** 
 
@@ -24,9 +23,9 @@ Windows コンテナー テクノロジには、Windows Server コンテナー�
 
 **Hyper-V コンテナー** – ホスト上で複数のコンテナー インスタンスを同時に実行できます。ただし、各コンテナーは特殊な仮想マシン内で実行します。 これは、各 Hyper-V コンテナーとコンテナー ホスト間でのカーネル レベルの分離を提供します。
 
-## Hyper-V コンテナー
+## <a name="hyper-v-container"></a>Hyper-V コンテナー
 
-### コンテナーの作成
+### <a name="create-container"></a>コンテナーの作成
 
 Docker を使用した Hyper-V コンテナーの管理は、Windows Server コンテナーの管理の場合とほぼ同じです。 Docker を使用して Hyper-V コンテナーを作成する場合には、`--isolation=hyperv` パラメーターを使用します。
 
@@ -34,7 +33,7 @@ Docker を使用した Hyper-V コンテナーの管理は、Windows Server コ�
 docker run -it --isolation=hyperv microsoft/nanoserver cmd
 ```
 
-### 分離の説明
+### <a name="isolation-explanation"></a>分離の説明
 
 この例では、Windows Server コンテナーと Hyper-V コンテナーの分離機能を区別します。 
 
@@ -98,9 +97,3 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
 -------  ------    -----      ----- -----   ------     --  -- -----------
    1737      15    39452      19620 ...61     5.55   2376   0 vmwp
 ```
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-

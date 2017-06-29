@@ -8,102 +8,45 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-translationtype: Human Translation
-ms.sourcegitcommit: 996d3b1a8f7c8325ac66d331e1d62208c0cf6b53
-ms.openlocfilehash: 091a3570291624a3be40e3aabb9f99a482cb6470
-ms.lasthandoff: 02/27/2017
-
+ms.openlocfilehash: a6ed0cccb984d303990973a1e2009cc2922f9443
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
+# <a name="windows-containers-on-windows-10"></a>Windows 10 の Windows コンテナー
 
-# Windows 10 の Windows コンテナー
+この演習では、Windows 10 Professional または Enterprise (Anniversary Edition) の Windows コンテナー機能の基本的な展開と使用について段階的に確認します。 完了後、Docker for Windows がインストールされ、シンプルなコンテナーが実行されます。 このクイック スタートを始める前に、コンテナーの基本的な概念と用語を理解しておいてください。 情報は[クイック スタートの概要](./index.md)にあります。
 
-この演習では、Windows 10 Professional または Enterprise (Anniversary Edition) の Windows コンテナー機能の基本的な展開と使用について段階的に確認します。 完了後、コンテナー ロールがインストールされ、シンプルな Hyper-V コンテナーが展開されます。 このクイック スタートを始める前に、コンテナーの基本的な概念と用語を理解しておいてください。 情報は[クイック スタートの概要](./index.md)にあります。
-
-このクイック スタートは Windows 10 の Hyper-V コンテナーのみに適用されます。 このページの左側の目次に追加のクイック スタート文書があります。
+このクイック スタートは、Windows 10 に固有です。 このページの左側の目次に追加のクイック スタート文書があります。
 
 **前提条件:**
 
-- Windows 10 Anniversary Edition (Professional または Enterprise) を実行する 1 台の物理コンピューター システム。   
-- このクイック スタートは Windows 10 仮想マシンで実行できますが、入れ子の仮想化を有効にする必要があります。 詳細については、「[Nested Virtualization Guide](https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting)」 (入れ子になった仮想化ガイド) を参照してください。
+- Windows 10 Anniversary Edition または Creators Update (Professional または Enterprise) を実行する 1 台の物理コンピューター システム。   
+- このクイック スタートは Windows 10 仮想マシンで実行できますが、入れ子の仮想化を有効にする必要があります。 詳細については、[入れ子になった仮想化に関するガイド](https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting)を参照してください。
 
-> Windows コンテナーが機能するには、重要な更新プログラムがインストールされている必要があります。 
-> 使用している OS のバージョンを確認するには、`winver.exe` を実行し、表示されたバージョンを「[Windows 10 の更新履歴](https://support.microsoft.com/en-us/help/12387/windows-10-update-history)」と比較してください。 
+> Windows コンテナーが機能するには、重要な更新プログラムがインストールされている必要があります。
+> 使用している OS のバージョンを確認するには、`winver.exe` を実行し、表示されたバージョンを「[Windows 10 の更新履歴](https://support.microsoft.com/en-us/help/12387/windows-10-update-history)」と比較してください。
 > 14393.222 以降であることを確認してから、次に進んでください。
 
-## 1.コンテナー機能のインストール
+## <a name="1-install-docker-for-windows"></a>1. Docker for Windows をインストールする
 
-コンテナー機能は、Windows コンテナーを使用する前に有効にする必要があります。 そのためには、PowerShell セッションで、**管理者特権**で次のコマンドを実行します。
+[Docker for Windows をダウンロード](https://download.docker.com/win/stable/InstallDocker.msi)し、インストーラーを実行します。 [インストールの詳しい手順](https://docs.docker.com/docker-for-windows/install)については、Docker のドキュメントを参照してください。
 
-`Enable-WindowsOptionalFeature` は存在しないというエラー メッセージが表示される場合は、PowerShell を管理者として実行していることを再度確認します。
+## <a name="2-switch-to-windows-containers"></a>2. Windows コンテナーに切り替える
 
-```none
-Enable-WindowsOptionalFeature -Online -FeatureName containers -All
-```
+インストール後、Docker for Windows の既定では、Linux コンテナーが実行されます。 Docker のシステム トレイのメニューを使用するか、PowerShell プロンプトで `& $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon` コマンドを実行して、Windows コンテナーに切り替えます。
 
-Windows 10 は Hyper-V コンテナーにのみ対応しているため、Hyper-V 機能も有効にする必要があります。 PowerShell を使用して Hyper-V 機能を有効にするには、管理者特権の PowerShell セッションで次のコマンドを実行します。
+![](./media/docker-for-win-switch.png)
 
-```none
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-```
+## <a name="3-install-base-container-images"></a>3. コンテナーの基本イメージをインストールする
 
-インストールが完了したら、コンピューターを再起動します。
-
-```none
-Restart-Computer -Force
-```
-
-> 以前に Windows 10 で Hyper-V コンテナーと Technical Preview 5 コンテナー基本イメージを使用していた場合、忘れずに OpLocks を有効にし直してください。 次のコマンドを実行します。  `Set-ItemProperty -Path 'HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\Containers' -Name VSmbDisableOplocks -Type DWord -Value 0 -Force`
-
-## 2.Docker のインストール
-
-Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。 この演習では、両方をインストールします。 これを行うために、次のコマンドを実行します。
-
-Docker エンジンとクライアントを 1 つの zip アーカイブとしてダウンロードします。
-
-```none
-Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-17.03.0-ce.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
-```
-
-この zip アーカイブを展開して Program Files に出力します。アーカイブの内容は既に docker ディレクトリに入っています。
-
-```none
-Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
-```
-
-Docker ディレクトリをシステム パスに追加します。
-
-```none
-# Add path to this PowerShell session immediately
-$env:path += ";$env:ProgramFiles\Docker"
-
-# For persistent use after a reboot
-$existingMachinePath = [Environment]::GetEnvironmentVariable("Path",[System.EnvironmentVariableTarget]::Machine)
-[Environment]::SetEnvironmentVariable("Path", $existingMachinePath + ";$env:ProgramFiles\Docker", [EnvironmentVariableTarget]::Machine)
-```
-
-Windows サービスとして Docker をインストールするには、以下を実行します。
-
-```none
-dockerd --register-service
-```
-
-インストールされたら、サービスを開始することができます。
-
-```none
-Start-Service Docker
-```
-
-## 3.コンテナーの基本イメージのインストール
-
-Windows コンテナーは、テンプレートまたはイメージから展開されます。 コンテナーを展開する前に、コンテナーの基本 OS イメージをダウンロードする必要があります。 次のコマンドは、Nano Server のベース イメージをダウンロードします。
-
-Nano Server ベース イメージをダウンロードします。
+Windows コンテナーは、基本イメージから作成されます。 次のコマンドは、Nano Server の基本イメージをプルします。
 
 ```none
 docker pull microsoft/nanoserver
 ```
 
-イメージの pull が完了したら、`docker images` を実行するとインストール済みのイメージのリストが返されます。この場合は Nano Server のイメージです。
+イメージのプルが完了した後、`docker images` を実行するとインストール済みのイメージのリストが返されます。この場合は Nano Server のイメージです。
 
 ```none
 docker images
@@ -114,7 +57,7 @@ microsoft/nanoserver   latest              105d76d0f40e        4 days ago       
 
 > Windows Containers OS Image 使用許諾契約書 (EULA) を参照してください。こちらの「[EULA](../images-eula.md)」に掲載されています。
 
-## 4.最初のコンテナーの展開
+## <a name="4-run-your-first-container"></a>4. 最初のコンテナーを実行する
 
 この簡単な例では、"Hello World" というコンテナー イメージを作成して展開します。 最適なパフォーマンスでご利用いただくために、管理者特権で起動した Windows CMD シェルまたは PowerShell で以下のコマンドを実行します。
 
@@ -165,7 +108,6 @@ docker run --rm helloworld powershell c:\helloworld.ps1
 `docker run` コマンドを実行すると、結果的に、Hyper-V コンテナーが "Hello World" イメージから作成され、サンプル スクリプト "Hello World" が実行されます (出力がシェルにエコーされます)。次に、コンテナーが停止し、削除されます。
 後続の Windows 10 とコンテナーのクイック スタートでは、Windows 10 のコンテナーでアプリケーションを作成し、展開する方法について説明します。
 
-## 次の手順
+## <a name="next-steps"></a>次の手順
 
 [Windows Server の Windows コンテナー](./quick-start-windows-server.md)
-

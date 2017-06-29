@@ -8,19 +8,18 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 5c6f6350-f8d6-4426-b53d-9fb09c2bf267
-translationtype: Human Translation
-ms.sourcegitcommit: b2950dca4b29e97eb951379645c118468a1fb403
-ms.openlocfilehash: eac2026cff552315a4cb256b595f1bd3317ee11c
-
+ms.openlocfilehash: adfeec41a3b97b620487b00679a973f97d334572
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
-
-# Windows コンテナーのサンプル
+# <a name="windows-container-samples"></a>Windows コンテナーのサンプル
 
 これは、Windows チームおよびコミュニティのメンバーによって送信されたサンプルと例のコレクションです。  これらのサンプルは、"現状のまま"、保証なしで提供されています。  他のサンプルのご提供や、現在のセットの改善については、ご自由にお寄せください。
 
-# Categories
+# <a name="categories"></a>Categories
 
-## アプリケーション フレームワーク
+## <a name="application-frameworks"></a>アプリケーション フレームワーク
 [aspnet](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/aspnet)
 
 [iis](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/iis) 
@@ -39,7 +38,7 @@ ms.openlocfilehash: eac2026cff552315a4cb256b595f1bd3317ee11c
 
 [nginx](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/nginx)
 
-## プログラミング言語
+## <a name="programing-languages"></a>プログラミング言語
 [dotnet35](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/dotnet35)
 
 [golang](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/golang)
@@ -57,7 +56,7 @@ ms.openlocfilehash: eac2026cff552315a4cb256b595f1bd3317ee11c
 [server-jre-8u51-windows-x64](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/server-jre-8u51-windows-x64)
 
 
-## データベース
+## <a name="databases"></a>データベース
 [mongodb](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/mongodb)
 
 [mysql](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/mysql)
@@ -69,18 +68,12 @@ ms.openlocfilehash: eac2026cff552315a4cb256b595f1bd3317ee11c
 [sqlserver-express](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/sqlserver-express)
 
 
-## インフラストラクチャと CI ツール
+## <a name="infrastructure-and-ci-tools"></a>インフラストラクチャと CI ツール
 [PowerShellDSC_iis-10.0](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/PowerShellDSC_iis-10.0)
 
 
-## 遊び
+## <a name="just-for-fun"></a>遊び
 [MineCraft](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/MineCraft) 
 
 
-## その他
-
-
-
-<!--HONumber=Jan17_HO3-->
-
-
+## <a name="other"></a>その他

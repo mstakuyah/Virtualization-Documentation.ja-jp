@@ -8,13 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: fb228e06-e284-45c0-b6e6-e7b0217c3a49
-translationtype: Human Translation
-ms.sourcegitcommit: 54eff4bb74ac9f4dc870d6046654bf918eac9bb5
-ms.openlocfilehash: 1eea533459b565ffceca23ca7454e9678abc52e9
-
+ms.openlocfilehash: 6e9a70e370f1c13a69dd617d4564be9d6c2f6017
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
-
-# PowerShell を使用した仮想マシンの自動化と管理
+# <a name="virtual-machine-automation-and-management-using-powershell"></a>PowerShell を使用した仮想マシンの自動化と管理
  
 PowerShell ダイレクトを使用すると、ネットワークの構成やリモート管理の設定に関係なく、Hyper-V ホストから、Windows 10 仮想マシンまたは Windows Server Technical Preview 仮想マシンで任意の PowerShell を実行することができます。
 
@@ -24,7 +23,7 @@ PowerShell ダイレクトを使用すると、ネットワークの構成やリ
 * 永続的なセッションとして (ビルド 14280 以降) -- New-PSSession を使用して永続的なセッションを作成するには[ここをクリック](#copy-files-with-new-pssession-and-copy-item)してください。  
 続行するには、Copy-Item を使用してファイルを仮想マシンにコピーおよび仮想マシンからコピーし、接続を切断するには Remove-PSSession を使用します。
 
-## 要件
+## <a name="requirements"></a>要件
 **オペレーティング システムの要件:**
 * ホスト: Windows 10、Windows Server Technical Preview 2、または Hyper-V を実行するそれ以降のバージョン。
 * ゲスト/仮想マシン: Windows 10、Windows Server Technical Preview 2、またはそれ以降のバージョン。
@@ -39,7 +38,7 @@ PowerShell ダイレクトを使用すると、ネットワークの構成やリ
 
 -------------
 
-## 対話型 PowerShell セッションの作成と終了
+## <a name="create-and-exit-an-interactive-powershell-session"></a>対話型 PowerShell セッションの作成と終了
 
 仮想マシンで PowerShell コマンドを実行するには、対話型セッションを開始するのが最も簡単な方法です。
 
@@ -80,7 +79,7 @@ PowerShell ダイレクトを使用すると、ネットワークの構成やリ
 
 -------------
 
-## Invoke-Command でのスクリプトまたはコマンドの実行
+## <a name="run-a-script-or-command-with-invoke-command"></a>Invoke-Command でのスクリプトまたはコマンドの実行
 
 PowerShell ダイレクトと Invoke-Command コマンドの組み合わせは、1 つのコマンドまたは 1 つのスクリプトを仮想マシン上で実行する必要があるが、それらの実行以降は仮想マシンとの対話を続行する必要がないという場合に最適です。
 
@@ -119,11 +118,11 @@ PowerShell ダイレクトと Invoke-Command コマンドの組み合わせは�
 
 -------------
 
-## New-PSSession および Copy-Item でファイルをコピーする
+## <a name="copy-files-with-new-pssession-and-copy-item"></a>New-PSSession および Copy-Item でファイルをコピーする
 
 > **注:** PowerShell ダイレクトでは、Windows ビルド 14280 以降でのみ永続的なセッションをサポートしています。
 
-永続的な PowerShell セッションは、1 つまたは複数のリモート コンピューターを対象にした動作を調整するスクリプトを記述する際に非常に便利です。  いったん作成された永続的なセッションは、それを削除するまで、バック グラウンドに保持されます。  すなわち、資格情報を渡さなくても`Invoke-Command` または `Enter-PSSession` を使用して、同じセッションを何度でも繰り返し参照することができます。
+永続的な PowerShell セッションは、1 つまたは複数のリモート コンピューターを対象にした動作を調整するスクリプトを記述する際にとても便利です。  いったん作成された永続的なセッションは、それを削除するまで、バック グラウンドに保持されます。  すなわち、資格情報を渡さなくても`Invoke-Command` または `Enter-PSSession` を使用して、同じセッションを何度でも繰り返し参照することができます。
 
 セッションは同じトークンにより状態を保持します。  永続的なセッションは存続するので、セッションで作成された変数またはセッションに渡された変数はいずれも複数回の呼び出しにわたり保持されます。 永続的なセッションでの作業で使用できるさまざまなツールがあります。  たとえば、[New-PSSession](https://technet.microsoft.com/en-us/library/hh849717.aspx) および [Copy-Item](https://technet.microsoft.com/en-us/library/hh849793.aspx) を使用して、ホストから仮想マシンへ、仮想マシンからホストへデータを移動することができます。
 
@@ -167,11 +166,11 @@ PowerShell ダイレクトと Invoke-Command コマンドの組み合わせは�
   
 -------------
 
-## トラブルシューティング
+## <a name="troubleshooting"></a>トラブルシューティング
 
 PowerShell Direct を通じて表示される一般的なエラー メッセージが少しあります。  いくつかの最も一般的な原因、および問題を診断するためのツールは、次のとおりです。
 
-### -VMName または -VMID パラメーターが存在しない
+### <a name="-vmname-or--vmid-parameters-dont-exist"></a>-VMName または -VMID パラメーターが存在しない
 **問題:**  
 `Enter-PSSession``Invoke-Command` または `New-PSSession` に `-VMName` パラメーターまたは `-VMId` パラメーターがありません。
 
@@ -193,8 +192,8 @@ $PSVersionTable.PSVersion
 ```
 
 
-### エラー: リモート セッションが終了した可能性がある
-> **注:**  
+### <a name="error-a-remote-session-might-have-ended"></a>エラー: リモート セッションが終了した可能性がある
+> **注: **  
 10240 ～ 12400 のホスト ビルドでの Enter-PSSession の場合、以下に示すエラーはすべて、"リモート セッションが終了した可能性がある" とレポートされます。
 
 **エラー メッセージ:**
@@ -227,7 +226,7 @@ New-PSSession : An error has occurred which Windows PowerShell cannot handle. A 
 Restart-Service -Name vmicvmsession
 ```
 
-### エラー: パラメーター セットを解決できません。
+### <a name="error-parameter-set-cannot-be-resolved"></a>エラー: パラメーター セットを解決できません。
 **エラー メッセージ:**  
 ``` 
 Enter-PSSession : Parameter set cannot be resolved using the specified named parameters.
@@ -241,7 +240,7 @@ Enter-PSSession : Parameter set cannot be resolved using the specified named par
 仮想マシンに管理者の資格情報を渡すには、`-Credential` パラメーターを使用するか、要求されたときに手動で入力します。
 
 
-### エラー: 資格情報が無効です。
+### <a name="error-the-credential-is-invalid"></a>エラー: 資格情報が無効です。
 
 **エラー メッセージ:**  
 ```
@@ -254,7 +253,7 @@ Enter-PSSession : The credential is invalid.
   * ゲストにユーザー アカウントがない (前もって OS が起動されていない)
   * 管理者として接続する場合: 管理者がアクティブなユーザーとして設定されていない。  詳細については、[こちら](https://technet.microsoft.com/en-us/library/hh825104.aspx)をご覧ください。
   
-### エラー: 入力 VMName パラメーターが仮想マシンに解決されません。
+### <a name="error-the-input-vmname-parameter-does-not-resolve-to-any-virtual-machine"></a>エラー: 入力 VMName パラメーターが仮想マシンに解決されません。
 
 **エラー メッセージ:**  
 ```
@@ -270,14 +269,8 @@ Enter-PSSession : The input VMName parameter does not resolve to any virtual mac
 
 -------------
 
-## サンプルとユーザー ガイド
+## <a name="samples-and-user-guides"></a>サンプルとユーザー ガイド
 
 PowerShell ダイレクトでは JEA (Just Enough Administration) をサポートしています。  これを試すには、このユーザー ガイドをご覧ください。
 
 [GitHub](https://github.com/Microsoft/Virtualization-Documentation/search?l=powershell&q=-VMName+OR+-VMGuid&type=Code&utf8=%E2%9C%93) のサンプルをご確認ください。
-
-
-
-<!--HONumber=Jan17_HO2-->
-
-

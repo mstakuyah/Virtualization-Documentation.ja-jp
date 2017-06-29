@@ -1,29 +1,26 @@
 ---
-title: "Windows 仮想マシンを Windows 10 の Hyper-V に展開する"
-description: "Windows 仮想マシンを Windows 10 の Hyper-V に展開する"
-keywords: "windows 10、hyper-v"
+title: "Hyper-V による仮想マシンの作成"
+description: "Windows 10 での Hyper-V による仮想マシンの作成"
+keywords: windows 10, hyper-v
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
-ms.service: windows-10-hyperv
 ms.assetid: 66723f33-b12c-49d1-82cf-71ba9d6087e9
-translationtype: Human Translation
-ms.sourcegitcommit: 54eff4bb74ac9f4dc870d6046654bf918eac9bb5
-ms.openlocfilehash: 19889805c3e4d6d650306de1028e117bcb42ec71
-
+ms.openlocfilehash: 200ec68011628262950362620ae5b438f1b6b86c
+ms.sourcegitcommit: c8e6bf83ee873fe19b522ba9e416ecf5d29f4c95
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
+# <a name="create-virtual-machine-with-hyper-v-on-windows-10"></a>Windows 10 での Hyper-V による仮想マシンの作成
 
-# Windows 仮想マシンを Windows 10 の Hyper-V に展開する
+仮想マシンを作成し、新しい仮想マシンでオペレーティング システムをインストールする方法について説明します。  実行するオペレーティング システムの .iso ファイルが必要です。 必要な場合は、[TechNet Evaluation Center](http://www.microsoft.com/en-us/evalcenter/) から Windows 10 の評価版を取得します。
 
-さまざまな方法で仮想マシンを作成し、オペレーティング システムをその仮想マシンに展開することができます。たとえば、Windows 展開サービスを使用したり、準備した仮想ハード ドライブを接続したり、手動でインストール メディアを使用したりします。 この記事では、オペレーティング システムのインストール メディアを使用して、仮想マシンを作成し、オペレーティング システムをその仮想マシンに展開する方法について説明します。
+## <a name="create-a-virtual-machine-with-hyper-v-manager"></a>Hyper-V マネージャーでの仮想マシンの作成
 
-この演習を始める前に、展開するオペレーティング システムの .iso ファイルが必要です。 必要な場合は、[TechNet Evaluation Center](http://www.microsoft.com/en-us/evalcenter/) から Windows 8.1 または Windows 10 の評価版を取得します。
+1. Windows キーを押して「Hyper-V マネージャー」と入力するか、アプリケーションの一覧で **[Hyper-V マネージャー]** を見つけて、Hyper-V マネージャーを開きます。
 
-## Hyper-V マネージャーでの仮想マシンの作成
-次のステップは、手動で仮想マシンを作成して、この仮想マシンにオペレーティング システムを展開する方法を説明しています。
-
-1. Hyper-V マネージャーで、**[アクション]** > **[新規]** > **[仮想マシン]** の順にクリックし、新しい仮想マシン ウィザードを表示します。
+2. Hyper-V マネージャーで、**[アクション]** > **[新規]** > **[仮想マシン]** の順にクリックし、新しい仮想マシン ウィザードを表示します。
 
 2. [始める前に] のコンテンツを確認して、**[次へ]** をクリックします。 
 
@@ -64,7 +61,7 @@ ms.openlocfilehash: 19889805c3e4d6d650306de1028e117bcb42ec71
   
 10. 仮想マシンの詳細を確認し、**[完了]** をクリックして仮想マシンの作成を完了します。
 
-## PowerShell での仮想スイッチの作成
+## <a name="create-a-virtual-machine-with-powershell"></a>PowerShell での仮想スイッチの作成
 
 1. 管理者として PowerShell ISE を開きます。
 
@@ -90,7 +87,7 @@ ms.openlocfilehash: 19889805c3e4d6d650306de1028e117bcb42ec71
   Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
   ```
   
-## オペレーティング システムの展開を完了する
+## <a name="complete-the-operating-system-deployment"></a>オペレーティング システムの展開を完了する
 
 仮想マシンの構築を完了するには、仮想マシンを起動して、オペレーティング システムのインストールを行う必要があります。
 
@@ -104,11 +101,3 @@ ms.openlocfilehash: 19889805c3e4d6d650306de1028e117bcb42ec71
   ![](media/OSDeploy_upd.png) 
 
 > **注:** ボリューム ライセンス版の Windows を実行していない限り、仮想マシン内で実行されている Windows のライセンスを区別する必要があります。 仮想マシンのオペレーティング システムは、ホストのオペレーティング システムに依存しません。
-
-## 次の手順 - PowerShell と Hyper-V の使用
-[Hyper-V と Windows PowerShell](try-hyper-v-powershell.md)
-
-
-<!--HONumber=Jan17_HO2-->
-
-

@@ -8,13 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 05269ce0-a54f-4ad8-af75-2ecf5142b866
-translationtype: Human Translation
-ms.sourcegitcommit: 54eff4bb74ac9f4dc870d6046654bf918eac9bb5
-ms.openlocfilehash: a070164812b7dca39070d5f78411a017457f8573
-
+ms.openlocfilehash: bfb63ab6ad09832becdadd863506a6639e46a3c8
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
 ---
-
-# Windows 10 の Hyper-V 
+# <a name="hyper-v-on-windows-10"></a>Windows 10 の Hyper-V 
 
 Windows 10 の多くのバージョンに Hyper-V 仮想化テクノロジが含まれています。 Hyper-V を利用すれば、物理ホストの上で仮想化されたコンピューター システムを実行できます。 仮想化されたコンピューター システムはあたかも物理コンピューター システムであるかのように使用し、管理できますが、実際は仮想化され、分離された環境に存在します。 ハイパーバイザーと呼ばれる特別なソフトウェアが仮想システムと物理ハードウェア リソース間のアクセスを管理します。 仮想化により、コンピューター システムを短時間で展開したり、以前の良好な状態にシステムをすばやく戻したり、物理ホスト間でシステムを移行したりできます。
 
@@ -29,7 +28,7 @@ Windows 10 の多くのバージョンに Hyper-V 仮想化テクノロジが含
             <ul>
                 <li class="unordered">[Hyper-V の概要](./about/index.md)<br /><br /></li>
                 <li class="unordered">[サポートされているゲスト オペレーティング システム](about\supported-guest-os.md)<br /><br /></li>
-            </ul>   
+            </ul>    
         </td>
     </tr>
     <tr valign="top">
@@ -53,13 +52,7 @@ Windows 10 の多くのバージョンに Hyper-V 仮想化テクノロジが含
             <ul>
                 <li class="unordered">[Hyper-V フォーラム](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home?forum=winserverhyperv)<br /><br /></li>
                 <li class="unordered">[Hyper-V と Windows コンテナーのコミュニティ リソース](/virtualization/community/index.md)<br /><br /></li>
-            </ul>   
+            </ul>    
         </td>
     </tr>
 </table>
-
-
-
-<!--HONumber=Jan17_HO2-->
-
-
