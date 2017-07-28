@@ -8,12 +8,13 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 18930864-476a-40db-aa21-b03dfb4fda98
-ms.openlocfilehash: 2e2289bbb7801824c13e5ba4cb17d51beb26fbfa
-ms.sourcegitcommit: b55d4d31a5706e2f65f4c4a029c2f55a76711253
+ms.openlocfilehash: c98ab9c32dfcd6e9b3a0258d0282b28d78726f6a
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="hyper-v-integration-services"></a>Hyper-V 統合サービス
+# Hyper-V 統合サービス
 
 統合サービス (多くの場合、統合コンポーネントと呼ばれます) は、仮想マシンから Hyper-V ホストに通信できるようにするサービスです。 これらのサービスの多くは便利な機能ですが、その他にも、仮想マシンの機能が正しく動作する上で非常に重要な働きをするものもあります。
 
@@ -23,7 +24,7 @@ ms.contentlocale: ja-JP
 * [統合サービスの管理](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/manage/manage-Hyper-V-integration-services)
 
 
-## <a name="quick-reference"></a>クイック リファレンス
+## クイック リファレンス
 
 | 名前 | Windows サービス名 | Linux デーモン名 |  説明 | 無効にした場合に VM に与える影響 |
 |:---------|:---------|:---------|:---------|:---------|
@@ -36,7 +37,7 @@ ms.contentlocale: ja-JP
 | [Hyper-V PowerShell ダイレクト サービス](#hyper-v-powershell-direct-service) | vmicvmsession | 利用不可 | ネットワークに接続することなく PowerShell を使用して仮想マシンを管理する方法を提供します。 | 低 |  
 
 
-## <a name="hyper-v-heartbeat-service"></a>Hyper-V ハートビート サービス
+## Hyper-V ハートビート サービス
 
 **Windows サービス名:** vmicheartbeat  
 **Linux デーモン名:** hv_utils  
@@ -48,7 +49,7 @@ ms.contentlocale: ja-JP
 
 仮想マシンの状態が "実行中" である旨が Hyper-V から報告された場合 (次の例を参照)、これは、Hyper-V が仮想マシン用にリソースを確保していることを意味するものであり、インストールされている、または機能しているオペレーティング システムが存在することを意味するものではありません。  この点で、ハートビートは有用です。  ハートビート サービスは、仮想マシン内のオペレーティング システムが起動したことを Hyper-V に通知します。  
 
-### <a name="check-heartbeat-with-powershell"></a>PowerShell を使用してハートビートをチェックする
+### PowerShell を使用してハートビートをチェックする
 
 仮想マシンのハートビートを確認するには、[Get-VM](https://technet.microsoft.com/en-us/library/hh848479.aspx) を管理者として実行します。
 ``` PowerShell
@@ -66,7 +67,7 @@ DemoVM  Running  Operating normally
 
 
 
-## <a name="hyper-v-guest-shutdown-service"></a>Hyper-V ゲスト シャットダウン サービス
+## Hyper-V ゲスト シャットダウン サービス
 
 **Windows サービス名:** vmicshutdown  
 **Linux デーモン名:** hv_utils  
@@ -75,7 +76,7 @@ DemoVM  Running  Operating normally
 **影響:** **影響: 大**  無効にした場合、ホストは仮想マシンで安全なシャットダウンをトリガーできなくなります。  シャットダウンはすべて、ハード上の電源オフ操作であり、データの損失またはデータの破損を引き起こす可能性があります。  
 
 
-## <a name="hyper-v-time-synchronization-service"></a>Hyper-V 時刻の同期サービス
+## Hyper-V 時刻の同期サービス
 
 **Windows サービス名:** vmictimesync  
 **Linux デーモン名:** hv_utils  
@@ -84,7 +85,7 @@ DemoVM  Running  Operating normally
 **影響:** **影響: 大**  無効にした場合、仮想マシンのクロックが変動し不安定になります。  
 
 
-## <a name="hyper-v-data-exchange-service-kvp"></a>Hyper-V データ交換サービス (KVP)
+## Hyper-V データ交換サービス (KVP)
 
 **Windows サービス名:** vmickvpexchange  
 **Linux デーモン名:** hv_kvp_daemon  
@@ -103,7 +104,7 @@ DemoVM  Running  Operating normally
 * [キー/値ペアを使用して Hyper-V 上のホストとゲストの間で情報を共有する](https://technet.microsoft.com/en-us/library/dn798287.aspx)。  
 
 
-## <a name="hyper-v-volume-shadow-copy-requestor"></a>Hyper-V ボリューム シャドウ コピー リクエスター
+## Hyper-V ボリューム シャドウ コピー リクエスター
 
 **Windows サービス名:** vmicvss  
 **Linux デーモン名:** hv_vss_daemon  
@@ -116,7 +117,7 @@ DemoVM  Running  Operating normally
 ボリューム シャドウ コピーの詳細については、[こちら](https://msdn.microsoft.com/en-us/library/dd405549.aspx)を参照してください。
 
 
-## <a name="hyper-v-guest-service-interface"></a>Hyper-V ゲスト サービス インターフェイス
+## Hyper-V ゲスト サービス インターフェイス
 
 **Windows サービス名:** vmicguestinterface  
 **Linux デーモン名:** hv_fcopy_daemon  
@@ -128,7 +129,7 @@ DemoVM  Running  Operating normally
 既定では無効  [Copy-Item を使用した PowerShell ダイレクト](../user-guide/powershell-direct.md#copy-files-with-new-pssession-and-copy-item)に関するページを参照してください。 
 
 
-## <a name="hyper-v-powershell-direct-service"></a>Hyper-V PowerShell ダイレクト サービス
+## Hyper-V PowerShell ダイレクト サービス
 
 **Windows サービス名:** vmicvmsession  
 **Linux デーモン名:** なし  

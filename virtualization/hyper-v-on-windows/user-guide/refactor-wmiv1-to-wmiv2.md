@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: b13a3594-d168-448b-b0a1-7d77153759a8
 ms.openlocfilehash: e2d6faabe77346199a5d292fcfd92cdfd63909b8
-ms.sourcegitcommit: a424c11258e47f224e14c4349b852b9e37b7604f
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="move-from-hyper-v-wmi-v1-to-wmi-v2"></a>Hyper-V WMI v1 から WMI v2 への移行
+# Hyper-V WMI v1 から WMI v2 への移行
 
 Windows Management Instrumentation (WMI) は、Hyper-V マネージャーと Hyper-V の PowerShell コマンドレットの基になる管理インターフェイスです。  ほとんどのユーザーは、マイクロソフトの PowerShell コマンドレットまたは Hyper-V マネージャーを使用しますが、開発者は直接 WMI を必要とする場合がありました。  
 
@@ -23,7 +23,7 @@ Hyper-V WMI 名前空間 (つまり Hyper-V WMI API のバージョン) は 2 �
 
 このドキュメントには、以前の WMI 名前空間と通信するコードを、新しい名前空間に変換するためのリソースへのリファレンス情報が含まれています。  この記事では、最初に API 情報のリポジトリとなる情報を示し、Hyper-V WMI API を使用するプログラムやスクリプトを、v1 名前空間から v2 名前空間に移植するために使用できるサンプル コードやスクリプトを示します。
 
-## <a name="msdn-samples"></a>MSDN サンプル
+## MSDN サンプル
 
 [Hyper-V 仮想マシンの移行のサンプル](http://code.msdn.microsoft.com/windowsdesktop/Hyper-V-virtual-machine-aef356ee)  
 [Hyper-V 仮想ファイバー チャネルのサンプル](http://code.msdn.microsoft.com/windowsdesktop/Hyper-V-virtual-Fiber-35d27dcd)  
@@ -38,7 +38,7 @@ Hyper-V WMI 名前空間 (つまり Hyper-V WMI API のバージョン) は 2 �
 [Hyper-V リソース プール管理のサンプル](http://code.msdn.microsoft.com/windowsdesktop/Hyper-V-resource-pool-df906d95)  
 [Hyper-V 回復スナップショットのサンプル](http://code.msdn.microsoft.com/windowsdesktop/Hyper-V-recovery-snapshot-ea72320c)  
 
-## <a name="samples-from-blogs"></a>ブログからのサンプル
+## ブログからのサンプル
 
 [Hyper-V WMI V2 名前空間を使用して VM にネットワーク アダプターを追加する](http://blogs.msdn.com/b/taylorb/archive/2013/07/15/adding-a-network-adapter-to-a-vm-using-the-hyper-v-wmi-v2-namespace.aspx)  
 [Hyper-V WMI V2 名前空間を使用してスイッチに VM のネットワーク アダプターを接続する](http://blogs.msdn.com/b/taylorb/archive/2013/07/15/connecting-a-vm-network-adapter-to-a-switch-using-the-hyper-v-wmi-v2-namespace.aspx)  

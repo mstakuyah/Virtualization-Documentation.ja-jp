@@ -8,18 +8,19 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
-ms.openlocfilehash: 8b0cd6046f8b556f9dd5082c5ddf80af83814c1c
-ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.openlocfilehash: 2077f7cf0428e08ce915470ac4cc3b0ccc9c6369
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="optimize-windows-dockerfiles"></a>Windows Dockerfile を最適化する
+# Windows Dockerfile を最適化する
 
 Docker のビルド プロセスと結果の Docker イメージの両方を最適化するには、複数の方法を使用できます。 このドキュメントでは、Docker ビルド プロセスのしくみについて詳しく説明し、Windows コンテナーでの最適なイメージの作成に使用できるいくつかの方法を示します。
 
-## <a name="docker-build"></a>Docker のビルド
+## Docker のビルド
 
-### <a name="image-layers"></a>イメージ レイヤー
+### イメージ レイヤー
 
 Docker のビルドの最適化を調べる前に、Docker のビルドがどのように動作するのかを理解しておくことが重要です。 Docker ビルド プロセスでは、Dockerfile が使用されて、アクション可能な各命令が 1 つずつ専用の一時的なコンテナーで実行されます。 その結果、アクション可能な各命令に対して新しいイメージ レイヤーが作成されます。 
 
@@ -50,13 +51,13 @@ f0e017e5b088        21 seconds ago       cmd /S /C echo "Hello World - Dockerfil
 
 イメージ レイヤーが最小になり、ビルドのパフォーマンスが最高になり、読みやすさなどの表面的なことが最適になるように、Dockerfile を記述できます。 最終的に、同じイメージ ビルド タスクを実行するにはさまざまな方法があります。 Dockerfile の形式がビルド時間と結果のイメージに与える影響を理解すると、オートメーションのエクスペリエンスが向上します。 
 
-## <a name="optimize-image-size"></a>イメージのサイズを最適化する
+## イメージのサイズを最適化する
 
 Docker コンテナー イメージを構築するときは、イメージのサイズが重要な要因になる場合があります。 コンテナー イメージは、レジストリとホストの間を移動され、エクスポートおよびインポートされて、最終的にはスペースを消費します。 Docker ビルド プロセスの間にイメージのサイズを最小限に抑えるには、複数の方法を使用できます。 このセクションでは、Windows コンテナーに固有のいくつかの方法について説明します。 
 
 Dockerfile のベスト プラクティスについては、「[Best practices for writing Dockerfiles on Docker.com]( https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)」(Docker.com で Dockerfile を作成するときのベスト プラクティス) を参照してください。
 
-### <a name="group-related-actions"></a>関連するアクションをグループ化する
+### 関連するアクションをグループ化する
 
 各 `RUN` 命令によってコンテナー イメージに 1 つの新しいレイヤーが作成されるので、複数のアクションを 1 つの `RUN` 命令にグループ化するとレイヤーの数を減らすことができます。 レイヤーの数を最小限に抑えてもイメージのサイズに大きな影響はありませんが、後の例で示すように、関連するアクションをグループ化するとイメージのサイズに大きな影響があります。
 
@@ -104,7 +105,7 @@ IMAGE               CREATED             CREATED BY                              
 69e44f37c748        54 seconds ago      cmd /S /C powershell.exe -Command   $ErrorAct   216.3 MB                
 ```
 
-### <a name="remove-excess-files"></a>余分なファイルを削除する
+### 余分なファイルを削除する
 
 インストーラーなどのファイルが使用後に必要ない場合は、ファイルを削除するとイメージのサイズが減ります。 この処理は、イメージ レイヤーへのファイルのコピーが行われるのと同じステップで行う必要があります。 そうすることで、ファイルが下位レベルのイメージ レイヤーに残るのを防ぐことができます。
 
@@ -120,9 +121,9 @@ RUN powershell.exe -Command \
   Remove-Item c:\python-3.5.1.exe -Force
 ```
 
-## <a name="optimize-build-speed"></a>ビルドの速さを最適化する
+## ビルドの速さを最適化する
 
-### <a name="multiple-lines"></a>複数の行
+### 複数の行
 
 Docker のビルド速度を最適化するときは、操作を複数の個別の命令に分けると有効な場合があります。 複数の `RUN` 操作を使用すると、キャッシュの効率が向上します。 `RUN` 命令ごとに個別のレイヤーが作成されるため、同じステップが異なる Docker ビルド操作で既に実行されている場合は、このキャッシュされた操作 (イメージ レイヤー) が再利用されます。 結果として、Docker のビルドの実行時間が短縮されます。
 
@@ -197,7 +198,7 @@ d43abb81204a        7 days ago          cmd /S /C powershell -Command  Sleep 2 ;
 6801d964fda5        5 months ago
 ```
 
-### <a name="ordering-instructions"></a>命令の手順
+### 命令の手順
 
 Dockerfile は上から下に処理され、各命令はキャッシュされているレイヤーと比較されます。 キャッシュされたレイヤーがない命令が見つかると、その命令およびそれ以降のすべての命令が新しいコンテナー イメージ レイヤーで処理されます。 このため、命令の配置の順序が重要になります。 変化しない命令は、Dockerfile の前の方に配置します。 変化する可能性のある命令は、Dockerfile の後の方に配置します。 そうすることで、既存のキャッシュが役に立たなくなる可能性が減ります。
 
@@ -248,9 +249,9 @@ c92cc95632fb        28 seconds ago      cmd /S /C mkdir test-4   5.644 MB
 6801d964fda5        5 months ago                                 0 B
 ```
 
-## <a name="cosmetic-optimization"></a>表面的な最適化
+## 表面的な最適化
 
-### <a name="instruction-case"></a>命令の場合
+### 命令の場合
 
 Dockerfile の命令は大文字/小文字を区別されませんが、規則では大文字を使うようになっています。 これにより、命令の呼び出しと命令の操作が区別されて、読みやすさが向上します。 次の 2 つの例ではこの概念を示します。 
 
@@ -273,7 +274,7 @@ RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 CMD [ "cmd" ]
 ```
 
-### <a name="line-wrapping"></a>行の折り返し
+### 行の折り返し
 
 長くて複雑な操作は、バックスラッシュ `\` 記号を使って複数の行に分けることができます。 次の Dockerfile は、Visual Studio の再頒布可能パッケージをインストールし、インストーラー ファイルを削除して、構成ファイルを作成します。 これら 3 つの操作すべてが 1 行で指定されています。
 
@@ -294,7 +295,7 @@ RUN powershell -Command \
     New-Item c:\config.ini
 ```
 
-## <a name="further-reading--references"></a>参考資料
+## 参考資料
 
 [Dockerfile on Windows] (Windows 上の Dockerfile) (manage-windows-dockerfile.md)
 

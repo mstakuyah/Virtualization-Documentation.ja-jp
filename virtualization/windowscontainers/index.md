@@ -8,12 +8,13 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 74c9d604-0915-4d89-bc69-0263b76bc66b
-ms.openlocfilehash: ac6e99800fcabef31464a81799fc9e329438b0ae
-ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.openlocfilehash: 9b630e372b575ef1721c0d0926ec2caec3e5ec34
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="windows-containers-documentation"></a>Windows コンテナーに関するドキュメント
+# Windows コンテナーに関するドキュメント
 
 Windows コンテナーは、1 つのシステムで複数の独立したアプリケーションを実行できるようにする、オペレーティング システム レベルの仮想化を実現します。 この機能では、2 種類のコンテナー ランタイムを使用します。それぞれ、アプリケーションの分離の度合いが異なります。 Windows Server コンテナーは、名前空間とプロセスの分離によって分離を実現します。 Hyper-V コンテナーは、軽量の仮想マシンで各コンテナーをカプセル化します。 このドキュメント セットでは、クイック スタート ガイド、展開ガイド、管理操作に関する詳しい技術情報を提供します。
 

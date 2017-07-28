@@ -7,12 +7,13 @@ ms.date: 04/07/2017
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: eb2b827c-4a6c-4327-9354-50d14fee7ed8
-ms.openlocfilehash: 918fe27f7aee74e3c1de3b7381e7ccea76f49c73
-ms.sourcegitcommit: d5f30aa1bdfb34dd9e1909d73b5bd9f4153d6b46
+ms.openlocfilehash: 307cd592a9deda41fd2a892d49eadbc5ae436d84
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="introduction-to-hyper-v-on-windows-10"></a>Windows 10 の Hyper-V の概要
+# Windows 10 の Hyper-V の概要
 
 > Hyper-V によって、Microsoft Virtual PC は置き換えられます。 
 
@@ -22,7 +23,7 @@ ms.contentlocale: ja-JP
 
 Hyper-V は、具体的には、ハードウェアの仮想化を提供します。  つまり、各仮想マシンが仮想ハードウェア上で実行されます。  Hyper-V を使用して、仮想ハード ドライブや仮想スイッチのほか、仮想マシンに追加できるさまざまな仮想デバイスを作成できます。
 
-## <a name="reasons-to-use-virtualization"></a>仮想化を使用する理由
+## 仮想化を使用する理由
 
 仮想化によって、次のようなことを実現できます。  
 * 以前のバージョンの Windows または Windows 以外のオペレーティング システムを必要とするソフトウェアを実行します。 
@@ -35,7 +36,7 @@ Hyper-V は、具体的には、ハードウェアの仮想化を提供します
 
 * 仮想ネットワークを使用すると、実稼働ネットワークに影響を与えることなく、テスト/開発/デモ用の複数コンピューター環境を作成することができます。
 
-## <a name="system-requirements"></a>システム要件
+## システム要件
 Hyper-V は、Windows 8 以降の 64 ビット版 Windows Professional、Enterprise、および Education で使用できます。  Hyper-V は Windows Home エディションでは使用できません。  
 
 >  **[設定]** > **[更新とセキュリティ]** > **[ライセンス認証]** の順に移動して、Windows 10 Home エディションを Windows 10 Professional にアップグレードしてください。 ここでストアにアクセスして、アップグレードを購入することができます。
@@ -46,7 +47,7 @@ Hyper-V は、Windows 8 以降の 64 ビット版 Windows Professional、Enterpr
 
 Hyper-V のシステムの要件と、コンピューター上で Hyper-V が実行されていることを確認する方法の詳細については、[Hyper-V の要件に関するリファレンス](..\reference\hyper-v-requirements.md)を参照してください。
 
-## <a name="operating-systems-you-can-run-in-a-virtual-machine"></a>仮想マシンで実行できるオペレーティング システム
+## 仮想マシンで実行できるオペレーティング システム
 "Guest" という用語は、仮想マシンを参照し、"host" は、仮想マシンを実行するコンピューターを参照します。 Windows の Hyper-V は、Linux、FreeBSD、および Windows の各種リリースを含むさまざまなゲスト オペレーティング システムをサポートします。 
 
 なおに、仮想マシンで使用するすべてのオペレーティング システムの有効なライセンスを持っている必要があります。 
@@ -54,7 +55,7 @@ Hyper-V のシステムの要件と、コンピューター上で Hyper-V が実
 Windows の Hyper-V でゲストとしてサポートされているオペレーティング システムについては、[サポートされている Windows ゲスト オペレーティング システム](supported-guest-os.md)と[サポートされている Linux ゲスト オペレーティング システム](https://technet.microsoft.com/library/dn531030.aspx)に関する情報をご覧ください。 
 
 
-## <a name="differences-between-hyper-v-on-windows-and-hyper-v-on-windows-server"></a>Windows の Hyper-V と Windows Server の Hyper-V の相違点
+## Windows の Hyper-V と Windows Server の Hyper-V の相違点
 一部の機能は、Windows 上の Hyper-V と、Windows Server で実行されている Hyper-V とで動作が異なります。 
 
 メモリ管理のモデルでは、Windows 上の HYPER-V に異なります。 サーバーでは、HYPER-V でメモリをバーチャル マシンのみが、サーバーで実行されていることを前提に管理されます。 Windows 上の Hyper-V では、ほとんどのクライアント コンピューターが仮想マシンだけでなく、ホスト上のソフトウェアも実行している、という前提でメモリが管理されています。 たとえば、開発者が同じコンピューター上で Visual Studio と複数の仮想マシンを実行している場合があります。
@@ -68,10 +69,10 @@ Windows Server 上の Hyper-V には、Windows 上の Hyper-V には含まれな
 * SR-IOV ネットワー キング
 * 共有されます。VHDX
 
-## <a name="limitations"></a>制限事項
+## 制限事項
 仮想化は制限事項があります。 特定のハードウェアに依存する機能またはアプリケーションは、仮想マシンでは動作しません。 たとえば、GPU での処理を必要とするゲームまたはアプリケーションは正しく動作しない可能性があります。 また、10 ミリ秒未満のタイマーに依存するアプリケーション (ライブ音楽のミキシング アプリなど) や高い時間精度に依存するアプリケーションの場合、仮想マシンで実行すると問題が発生することがあります。
 
 さらに、Hyper-V を有効にしていると、遅延の影響を受けやすい高精度なアプリは、ホストで実行するときにも問題が発生することがあります。  これは、仮想化を有効にすると、ゲスト オペレーティング システムの場合と同様に、ホスト OS も Hyper-V 仮想化レイヤー上で実行されるためです。 ただし、ゲスト OS とは異なり、ホスト OS は、すべてのハードウェアに直接アクセスできるという点で特殊です。つまり、ホスト OS では、特殊なハードウェア要件を持つアプリケーションでも問題なく実行できます。
 
-## <a name="next-step"></a>次の手順
+## 次の手順
 [Windows 10 上に Hyper-V をインストールする](..\quick-start\enable-hyper-v.md) 

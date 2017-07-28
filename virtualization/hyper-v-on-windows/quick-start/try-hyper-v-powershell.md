@@ -8,19 +8,20 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 6d1ae036-0841-4ba5-b7e0-733aad31e9a7
-ms.openlocfilehash: 77893b931afb3cc39d54ca33dab84f33bc971bfc
-ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.openlocfilehash: 520ef410eddad61c40d31655e6bf7ede7846d4b2
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="working-with-hyper-v-and-windows-powershell"></a>Hyper-V と Windows PowerShell の使用
+# Hyper-V と Windows PowerShell の使用
 
 Hyper-V の展開、仮想マシンの作成、仮想マシンの管理の基本を確認できたので、次は PowerShell でこれらの作業の大半を自動化する方法について説明します。
 
-### <a name="return-a-list-of-hyper-v-commands"></a>HYPER-V のコマンドの一覧を返します
+### HYPER-V のコマンドの一覧を返します
 
-1.    Windows の [スタート] ボタンをクリックし、「**PowerShell**」と入力します。
-2.    次のコマンドを実行すると、Hyper-V PowerShell モジュールで利用できる PowerShell コマンドの検索可能な一覧が表示されます
+1.  Windows の [スタート] ボタンをクリックし、「**PowerShell**」と入力します。
+2.  次のコマンドを実行すると、Hyper-V PowerShell モジュールで利用できる PowerShell コマンドの検索可能な一覧が表示されます
 
  ```powershell
 Get-Command -Module hyper-v | Out-GridView
@@ -39,7 +40,7 @@ Get-Help Get-VM
  ![](media\get_help.png)
 
 
-### <a name="return-a-list-of-virtual-machines"></a>仮想マシンの一覧を返す
+### 仮想マシンの一覧を返す
 
 仮想マシンの一覧を返すには、`Get-VM` コマンドを使用します。
 
@@ -63,7 +64,7 @@ Get-VM
  Get-VM | where {$_.State -eq 'Off'}
  ```
 
-### <a name="start-and-shut-down-virtual-machines"></a>起動し、仮想マシンをシャットダウン
+### 起動し、仮想マシンをシャットダウン
 
 1. 特定のバーチャル マシンを開始するには、仮想マシンの名前で、次のコマンドを実行します。
 
@@ -82,14 +83,14 @@ Get-VM
  Get-VM | where {$_.State -eq 'Running'} | Stop-VM
  ```
 
-### <a name="create-a-vm-checkpoint"></a>VM チェックポイントを作成する
+### VM チェックポイントを作成する
 
 PowerShell を使用してチェックポイントを作成するには、`Get-VM` コマンドを使用して仮想マシンを選択し、それを `Checkpoint-VM` コマンドに渡します。 最後に、`-SnapshotName` を使用してチェックポイントに名前を付けます。 完全なコマンドは次のようになります。
 
  ```powershell
  Get-VM -Name <VM Name> | Checkpoint-VM -SnapshotName <name for snapshot>
  ```
-### <a name="create-a-new-virtual-machine"></a>新しい仮想マシンを作成する
+### 新しい仮想マシンを作成する
 
 次の例は、PowerShell Integrated Scripting Environment (ISE) で新しい仮想マシンを作成する方法を示すものです。 これは単純な例であり、拡張して PowerShell 機能やより高度な VM 展開を追加できます。
 
@@ -113,7 +114,7 @@ PowerShell を使用してチェックポイントを作成するには、`Get-V
  New-VM @VM
   ```
 
-## <a name="wrap-up-and-references"></a>ラップし、参照
+## ラップし、参照
 
 このドキュメントはいくつかのサンプル シナリオと同様に、HYPER-V の PowerShell モジュールに、エクスプ ローラーにいくつかの簡単な手順を説明しました。 Hyper-V PowerShell モジュールの詳細については、[Windows PowerShell リファレンスの Hyper-V コマンドレット](https://technet.microsoft.com/%5Clibrary/Hh848559.aspx)をご覧ください。  
  

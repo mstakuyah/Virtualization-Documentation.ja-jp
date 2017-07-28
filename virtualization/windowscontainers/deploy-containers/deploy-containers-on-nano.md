@@ -8,24 +8,25 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
-ms.openlocfilehash: 247cf1703b429fbd7ef41553d2f46c1e99785477
-ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.openlocfilehash: b9a02184a98f392d5ee323dc3e939d137ce7e4e6
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="container-host-deployment---nano-server"></a>コンテナー ホストの展開 - Nano Server
+# コンテナー ホストの展開 - Nano Server
 
 このドキュメントでは、Windows コンテナー機能を使用した基本的な Nano Server の展開を順番に説明します。 これは上級レベルのトピックであり、Windows および Windows コンテナーの概要を理解していることを前提としています。 Windows コンテナーの概要については、「[Windows コンテナー クイック スタート](../quick-start/index.md)」を参照してください。
 
-## <a name="prepare-nano-server"></a>Nano Server の準備
+## Nano Server の準備
 
 次のセクションでは、基本的な Nano Server の構成の展開について具体的に説明します。 Nano Server の展開オプションと構成オプションの詳細については、「Getting Started with Nano Server」 (Nano Server の概要) (https://technet.microsoft.com/en-us/library/mt126167.aspx) を参照してください。
 
-### <a name="create-nano-server-vm"></a>Nano Server VM を作成する
+### Nano Server VM を作成する
 
 まず Nano Server 評価版 VHD を[ここ](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016)からダウンロードします。 この VHD で仮想マシンを作成し、その仮想マシンを起動します。次に、Hyper-V 接続オプション、または使用中の仮想化プラットフォームに基づく同等の接続オプションを使用して仮想マシンに接続します。
 
-### <a name="create-remote-powershell-session"></a>リモート PowerShell セッションを作成する
+### リモート PowerShell セッションを作成する
 
 Nano Server は対話型のログオン機能を備えていないため、管理はすべて PowerShell を使用してリモート システムから実行されます。
 
@@ -43,7 +44,7 @@ Enter-PSSession -ComputerName 192.168.1.50 -Credential ~\Administrator
 
 上記の手順が完了すると、Nano Server システムではリモート PowerShell セッションの状態になります。 このドキュメントの残りの部分では、特に記載のない限り、リモート セッションから作業を行います。
 
-### <a name="install-windows-updates"></a>Windows の更新プログラムをインストールする
+### Windows の更新プログラムをインストールする
 
 Windows コンテナー機能が動作するためには、重要な更新プログラムが必要です。 これらの更新プログラムをインストールするには、次のコマンドを実行します。
 
@@ -60,7 +61,7 @@ Restart-Computer
 
 バックアップが作成されたら、リモート PowerShell 接続を再び確立します。
 
-## <a name="install-docker"></a>Docker のインストール
+## Docker のインストール
 
 Docker は Windows コンテナーで使用するために必要です。 Docker をインストールするには、[OneGet プロバイダー PowerShell モジュール](https://github.com/oneget/oneget)を使用します。 プロバイダーは、コンピューターでコンテナー機能を有効にして、Docker をインストールします。これには、再起動が必要です。 
 
@@ -84,7 +85,7 @@ Install-Package -Name docker -ProviderName DockerMsftProvider
 Restart-Computer -Force
 ```
 
-## <a name="install-base-container-images"></a>コンテナーの基本イメージのインストール
+## コンテナーの基本イメージのインストール
 
 基本 OS イメージは、任意の Windows Server または Hyper-V コンテナーのベースとして使用されます。 基本 OS イメージは、基となるオペレーティング システムとして Windows Server Core と Nano Server の両方で使用でき、`docker pull` を使用してインストールすることができます。 Docker コンテナー イメージの詳細については、「[Build your own images on docker.com](https://docs.docker.com/engine/tutorials/dockerimages/)」(docker.com で独自のイメージを構築する) を参照してください。
 
@@ -102,13 +103,13 @@ docker pull microsoft/windowsservercore
 
 > Windows Containers OS Image 使用許諾契約書 (EULA) を参照してください。こちらの「[EULA](../images-eula.md)」に掲載されています。
 
-## <a name="manage-docker-on-nano-server"></a>Nano Server の Docker の管理
+## Nano Server の Docker の管理
 
 最適な結果を得るために、またベスト プラクティスとして、リモート システムから Nano Server の Docker を管理します。 これは、PowerShell リモート処理では現在、対話型コンテナー シェルの TTY ターミナルの出力を初期クライアントのプロンプトにリダイレクトできないためです。 `docker run -dt` を使用すると、コンテナーをデタッチして起動し、バックグラウンドで実行することはできますが、`docker run -it` を使用した場合、対話型コンテナーは正常に動作しません。 同様の理由で、PowerShell ISE の対話型出力でも問題が発生します。
 
 リモート Docker サーバーを管理するには、次の項目を完了する必要があります。
 
-### <a name="prepare-container-host"></a>コンテナー ホストを用意する
+### コンテナー ホストを用意する
 
 Docker 接続用のコンテナー ホストにファイアウォール規則を作成します。 セキュリティで保護されていない接続の場合はポート `2375`、セキュリティで保護されている接続の場合はポート `2376` になります。
 
@@ -136,7 +137,7 @@ Docker サービスを再起動します。
 Restart-Service docker
 ```
 
-### <a name="prepare-remote-client"></a>リモート クライアントを準備する
+### リモート クライアントを準備する
 
 作業するリモート システム上で、Docker クライアントをダウンロードします。
 
@@ -178,7 +179,7 @@ $env:DOCKER_HOST = "tcp://<ipaddress of server>:2375"
 docker run -it microsoft/nanoserver cmd
 ```
 
-## <a name="hyper-v-container-host"></a>Hyper-V コンテナー ホスト
+## Hyper-V コンテナー ホスト
 
 Hyper-V コンテナーを展開するには、コンテナー ホストで Hyper-V の役割が必要になります。 Hyper-V コンテナーの詳細については、「[Hyper-V コンテナー](../manage-containers/hyperv-container.md)」を参照してください。
 

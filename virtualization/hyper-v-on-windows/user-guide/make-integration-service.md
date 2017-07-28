@@ -7,12 +7,13 @@ ms.date: 04/07/2017
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 1ef8f18c-3d76-4c06-87e4-11d8d4e31aea
-ms.openlocfilehash: d50648efcaac40d6a60430b44c070717adf31b4d
-ms.sourcegitcommit: d5f30aa1bdfb34dd9e1909d73b5bd9f4153d6b46
+ms.openlocfilehash: 971593b762b51bd24f43c40d4697fdd3cef82400
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="make-your-own-integration-services"></a>独自の統合サービスを作成する
+# 独自の統合サービスを作成する
 
 Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレス ファミリと仮想マシンを対象とした特殊なエンドポイントを備えた Windows ソケット) を使って Hyper-V ホストと仮想マシン間の通信を行うアプリケーションをだれでも作成できるようになりました。  Hyper-V を介したすべての通信はネットワークを使わずに実行され、すべてのデータは同じ物理メモリにとどまります。   Hyper-V ソケットを使うアプリケーションは、Hyper-V の統合サービスと似ています。
 
@@ -34,7 +35,7 @@ Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレ�
 
 --------------
 
-## <a name="getting-started"></a>概要
+## 概要
 
 要件:
 * C/C++ コンパイラ。  お持ちではない場合は、[Visual Studio コミュニティ](https://aka.ms/vs)を確認してください。
@@ -43,7 +44,7 @@ Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレ�
 
 > **注:** Hyper-V ソケットの API は、Windows 10 で近日公開予定です。  HVSocket を使うアプリケーションは、あらゆる Widnows 10 ホストとゲストで実行できますが、開発には Windows SDK ビルド 14290 以降が必要です。  
 
-## <a name="register-a-new-application"></a>新しいアプリケーションの登録
+## 新しいアプリケーションの登録
 Hyper-V ソケットを使用するには、アプリケーションを Hyper-V ホストのレジストリに登録する必要があります。
 
 レジストリにサービスを登録することで、次が得られます。
@@ -84,9 +85,9 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 ```
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\GuestCommunicationServices\
     999E53D4-3D5C-4C3E-8779-BED06EC056E1\
-        ElementName    REG_SZ    VM Session Service
+        ElementName REG_SZ  VM Session Service
     YourGUID\
-        ElementName    REG_SZ    Your Service Friendly Name
+        ElementName REG_SZ  Your Service Friendly Name
 ```
 
 > **ヒント:** PowerShell で GUID を生成し、それをクリップボードにコピーするには、次を実行します。  
@@ -94,7 +95,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 (New-Guid).Guid | clip.exe
 ```
 
-## <a name="create-a-hyper-v-socket"></a>Hyper-V ソケットの作成
+## Hyper-V ソケットの作成
 
 最も基本的な例で、ソケットの定義には、アドレス ファミリ、接続の種類、およびプロトコルが必要です。
 
@@ -122,7 +123,7 @@ SOCKET sock = socket(AF_HYPERV, SOCK_STREAM, HV_PROTOCOL_RAW);
 ```
 
 
-## <a name="bind-to-a-hyper-v-socket"></a>Hyper-V ソケットへのバインド
+## Hyper-V ソケットへのバインド
 
 バインドは、ソケットと接続情報を関連付けます。
 
@@ -161,7 +162,7 @@ IP またはホスト名の代わりに、AF_HYPERV エンドポイントは 2 �
 
 接続が特定の仮想マシンとの接続でない場合は、一連の VMID ワイルドカードを使用することもできます。
  
-### <a name="vmid-wildcards"></a>VMID ワイルドカード
+### VMID ワイルドカード
 
 | 名前 | GUID | 説明 |
 |:-----|:-----|:-----|
@@ -181,7 +182,7 @@ IP またはホスト名の代わりに、AF_HYPERV エンドポイントは 2 �
 (VM 内: コンテナー ホスト/コンテナーなし): VM ホスト。  
 (VM 内でない: コンテナー ホスト/コンテナーなし): サポートされていません。
 
-## <a name="supported-socket-commands"></a>サポートされているソケット コマンド
+## サポートされているソケット コマンド
 
 Socket()  
 Bind()  
@@ -190,7 +191,7 @@ Send()
 Listen()  
 Accept()  
 
-## <a name="useful-links"></a>役に立つリンク
+## 役に立つリンク
 [完全な WinSock API](https://msdn.microsoft.com/en-us/library/windows/desktop/ms741394.aspx)
 
 [Hyper-V 統合サービスの参照](../reference/integration-services.md)

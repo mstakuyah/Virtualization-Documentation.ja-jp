@@ -9,12 +9,13 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 9cafd6cb-dbbe-4b91-b26c-dee1c18fd8c2
 redirect_url: https://technet.microsoft.com/windows-server-docs/compute/hyper-v/manage/manage-Hyper-V-integration-services
-ms.openlocfilehash: 83bcc4c2f47e2a3921be257f45a3a0e22dcba89a
-ms.sourcegitcommit: fd6c5ec419aae425af7ce6c6a44d59c98f62502a
+ms.openlocfilehash: 374ce6f8c4aede7190916675698551eb667458f9
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="managing-hyper-v-integration-services"></a>Hyper-V 統合サービスの管理
+# Hyper-V 統合サービスの管理
 
 統合サービス (多くの場合、統合コンポーネントと呼ばれます) は、仮想マシンから Hyper-V ホストに通信できるようにするサービスです。 このようなサービスの多くは便利なものですが (ゲスト ファイル コピーなど)、仮想マシンが正しく機能するために重要なサービスもあります (時間の同期)。
 
@@ -22,7 +23,7 @@ ms.contentlocale: ja-JP
 
 各統合サービスの詳細については、「[Integration Services](../reference/integration-services.md)」 (統合サービス) を参照してください。
 
-## <a name="enable-or-disable-integration-services-using-hyper-v-manager"></a>Hyper-V マネージャーを使用して統合サービスを有効または無効にする
+## Hyper-V マネージャーを使用して統合サービスを有効または無効にする
 
 1. 仮想マシンを選択して設定を開きます。
   
@@ -32,7 +33,7 @@ ms.contentlocale: ja-JP
 
 REG QUERY "HKLM\Software\Microsoft\Virtual Machine\Auto" /v IntegrationServicesVersion
 
-## <a name="enable-or-disable-integration-services-using-powershell"></a>PowerShell を使用して統合サービスを有効または無効にする
+## PowerShell を使用して統合サービスを有効または無効にする
 
 統合サービスは、PowerShell を使用して [`Enable-VMIntegrationService`](https://technet.microsoft.com/en-us/library/hh848500.aspx) または [`Disable-VMIntegrationService`](https://technet.microsoft.com/en-us/library/hh848488.aspx) を実行して、有効または無効にすることもできます。
 
@@ -73,7 +74,7 @@ REG QUERY "HKLM\Software\Microsoft\Virtual Machine\Auto" /v IntegrationServicesV
 統合サービスが機能するには、ホストとゲストの両方で有効にする必要があるように設計されました。  すべての統合サービスは Windows ゲスト オペレーティング システムの既定で有効ですが、無効にすることもできます。  その方法については、次のセクションを参照してください。
 
 
-## <a name="manage-integration-services-from-guest-os-windows"></a>ゲスト OS (Windows) から統合サービスを管理する
+## ゲスト OS (Windows) から統合サービスを管理する
 
 > **注:** 統合サービスを無効にすると、ホストの仮想マシンを管理する機能が深刻な影響を受けます。  統合サービスが機能するには、ホストとゲストの両方で有効にする必要があります。
 
@@ -110,7 +111,7 @@ Running  vmicvss            Hyper-V Volume Shadow Copy Requestor
 
 既定では、ゲスト OS ですべての統合サービスが有効です。
 
-## <a name="manage-integration-services-from-guest-os-linux"></a>ゲスト OS (Linux) から統合サービスを管理する
+## ゲスト OS (Linux) から統合サービスを管理する
 
 一般的に、Linux 統合サービスは Linux カーネルで提供されます。
 
@@ -191,7 +192,7 @@ sudo hv_kvp_daemon
 ここで `ps -ef | hv` をもう一度実行すると、新しいプロセス ID の `hv_kvp_daemon` プロセスが表示されます。
 
 
-## <a name="integration-service-maintenance"></a>統合サービスのメンテナンス
+## 統合サービスのメンテナンス
 
 Windows 10 での統合サービスのメンテナンスは、既定では、仮想マシンが Windows Update から重要な更新プログラムを受信できる限り実行されます。  
 
@@ -266,4 +267,4 @@ Windows 10 での統合サービスのメンテナンスは、既定では、仮
 | - | | |
 | Linux ゲスト | パッケージ マネージャー | Linux 用の統合コンポーネントはディストリビューションに組み込まれていますが、オプションで更新プログラムを使用できる場合があります。 ** |
 
- > Linux ゲストの詳細については、[こちら](https://technet.microsoft.com/en-us/library/dn531030.aspx)を参照してください。 
+ > ** Linux ゲストの詳細については、[こちら](https://technet.microsoft.com/en-us/library/dn531030.aspx)を参照してください。 

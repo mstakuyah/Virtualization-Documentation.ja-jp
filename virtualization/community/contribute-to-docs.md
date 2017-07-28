@@ -8,16 +8,17 @@ ms.topic: article
 ms.prod: virtualization
 ms.service: virtualization
 ms.assetid: 731ed95a-ce13-4c6e-a450-49563bdc498c
-ms.openlocfilehash: b5fe1a2e4c59007fbbb679c9050e28a5e076b08f
-ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.openlocfilehash: d4fd2dbaf362ac3ad52667743177a203174b397d
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="contribute-to-the-docs"></a>ドキュメントに投稿する
+# ドキュメントに投稿する
 
 > **注:** ドキュメントに投稿するには、[GitHub](https://www.github.com) アカウントを所有している必要があります。
 
-## <a name="edit-an-existing-doc"></a>既存のドキュメントの編集
+## 既存のドキュメントの編集
 
 1. 編集するドキュメントを探します。  
 
@@ -58,12 +59,12 @@ ms.contentlocale: ja-JP
 
 7. [プル要求](contribute-to-docs.md#pull-requests)の作成  
 
-## <a name="pull-requests"></a>プル要求
+## プル要求
 
 ほとんどの変更はプル要求を介してコミットされます。  プル要求は、複数のレビューアーで変更セットを審査したり、変更を加えたり、現在のコンテンツについてコメントしたりする手段です。
 
 
-## <a name="fork-the-repo-and-edit-locally"></a>リポジトリの分岐とローカルでの編集
+## リポジトリの分岐とローカルでの編集
 
 ドキュメントで長時間作業する場合、リポジトリをローカルにクローンし、自分のコンピューター上で作業することができます。
 
@@ -84,7 +85,7 @@ ms.contentlocale: ja-JP
   * Git 用の VSCode。便利ないくつかの機能を説明します。
   * 最初のコミットの実行。
 
-### <a name="set-up-git"></a>Git のセットアップ
+### Git のセットアップ
 
 1. (Windows の場合) Git のインストール ([ここ](https://git-for-windows.github.io/)をクリック)
 
@@ -178,7 +179,7 @@ ms.contentlocale: ja-JP
   }
   ```
 
-### <a name="validate-and-stash-credentials"></a>資格情報の検証と格納
+### 資格情報の検証と格納
 
   リポジトリが正しくセットアップされたことの検証には、新しいコンテンツの取得を試行します。
 
@@ -187,7 +188,7 @@ ms.contentlocale: ja-JP
   ```
 
 
-### <a name="set-up-markdown-editing-environment"></a>マークダウン編集環境のセットアップ
+### マークダウン編集環境のセットアップ
 
 1. VSCode のダウンロード
 

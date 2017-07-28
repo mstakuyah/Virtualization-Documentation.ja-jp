@@ -8,12 +8,13 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 426c87cc-fa50-4b8d-934e-0b653d7dea7d
-ms.openlocfilehash: 8df30a00eaa2c98feeb4c80c302937c9dfc6d758
-ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.openlocfilehash: ea91ea0ffca5479cb0593ef9961625f7b7ab1f42
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="try-pre-release-features-for-hyper-v"></a>Hyper-V のプレリリース機能を試す
+# Hyper-V のプレリリース機能を試す
 
 > この記事は暫定的な内容であり、変更される可能性があります。  
   プレリリースの仮想マシンは、Microsoft ではサポートされないため、開発またはテスト環境でのみ使用してください。
@@ -28,7 +29,7 @@ Windows Server 2016 Technical Preview で Hyper-V のプレリリース機能に
 * プレリリース仮想マシンには、ビルド間で一貫した定義はありません。 ホスト オペレーティング システムを更新すると、既存のプレリリース仮想マシンとホストとの互換性がなくなる可能性があります。 これらの仮想マシンが起動しなくなるか、あるいは、最初は動作しているように見えても後で重大な互換性の問題が発生する場合があります。
 * プレリリース仮想マシンをビルドの異なるホストにインポートする場合、結果は予測できません。 プレリリース仮想マシンを別のホストに移動することはできます。 ただし、このシナリオの動作が期待できるのは、両方のホストが同じビルドを実行している場合のみです。
 
-## <a name="create-a-pre-release-virtual-machine"></a>プレリリース仮想マシンの作成
+## プレリリース仮想マシンの作成
 
 Windows Server 2016 Technical Preview を実行する Hyper-V ホスト上にプレリリース仮想マシンを作成することができます。
 
@@ -45,6 +46,6 @@ New-VM -Name <VM Name> -Prerelease
 
  これらの記事に示されている例は、Windows 10 または Windows Server 2016 Technical Preview を実行する Hyper-V ホストで使用できます。 ただし、現時点で -Prerelease フラグを使用できるのは、Windows Server 2016 Technical Preview を実行する Hyper-V ホスト上にプレリリース仮想マシンを作成する場合のみです。
 
-## <a name="see-also"></a>関連項目
+## 関連項目
 -  [仮想化に関するブログ](https://blogs.technet.microsoft.com/virtualization/) - 使用可能なプレリリース機能とその機能を試す方法を確認できます。
 - [サポートされている仮想マシンの構成バージョン](https://technet.microsoft.com/library/mt695898.aspx#BKMK_SupportedConfigVersions) - 仮想マシン構成バージョンと Microsoft でサポートされているバージョンの確認方法を学習します。

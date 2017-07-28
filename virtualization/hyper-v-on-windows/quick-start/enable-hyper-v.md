@@ -7,19 +7,20 @@ ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
-ms.openlocfilehash: fd660b0869e853e4e9050dea345694b0f048df0a
-ms.sourcegitcommit: 646bad3f5331abea515b4bb3f6c8566d1b77e275
+ms.openlocfilehash: 468b2047bbca94126e56be71c2d546a8c78820cb
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="install-hyper-v-on-windows-10"></a>Windows 10 上に Hyper-V をインストールする
+# Windows 10 上に Hyper-V をインストールする
 
 Windows 10 上に仮想マシンを作成するには、Hyper-V を有効にします。  
 Hyper-V はさまざまな方法で有効にすることができます。たとえば、Windows 10 のコントロール パネルや PowerShell (私のお気に入りの方法です) を使用したり、展開イメージのサービスと管理 (DISM) ツールを使用する方法などがあります。 このドキュメントでは、それぞれの方法について説明します。
 
 > **注:** Hyper-V はオプション機能として Windows に組み込まれています。Hyper-V のダウンロードやインストール可能なコンポーネントはありません。 
 
-## <a name="check-requirements"></a>要件の確認
+## 要件の確認
 
 * Windows 10 Enterprise、Professional、または Education
 * 第 2 レベルのアドレス変換 (SLAT) の 64 ビット プロセッサ。
@@ -32,10 +33,10 @@ Hyper-V ロールは、Windows 10 Home にはインストール**できません
 詳しい情報とトラブルシューティングについては、「[Windows 10 Hyper-V のシステム要件](../reference/hyper-v-requirements.md)」をご覧ください。
 
 
-## <a name="install-hyper-v"></a>Hyper-V をインストールする 
+## Hyper-V をインストールする 
 Hyper-V はオプション機能として Windows に組み込まれています。Hyper-V のダウンロードやインストール可能なコンポーネントはありません。  組み込まれている Hyper-V ロールを有効にするには、いくつかの方法があります。
 
-### <a name="enable-hyper-v-using-powershell"></a>PowerShell を使用して Hyper-V を有効にする
+### PowerShell を使用して Hyper-V を有効にする
 
 1. 管理者として PowerShell コンソールを開きます。
 
@@ -48,7 +49,7 @@ Hyper-V はオプション機能として Windows に組み込まれています
 
 インストールが完了すると、コンピューターを再起動する必要があります。  
 
-### <a name="enable-hyper-v-with-cmd-and-dism"></a>CMD と DISM を使用して Hyper-V を有効にする
+### CMD と DISM を使用して Hyper-V を有効にする
 
 展開イメージのサービスと管理 (DISM) ツール を使用して、Windows と Windows イメージを構成できます。  さまざまなアプリケーションがありますが、DISM では、オペレーティング システムの実行中に Windows の機能を有効にすることができます。  
 
@@ -63,7 +64,7 @@ DISM を使用して Hyper-V ロールを有効にするには:
 
 DISM について詳しくは、[DISM のテクニカル リファレンス](https://technet.microsoft.com/en-us/library/hh824821.aspx)をご覧ください。
 
-### <a name="manually-enable-the-hyper-v-role"></a>手動で Hyper-V ロールをインストールする
+### 手動で Hyper-V ロールをインストールする
 
 1. Windows ボタンを右クリックし、[プログラムと機能] を選択します。
 
@@ -78,5 +79,5 @@ DISM について詳しくは、[DISM のテクニカル リファレンス](htt
 ![](media/restart_upd.png)
 
 
-## <a name="make-virtual-machines"></a>仮想マシンを作成する
+## 仮想マシンを作成する
 [最初の仮想マシンを作成する](quick-create-virtual-machine.md)
