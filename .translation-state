@@ -1,5 +1,5 @@
 {
-  "LastProcessedCommit": "8e193d8c274a549aef497f16dcdb00d7855e9fa7",
+  "LastProcessedCommit": "2be85d176ca76205fee5bf2008a0aeececa204e4",
   "LastTranslatedCommit": "91030ef0e75c0d62ca730a9927fb3c05707fb87f",
   "LastConfigHash": "c2c732afb7c3f4c37d58d495724fd755011bf7a0",
   "Items": {
@@ -21009,6 +21009,38 @@
       "HandoffFileCommit": "8cc83c4ea4f3e446b383e636b9344de36abe8e14",
       "HandoffDateTime": "2017-08-02T18:07:56.2659348Z",
       "HandoffXliffHash": "d06b1d723cf6515e5383fc35fca409cf464dae51",
+      "HandoffPriority": ""
+    },
+    "e8602f81b547dec6cb25dd2ca219aab49a4c3005": {
+      "FileHash": "e8602f81b547dec6cb25dd2ca219aab49a4c3005",
+      "SourceFileCommit": "2be85d176ca76205fee5bf2008a0aeececa204e4",
+      "SourceFilePath": "virtualization\\windowscontainers\\quick-start\\building-sample-app.md",
+      "HandoffReason": 1,
+      "FilePathList": [
+        "virtualization\\windowscontainers\\quick-start\\building-sample-app.md"
+      ],
+      "HasMetadata": true,
+      "TranslationType": 1,
+      "HandoffFilePath": "ol-handoff\\MicrosoftDocs\\Virtualization-Documentation-Private.ja-jp\\live\\building-sample-app.957afdd492b872efb91595b513db655c559f8646.ja-jp.xlf",
+      "HandoffFileCommit": "82db08104b059090130b7fa2edfaa7bbddc46f4a",
+      "HandoffDateTime": "2017-08-03T22:07:43.0321903Z",
+      "HandoffXliffHash": "34d88efdf043104196edd7998323d65396072b05",
+      "HandoffPriority": ""
+    },
+    "8eccd365c9d740d9e71ba9f8472d378f2f4e29c1": {
+      "FileHash": "8eccd365c9d740d9e71ba9f8472d378f2f4e29c1",
+      "SourceFileCommit": "2be85d176ca76205fee5bf2008a0aeececa204e4",
+      "SourceFilePath": "virtualization\\windowscontainers\\quick-start\\quick-start-windows-server.md",
+      "HandoffReason": 1,
+      "FilePathList": [
+        "virtualization\\windowscontainers\\quick-start\\quick-start-windows-server.md"
+      ],
+      "HasMetadata": true,
+      "TranslationType": 1,
+      "HandoffFilePath": "ol-handoff\\MicrosoftDocs\\Virtualization-Documentation-Private.ja-jp\\live\\quick-start-windows-server.142e18f0e231012ecd93f04d63cab7edf56d4155.ja-jp.xlf",
+      "HandoffFileCommit": "82db08104b059090130b7fa2edfaa7bbddc46f4a",
+      "HandoffDateTime": "2017-08-03T22:07:43.0321903Z",
+      "HandoffXliffHash": "67ea274103185db9f9e0c00e2364e74d47d35609",
       "HandoffPriority": ""
     }
   }
