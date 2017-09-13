@@ -1,54 +1,54 @@
 ---
-title: "Windows コンテナーのトラブルシューティング"
-description: "Windows コンテナーと Docker に関するトラブルシューティングのヒント、自動スクリプト、およびログ情報"
-keywords: "docker, コンテナー, トラブルシューティング, ログ"
+title: Troubleshooting Windows Containers
+description: Troubleshooting tips, automated scripts, and log information for Windows containers and Docker
+keywords: docker, containers, troubleshooting, logs
 author: PatrickLang
 ms.date: 12/19/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ebd79cd3-5fdd-458d-8dc8-fc96408958b5
-ms.openlocfilehash: 5230080386081bda8b54656d15f33b4986cfa6e3
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: 2f0d0d9f7e7cfc97427deeab9b42c0e684028c28
+ms.sourcegitcommit: 1cbc3a15428d7912596fdb3489f4529aaa9af3dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/04/2017
 ---
-# トラブルシューティング
+# Troubleshooting
 
-コンピューターのセットアップやコンテナーの実行で問題が発生したときのために、 一般的な問題を検出する PowerShell スクリプトを用意しました。 最初にこのスクリプトを実行して、結果を調べてみてください。
+Having trouble setting up your machine or running a container? We created a PowerShell script to check for common problems. Please give it a try first to see what it finds and share your results.
 
 ```PowerShell
 Invoke-WebRequest https://aka.ms/Debug-ContainerHost.ps1 -UseBasicParsing | Invoke-Expression
 ```
-このスクリプトで実行されるすべてのテストの一覧と一般的な解決策が、スクリプトの [Readme ファイル](https://github.com/Microsoft/Virtualization-Documentation/blob/live/windows-server-container-tools/Debug-ContainerHost/README.md)に記載されています。
+A list of all of the tests it runs along with common solutions is in the [Readme file](https://github.com/Microsoft/Virtualization-Documentation/blob/live/windows-server-container-tools/Debug-ContainerHost/README.md) for the script.
 
-問題の原因を特定できない場合は、スクリプトの出力を[コンテナー フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)で投稿してください。 Windows Insider 参加者や開発者も集まるこのコミュニティは、手助けを求めるには最適の場所です。
+If that doesn't help find the source of the problem, please go ahead and post the output from your script on the [Container Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers). This is the best place to get help from the community including Windows Insiders and developers.
 
 
-## ログを見つける
-Windows コンテナーの管理には、さまざまなサービスが使用されています。 次の各セクションで、ログの場所をサービス別に示します。
+## Finding Logs
+There are multiple services that are used to manage Windows Containers. The next sections shows where to get logs for each service.
 
-### Docker エンジン
-Docker エンジンは、ファイルではなく Windows 'アプリケーション' イベント ログに記録します。 これらのログは、Windows PowerShell を使用することで、簡単に読み取り、並べ替え、およびフィルター処理することができます。
+### Docker Engine
+The Docker Engine logs to the Windows 'Application' event log, rather than to a file. These logs can easily be read, sorted, and filtered using Windows PowerShell
 
-たとえば、過去 5 分間の Docker エンジン ログを古い順に表示できます。
+For example, this will show the Docker Engine logs from the last 5 minutes starting with the oldest.
 
 ```
 Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-5) | Sort-Object Time 
 ```
 
-また、別のツールで読み取り可能な CSV ファイル、またはスプレッドシートに簡単にパイプすることができます。
+This could also easily be piped into a CSV file to be read by another tool or spreadsheet.
 
 ```
 Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-30)  | Sort-Object Time | Export-CSV ~/last30minutes.CSV
 ```
 
-#### デバッグ ログを有効にする
-Docker エンジンのデバッグ レベルのログ出力を有効にすることもできます。 これは、トラブルシューティングに必要な詳細情報が通常のログでは得られない場合に役立つ可能性があります。
+#### Enabling Debug logging
+You can also enable debug-level logging on the Docker Engine. This may be helpful for troubleshooting if the regular logs don't have enough detail.
 
-管理者特権でのコマンド プロンプトを開いてから、`sc.exe qc docker` を実行して Docker サービスの現在のコマンド ラインを取得します。
-例:
+First, open an elevated Command Prompt, then run `sc.exe qc docker` get the current command line for the Docker service.
+Example:
 ```none
 C:\> sc.exe qc docker
 [SC] QueryServiceConfig SUCCESS
@@ -65,67 +65,67 @@ SERVICE_NAME: docker
         SERVICE_START_NAME : LocalSystem
 ```
 
-現在の `BINARY_PATH_NAME` を次のとおりに変更します。
-- 末尾に -D を追加する
-- " をそれぞれ \ でエスケープする
-- コマンド全体を " で囲む
+Take the current `BINARY_PATH_NAME`, and modify it:
+- Add a -D to the end
+- Escape each " with \
+- Enclose the whole command in "
 
-変更したら、`sc.exe config docker binpath= ` の後に変更後の文字列を付けて実行します。 たとえば、 
+Then run `sc.exe config docker binpath= ` followed by the new string. For example: 
 ```none
 sc.exe config docker binpath= "\"C:\Program Files\Docker\dockerd.exe\" --run-service -D"
 ```
 
 
-次に、Docker サービスを再起動します。
+Now, restart the Docker service
 ```none
 sc.exe stop docker
 sc.exe start docker
 ```
 
-このようにすると、大量のログがアプリケーション イベント ログに出力されるため、トラブルシューティングが完了したら `-D` オプションを削除することをお勧めします。 上記の同じ手順を、`-D` を付けずに実行してからサービスを再起動すると、デバッグ ログは出力されなくなります。
+This will log much more into the Application event log, so it's best to remove the `-D` option once you are done troubleshooting. Use the same steps above without `-D` and restart the service to disable the debug logging.
 
-上記の手順の代わりに、管理者特権の PowerShell プロンプトからデバッグ モードで docker デーモンを実行して、ファイルに直接出力をキャプチャすることもできます。
+An alternate to the above is to run the docker daemon in debug mode from an elevated PowerShell prompt, capturing output directly into a file.
 ```PowerShell
 sc.exe stop docker
 <path\to\>dockerd.exe -D > daemon.log 2>&1
 ```
 
-#### スタック ダンプとデーモン データを取得する
+#### Obtaining stack dump and daemon data.
 
-一般的に、これらが使用されるのは、Microsoft サポートや Docker 開発者によって明示的に要求された場合のみです。 これらを使用して、Docker が停止しているように見える状況を診断することができます。 
+Generally, these are only useful if explicitly requested by Microsoft support, or docker developers. They can be used to assist diagnosing a situation where docker appears to have hung. 
 
-[docker signal.exe](https://github.com/jhowardmsft/docker-signal) をダウンロードします。
+Download [docker-signal.exe](https://github.com/jhowardmsft/docker-signal).
 
-使い方:
+Usage:
 ```PowerShell
 Get-Process dockerd
 # Note the process ID in the `Id` column
 docker-signal -pid=<id>
 ```
 
-出力ファイルは、Docker が実行されているデータ ルート ディレクトリに保存されます。 既定のディレクトリは `C:\ProgramData\Docker` です。 実際のディレクトリは、`docker info -f "{{.DockerRootDir}}"` を実行することによって確認できます。
+The output files will be located in the data-root directory docker is running in. The default directory is `C:\ProgramData\Docker`. The actual directory can be confirmed by running `docker info -f "{{.DockerRootDir}}"`.
 
-ファイルは `goroutine-stacks-<timestamp>.log` と `daemon-data-<timestamp>.log` です。
+The files will be `goroutine-stacks-<timestamp>.log` and `daemon-data-<timestamp>.log`.
 
-`daemon-data*.log` には個人情報が含まれている場合があるため、通常、信頼されているサポート スタッフでのみ共有してください。 `goroutine-stacks*.log` に個人情報は含まれません。
+Note that `daemon-data*.log` may contain personal information and should generally only be shared with trusted support people. `goroutine-stacks*.log` does not contain personal information.
 
 
-### ホスト コンテナー サービス
-Docker エンジンは、Windows 固有のホスト コンテナー サービスに依存します。 このサービスには、次のような独立したログがあります。 
+### ホスト コンピューティング サービス
+Docker エンジンは、Windows 固有のホスト コンピューティング サービスに依存します。 It has separate logs: 
 - Microsoft-Windows-Hyper-V-Compute-Admin
 - Microsoft-Windows-Hyper-V-Compute-Operational
 
-これらはイベント ビューアーに表示され、PowerShell を使用して照会することもできます。
+They are visible in Event Viewer, and may also be queried with PowerShell.
 
-次に、例を示します。
+For example:
 ```PowerShell
 Get-WinEvent -LogName Microsoft-Windows-Hyper-V-Compute-Admin
 Get-WinEvent -LogName Microsoft-Windows-Hyper-V-Compute-Operational 
 ```
 
-#### HCS 分析/デバッグ ログをキャプチャする
+#### Capturing HCS analytic/debug logs
 
-Hyper-V Compute の分析/デバッグ ログを有効にし、`hcslog.evtx` に保存します。
+To enable analytic/debug logs for Hyper-V Compute and save them to `hcslog.evtx`.
 
 ```PowerShell
 # Enable the analytic logs
@@ -140,11 +140,11 @@ wevtutil.exe epl Microsoft-Windows-Hyper-V-Compute-Analytic <hcslog.evtx>
 wevtutil.exe sl Microsoft-Windows-Hyper-V-Compute-Analytic /e:false /q:true
 ```
 
-#### HCS 詳細トレースをキャプチャする
+#### Capturing HCS verbose tracing
 
-一般的に、これらが使用されるのは、Microsoft サポートによって要求された場合のみです。 
+Generally, these are only useful if requested by Microsoft support. 
 
-[HcsTraceProfile.wprp](https://gist.github.com/jhowardmsft/71b37956df0b4248087c3849b97d8a71) をダウンロードします。
+Download [HcsTraceProfile.wprp](https://gist.github.com/jhowardmsft/71b37956df0b4248087c3849b97d8a71)
 
 ```PowerShell
 # Enable tracing
@@ -156,4 +156,4 @@ wpr.exe -start HcsTraceProfile.wprp!HcsArgon -filemode
 wpr.exe -stop HcsTrace.etl "some description"
 ```
 
-`HcsTrace.etl` をサポート担当者に提供します。
+Provide `HcsTrace.etl` to your support contact.

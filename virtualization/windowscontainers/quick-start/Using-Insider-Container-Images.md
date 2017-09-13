@@ -1,63 +1,63 @@
-# Insider コンテナー イメージの使用
+# Using Insider Container Images
 
-この演習では、Windows Insider Preview プログラムで提供されている最新の insider ビルドの Windows Server に、Windows コンテナー機能を展開して使用する手順を説明します。 この演習では、コンテナーの役割をインストールし、基本 OS イメージのプレビュー版を展開します。 このクイック スタートを始める前に、コンテナーの基本的な概念と用語を理解しておいてください。 この情報は[クイック スタートの概要](./index.md)にあります。
+This exercise will walk you through the deployment and use of the Windows container feature on the latest insider build of Windows Server from the Windows Insider Preview program. During this exercise, you will install the container role and deploy a preview edition of the base OS images. コンテナーの概要については、[コンテナーについてのページ](../about/index.md)」をご覧ください。
 
-このクイック スタートは Windows Server Insider Preview プログラムの Windows Server コンテナーのみに適用されます。 このクイック スタートに進む前に、このプログラムに慣れておいてください。
+このクイック スタートは Windows Server Insider Preview プログラムの Windows Server コンテナーのみに適用されます。 Please familiarize yourself with the program before continuing this quick start.
 
-**前提条件: **
+**Prerequisites:**
 
-- [Windows Insider Program](https://insider.windows.com/GettingStarted) に参加し、使用条件を確認していること。 
-- Windows Insider Program から提供された Windows Server の最新ビルドや、Windows Insider Program から提供された Windows 10 の最新ビルドが実行されている 1 台のコンピューター システム (物理マシンまたは仮想マシン)。
+- Become a part of the [Windows Insider Program](https://insider.windows.com/GettingStarted) and review the Terms of Use.
+- One computer system (physical or virtual) running the latest build of Windows Server from the Windows Insider program and/or the latest build of Windows 10 from the Windows Insider program.
 
->以下で説明する基本イメージを使用するには、Windows Server Insider Preview プログラムから提供された Windows Server のビルド、または Windows Insider Preview プログラムから提供された Windows 10 のビルドを使用する必要があります。 これらのビルドを使用せずに、対象の基本イメージを使用した場合、コンテナーを開始できません。
+>It is required that you use a build of Windows Server from the Windows Server Insider Preview program, or a build of Windows 10 from the Windows Insider Preview program, to use the base image described below. If you are not using one of these builds, the use of these base images will result in failure to start a container.
 
-## Docker のインストール
-Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。 また、コンテナーに最適化された Nano Server イメージを使用して最良のエクスペリエンスを実現するため、多段階ビルドをサポートするバージョンの Docker を使用する必要があります。
+## Install Docker
+Docker is required in order to work with Windows containers. Docker consists of the Docker Engine, and the Docker client. You will also need a version of Docker that supports multi-stage builds for the best experience using the Container-optimized Nano Server image.
 
-Docker をインストールするには、OneGet プロバイダー PowerShell モジュールを使用します。 プロバイダーは、コンピューターでコンテナー機能を有効にして、Docker をインストールします。これには、再起動が必要です。 Docker には、複数のチャネルから異なるバージョンが提供されており、対応するケースがそれぞれ異なることに注意してください。 この演習では、Stable チャンネルから提供された最新の Community Edition Docker を使用します。 Docker の最新技術をテストする場合は、Edge チャンネルを利用することもできます。 
+To install Docker, we'll use the OneGet provider PowerShell module. The provider will enable the containers feature on your machine and install Docker - this will require a reboot. Note that there are multiple channels with different version of docker to use in different cases. For this exercise, we will be using the latest Community Edition version of Docker from the Stable channel. There is also an Edge channel available if you would like to test the latest developments in Docker.
 
-管理者特権の PowerShell セッションを開き、次のコマンドを実行します。
+Open an elevated PowerShell session and run the following commands.
 
->注: Insider ビルドに Docker をインストールするには、現時点で通常使用されているプロバイダーとは別のプロバイダーが必要です。 以下の相違点に注意してください。
+>Note: Installing Docker in the insider builds requires a different provider than the one normally used as of today. Please note the difference below.
 
-OneGet PowerShell モジュールをインストールします。
+Install the OneGet PowerShell module.
 ```powershell
 Install-Module -Name DockerMsftProviderInsider -Repository PSGallery -Force
 ```
-OneGet を使用して最新バージョンの Docker をインストールします。
+Use OneGet to install the latest version of Docker.
 ```powershell
 Install-Package -Name docker -ProviderName DockerMsftProviderInsider -RequiredVersion 17.06.0-ce
 ```
-インストールが完了したら、コンピューターを再起動します。
+When the installation is complete, reboot the computer.
 ```none
 Restart-Computer -Force
 ```
 
-## コンテナーの基本イメージのインストール
+## Install Base Container Image
 
-Windows コンテナーを使用する前に、基本イメージをインストールする必要があります。 Windows Insider Program に参加すると、これらの基本イメージの最新ビルドをテストすることもできます。 Insider の基本イメージでは、現在、Windows Server に基づく 4 つの基本イメージが用意されています。 以下の表に、それぞれの基本イメージの使用目的を示します。
+Before working with Windows containers, a base image needs to be installed. By being part of the Windows Insider program, you can also test our latest builds for the base images. With the Insider base images, there are now 4 available base images based on Windows Server. Refer to the table below to check for what purposes each should be used:
 
-| 基本 OS イメージ                       | 使い方                      |
+| Base OS Image                       | Usage                      |
 |-------------------------------------|----------------------------|
-| microsoft/windowsservercore         | 実稼働と開発 |
-| microsoft/nanoserver                | 実稼働と開発 |
-| microsoft/windowsservercore-insider | 開発専用           |
-| microsoft/nanoserver-insider        | 開発専用           |
+| microsoft/windowsservercore         | Production and Development |
+| microsoft/nanoserver                | Production and Development |
+| microsoft/windowsservercore-insider | Development only           |
+| microsoft/nanoserver-insider        | Development only           |
 
-Nano Server Insider 基本イメージをプルするには、次のコマンドを実行します。
+To pull the Nano Server Insider base image run the following:
 
 ```none
 docker pull microsoft/nanoserver-insider
 ```
 
-Windows Server Core Insider 基本イメージをプルするには、次のコマンドを実行します。
+To pull the Windows Server Core insider base image run the following:
 
 ```none
 docker pull microsoft/windowsservercore-insider
 ```
 
-Windows コンテナーの OS イメージの使用許諾契約書 ([ここをクリック](../EULA.md )) と Windows Insider Program の使用条件 ([ここをクリック](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver)) を確認してください。 
+Please read the Windows Containers OS Image EULA which can be found here – [EULA](../EULA.md ), and the Windows Insider program Terms of Use which can be found here – [Terms of Use](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver).
 
-## 次の手順
+## Next Steps
 
-[.NET Core 2.0 または PowerShell Core 6 を使用した、または使用しないアプリケーションの構築と実行](./Nano-RS3-.NET-Core-and-PS.md)
+[Build and run an application with or without .NET Core 2.0 or PowerShell Core 6](./Nano-RS3-.NET-Core-and-PS.md)

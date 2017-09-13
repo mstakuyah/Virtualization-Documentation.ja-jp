@@ -1,72 +1,67 @@
 ---
-title: "Windows コンテナーに関するドキュメント"
-description: "Windows コンテナーに関するドキュメント"
-keywords: "Docker, コンテナー"
+title: Windows Containers Documentation
+description: Windows containers documentation
+keywords: docker, containers
 author: enderb-ms
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 74c9d604-0915-4d89-bc69-0263b76bc66b
-ms.openlocfilehash: 9b630e372b575ef1721c0d0926ec2caec3e5ec34
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: 2a38e8cac3c05530a301eeccff3eb4264ec1d702
+ms.sourcegitcommit: 015f8c438cd1e1331e5388280facce4b9ec939ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 ---
-# Windows コンテナーに関するドキュメント
+# Windows Containers Documentation
 
-Windows コンテナーは、1 つのシステムで複数の独立したアプリケーションを実行できるようにする、オペレーティング システム レベルの仮想化を実現します。 この機能では、2 種類のコンテナー ランタイムを使用します。それぞれ、アプリケーションの分離の度合いが異なります。 Windows Server コンテナーは、名前空間とプロセスの分離によって分離を実現します。 Hyper-V コンテナーは、軽量の仮想マシンで各コンテナーをカプセル化します。 このドキュメント セットでは、クイック スタート ガイド、展開ガイド、管理操作に関する詳しい技術情報を提供します。
+Windows コンテナーは、1 つのシステムで複数の独立したアプリケーションを実行できるオペレーティング システム レベルの仮想化を実現します。 このドキュメント セットでは、クイック スタート ガイド、展開ガイド、管理操作に関する詳しい技術情報を提供します。
 
-<table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:90%" cellpadding="25" cellspacing="5">
+<table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:90%; margin-top: 20px" cellpadding="25" cellspacing="5">
 <tr>
 <td ><center>![](media/try.png)</center></td>
-<td>**クイック スタート**<br /><br />
-Windows Server のクイック スタート<br /><br />
+<td>**はじめに**<br /><br />
+コンテナーについて学習し、実際に使ってみます。<br /><br />
 <ul>
-<li>[手順 1 - 概念と用語](quick-start/index.md)<br /><br /></li>
-<li>[手順 2 - Windows Server と最初のコンテナーを構成する](quick-start/quick-start-windows-server.md)<br /><br /></li>
-<li>[手順 3 - コンテナー イメージを作成してプッシュする](quick-start/quick-start-images.md)<br /><br /></li>
-</ul>
-Windows 10 のクイック スタート<br /><br />
-<ul>
-<li>[手順 1 - 概念と用語](quick-start/index.md)<br /><br /></li>
-<li>[手順 2 - Windows 10 と最初のコンテナーを構成する](quick-start/quick-start-windows-10.md)<br /><br /></li>
+<li>[Windows コンテナー](about/index.md)<br /><br /></li>
+<li>[Windows Server でのコンテナーの使用](quick-start/quick-start-windows-server.md)<br /><br /></li>
+<li>[Windows 10 でのコンテナーの使用](quick-start/quick-start-windows-10.md)<br /><br /></li>
 </ul>
 </td>
 </tr>
 <tr>
 <td ><center>![](media/1.png)</center></td>
 <td>**展開**<br /><br />
-Windows Server 2016 と Nano Server で Windows コンテナーを展開する方法について確認できます。<br /><br />
+Learn how to deploy Windows Containers on Windows Server 2016 and Nano Server..<br /><br />
 <ul>
-<li>[システム要件](deploy-containers/system-requirements.md)<br /><br /></li>
-<li>[コンテナー ホストの展開 - Windows Server](deploy-containers/deploy-containers-on-server.md)<br /><br /></li>
-<li>[コンテナー ホストの展開 - Nano Server](deploy-containers/deploy-containers-on-nano.md)<br /><br /></li>
-<li>[ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)<br /><br /></li>
+<li>[System Requirements](deploy-containers/system-requirements.md)<br /><br /></li>
+<li>[Deploy Container Host - Windows Server](deploy-containers/deploy-containers-on-server.md)<br /><br /></li>
+<li>[Deploy Container Host - Nano Server](deploy-containers/deploy-containers-on-nano.md)<br /><br /></li>
+<li>[Anti-Virus Optimization](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)<br /><br /></li>
 </ul>
 </td>
 </tr>
 
 <tr>
 <td ><center>![](media/explore.png)</center></td>
-<td>**Windows 上の Docker**<br /><br />
-Windows 上の Docker の管理について説明しています。<br /><br />
+<td>**Docker on Windows**<br /><br />
+Learn about managing Docker on Windows.<br /><br />
 <ul>
-<li>[Windows 上の Docker エンジン](manage-docker/configure-docker-daemon.md)<br /><br /></li>
-<li>[Windows 上の Dockerfile](manage-docker/manage-windows-dockerfile.md)<br /><br /></li>
-<li>[Dockerfile の最適化](manage-docker/optimize-windows-dockerfile.md)<br /><br /></li>
-<li>[コンテナーのネットワーク](manage-containers/container-networking.md)<br /><br /></li>
+<li>[Docker Engine on Windows](manage-docker/configure-docker-daemon.md)<br /><br /></li>
+<li>[Dockerfiles on Windows](manage-docker/manage-windows-dockerfile.md)<br /><br /></li>
+<li>[Optimize Dockerfiles](manage-docker/optimize-windows-dockerfile.md)<br /><br /></li>
+<li>[Container Networking](manage-containers/container-networking.md)<br /><br /></li>
 </ul>
 </td>
 </tr>
 
 <tr>
 <td ><center>![](media/video.png)</center></td>
-<td>**視聴する**<br /><br />
-Windows コンテナー チームのデモとインタビューに関心がありますか?<br /><br />
+<td>**Watch**<br /><br />
+Interested in demos and interviews from the Windows Container team?<br /><br />
 <ul>
-<li>[コンテナー チャネル](https://channel9.msdn.com/Blogs/containers)</li>
+<li>[Containers Channel](https://channel9.msdn.com/Blogs/containers)</li>
 </ul>
 <br />
 </td>
@@ -74,12 +69,12 @@ Windows コンテナー チームのデモとインタビューに関心があ�
 
 <tr>
 <td ><center>![](media/question.png)</center></td>
-<td>**コミュニティ**<br /><br />
-コミュニティでやり取りしたり、サンプルを試してみたりできるほか、その他のリソースを探すこともできます。<br /><br />
+<td>**Community**<br /><br />
+Interact with the community, try samples, and find additional resources.<br /><br />
 <ul>
-<li>[コンテナー フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)<br /><br /></li>
-<li>[コミュニティのビデオとブログ](communitylinks.md)<br /><br /></li>
-<li>[コンテナー リソース](https://msdn.microsoft.com/virtualization/community/community_overview)<br /><br /></li>
+<li>[Container Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)<br /><br /></li>
+<li>[Community Videos and Blogs](communitylinks.md)<br /><br /></li>
+<li>[Container Resources](https://msdn.microsoft.com/virtualization/community/community_overview)<br /><br /></li>
 </ul>
 </td>
 </tr>

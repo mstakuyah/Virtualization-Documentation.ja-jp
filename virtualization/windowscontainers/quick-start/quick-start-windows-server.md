@@ -1,74 +1,74 @@
 ---
-title: "Windows Server の Windows コンテナー"
-description: "コンテナー展開のクイック スタート"
-keywords: "Docker, コンテナー"
+title: Windows Containers on Windows Server
+description: Container deployment quick start
+keywords: docker, containers
 author: enderb-ms
 ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
-ms.openlocfilehash: 569ba8619e60a9c34c2939ff2106076e66040aa8
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: 8eccd365c9d740d9e71ba9f8472d378f2f4e29c1
+ms.sourcegitcommit: 2be85d176ca76205fee5bf2008a0aeececa204e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/03/2017
 ---
-# Windows Server の Windows コンテナー
+# Windows Containers on Windows Server
 
-この演習では、Windows Server 2016 の Windows コンテナー機能の基本的な展開と使用について段階的に確認します。 この演習では、コンテナーの役割をインストールし、単純な Windows Server コンテナーを展開します。 このクイック スタートを始める前に、コンテナーの基本的な概念と用語を理解しておいてください。 この情報は[クイック スタートの概要](./index.md)にあります。
+This exercise walks through basic deployment and use of the Windows container feature on Windows Server 2016. During this exercise, you install the container role and deploy a simple Windows Server container. コンテナーの概要については、[コンテナーについてのページ](../about/index.md)」をご覧ください。
 
-このクイック スタートは Windows Server 2016 の Windows Server コンテナーのみに適用されます。 このページの左側の目次に、Windows 10 のコンテナーを含む追加のクイック スタート文書があります。
+このクイック スタートは Windows Server 2016 の Windows Server コンテナーのみに適用されます。 Additional quick start documentation, including containers in Windows 10, are found in the table of contents on the left hand side of this page.
 
-**前提条件:**
+**Prerequisites:**
 
-Windows Server 2016 を実行している 1 台のコンピューター システム (物理または仮想)。 Windows Server 2016 TP5 を使用している場合は、[Window Server 2016 Evaluation](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 ) に更新してください。 
+One computer system (physical or virtual) running Windows Server 2016. If you are using Windows Server 2016 TP5, please update to [Window Server 2016 Evaluation](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 ).
 
-> Windows コンテナー機能が動作するためには、重要な更新プログラムが必要です。 すべての更新プログラムをインストールしてから、このチュートリアルを進めてください。
+> Critical updates are needed in order for the Windows Container feature to function. Please install all updates before working through this tutorial.
 
-Azure に展開する場合は、こちらの[テンプレート](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-server-container-tools/containers-azure-template)を使用すると展開が簡単です。<br/>
+If you would like to deploy on Azure, this [template](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-server-container-tools/containers-azure-template) makes it easy.<br/>
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2FVirtualization-Documentation%2Flive%2Fwindows-server-container-tools%2Fcontainers-azure-template%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
 
-## 1.Docker のインストール
+## 1. Install Docker
 
-Docker をインストールするには、他のプロバイダー (ここでは [MicrosoftDockerProvider](https://github.com/OneGet/MicrosoftDockerProvider)) と連携してインストールを実行する [OneGet プロバイダー PowerShell モジュール](https://github.com/oneget/oneget)を使用します。 プロバイダーは、コンピューターでコンテナーの機能を有効にします。 また、再起動が必要になる Docker をインストールします。 Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。
+To install Docker we'll use the [OneGet provider PowerShell module](https://github.com/oneget/oneget) which works with providers to perform the installation, in this case the [MicrosoftDockerProvider](https://github.com/OneGet/MicrosoftDockerProvider). The provider enables the containers feature on your machine. You also install Docker which requires a reboot. Docker is required in order to work with Windows containers. It consists of the Docker Engine and the Docker client.
 
-管理者特権の PowerShell セッションを開き、次のコマンドを実行します。
+Open an elevated PowerShell session and run the following commands.
 
-まず、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/DockerMsftProvider)から Docker-Microsoft PackageManagement Provider をインストールします。
+First, install the Docker-Microsoft PackageManagement Provider from the [PowerShell Gallery](https://www.powershellgallery.com/packages/DockerMsftProvider).
 
 ```none
 Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
 ```
 
-次に、PackageManagement PowerShell モジュールを使って、最新バージョンの Docker をインストールします。
+Next, you use the PackageManagement PowerShell module to install the latest version of Docker.
 ```none
 Install-Package -Name docker -ProviderName DockerMsftProvider
 ```
 
-PowerShell でパッケージ ソース "DockerDefault" を信頼するかどうかの確認を求められたら、「`A`」と入力してインストールを続行します。 インストールが完了したら、コンピューターを再起動します。
+When PowerShell asks you whether to trust the package source 'DockerDefault', type `A` to continue the installation. When the installation is complete, reboot the computer.
 
 ```none
 Restart-Computer -Force
 ```
 
-> ヒント: 後で Docker を更新する場合は、
->  - 次を実行して、インストールされているバージョンを確認します。 `Get-Package -Name Docker -ProviderName DockerMsftProvider`
->  - 次を実行して、最新のバージョンを検索します。 `Find-Package -Name Docker -ProviderName DockerMsftProvider`
->  - 準備ができたら、`Install-Package -Name Docker -ProviderName DockerMsftProvider -Update -Force` を実行してアップグレードした後、次を実行します。 `Start-Service Docker`
+> Tip: If you want to update Docker later:
+>  - Check the installed version with `Get-Package -Name Docker -ProviderName DockerMsftProvider`
+>  - Find the current version with `Find-Package -Name Docker -ProviderName DockerMsftProvider`
+>  - When you're ready, upgrade with `Install-Package -Name Docker -ProviderName DockerMsftProvider -Update -Force`, followed by `Start-Service Docker`
 
-## 2. Windows の更新プログラムをインストールする
+## 2. Install Windows Updates
 
-次を実行して、Windows Server システムが最新の状態であることを確認します。
+Ensure your Windows Server system is up-to-date by running:
 
 ```none
 sconfig
 ```
 
-これによりテキスト ベースの構成メニューが表示されます。オプション 6 "更新プログラムのダウンロードとインストール" を選択します。
+This shows a text-based configuration menu, where you can choose option 6 to Download and Install Updates:
 
 ```none
 ===============================================================================
@@ -86,19 +86,19 @@ sconfig
 ...
 ```
 
-画面の指示に従い、オプション A を選択してすべての更新プログラムをダウンロードします。
+When prompted, choose option A to download all updates.
 
-## 3.最初のコンテナーの展開
+## 3. Deploy Your First Container
 
-この演習では、事前作成された .NET サンプル イメージを Docker Hub レジストリからダウンロードし、.NET Hello World アプリケーションを実行するシンプルなコンテナーを展開します。  
+For this exercise, you download a pre-created .NET sample image from the Docker Hub registry and deploy a simple container running a .Net Hello World application.  
 
-`docker run` を使用し、.Net コンテナーを展開します。 この操作でコンテナー イメージもダウンロードされるので、処理に数分かかる可能性があります。
+Use `docker run` to deploy the .Net container. This will also download the container image which may take a few minutes.
 
 ```console
 docker run microsoft/dotnet-samples:dotnetapp-nanoserver
 ```
 
-コンテナーが起動し、hello world メッセージが出力され、終了します。
+The container starts, prints the hello world message, and then exits.
 
 ```console
          Dotnet-bot: Welcome to using .NET Core!
@@ -146,10 +146,8 @@ Platform: .NET Core 1.0
 OS: Microsoft Windows 10.0.14393
 ```
 
-Docker Run コマンドの詳細については、Docker.com の「[Docker Run リファレンス]( https://docs.docker.com/engine/reference/run/)」をご覧ください。
+For in depth information on the Docker Run command, see [Docker Run Reference on Docker.com]( https://docs.docker.com/engine/reference/run/).
 
 ## 次の手順
 
-[Windows Server のコンテナー イメージ](./quick-start-images.md)
-
-[Windows 10 の Windows コンテナー](./quick-start-windows-10.md)
+[ビルドの自動化とイメージの保存](./quick-start-images.md)

@@ -1,63 +1,64 @@
 ---
-title: "サポートされる Windows ゲスト"
-description: "サポートされる Windows ゲスト"
-keywords: "windows 10、hyper-v"
+title: Supported Windows guests
+description: Supported Windows guests.
+keywords: windows 10, hyper-v
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: ae4a18ed-996b-4104-90c5-539c90798e4c
-ms.openlocfilehash: 7ef4d5aa084d199abfb39d1c44e4dd1305e07904
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: ac1ec3740cfa75acd8c005df3f67531c693cd914
+ms.sourcegitcommit: 63e890ad2caae3ce55503af81c6c5ff0d1e630f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/17/2017
 ---
-# サポートされる Windows ゲスト 
+# Supported Windows guests 
 
-この記事では、Windows 上の Hyper-V でサポートされているオペレーティング システムの組み合わせを一覧に示します。  また、サポートされる統合サービスやその他のファクターの概要も紹介します。
+This article lists the operating system combinations supported in Hyper-V on Windows.  It also serves as an introduction to integration services and other factors in support.
 
-## サポートの内容 
-サポートは、Microsoft がこれらのホスト/ゲストの組み合わせをテストしていることを意味します。  これらの組み合わせの問題は、製品サポート サービスから注意を受け取る可能性があります。
+## What does support mean? 
+Support means Microsoft has tested these host/guest combinations.  Issues with these combinations may receive attention from Product Support Services.
  
-以下の表に示されているゲスト オペレーティング システムは、Microsoft でサポートされます。
-* Microsoft のオペレーティング システムと統合サービスの問題は、Microsoft サポートによってサポートされます。
-* オペレーティング システム ベンダーによって Hyper-V の実行が認定されている、他のオペレーティング システムで検出された問題については、ベンダーによってサポートが提供されます。
-* その他のオペレーティング システムの問題は、Microsoft がマルチベンダー サポート コミュニティ [TSANet](http://www.tsanet.org/) に問題を提出します。
+Microsoft provides support for guest operating systems in the following manner:
+* Issues found in Microsoft operating systems and in integration services are supported by Microsoft support.
+* For issues found in other operating systems that have been certified by the operating system vendor to run on Hyper-V, support is provided by the vendor.
+* For issues found in other operating systems, Microsoft submits the issue to the multi-vendor support community, [TSANet](http://www.tsanet.org/).
 
-サポートされるようにするは、Hyper-V ホストとゲストの両方を、Windows Update を通じて、利用可能なすべての重要な更新プログラムで更新する必要があります。
+In order to be supported, both the Hyper-V host and guest must be updated with all critical updates available through Windows Update.
 
-## サポートされているゲスト オペレーティング システム
+## Supported guest operating systems
 
-サポートを受けるには、Windows ゲスト オペレーティング システムとホスト オペレーティング システムの両方を、Windows Update を通じて、利用可能なすべての重要な更新プログラムで最新にする必要があります。
+In order to receive support, both the Windows guest operating systems and the host operating system must be current with all critical updates available through Windows Update.
 
-| ゲスト オペレーティング システム |  仮想プロセッサの最大数 | メモ | 
+| Guest operating system |  Maximum number of virtual processors | Notes | 
 |:-----|:-----|:-----|
 | Windows 10 | 32 | |
 | Windows 8.1 | 32 | |
 | Windows 8 | 32 |  |
-| Windows 7 Service Pack 1 (SP 1) | 4 | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
-| Windows 7 | 4 | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
-| WindowsVista Service Pack2 (SP2) | 2 | Business、Enterprise、および Ultimate (N および KN エディションを含む)。 | 
+| Windows 7 with Service Pack 1 (SP 1) | 4 | Ultimate, Enterprise, and Professional editions (32-bit and 64-bit). |
+| Windows 7 | 4 | Ultimate, Enterprise, and Professional editions (32-bit and 64-bit). |
+| Windows Vista with Service Pack 2 (SP2) | 2 | Business, Enterprise, and Ultimate, including N and KN editions. | 
 | - | | |
+| Windows Server 2016 | 64 | |
 | Windows Server 2012 R2 | 64 | |
 | Windows Server 2012 | 64 | |
-| Windows Server 2008 R2 Service Pack 1 (SP 1) | 64 | Datacenter、Enterprise、Standard、および Web Edition。 |
-| Windows Server 2008 Service Pack 2 (SP 2) | 4 | Datacenter、Enterprise、Standard、および Web Edition (32 ビットおよび 64 ビット)。 |
+| Windows Server 2008 R2 with Service Pack 1 (SP 1) | 64 | Datacenter, Enterprise, Standard and Web editions. |
+| Windows Server 2008 with Service Pack 2 (SP 2) | 4 | Datacenter, Enterprise, Standard and Web editions (32-bit and 64-bit). |
 | Windows Home Server 2011 | 4 | |
-| Windows Small Business Server 2011 | Essentials edition - 2、Standard edition - 4 | |
+| Windows Small Business Server 2011 | Essentials edition - 2, Standard edition - 4 | |
   
- > Windows 10 は、Windows 8.1 と Windows Server 2012 R2 Hyper-V ホスト上でゲスト オペレーティング システムとして実行できます。
+ > Windows 10 can run as a guest operating system on Windows 8.1 and Windows Server 2012 R2 Hyper-V hosts.
 
-## サポートされる Linux と FreeBSD
+## Supported Linux and Free BSD
 
-| ゲスト オペレーティング システム |  |
+| Guest operating system |  |
 |:-----|:------|
-| [CentOS と Red Hat Enterprise Linux ](https://technet.microsoft.com/library/dn531026.aspx) | |
-| [Hyper-V の Debian 仮想マシン](https://technet.microsoft.com/library/dn614985.aspx) | |
+| [CentOS and Red Hat Enterprise Linux ](https://technet.microsoft.com/library/dn531026.aspx) | |
+| [Debian virtual machines on Hyper-V](https://technet.microsoft.com/library/dn614985.aspx) | |
 | [SUSE](https://technet.microsoft.com/en-us/library/dn531027.aspx) | |
 | [Oracle Linux](https://technet.microsoft.com/en-us/library/dn609828.aspx)  | |
 | [Ubuntu](https://technet.microsoft.com/en-us/library/dn531029.aspx) | |
 | [FreeBSD](https://technet.microsoft.com/library/dn848318.aspx) | |
 
-過去のバージョンの Hyper-V におけるサポート情報などの詳細については、「[Hyper V の Linux と FreeBSD 仮想マシン](https://technet.microsoft.com/library/dn531030.aspx)」をご覧ください。
+For more information, including support information on past versions of Hyper-V, see [Linux and FreeBSD Virtual Machines on Hyper-V](https://technet.microsoft.com/library/dn531030.aspx).
