@@ -6,14 +6,14 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\quick-start\building-sample-app.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/fa9ec91b14c612df03c5b7bb094eb1fabf421715/virtualization/windowscontainers/quick-start/building-sample-app.md) | HandedOffSuccess | [Details](#b9f20e6b3f071b9c71a387fce9640b244e9a95b5350)
+ [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/256b0b2cbfb475a092e083679f1f56ba1487881c/virtualization/windowscontainers/TOC.md) | HandedOffSuccess | [Details](#15ead2d636fc2455c42a7504d7be1ebe2ad10043403)
 
 ## Item Details
-##### <a name='b9f20e6b3f071b9c71a387fce9640b244e9a95b5350'></a> Source: [virtualization\windowscontainers\quick-start\building-sample-app.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/fa9ec91b14c612df03c5b7bb094eb1fabf421715/virtualization/windowscontainers/quick-start/building-sample-app.md)
+##### <a name='15ead2d636fc2455c42a7504d7be1ebe2ad10043403'></a> Source: [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/256b0b2cbfb475a092e083679f1f56ba1487881c/virtualization/windowscontainers/TOC.md)
 * Status: HandedOffSuccess
 * Target File: 
-* Handoff File: [building-sample-app.957afdd492b872efb91595b513db655c559f8646.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/62bea3e5ea9492562ed167c8c2860ae81338a56d/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.ja-jp/live/building-sample-app.957afdd492b872efb91595b513db655c559f8646.ja-jp.xlf)
-* Handoff Datetime: 2017-10-11 18:36:12
+* Handoff File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/c746a30a270d23959d9b5aa2d31d203060ab4d51/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.ja-jp/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf)
+* Handoff Datetime: 2017-10-16 20:35:59
 * Handoff Reason: Include
 * Handoff Name: 
 * Archive File: 
@@ -21,6 +21,11 @@
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Handback Name: 
+* Current Target File: [virtualization\windowscontainers\TOC.md](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.ja-jp/blob/91030ef0e75c0d62ca730a9927fb3c05707fb87f/virtualization/windowscontainers/TOC.md)
+* Current Handback File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/6969c74d9ea57e4b4be2660a95b860b9dc396fd6/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf)
+* Current Handback Datetime: 2017-03-24 13:49:29
+* Bilingual File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/6969c74d9ea57e4b4be2660a95b860b9dc396fd6/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.ja-jp.xlf)
+* Bilingual Datetime: 2017-03-24 13:52:12
 * [Back to Top](#report-top)
 
 
