@@ -6,14 +6,14 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\index.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/5bb93cf92236779f66bfdee996669f7b0bc5287c/virtualization/windowscontainers/index.md) | HandedOffSuccess | [Details](#7693be8567f6fbd0ebd8ffa72142dc1c5bbef096304)
+ [virtualization\windowscontainers\about\index.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/88276fb1a25a544530cf2f79594465fb53777a66/virtualization/windowscontainers/about/index.md) | HandedOffSuccess | [Details](#b2bab687d65b05882939468b20cb35b1318c2085258)
 
 ## Item Details
-##### <a name='7693be8567f6fbd0ebd8ffa72142dc1c5bbef096304'></a> Source: [virtualization\windowscontainers\index.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/5bb93cf92236779f66bfdee996669f7b0bc5287c/virtualization/windowscontainers/index.md)
+##### <a name='b2bab687d65b05882939468b20cb35b1318c2085258'></a> Source: [virtualization\windowscontainers\about\index.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/88276fb1a25a544530cf2f79594465fb53777a66/virtualization/windowscontainers/about/index.md)
 * Status: HandedOffSuccess
 * Target File: 
-* Handoff File: [index.54df784a655ef654249a5e240db1281432a1f37b.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/cd23494358ac012df94f68d334c493dfd6387ba2/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.ja-jp/live/index.54df784a655ef654249a5e240db1281432a1f37b.ja-jp.xlf)
-* Handoff Datetime: 2017-10-18 19:35:26
+* Handoff File: [index.01108708edf157e95b96d0e38c23011bed66c123.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/7a4cfdedcfdc86d2a0bdda7c8dd8d181a4b21465/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.ja-jp/live/index.01108708edf157e95b96d0e38c23011bed66c123.ja-jp.xlf)
+* Handoff Datetime: 2017-10-23 18:36:06
 * Handoff Reason: Include
 * Handoff Name: 
 * Archive File: 
@@ -21,11 +21,11 @@
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Handback Name: 
-* Current Target File: [virtualization\windowscontainers\index.md](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.ja-jp/blob/1e3bd54d4b6fd9d049c406af9f4cd6a45f42dda7/virtualization/windowscontainers/index.md)
-* Current Handback File: [index.54df784a655ef654249a5e240db1281432a1f37b.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/8063c3e1030aaad7d80115fac104c95cc716dbfd/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/index.54df784a655ef654249a5e240db1281432a1f37b.ja-jp.xlf)
-* Current Handback Datetime: 2017-01-24 13:18:29
-* Bilingual File: [index.54df784a655ef654249a5e240db1281432a1f37b.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/8063c3e1030aaad7d80115fac104c95cc716dbfd/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/index.54df784a655ef654249a5e240db1281432a1f37b.ja-jp.xlf)
-* Bilingual Datetime: 2017-01-24 13:21:26
+* Current Target File: [virtualization\windowscontainers\about\index.md](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.ja-jp/blob/91030ef0e75c0d62ca730a9927fb3c05707fb87f/virtualization/windowscontainers/about/index.md)
+* Current Handback File: [index.01108708edf157e95b96d0e38c23011bed66c123.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/6969c74d9ea57e4b4be2660a95b860b9dc396fd6/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/index.01108708edf157e95b96d0e38c23011bed66c123.ja-jp.xlf)
+* Current Handback Datetime: 2017-03-24 13:49:29
+* Bilingual File: [index.01108708edf157e95b96d0e38c23011bed66c123.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/6969c74d9ea57e4b4be2660a95b860b9dc396fd6/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/index.01108708edf157e95b96d0e38c23011bed66c123.ja-jp.xlf)
+* Bilingual Datetime: 2017-03-24 13:52:12
 * [Back to Top](#report-top)
 
 
