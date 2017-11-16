@@ -7,13 +7,13 @@ ms.date: 07/25/2017
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 2ba3e6409fc60022a55d21c187bfcaefd962908b
-ms.sourcegitcommit: 4f5b9f70804bf6282af8bef603cc343c524c3102
+ms.openlocfilehash: b9f20e6b3f071b9c71a387fce9640b244e9a95b5
+ms.sourcegitcommit: fa9ec91b14c612df03c5b7bb094eb1fabf421715
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 10/11/2017
 ---
-# サンプル アプリのビルド
+# <a name="build-a-sample-app"></a>サンプル アプリのビルド
 
 この演習では、サンプル ASP.net アプリを入手し、それをコンテナーで実行できるように変換する手順を説明します。 Windows 10 でコンテナーを使い始める方法については、「[Windows 10 のクイック スタート](./quick-start-windows-10.md)」をご覧ください。
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 08/04/2017
 
 Git ソース管理がまだコンピューターにインストールされていない場合は、[Git のページ](https://git-scm.com/download)から取得できます。
 
-## はじめに
+## <a name="getting-started"></a>はじめに
 
 このサンプル プロジェクトは、[VSCode](https://code.visualstudio.com/) を使ってセットアップされています。 また、このチュートリアルでは Powershell も使います。 それでは GitHub からデモ コードを取得しましょう。 Git を使ってリポジトリを複製するか、[SampleASPContainerApp](https://github.com/cwilhit/SampleASPContainerApp) から直接プロジェクトをダウンロードします。
 
@@ -36,7 +36,7 @@ git clone https://github.com/cwilhit/SampleASPContainerApp.git
 New-Item C:/Your/Proj/Location/Dockerfile -type file
 ```
 
-## Dockerfile の作成
+## <a name="writing-our-dockerfile"></a>Dockerfile の作成
 
 それでは、ルート フォルダーに作成した Dockerfile をお好みのテキスト エディターで開き、ロジックを追加しましょう。 その後、このファイルで行われている作業を 1 行ずつ説明していきます。
 
@@ -94,7 +94,7 @@ ENTRYPOINT ["dotnet", "MvcMovie.dll"]
 
 これで、_マルチステージ ビルド_と呼ばれる作業が完了しました。 ここでは一時コンテナーを使ってイメージをビルドした後、公開した dll を別のコンテナーに移動することで、最終結果のフットプリントを最小限に抑えました。 またこのコンテナーの依存関係を実行に絶対必要な最小限度に抑えました。最初のイメージをそのまま使うと、必須でない (ASP.NET アプリを構築するための) その他のレイヤーがパッケージ化されて含まれるため、イメージのサイズが大きくなります。
 
-## アプリの実行
+## <a name="running-the-app"></a>アプリの実行
 
 dockerfile を作成したら、後はアプリをビルドし、コンテナーを実行するように docker を構成するだけです。 パブリッシュするポートを指定し、コンテナーに "myapp" というタグを付けます。 PowerShell で、以下のコマンドを実行します。
 
@@ -106,7 +106,7 @@ docker run -d -p 5000:80 --name myapp myasp
 このアプリの実行を確認するには、それが実行されているアドレスにアクセスする必要があります。 このコマンドを実行して、IP アドレスを取得してみましょう。
 
 ```Powershell
- docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" myapp
+ docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" myasp
 ```
 
 このコマンドを実行すると、実行中のコンテナーの IP アドレスが生成されます。 この出力の例を以下に示します。
@@ -121,7 +121,7 @@ docker run -d -p 5000:80 --name myapp myasp
 
 ナビゲーション バーで [MvcMovie] をクリックすると、映画のエントリを入力、編集、削除できる Web ページが表示されます。
 
-## 次の手順
+## <a name="next-steps"></a>次の手順
 
 ここでは Docker を使って ASP.NET の Web アプリを正常に入手し、構成、ビルドして実行中のコンテナーに正常に展開しました。 しかし、さらに進んだ手順を実行することもできます。 Web アプリを複数のコンポーネント (Web API を実行するコンテナー、フロント エンドを実行するコンテナー、SQL Server を実行するコンテナーなど) に分割することができます。
 

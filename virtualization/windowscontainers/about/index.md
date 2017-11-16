@@ -1,22 +1,22 @@
 ---
-title: About Windows Containers
-description: Learn about Windows containers.
-keywords: docker, containers
+title: "Windows コンテナーについて"
+description: "Windows コンテナーについて学習します。"
+keywords: "Docker, コンテナー"
 author: taylorb-microsoft
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: 2be7a06c7b7b154e392c30981cdf954d2d1b796e
-ms.sourcegitcommit: 8e193d8c274a549aef497f16dcdb00d7855e9fa7
+ms.openlocfilehash: b916b8bb2e09dfc78414785ad0d0252b5abec619
+ms.sourcegitcommit: b578961db242f08261798d1b498b091b8c405924
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 10/27/2017
 ---
-# Windows コンテナー
+# <a name="windows-containers"></a>Windows コンテナー
 
-## コンテナーとは
+## <a name="what-are-containers"></a>コンテナーとは
 
 コンテナーとは、分離された独自のボックスにアプリケーションをラップする方法です。 コンテナー内のアプリケーションは、ボックスの外に存在するアプリケーションやプロセスを認識しません。 コンテナー内には、アプリケーションの正常な実行に必要なすべての要素も存在します。  ボックスを移動しても、アプリケーションの実行に必要な要素がすべて揃っているため、アプリケーションが常に正常に実行されます。
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 08/02/2017
 
 簡単な概要を見る: [Windows ベースのコンテナー: エンタープライズ レベルの制御を使用した最新のアプリ開発](https://youtu.be/Ryx3o0rD5lY)。
 
-## コンテナーの基礎
+## <a name="container-fundamentals"></a>コンテナーの基礎
 
 コンテナーは、分離されリソース制御された、移植可能なランタイム環境であり、ホスト マシンまたは仮想マシン上で実行されます。 コンテナー内で実行されるアプリケーションまたはプロセスは、必要なすべての必要な依存関係および構成ファイルと共にパッケージ化されており、コンテナーの外部で他のプロセスが一切実行されていないかのように動作します。
 
@@ -40,33 +40,33 @@ ms.lasthandoff: 08/02/2017
 
 Windows コンテナーの作成と使用を開始する際には、次の主要な概念が役立ちます。
 
-**Container Host:** Physical or Virtual computer system configured with the Windows Container feature. コンテナー ホストは、1 つ以上の Windows コンテナーを実行します。
+**コンテナー ホスト:** Windows コンテナー機能を使用して構成された物理または仮想のコンピューター システム。 コンテナー ホストは、1 つ以上の Windows コンテナーを実行します。
 
-**コンテナー イメージ:** ソフトウェアのインストールなどによってコンテナー ファイル システムまたはレジストリに変更が加えられると、それらの変更がサンドボックスでキャプチャされます。 これらの変更を継承する新しいコンテナーを作成できるように、この状態をキャプチャする場合がよくあります。 That’s what an image is – once the container has stopped you can either discard that sandbox or you can convert it into a new container image. For example, let’s imagine that you have deployed a container from the Windows Server Core OS image. You then install MySQL into this container. Creating a new image from this container would act as a deployable version of the container. This image would only contain the changes made (MySQL), however would work as a layer on top of the Container OS Image.
+**コンテナー イメージ:** ソフトウェアのインストールなどによってコンテナー ファイル システムまたはレジストリに変更が加えられると、それらの変更がサンドボックスでキャプチャされます。 これらの変更を継承する新しいコンテナーを作成できるように、この状態をキャプチャする場合がよくあります。 それがイメージです。いったんコンテナーが停止したら、そのサンドボックスを破棄するか、サンドボックスを新しいコンテナー イメージに変換することができます。 たとえば、Windows Server Core OS イメージからコンテナーを展開したとします。 次に、MySQL をこのコンテナーにインストールします。 このコンテナーから新しいイメージを作成すると、コンテナーの展開可能なバージョンとして機能します。 このイメージには、加えられた変更 (MySQL) のみが含まれますが、コンテナーの OS イメージの最上位レイヤーとして機能します。
 
-**Sandbox:** Once a container has been started, all write actions such as file system modifications, registry modifications or software installations are captured in this ‘sandbox’ layer.
+**サンドボックス:** コンテナーが起動すると、ファイル システムの変更、レジストリの変更、ソフトウェアのインストールなどのすべての書き込みアクションは、この "サンドボックス" レイヤーでキャプチャされます。
 
-**Container OS Image:** Containers are deployed from images. The container OS image is the first layer in potentially many image layers that make up a container. このイメージがオペレーティング システム環境を提供します。 コンテナー OS イメージは不変です。 つまり、これを変更することはできません。
+**コンテナーの OS イメージ:** コンテナーは、イメージから展開されます。 コンテナーの OS イメージとは、コンテナーを構成する潜在的に多くのイメージ レイヤーの最初のレイヤーです。 このイメージがオペレーティング システム環境を提供します。 コンテナー OS イメージは不変です。 つまり、これを変更することはできません。
 
 **コンテナー リポジトリ:** コンテナー イメージが作成されるたびに、コンテナー イメージとその依存関係がローカル リポジトリに格納されます。 これらのイメージは、コンテナー ホストで何度も再利用できます。 コンテナー イメージは、多くの異なるコンテナー ホスト間で使用できるように、DockerHub などのパブリック レジストリまたはプライベート レジストリにも格納できます。
 
 <center>![](media/containerfund.png)</center>
 
-仮想マシンに詳しいユーザーにとって、コンテナーは仮想マシンとほとんど同じように見えます。 A container runs an operating system, has a file system and can be accessed over a network just as if it was a physical or virtual computer system. ただし、コンテナーの背後にあるテクノロジと概念は、仮想マシンのものとは大きく異なります。
+仮想マシンに詳しいユーザーにとって、コンテナーは仮想マシンとほとんど同じように見えます。 コンテナーは、オペレーティング システムを実行し、ファイル システムを保有しています。物理または仮想コンピューター システムと同様に、ネットワーク経由でアクセスできます。 ただし、コンテナーの背後にあるテクノロジと概念は、仮想マシンのものとは大きく異なります。
 
 それらの違いについては、Microsoft Azure の専門家である Mark Russinovich が[優れたブログ記事](https://azure.microsoft.com/en-us/blog/containers-docker-windows-and-trends/)を公開しています。
 
-## Windows コンテナーの種類
+## <a name="windows-container-types"></a>Windows コンテナーの種類
 
-Windows Containers include two different container types, or runtimes.
+Windows コンテナーには、2 つの異なるタイプのコンテナー (ランタイム) が含まれます。
 
-**Windows Server Containers** – provide application isolation through process and namespace isolation technology. A Windows Server Container shares a kernel with the container host and all containers running on the host. これらのコンテナーは、敵対的なセキュリティ境界を提供しないため、信頼されていないコードを分離するために使用しないでください。 これらのコンテナーはカーネルを共有しているため、カーネルのバージョンと構成を同一にする必要があります。
+**Windows Server コンテナー** – プロセスと名前空間の分離テクノロジを使用してアプリケーションを分離します。 Windows Server コンテナーでは、コンテナー ホストおよびそのホスト上で実行されているすべてのコンテナーとの間でカーネルを共有します。 これらのコンテナーは、敵対的なセキュリティ境界を提供しないため、信頼されていないコードを分離するために使用しないでください。 これらのコンテナーはカーネルを共有しているため、カーネルのバージョンと構成を同一にする必要があります。
 
-**Hyper-V による分離**: 高度に最適化した仮想マシン上で各コンテナーが実行されるため、Windows Server コンテナーの分離性が向上します。 In this configuration, the kernel of the container host is not shared with other containers on the same host. これらのコンテナーは、仮想マシンと同じセキュリティが保証されているため、敵対的なマルチテナント ホスティングに適しています。 これらのコンテナーは、ホストやホスト上の他のコンテナーとカーネルを共有しないため、異なるバージョンや構成 (サポートされている範囲内で) のカーネルを実行できます。たとえば、Windows 10 上のすべての Windows コンテナーで Hyper-V による分離を使用して、Windows Server のカーネル バージョンと構成を使用することができます。
+**Hyper-V による分離**: 高度に最適化した仮想マシン上で各コンテナーが実行されるため、Windows Server コンテナーの分離性が向上します。 この構成では、コンテナー ホストのカーネルは、同じホスト上の他のコンテナーと共有されません。 これらのコンテナーは、仮想マシンと同じセキュリティが保証されているため、敵対的なマルチテナント ホスティングに適しています。 これらのコンテナーは、ホストやホスト上の他のコンテナーとカーネルを共有しないため、異なるバージョンや構成 (サポートされている範囲内で) のカーネルを実行できます。たとえば、Windows 10 上のすべての Windows コンテナーで Hyper-V による分離を使用して、Windows Server のカーネル バージョンと構成を使用することができます。
 
 Windows でコンテナーの実行に Hyper-V の分離を使用するかどうかは、実行時に決定されます。 最初に Hyper-V の分離を使用してコンテナーを作成し、後から実行時に、Windows Server コンテナーとして実行するように変更することもできます。
 
-## Docker とは
+## <a name="what-is-docker"></a>Docker とは
 
 コンテナーについての資料で、必ず言及されるのが Docker です。 Docker は、コンテナーのイメージをパッケージ化して配信するための容器です。 この自動プロセスによってイメージ (実際にはテンプレート) が生成され、生成されたイメージはどこでも (オンプレミス、クラウド内、または個人のコンピューター上のいずれでも) コンテナーとして実行できます。
 
@@ -74,29 +74,29 @@ Windows でコンテナーの実行に Hyper-V の分離を使用するかどう
 
 Windows Server コンテナーは、他のコンテナーと同様、[Docker](https://www.docker.com) によって管理できます。
 
-## 開発者向けのコンテナー ##
+## <a name="containers-for-developers"></a>開発者向けのコンテナー ##
 
-From a developer’s desktop to a testing machine to a set of production machines, a Docker image can be created that will deploy identically across any environment in seconds. This story has created a massive and growing ecosystem of applications packaged in Docker containers, with DockerHub, the public containerized-application registry that Docker maintains, currently publishing more than 180,000 applications in the public community repository.
+テスト マシンを一連の実稼働コンピューターの場合は、任意の環境全体にわたる秒単位で同じ展開は Docker のイメージを作成することができます開発者のデスクトップから。 これにより、Docker コンテナーにパッケージ化された、大規模に拡大するエコシステムが作成されています。このエコシステムには、DockerHub と、Docker が保持するパブリック コンテナー化されたアプリケーション レジストリがあり、パブリック コミュニティ リポジトリには、現在、180,000 以上のアプリケーションが公開されています。
 
-When you containerize an app, only the app and the components needed to run the app are combined into an "image". Containers are then created from this image as you need them. You can also use an image as a baseline to create another image, making image creation even faster. Multiple containers can share the same image, which means containers start very quickly and use fewer resources. For example, you can use containers to spin up light-weight and portable app components – or ‘micro-services’ – for distributed apps and quickly scale each service separately.
+アプリケーションをコンテナー化する際に、アプリケーションとそれを実行するのに必要なコンポーネントだけが「イメージ」に結合されます。 その後、必要に応じて、このイメージからコンテナーが作成されます。 イメージを別のイメージを作成するためのベースラインとして使用して、イメージの作成をさらに高速化することもできます。 複数のコンテナーが同じイメージを共有できます。これはコンテナーが非常に短時間で起動でき、リソースの使用量を減らせることを意味します。 たとえば、コンテナーを使用して、分散アプリケーション用の軽量のポータブル アプリケーション コンポーネント (「マイクロサービス」) を起動して、迅速に各サービスを個別に拡張することができます。
 
-Because the container has everything it needs to run your application, they are very portable and can run on any machine that is running Windows Server 2016. You can create and test containers locally, then deploy that same container image to your company's private cloud, public cloud or service provider. The natural agility of Containers supports modern app development patterns in large scale, virtualized and cloud environments.
+コンテナーは、アプリケーションを実行するために必要なすべてのものがあり、移植性が非常に高く、Windows Server 2016 を実行している任意のマシンで実行できます。 コンテナーを作成してローカルでテストし、その同じコンテナー イメージを会社のプライベート クラウド、パブリック クラウドまたはサービス プロバイダーに展開することができます。 コンテナーに備わっている機敏性が、大規模で仮想化されたクラウド環境におけるアプリケーション開発パターンをサポートします。
 
-With containers, developers can build an app in any language. These apps are completely portable and can run anywhere - laptop, desktop, server, private cloud, public cloud or service provider - without any code changes.  
+コンテナーを使用すると、開発者は、任意の言語でアプリケーションを作成できます。 これらのアプリケーションは完全に移植可能で、コード変更をすることなく、ラップトップ、デスクトップ、サーバー、プライベート クラウド、パブリック クラウド、サービス プロバイダーといった任意の場所で実行できます。  
 
-Containers helps developers build and ship higher-quality applications, faster.
+コンテナーは、開発者がより品質の高いアプリケーションをより短時間で作成して出荷することに役立ちます。
 
-## Containers for IT Professionals ##
+## <a name="containers-for-it-professionals"></a>IT プロフェッショナル向けのコンテナー ##
 
-IT Professionals can use containers to provide standardized environments for their development, QA, and production teams. They no longer have to worry about complex installation and configuration steps. By using containers, systems administrators abstract away differences in OS installations and underlying infrastructure.
+IT プロフェッショナルは、コンテナーを使用して、開発、品質保証、運用の各チームに標準化された環境を提供することができます。 これにより、複雑なインストールと構成手順について心配する必要がなくなります。 コンテナーを使用して、システム管理者は、OS のインストールと基礎となるインフラストラクチャとの差を取り除きます。
 
-Containers help admins create an infrastructure that is simpler to update and maintain.
+コンテナーでは、更新し、保守をより簡単であるインフラストラクチャを作成する管理者を支援します。
 
-## Video Overview
+## <a name="video-overview"></a>概要に関するビデオ
 
 <iframe src="https://channel9.msdn.com/Blogs/containers/Containers-101-with-Microsoft-and-Docker/player" width="800" height="450" allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
 
-## Windows Server コンテナーを使ってみる
+## <a name="try-windows-server-containers"></a>Windows Server コンテナーを使ってみる
 
 コンテナーの優れた機能を試してみるには、 以下のリンクをクリックして、最初のコンテナーを実際に展開してみましょう。 <br/>
 Windows Server をお使いの場合は、[Windows Server クイック スタートの概要](../quick-start/quick-start-windows-server.md)をご覧ください。 <br/>

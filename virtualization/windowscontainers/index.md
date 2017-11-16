@@ -1,20 +1,20 @@
 ---
-title: Windows Containers Documentation
-description: Windows containers documentation
-keywords: docker, containers
+title: "Windows コンテナーに関するドキュメント"
+description: "Windows コンテナーに関するドキュメント"
+keywords: "Docker, コンテナー"
 author: enderb-ms
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 74c9d604-0915-4d89-bc69-0263b76bc66b
-ms.openlocfilehash: 2a38e8cac3c05530a301eeccff3eb4264ec1d702
-ms.sourcegitcommit: 015f8c438cd1e1331e5388280facce4b9ec939ac
+ms.openlocfilehash: 7693be8567f6fbd0ebd8ffa72142dc1c5bbef096
+ms.sourcegitcommit: 5bb93cf92236779f66bfdee996669f7b0bc5287c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 10/18/2017
 ---
-# Windows Containers Documentation
+# <a name="windows-containers-documentation"></a>Windows コンテナーに関するドキュメント
 
 Windows コンテナーは、1 つのシステムで複数の独立したアプリケーションを実行できるオペレーティング システム レベルの仮想化を実現します。 このドキュメント セットでは、クイック スタート ガイド、展開ガイド、管理操作に関する詳しい技術情報を提供します。
 
@@ -33,35 +33,34 @@ Windows コンテナーは、1 つのシステムで複数の独立したアプ�
 <tr>
 <td ><center>![](media/1.png)</center></td>
 <td>**展開**<br /><br />
-Learn how to deploy Windows Containers on Windows Server 2016 and Nano Server..<br /><br />
+Windows Server 2016 で Windows コンテナーを展開する方法について説明します。<br /><br />
 <ul>
-<li>[System Requirements](deploy-containers/system-requirements.md)<br /><br /></li>
-<li>[Deploy Container Host - Windows Server](deploy-containers/deploy-containers-on-server.md)<br /><br /></li>
-<li>[Deploy Container Host - Nano Server](deploy-containers/deploy-containers-on-nano.md)<br /><br /></li>
-<li>[Anti-Virus Optimization](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)<br /><br /></li>
+<li>[システム要件](deploy-containers/system-requirements.md)<br /><br /></li>
+<li>[コンテナー ホストの展開](deploy-containers/deploy-containers-on-server.md)<br /><br /></li>
+<li>[ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)<br /><br /></li>
 </ul>
 </td>
 </tr>
 
 <tr>
 <td ><center>![](media/explore.png)</center></td>
-<td>**Docker on Windows**<br /><br />
-Learn about managing Docker on Windows.<br /><br />
+<td>**Windows 上の Docker**<br /><br />
+Windows 上の Docker の管理について説明しています。<br /><br />
 <ul>
-<li>[Docker Engine on Windows](manage-docker/configure-docker-daemon.md)<br /><br /></li>
-<li>[Dockerfiles on Windows](manage-docker/manage-windows-dockerfile.md)<br /><br /></li>
-<li>[Optimize Dockerfiles](manage-docker/optimize-windows-dockerfile.md)<br /><br /></li>
-<li>[Container Networking](manage-containers/container-networking.md)<br /><br /></li>
+<li>[Windows 上の Docker エンジン](manage-docker/configure-docker-daemon.md)<br /><br /></li>
+<li>[Windows 上の Dockerfile](manage-docker/manage-windows-dockerfile.md)<br /><br /></li>
+<li>[Dockerfile の最適化](manage-docker/optimize-windows-dockerfile.md)<br /><br /></li>
+<li>[コンテナーのネットワーク](manage-containers/container-networking.md)<br /><br /></li>
 </ul>
 </td>
 </tr>
 
 <tr>
 <td ><center>![](media/video.png)</center></td>
-<td>**Watch**<br /><br />
-Interested in demos and interviews from the Windows Container team?<br /><br />
+<td>**視聴する**<br /><br />
+Windows コンテナー チームのデモとインタビューに関心がありますか?<br /><br />
 <ul>
-<li>[Containers Channel](https://channel9.msdn.com/Blogs/containers)</li>
+<li>[コンテナー チャネル](https://channel9.msdn.com/Blogs/containers)</li>
 </ul>
 <br />
 </td>
@@ -69,12 +68,12 @@ Interested in demos and interviews from the Windows Container team?<br /><br />
 
 <tr>
 <td ><center>![](media/question.png)</center></td>
-<td>**Community**<br /><br />
-Interact with the community, try samples, and find additional resources.<br /><br />
+<td>**コミュニティ**<br /><br />
+コミュニティでやり取りしたり、サンプルを試してみたりできるほか、その他のリソースを探すこともできます。<br /><br />
 <ul>
-<li>[Container Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)<br /><br /></li>
-<li>[Community Videos and Blogs](communitylinks.md)<br /><br /></li>
-<li>[Container Resources](https://msdn.microsoft.com/virtualization/community/community_overview)<br /><br /></li>
+<li>[コンテナー フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)<br /><br /></li>
+<li>[コミュニティのビデオとブログ](communitylinks.md)<br /><br /></li>
+<li>[コンテナー リソース](https://msdn.microsoft.com/virtualization/community/community_overview)<br /><br /></li>
 </ul>
 </td>
 </tr>

@@ -8,13 +8,13 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 88e6e080-cf8f-41d8-a301-035959dc5ce0
-ms.openlocfilehash: 622c8f638a815e19a54aa75b6b5ea0688d966ae3
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: 1c506016175a8be2608e10063a788d55aa792ce4
+ms.sourcegitcommit: 8ce23ca36f3dbae96a09f73d8c2f235943f8cd47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 10/17/2017
 ---
-# Windows コンテナーの基本イメージの履歴
+# <a name="windows-container-base-image-history"></a>Windows コンテナーの基本イメージの履歴
 
 すべての Windows コンテナーは、Microsoft から提供されている基本 OS 上に構築されます。 コンテナーが構築されている Windows のバージョンがわからない場合は、`docker inspect <tag>` を実行し、1 行目または 2 行を以下の表と照合してください。
 
@@ -30,10 +30,18 @@ ms.lasthandoff: 07/21/2017
     ]
 }
 ```
-これは、Microsoft によって提供されたイメージ内に 2 つのレイヤーがあることを表しています。
+
+これは、Microsoft によって提供されたイメージ内に 2 つのレイヤーがあることを表しています。 最初のレイヤーは一定であり、最初の Windows Server リリースを表しています。2 つ目のレイヤーは、含まれている最新の累積的な更新プログラムに基づいて変化します。
 
 各バージョンの変更内容を確認する場合は、「[Windows 10 および Windows Server 2016 の更新履歴](https://support.microsoft.com/en-us/help/12387/windows-10-update-history)」で該当するバージョンのサポート技術情報をご覧ください。
 
+
+## <a name="tools-to-simplify-this-process"></a>このプロセスを簡略化するためのツール
+
+コンテナー全体をダウンロードせずにイメージ マニフェストを読み取ってバージョンを判定できるツールが、Stefan Scherer 氏によって作成されています。 詳しくは、同氏の[ブログ](https://stefanscherer.github.io/winspector/)と [GitHub](https://github.com/StefanScherer/winspector) リポジトリをご覧ください。
+
+
+## <a name="image-versions"></a>イメージのバージョン
 
 <table>
     <tr>

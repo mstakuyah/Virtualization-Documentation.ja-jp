@@ -3,6 +3,7 @@
 # [仮想マシンを作成する](quick-start/quick-create-virtual-machine.md)
 # Hyper-V を使用した仮想マシンの管理
 ## [Hyper-V と PowerShell](quick-start/try-hyper-v-powershell.md)
+## [仮想マシンとのデバイスの共有](user-guide/enhanced-session-mode.md)
 ## [チェックポイントの操作](user-guide/checkpoints.md)
 ## [PowerShell ダイレクトとの接続](user-guide/powershell-direct.md)
 ## [プレリリース VM の作成](user-guide/create-pre-release-vm.md) 
