@@ -1,93 +1,93 @@
 ---
-title: Container Deployment Quick Start - Images
-description: Container deployment quick start
-keywords: docker, containers
+title: "コンテナー展開のクイック スタート - イメージ"
+description: "コンテナー展開のクイック スタート"
+keywords: "Docker, コンテナー"
 author: enderb-ms
 ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-ms.openlocfilehash: 0d247989294de59ed599aba3ab982cac772efcf6
-ms.sourcegitcommit: 4f5b9f70804bf6282af8bef603cc343c524c3102
+ms.openlocfilehash: 58bd491ccae7cd9d91088d9f180367623320345e
+ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 11/08/2017
 ---
-# ビルドの自動化とイメージの保存
+# <a name="automating-builds-and-saving-images"></a>ビルドの自動化とイメージの保存
 
-In the previous Windows Server quick start, a Windows container was created from a pre-created .Net Core sample. This exercise will detail creating custom container images manually, automating container image creation using a Dockerfile, and storing container images in the Docker Hub public registry.
+前の Windows Server クイック スタートでは、以前に作成した .NET Core サンプルから Windows コンテナーを作成しました。 この演習では、カスタム コンテナー イメージを手動で作成する方法、Dockerfile を使用してコンテナー イメージの作成を自動化する方法、Docker Hub パブリック レジストリにコンテナー イメージを保存する方法について詳しく説明します。
 
-This quick start is specific to Windows Server containers on Windows Server 2016 and will use the Windows Server Core container base image. Additional quick start documentation can be found in the table of contents on the left hand side of this page.
+このクイック スタートは、Windows Server 2016 上の Windows Server コンテナー固有の内容です。Windows Server Core コンテナー基本イメージを使用します。 このページの左側の目次に追加のクイック スタート文書があります。
 
-**Prerequisites:**
+**前提条件:**
 
-- One computer system (physical or virtual) running Windows Server 2016.
-- Configure this system with the Windows Container feature and Docker. For a walkthrough on these steps, see [Windows Containers on Windows Server](./quick-start-windows-server.md).
-- A Docker ID, this will be used to push a container image to Docker Hub. If you do not have a Docker ID, sign up for one at [Docker Cloud](https://cloud.docker.com/).
+- Windows Server 2016 を実行している 1 台のコンピューター システム (物理または仮想)。
+- Windows コンテナー機能と Docker でこのシステムを構成します。 これらの手順のチュートリアルについては、「[Windows Containers on Windows Server](./quick-start-windows-server.md)」 (Windows Server の Windows コンテナー) を参照してください。
+- Docker ID。コンテナー イメージを Docker Hub にプッシュするために使用されます。 Docker ID がない場合は、[Docker Cloud](https://cloud.docker.com/) でサインアップしてください。
 
-## 1. Container Image - Manual
+## <a name="1-container-image---manual"></a>1.コンテナー イメージ - 手動
 
-For the best experience, walk through this exercise from a Windows command shell (cmd.exe).
+この演習は Windows コマンド シェル (cmd.exe) から実行すると、最も効果的です。
 
-The first step in manually creating a container image is to deploy a container. For this example, deploy an IIS container from the pre-created IIS image. Once the container has been deployed, you will be working in a shell session from within the container. The interactive session is initiated with the `-it` flag. For in depth details on Docker Run commands, see [Docker Run Reference on Docker.com](https://docs.docker.com/engine/reference/run/). 
+コンテナー イメージを手動で作成するための最初の手順はコンテナーを展開することです。 この例では、事前に作成した IIS イメージから IIS イメージを展開します。 コンテナーが展開されたら、コンテナー内からシェル セッションで操作します。 対話型セッションが `-it` フラグで開始されます。 Docker Run コマンドの詳細については、Docker.com の「[Docker Run Reference](https://docs.docker.com/engine/reference/run/)」を参照してください。 
 
-> This step may take some time due to the size of the Windows Server Core base image.
+> Windows Server Core 基本イメージのサイズにより、この手順には時間がかかる可能性があります。
 
-```none
+```
 docker run -d --name myIIS -p 80:80 microsoft/iis
 ```
 
-Now, the container will be running in the background. The default command included in the container, `ServiceMonitor.exe`, which monitor IIS progress and automatically stop the container if IIS stops. To learn more on how this image was created, see [Microsoft/docker-iis](https://github.com/Microsoft/iis-docker) on GitHub.
+ここでは、コンテナーはバック グラウンドで実行されます。 コンテナーに含まれている既定のコマンドである `ServiceMonitor.exe` は、IIS の進行状況の監視し、IIS が停止するとコンテナーを自動的に停止します。 このイメージの作成方法について詳しくは、GitHub の「[Microsoft/docker-iis](https://github.com/Microsoft/iis-docker)」をご覧ください。
 
-Next, start an interactive cmd in the container. This will allow you to run commands in running container without stopping IIS or ServiceMonitor.
+次に、コンテナーで対話型の cmd を起動します。 これにより、IIS や ServiceMonitor を停止しなくても、実行中のコンテナーでコマンドを実行することができます。
 
-```none
+```
 docker exec -i myIIS cmd 
 ```
 
-Next, you can make a change to the running container. Run the following command to remove the IIS splash screen.
+次に、実行中のコンテナーに変更を加えることができます。 次のコマンドを実行して、IIS スプラッシュ画面を削除します。
 
-```none
+```
 del C:\inetpub\wwwroot\iisstart.htm
 ```
 
-And the following to replace the default IIS site with a new static site.
+次のコマンドを実行して、既定の IIS サイトを新しい静的サイトに置き換えます。
 
-```none
+```
 echo "Hello World From a Windows Server Container" > C:\inetpub\wwwroot\index.html
 ```
 
-From a different system, browse to the IP address of the container host. You should now see the ‘Hello World’ application.
+別のシステムから、コンテナー ホストの IP アドレスを参照します。 ‘Hello World’ アプリケーションが表示されるはずです。
 
-**Note:** if you are working in Azure, a network security group rule will need to exist allowing traffic over port 80. For more information see, [Create Rule in a Network Security Group](https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-create-nsg-arm-pportal/#create-rules-in-an-existing-nsg).
+**注:** Azure で作業している場合、ポート 80 経由のトラフィックを許可するために、ネットワーク セキュリティ グループ ルールを設定する必要があります。 詳細については、「[既存の NSG に規則を作成する](https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-create-nsg-arm-pportal/#create-rules-in-an-existing-nsg)」をご覧ください。
 
 ![](media/hello.png)
 
-Back in the container, exit the interactive container session.
+コンテナーに戻り、対話型のコンテナー セッションを終了します。
 
-```none
+```
 exit
 ```
 
-The modified container can now be captured into a new container image. To do so, you will need the container name. This can be found using the `docker ps -a` command.
+これで、変更されたコンテナーを新しいコンテナー イメージにキャプチャできます。 それには、コンテナー名が必要になります。 これを見つけるには、`docker ps -a` コマンドを使用します。
 
-```none
+```
 docker ps -a
 
 CONTAINER ID     IMAGE                             COMMAND   CREATED             STATUS   PORTS   NAMES
 489b0b447949     microsoft/iis   "cmd"     About an hour ago   Exited           pedantic_lichterman
 ```
 
-To create a the new container image, use the `docker commit` command. Docker commit takes a form of “docker commit container-name new-image-name”. Note – replace the name of the container in this example with the actual container name.
+新しいコンテナー イメージを作成するには、`docker commit` コマンドを使用します。 Docker コミットの形式は “docker commit container-name new-image-name” になります。 注記 – この例のコンテナー名を実際のコンテナー名に置き換えます。
 
-```none
+```
 docker commit pedantic_lichterman modified-iis
 ```
 
-To verify that new image has been created, use the `docker images` command.  
+新しいイメージが作成されたことを確認するには、`docker images` コマンドを使用します。  
 
-```none
+```
 docker images
 
 REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
@@ -97,42 +97,42 @@ windowsservercore   10.0.14300.1000     dbfee88ee9fd        8 weeks ago         
 windowsservercore   latest              dbfee88ee9fd        8 weeks ago          9.344 GB
 ```
 
-This image can now be deployed. The resulting container will include all captured modifications.
+これで、このイメージを展開できます。 結果的に生成されるコンテナーには、キャプチャされたすべての変更が含まれます。
 
-## 2. Container Image - Dockerfile
+## <a name="2-container-image---dockerfile"></a>2.コンテナー イメージ - Dockerfile
 
-Through the last exercise, a container was manually created, modified, and then captured into a new container image. Docker includes a method for automating this process using a Dockerfile. This exercise will have almost identical results as the last, however this time the process will be automated. For this exercise, a Docker ID is required. If you do not have a Docker ID, sign up for one at [Docker Cloud]( https://cloud.docker.com/).
+前回の演習によって、コンテナーが手動で作成され、変更されて、新しいコンテナー イメージにキャプチャされています。 Docker には、このプロセスを自動化するためのメソッドが含まれており、Dockerfile を使用します。 この演習の結果は前回とほぼ同じになりますが、今回はプロセスが自動化されます。 この演習には Docker ID が必要です。 Docker ID がない場合は、[Docker Cloud]( https://cloud.docker.com/) でサインアップしてください。
 
-On the container host, create a directory `c:\build`, and in this directory create a file named `Dockerfile`. Note – the file should not have a file extension.
+コンテナー ホストで、ディレクトリ `c:\build` を作成し、このディレクトリ内に `Dockerfile` という名前のファイルを作成します。 注記 – このファイルにはファイル拡張子を与えません。
 
-```none
+```
 powershell new-item c:\build\Dockerfile -Force
 ```
 
-Open the Dockerfile in notepad.
+Dockerfile をメモ帳で開きます。
 
-```none
+```
 notepad c:\build\Dockerfile
 ```
 
-Copy the following text into the Dockerfile, and save the file. These commands instruct Docker to create a new image, using `microsoft/iis` as the base. The dockerfile then runs the commands specified in the `RUN` instruction, in this case the index.html file is updated with new content. 
+Dockerfile に次のテキストをコピーし、ファイルを保存します。 これらのコマンドは、`microsoft/iis` を基礎として使用し、新しいイメージを作成するように Docker に指示します。 dockerfile は次に、`RUN` の指示に指定されているコマンドを実行します。この場合、index.html ファイルが新しいコンテンツで更新されます。 
 
-For more information on Dockerfiles, see the [Dockerfiles on Windows](../manage-docker/manage-windows-dockerfile.md).
+Dockerfile の詳細については、「[Dockerfiles on Windows](../manage-docker/manage-windows-dockerfile.md)」 (Windows 上の Dockerfile) を参照してください。
 
-```none
+```
 FROM microsoft/iis
 RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 ```
 
-The `docker build` command will start the image build process. The `-t` parameter instructs the build process to name the new image `iis-dockerfile`. **Replace 'user' with the user name of your Docker account**. If you do not have an account with Docker, sign up for one at [Docker Cloud](https://cloud.docker.com/).
+`docker build` コマンドはイメージ ビルド プロセスを開始します。 `-t` パラメーターは、新しいイメージに `iis-dockerfile` という名前を付けるようにビルド プロセスに指示します。 **'user' は Docker アカウントのユーザー名で置き換えます**。 Docker にアカウントがない場合は、[Docker Cloud](https://cloud.docker.com/) でサインアップしてください。
 
-```none
+```
 docker build -t <user>/iis-dockerfile c:\Build
 ```
 
-When completed, you can verify that the image has been created using the `docker images` command.
+完了したら、`docker images` コマンドを使用して、イメージが作成されたことを確認できます。
 
-```none
+```
 docker images
 
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
@@ -142,42 +142,42 @@ windowsservercore   10.0.14300.1000     dbfee88ee9fd        8 weeks ago         
 windowsservercore   latest              dbfee88ee9fd        8 weeks ago         9.344 GB
 ```
 
-Now, deploy a container with the following command, again replacing user with your Docker ID.
+次のコマンドでコンテナーを展開します (ここでも user を Docker ID で置き換えます)。
 
-```none
+```
 docker run -d -p 80:80 <user>/iis-dockerfile ping -t localhost
 ```
 
-Once the container has been created, browse to the IP address of the container host. You should see the hello world application.
+コンテナーが作成されたら、コンテナー ホストの IP アドレスを参照します。 hello world アプリケーションが表示されるはずです。
 
 ![](media/dockerfile2.png)
 
-Back on the container host, use `docker ps` to get the name of the container, and `docker rm` to remove the container. Note – replace the name of the container in this example with the actual container name.
+コンテナー ホストに戻り、`docker ps` を使用してコンテナーの名前を取得し、`docker rm` を使用してコンテナーを削除します。 注記 – この例のコンテナー名を実際のコンテナー名に置き換えます。
 
-Get container name.
+コンテナー名を取得します。
 
-```none
+```
 docker ps
 
 CONTAINER ID   IMAGE            COMMAND               CREATED              STATUS              PORTS                NAMES
 c1dc6c1387b9   iis-dockerfile   "ping -t localhost"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp   cranky_brown
 ```
 
-Remove container.
+コンテナーを削除します。
 
-```none
+```
 docker rm -f <container name>
 ```
 
-## 3. Docker Push
+## <a name="3-docker-push"></a>3.Docker Push
 
-Docker container images can be stored in a container registry. Once an image is stored in a registry, it can be retrieved for later use across many different container hosts. Docker provides a public registry for storing container images at [Docker Hub](https://hub.docker.com/).
+Docker コンテナー イメージはコンテナー レジストリに保存できます。 イメージをレジストリに保存すると、後で多数のコンテナー ホストから取得して使用できるようになります。 Docker には、[Docker Hub](https://hub.docker.com/) にコンテナー イメージを保存できるパブリック レジストリがあります。
 
-For this exercise, the custom hello world image will be pushed to your own account on Docker Hub.
+この演習では、カスタムの hello world イメージを Docker Hub の自分のアカウントにプッシュします。
 
-First, login to your docker account using the `docker login command`.
+まず、`docker login command` を使用して Docker アカウントにログインします。
 
-```none
+```
 docker login
 
 Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
@@ -188,21 +188,21 @@ Password: Password
 Login Succeeded
 ```
 
-Once logged in, the container image can be pushed to Docker Hub. To do so, use the `docker push` command. **Replace 'user' with your Docker ID**. 
+ログインしたら、コンテナー イメージを Docker Hub にプッシュできます。 この場合は、`docker push` コマンドを使用します。 **'user' は Docker ID で置き換えます**。 
 
-```none
+```
 docker push <user>/iis-dockerfile
 ```
 
-The container image can now be downloaded from Docker Hub onto any Windows container host using `docker pull`. For this tutorial, we will delete the existing image, and then pull it down from Docker Hub. 
+これで、`docker pull` を使用して、コンテナー イメージを Docker Hub から任意の Windows コンテナー ホストにダウンロードできるようになります。 このチュートリアルでは、既存のイメージを削除し、Docker Hub からプルします。 
 
-```none
+```
 docker rmi <user>/iis-dockerfile
 ```
 
-Running `docker images` will show that the image has been removed.
+`docker images` を実行すると、イメージが削除されたことが表示されます。
 
-```none
+```
 docker images
 
 REPOSITORY                TAG                 IMAGE ID            CREATED             SIZE
@@ -210,13 +210,13 @@ modified-iis              latest              51f1fe8470b3        5 minutes ago 
 microsoft/iis             latest              e4525dda8206        3 hours ago         7.61 GB
 ```
 
-Finally, docker pull can be used to pull the image back onto the container host. Replace user with the user name of your Docker account. 
+最後に、Docker Pull を使用して、イメージをコンテナー ホストにプルすることができます。 'user' は Docker アカウントのユーザー名で置き換えます。 
 
-```none
+```
 docker pull <user>/iis-dockerfile
 ```
 
-## Next Steps
+## <a name="next-steps"></a>次の手順
 
 サンプル ASP.NET アプリケーションをパッケージ化する方法については、下のリンクで Windows 10 のチュートリアルをご覧ください。
 

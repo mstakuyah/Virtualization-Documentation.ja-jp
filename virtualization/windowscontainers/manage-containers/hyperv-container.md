@@ -8,13 +8,13 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
-ms.openlocfilehash: 7957e48291ab2d29f3687c595c760d838dab60b8
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: ea131dfede51ee36f7dc703511357612430ccca9
+ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 11/08/2017
 ---
-# Hyper-V コンテナー
+# <a name="hyper-v-containers"></a>Hyper-V コンテナー
 
 **この記事は暫定的な内容であり、変更される可能性があります。** 
 
@@ -24,29 +24,29 @@ Windows コンテナー テクノロジには、Windows Server コンテナー�
 
 **Hyper-V コンテナー** – ホスト上で複数のコンテナー インスタンスを同時に実行できます。ただし、各コンテナーは特殊な仮想マシン内で実行します。 これは、各 Hyper-V コンテナーとコンテナー ホスト間でのカーネル レベルの分離を提供します。
 
-## Hyper-V コンテナー
+## <a name="hyper-v-container"></a>Hyper-V コンテナー
 
-### コンテナーの作成
+### <a name="create-container"></a>コンテナーの作成
 
 Docker を使用した Hyper-V コンテナーの管理は、Windows Server コンテナーの管理の場合とほぼ同じです。 Docker を使用して Hyper-V コンテナーを作成する場合には、`--isolation=hyperv` パラメーターを使用します。
 
-```none
+```
 docker run -it --isolation=hyperv microsoft/nanoserver cmd
 ```
 
-### 分離の説明
+### <a name="isolation-explanation"></a>分離の説明
 
 この例では、Windows Server コンテナーと Hyper-V コンテナーの分離機能を区別します。 
 
 以下の場合、Windows Server コンテナーが展開されており、実行時間の長い ping プロセスがホストされます。
 
-```none
+```
 docker run -d microsoft/windowsservercore ping localhost -t
 ```
 
 `docker top` コマンドを使用すると、以下のようにコンテナー内の ping プロセスが返されます。 この例のプロセスの ID は 3964 です。
 
-```none
+```
 docker top 1f8bf89026c8f66921a55e773bac1c60174bb6bab52ef427c6c8dbc8698f9d7a
 
 3964 ping
@@ -54,7 +54,7 @@ docker top 1f8bf89026c8f66921a55e773bac1c60174bb6bab52ef427c6c8dbc8698f9d7a
 
 コンテナー ホストで `get-process` コマンドを使用して、ホストから実行中のすべての ping プロセスを返すことができます。 この例では、コンテナーの ID と一致するプロセス ID は 1 つです。 コンテナーとホストの両方で表示されるプロセスは同じです。
 
-```none
+```
 get-process -Name ping
 
 Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
@@ -64,13 +64,13 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
 
 一方、この例では Hyper-V コンテナーを起動して、ping プロセスも使用します。 
 
-```none
+```
 docker run -d --isolation=hyperv microsoft/nanoserver ping -t localhost
 ```
 
 同様に、`docker top` を使用して、コンテナーから実行中のプロセスを返すことができます。
 
-```none
+```
 docker top 5d5611e38b31a41879d37a94468a1e11dc1086dcd009e2640d36023aa1663e62
 
 1732 ping
@@ -78,7 +78,7 @@ docker top 5d5611e38b31a41879d37a94468a1e11dc1086dcd009e2640d36023aa1663e62
 
 ただし、コンテナー ホストでプロセスを検索しても、ping プロセスは検出されず、エラーはスローされます。
 
-```none
+```
 get-process -Name ping
 
 get-process : Cannot find a process with the name "ping". Verify the process name and call the cmdlet again.
@@ -91,7 +91,7 @@ At line:1 char:1
 
 最終的に、ホストで `vmwp` プロセスが表示されます。実行中の仮想マシンは、実行中のコンテナーをカプセル化し、ホストのオペレーティング システムから実行中のプロセスを保護します。
 
-```none
+```
 get-process -Name vmwp
 
 Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName

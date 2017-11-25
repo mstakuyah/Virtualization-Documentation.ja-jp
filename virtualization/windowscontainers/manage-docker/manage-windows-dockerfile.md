@@ -8,13 +8,13 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
-ms.openlocfilehash: 8c5e89cd3afcb109fd3eda2da7bcd1b2c7f48b88
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: 206be6db413dd4fccef891b57ad4fcf73dd21d00
+ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 11/08/2017
 ---
-# Windows 上の Dockerfile
+# <a name="dockerfile-on-windows"></a>Windows 上の Dockerfile
 
 Docker エンジンには、コンテナー イメージの作成を自動化するツールが含まれています。 `docker commit` コマンドを使用して手動でコンテナー イメージを作成することもできますが、イメージの自動作成プロセスを使用すると、次のような多くの利点があります。
 
@@ -33,15 +33,15 @@ Docker エンジンには、コンテナー イメージの作成を自動化す
 
 Dockerfile について詳しくは、[docker.com の Dockerfile リファレンス]( https://docs.docker.com/engine/reference/builder/)をご覧ください。
 
-## Dockerfile の概要
+## <a name="dockerfile-introduction"></a>Dockerfile の概要
 
-### 基本構文
+### <a name="basic-syntax"></a>基本構文
 
 ごく基本的なフォームでは、Dockerfile はとても単純です。 次の例では、IIS を含み、’hello world’ サイトを含む新しいイメージを作成します。 この例に含まれるコマンド (`#` で示されます) については、各手順で説明します。 この記事の以降のセクションでは、Dockerfile 構文規則と、Dockerfile 命令について詳しく説明します。
 
 > Dockerfile は、拡張子は付けずに作成する必要があります。 Windows でこれを行うには、好みのエディターでファイルを作成し、"Dockerfile" という名前を使用してそのファイルを保存します (引用符も含めます)。
 
-```none
+```
 # Sample Dockerfile
 
 # Indicates that the windowsservercore image will be used as the base image.
@@ -62,11 +62,11 @@ CMD [ "cmd" ]
 
 Windows 用 Dockerfile のその他の例については、「[Dockerfile for Windows Repository (Windows リポジトリの Dockerfile)] (https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples)」をご覧ください。
 
-## 手順
+## <a name="instructions"></a>手順
 
 Dockerfile 命令は、Docker エンジンに対して、コンテナー イメージを作成するために必要な手順を示します。 次の命令は、順番に、1 つずつ実行されます。 Dockerfile の基本的な命令の詳細を次に示します。 Dockerfile の命令の詳細な一覧については、[Docker.com の Dockerfile リファレンス] (https://docs.docker.com/engine/reference/builder/) を参照してください。
 
-### FROM
+### <a name="from"></a>FROM
 
 `FROM` 命令では、新しいイメージ作成プロセス中に使用されるコンテナー イメージを設定します。 たとえば、命令 `FROM microsoft/windowsservercore` を使用すると、結果のイメージは Windows Server Core ベース OS イメージから派生し、依存します。 指定したイメージが、Docker ビルド プロセスが実行されているシステムに存在しない場合、Docker エンジンは、パブリックまたはプライベートのイメージ レジストリからイメージのダウンロードを試行します。
 
@@ -86,7 +86,7 @@ FROM microsoft/windowsservercore
 
 FROM 命令の詳細については、[Docker.com の FROM リファレンス]( https://docs.docker.com/engine/reference/builder/#from)を参照してください。
 
-### RUN
+### <a name="run"></a>RUN
 
 `RUN` 命令は、コマンドを実行し、新しいコンテナー イメージにキャプチャするように指定します。 これらのコマンドには、ソフトウェアのインストール、ファイルとディレクトリの作成、環境構成の作成などの項目が含まれます。
 
@@ -94,7 +94,7 @@ FROM 命令の詳細については、[Docker.com の FROM リファレンス]( 
 
 RUN 命令の形式は、次のとおりです。
 
-```none
+```
 # exec form
 
 RUN ["<executable", "<param 1>", "<param 2>"]
@@ -108,7 +108,7 @@ exec とシェル フォーム間の違いは、`RUN` 命令の実行方法で�
 
 次の例では、exec フォームを使用しています。
 
-```none
+```
 FROM microsoft/windowsservercore
 
 RUN ["powershell", "New-Item", "c:/test"]
@@ -116,7 +116,7 @@ RUN ["powershell", "New-Item", "c:/test"]
 
 結果のイメージを確認して、実行されたコマンドは `powershell New-Item c:/test` です。
 
-```none
+```
 docker history doc-exe-method
 
 IMAGE               CREATED             CREATED BY                    SIZE                COMMENT
@@ -125,7 +125,7 @@ b3452b13e472        2 minutes ago       powershell New-Item c:/test   30.76 MB
 
 対照的に、次の例では、同じ操作を実行していますが、ここではシェル フォームを使用しています。
 
-```none
+```
 FROM microsoft/windowsservercore
 
 RUN powershell New-Item c:\test
@@ -133,7 +133,7 @@ RUN powershell New-Item c:\test
 
 これは、`cmd /S /C powershell New-Item c:\test` の実行命令の結果です。
 
-```none
+```
 docker history doc-shell-method
 
 IMAGE               CREATED             CREATED BY                              SIZE                COMMENT
@@ -144,7 +144,7 @@ IMAGE               CREATED             CREATED BY                              
 
 Windows では、exec 形式で `RUN` 命令を使用する場合、バックスラッシュをエスケープする必要があります。
 
-```none
+```
 RUN ["powershell", "New-Item", "c:\\test"]
 ```
 
@@ -153,19 +153,19 @@ RUN ["powershell", "New-Item", "c:\\test"]
 **例**
 
 この例では、DISM を使用してコンテナー イメージに IIS をインストールします。
-```none
+```
 RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
 ```
 
 この例では、Visual Studio 再頒布可能パッケージをインストールします。 ここで、インストーラーを実行するには、`Start-Process` と `-Wait` パラメーターを使用してください。 これにより、Dockerfile の次の手順に進む前に、インストールを確実に完了することができます。
 
-```none
+```
 RUN powershell.exe -Command Start-Process c:\vcredist_x86.exe -ArgumentList '/quiet' -Wait
 ```
 
 RUN 命令の詳細については、[Docker.com の RUN リファレンス]( https://docs.docker.com/engine/reference/builder/#run)を参照してください。
 
-### コピー
+### <a name="copy"></a>コピー
 
 `COPY` 命令は、ファイルとディレクトリを、コンテナーのファイルシステムにコピーします。 ファイルとディレクトリは、Dockerfile の相対パスで示す必要があります。
 
@@ -173,13 +173,13 @@ RUN 命令の詳細については、[Docker.com の RUN リファレンス]( ht
 
 `COPY` 命令の形式は、次のとおりです。
 
-```none
+```
 COPY <source> <destination>
 ```
 
 送信元または送信先のいずれかに空白が含まれる場合は、パスを角かっこと二重引用符で囲みます。
 
-```none
+```
 COPY ["<source>", "<destination>"]
 ```
 
@@ -187,32 +187,32 @@ COPY ["<source>", "<destination>"]
 
 Windows では、変換先形式でスラッシュを使用する必要があります。 たとえば、次に有効な `COPY` 命令を示します。
 
-```none
+```
 COPY test1.txt /temp/
 COPY test1.txt c:/temp/
 ```
 
 ただし、次の命令は動作しません。
 
-```none
+```
 COPY test1.txt c:\temp\
 ```
 
 **例**
 
 この例では、ソース ディレクトリのコンテンツを、コンテナー イメージの `sqllite` というディレクトリに追加します。
-```none
+```
 COPY source /sqlite/
 ```
 
 この例では、config から始まるすべてのファイルを、コンテナー イメージの `c:\temp` ディレクトリに追加します。
-```none
+```
 COPY config* c:/temp/
 ```
 
 `COPY` 命令の詳細については、[Docker.com の COPY リファレンス]( https://docs.docker.com/engine/reference/builder/#copy)をご覧ください。
 
-### 追加
+### <a name="add"></a>追加
 
 ADD 命令は、COPY 命令とよく似ていますが、ADD 命令にはさらに他の機能があります。 `ADD` 命令は、ホストのファイルがコンテナー イメージにコピーされるだけでなく、リモートの場所にあるファイルを URL の仕様に対してコピーします。
 
@@ -220,13 +220,13 @@ ADD 命令は、COPY 命令とよく似ていますが、ADD 命令にはさら�
 
 `ADD` 命令の形式は、次のとおりです。
 
-```none
+```
 ADD <source> <destination>
 ```
 
 送信元または送信先のいずれかに空白が含まれる場合は、パスを角かっこと二重引用符で囲みます。
 
-```none
+```
 ADD ["<source>", "<destination>"]
 ```
 
@@ -234,14 +234,14 @@ ADD ["<source>", "<destination>"]
 
 Windows では、変換先形式でスラッシュを使用する必要があります。 たとえば、次に有効な `ADD` 命令を示します。
 
-```none
+```
 ADD test1.txt /temp/
 ADD test1.txt c:/temp/
 ```
 
 ただし、次の命令は動作しません。
 
-```none
+```
 ADD test1.txt c:\temp\
 ```
 
@@ -250,23 +250,23 @@ ADD test1.txt c:\temp\
 **例**
 
 この例では、ソース ディレクトリのコンテンツを、コンテナー イメージの `sqllite` というディレクトリに追加します。
-```none
+```
 ADD source /sqlite/
 ```
 
 この例では、config から始まるすべてのファイルを、コンテナー イメージの `c:\temp` ディレクトリに追加します。
-```none
+```
 ADD config* c:/temp/
 ```
 
 この例では、Windows 用 Python を、コンテナー イメージの `c:\temp` ディレクトリにダウンロードします。
-```none
+```
 ADD https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe /temp/python-3.5.1.exe
 ```
 
 `ADD` 命令の詳細については、[Docker.com の ADD リファレンス]( https://docs.docker.com/engine/reference/builder/#add)を参照してください。
 
-### WORKDIR
+### <a name="workdir"></a>WORKDIR
 
 `WORKDIR` 命令では、`RUN`、`CMD`、コンテナー イメージのインスタンスを実行する作業ディレクトリなど、他の Dockerfile 命令の作業ディレクトリを設定します。
 
@@ -274,7 +274,7 @@ ADD https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe /temp/python-3.5.1.
 
 `WORKDIR` 命令の形式は、次のとおりです。
 
-```none
+```
 WORKDIR <path to working directory>
 ```
 
@@ -282,19 +282,19 @@ WORKDIR <path to working directory>
 
 Windows では、作業ディレクトリにバックスラッシュが含まれる場合、エスケープする必要があります。
 
-```none
+```
 WORKDIR c:\\windows
 ```
 
 **例**
 
-```none
+```
 WORKDIR c:\\Apache24\\bin
 ```
 
 `WORKDIR` 命令の詳細については、[Docker.com の WORKDIR リファレンス]( https://docs.docker.com/engine/reference/builder/#workdir)を参照してください。
 
-### CMD
+### <a name="cmd"></a>CMD
 
 `CMD` 命令では、コンテナー イメージのインスタンスを展開するときに実行する既定のコマンドを設定します。 たとえば、コンテナーが NGINX Web サーバーをホストする場合、`CMD` には、`nginx.exe` など、Web サーバーを起動する命令を含めることができます。 Dockerfile に複数の `CMD` 命令を指定すると、最後の命令のみが評価されます。
 
@@ -302,7 +302,7 @@ WORKDIR c:\\Apache24\\bin
 
 `CMD` 命令の形式は、次のとおりです。
 
-```none
+```
 # exec form
 
 CMD ["<executable", "<param>"]
@@ -316,7 +316,7 @@ CMD <command>
 
 Windows では、`CMD` 命令に指定されたファイル パスにはフォワード スラッシュを使用し、バックスラッシュをエスケープする (`\\`) 必要があります。 たとえば、次に有効な `CMD` 命令を示します。
 
-```none
+```
 # exec form
 
 CMD ["c:\\Apache24\\bin\\httpd.exe", "-w"]
@@ -327,19 +327,19 @@ CMD c:\\Apache24\\bin\\httpd.exe -w
 ```
 ただし、次の命令は動作しません。
 
-```none
+```
 CMD c:\Apache24\bin\httpd.exe -w
 ```
 
 `CMD` 命令について詳しくは、[Docker.com の CMD リファレンス](https://docs.docker.com/engine/reference/builder/#cmd)をご覧ください。
 
-## エスケープ文字
+## <a name="escape-character"></a>エスケープ文字
 
 多くの場合、Dockerfile の命令は複数の行にまたがる必要があります。このためには、エスケープ文字を使用します。 既定の Dockerfile のエスケープ文字はバックスラッシュ `\` です。 バックスラッシュは Windows でのファイル パス区切り文字でもあるため、問題が生じる場合があります。 パーサー ディレクティブを使用して、既定のエスケープ文字を変更することもできます。 パーサー ディレクティブについて詳しくは、[Docker.com のパーサー ディレクティブに関する記事](https://docs.docker.com/engine/reference/builder/#parser-directives)を参照してください。
 
 次の例は、既定のエスケープ文字を使用した複数の行にまたがる単一の RUN 命令を示しています。
 
-```none
+```
 FROM microsoft/windowsservercore
 
 RUN powershell.exe -Command \
@@ -353,7 +353,7 @@ RUN powershell.exe -Command \
 
 > エスケープ文字として使用できる値は `\` と `` ` `` の 2 つだけであることに注意してください。
 
-```none
+```
 # escape=`
 
 FROM microsoft/windowsservercore
@@ -367,23 +367,23 @@ RUN powershell.exe -Command `
 
 エスケープ パーサー ディレクティブについて詳しくは、[Docker.com のエスケープ パーサー ディレクティブに関する記事](https://docs.docker.com/engine/reference/builder/#escape)を参照してください。
 
-## Dockerfile の PowerShell
+## <a name="powershell-in-dockerfile"></a>Dockerfile の PowerShell
 
-### PowerShell コマンド
+### <a name="powershell-commands"></a>PowerShell コマンド
 
 PowerShell コマンドは、Dockerfile で `RUN` 操作を使用して実行できます。
 
-```none
+```
 FROM microsoft/windowsservercore
 
 RUN powershell -command Expand-Archive -Path c:\apache.zip -DestinationPath c:\
 ```
 
-### REST 呼び出し
+### <a name="rest-calls"></a>REST 呼び出し
 
 PowerShell と `Invoke-WebRequest` コマンドは、Web サービスから情報やファイルを収集するときに便利です。 たとえば、Python を含むイメージを構築する場合、次の例を使用できます。 高速なダウンロードを実現するために、`$ProgressPreference` を `SilentlyContinue` に設定することを検討してください。
 
-```none
+```
 FROM microsoft/windowsservercore
 
 RUN powershell.exe -Command \
@@ -398,7 +398,7 @@ RUN powershell.exe -Command \
 
 イメージの作成プロセス中にファイルをダウンロードするために PowerShell を使用するもう 1 つの方法として、.NET WebClient ライブラリを使う方法があります。 この方法で、ダウンロードのパフォーマンスが向上します。 次の例では、WebClient ライブラリを使用して、Python ソフトウェアをダウンロードしています。
 
-```none
+```
 FROM microsoft/windowsservercore
 
 RUN powershell.exe -Command \
@@ -410,7 +410,7 @@ RUN powershell.exe -Command \
 
 > WebClient は、現在 Nano Server でサポートされていません
 
-### PowerShell スクリプト
+### <a name="powershell-scripts"></a>PowerShell スクリプト
 
 場合によっては、イメージの作成プロセス中に使用されるコンテナーにスクリプトをコピーしてから、コンテナー内から実行する方法が便利なことがあります。 注: この方法では、イメージ レイヤー キャッシュが制限され、Dockerfile の読みやすさが低下します。
 
@@ -422,22 +422,22 @@ ADD script.ps1 /windows/temp/script.ps1
 RUN powershell.exe -executionpolicy bypass c:\windows\temp\script.ps1
 ```
 
-## Docker のビルド
+## <a name="docker-build"></a>Docker のビルド
 
 Dockerfile が作成され、ディスクに保存されると、`docker build` を実行して新しいイメージを作成できます。 `docker build` コマンドには、いくつかの省略可能なパラメーターと、Dockerfile のパスを指定できます。 すべてのビルド オプションの一覧を含め、Docker のビルドの詳細については、[Docker.com のビルドに関するページ](https://docs.docker.com/engine/reference/commandline/build/#build)をご覧ください。
 
-```none
+```
 Docker build [OPTIONS] PATH
 ```
 たとえば、次のコマンドでは、’iis’ というイメージが作成されます。
 
-```none
+```
 docker build -t iis .
 ```
 
 ビルド プロセスが開始されると、出力に状態が示され、スローされたエラーがある場合はそのエラーが返されます。
 
-```none
+```
 C:\> docker build -t iis .
 
 Sending build context to Docker daemon 2.048 kB
@@ -468,7 +468,7 @@ Successfully built e2aafdfbe392
 
 結果は、新しいコンテナー イメージになります。この例では、’iis’ というイメージです。
 
-```none
+```
 docker images
 
 REPOSITORY          TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
@@ -476,7 +476,7 @@ iis                 latest              e2aafdfbe392        About a minute ago  
 windowsservercore   latest              6801d964fda5        4 months ago         0 B
 ```
 
-## 参考資料
+## <a name="further-reading--references"></a>参考資料
 
 [Optimize Dockerfiles and Docker build for Windows (Windows の Dockerfile と Docker ビルドの最適化)] (optimize-windows-dockerfile.md)
 

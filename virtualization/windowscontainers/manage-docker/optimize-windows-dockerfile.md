@@ -1,32 +1,32 @@
 ---
-title: Optimize Windows Dockerfiles
-description: Optimize Dockerfiles for Windows containers.
-keywords: docker, containers
+title: "Windows Dockerfile を最適化する"
+description: "Windows コンテナー用に Dockerfile を最適化します。"
+keywords: "Docker, コンテナー"
 author: PatrickLang
 ms.date: 05/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
-ms.openlocfilehash: b0e916520b3cbcf4fdd0e02bc8a4fd7042fd2b8b
-ms.sourcegitcommit: 48470217e479c49528d4d855c9aeeb89b68d6513
+ms.openlocfilehash: 59a1a3b9fa43238defbd5155dc7b264109df4625
+ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 11/08/2017
 ---
-# Optimize Windows Dockerfiles
+# <a name="optimize-windows-dockerfiles"></a>Windows Dockerfile を最適化する
 
-Several methods can be used to optimize both the Docker build process, and the resulting Docker images. This document details how the Docker build process operates, and demonstrates several tactics that can be used for optimal image create with Windows Containers.
+Docker のビルド プロセスと結果の Docker イメージの両方を最適化するには、複数の方法を使用できます。 このドキュメントでは、Docker ビルド プロセスのしくみについて詳しく説明し、Windows コンテナーでの最適なイメージの作成に使用できるいくつかの方法を示します。
 
-## Docker Build
+## <a name="docker-build"></a>Docker のビルド
 
-### Image Layers
+### <a name="image-layers"></a>イメージ レイヤー
 
-Before examining Docker build optimization, it is important to understand how Docker build works. During the Docker build process, a Dockerfile is consumed, and each actionable instruction is run, one-by-one, in its own temporary container. The result is a new image layer for each actionable instruction. 
+Docker のビルドの最適化を調べる前に、Docker のビルドがどのように動作するのかを理解しておくことが重要です。 Docker ビルド プロセスでは、Dockerfile が使用されて、アクション可能な各命令が 1 つずつ専用の一時的なコンテナーで実行されます。 その結果、アクション可能な各命令に対して新しいイメージ レイヤーが作成されます。 
 
-Take a look at the following Dockerfile. In this example, the `windowsservercore` base OS image is being used, IIS installed, and then a simple website created.
+次の Dockerfile を見てください。 この例では、`windowsservercore` ベース OS イメージが使用されて、IIS がインストールされ、簡単な Web サイトが作成されます。
 
-```none
+```
 # Sample Dockerfile
 
 FROM windowsservercore
@@ -35,9 +35,9 @@ RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 CMD [ "cmd" ]
 ```
 
-From this Dockerfile, one might expect the resulting image to consist of two layers, one for the container OS image, and a second that includes IIS and the website, this however is not the case. The new image is constructed of many layers, each one dependent on the previous. To visualize this, the `docker history` command can be run against the new image. Doing so shows that the image consists of four layers, the base, and then three additional layers, one for each instruction in the Dockerfile.
+この Dockerfile からは、コンテナー OS イメージ用と IIS および Web サイト用の 2 つのレイヤーで構成されるイメージが作成されるように思うかもしれません。しかしそうではありません。 新しいイメージは、相互に独立した複数のレイヤーで構築されます。 これを視覚化するには、新しいイメージに対して `docker history` コマンドを実行します。 イメージは 4 つのレイヤーで構成されます。1 つの基本レイヤーと 3 つの追加レイヤー (Dockerfile の命令ごとに 1 つ) です。
 
-```none
+```
 docker history iis
 
 IMAGE               CREATED              CREATED BY                                      SIZE                COMMENT
@@ -47,25 +47,25 @@ f0e017e5b088        21 seconds ago       cmd /S /C echo "Hello World - Dockerfil
 6801d964fda5        4 months ago                                                         0 B
 ```
 
-Each of these layers can be mapped to an instruction from the Dockerfile. The bottom layer (`6801d964fda5` in this example) represents the base OS image. One layer up, the IIS installation can be seen. The next layer includes the new website, and so on.
+各レイヤーは、Dockerfile の命令に対応します。 最下位のレイヤー (この例では `6801d964fda5`) は、ベース OS イメージを表します。 1 つ上のレイヤーでは、IIS のインストールを確認できます。 次のレイヤーには、新しい Web サイトなどが含まれます。
 
-Dockerfiles can be written to minimize image layers, optimize build performance, and also optimize cosmetic things such as readability. Ultimately, there are many ways to complete the same image build task. Understanding how the format of a Dockerfile effects build time, and the resulting image, improves the automation experience. 
+イメージ レイヤーが最小になり、ビルドのパフォーマンスが最高になり、読みやすさなどの表面的なことが最適になるように、Dockerfile を記述できます。 最終的に、同じイメージ ビルド タスクを実行するにはさまざまな方法があります。 Dockerfile の形式がビルド時間と結果のイメージに与える影響を理解すると、オートメーションのエクスペリエンスが向上します。 
 
-## Optimize Image Size
+## <a name="optimize-image-size"></a>イメージのサイズを最適化する
 
-When building Docker container images, image size may be an important factor. Container images are moved between registries and host, exported and imported, and ultimately consume space. Several tactics can be used during the Docker build process to minimize image size. This section details some of these tactics specific to Windows Containers. 
+Docker コンテナー イメージを構築するときは、イメージのサイズが重要な要因になる場合があります。 コンテナー イメージは、レジストリとホストの間を移動され、エクスポートおよびインポートされて、最終的にはスペースを消費します。 Docker ビルド プロセスの間にイメージのサイズを最小限に抑えるには、複数の方法を使用できます。 このセクションでは、Windows コンテナーに固有のいくつかの方法について説明します。 
 
-For additional information on Dockerfile best practices, see [Best practices for writing Dockerfiles on Docker.com]( https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/).
+Dockerfile のベスト プラクティスについては、「[Best practices for writing Dockerfiles on Docker.com]( https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)」(Docker.com で Dockerfile を作成するときのベスト プラクティス) を参照してください。
 
-### Group related actions
+### <a name="group-related-actions"></a>関連するアクションをグループ化する
 
-Because each `RUN` instruction creates a new layer in the container image, grouping actions into one `RUN` instruction can reduce the number of layers. While minimizing layers may not effect image size much, grouping related actions can, which will be seen in subsequent examples.
+各 `RUN` 命令によってコンテナー イメージに 1 つの新しいレイヤーが作成されるので、複数のアクションを 1 つの `RUN` 命令にグループ化するとレイヤーの数を減らすことができます。 レイヤーの数を最小限に抑えてもイメージのサイズに大きな影響はありませんが、後の例で示すように、関連するアクションをグループ化するとイメージのサイズに大きな影響があります。
 
-The following two examples demonstrate the same operation, which results in container images of identical capability, however the two Dockerfiles constructed differently. The resulting images are also compared.  
+次に示す 2 つの例の操作は、同じ機能を持つコンテナー イメージを作成しますが、2 つの Dockerfile の構成は異なります。 結果のイメージも比較します。  
 
-This first example downloads Python for Windows, installs it and cleans up by removing the downloaded setup file. Each of these actions are run in their own `RUN` instruction.
+最初の例では、Python for Windows をダウンロードしてインストールします。最後にクリーンアップとして、ダウンロード済みのセットアップ ファイルを削除します。 これらの各アクションは、それぞれの `RUN` 命令で実行されます。
 
-```none
+```
 FROM windowsservercore
 
 RUN powershell.exe -Command Invoke-WebRequest "https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe" -OutFile c:\python-3.5.1.exe
@@ -73,9 +73,9 @@ RUN powershell.exe -Command Start-Process c:\python-3.5.1.exe -ArgumentList '/qu
 RUN powershell.exe -Command Remove-Item c:\python-3.5.1.exe -Force
 ```
 
-The resulting image consists of three additional layers, one for each `RUN` instruction.
+結果として作成されるイメージは、`RUN` 命令ごとに 1 つずつ、3 つの追加レイヤーで構成されます。
 
-```none
+```
 docker history doc-example-1
 
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
@@ -84,9 +84,9 @@ a395ca26777f        15 seconds ago      cmd /S /C powershell.exe -Command Remove
 957147160e8d        3 minutes ago       cmd /S /C powershell.exe -Command Invoke-WebR   125.7 MB
 ```
 
-To compare, here is the same operation, however all steps run with the same `RUN` instruction. Note that each step in the `RUN` instruction is on a new line of the Dockerfile, the '\' character is being used to line wrap. 
+2 番目の例は、同じ操作ですが、すべてのステップを同じ `RUN` 命令で実行します。 `RUN` 命令の各ステップは Dockerfile では別の行になっており、改行には '\' 文字が使用されています。 
 
-```none
+```
 FROM windowsservercore
 
 RUN powershell.exe -Command \
@@ -96,22 +96,22 @@ RUN powershell.exe -Command \
   Remove-Item c:\python-3.5.1.exe -Force
 ```
 
-The resulting image here consists of one additional layer for the `RUN` instruction.
+結果のイメージは、`RUN` 命令に対する 1 つの追加レイヤーで構成されます。
 
-```none
+```
 docker history doc-example-2
 
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 69e44f37c748        54 seconds ago      cmd /S /C powershell.exe -Command   $ErrorAct   216.3 MB                
 ```
 
-### Remove excess files
+### <a name="remove-excess-files"></a>余分なファイルを削除する
 
-If a file, such as an installer, is not required after it has been used, remove the file to reduce image size. This needs to occur in the same step in which the file was copied into the image layer. Doing so prevents the file from persisting in a lower level image layer.
+インストーラーなどのファイルが使用後に必要ない場合は、ファイルを削除するとイメージのサイズが減ります。 この処理は、イメージ レイヤーへのファイルのコピーが行われるのと同じステップで行う必要があります。 そうすることで、ファイルが下位レベルのイメージ レイヤーに残るのを防ぐことができます。
 
-In this example, the Python package is downloaded, executed, and then the executable removed. This is all completed in one `RUN` operation and results in a single image layer.
+この例では、Python パッケージをダウンロードし、実行して、実行可能ファイルを削除しています。 このすべてを 1 つの `RUN` 操作で行うので、作成されるイメージ レイヤーは 1 つです。
 
-```none
+```
 FROM windowsservercore
 
 RUN powershell.exe -Command \
@@ -121,15 +121,15 @@ RUN powershell.exe -Command \
   Remove-Item c:\python-3.5.1.exe -Force
 ```
 
-## Optimize Build Speed
+## <a name="optimize-build-speed"></a>ビルドの速さを最適化する
 
-### Multiple Lines
+### <a name="multiple-lines"></a>複数の行
 
-When optimizing for Docker build speed, it may be advantageous to separate operations into multiple individual instructions. Having multiple `RUN` operations increase caching effectiveness. Because individual layers are created for each `RUN` instruction, if an identical step has already been run in a different Docker Build operation, this cached operation (image layer) is re-used. The result is that Docker Build runtime is decreased.
+Docker のビルド速度を最適化するときは、操作を複数の個別の命令に分けると有効な場合があります。 複数の `RUN` 操作を使用すると、キャッシュの効率が向上します。 `RUN` 命令ごとに個別のレイヤーが作成されるため、同じステップが異なる Docker ビルド操作で既に実行されている場合は、このキャッシュされた操作 (イメージ レイヤー) が再利用されます。 結果として、Docker のビルドの実行時間が短縮されます。
 
-In the following example, both Apache and the Visual Studio Redistribute packages are downloaded, installed, and then the un-needed files cleaned up. This is all done with one `RUN` instruction. If any of these actions are updated, all actions will re-run.
+次の例では、Apache と Visual Studio の再配布パッケージをダウンロードし、インストールした後、不要なファイルを削除しています。 このすべてを 1 つの `RUN` 命令で行います。 いずれかのアクションが更新された場合、すべてのアクションが再実行されます。
 
-```none
+```
 FROM windowsservercore
 
 RUN powershell -Command \
@@ -153,9 +153,9 @@ RUN powershell -Command \
   Remove-Item c:\php.zip
 ```
 
-The resulting image consists of two layers, one for the base OS image, and the second that contains all operations from the single `RUN` instruction.
+結果のイメージは 2 つのレイヤーで構成されます。1 つは基本 OS イメージのもので、もう 1 つは 1 つの `RUN` 命令のすべての操作を含みます。
 
-```none
+```
 docker history doc-sample-1
 
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
@@ -163,9 +163,9 @@ IMAGE               CREATED             CREATED BY                              
 6801d964fda5        5 months ago                                                        0 B
 ```
 
-To contrast, here are the same actions broken down into three `RUN` instructions. In this case, each `RUN` instruction is cached in a container image layer, and only those that have changed, need to be re-run on subsequent Dockerfile builds.
+比較するため、次の例では同じアクションを 3 つの `RUN` 命令に分けてあります。 この場合、各 `RUN` 命令はコンテナー イメージ レイヤーにキャッシュされ、以降の Dockerfile のビルドでは、変更されたアクションだけを再実行する必要があります。
 
-```none
+```
 FROM windowsservercore
 
 RUN powershell -Command \
@@ -187,9 +187,9 @@ RUN powershell -Command \
     Remove-Item c:\php.zip -Force
 ```
 
-The resulting image consists of four layers, one for the base OS image, and then one for each `RUN` instruction. Because each `RUN` instruction has been run in its own layer, any subsequent runs of this Dockerfile or identical set of instructions in a different Dockerfile, will use cached image layer, thus reducing build time. Instruction ordering is important when working with image cache, for more details, see the next section of this document.
+結果のイメージは、基本 OS イメージ用に 1 つと、`RUN` 命令ごとに 1 つずつ、全部で 4 つのレイヤーで構成されます。 各 `RUN` 命令は専用のレイヤーで実行されるため、後でまたこの Dockerfile を実行すると、または同じ命令セットを別の Dockerfile で実行すると、キャッシュされたイメージ レイヤーが使用されて、ビルド時間が短くなります。 イメージ キャッシュを使用するときは命令の順序が重要です。詳細については次のセクションで説明します。
 
-```none
+```
 docker history doc-sample-2
 
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
@@ -199,13 +199,13 @@ d43abb81204a        7 days ago          cmd /S /C powershell -Command  Sleep 2 ;
 6801d964fda5        5 months ago
 ```
 
-### Ordering Instructions
+### <a name="ordering-instructions"></a>命令の手順
 
-A Dockerfile is processed from top to the bottom, each Instruction compared against cached layers. When an instruction is found without a cached layer, this instruction and all subsequent instructions are processed in new container image layers. Because of this, the order in which instructions are placed is important. Place instructions that will remain constant towards the top of the Dockerfile. Place instructions that may change towards the bottom of the Dockerfile. Doing so reduces the likelihood of negating existing cache.
+Dockerfile は上から下に処理され、各命令はキャッシュされているレイヤーと比較されます。 キャッシュされたレイヤーがない命令が見つかると、その命令およびそれ以降のすべての命令が新しいコンテナー イメージ レイヤーで処理されます。 このため、命令の配置の順序が重要になります。 変化しない命令は、Dockerfile の前の方に配置します。 変化する可能性のある命令は、Dockerfile の後の方に配置します。 そうすることで、既存のキャッシュが役に立たなくなる可能性が減ります。
 
-The intention of this example is to demonstrated how Dockerfile instruction ordering can effect caching effectiveness. In this simple Dockerfile, four numbered folders are created.  
+この例の目的は、Dockerfile の命令の順序がキャッシュの有効性に及ぼす影響を示すことです。 この簡単な Dockerfile では、4 つの番号付きフォルダーが作成されます。  
 
-```none
+```
 FROM windowsservercore
 
 RUN mkdir test-1
@@ -213,9 +213,9 @@ RUN mkdir test-2
 RUN mkdir test-3
 RUN mkdir test-4
 ```
-The resulting image has five layers, one for the base OS image, and one for each of the `RUN` instructions.
+結果のイメージには、基本 OS イメージ用に 1 つと、`RUN` 命令ごとに 1 つずつ、全部で 5 つのレイヤーがあります。
 
-```none
+```
 docker history doc-sample-1
 
 IMAGE               CREATED              CREATED BY               SIZE                COMMENT
@@ -226,9 +226,9 @@ afba1a3def0a        38 seconds ago       cmd /S /C mkdir test-4   42.46 MB
 6801d964fda5        5 months ago                                  0 B    
 ```
 
-The docker file has now been slightly modified. Notice that the third `RUN` instruction has changed. When Docker build is run against this Dockerfile, the first three instructions, which are identical to those in the last example, use the cached image layers. However, because the changed `RUN` instruction has not been cached, a new layer is created for itself and all subsequent instructions.
+docker ファイルは若干変更されています。 3 番目 `RUN` 命令が変更されていることに注意してください。 この Dockerfile に対して Docker ビルドを実行すると、前の例と同じ最初の 3 つの命令は、キャッシュされたイメージ レイヤーを使用します。 ただし、変更された `RUN` 命令はキャッシュされていないので、その命令および以降のすべての命令のために新しいレイヤーが作成されます。
 
-```none
+```
 FROM windowsservercore
 
 RUN mkdir test-1
@@ -237,9 +237,9 @@ RUN mkdir test-5
 RUN mkdir test-4
 ```
 
-Comparing Image ID’s of the new image, to that in the last example, you will see that the first three layers (bottom to the top) are shared, however the fourth and fifth are unique.
+新しいイメージのイメージ ID を前の例と比較すると、最初の 3 つのレイヤー (下から上に向かって) は共有されていますが、4 番目と 5 番目は固有であることがわかります。
 
-```none
+```
 docker history doc-sample-2
 
 IMAGE               CREATED             CREATED BY               SIZE                COMMENT
@@ -250,14 +250,14 @@ c92cc95632fb        28 seconds ago      cmd /S /C mkdir test-4   5.644 MB
 6801d964fda5        5 months ago                                 0 B
 ```
 
-## Cosmetic Optimization
+## <a name="cosmetic-optimization"></a>表面的な最適化
 
-### Instruction Case
+### <a name="instruction-case"></a>命令の場合
 
-Dockerfile instructions are not case sensitive, however convention is to use upper case. This improves readability by differentiating between Instruction call, and instruction operation. The below two examples demonstrate this concept. 
+Dockerfile の命令は大文字/小文字を区別されませんが、規則では大文字を使うようになっています。 これにより、命令の呼び出しと命令の操作が区別されて、読みやすさが向上します。 次の 2 つの例ではこの概念を示します。 
 
-Lower case:
-```none
+小文字の場合:
+```
 # Sample Dockerfile
 
 from windowsservercore
@@ -265,8 +265,8 @@ run dism /online /enable-feature /all /featurename:iis-webserver /NoRestart
 run echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 cmd [ "cmd" ]
 ```
-Upper case: 
-```none
+大文字の場合: 
+```
 # Sample Dockerfile
 
 FROM windowsservercore
@@ -275,18 +275,18 @@ RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 CMD [ "cmd" ]
 ```
 
-### Line Wrapping
+### <a name="line-wrapping"></a>行の折り返し
 
-Long and complex operations can be separated onto multiple line using the backslash `\` character. The following Dockerfile installs the Visual Studio Redistributable package, removes the installer files, and then creates a configuration file. These three operations are all specified on one line.
+長くて複雑な操作は、バックスラッシュ `\` 記号を使って複数の行に分けることができます。 次の Dockerfile は、Visual Studio の再頒布可能パッケージをインストールし、インストーラー ファイルを削除して、構成ファイルを作成します。 これら 3 つの操作すべてが 1 行で指定されています。
 
-```none
+```
 FROM windowsservercore
 
 RUN powershell -Command c:\vcredist_x86.exe /quiet ; Remove-Item c:\vcredist_x86.exe -Force ; New-Item c:\config.ini
 ```
-The command can be re-written so that each operation from the one `RUN` instruction is specified on its own line. 
+1 つの `RUN` 命令の各操作を個別の行で指定するようにコマンドを書き直したものを次に示します。 
 
-```none
+```
 FROM windowsservercore
 
 RUN powershell -Command \
@@ -296,8 +296,8 @@ RUN powershell -Command \
     New-Item c:\config.ini
 ```
 
-## Further Reading & References
+## <a name="further-reading--references"></a>参考資料
 
-[Dockerfile on Windows] (manage-windows-dockerfile.md)
+[Dockerfile on Windows] (Windows 上の Dockerfile) (manage-windows-dockerfile.md)
 
-[Best practices for writing Dockerfiles on Docker.com](https://docs.docker.com/engine/reference/builder/)
+[Best practices for writing Dockerfiles on Docker.com (Dockerfile 作成のベスト プラクティス (Docker.com))](https://docs.docker.com/engine/reference/builder/)

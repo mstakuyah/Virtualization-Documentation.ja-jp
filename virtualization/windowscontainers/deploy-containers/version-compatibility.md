@@ -3,11 +3,11 @@ title: "Windows コンテナーのバージョンの互換性"
 description: "Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。"
 keywords: "メタデータ, コンテナー, バージョン"
 author: patricklang
-ms.openlocfilehash: dce6004b66ac085354d906bc09f57f037c5dd138
-ms.sourcegitcommit: eb111c328266fe72a780cfd53c5e0e55de1ec084
+ms.openlocfilehash: ed9d88e1e861651426e560a4531fd4added2134a
+ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーのバージョンの互換性
 
@@ -44,7 +44,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 
 サポートされていない組み合わせを実行しようとすると、次のエラーが発生します。
 
-```none
+```
 docker: Error response from daemon: container b81ed896222eb87906ccab1c3dd2fc49324eafa798438f7979b87b210906f839 encountered an error during CreateContainer: failure in a Windows system call: The operating system of the container does not match the operating system of the host. (0xc0370101) extra info: {"SystemType":"Container","Name":"b81ed896222eb87906ccab1c3dd2fc49324eafa798438f7979b87b210906f839","Owner":"docker","IsDummy":false,"VolumePath":"\\\\?\\Volume{2443d38a-1379-4bcf-a4b7-fc6ad4cd7b65}","IgnoreFlushesDuringBoot":true,"LayerFolderPath":"C:\\ProgramData\\docker\\windowsfilter\\b81ed896222eb87906ccab1c3dd2fc49324eafa798438f7979b87b210906f839","Layers":[{"ID":"1532b584-8431-5b5a-8735-5e1b4fe9c2a9","Path":"C:\\ProgramData\\docker\\windowsfilter\\b2b88bc2a47abcc682e422507abbba9c9b6d826d34e67b9e4e3144cc125a1f80"},{"ID":"a64b8da5-cd6e-5540-bc73-d81acae6da54","Path":"C:\\ProgramData\\docker\\windowsfilter\\5caaedbced1f546bccd01c9d31ea6eea4d30701ebba7b95ee8faa8c098a6845a"}],"HostName":"b81ed896222e","MappedDirectories":[],"HvPartition":false,"EndpointList":["002a0d9e-13b7-42c0-89b2-c1e80d9af243"],"Servicing":false,"AllowUnqualifiedDNSQuery":true}.
 ```
 
@@ -97,14 +97,14 @@ FROM microsoft/nanoserver:10.0.14393.1770
 
  `docker service ls` : サービス名を検索します。
 
-```none
+```
 ID                  NAME                MODE                REPLICAS            IMAGE                                             PORTS
 xh6mwbdq2uil        angry_liskov        replicated          0/1                 microsoft/iis:windowsservercore-10.0.14393.1715
 ```
 
 `docker service ps <name>` : 状態と最新の試行回数を取得します。
 
-```none
+```
 C:\Program Files\Docker>docker service ps angry_liskov
 ID                  NAME                 IMAGE                                             NODE                DESIRED STATE       CURRENT STATE               ERROR                              PORTS
 klkbhn742lv0        angry_liskov.1       microsoft/iis:windowsservercore-10.0.14393.1715   WIN-BSTMQDRQC2E     Ready               Ready 3 seconds ago
@@ -118,7 +118,7 @@ xeqkxbsao57w         \_ angry_liskov.1   microsoft/iis:windowsservercore-10.0.14
 "starting container failed" (コンテナーの起動に失敗しました) というエラーが表示された場合、次のコマンドを使ってエラーの全文を表示できます。 `docker service ps --no-trunc <container name>`
 
 
-```none
+```
 C:\Program Files\Docker>docker service ps --no-trunc angry_liskov
 ID                          NAME                 IMAGE                                                                                                                     NODE                DESIRED STATE       CURRENT STATE                     ERROR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          PORTS
 dwsd6sjlwsgic5vrglhtxu178   angry_liskov.1       microsoft/iis:windowsservercore-10.0.14393.1715@sha256:868bca7e89e1743792e15f78edb5a73070ef44eae6807dc3f05f9b94c23943d5   WIN-BSTMQDRQC2E     Running             Starting less than a second ago                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
@@ -196,7 +196,7 @@ docker node update --label-add OsVersion="$((Get-ComputerInfo).OsVersion)" $ENV:
 
 その後、`docker node inspect` を使って各ノードを調べると、追加された新しいラベルが表示されます
 
-```none
+```
         "Spec": {
             "Labels": {
                 "OS": "windows",
@@ -211,7 +211,7 @@ docker node update --label-add OsVersion="$((Get-ComputerInfo).OsVersion)" $ENV:
 
 各ノードにラベルを設定した後、サービスの配置を決定する制約を更新することができます。 以下の例で、"contoso_service" を実際のサービス名と置き換えてください。
 
-```none
+```
 docker service update \
     --constraint-add "node.labels.OS == windows" \
     --constraint-add "node.labels.OsVersion == $((Get-ComputerInfo).OsVersion)" \
@@ -236,7 +236,7 @@ docker service update \
 
 次の例の展開では、OS バージョンが一致していないノード上でポッドがスケジュールされ、しかも Hyper-V による分離が無効です。 同じエラーは、`kubectl describe pod <podname>` によって表示されたイベントにも存在します。 複数回の試行後、多くの場合、ポッドの状態が次のようになります。 `CrashLoopBackOff`
 
-```none
+```
 $ kubectl -n plang describe po fabrikamfiber.web-789699744-rqv6p
 
 Name:           fabrikamfiber.web-789699744-rqv6p
@@ -303,7 +303,7 @@ Events:
 
 この例では、2 つの Windows ノードが存在し、それぞれ異なるバージョンが実行されています。
 
-```none
+```
 $ kubectl get node
 
 NAME                        STATUS    AGE       VERSION
@@ -381,7 +381,7 @@ System Info:
 
 上のサンプル コードの場合は、次のように指定します。
 
-```none
+```
 $ kubectl label node 38519acs9010 beta.kubernetes.io/osbuild=14393.1715
 
 
@@ -394,7 +394,7 @@ node "38519acs9011" labeled
 
 3. 次のコマンドを使ってラベルが追加されていることを確認します。 `kubectl get nodes --show-labels`
 
-```none
+```
 $ kubectl get nodes --show-labels
 
 NAME                        STATUS                     AGE       VERSION                    LABELS
@@ -445,7 +445,7 @@ status: {}
 
 これで、更新された展開を使ってポッドを起動できるようになりました。 ノード セレクターも `kubectl describe pod <podname>` に表示され、追加されていることが確認できます。
 
-```none
+```
 $ kubectl -n plang describe po fa
 
 Name:           fabrikamfiber.web-1780117715-5c8vw
