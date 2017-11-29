@@ -1,48 +1,11 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 2
+ Total Files | 0
 
 ## File List
- Source File | Status | Details 
- ----------- | ------ | ------- 
- [virtualization\windowscontainers\deploy-containers\system-requirements.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/64f5f8d838f72ea8e0e66a72eeb4ab78d982b715/virtualization/windowscontainers/deploy-containers/system-requirements.md) | HandedOffSuccess | [Details](#6ae690ff6592198bc16cbaf60489d3ed5aceeeb0301)
- [virtualization\windowscontainers\manage-containers\resource-controls.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/64f5f8d838f72ea8e0e66a72eeb4ab78d982b715/virtualization/windowscontainers/manage-containers/resource-controls.md) | HandedOffSuccess | [Details](#bc36f1f59ed339b2cc3dd3372a5cd5119f470c7c336)
 
 ## Item Details
-##### <a name='6ae690ff6592198bc16cbaf60489d3ed5aceeeb0301'></a> Source: [virtualization\windowscontainers\deploy-containers\system-requirements.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/64f5f8d838f72ea8e0e66a72eeb4ab78d982b715/virtualization/windowscontainers/deploy-containers/system-requirements.md)
-* Status: HandedOffSuccess
-* Target File: 
-* Handoff File: [system-requirements.7dbcfcd7846f5274542c2b3889e0b8cfd203b0b7.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/ead75eb422a7acd72ada95a849583def0675b42e/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.ja-jp/live/system-requirements.7dbcfcd7846f5274542c2b3889e0b8cfd203b0b7.ja-jp.xlf)
-* Handoff Datetime: 2017-11-22 21:07:39
-* Handoff Reason: Include
-* Handoff Name: 
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Handback Name: 
-* Current Target File: [virtualization\windowscontainers\deployment\system_requirements.md](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.ja-jp/blob/6db2831130711d635a0654722908c7a57b381358/virtualization/windowscontainers/deployment/system_requirements.md)
-* Current Handback File: [system_requirements.579a5475e3bd1d3d3fd9d5b53488ab4ae55a4423.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/1dd3a3e08b3c5e6cafc0502bfd7b2f4dd2dc806b/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/system_requirements.579a5475e3bd1d3d3fd9d5b53488ab4ae55a4423.ja-jp.xlf)
-* Current Handback Datetime: 2016-11-05 11:42:45
-* Bilingual File: [system_requirements.579a5475e3bd1d3d3fd9d5b53488ab4ae55a4423.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/1dd3a3e08b3c5e6cafc0502bfd7b2f4dd2dc806b/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/system_requirements.579a5475e3bd1d3d3fd9d5b53488ab4ae55a4423.ja-jp.xlf)
-* Bilingual Datetime: 2016-11-05 11:43:40
-* [Back to Top](#report-top)
-
-##### <a name='bc36f1f59ed339b2cc3dd3372a5cd5119f470c7c336'></a> Source: [virtualization\windowscontainers\manage-containers\resource-controls.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/64f5f8d838f72ea8e0e66a72eeb4ab78d982b715/virtualization/windowscontainers/manage-containers/resource-controls.md)
-* Status: HandedOffSuccess
-* Target File: 
-* Handoff File: [resource-controls.ebd6b460c2758fdccb19707a1a6b398c39920ef6.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/ead75eb422a7acd72ada95a849583def0675b42e/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.ja-jp/live/resource-controls.ebd6b460c2758fdccb19707a1a6b398c39920ef6.ja-jp.xlf)
-* Handoff Datetime: 2017-11-22 21:07:39
-* Handoff Reason: Include
-* Handoff Name: 
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Handback Name: 
-* [Back to Top](#report-top)
-
 
 ## Error Details
 
