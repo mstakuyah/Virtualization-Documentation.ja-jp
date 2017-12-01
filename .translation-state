@@ -1,5 +1,5 @@
 {
-  "LastProcessedCommit": "50e9896de8f30fcd38aa695dd57bc9ef7989a57b",
+  "LastProcessedCommit": "79123e93f7ba558bb2aee0468a734893e29f3087",
   "LastTranslatedCommit": "91030ef0e75c0d62ca730a9927fb3c05707fb87f",
   "LastConfigHash": "8a1020b7136b784cdc0f8c9eca877ab77b2a9c5f",
   "Items": {
@@ -21891,6 +21891,22 @@
       "HandoffFileCommit": "ead75eb422a7acd72ada95a849583def0675b42e",
       "HandoffDateTime": "2017-11-22T21:07:39.8883988Z",
       "HandoffXliffHash": "ccf47642993af6bc20cbe11420d487e4e66acbd9",
+      "HandoffPriority": ""
+    },
+    "16ab26b6f4c66b56051759dea65080dd411b15ab": {
+      "FileHash": "16ab26b6f4c66b56051759dea65080dd411b15ab",
+      "SourceFileCommit": "79123e93f7ba558bb2aee0468a734893e29f3087",
+      "SourceFilePath": "virtualization\\windowscontainers\\manage-docker\\configure-docker-daemon.md",
+      "HandoffReason": 1,
+      "FilePathList": [
+        "virtualization\\windowscontainers\\manage-docker\\configure-docker-daemon.md"
+      ],
+      "HasMetadata": true,
+      "TranslationType": 1,
+      "HandoffFilePath": "ol-handoff\\MicrosoftDocs\\Virtualization-Documentation-Private.ja-jp\\live\\configure-docker-daemon.55065b4526dd1a03f5fa5c56a6fd8c7868f6dbaa.ja-jp.xlf",
+      "HandoffFileCommit": "00a467448e3d555b22de9caad73627ed09990850",
+      "HandoffDateTime": "2017-12-01T02:08:35.4060596Z",
+      "HandoffXliffHash": "e21cc508c7b61a4fd9a3d8007ac8bdcba60cd709",
       "HandoffPriority": ""
     }
   }
