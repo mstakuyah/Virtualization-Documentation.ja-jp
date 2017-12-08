@@ -7,11 +7,11 @@ ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: f4ee9346db77e29f9d3366634b8b6ad07d0fec08
-ms.sourcegitcommit: 380dd8e78780995b96def2e2ec6e22e3387e82e0
+ms.openlocfilehash: 6ae690ff6592198bc16cbaf60489d3ed5aceeeb0
+ms.sourcegitcommit: 64f5f8d838f72ea8e0e66a72eeb4ab78d982b715
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="windows-container-requirements"></a>Windows コンテナーの要件
 
@@ -51,7 +51,7 @@ Windows コンテナーには、Windows Server Core と Nano Server という 2 
 <td><center>Server Core / Nano Server</center></td>
 </tr>
 <tr valign="top">
-<td><center>Nano Server</center></td>
+<td><center>Nano Server*</center></td>
 <td><center> Nano Server</center></td>
 <td><center>Server Core / Nano Server</center></td>
 </tr>
@@ -62,6 +62,23 @@ Windows コンテナーには、Windows Server Core と Nano Server という 2 
 </tr>
 </tbody>
 </table>
+* Windows Server Version 1709 から、Nano Server はコンテナー ホストとしてのみ使用できなくなりました。
+
+### <a name="memory-requirments"></a>メモリの要件
+コンテナーに対して利用可能なメモリの制限は、[リソース コントロール](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/resource-controls)を使用するか、コンテナー ホストをオーバーロードすることによって構成できます。  コンテナーの起動と基本的なコマンド (ipconfig、dir など) の実行に必要なメモリの最小量を以下に示します。  これらの値では、コンテナー間で共有しているリソースや、そのコンテナーで実行されるアプリケーションの用件が考慮されていない点に注意してください。
+
+#### <a name="windows-server-2016"></a>Windows Server 2016
+| 基本イメージ  | Windows Server コンテナー | Hyper-V による分離    |
+| ----------- | ------------------------ | -------------------- |
+| Nano Server | 40 MB                     | 130 MB + 1 GB のページファイル |
+| Server Core | 50 MB                     | 325 MB + 1 GB のページファイル |
+
+#### <a name="windows-server-version-1709"></a>Windows Server Version 1709
+| 基本イメージ  | Windows Server コンテナー | Hyper-V による分離    |
+| ----------- | ------------------------ | -------------------- |
+| Nano Server | 30 MB                     | 110 MB + 1 GB のページファイル |
+| Server Core | 45 MB                     | 360 MB + 1 GB のページファイル |
+
 
 ### <a name="nano-server-vs-windows-server-core"></a>Nano Server と Windows Server Core の比較
 
@@ -81,7 +98,7 @@ Windows Server コンテナーとその基になっているホストは単一�
 インストールされている Windows ホストのバージョンは、HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion で確認できます。  基本イメージが使用しているバージョンは、Docker ハブのタグまたはイメージの説明で提供されるイメージのハッシュ テーブルで確認できます。  「[Windows 10 の更新履歴](https://support.microsoft.com/en-us/help/12387/windows-10-update-history)」のページでは、各ビルドとリビジョンがリリースされた日付がわかります。
 
 この例では、14393 がメジャー ビルド番号で、321 がリビジョンです。
-```none
+```
 Windows PowerShell
 Copyright (C) 2016 Microsoft Corporation. All rights reserved.
 

@@ -7,11 +7,11 @@ ms.date: 07/25/2017
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: b9f20e6b3f071b9c71a387fce9640b244e9a95b5
-ms.sourcegitcommit: fa9ec91b14c612df03c5b7bb094eb1fabf421715
+ms.openlocfilehash: b1d0c4bcf35cd40e9ca058d4e2a51fa028cade2c
+ms.sourcegitcommit: 04c78918c77d2ad6053e6a95dc57bc488efbbf8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="build-a-sample-app"></a>サンプル アプリのビルド
 
@@ -98,6 +98,8 @@ ENTRYPOINT ["dotnet", "MvcMovie.dll"]
 
 dockerfile を作成したら、後はアプリをビルドし、コンテナーを実行するように docker を構成するだけです。 パブリッシュするポートを指定し、コンテナーに "myapp" というタグを付けます。 PowerShell で、以下のコマンドを実行します。
 
+_注:_: PowerShell コンソールの現在の作業ディレクトリには、上記で作成した、dockerfile が存在するディレクトリを指定する必要があります。
+
 ```Powershell
 docker build -t myasp .
 docker run -d -p 5000:80 --name myapp myasp
@@ -106,7 +108,7 @@ docker run -d -p 5000:80 --name myapp myasp
 このアプリの実行を確認するには、それが実行されているアドレスにアクセスする必要があります。 このコマンドを実行して、IP アドレスを取得してみましょう。
 
 ```Powershell
- docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" myasp
+ docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" myapp
 ```
 
 このコマンドを実行すると、実行中のコンテナーの IP アドレスが生成されます。 この出力の例を以下に示します。

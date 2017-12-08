@@ -30,6 +30,7 @@
 ## [swarm モードの概要](manage-containers/swarm-mode.md)
 ## [PowerShell での Docker の管理](https://github.com/Microsoft/Docker-PowerShell)
 ## [Windows Docker ホストのリモート管理](management/manage_remotehost.md)
+## [リソース コントロール](manage-containers/resource-controls.md)
 
 # コンテナーのサンプル
 ## [アプリケーション フレームワーク](samples.md#Application-Frameworks)
