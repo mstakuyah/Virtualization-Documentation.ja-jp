@@ -1,5 +1,5 @@
 {
-  "LastProcessedCommit": "9c1d9b284017cdd7fc4a00dab5fb2ed7e0ae9ef4",
+  "LastProcessedCommit": "31d19664d9d8785dba69e368a2d2cc1fc9ddc7cc",
   "LastTranslatedCommit": "91030ef0e75c0d62ca730a9927fb3c05707fb87f",
   "LastConfigHash": "8a1020b7136b784cdc0f8c9eca877ab77b2a9c5f",
   "Items": {
@@ -22128,6 +22128,22 @@
       "HandoffFileCommit": "be76fbafd5a25a11f9ee85be59efddf299653240",
       "HandoffDateTime": "2017-12-06T22:07:10.8878459Z",
       "HandoffXliffHash": "38b61236f0b9096f5da4f3ca1c621da95ce4978d",
+      "HandoffPriority": ""
+    },
+    "4858aee631f99d5b431806fc8fc774df847979c5": {
+      "FileHash": "4858aee631f99d5b431806fc8fc774df847979c5",
+      "SourceFileCommit": "31d19664d9d8785dba69e368a2d2cc1fc9ddc7cc",
+      "SourceFilePath": "virtualization\\windowscontainers\\quick-start\\quick-start-images.md",
+      "HandoffReason": 1,
+      "FilePathList": [
+        "virtualization\\windowscontainers\\quick-start\\quick-start-images.md"
+      ],
+      "HasMetadata": true,
+      "TranslationType": 1,
+      "HandoffFilePath": "ol-handoff\\MicrosoftDocs\\Virtualization-Documentation-Private.ja-jp\\live\\quick-start-images.e5904b6fd8770efb91af0e77142fe3e655c268ad.ja-jp.xlf",
+      "HandoffFileCommit": "5227fe2350041a22c69d02cd54524c00b3438dab",
+      "HandoffDateTime": "2017-12-12T00:39:43.8726492Z",
+      "HandoffXliffHash": "67ae23bf2c44eb8245d9518d2fab26f98b707567",
       "HandoffPriority": ""
     }
   }
