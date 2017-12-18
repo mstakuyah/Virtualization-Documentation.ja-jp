@@ -1,5 +1,5 @@
 {
-  "LastProcessedCommit": "b3603221121be046d91d1935564acaaad3f78c00",
+  "LastProcessedCommit": "6eefb890f090a6464119630bfbdc2794e6c3a3df",
   "LastTranslatedCommit": "91030ef0e75c0d62ca730a9927fb3c05707fb87f",
   "LastConfigHash": "8a1020b7136b784cdc0f8c9eca877ab77b2a9c5f",
   "Items": {
@@ -16961,7 +16961,6 @@
       "FilePathList": [
         "virtualization\\hyper-v-on-windows\\about\\hyperv_on_windows.md",
         "virtualization\\hyper-v-on-windows\\about\\whats_new.md",
-        "virtualization\\hyper-v-on-windows\\windows_welcome.md",
         "virtualization\\windowscontainers\\containers_welcome.md"
       ],
       "HasMetadata": true,
@@ -22973,6 +22972,38 @@
       "HandoffFileCommit": "d98aa2a19775bfc6e023795c93485940c50d072c",
       "HandoffDateTime": "2017-12-18T19:27:51.045336Z",
       "HandoffXliffHash": "d35035765c6edeea21e4fdd40dbb405be3f6fe0f",
+      "HandoffPriority": ""
+    },
+    "37782c4d2491b9b1963a326204e30a6f484b5ec9": {
+      "FileHash": "37782c4d2491b9b1963a326204e30a6f484b5ec9",
+      "SourceFileCommit": "6eefb890f090a6464119630bfbdc2794e6c3a3df",
+      "SourceFilePath": "virtualization\\windowscontainers\\about\\index.md",
+      "HandoffReason": 1,
+      "FilePathList": [
+        "virtualization\\windowscontainers\\about\\index.md"
+      ],
+      "HasMetadata": true,
+      "TranslationType": 1,
+      "HandoffFilePath": "ol-handoff\\MicrosoftDocs\\Virtualization-Documentation-Private.ja-jp\\live\\index.01108708edf157e95b96d0e38c23011bed66c123.ja-jp.xlf",
+      "HandoffFileCommit": "2d7f9ae3555855242176c89820a693a7fe8149fe",
+      "HandoffDateTime": "2017-12-18T20:27:11.7945998Z",
+      "HandoffXliffHash": "dfba604a67eecc0f0b8afd129fc9324e705f31bf",
+      "HandoffPriority": ""
+    },
+    "6c3498c53588e5f923d4029424b309dad2ad10cb": {
+      "FileHash": "6c3498c53588e5f923d4029424b309dad2ad10cb",
+      "SourceFileCommit": "6eefb890f090a6464119630bfbdc2794e6c3a3df",
+      "SourceFilePath": "virtualization\\windowscontainers\\manage-containers\\container-networking.md",
+      "HandoffReason": 1,
+      "FilePathList": [
+        "virtualization\\windowscontainers\\manage-containers\\container-networking.md"
+      ],
+      "HasMetadata": true,
+      "TranslationType": 1,
+      "HandoffFilePath": "ol-handoff\\MicrosoftDocs\\Virtualization-Documentation-Private.ja-jp\\live\\container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.ja-jp.xlf",
+      "HandoffFileCommit": "2d7f9ae3555855242176c89820a693a7fe8149fe",
+      "HandoffDateTime": "2017-12-18T20:27:11.7945998Z",
+      "HandoffXliffHash": "4d487b39ffe4f2ef2d2d86bb8e0ea49c0119b4c3",
       "HandoffPriority": ""
     }
   }
