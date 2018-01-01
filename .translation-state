@@ -1,5 +1,5 @@
 {
-  "LastProcessedCommit": "04d07f83b963eba0902e047210dea8a3d9165c86",
+  "LastProcessedCommit": "a072513214b0dabb9dba20ce43ea52aaf7806c5f",
   "LastTranslatedCommit": "91030ef0e75c0d62ca730a9927fb3c05707fb87f",
   "LastConfigHash": "8a1020b7136b784cdc0f8c9eca877ab77b2a9c5f",
   "Items": {
@@ -23789,6 +23789,22 @@
       "HandoffFileCommit": "8fff28a6177f5af3273e2a4179a2ffb967e8d124",
       "HandoffDateTime": "2017-12-31T23:28:39.2394535Z",
       "HandoffXliffHash": "4d6c7419a628bc3bd04d1fda31910633afcd6659",
+      "HandoffPriority": ""
+    },
+    "d3eb7e2b751468953a152e8c723551fb3e1d12dd": {
+      "FileHash": "d3eb7e2b751468953a152e8c723551fb3e1d12dd",
+      "SourceFileCommit": "a072513214b0dabb9dba20ce43ea52aaf7806c5f",
+      "SourceFilePath": "virtualization\\windowscontainers\\manage-containers\\resource-controls.md",
+      "HandoffReason": 1,
+      "FilePathList": [
+        "virtualization\\windowscontainers\\manage-containers\\resource-controls.md"
+      ],
+      "HasMetadata": true,
+      "TranslationType": 1,
+      "HandoffFilePath": "ol-handoff\\MicrosoftDocs\\Virtualization-Documentation-Private.ja-jp\\live\\resource-controls.ebd6b460c2758fdccb19707a1a6b398c39920ef6.ja-jp.xlf",
+      "HandoffFileCommit": "e945108651cda863b27ad1edc9c3ae9bff02b014",
+      "HandoffDateTime": "2018-01-01T21:30:02.5656654Z",
+      "HandoffXliffHash": "e252e2d197c32072487c6c8bcc7ea56d9ee759ee",
       "HandoffPriority": ""
     }
   }
