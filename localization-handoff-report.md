@@ -6,14 +6,14 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\management\manage_remotehost.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/451f291e0df3fc26637cce0fbf1855c56cc6e0d4/virtualization/windowscontainers/management/manage_remotehost.md) | HandedOffSuccess | [Details](#b975c593bd5c736ec3e7e1e21b76b2f6a2c8f8a4367)
+ [virtualization\hyper-v-on-windows\CVE-2017-5715-and-hyper-v-vms.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/50d31ccdc097f17b8b99cd95da0671de182795cf/virtualization/hyper-v-on-windows/CVE-2017-5715-and-hyper-v-vms.md) | HandedOffSuccess | [Details](#b70f19cbf617803f6bb7eec85c719b8a0d63bec1116)
 
 ## Item Details
-##### <a name='b975c593bd5c736ec3e7e1e21b76b2f6a2c8f8a4367'></a> Source: [virtualization\windowscontainers\management\manage_remotehost.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/451f291e0df3fc26637cce0fbf1855c56cc6e0d4/virtualization/windowscontainers/management/manage_remotehost.md)
+##### <a name='b70f19cbf617803f6bb7eec85c719b8a0d63bec1116'></a> Source: [virtualization\hyper-v-on-windows\CVE-2017-5715-and-hyper-v-vms.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/50d31ccdc097f17b8b99cd95da0671de182795cf/virtualization/hyper-v-on-windows/CVE-2017-5715-and-hyper-v-vms.md)
 * Status: HandedOffSuccess
 * Target File: 
-* Handoff File: [manage_remotehost.3c5d9a53df27ee4618f3cd087b9e3ce0d6e647fe.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/ca02af70b99df1bb980e4ebc68a868362988ce7b/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.ja-jp/live/manage_remotehost.3c5d9a53df27ee4618f3cd087b9e3ce0d6e647fe.ja-jp.xlf)
-* Handoff Datetime: 2018-01-06 01:07:06
+* Handoff File: [CVE-2017-5715-and-hyper-v-vms.26f9ffce97eab599de9ec9ad1a7b1ac4e7a273bf.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/e6f6a8480dd77daa99077303f2afcba84af2575e/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.ja-jp/live/CVE-2017-5715-and-hyper-v-vms.26f9ffce97eab599de9ec9ad1a7b1ac4e7a273bf.ja-jp.xlf)
+* Handoff Datetime: 2018-01-06 02:06:29
 * Handoff Reason: Include
 * Handoff Name: 
 * Archive File: 
@@ -21,11 +21,6 @@
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Handback Name: 
-* Current Target File: [virtualization\windowscontainers\management\manage_remotehost.md](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.ja-jp/blob/91030ef0e75c0d62ca730a9927fb3c05707fb87f/virtualization/windowscontainers/management/manage_remotehost.md)
-* Current Handback File: [manage_remotehost.3c5d9a53df27ee4618f3cd087b9e3ce0d6e647fe.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/6969c74d9ea57e4b4be2660a95b860b9dc396fd6/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/manage_remotehost.3c5d9a53df27ee4618f3cd087b9e3ce0d6e647fe.ja-jp.xlf)
-* Current Handback Datetime: 2017-03-24 13:49:29
-* Bilingual File: [manage_remotehost.3c5d9a53df27ee4618f3cd087b9e3ce0d6e647fe.ja-jp.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/6969c74d9ea57e4b4be2660a95b860b9dc396fd6/ol-handback/Microsoft/Virtualization-Documentation-Private.ja-jp/live/manage_remotehost.3c5d9a53df27ee4618f3cd087b9e3ce0d6e647fe.ja-jp.xlf)
-* Bilingual Datetime: 2017-03-24 13:52:12
 * [Back to Top](#report-top)
 
 
