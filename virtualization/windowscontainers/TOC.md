@@ -27,10 +27,18 @@
 ## [Windows 上の Dockerfile](manage-docker/manage-windows-dockerfile.md)
 ## [Dockerfile の最適化](manage-docker/optimize-windows-dockerfile.md)
 ## [コンテナーのネットワーク](manage-containers/container-networking.md)
+## [コンテナーの記憶域](manage-containers/container-storage.md)
 ## [swarm モードの概要](manage-containers/swarm-mode.md)
 ## [PowerShell での Docker の管理](https://github.com/Microsoft/Docker-PowerShell)
 ## [Windows Docker ホストのリモート管理](management/manage_remotehost.md)
 ## [リソース コントロール](manage-containers/resource-controls.md)
+
+# Windows で使用する Kubernetes 
+## [作業の開始](kubernetes/getting-started-kubernetes-windows.md)
+## [Linux マスター ノードの作成](kubernetes/creating-a-linux-master.md)
+## [ネットワーク トポロジの構成](kubernetes/configuring-host-gateway-mode.md)
+## [Kubernetes バイナリのコンパイル](kubernetes/compiling-kubernetes-binaries.md)
+## [トラブルシューティング](kubernetes/common-problems.md)
 
 # コンテナーのサンプル
 ## [アプリケーション フレームワーク](samples.md#Application-Frameworks)

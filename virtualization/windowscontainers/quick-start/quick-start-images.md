@@ -8,15 +8,15 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-ms.openlocfilehash: 58bd491ccae7cd9d91088d9f180367623320345e
-ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
+ms.openlocfilehash: 4858aee631f99d5b431806fc8fc774df847979c5
+ms.sourcegitcommit: 31d19664d9d8785dba69e368a2d2cc1fc9ddc7cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="automating-builds-and-saving-images"></a>ビルドの自動化とイメージの保存
 
-前の Windows Server クイック スタートでは、以前に作成した .NET Core サンプルから Windows コンテナーを作成しました。 この演習では、カスタム コンテナー イメージを手動で作成する方法、Dockerfile を使用してコンテナー イメージの作成を自動化する方法、Docker Hub パブリック レジストリにコンテナー イメージを保存する方法について詳しく説明します。
+前の Windows Server クイック スタートでは、以前に作成した .NET Core サンプルから Windows コンテナーを作成しました。 この演習では、Dockerfile を使用してコンテナー イメージの作成を自動化する方法、Docker Hub パブリック レジストリにコンテナー イメージを保存する方法について詳しく説明します。
 
 このクイック スタートは、Windows Server 2016 上の Windows Server コンテナー固有の内容です。Windows Server Core コンテナー基本イメージを使用します。 このページの左側の目次に追加のクイック スタート文書があります。
 
@@ -26,82 +26,9 @@ ms.lasthandoff: 11/08/2017
 - Windows コンテナー機能と Docker でこのシステムを構成します。 これらの手順のチュートリアルについては、「[Windows Containers on Windows Server](./quick-start-windows-server.md)」 (Windows Server の Windows コンテナー) を参照してください。
 - Docker ID。コンテナー イメージを Docker Hub にプッシュするために使用されます。 Docker ID がない場合は、[Docker Cloud](https://cloud.docker.com/) でサインアップしてください。
 
-## <a name="1-container-image---manual"></a>1.コンテナー イメージ - 手動
+## <a name="1-container-image---dockerfile"></a>1. コンテナー イメージ - Dockerfile
 
-この演習は Windows コマンド シェル (cmd.exe) から実行すると、最も効果的です。
-
-コンテナー イメージを手動で作成するための最初の手順はコンテナーを展開することです。 この例では、事前に作成した IIS イメージから IIS イメージを展開します。 コンテナーが展開されたら、コンテナー内からシェル セッションで操作します。 対話型セッションが `-it` フラグで開始されます。 Docker Run コマンドの詳細については、Docker.com の「[Docker Run Reference](https://docs.docker.com/engine/reference/run/)」を参照してください。 
-
-> Windows Server Core 基本イメージのサイズにより、この手順には時間がかかる可能性があります。
-
-```
-docker run -d --name myIIS -p 80:80 microsoft/iis
-```
-
-ここでは、コンテナーはバック グラウンドで実行されます。 コンテナーに含まれている既定のコマンドである `ServiceMonitor.exe` は、IIS の進行状況の監視し、IIS が停止するとコンテナーを自動的に停止します。 このイメージの作成方法について詳しくは、GitHub の「[Microsoft/docker-iis](https://github.com/Microsoft/iis-docker)」をご覧ください。
-
-次に、コンテナーで対話型の cmd を起動します。 これにより、IIS や ServiceMonitor を停止しなくても、実行中のコンテナーでコマンドを実行することができます。
-
-```
-docker exec -i myIIS cmd 
-```
-
-次に、実行中のコンテナーに変更を加えることができます。 次のコマンドを実行して、IIS スプラッシュ画面を削除します。
-
-```
-del C:\inetpub\wwwroot\iisstart.htm
-```
-
-次のコマンドを実行して、既定の IIS サイトを新しい静的サイトに置き換えます。
-
-```
-echo "Hello World From a Windows Server Container" > C:\inetpub\wwwroot\index.html
-```
-
-別のシステムから、コンテナー ホストの IP アドレスを参照します。 ‘Hello World’ アプリケーションが表示されるはずです。
-
-**注:** Azure で作業している場合、ポート 80 経由のトラフィックを許可するために、ネットワーク セキュリティ グループ ルールを設定する必要があります。 詳細については、「[既存の NSG に規則を作成する](https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-create-nsg-arm-pportal/#create-rules-in-an-existing-nsg)」をご覧ください。
-
-![](media/hello.png)
-
-コンテナーに戻り、対話型のコンテナー セッションを終了します。
-
-```
-exit
-```
-
-これで、変更されたコンテナーを新しいコンテナー イメージにキャプチャできます。 それには、コンテナー名が必要になります。 これを見つけるには、`docker ps -a` コマンドを使用します。
-
-```
-docker ps -a
-
-CONTAINER ID     IMAGE                             COMMAND   CREATED             STATUS   PORTS   NAMES
-489b0b447949     microsoft/iis   "cmd"     About an hour ago   Exited           pedantic_lichterman
-```
-
-新しいコンテナー イメージを作成するには、`docker commit` コマンドを使用します。 Docker コミットの形式は “docker commit container-name new-image-name” になります。 注記 – この例のコンテナー名を実際のコンテナー名に置き換えます。
-
-```
-docker commit pedantic_lichterman modified-iis
-```
-
-新しいイメージが作成されたことを確認するには、`docker images` コマンドを使用します。  
-
-```
-docker images
-
-REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
-modified-iis        latest              3e4fdb6ed3bc        About a minute ago   10.17 GB
-microsoft/iis       windowsservercore   c26f4ceb81db        2 weeks ago          9.48 GB
-windowsservercore   10.0.14300.1000     dbfee88ee9fd        8 weeks ago          9.344 GB
-windowsservercore   latest              dbfee88ee9fd        8 weeks ago          9.344 GB
-```
-
-これで、このイメージを展開できます。 結果的に生成されるコンテナーには、キャプチャされたすべての変更が含まれます。
-
-## <a name="2-container-image---dockerfile"></a>2.コンテナー イメージ - Dockerfile
-
-前回の演習によって、コンテナーが手動で作成され、変更されて、新しいコンテナー イメージにキャプチャされています。 Docker には、このプロセスを自動化するためのメソッドが含まれており、Dockerfile を使用します。 この演習の結果は前回とほぼ同じになりますが、今回はプロセスが自動化されます。 この演習には Docker ID が必要です。 Docker ID がない場合は、[Docker Cloud]( https://cloud.docker.com/) でサインアップしてください。
+コンテナーは手動で作成、変更して、新しいコンテナー イメージにキャプチャすることもできますが、Docker には、Dockerfile を使用してこのプロセスを自動化するためのメソッドが含まれています。 この演習には Docker ID が必要です。 Docker ID がない場合は、[Docker Cloud]( https://cloud.docker.com/) でサインアップしてください。
 
 コンテナー ホストで、ディレクトリ `c:\build` を作成し、このディレクトリ内に `Dockerfile` という名前のファイルを作成します。 注記 – このファイルにはファイル拡張子を与えません。
 
@@ -169,7 +96,7 @@ c1dc6c1387b9   iis-dockerfile   "ping -t localhost"   About a minute ago   Up Ab
 docker rm -f <container name>
 ```
 
-## <a name="3-docker-push"></a>3.Docker Push
+## <a name="2-docker-push"></a>2. Docker Push
 
 Docker コンテナー イメージはコンテナー レジストリに保存できます。 イメージをレジストリに保存すると、後で多数のコンテナー ホストから取得して使用できるようになります。 Docker には、[Docker Hub](https://hub.docker.com/) にコンテナー イメージを保存できるパブリック レジストリがあります。
 

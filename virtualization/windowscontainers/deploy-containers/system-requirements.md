@@ -7,11 +7,11 @@ ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: 6ae690ff6592198bc16cbaf60489d3ed5aceeeb0
-ms.sourcegitcommit: 64f5f8d838f72ea8e0e66a72eeb4ab78d982b715
+ms.openlocfilehash: ecc11468bbd5aad2638da3c4f733e4d5068f0056
+ms.sourcegitcommit: 77a6195318732fa16e7d5be727bdb88f52f6db46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="windows-container-requirements"></a>Windows コンテナーの要件
 
@@ -93,11 +93,30 @@ Windows Server Core と Nano Server のいずれを選択するかは、どの�
 
 ## <a name="matching-container-host-version-with-container-image-versions"></a>コンテナー ホストのバージョンとコンテナー イメージのバージョンを一致させる
 ### <a name="windows-server-containers"></a>Windows Server のコンテナー
-Windows Server コンテナーとその基になっているホストは単一のカーネルを共有するため、コンテナーの基本イメージはホストの基本イメージと一致している必要があります。  バージョンが異なる場合、コンテナーは起動するかもしれませんが、完全に機能することは保証できません。 したがって、一致しないバージョンはサポートされません。  Windows オペレーティング システムは、メジャー、マイナー、ビルド、リビジョンの 4 つのレベルでバージョン管理されています (例: 10.0.14393.0)。 ビルド番号は、新しいバージョンの OS が公開された場合にのみ変更されます。 リビジョン番号は、Windows 更新プログラムが適用されると更新されます。 Windows Server コンテナーは、ビルド番号が異なると起動をブロックされます (例: 10.0.14300.1030 (Technical Preview 5) と 10.0.14393 (Windows Server 2016 RTM))。 ビルド番号が一致し、リビジョン番号が異なる場合は、起動をブロックされません (例: 10.0.14393 (Windows Server 2016 RTM) と 10.0.14393.206 (Windows Server 2016 GA))。 ただし、技術的にはブロックされませんが、これは状況によっては正しく機能しない可能性がある構成であるため、運用環境ではサポートできません。 
+Windows Server コンテナーとその基になっているホストは単一のカーネルを共有するため、コンテナーの基本イメージはホストの基本イメージと一致している必要があります。  バージョンが異なる場合、コンテナーは起動するかもしれませんが、完全に機能することは保証できません。 Windows オペレーティング システムは、メジャー、マイナー、ビルド、リビジョンの 4 つのレベルでバージョン管理されています (例: 10.0.14393.103)。 ビルド番号(14393 など) は、新しいバージョンの OS (Version 1709、1803、Fall Creators Update など) が公開された場合にのみ変更されます。リビジョン番号 (103 など) は、Windows 更新プログラムが適用されると更新されます。
+#### <a name="build-number-new-release-of-windows"></a>ビルド番号 (Windows の新しいリリース)
+Windows Server コンテナーは、コンテナー ホストとコンテナー イメージの間でビルド番号が異なると起動をブロックされます (例: 10.0.14393.* (Windows Server 2016) と 10.0.16299.* (Windows Server Version 1709))。  
+#### <a name="revision-number-patching"></a>リビジョン番号 (修正プログラムの適用)
+Windows Server コンテナーは、コンテナー ホストとコンテナー イメージの間でリビジョン番号が異なっても起動をブロックされません__ (例: 10.0.14393.1914 (KB4051033 が適用された Windows Server 2016) と 10.0.14393.1944 (KB4053579 が適用された Windows Server 2016))。  
+Windows Server 2016 ベースのホスト/イメージの場合 – コンテナー イメージのリビジョンは、サポートされる構成でホストと一致する必要があります。  Windows Server Version 1709 以降、これは当てはまりません。ホストとコンテナー イメージのリビジョンが一致する必要はありません。  通常どおり、システムに最新のパッチおよび更新プログラムを適用しておくことをお勧めします。
+#### <a name="practical-application"></a>実際の適用例
+例 1: KB4041691 が適用された Windows Server 2016 をコンテナー ホストが実行している場合。  このホストに展開されている Windows Server コンテナーはすべて、10.0.14393.1770 コンテナー基本イメージに基づいている必要があります。  ホストに KB4053579 を適用した場合、サポートされた状態を維持するには、同時にコンテナー イメージも更新する必要があります。
+例 2: KB4043961 が適用された Windows Server Version 1709 をコンテナー ホストが実行している場合。  このホストに展開されている Windows Server コンテナーはすべて、Windows Server Version 1709 (10.0.16299) コンテナー基本イメージに基づいている必要がありますが、ホストの KB に一致する必要はありません。  ホストに KB4054517 が適用されていれば、コンテナー イメージを更新する必要はありませんが、セキュリティの問題に十分に対応するには更新を行ってください。
+#### <a name="querying-version"></a>バージョンの照会
+方法 1: Version 1709 以降、cmd プロンプトと ver コマンドでリビジョン詳細が返されるようになりました。
+```
+Microsoft Windows [Version 10.0.16299.125]
+(c) 2017 Microsoft Corporation. All rights reserved.
 
-インストールされている Windows ホストのバージョンは、HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion で確認できます。  基本イメージが使用しているバージョンは、Docker ハブのタグまたはイメージの説明で提供されるイメージのハッシュ テーブルで確認できます。  「[Windows 10 の更新履歴](https://support.microsoft.com/en-us/help/12387/windows-10-update-history)」のページでは、各ビルドとリビジョンがリリースされた日付がわかります。
+C:\>ver
 
-この例では、14393 がメジャー ビルド番号で、321 がリビジョンです。
+Microsoft Windows [Version 10.0.16299.125] 
+```
+方法 2: 次のレジストリ キーを照会します: HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion 例:
+```
+C:\>reg query "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion" /v BuildLabEx
+```
+または
 ```
 Windows PowerShell
 Copyright (C) 2016 Microsoft Corporation. All rights reserved.
@@ -106,12 +125,15 @@ PS C:\Users\Administrator> (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows N
 14393.321.amd64fre.rs1_release_inmarket.161004-2338
 ```
 
+基本イメージが使用しているバージョンは、Docker ハブのタグまたはイメージの説明で提供されるイメージのハッシュ テーブルで確認できます。  「[Windows 10 の更新履歴](https://support.microsoft.com/en-us/help/12387/windows-10-update-history)」のページでは、各ビルドとリビジョンがリリースされた日付がわかります。
+
 ### <a name="hyper-v-isolation-for-containers"></a>Hyper-V によるコンテナーの分離
-Windows コンテナーは、Hyper-V の分離を使用して、または使用せずに実行できます。  Hyper-V による分離を使用すると、最適化された VM によって、コンテナーの周囲にセキュリティ保護された境界が形成されます。  標準の Windows コンテナーが、コンテナーやホストとの間でカーネルを共有するのに対し、Hyper-V によって分離されたコンテナーは、専用の Windows  カーネル インスタンスを利用します。  このため、コンテナー ホストとコンテナー イメージで異なるバージョンの OS を使用できます (下の互換性マトリクスを参照)。  
+Windows コンテナーは、Hyper-V による分離を使用して実行することも、使用せずに実行することもできます。  Hyper-V による分離を使用すると、最適化された VM によって、コンテナーの周囲にセキュリティ保護された境界が形成されます。  標準の Windows コンテナーが、コンテナーやホストとの間でカーネルを共有するのに対し、Hyper-V によって分離されたコンテナーは、専用の Windows カーネル インスタンスを利用します。  このため、コンテナー ホストとコンテナー イメージで異なるバージョンの OS を使用できます (下の互換性マトリクスを参照)。  
 
 Hyper-V による分離を使ってコンテナーを実行するには、docker run コマンドに "--isolation=hyper-v" というタグを追加します。
 
 ### <a name="compatibility-matrix"></a>互換性マトリクス
-2016 GA (10.0.14393.206) 以降の Windows Server ビルドでは、リビジョン番号に関わらず、Windows Server Core と Nano Server のいずれかの Windows Server 2016 GA イメージを、サポート対象の構成で実行できます。    
+2016 GA (10.0.14393.206) 以降の Windows Server ビルドでは、リビジョン番号に関わらず、Windows Server Core と Nano Server のいずれかの Windows Server 2016 GA イメージを、サポート対象の構成で実行できます。
+Windows Server Version 1709 ホストで Windows Server 2016 ベースのコンテナーを実行することもできますが、この逆はサポートされていません。
 
 Windows Update によって完全な機能、信頼性、セキュリティが確実に提供されるようにするには、すべてのシステムを最新バージョンに維持する必要があることを理解しておくことが重要です。  

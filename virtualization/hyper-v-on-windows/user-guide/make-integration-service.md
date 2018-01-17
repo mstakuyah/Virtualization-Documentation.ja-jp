@@ -7,13 +7,13 @@ ms.date: 04/07/2017
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 1ef8f18c-3d76-4c06-87e4-11d8d4e31aea
-ms.openlocfilehash: 971593b762b51bd24f43c40d4697fdd3cef82400
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: 01b9c2febb9f098c7981599894e488b946857900
+ms.sourcegitcommit: 5fe5c30acfc4d5edb28633d30669f616fcc5d59a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 12/21/2017
 ---
-# 独自の統合サービスを作成する
+# <a name="make-your-own-integration-services"></a>独自の統合サービスを作成する
 
 Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレス ファミリと仮想マシンを対象とした特殊なエンドポイントを備えた Windows ソケット) を使って Hyper-V ホストと仮想マシン間の通信を行うアプリケーションをだれでも作成できるようになりました。  Hyper-V を介したすべての通信はネットワークを使わずに実行され、すべてのデータは同じ物理メモリにとどまります。   Hyper-V ソケットを使うアプリケーションは、Hyper-V の統合サービスと似ています。
 
@@ -28,23 +28,23 @@ Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレ�
 * Windows Server 2016 以降
 * Linux ゲストと Linux 統合サービス (「[Supported Linux and FreeBSD virtual machines for Hyper-V on Windows (Windows 上の Hyper-V 向けにサポートされる Linux と FreeBSD 仮想マシン)](https://technet.microsoft.com/library/dn531030.aspx)」をご覧ください)
 
-**機能と制限事項**  
-* カーネル モードまたはユーザー モード操作をサポート  
-* データ ストリームのみ      
-* ブロック メモリなし (バックアップ/ビデオに最適でない) 
+**機能と制限事項**
+* カーネル モードまたはユーザー モード操作をサポート
+* データ ストリームのみ
+* ブロック メモリなし (バックアップ/ビデオに最適でない)
 
 --------------
 
-## 概要
+## <a name="getting-started"></a>概要
 
 要件:
 * C/C++ コンパイラ。  お持ちではない場合は、[Visual Studio コミュニティ](https://aka.ms/vs)を確認してください。
 * [Windows 10 SDK](https://developer.microsoft.com/windows/downloads/windows-10-sdk): Visual Studio 2015 with Update 3 以降でプレインストールされています。
 * 上記のいずれかのホスト オペレーティング システムと 1 つ以上の仮想マシンが実行されているコンピューター。 これは、アプリケーションのテスト用です。
 
-> **注:** Hyper-V ソケットの API は、Windows 10 で近日公開予定です。  HVSocket を使うアプリケーションは、あらゆる Widnows 10 ホストとゲストで実行できますが、開発には Windows SDK ビルド 14290 以降が必要です。  
+> **注:** Hyper-V ソケットの API は、Windows 10 で公開されています。  HVSocket を使うアプリケーションは、あらゆる Widnows 10 ホストとゲストで実行できますが、開発には Windows SDK ビルド 14290 以降が必要です。
 
-## 新しいアプリケーションの登録
+## <a name="register-a-new-application"></a>新しいアプリケーションの登録
 Hyper-V ソケットを使用するには、アプリケーションを Hyper-V ホストのレジストリに登録する必要があります。
 
 レジストリにサービスを登録することで、次が得られます。
@@ -59,7 +59,7 @@ $friendlyName = "HV Socket Demo"
 # Create a new random GUID.  Add it to the services list
 $service = New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\GuestCommunicationServices" -Name ((New-Guid).Guid)
 
-# Set a friendly name 
+# Set a friendly name
 $service.SetValue("ElementName", $friendlyName)
 
 # Copy GUID to clipboard for later use
@@ -67,14 +67,14 @@ $service.PSChildName | clip.exe
 ```
 
 
-**レジストリの場所と情報:**  
-``` 
+**レジストリの場所と情報:**
+```
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\GuestCommunicationServices\
-```  
+```
 このレジストリの場所には、いくつかの GUID が表示されます。  これらは、マイクロソフトのボックスでのサービスです。
 
 サービスごとのレジストリ内の情報。
-* `Service GUID`   
+* `Service GUID`
     * `ElementName (REG_SZ)` - これは、サービスのフレンドリ名です。
 
 独自のサービスを登録するには、独自の GUID とフレンドリ名を使用して新しいレジストリ キーを作成します。
@@ -90,12 +90,12 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
         ElementName REG_SZ  Your Service Friendly Name
 ```
 
-> **ヒント:** PowerShell で GUID を生成し、それをクリップボードにコピーするには、次を実行します。  
+> **ヒント:** PowerShell で GUID を生成し、それをクリップボードにコピーするには、次を実行します。
 ``` PowerShell
 (New-Guid).Guid | clip.exe
 ```
 
-## Hyper-V ソケットの作成
+## <a name="create-a-hyper-v-socket"></a>Hyper-V ソケットの作成
 
 最も基本的な例で、ソケットの定義には、アドレス ファミリ、接続の種類、およびプロトコルが必要です。
 
@@ -109,7 +109,7 @@ SOCKET WSAAPI socket(
   _In_ int type,
   _In_ int protocol
 );
-``` 
+```
 
 Hyper-V ソケットの場合:
 * アドレス ファミリ - `AF_HYPERV`
@@ -117,13 +117,13 @@ Hyper-V ソケットの場合:
 * プロトコル - `HV_PROTOCOL_RAW`
 
 
-これは宣言/インスタンスの例です。  
+これは宣言/インスタンスの例です。
 ``` C
 SOCKET sock = socket(AF_HYPERV, SOCK_STREAM, HV_PROTOCOL_RAW);
 ```
 
 
-## Hyper-V ソケットへのバインド
+## <a name="bind-to-a-hyper-v-socket"></a>Hyper-V ソケットへのバインド
 
 バインドは、ソケットと接続情報を関連付けます。
 
@@ -137,7 +137,7 @@ int bind(
 );
 ```
 
-ホスト マシンの IP アドレスとそのホスト上のポート番号から構成される標準インターネット プロトコル アドレス ファミリ (`AF_INET`) のソケット アドレス (sockaddr) と対照的に、`AF_HYPERV` のソケット アドレスでは、仮想マシンの ID と上に定義したアプリケーション ID を使用して、接続を確立します。 
+ホスト マシンの IP アドレスとそのホスト上のポート番号から構成される標準インターネット プロトコル アドレス ファミリ (`AF_INET`) のソケット アドレス (sockaddr) と対照的に、`AF_HYPERV` のソケット アドレスでは、仮想マシンの ID と上に定義したアプリケーション ID を使用して、接続を確立します。
 
 Hyper-V ソケットは、ネットワーク スタック、TCP/IP、DNS などに依存しないため、ソケット エンドポイントには、引き続きあいまいに接続を記述する、ホスト名ではない非 IP 形式が必要です。
 
@@ -153,45 +153,38 @@ struct SOCKADDR_HV
 };
 ```
 
-IP またはホスト名の代わりに、AF_HYPERV エンドポイントは 2 つの GUID に大きく依存します。  
-* VM ID – これは、VM あたりに割り当てられた一意の ID です。  次の PowerShell サンプルを使用して、VM の ID を確認できます。  
+IP またはホスト名の代わりに、AF_HYPERV エンドポイントは 2 つの GUID に大きく依存します。
+* VM ID – これは、VM あたりに割り当てられた一意の ID です。  次の PowerShell サンプルを使用して、VM の ID を確認できます。
   ```PowerShell
   (Get-VM -Name $VMName).Id
   ```
 * サービス ID - アプリケーションを Hyper-V ホスト レジストリに登録するための[上記の](#RegisterANewApplication) GUID。
 
 接続が特定の仮想マシンとの接続でない場合は、一連の VMID ワイルドカードを使用することもできます。
- 
-### VMID ワイルドカード
+
+### <a name="vmid-wildcards"></a>VMID ワイルドカード
 
 | 名前 | GUID | 説明 |
 |:-----|:-----|:-----|
 | HV_GUID_ZERO | 00000000-0000-0000-0000-000000000000 | リスナーは、すべてのパーティションからの接続を受け入れるために、この VmId にバインドする必要があります。 |
 | HV_GUID_WILDCARD | 00000000-0000-0000-0000-000000000000 | リスナーは、すべてのパーティションからの接続を受け入れるために、この VmId にバインドする必要があります。 |
-| HV_GUID_BROADCAST | FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF | |  
+| HV_GUID_BROADCAST | FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF | |
 | HV_GUID_CHILDREN | 90db8b89-0d35-4f79-8ce9-49ea0ac8b7cd | 子のワイルドカード アドレス。 リスナーは、その子からの接続を受け入れるために、この VmId にバインドする必要があります。 |
 | HV_GUID_LOOPBACK | e0e16197-dd56-4a10-9195-5ee7a155a838 | ループバック アドレス。 この VmId を使用して、コネクタと同じパーティションに接続します。 |
 | HV_GUID_PARENT | a42e7cda-d03f-480c-9cc2-a4de20abb878 | 親アドレス。 この VmId を使用して、コネクタの親パーティションに接続します。* |
 
 
-\* `HV_GUID_PARENT`  
-仮想マシンの親は、そのホストです。  コンテナーの親は、コンテナーのホストです。  
-仮想マシンで実行しているコンテナーからの接続は、コンテナーをホストしている仮想マシンに接続します。  
-この VmId でリッスンし、次からの接続を受け入れます。  
-(コンテナー内): コンテナー ホスト。  
-(VM 内: コンテナー ホスト/コンテナーなし): VM ホスト。  
+\* `HV_GUID_PARENT` 仮想マシンの親は、その仮想マシンのホストです。  コンテナーの親は、コンテナーのホストです。
+仮想マシンで実行しているコンテナーからの接続は、コンテナーをホストしている仮想マシンに接続します。
+この VmId でのリッスンでは、次からの接続を受け入れることができます: (コンテナー内): コンテナー ホスト。
+(VM 内: コンテナー ホスト/コンテナーなし): VM ホスト。
 (VM 内でない: コンテナー ホスト/コンテナーなし): サポートされていません。
 
-## サポートされているソケット コマンド
+## <a name="supported-socket-commands"></a>サポートされているソケット コマンド
 
-Socket()  
-Bind()  
-Connect()  
-Send()  
-Listen()  
-Accept()  
+Socket() Bind() Connect() Send() Listen() Accept()
 
-## 役に立つリンク
+## <a name="useful-links"></a>役に立つリンク
 [完全な WinSock API](https://msdn.microsoft.com/en-us/library/windows/desktop/ms741394.aspx)
 
 [Hyper-V 統合サービスの参照](../reference/integration-services.md)

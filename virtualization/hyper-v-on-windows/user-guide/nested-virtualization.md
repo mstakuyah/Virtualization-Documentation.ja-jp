@@ -2,28 +2,31 @@
 title: "入れ子になった仮想化"
 description: "入れ子になった仮想化"
 keywords: "windows 10、hyper-v"
-author: theodthompson
-ms.date: 06/20/2016
+author: johncslack
+ms.date: 12/18/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 68c65445-ce13-40c9-b516-57ded76c1b15
-ms.openlocfilehash: 6f3cc3edb42a063abed33c7783e4a8bf13324cda
-ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
+ms.openlocfilehash: d5b8e888b62495c98c0691dc0d62deecf7c1eb6e
+ms.sourcegitcommit: 6eefb890f090a6464119630bfbdc2794e6c3a3df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="run-hyper-v-in-a-virtual-machine-with-nested-virtualization"></a>入れ子になった仮想化による仮想マシンでの Hyper-V の実行
 
-入れ子になった仮想化は、Hyper-V 仮想マシン内での Hyper-V の実行を可能にする機能です。 つまり、入れ子になった仮想化により、Hyper-V ホスト自体を仮想化することができます。 入れ子になった仮想化の使用例として、仮想化されたコンテナー ホストで Hyper-V コンテナーを実行したり、仮想化環境に Hyper-V ラボをセットアップしたり、個別のハードウェアを必要とせずに複数コンピューターのシナリオをテストしたりする方法があります。 このドキュメントでは、ソフトウェアとハードウェアの前提条件、構成手順、および制限事項について詳しく説明します。 
+入れ子になった仮想化は、Hyper-V 仮想マシン (VM) 内での Hyper-V の実行を可能にする機能です。 これは、仮想マシンで Visual Studio 電話エミュレーターを実行する場合や、通常は複数のホストが必要な構成のテストを行う場合に便利です。
 
-## <a name="prerequisites"></a>必要条件
+![](./media/HyperVNesting.png)
 
-- Windows Server 2016 または Windows 10 Anniversary Update を実行する Hyper-V ホスト。
-- Windows Server 2016 または Windows 10 Anniversary Update を実行する Hyper-V VM。
-- 構成バージョン 8.0 以上の HYPER-V VM。
-- Intel プロセッサ (VT-x/EPT テクノロジ搭載)。
+## <a name="prerequisites"></a>前提条件
+
+* Hyper-V ホストとゲストの両方が Windows Server 2016/Windows 10 Anniversary Update 以降であること。
+* VM 構成バージョン 8.0 以上。
+* VT-x および EPT テクノロジを使用する Intel プロセッサ。入れ子は現在 **Intel のみ**でサポートされています。
+* 第 2 レベルの仮想マシンの仮想ネットワークとは、いくつかの違いがあります。 入れ子になった仮想マシン ネットワークに関する記述をご覧ください。
+
 
 ## <a name="configure-nested-virtualization"></a>入れ子になった仮想化の構成
 
@@ -48,31 +51,54 @@ Hyper-V が仮想マシンの中で実行されているときに、仮想マシ
 なお、入れ子になった仮想化を有効にするだけでは、動的メモリやランタイム メモリ サイズ変更への影響はありません。 これらに対応できなくなるのは、Hyper-V が VM の中で実行中のときに限られます。
 
 ## <a name="networking-options"></a>ネットワーク オプション
-入れ子になった仮想マシンとのネットワーキングのオプションには、MAC アドレスのスプーフィングと NAT モードの 2 つがあります。
+
+入れ子になった仮想マシンのネットワーキングには、2 つのオプションがあります。 
+
+1. MAC アドレスのスプーフィング
+2. NAT ネットワーク
 
 ### <a name="mac-address-spoofing"></a>MAC アドレスのスプーフィング
 ネットワーク パケットを 2 つの仮想スイッチを通じてルーティングするには、MAC アドレスのスプーフィングを仮想スイッチの最初のレベルで有効にする必要があります。 この処理は、次の PowerShell コマンドを使って完了できます。
 
-```
+``` PowerShell
 Get-VMNetworkAdapter -VMName <VMName> | Set-VMNetworkAdapter -MacAddressSpoofing On
 ```
-### <a name="network-address-translation"></a>ネットワーク アドレス変換
+
+### <a name="network-address-translation-nat"></a>ネットワーク アドレス変換 (NAT)
 2 番目のオプションは、ネットワーク アドレス変換 (NAT) に依存します。 この方法は、MAC アドレスのスプーフィングを利用できない場合 (パブリック クラウド環境など) に最適です。
 
 最初に、仮想 NAT スイッチをホストの仮想マシン ("中間"の VM) に作成する必要があります。 IP アドレスはただの一例で、環境によって異なることに注意してください。
-```
+
+``` PowerShell
 New-VMSwitch -Name VmNAT -SwitchType Internal
 New-NetNat –Name LocalNAT –InternalIPInterfaceAddressPrefix “192.168.100.0/24”
 ```
+
 次に、IP アドレスをネット アダプターに割り当てます。
-```
+
+``` PowerShell
 Get-NetAdapter "vEthernet (VmNat)" | New-NetIPAddress -IPAddress 192.168.100.1 -AddressFamily IPv4 -PrefixLength 24
 ```
+
 入れ子になった仮想マシンごとに 1 つの IP アドレスと 1 つのゲートウェイが割り当てられている必要があります。 ゲートウェイ IP は、前の手順で説明した NAT アダプターをポイントする必要があります。 必要に応じて、DNS サーバーも割り当てます。
-```
+
+``` PowerShell
 Get-NetAdapter "Ethernet" | New-NetIPAddress -IPAddress 192.168.100.2 -DefaultGateway 192.168.100.1 -AddressFamily IPv4 -PrefixLength 24
 Netsh interface ip add dnsserver “Ethernet” address=<my DNS server>
 ```
 
+## <a name="how-nested-virtualization-works"></a>入れ子になった仮想化のしくみ
+
+最新のプロセッサには、仮想化をさらに高速かつ安全にするためのハードウェア機能が含まれています。 Hyper-V は、これらのプロセッサ拡張機能に依存して仮想マシンを実行しています (Intel VT-x や AMD-V など)。 通常、Hyper-V が起動すると、他のソフトウェアがこれらのプロセッサ機能を使用できなくなります。  これは、ゲスト仮想マシンによる Hyper-V の実行を回避します。
+
+入れ子になった仮想化では、このハードウェア サポートをゲスト仮想マシンでも利用できます。
+
+次の図は、入れ子になっていない Hyper-V を示しています。  Hyper-V ハイパーバイザーは、ハードウェア仮想化機能 (オレンジ色の矢印) を完全に制御し、ゲスト オペレーティング システムには公開しません。
+
+![](./media/HVNoNesting.png)
+
+これに対し、次の図は、入れ子になった仮想化が有効な状態の Hyper-V を示しています。 この場合、Hyper-V は、ハードウェア仮想化拡張機能をその仮想マシンに公開します。 入れ子が有効になると、ゲスト仮想マシンは独自のハイパーバイザーをインストールし、独自のゲスト VM を実行します。
+
 ## <a name="3rd-party-virtualization-apps"></a>サード パーティの仮想化アプリ
+
 Hyper-V 以外の仮想化アプリケーションは Hyper-V 仮想マシンではサポートされず、ほとんどの場合は実行に失敗します。 これには、ハードウェア仮想化拡張機能を必要とするソフトウェアも含まれます。

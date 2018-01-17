@@ -8,11 +8,11 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
-ms.openlocfilehash: 59a1a3b9fa43238defbd5155dc7b264109df4625
-ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
+ms.openlocfilehash: 608a08c2e7e1afbb4e2eb2583384f042baa78b1f
+ms.sourcegitcommit: c625804f3df8dc7b7aae9a4077f4b3222177ed85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="optimize-windows-dockerfiles"></a>Windows Dockerfile を最適化する
 
@@ -84,7 +84,7 @@ a395ca26777f        15 seconds ago      cmd /S /C powershell.exe -Command Remove
 957147160e8d        3 minutes ago       cmd /S /C powershell.exe -Command Invoke-WebR   125.7 MB
 ```
 
-2 番目の例は、同じ操作ですが、すべてのステップを同じ `RUN` 命令で実行します。 `RUN` 命令の各ステップは Dockerfile では別の行になっており、改行には '\' 文字が使用されています。 
+2 番目の例は、同じ操作ですが、すべてのステップを同じ `RUN` 命令で実行します。 Dockerfile では `RUN` 命令の各ステップが新しい行に記述され、改行に '\\' 文字が使用されています。 
 
 ```
 FROM windowsservercore

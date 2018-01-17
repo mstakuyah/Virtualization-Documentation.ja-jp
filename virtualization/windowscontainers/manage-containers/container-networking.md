@@ -8,11 +8,11 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 98feee128860885b4f62420cc6eb86d23579551b
-ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
+ms.openlocfilehash: 394aa58c3421e512d005f59d5bd30667f1c26f16
+ms.sourcegitcommit: 6eefb890f090a6464119630bfbdc2794e6c3a3df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="windows-container-networking"></a>Windows コンテナーのネットワーク
 > ***一般的な Docker ネットワークのコマンド、オプション、構文については、[Docker コンテナーのネットワークに関するトピック](https://docs.docker.com/engine/userguide/networking/)を参照してください。*** このドキュメントに記載されている場合を除き、Docker ネットワーク コマンドはすべて、Linux と同じ構文を使用して、Windows ですべてサポートされています。 ただし、Windows と Linux のネットワーク スタックは異なっており、そのためいくつかの Linux ネットワーク コマンド (ifconfig など) は、Windows ではサポートされていません。
@@ -201,6 +201,7 @@ Windows 10 上の Docker for Windows (Docker CE エンジン用の Windows ド�
 ```
 PS C:\> Get-VMNetworkAdapter -VMName ContainerHostVM | Set-VMNetworkAdapter -MacAddressSpoofing On
 ```
+VMware をハイパーバイザーとして実行する場合は、正しく実行できるように無作為検出モードを有効にする必要があります。 詳しくは、[こちら](https://kb.vmware.com/s/article/1004099)をご覧ください。
 #### <a name="creating-multiple-transparent-networks-on-a-single-container-host"></a>1 つのコンテナー ホストで複数の透過ネットワークを作成する
 複数の透過ネットワークを作成する場合は、外部 Hyper-V 仮想スイッチをバインドする (仮想) ネットワーク アダプターを指定する必要があります。 ネットワークのインターフェイスを指定するには、次の構文を使います。
 ```

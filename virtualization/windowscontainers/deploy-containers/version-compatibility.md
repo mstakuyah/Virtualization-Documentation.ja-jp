@@ -3,15 +3,15 @@ title: "Windows コンテナーのバージョンの互換性"
 description: "Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。"
 keywords: "メタデータ, コンテナー, バージョン"
 author: patricklang
-ms.openlocfilehash: ed9d88e1e861651426e560a4531fd4added2134a
-ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
+ms.openlocfilehash: e3e9d0ba52f7dddfa2f40a9d243467ab474b459e
+ms.sourcegitcommit: 7b58ed1779d8475abe5b9e8e69f764972882063d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーのバージョンの互換性
 
-Windows Server コンテナーのビルドと実行に対応した最初の Windows リリースは、Windows Server 2016 と Windows 10 Anniversary Update (いずれもバージョン 14393) でした。 これらのバージョンを使用してビルドされたコンテナーは、Windows Server バージョン 1709 などの新しいリリースで実行できますが、作業を開始する前にいくつかの注意点があります。
+Windows Server コンテナーのビルドと実行に対応した最初の Windows リリースは、Windows Server 2016 と Windows 10 Anniversary Update (いずれもバージョン 14393) でした。 これらのバージョンを使用してビルドされたコンテナーは、Windows Server Version 1709 などの新しいリリースで実行できますが、作業を開始する前にいくつかの注意点があります。
 
 Windows コンテナーは、その機能を改善する過程で、互換性に影響を与える変更が行われています。 従来のバージョンで作成したコンテナーは、[Hyper-V による分離](../manage-containers/hyperv-container.md)を使って新しいホスト上でそのまま実行でき、同じ (従来の) カーネル バージョンを引き続き使用できます。 ただし、新しい Windows ビルドで作成されたコンテナーを実行する場合は、新しいホスト ビルドで実行する必要があります。
 
@@ -19,23 +19,29 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 
 <table>
     <tr>
-    <th>コンテナーの OS バージョン</th>
-    <th span='2'>ホストの OS バージョン</th>
+    <th style="background-color:#BBDEFB">コンテナーの OS バージョン</th>
+    <th span='4' style="background-color:#DCEDC8">ホストの OS バージョン</th>
     </tr>
     <tr>
         <td/>
-        <td><b>Windows Server 2016/Windows 10 1609、1703</b><br/>ビルド: 14393.*</td>
-        <td><b>Windows Server バージョン 1709/Windows 10 Fall Creators Update</b><br/>ビルド 16299.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows Server 2016</b><br/>ビルド: 14393.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows 10 1609、1703</b><br/>ビルド: 14393.*、15063.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows Server Version 1709</b><br/>ビルド: 16299.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows 10 Fall Creators Update</b><br/>ビルド: 16299.*</td>
     </tr>
     <tr>
-        <td><b>Windows Server 2016/Windows 10 1609、1703</b><br/>ビルド: 14393.*</td>
-        <td>サポートされています。 `process` または `hyperv` による分離</td>
-        <td>サポートされています。 `hyperv`  による分離</td>
+        <td style="background-color:#E3F2FD"><b>Windows Server 2016</b><br/>ビルド: 14393.*</td>
+        <td>サポート対象: <br/> `process`  または `hyperv` による分離</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
     </tr>
     <tr>
-        <td><b>Windows Server バージョン 1709/Windows 10 Fall Creators Update</b><br/>ビルド 16299.*</td>
-        <td>サポートされていません。</td>
-        <td>サポートされています。 `process` または `hyperv` による分離</td>
+        <td style="background-color:#E3F2FD"><b>Windows Server Version 1709</b><br/>ビルド: 16299.*</td>
+        <td>サポートされていません</td>
+        <td>サポートされていません</td>
+        <td>サポート対象: <br/> `process`  または `hyperv` による分離</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
     </tr>
 </table>               
 
@@ -56,16 +62,16 @@ docker: Error response from daemon: container b81ed896222eb87906ccab1c3dd2fc4932
 
 ## <a name="choosing-container-os-versions"></a>コンテナーの OS バージョンの選択
 
-> 注: "最新" タグは、Windows Server 2016 の現在の [LTSC 製品](https://docs.microsoft.com/en-us/windows-server/get-started/semi-annual-channel-overview) で更新されます。 Windows Server バージョン 1709 リリースに一致するコンテナー イメージが必要な場合は、以下を参照してください。
+> 注: "最新" タグは、Windows Server 2016 の現在の [LTSC 製品](https://docs.microsoft.com/en-us/windows-server/get-started/semi-annual-channel-overview) で更新されます。 Windows Server Version 1709 リリースに一致するコンテナー イメージが必要な場合は、以下を参照してください。
 
-コンテナーの OS バージョンを選択するには、目的に適したバージョンを確認する必要があります。 Windows Server バージョン 1709 を使っていて、それに対応する最新の修正プログラムが必要な場合は、必要なベース OS コンテナー イメージのバージョンを指定するときに、次のように ”1709” タグを使用します。
+コンテナーの OS バージョンを選択するには、目的に適したバージョンを確認する必要があります。 Windows Server Version 1709 を使っていて、それに対応する最新の修正プログラムが必要な場合は、必要なベース OS コンテナー イメージのバージョンを指定するときに、次のように ”1709” タグを使用します。
 
 ``` Dockerfile
 FROM microsoft/windowsservercore:1709
 ...
 ```
 
-ただし、Windows Server バージョン 1709 の特定の修正プログラムが必要な場合は、タグで KB 番号を指定できます。 たとえば、Windows Server バージョン 1709 の Nano Server ベース OS コンテナー イメージに KB4043961 を適用する必要がある場合は、次のように指定します。
+ただし、Windows Server Version 1709 の特定の修正プログラムが必要な場合は、タグで KB 番号を指定できます。 たとえば、Windows Server Version 1709 の Nano Server ベース OS コンテナー イメージに KB4043961 を適用する必要がある場合は、次のように指定します。
 
 ``` Dockerfile
 FROM microsoft/nanoserver:1709_KB4043961
@@ -228,7 +234,7 @@ docker service update \
 同じ問題は、Kubernetes でポッドがスケジュールされているときにも発生することがあります。 これも同様の方法を使って回避できます。
 
 - 開発環境と運用環境で同じ OS バージョンに基づいてコンテナーを再構築する。詳しくは、上記の「**コンテナーの OS バージョンの選択**」をご覧ください。
-- Windows Server 2016 と Windows Server バージョン 1709 の両方のノードが同じクラスター上にある場合は、ラベルとノード セレクターを使って、互換性のあるノードにポッドがスケジュールされていることを確認する。
+- Windows Server 2016 と Windows Server Version 1709 の両方のノードが同じクラスター上にある場合は、ラベルとノード セレクターを使って、互換性のあるノードにポッドがスケジュールされていることを確認する。
 - OS のバージョンに基づいて別のクラスターを使用する。
 
 
@@ -377,7 +383,7 @@ System Info:
 
 
 
-2. 各ノードに、`beta.kubernetes.io/osbuild` というラベルを追加します。 Hyper-V による分離を指定しない場合、Windows Server 2016 では、メジャー バージョンとマイナー バージョンの両方 (14393.1715) がサポートされている必要があります。 Windows Server バージョン 1709 の場合は、メジャー バージョン (16299) のみが一致すれば問題ありません。
+2. 各ノードに、`beta.kubernetes.io/osbuild` というラベルを追加します。 Hyper-V による分離を指定しない場合、Windows Server 2016 では、メジャー バージョンとマイナー バージョンの両方 (14393.1715) がサポートされている必要があります。 Windows Server Version 1709 の場合は、メジャー バージョン (16299) のみが一致すれば問題ありません。
 
 上のサンプル コードの場合は、次のように指定します。
 
