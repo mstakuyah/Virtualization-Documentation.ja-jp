@@ -8,11 +8,11 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ebd79cd3-5fdd-458d-8dc8-fc96408958b5
-ms.openlocfilehash: 44693b413dd8043fbec68835eafe6754615fa449
-ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
+ms.openlocfilehash: 4d4b8a533aa5517c5850967f0b92c97da5190296
+ms.sourcegitcommit: 4042339cfd8a4440a5aba2b6f28968a52ab066fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -29,7 +29,7 @@ Invoke-WebRequest https://aka.ms/Debug-ContainerHost.ps1 -UseBasicParsing | Invo
 ## <a name="finding-logs"></a>ログを見つける
 Windows コンテナーの管理には、さまざまなサービスが使用されています。 次の各セクションで、ログの場所をサービス別に示します。
 
-### <a name="docker-engine"></a>Docker エンジン
+# <a name="docker-engine"></a>Docker エンジン
 Docker エンジンは、ファイルではなく Windows 'アプリケーション' イベント ログに記録します。 これらのログは、Windows PowerShell を使用することで、簡単に読み取り、並べ替え、およびフィルター処理することができます。
 
 たとえば、過去 5 分間の Docker エンジン ログを古い順に表示できます。
@@ -44,7 +44,7 @@ Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-5
 Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-30)  | Sort-Object Time | Export-CSV ~/last30minutes.CSV
 ```
 
-#### <a name="enabling-debug-logging"></a>デバッグ ログを有効にする
+## <a name="enabling-debug-logging"></a>デバッグ ログを有効にする
 Docker エンジンのデバッグ レベルのログ出力を有効にすることもできます。 これは、トラブルシューティングに必要な詳細情報が通常のログでは得られない場合に役立つ可能性があります。
 
 管理者特権でのコマンド プロンプトを開いてから、`sc.exe qc docker` を実行して Docker サービスの現在のコマンド ラインを取得します。
@@ -90,7 +90,7 @@ sc.exe stop docker
 <path\to\>dockerd.exe -D > daemon.log 2>&1
 ```
 
-#### <a name="obtaining-stack-dump-and-daemon-data"></a>スタック ダンプとデーモン データを取得する
+## <a name="obtaining-stack-dump-and-daemon-data"></a>スタック ダンプとデーモン データを取得する
 
 一般的に、これらが使用されるのは、Microsoft サポートや Docker 開発者によって明示的に要求された場合のみです。 これらを使用して、Docker が停止しているように見える状況を診断することができます。 
 
@@ -110,7 +110,7 @@ docker-signal -pid=<id>
 `daemon-data*.log` には個人情報が含まれている場合があるため、通常、信頼されているサポート スタッフでのみ共有してください。 `goroutine-stacks*.log` に個人情報は含まれません。
 
 
-### <a name="host-compute-service"></a>ホスト コンピューティング サービス
+# <a name="host-compute-service"></a>ホスト コンピューティング サービス
 Docker エンジンは、Windows 固有のホスト コンピューティング サービスに依存します。 このサービスには、次のような独立したログがあります。 
 - Microsoft-Windows-Hyper-V-Compute-Admin
 - Microsoft-Windows-Hyper-V-Compute-Operational
@@ -123,7 +123,7 @@ Get-WinEvent -LogName Microsoft-Windows-Hyper-V-Compute-Admin
 Get-WinEvent -LogName Microsoft-Windows-Hyper-V-Compute-Operational 
 ```
 
-#### <a name="capturing-hcs-analyticdebug-logs"></a>HCS 分析/デバッグ ログをキャプチャする
+## <a name="capturing-hcs-analyticdebug-logs"></a>HCS 分析/デバッグ ログをキャプチャする
 
 Hyper-V Compute の分析/デバッグ ログを有効にし、`hcslog.evtx` に保存します。
 
@@ -140,7 +140,7 @@ wevtutil.exe epl Microsoft-Windows-Hyper-V-Compute-Analytic <hcslog.evtx>
 wevtutil.exe sl Microsoft-Windows-Hyper-V-Compute-Analytic /e:false /q:true
 ```
 
-#### <a name="capturing-hcs-verbose-tracing"></a>HCS 詳細トレースをキャプチャする
+## <a name="capturing-hcs-verbose-tracing"></a>HCS 詳細トレースをキャプチャする
 
 一般的に、これらが使用されるのは、Microsoft サポートによって要求された場合のみです。 
 

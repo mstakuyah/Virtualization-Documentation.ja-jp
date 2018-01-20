@@ -8,13 +8,13 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 0cc1b621-1a92-4512-8716-956d7a8fe495
-ms.openlocfilehash: 1ab2a9b823c5c903bd08b476f5caef65ec6e3207
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: b975c593bd5c736ec3e7e1e21b76b2f6a2c8f8a4
+ms.sourcegitcommit: 50d31ccdc097f17b8b99cd95da0671de182795cf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 01/06/2018
 ---
-# Windows Docker ホストのリモート管理
+# <a name="remote-management-of-a-windows-docker-host"></a>Windows Docker ホストのリモート管理
 
 `docker-machine` がない場合でも、リモートにアクセス可能な Docker ホストを Windows Server 2016 VM 上に作成できます。
 
@@ -40,8 +40,8 @@ ker\client\key.pem ps
 ```
 
 
-## トラブルシューティング
-### TLS を使わずに接続を試みて、NSG ファイアウォール設定が正しいことを確認します。
+## <a name="troubleshooting"></a>トラブルシューティング
+### <a name="try-connecting-without-tls-to-determine-your-nsg-firewall-settings-are-correct"></a>TLS を使わずに接続を試みて、NSG ファイアウォール設定が正しいことを確認します。
 接続エラーは、通常、次のように表示されます。
 ```
 error during connect: Get https://wsdockerhost.southcentralus.cloudapp.azure.com:2376/v1.25/version: dial tcp 13.85.27.177:2376: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
@@ -60,14 +60,14 @@ error during connect: Get https://wsdockerhost.southcentralus.cloudapp.azure.com
 docker -H tcp://wsdockerhost.southcentralus.cloudapp.azure.com:2376 --tlsverify=0 version
 ```
 
-### 証明書の問題
+### <a name="cert-problems"></a>証明書の問題
 IP アドレスまたは DNS 名に対して作成されていない証明書を使って Docker ホストにアクセスすると、次のエラーが発生します。
 ```
 error during connect: Get https://w.x.y.c.z:2376/v1.25/containers/json: x509: certificate is valid for 127.0.0.1, a.b.c.d, not w.x.y.z
 ```
 ホストのパブリック IP の DNS 名が w.x.y.z であること、および DNS 名が証明書の[コモン ネーム](https://www.ssl.com/faqs/common-name/) (`SERVER_NAME` 環境変数または dockertls に指定された `IP_ADDRESSES` 変数のいずれかの IP アドレス) と一致していることを確認します。
 
-### crypto/x509 の警告
+### <a name="cryptox509-warning"></a>crypto/x509 の警告
 次の警告が表示されることがあります。 
 ```
 level=warning msg="Unable to use system certificate pool: crypto/x509: system root pool is not available on Windows"
