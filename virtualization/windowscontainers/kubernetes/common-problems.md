@@ -7,11 +7,11 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: "Kubernetes の展開と Windows ノードの参加で発生する一般的な問題の解決方法。"
 keywords: "kubernetes, 1.9, linux, コンパイル"
-ms.openlocfilehash: 73b44ffd12fba58ac4ef38352c012061a6817945
-ms.sourcegitcommit: ad5f6344230c7c4977adf3769fb7b01a5eca7bb9
+ms.openlocfilehash: 4fb7ac312b08c63564beb0f40889ff6a050c7166
+ms.sourcegitcommit: b0e21468f880a902df63ea6bc589dfcff1530d6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="troubleshooting-kubernetes"></a>Kubernetes のトラブルシューティング #
 このページでは、Kubernetes のセットアップ、ネットワーク、および展開に関する一般的な問題について説明します。
@@ -38,7 +38,7 @@ Kubernetes によるポッドの作成を確認するには、`kubectl get pods 
 chmod +x [script name]
 ```
 
-さらに、特定のスクリプト (`kubelet` など) は管理者特権で実行し、`sudo` というプレフィックスを付ける必要があります。
+さらに、特定のスクリプト (`kubelet` など) はスーパー ユーザー特権で実行し、`sudo` というプレフィックスを付ける必要があります。
 
 
 ### <a name="cannot-connect-to-the-api-server-at-httpsaddressport"></a>`https://[address]:[port]` で API サーバーに接続できない ###
@@ -59,10 +59,33 @@ chmod +x [script name]
 
 ## <a name="common-windows-errors"></a>一般的な Windows エラー ##
 
+### <a name="pods-stop-resolving-dns-queries-successfully-after-some-time-alive"></a>しばらく稼働した後、ポッドが正常な DNS クエリの解決を停止する ###
+これは、いくつかの設定に影響を与えるネットワーク スタックの既知の問題です。Windows のサービスを通じて優先的に対応しています。
 
-### <a name="my-windows-pods-cannot-access-the-linux-master-or-vice-versa"></a>My Windows ポッドから Linux マスター、またはその逆のアクセスはできません。 ###
+
+### <a name="my-kubernetes-pods-are-stuck-at-containercreating"></a>使用している Kubernetes ポッドが "ContainerCreating" で停止する ###
+この問題には多くの原因が考えられますが、最も一般的な原因の 1 つは、pause イメージが正しく構成されていないことです。 これは、次の問題の大きな兆候です。
+
+
+### <a name="when-deploying-docker-containers-keep-restarting"></a>展開するときに、Docker コンテナーが再起動を繰り返す ###
+pause イメージが、OS のバージョンと互換性があることを確認します。 [作業手順](./getting-started-kubernetes-windows.md)では、OS とコンテナーの両方のバージョンが 1709 であることを前提にしています。 Insider ビルドなど、新しいバージョンの Windows を使用する場合は、イメージを調整する必要があります。 イメージについては、マイクロソフトの [Docker リポジトリ](https://hub.docker.com/u/microsoft/)を参照してください。 いずれの場合も、pause イメージ Dockerfile とサンプル サービスの両方で、イメージに `microsoft/windowsservercore:latest` にタグ付けされている必要があります。
+
+
+### <a name="my-windows-pods-cannot-access-the-linux-master-or-vice-versa"></a>Windows ポッドから Linux マスターにアクセスできない (その逆も同じである) ###
 Hyper-V 仮想マシンを使用している場合は、ネットワーク アダプターで MAC スプーフィングが有効になっていることを確認します。
 
 
-### <a name="my-windows-node-cannot-access-my-services-using-the-service-ip"></a>My Windows ノードは、サービス IP を使用してサービスにアクセスすることはできません。 ###
-これは、Windows の現在のネットワーク スタックの既知の制限です。
+### <a name="my-windows-node-cannot-access-my-services-using-the-service-ip"></a>Windows ノードがサービス IP を使用してサービスにアクセスできない ###
+これは、Windows の現在のネットワーク スタックの既知の制限です。 ポッドのみがサービス IP を参照できます。
+
+
+### <a name="no-network-adapter-is-found-when-starting-kubelet"></a>Kubelet を起動するときにネットワーク アダプターが見つからない ###
+Kubernetes ネットワークが機能するには、Windows ネットワーク スタックで仮想アダプターが必要です。 次のコマンドが (管理シェルに) 結果を返さない場合、仮想ネットワークの作成 (Kubelet が機能するのに必要な前提条件) に失敗しています。
+
+```powershell
+Get-HnsNetwork | ? Name -Like "l2bridge"
+Get-NetAdapter | ? Name -Like "vEthernet (Ethernet*"
+```
+
+`start-kubelet.ps1`スクリプトの出力を調べて、仮想ネットワークの作成中にエラーが発生していないか確認してください。
+

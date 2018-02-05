@@ -8,11 +8,11 @@ ms.prod: containers
 description: "Windows ノードを v1.9 ベータ版の Kubernetes クラスターに参加させます。"
 keywords: "kubernetes, 1.9, windows, 作業の開始"
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: d88ab46dc0046256ebed9c6696a99104a7197fad
-ms.sourcegitcommit: ad5f6344230c7c4977adf3769fb7b01a5eca7bb9
+ms.openlocfilehash: f1b832f8a21c034582e157342acf7826fb7b6ea3
+ms.sourcegitcommit: b0e21468f880a902df63ea6bc589dfcff1530d6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="kubernetes-on-windows"></a>Windows で使用する Kubernetes #
 Kubernetes 1.9 および Windows Server [Version 1709](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1709#networking) の最新リリースを使用すると、ユーザーは Windows ネットワークの最新機能を利用できます。
@@ -57,7 +57,7 @@ Kubernetes 1.9 および Windows Server [Version 1709](https://docs.microsoft.co
 
 ## <a name="preparing-a-windows-node"></a>Windows のノードの準備 ##
 > [!Note]  
-> Windows セクションでのすべてのコード スニペットは、管理者特権の PowerShell で実行します。
+> Windows セクションでのすべてのコード スニペットは、_管理者特権の_ PowerShell で実行します。
 
 Kubernetes ではコンテナー オーケストレータとして [Docker](https://www.docker.com/) が使用されるため、これをインストールする必要があります。 [MSDN の公式手順](virtualization/windowscontainers/manage-docker/configure-docker-daemon.md#install-docker)または [Docker の手順](https://store.docker.com/editions/enterprise/docker-ee-server-windows)に従うことも、以下の手順を試すこともできます。
 
@@ -85,13 +85,13 @@ rm -recurse -force master,master.zip
 
 ```powershell
 docker pull microsoft/windowsservercore:1709
-docker tag $(docker images -q) microsoft/windowsservercore:latest
+docker tag microsoft/windowsservercore:1709 microsoft/windowsservercore:latest
 cd C:/k/
 docker build -t kubeletwin/pause .
 ```
 
 > [!Note]  
-> 後で展開するサンプル サービスで必要になるため、`:latest` というタグを使用しています。
+> 後で展開するサンプル サービスは最新のイメージに依存するため、このイメージに `:latest` というタグを付けます。ただし、これが実際に利用可能な最新の Windows Server Core イメージ_である_とは限りません。 競合しているコンテナー イメージに注意する必要があります。必要なタグがないために互換性のないコンテナー イメージの `docker pull` が発生し、[展開に関する問題](./common-problems.md#when-deploying-docker-containers-keep-restarting)の原因となる可能性があります。 
 
 
 ### <a name="downloading-binaries"></a>バイナリのダウンロード ###
@@ -101,10 +101,7 @@ docker build -t kubeletwin/pause .
   - `kubelet.exe`
   - `kube-proxy.exe`
 
-これらは、最新の 1.9 リリースの `CHANGELOG.md` ファイル内のリンクからダウンロードできます。 このドキュメントの作成時点の最新リリースは [1.9.0-beta.1](https://github.com/kubernetes/kubernetes/releases/tag/v1.9.0-beta.1) であり、Windows バイナリは[こちら](https://dl.k8s.io/v1.9.0-beta.1/kubernetes-node-windows-amd64.tar.gz)です。 [7-Zip](http://www.7-zip.org/) などのツールを利用してアーカイブを展開し、バイナリを `C:\k\` に配置します。
-
-> [!Warning]  
-> このドキュメントの作成時点では、`kube-proxy.exe` を正しく使用するには保留中の Kubernetes の[プル要求](https://github.com/kubernetes/kubernetes/pull/56529)が必要になります。 問題を回避するには、[バイナリの手動作成](./compiling-kubernetes-binaries.md)が必要になる可能性があります。
+これらは、最新の 1.9 リリースの `CHANGELOG.md` ファイル内のリンクからダウンロードできます。 このドキュメントの作成時点の最新リリースは [1.9.1](https://github.com/kubernetes/kubernetes/releases/tag/v1.9.1) であり、Windows バイナリは[こちら](https://storage.googleapis.com/kubernetes-release/release/v1.9.1/kubernetes-node-windows-amd64.tar.gz)です。 [7-Zip](http://www.7-zip.org/) などのツールを利用してアーカイブを展開し、バイナリを `C:\k\` に配置します。
 
 
 ### <a name="joining-the-cluster"></a>クラスターへの参加 ###
@@ -153,4 +150,4 @@ watch kubectl get pods -o wide
   - `curl` : Kubernetes の[既定の DNS サフィックス](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services)を指定した*サービス名*に対して実行できること。これにより、DNS が正しく機能していることを確認します。
 
 > [!Warning]  
-> Windows ノードでは、サービス IP にアクセスできません。 これは[既知の制限](./common-problems.md#common-windows-errors)です。
+> Windows ノードでは、サービス IP にアクセスできません。 これは[既知の制限](./common-problems.md#my-windows-node-cannot-access-my-services-using-the-service-ip)です。
