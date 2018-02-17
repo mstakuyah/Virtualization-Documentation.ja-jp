@@ -6,7 +6,7 @@ Kubernetes ネットワー キングの使用可能なオプションの 1 つ�
 これには、`iptables` を使用します。 すべてのポッドで使う簡略サブネットを使用して、`$CLUSTER_PREFIX` 変数の置き換えまたは設定を行います。
 
 ```bash
-$CLUSTER_PREFIX="192.168"
+CLUSTER_PREFIX="192.168"
 sudo iptables -t nat -F
 sudo iptables -t nat -A POSTROUTING ! -d $CLUSTER_PREFIX.0.0/16 \
               -m addrtype ! --dst-type LOCAL -j MASQUERADE
@@ -22,7 +22,7 @@ sudo route add -net $CLUSTER_PREFIX.0.0 netmask 255.255.0.0 dev eth0
 最後に、**ノード単位**ベースでネクストホップ ゲートウェイを追加する必要があります。 たとえば、最初のノードが `192.168.1.0/16` 上の Windows ノードの場合、次のようになります。
 
 ```bash
-sudo route add -net $CLUSTER.1.0 netmask 255.255.255.0 gw $CLUSTER.1.2 dev eth0
+sudo route add -net $CLUSTER_PREFIX.1.0 netmask 255.255.255.0 gw $CLUSTER_PREFIX.1.2 dev eth0
 ```
 
 クラスター内のすべてのノードで、クラスター内のすべてのノード用に、同様のルートを追加する必要があります****。
@@ -35,7 +35,6 @@ sudo route add -net $CLUSTER.1.0 netmask 255.255.255.0 gw $CLUSTER.1.2 dev eth0
 
 ## <a name="configuring-static-routes--windows"></a>静的なルートの構成 | Windows ##
 これには、`New-NetRoute` を使用します。 [このリポジトリ](https://github.com/Microsoft/SDN/blob/master/Kubernetes/windows/AddRoutes.ps1)に、自動化されたスクリプト `AddRoutes.ps1` があります。 *Linux マスター*の IP アドレスと、Windows ノードの*外部*アダプターの既定ゲートウェイ (ポッド ゲートウェイではなく) の IP アドレスが必要です。 次のようになります。
-
 
 ```powershell
 $url = "https://raw.githubusercontent.com/Microsoft/SDN/master/Kubernetes/windows/AddRoutes.ps1"
