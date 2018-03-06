@@ -25,12 +25,12 @@ Moby プロジェクトで進行中の作業の進捗状況は、[GitHub](https:
 
 これらのアプリケーションはすべてボリューム マッピングを必要とするため、若干の制限があります。詳しくは、「[バインド マウント](#Bind-mounts)」をご覧ください。 以下は、開始しないか、正常に実行されません。
 
-- Mysql
-- Postgress
-- Wordpress
+- MySQL
+- PostgreSQL
+- WordPress
 - Jenkins
-- Mariadb
-- Rabbitmq
+- MariaDB
+- RabbitMQ
 
 
 ### <a name="bind-mounts"></a>バインド マウント

@@ -8,11 +8,11 @@ ms.prod: containers
 description: "Windows ノードを v1.9 ベータ版の Kubernetes クラスターに参加させます。"
 keywords: "kubernetes, 1.9, windows, 作業の開始"
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: f1b832f8a21c034582e157342acf7826fb7b6ea3
-ms.sourcegitcommit: b0e21468f880a902df63ea6bc589dfcff1530d6e
+ms.openlocfilehash: 0ccd7dae8da0841c98bec5cdf7345100d1b51107
+ms.sourcegitcommit: 2e8f1fd06d46562e56c9e6d70e50745b8b234372
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="kubernetes-on-windows"></a>Windows で使用する Kubernetes #
 Kubernetes 1.9 および Windows Server [Version 1709](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1709#networking) の最新リリースを使用すると、ユーザーは Windows ネットワークの最新機能を利用できます。
@@ -22,7 +22,7 @@ Kubernetes 1.9 および Windows Server [Version 1709](https://docs.microsoft.co
   - **データ パスの最適化**: 仮想フィルタリング プラットフォームおよびホスト ネットワーク サービスへの機能強化により、カーネルに基づく負荷分散が可能になります。
 
 
-このページは、新しい Windows ノードを Linux ベースの既存クラスターに参加させる作業のガイドとしてお使いください。 1 から開始するには、[このページ](./creating-a-linux-master.md) (Kubernetes クラスターの展開に使用できる豊富なリソースの 1 つ) を参照して、同じようにマスターを 1 からセットアップします。
+このページは、新しい Windows ノードを Linux ベースの既存クラスターに参加させる作業のガイドとしてお使いください。 1 から開始するには、[このページ](./creating-a-linux-master.md) &mdash; Kubernetes クラスターの展開に使用できる豊富なリソースの 1 つ &mdash; を参照して、同じようにマスターを 1 からセットアップします。
 
 
 <a name="definitions"></a> このガイドで使用されている用語の定義を以下に示します。
@@ -36,19 +36,11 @@ Kubernetes 1.9 および Windows Server [Version 1709](https://docs.microsoft.co
 このガイドでは、次のことを行います。
 
 > [!div class="checklist"]  
-> * [ネットワーク トポロジ](#network-topology)を準備する。  
 > * [Linux マスター](#preparing-the-linux-master) ノードを構成する。  
 > * [Windows ワーカー ノード](#preparing-a-windows-node)を参加させる。  
+> * [ネットワーク トポロジ](#network-topology)を準備する。  
 > * [サンプル Windows サービス](#running-a-sample-service)を展開する。  
 > * [一般的な問題とよくある誤り](./common-problems.md)を理解する。  
-
-
-## <a name="network-topology"></a>ネットワーク トポロジ ##
-仮想[クラスター サブネット](#cluster-subnet-def)をルーティング可能にするには、いくつかの方法があります。 以下が可能です。
-
-  - [ホスト ゲートウェイ モード](./configuring-host-gateway-mode.md)を構成し、ノード間の静的なネクストホップ ルートを設定して、ポッド間通信を可能にします。
-  - サブネットでルーティングを行うためのスマート Top-of-Rack (ToR) スイッチを構成します。
-  - [Flannel](https://coreos.com/flannel/docs/latest/kubernetes.html) など、サード パーティーのオーバーレイ プラグインを使用します (Windows の Flannel サポートはベータ版です)。
 
 
 ## <a name="preparing-the-linux-master"></a>Linux マスターの準備 ##
@@ -59,12 +51,18 @@ Kubernetes 1.9 および Windows Server [Version 1709](https://docs.microsoft.co
 > [!Note]  
 > Windows セクションでのすべてのコード スニペットは、_管理者特権の_ PowerShell で実行します。
 
-Kubernetes ではコンテナー オーケストレータとして [Docker](https://www.docker.com/) が使用されるため、これをインストールする必要があります。 [MSDN の公式手順](virtualization/windowscontainers/manage-docker/configure-docker-daemon.md#install-docker)または [Docker の手順](https://store.docker.com/editions/enterprise/docker-ee-server-windows)に従うことも、以下の手順を試すこともできます。
+Kubernetes ではコンテナー オーケストレータとして [Docker](https://www.docker.com/) が使用されるため、これをインストールする必要があります。 [MSDN の公式手順](../manage-docker/configure-docker-daemon.md#install-docker)または [Docker の手順](https://store.docker.com/editions/enterprise/docker-ee-server-windows)に従うことも、以下の手順を試すこともできます。
 
 ```powershell
 Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
 Install-Package -Name Docker -ProviderName DockerMsftProvider
 Restart-Computer -Force
+```
+
+プロキシの内側にいる場合は、次の PowerShell 環境変数を定義する必要があります。
+```powershell
+[Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://proxy.example.com:80/", [EnvironmentVariableTarget]::Machine)
+[Environment]::SetEnvironmentVariable("HTTPS_PROXY", "http://proxy.example.com:443/", [EnvironmentVariableTarget]::Machine)
 ```
 
 [この Microsoft リポジトリ](https://github.com/Microsoft/SDN)には、このノードをクラスターに参加させるために役立つスクリプトのコレクションがあります。 ZIP ファイルは、[こちら](https://github.com/Microsoft/SDN/archive/master.zip)から直接ダウンロードできます。 必要になるのは `Kubernetes/windows` フォルダーだけです。このフォルダーの内容を `C:\k\` に移動する必要があります。
@@ -78,6 +76,14 @@ rm -recurse -force master,master.zip
 ```
 
 [前述](#preparing-the-linux-master)の証明書ファイルを、この新しい `C:\k` ディレクトリにコピーします。
+
+
+## <a name="network-topology"></a>ネットワーク トポロジ ##
+仮想[クラスター サブネット](#cluster-subnet-def)をルーティング可能にするには、いくつかの方法があります。 以下が可能です。
+
+  - [ホスト ゲートウェイ モード](./configuring-host-gateway-mode.md)を構成し、ノード間の静的なネクストホップ ルートを設定して、ポッド間通信を可能にします。
+  - サブネットでルーティングを行うためのスマート Top-of-Rack (ToR) スイッチを構成します。
+  - [Flannel](https://coreos.com/flannel/docs/latest/kubernetes.html) など、サード パーティーのオーバーレイ プラグインを使用します (Windows の Flannel サポートはベータ版です)。
 
 
 ### <a name="creating-the-pause-image"></a>"Pause" イメージの作成 ###
@@ -103,8 +109,49 @@ docker build -t kubeletwin/pause .
 
 これらは、最新の 1.9 リリースの `CHANGELOG.md` ファイル内のリンクからダウンロードできます。 このドキュメントの作成時点の最新リリースは [1.9.1](https://github.com/kubernetes/kubernetes/releases/tag/v1.9.1) であり、Windows バイナリは[こちら](https://storage.googleapis.com/kubernetes-release/release/v1.9.1/kubernetes-node-windows-amd64.tar.gz)です。 [7-Zip](http://www.7-zip.org/) などのツールを利用してアーカイブを展開し、バイナリを `C:\k\` に配置します。
 
+`kubectl` コマンドを `C:\k\` ディレクトリの外部で使用できるようにするために、`PATH` 環境変数を変更します。
+
+```powershell
+$env:Path += ";C:\k"
+```
+
+この変更を永続化する場合は、コンピューター ターゲット内の変数を変更します。
+
+```powershell
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\k", [EnvironmentVariableTarget]::Machine)
+```
 
 ### <a name="joining-the-cluster"></a>クラスターへの参加 ###
+以下を使用して、クラスター構成が有効であることを確認します。
+
+```powershell
+kubectl version
+```
+
+接続エラーが発生する場合は、
+
+```
+Unable to connect to the server: dial tcp [::1]:8080: connectex: No connection could be made because the target machine actively refused it.
+```
+
+構成が正しく検出されているかどうかを確認します。
+
+```powershell
+kubectl config view
+```
+
+`kubectl` が構成ファイルを検索する場所を変更するには、`--kubeconfig` パラメーターを渡すか、`KUBECONFIG` 環境変数を変更します。 たとえば、`C:\k\config` に構成がある場合は、次のように設定します。
+
+```powershell
+$env:KUBECONFIG="C:\k\config"
+```
+
+現在のユーザーのスコープでこの設定を永続化するには、次のように設定します。
+
+```powershell
+[Environment]::SetEnvironmentVariable("KUBECONFIG", "C:\k\config", [EnvironmentVariableTarget]::User)
+```
+
 ノードをクラスターに参加させる準備ができました。 *管理者特権*で開いた 2 つの別々の PowerShell ウィンドウで、以下のスクリプトを (この順に) 実行します。 最初のスクリプトの `-ClusterCidr` パラメーターは、構成された[クラスター サブネット](#cluster-subnet-def)で、ここでは `192.168.0.0/16` です。
 
 ```powershell
@@ -122,7 +169,7 @@ docker build -t kubeletwin/pause .
 
   - **ポッド サブネットからノードへの接続**: 仮想ポッド インターフェイスとノードの間で ping を実行します。 Linux と Windows で、それぞれ `route -n` と `ipconfig` を使用して `cbr0` インターフェイスを探し、ゲートウェイ アドレスを見つけます。
 
-これらの基本テスト (一方または両方) に失敗した場合は、[トラブルシューティング ページ](./common-problems.md#network-connectivity)を参照して一般的な問題を解決します。
+これらの基本テスト (一方または両方) に失敗した場合は、[トラブルシューティング ページ](./common-problems.md#common-networking-errors)を参照して一般的な問題を解決します。
 
 
 ## <a name="running-a-sample-service"></a>サンプル サービスの実行 ##
@@ -150,4 +197,4 @@ watch kubectl get pods -o wide
   - `curl` : Kubernetes の[既定の DNS サフィックス](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services)を指定した*サービス名*に対して実行できること。これにより、DNS が正しく機能していることを確認します。
 
 > [!Warning]  
-> Windows ノードでは、サービス IP にアクセスできません。 これは[既知の制限](./common-problems.md#my-windows-node-cannot-access-my-services-using-the-service-ip)です。
+> Windows ノードでは、サービス IP にアクセスできません。 これは、今後対応が予定されている[既知のプラットフォームの制限](./common-problems.md#my-windows-node-cannot-access-my-services-using-the-service-ip)です。

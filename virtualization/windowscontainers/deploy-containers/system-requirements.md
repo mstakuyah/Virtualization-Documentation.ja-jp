@@ -7,11 +7,11 @@ ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: 88d094202c49cf725e9d608a0810e7d9f8a1e271
-ms.sourcegitcommit: 7fc79235cbee052e07366b8a6aa7e035a5e3434f
+ms.openlocfilehash: ff9b24ccc802b228b649c2330333cbe008350aec
+ms.sourcegitcommit: ea6edc5bac5705a19d48ffdf1ba676c940c2eb67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="windows-container-requirements"></a>Windows コンテナーの要件
 
@@ -67,8 +67,8 @@ Windows コンテナーには、Windows Server Core と Nano Server という 2 
 > <span id="warn-1">Windows Server Version 1709 から、Nano Server はコンテナー ホストとして使用できなくなりました。</span>
 
 
-### <a name="memory-requirments"></a>メモリの要件
-コンテナーに対して利用可能なメモリの制限は、[リソース コントロール](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/resource-controls)を使用するか、コンテナー ホストをオーバーロードすることによって構成できます。  コンテナーの起動と基本的なコマンド (ipconfig、dir など) の実行に必要なメモリの最小量を以下に示します。  __これらの値では、コンテナー間で共有しているリソースや、そのコンテナーで実行されるアプリケーションの用件が考慮されていない点に注意してください。  たとえば、512 MB の空きメモリを持つホストでは、Hyper-V による分離の下で複数の Server Core コンテナーを実行できます。これは、それらのコンテナーがリソースを共有するためです。__
+### <a name="memory-requirements"></a>メモリの要件
+コンテナーに対して利用可能なメモリの制限は、[リソース コントロール](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/resource-controls)を使用するか、コンテナー ホストをオーバーロードすることによって構成できます。  コンテナーの起動と基本的なコマンド (ipconfig、dir など) の実行に必要なメモリの最小量を以下に示します。  __これらの値では、コンテナー間で共有しているリソースや、そのコンテナーで実行されるアプリケーションの要件が考慮されていない点に注意してください。  たとえば、512 MB の空きメモリを持つホストでは、Hyper-V による分離の下で複数の Server Core コンテナーを実行できます。これは、それらのコンテナーがリソースを共有するためです。__
 
 #### <a name="windows-server-2016"></a>Windows Server 2016
 | 基本イメージ  | Windows Server コンテナー | Hyper-V による分離    |

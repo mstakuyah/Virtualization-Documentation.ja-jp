@@ -8,11 +8,11 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: df9ca8a4bcd6bf959e221593ea69d5ed624cdae1
-ms.sourcegitcommit: 6beac5753c9f65bb6352df8c829c2e62e24bd2e2
+ms.openlocfilehash: 1ad04198c74f4566bd37b4ba884034aa5cd7c7ef
+ms.sourcegitcommit: ea6edc5bac5705a19d48ffdf1ba676c940c2eb67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="active-directory-service-accounts-for-windows-containers"></a>Windows コンテナーの Active Directory サービス アカウント
 
@@ -49,6 +49,15 @@ Windows コンテナーは同様の手順に従います。
 
 [!NOTE]
 [ここ](https://docs.microsoft.com/en-us/windows/device-security/security-policy-settings/network-access-allow-anonymous-sidname-translation)で説明されている手順に従って、コンテナー ホストで匿名の SID と名前の変換を許可する必要があります。許可されていない場合、アカウントを SID に変換できないというエラーが出力されることがあります。
+
+ただし、匿名の SID と名前の変換を許可する必要性を検討する前に、次の対策が実施されていることを確認します。
+
+1. gMSA アカウントの名前は、サービスの名前と一致している必要があります (例:  "myapp")。
+2. -h 引数を含めて、コンテナーで起動時に使用する必要があるホスト名を指定します。 
+```
+docker run --security-opt "credentialspec=file://myapp.json" -d -p 80:80 -h myapp.mydomain.local <imagename>
+```
+3. gMSA アカウントを作成するときに使用するサービス プリンシパル名 (SPN) は、コンテナーの実行時に使用する -h 引数と一致している必要があります。 作成時に gMSA に SPN を追加しなかった場合は、後で、アカウントのプロパティにそれらを追加できます。
 
 コンテナーを起動すると、ローカル システムまたはネットワーク サービスとして実行しているインストール済みサービスが、gMSA として実行されて表示されます。 これは、コンピューター アカウントの代わりに、gMSA が使用される場合を除いて、これらのアカウントがドメイン参加済みホストで動作する方法と同様です。 
 

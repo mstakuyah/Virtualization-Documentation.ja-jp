@@ -8,16 +8,16 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: cfbb2542-fead-48e7-8318-4da92a7b5b6f
-ms.openlocfilehash: b6c25285c3cee3a863bef40c34a1cf13b66b42fb
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: 0280e8fbe784629fcd2e2ee9695ed5c253a5643f
+ms.sourcegitcommit: 1bd3d86bfbad8351cb19bdc84129dd5aec976c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 01/25/2018
 ---
-# コミュニティのビデオとブログ
+# <a name="community-videos-and-blogs"></a>コミュニティのビデオとブログ
 このページには、メンバーまたはコンテナーのコミュニティが作成したビデオとブログへのリンクが記載されています。  すばらしいリソースをご存じの場合や、ご自分でリソースを作成した場合は、このリストに追加するための PR を送信してください。
 
-## 概要
+## <a name="getting-started"></a>概要
 [Windows 10 で Linux と Windows コンテナーを実行する ](https://stefanscherer.github.io/run-linux-and-windows-containers-on-windows-10/) - Stefan Scherer
 
 [Docker Windows Server コンテナーを初めて構築して実行する](https://blog.docker.com/2016/09/build-your-first-docker-windows-server-container/) - Michael Friis
@@ -25,7 +25,7 @@ ms.lasthandoff: 07/21/2017
 [Docker を使用して Windows 10 で IIS と ASP.NET を実行する](http://blog.alexellis.io/run-iis-asp-net-on-windows-10-with-docker/) - Alex Ellis
 
 
-## 構築と例
+## <a name="building-and-examples"></a>構築と例
 [.NET とコンテナーの概要](http://blog.alexellis.io/docker-dotnet-containers/) - Alex Ellis
 
 [Microsoft SQL 2016 と ASP.NET を利用した Docker](http://blog.alexellis.io/docker-does-sql2016-aspnet/) - Alex Ellis
@@ -44,7 +44,9 @@ ms.lasthandoff: 07/21/2017
 
 [Running Neo4j in Windows Containers](http://glennsarti.github.io/blog/neo4j-nano-containers) (Windows コンテナーでの Neo4j の実行) - Glenn Sarti
 
-## 構成と管理
+## <a name="configuration-and-managment"></a>構成と管理
 [How to protect a Windows 2016 Docker engine with TLS](https://stefanscherer.github.io/protecting-a-windows-2016-docker-engine-with-tls/) (TLS を使用して Windows 2016 Docker エンジンを保護する方法) - Stefan Scherer
+
+[Using a Microsoft CA to secure Docker](http://dille.name/blog/2016/11/08/using-a-microsoft-ca-to-secure-docker/) (Microsoft CA を使用して Docker をセキュリティで保護する) - Nicholas Dille 
 
 [Windows #Container Performance of Layers](http://dille.name/blog/2017/01/13/windows-container-performance-of-layers/)(階層化と Windows #コンテナーのパフォーマンス) - Nicholas Dille

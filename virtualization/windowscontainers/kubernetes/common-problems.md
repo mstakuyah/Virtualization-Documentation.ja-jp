@@ -7,11 +7,11 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: "Kubernetes の展開と Windows ノードの参加で発生する一般的な問題の解決方法。"
 keywords: "kubernetes, 1.9, linux, コンパイル"
-ms.openlocfilehash: 4fb7ac312b08c63564beb0f40889ff6a050c7166
-ms.sourcegitcommit: b0e21468f880a902df63ea6bc589dfcff1530d6e
+ms.openlocfilehash: b6be43f1afabdf8ef9c2ddc6f46ed5ac43a9e7a5
+ms.sourcegitcommit: 2e8f1fd06d46562e56c9e6d70e50745b8b234372
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="troubleshooting-kubernetes"></a>Kubernetes のトラブルシューティング #
 このページでは、Kubernetes のセットアップ、ネットワーク、および展開に関する一般的な問題について説明します。
@@ -50,6 +50,7 @@ chmod +x [script name]
 ## <a name="common-networking-errors"></a>一般的なネットワーク エラー ##
 ネットワークまたはホストに追加の制約があり、ノード間で特定の種類の通信が妨げられている場合があります。 次のことを確認してください。
 
+  - ネットワーク トポロジを正しく構成していること
   - ポッドからと思われるトラフィックが許可されていること
   - HTTP トラフィックが許可されていること (Web サービスを展開する場合)
   - ICMP パケットが破棄されていないこと
@@ -80,10 +81,10 @@ Hyper-V 仮想マシンを使用している場合は、ネットワーク ア�
 
 
 ### <a name="no-network-adapter-is-found-when-starting-kubelet"></a>Kubelet を起動するときにネットワーク アダプターが見つからない ###
-Kubernetes ネットワークが機能するには、Windows ネットワーク スタックで仮想アダプターが必要です。 次のコマンドが (管理シェルに) 結果を返さない場合、仮想ネットワークの作成 (Kubelet が機能するのに必要な前提条件) に失敗しています。
+Kubernetes ネットワークが機能するには、Windows ネットワーク スタックで仮想アダプターが必要です。 次のコマンドが (管理シェルに) 結果を返さない場合、仮想ネットワークの作成 &mdash; Kubelet が機能するのに必要な前提条件 &mdash; に失敗しています。
 
 ```powershell
-Get-HnsNetwork | ? Name -Like "l2bridge"
+Get-HnsNetwork | ? Name -ieq "l2bridge"
 Get-NetAdapter | ? Name -Like "vEthernet (Ethernet*"
 ```
 

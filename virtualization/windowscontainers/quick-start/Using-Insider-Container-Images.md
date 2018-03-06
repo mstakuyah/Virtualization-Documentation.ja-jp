@@ -1,3 +1,4 @@
+
 # <a name="using-insider-container-images"></a>Insider コンテナー イメージの使用
 
 この演習では、Windows Insider Preview プログラムで提供されている最新の insider ビルドの Windows Server に、Windows コンテナー機能を展開して使用する手順を説明します。 この演習では、コンテナーの役割をインストールし、基本 OS イメージのプレビュー版を展開します。 コンテナーの概要については、[コンテナーについてのページ](../about/index.md)」をご覧ください。
@@ -11,22 +12,25 @@
 
 >以下で説明する基本イメージを使用するには、Windows Server Insider Preview プログラムから提供された Windows Server のビルド、または Windows Insider Preview プログラムから提供された Windows 10 のビルドを使用する必要があります。 これらのビルドを使用せずに、対象の基本イメージを使用した場合、コンテナーを開始できません。
 
-## <a name="install-docker"></a>Docker のインストール
-Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。 また、コンテナーに最適化された Nano Server イメージを使用して最良のエクスペリエンスを実現するため、多段階ビルドをサポートするバージョンの Docker を使用する必要があります。
+## <a name="install-docker-enterprise-edition-ee"></a>Docker Enterprise Edition (EE) のインストール
+Windows コンテナーを使用するには Docker EE が必要です。 Docker EE は、Docker エンジンと Docker クライアントで構成されます。 
 
-Docker をインストールするには、OneGet プロバイダー PowerShell モジュールを使用します。 プロバイダーは、コンピューターでコンテナー機能を有効にして、Docker をインストールします。これには、再起動が必要です。 Docker には、複数のチャネルから異なるバージョンが提供されており、対応するケースがそれぞれ異なることに注意してください。 この演習では、Stable チャンネルから提供された最新の Community Edition Docker を使用します。 Docker の最新技術をテストする場合は、Edge チャンネルを利用することもできます。
+Docker EE をインストールするには、OneGet プロバイダー PowerShell モジュールを使用します。 このプロバイダーは、コンピューターでコンテナー機能を有効にして、Docker EE をインストールします。これには、再起動が必要です。 管理者特権の PowerShell セッションを開き、次のコマンドを実行します。
 
-管理者特権の PowerShell セッションを開き、次のコマンドを実行します。
-
->注: Insider ビルドに Docker をインストールするには、現時点で通常使用されているプロバイダーとは別のプロバイダーが必要です。 以下の相違点に注意してください。
-
-OneGet PowerShell モジュールをインストールします。
-```powershell
-Install-Module -Name DockerMsftProviderInsider -Repository PSGallery -Force
+>注: Windows Server の Insider ビルドを使用して Docker EE をインストールする場合、Insider ビルド以外に使用するものとは異なる OneGet プロバイダーが必要です。 Docker EE と DockerMsftProvider OneGet プロバイダーが既にインストールされている場合は、続行する前に削除します。
+```powershell 
+Stop-Service docker
+Uninstall-Package docker
+Uninstall-Module DockerMsftProvider
 ```
-OneGet を使用して最新バージョンの Docker をインストールします。
+
+Windows Insider ビルドで使用するための OneGet PowerShell モジュールをインストールします。
 ```powershell
-Install-Package -Name docker -ProviderName DockerMsftProviderInsider
+Install-Module -Name DockerProvider -Repository PSGallery -Force
+```
+OneGet を使用して最新バージョンの Docker EE Preview をインストールします。
+```powershell
+Install-Package -Name docker -ProviderName DockerProvider -RequiredVersion Preview
 ```
 インストールが完了したら、コンピューターを再起動します。
 ```
