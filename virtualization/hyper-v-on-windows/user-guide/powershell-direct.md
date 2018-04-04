@@ -1,22 +1,22 @@
 ---
-title: "PowerShell ダイレクトでの Windows Virtual Machines の管理"
-description: "PowerShell ダイレクトでの Windows Virtual Machines の管理"
-keywords: "windows 10, hyper-v, powershell, 統合サービス, 統合コンポーネント, 自動化, powershell ダイレクト"
+title: PowerShell ダイレクトでの Windows Virtual Machines の管理
+description: PowerShell ダイレクトでの Windows Virtual Machines の管理
+keywords: windows 10, hyper-v, powershell, 統合サービス, 統合コンポーネント, 自動化, powershell ダイレクト
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: fb228e06-e284-45c0-b6e6-e7b0217c3a49
-ms.openlocfilehash: 1eea533459b565ffceca23ca7454e9678abc52e9
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: 779dcf51d4903c9467cc52dbadb865beb9929bd2
+ms.sourcegitcommit: e7fa38bcb7744a34e7a58978b55af1fbf6353247
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 02/20/2018
 ---
-# PowerShell を使用した仮想マシンの自動化と管理
+# <a name="virtual-machine-automation-and-management-using-powershell"></a>PowerShell を使用した仮想マシンの自動化と管理
  
-PowerShell ダイレクトを使用すると、ネットワークの構成やリモート管理の設定に関係なく、Hyper-V ホストから、Windows 10 仮想マシンまたは Windows Server Technical Preview 仮想マシンで任意の PowerShell を実行することができます。
+PowerShell ダイレクトを使用すると、ネットワークの構成やリモート管理の設定に関係なく、Hyper-V ホストから、Windows 10 仮想マシンまたは Windows Server 2016 仮想マシンで任意の PowerShell を実行することができます。
 
 **PowerShell ダイレクトを実行する方法:**  
 * 対話型セッションとして -- Enter-PSSession を使用して対話型 PowerShell セッションを作成および終了するには、[ここをクリック](#create-and-exit-an-interactive-powershell-session)してください。
@@ -24,10 +24,10 @@ PowerShell ダイレクトを使用すると、ネットワークの構成やリ
 * 永続的なセッションとして (ビルド 14280 以降) -- New-PSSession を使用して永続的なセッションを作成するには[ここをクリック](#copy-files-with-new-pssession-and-copy-item)してください。  
 続行するには、Copy-Item を使用してファイルを仮想マシンにコピーおよび仮想マシンからコピーし、接続を切断するには Remove-PSSession を使用します。
 
-## 要件
+## <a name="requirements"></a>要件
 **オペレーティング システムの要件:**
-* ホスト: Windows 10、Windows Server Technical Preview 2、または Hyper-V を実行するそれ以降のバージョン。
-* ゲスト/仮想マシン: Windows 10、Windows Server Technical Preview 2、またはそれ以降のバージョン。
+* ホスト: Windows 10、Windows Server 2016、または Hyper-V を実行するそれ以降のバージョン。
+* ゲスト/仮想マシン: Windows 10、Windows Server 2016、またはそれ以降のバージョン。
 
 以前の仮想マシンを管理している場合は、仮想マシン接続 (VMConnect) を使用するか、[仮想マシン用の仮想ネットワークを構成します](http://technet.microsoft.com/library/cc816585.aspx)。 
 
@@ -39,7 +39,7 @@ PowerShell ダイレクトを使用すると、ネットワークの構成やリ
 
 -------------
 
-## 対話型 PowerShell セッションの作成と終了
+## <a name="create-and-exit-an-interactive-powershell-session"></a>対話型 PowerShell セッションの作成と終了
 
 仮想マシンで PowerShell コマンドを実行するには、対話型セッションを開始するのが最も簡単な方法です。
 
@@ -63,10 +63,10 @@ PowerShell ダイレクトを使用すると、ネットワークの構成やリ
   PowerShell プロンプトのプレフィックスとして VMName が次のように表示されます。
   
   ``` 
-  [VMName]: PS C:\ >
+  [VMName]: PS C:\>
   ```
   
-  仮想マシンで任意のコマンドが実行されます。  テストのために、`ipconfig` または `hostname` を実行して、これらのコマンドが仮想マシンで実行されていることを確認します。
+  仮想マシンで任意のコマンドが実行されます。 テストのために、`ipconfig` または `hostname` を実行して、これらのコマンドが仮想マシンで実行されていることを確認します。
   
 4. 次のように完了したら、セッションを終了するには、次のコマンドを実行します。  
   
@@ -80,7 +80,7 @@ PowerShell ダイレクトを使用すると、ネットワークの構成やリ
 
 -------------
 
-## Invoke-Command でのスクリプトまたはコマンドの実行
+## <a name="run-a-script-or-command-with-invoke-command"></a>Invoke-Command でのスクリプトまたはコマンドの実行
 
 PowerShell ダイレクトと Invoke-Command コマンドの組み合わせは、1 つのコマンドまたは 1 つのスクリプトを仮想マシン上で実行する必要があるが、それらの実行以降は仮想マシンとの対話を続行する必要がないという場合に最適です。
 
@@ -91,8 +91,8 @@ PowerShell ダイレクトと Invoke-Command コマンドの組み合わせは�
 2. 次のいずれかのコマンドを実行すると、仮想マシンの名前または GUID を使用してセッションが作成されます。  
    
    ``` PowerShell
-   Invoke-Command -VMName <VMName> -ScriptBlock { cmdlet } 
-   Invoke-Command -VMId <VMId> -ScriptBlock { cmdlet }
+   Invoke-Command -VMName <VMName> -ScriptBlock { command } 
+   Invoke-Command -VMId <VMId> -ScriptBlock { command }
    ```
    
    メッセージが表示されたら仮想マシンの資格情報を指定します。
@@ -119,7 +119,7 @@ PowerShell ダイレクトと Invoke-Command コマンドの組み合わせは�
 
 -------------
 
-## New-PSSession および Copy-Item でファイルをコピーする
+## <a name="copy-files-with-new-pssession-and-copy-item"></a>New-PSSession および Copy-Item でファイルをコピーする
 
 > **注:** PowerShell ダイレクトでは、Windows ビルド 14280 以降でのみ永続的なセッションをサポートしています。
 
@@ -167,11 +167,11 @@ PowerShell ダイレクトと Invoke-Command コマンドの組み合わせは�
   
 -------------
 
-## トラブルシューティング
+## <a name="troubleshooting"></a>トラブルシューティング
 
 PowerShell Direct を通じて表示される一般的なエラー メッセージが少しあります。  いくつかの最も一般的な原因、および問題を診断するためのツールは、次のとおりです。
 
-### -VMName または -VMID パラメーターが存在しない
+### <a name="-vmname-or--vmid-parameters-dont-exist"></a>-VMName または -VMID パラメーターが存在しない
 **問題:**  
 `Enter-PSSession``Invoke-Command` または `New-PSSession` に `-VMName` パラメーターまたは `-VMId` パラメーターがありません。
 
@@ -193,7 +193,7 @@ $PSVersionTable.PSVersion
 ```
 
 
-### エラー: リモート セッションが終了した可能性がある
+### <a name="error-a-remote-session-might-have-ended"></a>エラー: リモート セッションが終了した可能性がある
 > **注: **  
 10240 ～ 12400 のホスト ビルドでの Enter-PSSession の場合、以下に示すエラーはすべて、"リモート セッションが終了した可能性がある" とレポートされます。
 
@@ -227,7 +227,7 @@ New-PSSession : An error has occurred which Windows PowerShell cannot handle. A 
 Restart-Service -Name vmicvmsession
 ```
 
-### エラー: パラメーター セットを解決できません。
+### <a name="error-parameter-set-cannot-be-resolved"></a>エラー: パラメーター セットを解決できません。
 **エラー メッセージ:**  
 ``` 
 Enter-PSSession : Parameter set cannot be resolved using the specified named parameters.
@@ -241,7 +241,7 @@ Enter-PSSession : Parameter set cannot be resolved using the specified named par
 仮想マシンに管理者の資格情報を渡すには、`-Credential` パラメーターを使用するか、要求されたときに手動で入力します。
 
 
-### エラー: 資格情報が無効です。
+### <a name="error-the-credential-is-invalid"></a>エラー: 資格情報が無効です。
 
 **エラー メッセージ:**  
 ```
@@ -254,7 +254,7 @@ Enter-PSSession : The credential is invalid.
   * ゲストにユーザー アカウントがない (前もって OS が起動されていない)
   * 管理者として接続する場合: 管理者がアクティブなユーザーとして設定されていない。  詳細については、[こちら](https://technet.microsoft.com/en-us/library/hh825104.aspx)をご覧ください。
   
-### エラー: 入力 VMName パラメーターが仮想マシンに解決されません。
+### <a name="error-the-input-vmname-parameter-does-not-resolve-to-any-virtual-machine"></a>エラー: 入力 VMName パラメーターが仮想マシンに解決されません。
 
 **エラー メッセージ:**  
 ```
@@ -270,7 +270,7 @@ Enter-PSSession : The input VMName parameter does not resolve to any virtual mac
 
 -------------
 
-## サンプルとユーザー ガイド
+## <a name="samples-and-user-guides"></a>サンプルとユーザー ガイド
 
 PowerShell ダイレクトでは JEA (Just Enough Administration) をサポートしています。  これを試すには、このユーザー ガイドをご覧ください。
 

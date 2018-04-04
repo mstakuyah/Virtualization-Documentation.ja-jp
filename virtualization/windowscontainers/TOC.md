@@ -23,7 +23,7 @@
 ## [ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 
 # Windows 上の Docker の管理
-## [Windows 上の Docker エンジン](docker/configure_docker_daemon.md)
+## [Windows 上の Docker エンジン](manage-docker/configure-docker-daemon.md)
 ## [Windows 上の Dockerfile](manage-docker/manage-windows-dockerfile.md)
 ## [Dockerfile の最適化](manage-docker/optimize-windows-dockerfile.md)
 ## [コンテナーのネットワーク](manage-containers/container-networking.md)
@@ -39,6 +39,10 @@
 ## [ネットワーク トポロジの構成](kubernetes/configuring-host-gateway-mode.md)
 ## [Kubernetes バイナリのコンパイル](kubernetes/compiling-kubernetes-binaries.md)
 ## [トラブルシューティング](kubernetes/common-problems.md)
+
+# Service Fabric クイック スタート
+## [最初のコンテナーの展開](/azure/service-fabric/service-fabric-quickstart-containers)
+## [Windows コンテナー内での .NET アプリケーションの展開](/azure/service-fabric/service-fabric-host-app-in-a-container) 
 
 # コンテナーのサンプル
 ## [アプリケーション フレームワーク](samples.md#Application-Frameworks)

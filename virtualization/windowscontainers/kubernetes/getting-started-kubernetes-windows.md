@@ -1,20 +1,21 @@
 ---
-title: "Windows で使用する Kubernetes"
+title: Windows で使用する Kubernetes
 author: gkudra-msft
 ms.author: gekudray
 ms.date: 11/16/2017
 ms.topic: get-started-article
 ms.prod: containers
-description: "Windows ノードを v1.9 ベータ版の Kubernetes クラスターに参加させます。"
-keywords: "kubernetes, 1.9, windows, 作業の開始"
+description: Windows ノードを v1.9 ベータ版の Kubernetes クラスターに参加させます。
+keywords: kubernetes, 1.9, windows, 作業の開始
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 0ccd7dae8da0841c98bec5cdf7345100d1b51107
-ms.sourcegitcommit: 2e8f1fd06d46562e56c9e6d70e50745b8b234372
+ms.openlocfilehash: 124895e93cbaee50c66b6b5a7cc2c71c144dad67
+ms.sourcegitcommit: 6e3c3b2ff125f949c03a342c3709a6e57c5f736c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="kubernetes-on-windows"></a>Windows で使用する Kubernetes #
+
 Kubernetes 1.9 および Windows Server [Version 1709](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1709#networking) の最新リリースを使用すると、ユーザーは Windows ネットワークの最新機能を利用できます。
 
   - **共有ポッド コンパートメント**: インフラストラクチャ ポッドとワーカー ポッドで、ネットワーク コンパートメントを共有できるようになりました (Linux 名前空間と同様)。
@@ -24,15 +25,14 @@ Kubernetes 1.9 および Windows Server [Version 1709](https://docs.microsoft.co
 
 このページは、新しい Windows ノードを Linux ベースの既存クラスターに参加させる作業のガイドとしてお使いください。 1 から開始するには、[このページ](./creating-a-linux-master.md) &mdash; Kubernetes クラスターの展開に使用できる豊富なリソースの 1 つ &mdash; を参照して、同じようにマスターを 1 からセットアップします。
 
-
 <a name="definitions"></a> このガイドで使用されている用語の定義を以下に示します。
 
   - **外部ネットワーク**は、ノード間で通信する際のネットワークです。
   - <a name="cluster-subnet-def"></a>**クラスター サブネット**は、ルーティング可能な仮想ネットワークです。ノードには、ポッドが使用できるように、これより小さなサブネットが割り当てられます。
   - **サービス サブネット**は、ルーティング不可能で純然たる仮想の 11.0/16 サブネットです。これは、ネットワーク トポロジに関係なく同じようにポッドがサービスにアクセスできるように使用されます。 ノードで実行されている `kube-proxy` によって、ルーティング可能なアドレス空間との間で変換が行われます。
 
+## <a name="what-you-will-accomplish"></a>作業内容 ##
 
-## <a name="what-we-will-accomplish"></a>作業内容 ##
 このガイドでは、次のことを行います。
 
 > [!div class="checklist"]  
@@ -42,16 +42,16 @@ Kubernetes 1.9 および Windows Server [Version 1709](https://docs.microsoft.co
 > * [サンプル Windows サービス](#running-a-sample-service)を展開する。  
 > * [一般的な問題とよくある誤り](./common-problems.md)を理解する。  
 
-
 ## <a name="preparing-the-linux-master"></a>Linux マスターの準備 ##
+
 [手順](./creating-a-linux-master.md)に従った場合も既存クラスターが存在する場合も、Linux マスターから唯一必要なものは、Kubernetes の証明書の構成です。 この情報は、セットアップによって `/etc/kubernetes/admin.conf`、`~/.kube/config`、またはこれ以外の場所にあります。
 
-
 ## <a name="preparing-a-windows-node"></a>Windows のノードの準備 ##
-> [!Note]  
+
+> [!NOTE]  
 > Windows セクションでのすべてのコード スニペットは、_管理者特権の_ PowerShell で実行します。
 
-Kubernetes ではコンテナー オーケストレータとして [Docker](https://www.docker.com/) が使用されるため、これをインストールする必要があります。 [MSDN の公式手順](../manage-docker/configure-docker-daemon.md#install-docker)または [Docker の手順](https://store.docker.com/editions/enterprise/docker-ee-server-windows)に従うことも、以下の手順を試すこともできます。
+Kubernetes ではコンテナー オーケストレータとして [Docker](https://www.docker.com/) が使用されるため、これをインストールする必要があります。 [Docs の公式手順](../manage-docker/configure-docker-daemon.md#install-docker)または [Docker の手順](https://store.docker.com/editions/enterprise/docker-ee-server-windows)に従うことも、以下の手順を試すこともできます。
 
 ```powershell
 Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
@@ -77,16 +77,16 @@ rm -recurse -force master,master.zip
 
 [前述](#preparing-the-linux-master)の証明書ファイルを、この新しい `C:\k` ディレクトリにコピーします。
 
-
 ## <a name="network-topology"></a>ネットワーク トポロジ ##
+
 仮想[クラスター サブネット](#cluster-subnet-def)をルーティング可能にするには、いくつかの方法があります。 以下が可能です。
 
   - [ホスト ゲートウェイ モード](./configuring-host-gateway-mode.md)を構成し、ノード間の静的なネクストホップ ルートを設定して、ポッド間通信を可能にします。
   - サブネットでルーティングを行うためのスマート Top-of-Rack (ToR) スイッチを構成します。
-  - [Flannel](https://coreos.com/flannel/docs/latest/kubernetes.html) など、サード パーティーのオーバーレイ プラグインを使用します (Windows の Flannel サポートはベータ版です)。
+  - [Flannel](https://coreos.com/flannel/docs/latest/kubernetes.html) など、サード パーティのオーバーレイ プラグインを使用します (Windows の Flannel サポートはベータ版です)。
 
+### <a name="creating-the-pause-image"></a>"pause" イメージの作成 ###
 
-### <a name="creating-the-pause-image"></a>"Pause" イメージの作成 ###
 `docker` のインストールが完了したため、Kubernetes インフラストラクチャ ポッドを準備するために Kubernetes で使用される "pause" イメージを準備する必要があります。
 
 ```powershell
@@ -96,7 +96,7 @@ cd C:/k/
 docker build -t kubeletwin/pause .
 ```
 
-> [!Note]  
+> [!NOTE]
 > 後で展開するサンプル サービスは最新のイメージに依存するため、このイメージに `:latest` というタグを付けます。ただし、これが実際に利用可能な最新の Windows Server Core イメージ_である_とは限りません。 競合しているコンテナー イメージに注意する必要があります。必要なタグがないために互換性のないコンテナー イメージの `docker pull` が発生し、[展開に関する問題](./common-problems.md#when-deploying-docker-containers-keep-restarting)の原因となる可能性があります。 
 
 
@@ -163,6 +163,7 @@ $env:KUBECONFIG="C:\k\config"
 
 
 ### <a name="validating-your-network-topology"></a>ネットワーク トポロジの検証 ###
+
 適切なネットワーク構成の検証には、いくつかの基本的なテストを使用します。
 
   - **ノード間の接続**: マスター ノードと Windows ワーカー ノードの間で双方向の ping が成功する必要があります。
@@ -173,8 +174,8 @@ $env:KUBECONFIG="C:\k\config"
 
 
 ## <a name="running-a-sample-service"></a>サンプル サービスの実行 ##
-ここでは、確実にクラスターへの参加に成功し、ネットワークを正しく構成できるように、非常に単純な [PowerShell ベースの Web サービス](https://github.com/Microsoft/SDN/blob/master/Kubernetes/WebServer.yaml)を展開します。
 
+ここでは、確実にクラスターへの参加に成功し、ネットワークを正しく構成できるように、非常に単純な [PowerShell ベースの Web サービス](https://github.com/Microsoft/SDN/blob/master/Kubernetes/WebServer.yaml)を展開します。
 
 Linux マスターで、サービスをダウンロードして実行します。
 
@@ -186,7 +187,6 @@ watch kubectl get pods -o wide
 
 これにより、展開とサービスが作成されます。ポッドが無期限に監視され、状態が追跡されます。監視を終了するときは、`Ctrl+C` を押して `watch` コマンドを終了します。
 
-
 すべての作業を正しく行った場合は、次のことを確認できます。
 
   - Windows 側の `docker ps` コマンドで 4 つのコンテナーが表示されること。
@@ -196,5 +196,5 @@ watch kubectl get pods -o wide
   - `curl` : Linux マスターおよび個々のポッドから仮想*サービス IP* (`kubectl get services` で確認) で実行できること。
   - `curl` : Kubernetes の[既定の DNS サフィックス](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services)を指定した*サービス名*に対して実行できること。これにより、DNS が正しく機能していることを確認します。
 
-> [!Warning]  
+> [!WARNING]  
 > Windows ノードでは、サービス IP にアクセスできません。 これは、今後対応が予定されている[既知のプラットフォームの制限](./common-problems.md#my-windows-node-cannot-access-my-services-using-the-service-ip)です。
