@@ -1,17 +1,17 @@
 ---
-title: "Windows コンテナーの要件"
-description: "Windows コンテナーの要件"
-keywords: "メタデータ、コンテナー"
+title: Windows コンテナーの要件
+description: Windows コンテナーの要件
+keywords: メタデータ、コンテナー
 author: enderb-ms
 ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: ff9b24ccc802b228b649c2330333cbe008350aec
-ms.sourcegitcommit: ea6edc5bac5705a19d48ffdf1ba676c940c2eb67
+ms.openlocfilehash: e1fe969c70aa61b62eb9212b7faa23d37d17b565
+ms.sourcegitcommit: 8b331cb67dfe609fcbfc3de06edbf51fe8562c6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/20/2018
 ---
 # <a name="windows-container-requirements"></a>Windows コンテナーの要件
 
@@ -91,6 +91,7 @@ Windows Server Core と Nano Server のいずれを選択するかは、どの�
 - .NET Core が含まれていない ([.NET Core の Nano Server イメージ](https://hub.docker.com/r/microsoft/dotnet/) は使用できます)
 - PowerShell が削除されている
 - WMI が削除されている
+- Windows Server Version 1709 からは、アプリケーションがユーザー コンテキストで実行されるため、管理者特権を必要とするコマンドは失敗となります。 コンテナー管理者アカウントは --user フラグを使用して指定 (つまり docker run --user ContainerAdministrator を使用) できますが、将来的には NanoServer から管理者アカウントが完全に削除される予定です。
 
-この他にも相違点があり、これら以上に重要な違いもあります。 上に記載されている以外にも、除外されているコンポーネントがあります。 Nano Server 上には、いつでもレイヤーを追加できることに注意してください。 この例については、[.NET Core の Nano Server の Dockerfile](https://github.com/dotnet/dotnet-docker/blob/master/2.0/sdk/nanoserver/amd64/Dockerfile) をご覧ください。
+ここには特に重要な相違点が記載されていますが、すべてが網羅されているわけではありません。 上に記載されている以外にも、除外されているコンポーネントがあります。 Nano Server 上には、いつでもレイヤーを追加できることに注意してください。 この例については、[.NET Core の Nano Server の Dockerfile](https://github.com/dotnet/dotnet-docker/blob/master/2.0/sdk/nanoserver/amd64/Dockerfile) をご覧ください。
 

@@ -8,11 +8,11 @@ ms.prod: containers
 description: Windows ノードを v1.9 ベータ版の Kubernetes クラスターに参加させます。
 keywords: kubernetes, 1.9, windows, 作業の開始
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 124895e93cbaee50c66b6b5a7cc2c71c144dad67
-ms.sourcegitcommit: 6e3c3b2ff125f949c03a342c3709a6e57c5f736c
+ms.openlocfilehash: 6309ca8c0fd50e1b8e926776bef6dfe82bb815f0
+ms.sourcegitcommit: ee86ee093b884c79039a8ff417822c6e3517b92d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="kubernetes-on-windows"></a>Windows で使用する Kubernetes #
 
@@ -24,6 +24,9 @@ Kubernetes 1.9 および Windows Server [Version 1709](https://docs.microsoft.co
 
 
 このページは、新しい Windows ノードを Linux ベースの既存クラスターに参加させる作業のガイドとしてお使いください。 1 から開始するには、[このページ](./creating-a-linux-master.md) &mdash; Kubernetes クラスターの展開に使用できる豊富なリソースの 1 つ &mdash; を参照して、同じようにマスターを 1 からセットアップします。
+
+> [!TIP] 
+> Azure でクラスターを展開する場合は、オープン ソースの ACS Engine ツールを使用すると簡単です。 手順を説明した[チュートリアル](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md)をご利用ください。
 
 <a name="definitions"></a> このガイドで使用されている用語の定義を以下に示します。
 
@@ -189,12 +192,24 @@ watch kubectl get pods -o wide
 
 すべての作業を正しく行った場合は、次のことを確認できます。
 
-  - Windows 側の `docker ps` コマンドで 4 つのコンテナーが表示されること。
+  - Windows ノードで `docker ps` コマンドにより 4 つのコンテナーが表示されること。
+  - Linux マスターで `kubectl get pods` コマンドにより 2 つのポッドが表示されること。
   - `curl` : Linux マスターからポート 80 の*ポッド* IP で実行して Web サーバー応答を受信できること。これは、ネットワーク経由でのノードからポッドへの通信が適切であることを示します。
-  - `curl` : ポート 4444 の*ノード* IP で実行して Web サーバー応答を受信できること。これは、ホストからコンテナーへのポート マッピングが適切であることを示します。
   - `docker exec` で*ポッド間* (複数の Windows ノードがある場合はホスト間も含めて) の ping を実行できること。これは、ポッド間の通信が適切であることを示します。
   - `curl` : Linux マスターおよび個々のポッドから仮想*サービス IP* (`kubectl get services` で確認) で実行できること。
   - `curl` : Kubernetes の[既定の DNS サフィックス](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services)を指定した*サービス名*に対して実行できること。これにより、DNS が正しく機能していることを確認します。
 
-> [!WARNING]  
-> Windows ノードでは、サービス IP にアクセスできません。 これは、今後対応が予定されている[既知のプラットフォームの制限](./common-problems.md#my-windows-node-cannot-access-my-services-using-the-service-ip)です。
+> [!Warning]  
+> Windows ノードでは、サービス IP にアクセスできません。 これは、Windows Server への次の更新プログラムで改善が予定されている[既知のプラットフォーム制限](./common-problems.md#my-windows-node-cannot-access-my-services-using-the-service-ip)です。
+
+
+### <a name="port-mapping"></a>ポートのマッピング ### 
+ノードのポートをマップすることによって、ポッドでホストされているサービスにそれぞれのノードからアクセスすることもできます。 この機能を示すための[サンプル YAML](https://github.com/Microsoft/SDN/blob/master/Kubernetes/PortMapping.yaml) では、ノードのポート 4444 をポッドのポート 80 にマップしています。 これを展開するには、さきほどと同じ手順に従います。
+
+```bash
+wget https://raw.githubusercontent.com/Microsoft/SDN/master/Kubernetes/PortMapping.yaml -O win-webserver-port-mapped.yaml
+kubectl apply -f win-webserver-port-mapped.yaml
+watch kubectl get pods -o wide
+```
+
+これで、ポート 4444 の*ノード* IP で `curl` を実行し、Web サーバーの応答を受信することができます。 このとき 1 対 1 のマッピングを適用する必要があるため、スケーリングはノードあたり単一ポッドに制限される点に注意してください。
