@@ -8,11 +8,11 @@ ms.prod: containers
 description: Windows ノードを v1.9 ベータ版の Kubernetes クラスターに参加させます。
 keywords: kubernetes, 1.9, windows, 作業の開始
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 6309ca8c0fd50e1b8e926776bef6dfe82bb815f0
-ms.sourcegitcommit: ee86ee093b884c79039a8ff417822c6e3517b92d
+ms.openlocfilehash: c6127fe8ab9de6a56816fb8187d4dec525425510
+ms.sourcegitcommit: 7c3af076eb8bad98e1c3de0af63dacd842efcfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="kubernetes-on-windows"></a>Windows で使用する Kubernetes #
 
@@ -71,6 +71,7 @@ Restart-Computer -Force
 [この Microsoft リポジトリ](https://github.com/Microsoft/SDN)には、このノードをクラスターに参加させるために役立つスクリプトのコレクションがあります。 ZIP ファイルは、[こちら](https://github.com/Microsoft/SDN/archive/master.zip)から直接ダウンロードできます。 必要になるのは `Kubernetes/windows` フォルダーだけです。このフォルダーの内容を `C:\k\` に移動する必要があります。
 
 ```powershell
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 wget https://github.com/Microsoft/SDN/archive/master.zip -o master.zip
 Expand-Archive master.zip -DestinationPath master
 mkdir C:/k/
