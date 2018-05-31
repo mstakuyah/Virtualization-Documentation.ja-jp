@@ -1,18 +1,19 @@
 ---
-title: "Windows で Docker を構成する"
-description: "Windows で Docker を構成する"
-keywords: "Docker, コンテナー"
+title: Windows で Docker を構成する
+description: Windows で Docker を構成する
+keywords: Docker, コンテナー
 author: PatrickLang
 ms.date: 08/23/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
-ms.openlocfilehash: 5b187853be0ebb28bcede43bfca7e4042a23dfce
-ms.sourcegitcommit: a3479a4d8372a637fb641cd7d5003f1d8a37b741
+ms.openlocfilehash: ab8a8b6543d58e71b3ac673c8a9e811698dbb578
+ms.sourcegitcommit: ec186664e76d413d3bf75f2056d5acb556f4205d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "1875913"
 ---
 # <a name="docker-engine-on-windows"></a>Windows 上の Docker エンジン
 
@@ -25,47 +26,7 @@ Windows コンテナーを使用するには Docker が必要です。 Docker �
 * [Windows Server 2016 の Windows コンテナー](../quick-start/quick-start-windows-server.md)
 * [Windows 10 の Windows コンテナー](../quick-start/quick-start-windows-10.md)
 
-### <a name="manual-installation"></a>手動インストール
-Docker エンジンとクライアントについて開発中バージョンを代わりに使用する場合は、以下の手順を使用してください。 この手順では、Docker エンジンとクライアントの両方をインストールします。 新機能をテストする開発者、または Windows Insider ビルドを使用している開発者である場合は、開発中バージョンの Docker の使用が必要になることがあります。 それ以外の場合は、上記の「Docker のインストール」セクションの手順に従って、最新の製品版を入手してください。
-
-> Docker for Windows が既にインストールされている場合は、ここで説明する手動インストールの手順を実行する前に必ずアンインストールしてください。 
-
-Docker エンジンをダウンロードする
-
-最新バージョンは https://master.dockerproject.org にあります。 このサンプルでは、マスター ブランチにある最新バージョンを使用します。 
-
-```powershell
-Invoke-WebRequest "https://master.dockerproject.org/windows/x86_64/docker.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
-```
-
-zip アーカイブを Program Files に展開します。
-
-```powershell
-Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
-```
-
-Docker ディレクトリをシステム パスに追加します。 完了したら、変更されたパスが認識されるように、PowerShell セッションを再起動します。
-
-```powershell
-# Add path to this PowerShell session immediately
-$env:path += ";$env:ProgramFiles\Docker"
-
-# For persistent use after a reboot
-$existingMachinePath = [Environment]::GetEnvironmentVariable("Path",[System.EnvironmentVariableTarget]::Machine)
-[Environment]::SetEnvironmentVariable("Path", $existingMachinePath + ";$env:ProgramFiles\Docker", [EnvironmentVariableTarget]::Machine)
-```
-
-Windows サービスとして Docker をインストールするには、以下を実行します。
-
-```
-dockerd --register-service
-```
-
-インストールされたら、サービスを開始することができます。
-
-```powershell
-Start-Service Docker
-```
+スクリプト化したインストールについては、「[Use a script to install Docker EE](https://docs.docker.com/install/windows/docker-ee/#use-a-script-to-install-docker-ee)」 (スクリプトを使用して Docker EE をインストールする) をご覧ください。
 
 Docker を使用するには、先にコンテナー イメージをインストールする必要があります。 詳しくは、[イメージを使用するためのクイック スタート ガイド](../quick-start/quick-start-images.md)をご覧ください。
 
@@ -154,7 +115,7 @@ sc config docker binpath= "\"C:\Program Files\docker\dockerd.exe\" --run-service
 
 ### <a name="default-network-creation"></a>既定のネットワークの作成 
 
-既定の NAT ネットワークが作成されないように Docker エンジンを構成するには、次のコマンドを使用します。 詳細については、「[コンテナーのネットワーク](../manage-containers/container-networking.md)」を参照してください。
+既定の NAT ネットワークが作成されないように Docker エンジンを構成するには、次のコマンドを使用します。 詳細については、「[コンテナーのネットワーク](../container-networking/network-drivers-topologies.md)」を参照してください。
 
 ```
 {

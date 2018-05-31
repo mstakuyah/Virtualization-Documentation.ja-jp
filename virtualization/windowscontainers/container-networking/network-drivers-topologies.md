@@ -1,0 +1,76 @@
+---
+title: Windows コンテナー ネットワーク
+description: ネットワーク ドライバーと Windows コンテナーのトポロジ。
+keywords: Docker, コンテナー
+author: jmesser81
+ms.date: 03/27/2018
+ms.topic: article
+ms.prod: windows-containers
+ms.service: windows-containers
+ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
+ms.openlocfilehash: 3fb36008d9304e6fbdd318c55e012ff3f096d58b
+ms.sourcegitcommit: ec186664e76d413d3bf75f2056d5acb556f4205d
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "1876110"
+---
+# <a name="windows-container-network-drivers"></a>Windows コンテナー ネットワーク ドライバー  
+
+Windows で Docker によって作成された既定の 'nat' ネットワークを活用することに加えて、ユーザーはカスタム コンテナー ネットワークを定義できます。 ユーザー定義のネットワークは、Docker CLI の [`docker network create -d <NETWORK DRIVER TYPE> <NAME>`](https://docs.docker.com/engine/reference/commandline/network_create/) コマンドを使用して作成できます。 Windows では、次の種類のネットワーク ドライバーを利用できます。
+
+- **nat**: 'nat' ドライバーを使用して作成されたネットワークに接続されているコンテナーは、*内部* Hyper-V スイッチに接続され、ユーザー指定 (``--subnet``) の IP プレフィックスから IP アドレスが割り当てられます。 コンテナー ホストからコンテナー エンドポイントへのポート フォワーディングおよびマッピングがサポートされています。
+  > Windows 10 Creators Update がインストールされている場合は、複数の NAT ネットワークがサポートされます。
+
+- **transparent**: 'transparent' ドライバーを使用して作成されたネットワークに接続されているコンテナーは、*外部* Hyper-V スイッチを経由して物理ネットワークに直接接続されます。 物理ネットワークの IP は、静的に割り当てることも (ユーザー指定の ``--subnet`` オプションが必要)、外部の DHCP サーバーを使用して動的に割り当てることもできます。 
+
+- **overlay**: Docker エンジンが [swarm モード](../manage-containers/swarm-mode.md)で動作している場合、オーバーレイ ネットワークに接続されたコンテナーは、複数のコンテナー ホストの間で、同じネットワークに接続された他のコンテナーと通信できます。 Swarm クラスター上の各オーバーレイ ネットワークの作成には、プライベート IP プレフィックスによって定義される独自の IP サブネットが使用されます。 overlay ネットワーク ドライバーでは、VXLAN カプセル化が使用されます。 **適切なネットワーク コントロール プレーン (Flannel または OVN) の使用時に、Kubernetes で使用できます。**
+  > 注意: オーバーレイ ネットワークを作成する場合は、これらの*必須* [前提条件](https://docs.docker.com/network/overlay/#operations-for-all-overlay-networks)を満たす環境が必要です。
+
+  > 注意: Windows Server 2016 ([KB4015217](https://support.microsoft.com/en-us/help/4015217/windows-10-update-kb4015217) を適用) または Windows 10 Creators Update 以降のリリースが必要です。
+
+- **l2bridge**: 'l2bridge' ドライバーで作成されたネットワークに接続されているコンテナーは、コンテナー ホストと同じ IP サブネットに含まれ、*外部* Hyper-V スイッチを経由して物理ネットワークに接続されます。 IP アドレスは、コンテナー ホストと同じプレフィックスから静的に割り当てる必要があります。 ホスト上のすべてのコンテナー エンドポイントは、入口と出口でのレイヤー 2 のアドレス変換 (MAC の再書き込み) 操作のためにホストと同じ MAC アドレスとなります。
+  > 注意: 仮想化シナリオでこのモードが使用される (コンテナー ホストが VM である) 場合、_MAC アドレスのスプーフィングが必要になります_。
+  
+  > 注意: Windows Server 2016 または Windows 10 Creators Update 以降のリリースが必要です。
+
+- **l2tunnel**: l2bridge と同様ですが、_このドライバーは Microsoft Cloud Stack のみで使用します_. コンテナーからのパケットは、SDN ポリシーが適用されている仮想化ホストに送信されます。
+
+> Microsoft SDN スタックを使用して既存テナントの仮想ネットワークをコンテナー エンドポイントに接続する方法については、「[Attaching Containers to a Virtual Network](https://technet.microsoft.com/en-us/windows-server-docs/networking/sdn/manage/connect-container-endpoints-to-a-tenant-virtual-network)」 (仮想ネットワークにコンテナーを接続する) をご覧ください。
+
+> Windows 10 Creators Update (以降) には、実行中のコンテナーに新しいコンテナー エンドポイントを追加 (ホットアド) するためのプラットフォーム サポートが導入されています。
+
+
+## <a name="network-topologies-and-ipam"></a>ネットワーク トポロジと IPAM
+次の表は、各ネットワーク ドライバーの内部 (コンテナー間) および外部接続で、ネットワーク接続がどのように提供されるかを示しています。
+
+### <a name="networking-modes--docker-drivers"></a>ネットワーク モード/Docker ドライバー
+
+  | Docker Windows ネットワーク ドライバー | 一般的な用途 | コンテナー間 (単一ノード) | コンテナーから外部 (単一ノード + 複数ノード) | コンテナー間 (複数ノード) |
+  |-------------------------------|:------------:|:------------------------------------:|:------------------------------------------------:|:-----------------------------------:|
+  | **NAT (既定)** | 開発者向け | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li> クロス サブネット: WS2016 ではサポートされていません (NAT 内部プレフィックスが 1 つのみ)</li></ul> | 管理 vNIC (WinNAT にバインド) を経由してルーティング | 直接サポート外: ホストを経由してポートを公開する必要があります |
+  | **透過** | 開発者または小規模な開発向け | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li>クロス サブネット: コンテナー ホストを経由してルーティング</li></ul> | (物理) ネットワーク アダプターへの直接アクセスでコンテナー ホストを経由してルーティング | (物理) ネットワーク アダプターへの直接アクセスでコンテナー ホストを経由してルーティング |
+  | **オーバーレイ** | Docker Swarm、マルチノードに必要 | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li>クロス サブネット: ネットワーク トラフィックをカプセル化し、Mgmt vNIC を経由してルーティング</li></ul> | 直接サポート外: NAT ネットワークに接続されている 2 番目のコンテナー エンドポイントが必要です | 同一/クロス サブネット: VXLAN を使用してネットワーク トラフィックをカプセル化し、Mgmt vNIC を経由してルーティング |
+  | **L2Bridge** | Kubernetes および Microsoft SDN に使用 | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li> クロス サブネット: コンテナーの MAC アドレスを入口と出口で書き換えてルーティング</li></ul> | コンテナーの MAC アドレスを入口と出口で書き換え | <ul><li>同一サブネット: ブリッジ接続</li><li>クロス サブネット: WS2016 ではサポートされていません</li></ul> |
+  | **L2Tunnel**| Azure のみ | 同一/クロス サブネット: ポリシーが適用される物理ホストの Hyper-V 仮想スイッチに折り返し | トラフィックは Azure の仮想ネットワーク ゲートウェイを経由する必要があります | 同一/クロス サブネット: ポリシーが適用される物理ホストの Hyper-V 仮想スイッチに折り返し |
+
+### <a name="ipam"></a>IPAM 
+各ネットワーク ドライバーで、IP アドレスの割り当ては異なります。 Windows では、ホスト ネットワーク サービス (HNS) を使用して nat ドライバーに IPAM を提供し、Docker の Swarm モード (内部 KVS) と連携して overlay に IPAM を提供します。 その他のすべてのネットワーク ドライバーでは、外部の IPAM が使用されます。
+
+| ネットワーク モード/ドライバー | IPAM |
+| -------------------------|:----:|
+| NAT | 内部 NAT サブネット プレフィックスからホスト ネットワーク サービス (HNS) による動的 IP 割り当て/設定 |
+| 透過 | コンテナー ホストのネットワーク プレフィックス内で IP アドレスから静的または動的 (外部 DHCP サーバーを使用して) IP 割り当て/設定 |
+| オーバーレイ | Docker エンジン Swarm モードで管理されるプレフィックスからの動的 IP 割り当てと HNS による設定 |
+| L2Bridge | コンテナー ホストのネットワーク プレフィックス内で IP アドレスから静的 IP 割り当て/設定 (HNS プラグインを使用した設定も可能) |
+| L2Tunnel | Azure のみ: プラグインから動的 IP 割り当て/設定 |
+
+### <a name="service-discovery"></a>サービス検出
+サービスの検出は、特定の Windows ネットワーク ドライバーについてのみサポートされます。
+
+|  | ローカル サービス検出  | グローバル サービス検出 |
+| :---: | :---------------     |  :---                |
+| nat | 使用可能 | NA |  
+| overlay | 使用可能 | Docker EE で使用可能 |
+| transparent | 使用不可 | 使用不可 |
+| l2bridge | 使用不可 | Kube-DNS で使用可能 |

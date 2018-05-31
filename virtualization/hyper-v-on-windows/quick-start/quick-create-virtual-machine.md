@@ -1,57 +1,89 @@
 ---
-title: "Hyper-V による仮想マシンの作成"
-description: "Windows 10 Creators Update で Hyper-V を使用して新しい仮想マシンを作成する"
-keywords: windows 10, hyper-v
-author: aoatkinson
-ms.date: 04/07/2017
+title: Hyper-V による仮想マシンの作成
+description: Windows 10 Creators Update で Hyper-V を使用して新しい仮想マシンを作成する
+keywords: Windows 10, Hyper-V, 仮想マシン
+author: scooley
+ms.date: 04/07/2018
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: f1e75efa-8745-4389-b8dc-91ca931fe5ae
-ms.openlocfilehash: 1b2b778e882b413d29f52adf3e46e12e8aceede1
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: 5a131d1dff2410f11ab57fe9e709f34e25ef93ac
+ms.sourcegitcommit: 7c3af076eb8bad98e1c3de0af63dacd842efcfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "1844031"
 ---
-# Hyper-V による仮想マシンの作成
+# <a name="create-a-virtual-machine-with-hyper-v"></a>Hyper-V による仮想マシンの作成
 
-仮想マシンを作成し、オペレーティング システムをインストールします。  
+仮想マシンを作成し、オペレーティング システムをインストールします。
 
-実行するオペレーティング システムの .iso ファイルが必要です。 このファイルがない場合は、[TechNet Evaluation Center](http://www.microsoft.com/en-us/evalcenter/) から Windows の評価版を取得します。
+Microsoft ではこれまでに仮想マシンを作成するための新しいツールの作成を行ってきたため、過去の 3 リリースで手順が大きく変わっています。
 
+適切な手順については、該当するオペレーティング システムを選択してください。
 
-> Windows 10 Creators Update では、新しい仮想マシンの作成を効率化する新しい**簡易作成**ツールが導入されました。  
-  Windows 10 Creators Update 以降を実行していない場合は、代わりに、仮想マシンの新規作成ウィザードを使用してこれらの手順に従います。  
-  [新しい仮想マシンを作成する](create-virtual-machine.md)  
-  [仮想ネットワークを作成する](connect-to-network.md)
+* [Windows 10 Fall Creators Update 以降](quick-create-virtual-machine.md#windows-10-fall-creators-update)
+* [Windows 10 Creators Update](quick-create-virtual-machine.md#windows-10-creators-update)
+* [Windows 10 Aniversary Update 以前](quick-create-virtual-machine.md#before-windows-10-creators-update)
 
 それでは始めましょう。
 
-![](media/quickcreatesteps_inked.jpg)
+## <a name="windows-10-fall-creators-update"></a>Windows 10 Fall Creators Update
 
-1. **Hyper-V マネージャーを開く**  
-  Windows キーを押して「Hyper-V マネージャー」と入力して Hyper-V マネージャーのアプリケーションを検索するか、スタート メニューのアプリケーションの一覧をスクロールして [Hyper-V マネージャー] を見つけます。
+Fall Creators Update ではクイック作成が拡張され、Hyper-V マネージャーから個別に起動できる仮想マシン ギャラリーが追加されています。
 
-2. **簡易作成を開く**  
-  Hyper-V マネージャーで、右側の **[操作]** メニューの **[簡易作成]** を選択します。
+Fall Creators Update で新しい仮想マシンを作成するには:
 
-3. **仮想マシンをカスタマイズする**
-  * (省略可能) 仮想マシンに名前を付けます。  
-    この名前は、Hyper-V が仮想マシンに使用する名前であり、仮想マシン内に展開されるゲスト オペレーティング システムに指定されるコンピューター名ではありません。
-  * 仮想マシンのインストール メディアを選択します。 .iso ファイルまたは .vhdx ファイルからインストールできます。  
+1. スタート メニューから [Hyper-V クイック作成] を開きます。
+
+    ![Windows のスタート メニューのクイック作成ギャラリー](media/quick-create-start-menu.png)
+
+1. オペレーティング システムを選択するか、ローカル インストール ソースを使用して独自のイメージを選択します。
+
+    ![ギャラリー ビュー](media/vmgallery.png)
+
+    1. 独自のイメージを使用して仮想マシンを作成する場合は、**[ローカル インストール ソース]** を選択します。
+    1. **[インストール元の変更]** を選択します。
+      ![ローカル インストール ソースを使用するためのボタン](media/change-source.png)
+    1. 新しいバーチャル マシンに変換する .iso または .vhdx を選択します。
+    1. イメージが Linux イメージの場合は、セキュア ブート オプションを選択解除します。
+      ![ローカル インストール ソースを使用するためのボタン](media/toggle-secure-boot.png)
+
+1. [仮想マシンの作成] を選択します。
+
+これで完了です。  残りの操作はクイック作成によって行われます。
+
+## <a name="windows-10-creators-update"></a>Windows 10 Creators Update
+
+![クイック作成 UI のスクリーン ショット](media/quickcreatesteps_inked.jpg)
+
+1. スタート メニューから [Hyper-V マネージャー] を開きます。
+
+1. Hyper-V マネージャーで、右側の **[操作]** メニューの **[クイック作成]** を選択します。
+
+1. 仮想マシンをカスタマイズします。
+
+    * (オプション) 仮想マシンに名前を付けます。
+    * 仮想マシンのインストール メディアを選択します。 .iso ファイルまたは .vhdx ファイルからインストールできます。
     仮想マシンに Windows をインストールする場合は、Windows セキュア ブートを有効にすることができます。 それ以外の場合は、オフのままにします。
-  * ネットワークを設定します。  
-    既存の仮想スイッチがある場合は、ネットワークのドロップダウンで選択できます。 既存のスイッチがない場合は、自動でネットワークを設定するボタンが表示され、これにより外部スイッチが自動的に構成されます。
+    * ネットワークを設定します。
+    既存の仮想スイッチがある場合は、ネットワークのドロップダウンで選択できます。 既存のスイッチがない場合は、自動でネットワークを設定するボタンが表示され、これにより仮想ネットワークが自動的に構成されます。
 
-4. **仮想マシンに接続する**  
-  **[接続]** を選択して仮想マシン接続を開始し、仮想マシンを起動します。     
-  設定の編集について心配する必要はありません。いつでも前の手順に戻って設定を変更できます。  
-  
+1. **[作成]** をクリックして、仮想マシンの作成を開始します。 設定の編集について心配する必要はありません。いつでも前の手順に戻って設定を変更できます。
+
     "CD または DVD からブートするには、いずれかのキーを押してください" というメッセージが表示される場合があります。 指示に従って操作してください。  CD からインストールしていることが認識されています。
 
-これで、新しい仮想マシンが作成されました。  オペレーティング システムをインストールする準備が整いました。  
+これで、新しい仮想マシンが作成されました。  オペレーティング システムをインストールする準備が整いました。
 
-仮想マシンは次のように表示されます。  
-![](media/OSDeploy_upd.png) 
+仮想マシンは次のように表示されます。
 
-> **注:** ボリューム ライセンス版の Windows を実行していない限り、仮想マシン内で実行されている Windows のライセンスを区別する必要があります。 仮想マシンのオペレーティング システムは、ホストのオペレーティング システムに依存しません。
+![仮想マシンの開始画面](media/OSDeploy_upd.png)
+
+> **注意:** ボリューム ライセンス版の Windows を実行している場合を除き、仮想マシン内で実行する Windows については、別途ライセンスが必要です。 仮想マシンのオペレーティング システムは、ホストのオペレーティング システムから独立しています。
+
+## <a name="before-windows-10-creators-update"></a>Windows 10 Creators Update 以前
+
+Windows 10 Creators Update 以降を実行していない場合は、仮想マシンの新規作成ウィザードを使用して以下の手順に従います。
+
+1. [仮想ネットワークを作成する](connect-to-network.md)
+1. [新しい仮想マシンを作成する](create-virtual-machine.md)

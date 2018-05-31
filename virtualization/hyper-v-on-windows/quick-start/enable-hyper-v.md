@@ -1,24 +1,25 @@
 ---
-title: "Windows 10 での Hyper-V の有効化"
-description: "Windows 10 上に Hyper-V をインストールする"
-keywords: "windows 10、hyper-v"
+title: Windows 10 での Hyper-V の有効化
+description: Windows 10 上に Hyper-V をインストールする
+keywords: windows 10、hyper-v
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
-ms.openlocfilehash: 034792fb65d890588f1c7edc89a075deab12628d
-ms.sourcegitcommit: b7f37f3d385042ca8455b3e7d1fa887ac26989de
+ms.openlocfilehash: 39499afc93b3329810db30cd32544a41ad138583
+ms.sourcegitcommit: 64c8d5d6f068d385b94db4637259bb3852666efe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
+ms.locfileid: "1797658"
 ---
 # <a name="install-hyper-v-on-windows-10"></a>Windows 10 上に Hyper-V をインストールする
 
 Windows 10 上に仮想マシンを作成するには、Hyper-V を有効にします。  
 Hyper-V はさまざまな方法で有効にすることができます。たとえば、Windows 10 のコントロール パネルや PowerShell (私のお気に入りの方法です) を使用したり、展開イメージのサービスと管理 (DISM) ツールを使用する方法などがあります。 このドキュメントでは、それぞれの方法について説明します。
 
-> **注:** Hyper-V はオプション機能として Windows に組み込まれています。Hyper-V のダウンロードやインストール可能なコンポーネントはありません。 
+> **注意:** Hyper-V はオプション機能として Windows に組み込まれています。Hyper-V を単体でダウンロードすることはできません。
 
 ## <a name="check-requirements"></a>要件の確認
 
@@ -27,57 +28,56 @@ Hyper-V はさまざまな方法で有効にすることができます。たと
 * VM モニター モード拡張機能 (Intel CPU の VT-c) の CPU サポート
 * 最小 4 GB のメモリ。
 
-Hyper-V ロールは、Windows 10 Home にはインストール**できません**。  
+Hyper-V ロールは、Windows 10 Home にはインストール**できません**。
+
 **[設定]** > **[更新とセキュリティ]** > **[ライセンス認証]** の順に移動して、Windows 10 Home エディションを Windows 10 Professional にアップグレードしてください。
 
 詳しい情報とトラブルシューティングについては、「[Windows 10 Hyper-V のシステム要件](../reference/hyper-v-requirements.md)」をご覧ください。
 
-
-## <a name="install-hyper-v"></a>Hyper-V をインストールする 
-Hyper-V はオプション機能として Windows に組み込まれています。Hyper-V のダウンロードやインストール可能なコンポーネントはありません。  組み込まれている Hyper-V ロールを有効にするには、いくつかの方法があります。
-
-### <a name="enable-hyper-v-using-powershell"></a>PowerShell を使用して Hyper-V を有効にする
+## <a name="enable-hyper-v-using-powershell"></a>PowerShell を使用して Hyper-V を有効にする
 
 1. 管理者として PowerShell コンソールを開きます。
 
 2. 次のコマンドを実行します。
+
   ```powershell
   Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-  ```  
+  ```
 
-  コマンドが見つからなかった場合は、管理者として PowerShell を実行していることを確認してください。  
+  コマンドが見つからなかった場合は、管理者として PowerShell を実行していることを確認してください。
 
-インストールが完了すると、コンピューターを再起動する必要があります。  
+インストールが完了したら、再起動します。
 
-### <a name="enable-hyper-v-with-cmd-and-dism"></a>CMD と DISM を使用して Hyper-V を有効にする
+## <a name="enable-hyper-v-with-cmd-and-dism"></a>CMD と DISM を使用して Hyper-V を有効にする
 
-展開イメージのサービスと管理 (DISM) ツール を使用して、Windows と Windows イメージを構成できます。  さまざまなアプリケーションがありますが、DISM では、オペレーティング システムの実行中に Windows の機能を有効にすることができます。  
+展開イメージのサービスと管理 (DISM) ツール を使用して、Windows と Windows イメージを構成できます。  さまざまなアプリケーションがありますが、DISM では、オペレーティング システムの実行中に Windows の機能を有効にすることができます。
 
 DISM を使用して Hyper-V ロールを有効にするには:
+
 1. 管理者として PowerShell または CMD セッションを開きます。
 
-2. 次のコマンドを入力します。  
+1. 次のコマンドを入力します。
+
   ```powershell
   DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
-  ```  
-  ![](media/dism_upd.png)
+  ```
+
+  ![Hyper-V を有効にしているコンソール ウィンドウ。](media/dism_upd.png)
 
 DISM について詳しくは、[DISM のテクニカル リファレンス](https://technet.microsoft.com/en-us/library/hh824821.aspx)をご覧ください。
 
-### <a name="manually-enable-the-hyper-v-role"></a>手動で Hyper-V ロールをインストールする
+## <a name="enable-the-hyper-v-role-through-settings"></a>[設定] で Hyper-V ロールを有効にする
 
 1. Windows ボタンを右クリックし、[アプリと機能] を選択します。
 
 2. **[Windows の機能の有効化または無効化]** を選択します。
 
-3. **[Hyper-V]** を選択して、**[OK]** をクリックします。  
+3. **[Hyper-V]** を選択して、**[OK]** をクリックします。
 
-![](media/enable_role_upd.png)
+![Windows のプログラムと機能が示されたダイアログ ボックス](media/enable_role_upd.png)
 
-インストールが完了すると、コンピューターを再起動するメッセージが表示されます。
-
-![](media/restart_upd.png)
-
+インストールが完了すると、コンピューターの再起動を促すメッセージが表示されます。
 
 ## <a name="make-virtual-machines"></a>仮想マシンを作成する
+
 [最初の仮想マシンを作成する](quick-create-virtual-machine.md)

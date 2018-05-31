@@ -1,17 +1,18 @@
 ---
-title: "独自の統合サービスを作成する"
-description: "Windows 10 の統合サービス。"
+title: 独自の統合サービスを作成する
+description: Windows 10 の統合サービス。
 keywords: windows 10, hyper-v, HVSocket, AF_HYPERV
 author: scooley
 ms.date: 04/07/2017
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 1ef8f18c-3d76-4c06-87e4-11d8d4e31aea
-ms.openlocfilehash: 01b9c2febb9f098c7981599894e488b946857900
-ms.sourcegitcommit: 5fe5c30acfc4d5edb28633d30669f616fcc5d59a
+ms.openlocfilehash: 966ca3ff267e03e8c380391281c8dde723e4b1dd
+ms.sourcegitcommit: f1a08252087e72791ac4d12517c02e39f41c33f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
+ms.locfileid: "1723638"
 ---
 # <a name="make-your-own-integration-services"></a>独自の統合サービスを作成する
 
@@ -27,6 +28,11 @@ Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレ�
 * Windows 10 以降
 * Windows Server 2016 以降
 * Linux ゲストと Linux 統合サービス (「[Supported Linux and FreeBSD virtual machines for Hyper-V on Windows (Windows 上の Hyper-V 向けにサポートされる Linux と FreeBSD 仮想マシン)](https://technet.microsoft.com/library/dn531030.aspx)」をご覧ください)
+> **注意:** サポートされる Linux ゲストでは、以下のコマンドに対応するカーネル サポートが必要です。
+> ```bash
+> CONFIG_VSOCKET=y
+> CONFIG_HYPERV_VSOCKETS=y
+> ```
 
 **機能と制限事項**
 * カーネル モードまたはユーザー モード操作をサポート
@@ -90,10 +96,22 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
         ElementName REG_SZ  Your Service Friendly Name
 ```
 
-> **ヒント:** PowerShell で GUID を生成し、それをクリップボードにコピーするには、次を実行します。
-``` PowerShell
-(New-Guid).Guid | clip.exe
-```
+> **注意:** Linux ゲストのサービス GUID には、GUID ではなく `svm_cid` および `svm_port` によるアドレス指定が行われる VSOCK プロトコルが使用されます。 このような Windows との不整合を埋め合わせるために、よく知られている GUID がホスト上のサービス テンプレートとして使用され、ゲスト内のポートに変換されます。 サービス GUID をカスタマイズするには、先頭の "00000000" を必要なポート番号に変更します。 例: "00000ac9" は、ポート 2761 です。
+> ```C++
+> // Hyper-V Socket Linux guest VSOCK template GUID
+> struct __declspec(uuid("00000000-facb-11e6-bd58-64006a7986d3")) VSockTemplate{};
+>
+>  /*
+>   * GUID example = __uuidof(VSockTemplate);
+>   * example.Data1 = 2761; // 0x00000AC9
+>   */
+> ```
+>
+
+> **ヒント:** PowerShell で GUID を生成し、それをクリップボードにコピーするには、次のコマンドを実行します。
+>``` PowerShell
+>(New-Guid).Guid | clip.exe
+>```
 
 ## <a name="create-a-hyper-v-socket"></a>Hyper-V ソケットの作成
 
@@ -104,24 +122,31 @@ https://msdn.microsoft.com/en-us/library/windows/desktop/ms740506(v=vs.85).aspx
 )を示します。
 
 ``` C
+// Windows
 SOCKET WSAAPI socket(
   _In_ int af,
   _In_ int type,
   _In_ int protocol
 );
+
+// Linux guest
+int socket(int domain, int type, int protocol);
 ```
 
 Hyper-V ソケットの場合:
-* アドレス ファミリ - `AF_HYPERV`
-* 種類 - `SOCK_STREAM`
-* プロトコル - `HV_PROTOCOL_RAW`
+* アドレス ファミリ - `AF_HYPERV` (Windows) または `AF_VSOCK` (Linux ゲスト)
+* タイプ - `SOCK_STREAM`
+* プロトコル - `HV_PROTOCOL_RAW` (Windows) または `0` (Linux ゲスト)
 
 
-これは宣言/インスタンスの例です。
+宣言/インスタンスの例を次に示します。
 ``` C
+// Windows
 SOCKET sock = socket(AF_HYPERV, SOCK_STREAM, HV_PROTOCOL_RAW);
-```
 
+// Linux guest
+int sock = socket(AF_VSOCK, SOCK_STREAM, 0);
+```
 
 ## <a name="bind-to-a-hyper-v-socket"></a>Hyper-V ソケットへのバインド
 
@@ -130,26 +155,45 @@ SOCKET sock = socket(AF_HYPERV, SOCK_STREAM, HV_PROTOCOL_RAW);
 便宜上、下に関数定義をコピーしていますが、バインドの詳細については[こちら](https://msdn.microsoft.com/en-us/library/windows/desktop/ms737550.aspx)をご覧ください。
 
 ``` C
+// Windows
 int bind(
   _In_ SOCKET                s,
   _In_ const struct sockaddr *name,
   _In_ int                   namelen
 );
+
+// Linux guest
+int bind(int sockfd, const struct sockaddr *addr,
+         socklen_t addrlen);
 ```
 
-ホスト マシンの IP アドレスとそのホスト上のポート番号から構成される標準インターネット プロトコル アドレス ファミリ (`AF_INET`) のソケット アドレス (sockaddr) と対照的に、`AF_HYPERV` のソケット アドレスでは、仮想マシンの ID と上に定義したアプリケーション ID を使用して、接続を確立します。
+ホスト マシンの IP アドレスとそのホスト上のポート番号から構成される標準インターネット プロトコル アドレス ファミリ (`AF_INET`) のソケット アドレス (sockaddr) と対照的に、`AF_HYPERV` のソケット アドレスでは、仮想マシンの ID と上に定義したアプリケーション ID を使用して、接続を確立します。 Linux ゲストからのバインドの場合、`AF_VSOCK` では `svm_cid` と `svm_port` が使用されます。
 
 Hyper-V ソケットは、ネットワーク スタック、TCP/IP、DNS などに依存しないため、ソケット エンドポイントには、引き続きあいまいに接続を記述する、ホスト名ではない非 IP 形式が必要です。
 
 Hyper-V ソケットのソケット アドレスの定義を次に示します。
 
 ``` C
+// Windows
 struct SOCKADDR_HV
 {
      ADDRESS_FAMILY Family;
      USHORT Reserved;
      GUID VmId;
      GUID ServiceId;
+};
+
+// Linux guest
+// See include/uapi/linux/vm_sockets.h for more information.
+struct sockaddr_vm {
+    __kernel_sa_family_t svm_family;
+    unsigned short svm_reserved1;
+    unsigned int svm_port;
+    unsigned int svm_cid;
+    unsigned char svm_zero[sizeof(struct sockaddr) -
+                   sizeof(sa_family_t) -
+                   sizeof(unsigned short) -
+                   sizeof(unsigned int) - sizeof(unsigned int)];
 };
 ```
 
