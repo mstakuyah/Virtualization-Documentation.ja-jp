@@ -1,13 +1,14 @@
 ---
-title: "Windows Server コンテナー記憶域"
-description: "Windows Server コンテナーがホストとその他の種類の記憶域を使用する方法"
-keywords: "コンテナー, ボリューム, 記憶域, マウント, bindmount"
+title: Windows Server コンテナー記憶域
+description: Windows Server コンテナーがホストとその他の種類の記憶域を使用する方法
+keywords: コンテナー, ボリューム, 記憶域, マウント, bindmount
 author: patricklang
-ms.openlocfilehash: a06b2f3ac2249f0f315e027ec43661419a76a5e9
-ms.sourcegitcommit: 0ed73bc969eddf41126212d88b894327b26aa420
+ms.openlocfilehash: ba30c436ddd61ec71b2c98d1a8cb24f97863d872
+ms.sourcegitcommit: 6c8c70c8231943dda3c5af38e5530ea3dd91fc82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "1934536"
 ---
 # <a name="overview"></a>概要
 
@@ -21,7 +22,7 @@ ms.lasthandoff: 12/23/2017
 
 ### <a name="where-layers-are-stored-and-how-to-change-it"></a>レイヤーの保存場所と変更方法
 
-既定のインストールでは、レイヤーが `C:\ProgramData\docker` に格納され、"image" ディレクトリおよび "windowsfilter" ディレクトリに分割されます。 レイヤーの保存場所は、「[Windows 上の Docker エンジン](docker/configure_docker_daemon.md)」の記載に従い、`docker-root` 構成を使用して変更できます。
+既定のインストールでは、レイヤーが `C:\ProgramData\docker` に格納され、"image" ディレクトリおよび "windowsfilter" ディレクトリに分割されます。 レイヤーの保存場所は、「[Windows 上の Docker エンジン](../manage-docker/configure_docker_daemon.md)」の記載に従い、`docker-root` 構成を使用して変更できます。
 
 > [!NOTE]
 > レイヤー記憶域は、NTFS のみでサポートされます。 ReFS はサポートされません。
