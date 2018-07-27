@@ -1,18 +1,19 @@
 ---
-title: "入れ子になった仮想化"
-description: "入れ子になった仮想化"
-keywords: "windows 10、hyper-v"
+title: 入れ子になった仮想化
+description: 入れ子になった仮想化
+keywords: windows 10、hyper-v
 author: johncslack
 ms.date: 12/18/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 68c65445-ce13-40c9-b516-57ded76c1b15
-ms.openlocfilehash: 82c8ba6b09b6d1bfde7217eeaf16cfb7967d4f62
-ms.sourcegitcommit: 59541f11d481d8df341597bd73ce7fac14f442ee
+ms.openlocfilehash: 0b268f796dacd3de60cb5879b1c9c5414b8bdd49
+ms.sourcegitcommit: 9653a3f7451011426f8af934431bb14dbcb30a62
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "2082935"
 ---
 # <a name="run-hyper-v-in-a-virtual-machine-with-nested-virtualization"></a>入れ子になった仮想化による仮想マシンでの Hyper-V の実行
 
@@ -58,7 +59,7 @@ Hyper-V が仮想マシンの中で実行されているときに、仮想マシ
 2. NAT ネットワーク
 
 ### <a name="mac-address-spoofing"></a>MAC アドレスのスプーフィング
-ネットワーク パケットを 2 つの仮想スイッチを通じてルーティングするには、MAC アドレスのスプーフィングを仮想スイッチの最初のレベルで有効にする必要があります。 この処理は、次の PowerShell コマンドを使って完了できます。
+2 つの仮想スイッチを通じてネットワーク パケットをルーティングするには、仮想スイッチの最初の (L1) レベルで MAC アドレスのスプーフィングを有効にする必要があります。 この処理は、次の PowerShell コマンドを使って完了できます。
 
 ``` PowerShell
 Get-VMNetworkAdapter -VMName <VMName> | Set-VMNetworkAdapter -MacAddressSpoofing On

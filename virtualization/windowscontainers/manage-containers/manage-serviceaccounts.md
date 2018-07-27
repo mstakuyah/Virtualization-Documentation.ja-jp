@@ -1,24 +1,25 @@
 ---
-title: "Windows コンテナーの Active Directory サービス アカウント"
-description: "Windows コンテナーの Active Directory サービス アカウント"
-keywords: "docker, コンテナー, active directory"
+title: Windows コンテナーの Active Directory サービス アカウント
+description: Windows コンテナーの Active Directory サービス アカウント
+keywords: docker, コンテナー, active directory
 author: PatrickLang
 ms.date: 11/04/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 1ad04198c74f4566bd37b4ba884034aa5cd7c7ef
-ms.sourcegitcommit: ea6edc5bac5705a19d48ffdf1ba676c940c2eb67
+ms.openlocfilehash: 27317dbf5ba5386a3bd555c53c781aac2fc110a7
+ms.sourcegitcommit: edc153ffef01094c2324a0da2f9a301b31015a58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "1912669"
 ---
 # <a name="active-directory-service-accounts-for-windows-containers"></a>Windows コンテナーの Active Directory サービス アカウント
 
 ユーザーおよびその他のサービスは、データをセキュリティで保護し続け、不正な使用を回避できるように、アプリケーションとサービスに対して認証された接続を作成する必要があります。 Windows Active Directory (AD) ドメインは、パスワードと証明書認証の両方をネイティブでサポートします。 Windows ドメインに参加しているホストでアプリケーションまたはサービスをビルドするときに、ローカル システムまたはネットワーク サービスとして実行する場合、既定では、そのアプリケーションまたはサービスはホストの ID を使用します。 それ以外の場合は、代わりに別の AD アカウントを認証用に構成する可能性があります。
 
-Windows コンテナーをドメインに参加させることはできませんが、デバイスが領域に参加する場合と同様に、Active Directory ドメインの ID を利用することもできます。 Windows Server 2012 R2 のドメイン コントローラーでは、サービスによって共有されるように設計された、グループ管理サービス アカウント (gMSA) という新しいドメイン アカウントを導入しました。 グループ管理サービス アカウント (gMSA) を使用すると、Windows コンテナー自体およびホストするサービスは、ドメイン ID として特定の gMSA を使用するように構成することができます。 ローカル システムまたはネットワーク サービスとして実行しているサービスは、現在、ドメインに参加しているホストの ID を使用しているのと同じように、Windows コンテナーの ID を使用します。 誤って公開される可能性があるコンテナー イメージに、パスワードまたは証明書の秘密キーを保存することはありません。また、コンテナーは、保存されたパスワードや証明書を変更するために再構築することなく、開発環境、テスト環境、および運用環境に再配置することができます。 
+Windows コンテナーをドメインに参加させることはできませんが、デバイスが領域に参加する場合と同様に、Active Directory ドメインの ID を利用することもできます。 Windows Server 2012 のドメイン コントローラーでは、各サービスでの共有用に設計された、グループ管理サービス アカウント (gMSA) という新しいアカウントが導入されています。 グループ管理サービス アカウント (gMSA) を使用すると、Windows コンテナー自体およびホスト対象のサービスは、ドメイン ID として特定の gMSA を使用するように構成することができます。 ローカル システムまたはネットワーク サービスとして実行しているサービスは、現在、ドメインに参加しているホストの ID を使用しているのと同じように、Windows コンテナーの ID を使用します。 誤って公開される可能性があるコンテナー イメージに、パスワードまたは証明書の秘密キーを保存することはありません。また、コンテナーは、保存されたパスワードや証明書を変更するために再構築することなく、開発環境、テスト環境、および運用環境に再配置することができます。 
 
 
 # <a name="glossary--references"></a>用語集と参照
@@ -41,7 +42,7 @@ Windows コンテナーをドメインに参加させることはできません
 
 Windows コンテナーは同様の手順に従います。
 
-1. gMSA を作成します。 既定では、ドメイン管理者またはアカウント オペレーターが、この操作を行う必要があります。 それ以外の方法では、gMSA を使用するサービスを管理する管理者に、gMSA の作成および管理を行う権限を委任することもできます。 「[gMSA の概要](https://technet.microsoft.com/en-us/library/jj128431(v=ws.11).aspx)」をご覧ください
+1. gMSA を作成します。 既定では、ドメイン管理者またはアカウント オペレーターが、この操作を行う必要があります。 それ以外の方法として、gMSA を使用するサービスを管理する管理者に、gMSA の作成および管理を行う権限を委任することもできます。 ドメイン内には Windows Server 2012 以降のドメイン コントローラーが 1 台以上必要になりますが、特定のドメイン機能レベルの使用に関する要件はありません。 [gMSA の概要](https://technet.microsoft.com/en-us/library/jj128431(v=ws.11).aspx)をご覧ください
 2. gMSA にドメイン参加済みコンテナーのホスト アクセスを与えます
 3. データベースまたはファイル共有などの他のサービスで gMSA へのアクセスを許可します
 4. [windows-server-container-tools](https://github.com/Microsoft/Virtualization-Documentation/tree/live/windows-server-container-tools) から CredentialSpec PowerShell モジュールを使用して、gMSA を使用するために必要な設定を保存します

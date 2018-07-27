@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d9238389-7028-4015-8140-27253b156f37
-ms.openlocfilehash: 3a8af73c1cf7b2eb640be0dcaf77601ed5e96ce5
-ms.sourcegitcommit: 7c3af076eb8bad98e1c3de0af63dacd842efcfa3
+ms.openlocfilehash: 2235201a56a238cbd5a75b0a6cae64cdb26108a2
+ms.sourcegitcommit: edc153ffef01094c2324a0da2f9a301b31015a58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "1844325"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "1928379"
 ---
 # <a name="create-a-custom-virtual-machine-gallery"></a>カスタム仮想マシン ギャラリーの作成
 
@@ -103,7 +103,7 @@ Fall Creators Update ではクイック作成が拡張され、仮想マシン �
 
 仮想マシン (.iso または .vhdx)。
 
-以下 JSON テンプレートには、スターター項目とギャラリーのスキーマが含まれています。  これを VSCode で編集すると、自動的に IntelliSense が提供されます。
+以下の JSON テンプレートには、スターター項目とギャラリーのスキーマが含まれています。  これを VSCode で編集すると、自動的に IntelliSense が提供されます。
 
 [!code-json[main](../../../hyperv-tools/vmgallery/vm-gallery-template.json)]
 
@@ -133,8 +133,8 @@ Fall Creators Update ではクイック作成が拡張され、仮想マシン �
 1. **[Windows ログ]** -> **[Application]** に移動します。
 1. ソース VMCreate からのイベントを探します。
 
-## <a name="resources"></a>リソース
+## <a name="resources"></a>参考資料
 
-github の[リンク](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/live/hyperv-tools/vmgallery)には、少数のギャラリー スクリプトとヘルパーが掲載されています。
+GitHub の[リンク](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/live/hyperv-tools/vmgallery)には、少数のギャラリー スクリプトとヘルパーが掲載されています。
 
 ギャラリー エントリのサンプルについては、[こちら](https://go.microsoft.com/fwlink/?linkid=851584)をご覧ください。  これは、受信トレイ ギャラリーを定義する JSON ファイルです。
