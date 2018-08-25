@@ -1,18 +1,19 @@
 ---
-title: "Dockerfile コンテナーと Windows コンテナー"
-description: "Windows コンテナー用に Dockerfile を作成します。"
-keywords: "Docker, コンテナー"
+title: Dockerfile コンテナーと Windows コンテナー
+description: Windows コンテナー用に Dockerfile を作成します。
+keywords: Docker, コンテナー
 author: PatrickLang
 ms.date: 05/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
-ms.openlocfilehash: 206be6db413dd4fccef891b57ad4fcf73dd21d00
-ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
-ms.translationtype: HT
+ms.openlocfilehash: 4f42ee1c368638b521c33278c97f9ef1e7fdb8d0
+ms.sourcegitcommit: 2b5d806fc978e60fb71ce33ef491d4cfd6fc4456
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "2596060"
 ---
 # <a name="dockerfile-on-windows"></a>Windows 上の Dockerfile
 
@@ -60,11 +61,11 @@ RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 CMD [ "cmd" ]
 ```
 
-Windows 用 Dockerfile のその他の例については、「[Dockerfile for Windows Repository (Windows リポジトリの Dockerfile)] (https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples)」をご覧ください。
+Dockerfiles for Windows の他の例については、[Dockerfile for Windows リポジトリ] を参照してください (https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples)します。
 
 ## <a name="instructions"></a>手順
 
-Dockerfile 命令は、Docker エンジンに対して、コンテナー イメージを作成するために必要な手順を示します。 次の命令は、順番に、1 つずつ実行されます。 Dockerfile の基本的な命令の詳細を次に示します。 Dockerfile の命令の詳細な一覧については、[Docker.com の Dockerfile リファレンス] (https://docs.docker.com/engine/reference/builder/) を参照してください。
+Dockerfile 命令は、Docker エンジンに対して、コンテナー イメージを作成するために必要な手順を示します。 次の命令は、順番に、1 つずつ実行されます。 Dockerfile の基本的な命令の詳細を次に示します。 Dockerfile 手順の一覧については、[Docker.com で Dockerfile 参照] を参照してください (https://docs.docker.com/engine/reference/builder/)します。
 
 ### <a name="from"></a>FROM
 
@@ -97,7 +98,7 @@ RUN 命令の形式は、次のとおりです。
 ```
 # exec form
 
-RUN ["<executable", "<param 1>", "<param 2>"]
+RUN ["<executable>", "<param 1>", "<param 2>"]
 
 # shell form
 

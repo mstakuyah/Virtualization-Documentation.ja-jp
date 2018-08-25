@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 3fb36008d9304e6fbdd318c55e012ff3f096d58b
-ms.sourcegitcommit: ec186664e76d413d3bf75f2056d5acb556f4205d
-ms.translationtype: HT
+ms.openlocfilehash: bb3681a83991b3d4e24348b686146616d4a88c4f
+ms.sourcegitcommit: db508decd9bf6c0dce9952e1a86bf80f00d025eb
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "1876110"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "2315665"
 ---
 # <a name="windows-container-network-drivers"></a>Windows コンテナー ネットワーク ドライバー  
 
@@ -23,22 +23,23 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
   > Windows 10 Creators Update がインストールされている場合は、複数の NAT ネットワークがサポートされます。
 
 - **transparent**: 'transparent' ドライバーを使用して作成されたネットワークに接続されているコンテナーは、*外部* Hyper-V スイッチを経由して物理ネットワークに直接接続されます。 物理ネットワークの IP は、静的に割り当てることも (ユーザー指定の ``--subnet`` オプションが必要)、外部の DHCP サーバーを使用して動的に割り当てることもできます。 
+  > メモ: ために、要件の下にある、コンテナーのホストの透明なネットワーク経由で接続でサポートされていない Azure 仮想マシンします。
+  
+  > 必要があります。 このモードがを使用した場合の仮想化シナリオで (コンテナーのホストでは、VM) _MAC アドレスのスプーフィングが必要です_。
 
 - **overlay**: Docker エンジンが [swarm モード](../manage-containers/swarm-mode.md)で動作している場合、オーバーレイ ネットワークに接続されたコンテナーは、複数のコンテナー ホストの間で、同じネットワークに接続された他のコンテナーと通信できます。 Swarm クラスター上の各オーバーレイ ネットワークの作成には、プライベート IP プレフィックスによって定義される独自の IP サブネットが使用されます。 overlay ネットワーク ドライバーでは、VXLAN カプセル化が使用されます。 **適切なネットワーク コントロール プレーン (Flannel または OVN) の使用時に、Kubernetes で使用できます。**
-  > 注意: オーバーレイ ネットワークを作成する場合は、これらの*必須* [前提条件](https://docs.docker.com/network/overlay/#operations-for-all-overlay-networks)を満たす環境が必要です。
+  > 必要があります。 ことをその使用環境が次に*必要な*オーバーレイ ネットワークを作成するための[前提条件](https://docs.docker.com/network/overlay/#operations-for-all-overlay-networks)を満たすことを確認します。
 
-  > 注意: Windows Server 2016 ([KB4015217](https://support.microsoft.com/en-us/help/4015217/windows-10-update-kb4015217) を適用) または Windows 10 Creators Update 以降のリリースが必要です。
+  > 必要があります。 [KB4015217](https://support.microsoft.com/en-us/help/4015217/windows-10-update-kb4015217)、Windows 10 の作成者の更新、またはそれ以降のリリースの Windows Server 2016 が必要です。
 
 - **l2bridge**: 'l2bridge' ドライバーで作成されたネットワークに接続されているコンテナーは、コンテナー ホストと同じ IP サブネットに含まれ、*外部* Hyper-V スイッチを経由して物理ネットワークに接続されます。 IP アドレスは、コンテナー ホストと同じプレフィックスから静的に割り当てる必要があります。 ホスト上のすべてのコンテナー エンドポイントは、入口と出口でのレイヤー 2 のアドレス変換 (MAC の再書き込み) 操作のためにホストと同じ MAC アドレスとなります。
-  > 注意: 仮想化シナリオでこのモードが使用される (コンテナー ホストが VM である) 場合、_MAC アドレスのスプーフィングが必要になります_。
+  > 必要があります。 このモードがを使用した場合の仮想化シナリオで (コンテナーのホストでは、VM) _MAC アドレスのスプーフィングが必要です_。
   
-  > 注意: Windows Server 2016 または Windows 10 Creators Update 以降のリリースが必要です。
+  > 必要があります。 するには、Windows Server 2016、Windows 10 の作成者の更新、またはそれ以降のリリースが必要です。
 
 - **l2tunnel**: l2bridge と同様ですが、_このドライバーは Microsoft Cloud Stack のみで使用します_. コンテナーからのパケットは、SDN ポリシーが適用されている仮想化ホストに送信されます。
 
 > Microsoft SDN スタックを使用して既存テナントの仮想ネットワークをコンテナー エンドポイントに接続する方法については、「[Attaching Containers to a Virtual Network](https://technet.microsoft.com/en-us/windows-server-docs/networking/sdn/manage/connect-container-endpoints-to-a-tenant-virtual-network)」 (仮想ネットワークにコンテナーを接続する) をご覧ください。
-
-> Windows 10 Creators Update (以降) には、実行中のコンテナーに新しいコンテナー エンドポイントを追加 (ホットアド) するためのプラットフォーム サポートが導入されています。
 
 
 ## <a name="network-topologies-and-ipam"></a>ネットワーク トポロジと IPAM
