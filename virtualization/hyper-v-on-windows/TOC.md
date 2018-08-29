@@ -24,6 +24,7 @@
 ## [Hyper-V 統合サービス](reference/integration-services.md)
 ## [Hyper-V のアーキテクチャ](reference/hyper-v-architecture.md)
 ## [ハイパーバイザーの仕様](reference/tlfs.md)
+## [HYPER-V バックアップ方法](reference/HyperVBackupApproaches.md)
 
 # コミュニティとサポート
 ## [Hyper-V フォーラム](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home?forum=winserverhyperv)

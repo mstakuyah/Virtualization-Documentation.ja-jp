@@ -1,18 +1,19 @@
 ---
-title: "Windows Server に Windows コンテナーを展開する"
-description: "Windows Server に Windows コンテナーを展開する"
-keywords: "Docker, コンテナー"
+title: Windows Server に Windows コンテナーを展開する
+description: Windows Server に Windows コンテナーを展開する
+keywords: Docker, コンテナー
 author: enderb-ms
 ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
-ms.openlocfilehash: 48063c058b38258cd06b09081cefd77c95cf67e9
-ms.sourcegitcommit: b7f37f3d385042ca8455b3e7d1fa887ac26989de
-ms.translationtype: HT
+ms.openlocfilehash: b80dd0d231d0f9435b7cc1c5e2b35bbf5a59d793
+ms.sourcegitcommit: a287211a0ed9cac7ebfe1718e3a46f0f26fc8843
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "2748888"
 ---
 # <a name="container-host-deployment---windows-server"></a>コンテナー ホストの展開 - Windows Server
 
@@ -28,20 +29,47 @@ Docker をインストールするには、[OneGet プロバイダー PowerShell
 
 OneGet PowerShell モジュールをインストールします。
 
-```
+```PowerShell
 Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
 ```
 
 OneGet を使用して最新バージョンの Docker をインストールします。
 
-```
+```PowerShell
 Install-Package -Name docker -ProviderName DockerMsftProvider
 ```
 
 インストールが完了したら、コンピューターを再起動します。
 
-```
+```PowerShell
 Restart-Computer -Force
+```
+
+## <a name="install-a-specific-version-of-docker"></a>Docker の特定のバージョンをインストールします。
+
+発生している 2 つのチャンネル Docker EE の Windows Server を使用します。
+
+* `17.06` -Docker Enterprise Edition (Docker エンジン、ポインター UCP、DTR) を使っている場合は、このバージョンを使用します。 `17.06` 既定値です。
+* `18.03` -Docker EE エンジンがのみを使用している場合は、このバージョンを使用します。
+
+特定のバージョンをインストールするのには、使用、`RequiredVersion`フラグを設定します。
+
+```PowerShell
+Install-Package -Name docker -ProviderName DockerMsftProvider -Force -RequiredVersion 18.03
+```
+
+特定の Docker EE バージョンをインストールすると、更新プログラムをインストール済みの DockerMsftProvider モジュールが必要があります。 更新する場合。
+
+```PowerShell
+Update-Module DockerMsftProvider
+```
+
+## <a name="update-docker"></a>Docker を更新します。
+
+後でチャンネルに、以前のチャネルから Docker EE エンジンを更新する必要がある場合は両方を使用する`-Update`と`-RequiredVersion`フラグ。
+
+```PowerShell
+Install-Package -Name docker -ProviderName DockerMsftProvider -Update -Force -RequiredVersion 18.03
 ```
 
 ## <a name="install-base-container-images"></a>コンテナーの基本イメージのインストール
@@ -50,13 +78,13 @@ Windows コンテナーを使用する前に、基本イメージをインスト
 
 Windows Server Core 基本イメージをインストールするには、次のコマンドを実行します。
 
-```
+```PowerShell
 docker pull microsoft/windowsservercore
 ```
 
 Nano Server 基本イメージをインストールするには、次のコマンドを実行します。
 
-```
+```PowerShell
 docker pull microsoft/nanoserver
 ```
 
@@ -70,7 +98,7 @@ Hyper-V コンテナーを実行するには、Hyper-V ロールが必要にな�
 
 次のスクリプトでは、コンテナー ホストの入れ子になった仮想化を構成します。 このスクリプトは親 Hyper-V マシンで実行されます。 このスクリプトを実行する場合は、必ず、コンテナー ホストの仮想マシンを無効にしてください。
 
-```
+```PowerShell
 #replace with the virtual machine name
 $vm = "<virtual-machine>"
 
@@ -88,6 +116,6 @@ Get-VMNetworkAdapter -VMName $vm | Set-VMNetworkAdapter -MacAddressSpoofing On
 
 PowerShell を使用してHyper-V 機能を有効にするには、管理者特権の PowerShell セッションで次のコマンドを実行します。
 
-```
+```PowerShell
 Install-WindowsFeature hyper-v
 ```
