@@ -3,12 +3,12 @@ title: Windows Server コンテナー記憶域
 description: Windows Server コンテナーがホストとその他の種類の記憶域を使用する方法
 keywords: コンテナー, ボリューム, 記憶域, マウント, bindmount
 author: patricklang
-ms.openlocfilehash: 9dde3b2d7be10a8d3d393f8426976dfc5bdacfab
-ms.sourcegitcommit: 9653a3f7451011426f8af934431bb14dbcb30a62
-ms.translationtype: HT
+ms.openlocfilehash: 7d22a149da21a3367b82f2920c189ae9a4b1c173
+ms.sourcegitcommit: 2c22506a7fdbbbe5ab4138281fc9256a98b51efd
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "2082903"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "3386047"
 ---
 # <a name="overview"></a>概要
 
@@ -101,13 +101,18 @@ Windows Server Version 1709 では、"SMB グローバル マッピング" と�
 
 ##### <a name="configuration-steps"></a>構成手順
 
-1. コンテナー ホストで、リモート SMB 共有のグローバル マップを行います: $creds = Get-Credential New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G: このコマンドでは、リモート SMB サーバーでの認証用に資格情報が使用されます。 次に、リモート共有パスを G: ドライブ文字にマップします (その他の使用可能なドライブ文字も指定できます)。 このコンテナー ホストで作成されたコンテナーでは、自身のデータ ボリュームを G: ドライブ上のパスにマップできます。
+1. コンテナー ホストで、リモート一般法共有をグローバルにマップします。
+    ```
+    $creds = Get-Credential
+    New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:
+    ```
+    このコマンドは、資格情報をリモート一般法サーバーで認証するために使用されます。 次に、リモート共有パスを G: ドライブ文字にマップします (その他の使用可能なドライブ文字も指定できます)。 このコンテナー ホストで作成されたコンテナーでは、自身のデータ ボリュームを G: ドライブ上のパスにマップできます。
 
-> 注: コンテナー用に SMB グローバル マッピングを使用している場合、コンテナー ホストのユーザーはすべて、リモート共有にアクセスできます。 コンテナー ホストで実行されているすべてのアプリケーションにも、マッピングされたリモート共有へのアクセス権があります。
+    > 注: コンテナー用に SMB グローバル マッピングを使用している場合、コンテナー ホストのユーザーはすべて、リモート共有にアクセスできます。 コンテナー ホストで実行されているすべてのアプリケーションにも、マッピングされたリモート共有へのアクセス権があります。
 
 2. グローバルにマウントされた SMB 共有んいマップされたデータ ボリュームを使用してコンテナーを作成します: docker run -it --name demo -v g:\ContainerData:G:\AppData1 microsoft/windowsservercore:1709 cmd.exe
 
-コンテナー内で、G:\AppData1 はリモート共有の "ContainerData" ディレクトリにマップされます。 グローバルにマップされたリモート共有に格納されているデータは、コンテナー内のアプリケーションで使用できるようになります。 複数のコンテナーが同じコマンドを使用して、この共有データへの読み取り/書き込みアクセス権を獲得することもできます。
+    コンテナー内で、G:\AppData1 はリモート共有の "ContainerData" ディレクトリにマップされます。 グローバルにマップされたリモート共有に格納されているデータは、コンテナー内のアプリケーションで使用できるようになります。 複数のコンテナーが同じコマンドを使用して、この共有データへの読み取り/書き込みアクセス権を獲得することもできます。
 
 この SMB グローバル マッピングは、互換性のある SMB サーバー上で動作できる SMB クライアント側の機能によってサポートされます。次のようなものがあります。
 
