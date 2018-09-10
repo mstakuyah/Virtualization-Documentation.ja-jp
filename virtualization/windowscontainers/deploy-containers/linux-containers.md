@@ -2,7 +2,7 @@
 
 この機能では、[Hyper-V による分離](../manage-containers/hyperv-container.md)を使って、コンテナーをサポートするために十分な OS のみで Linux カーネルを実行します。 _Windows 10 Fall Creators Update_ と _Windows Server バージョン 1709_ 以降では、Windows と Hyper-V に変更が加えられて、このようなビルドに対応していますが、この機能を統合するには、Docker テクノロジの基盤であるオープン ソースの [Moby プロジェクト](https://www.github.com/moby/moby)に加え Linux カーネルでの作業も必要でした。 
 
-![Linux コンテナー のプレビュー ビデオ](https://sec.ch9.ms/ch9/1e5a/08ff93f2-987e-4f8d-8036-2570dcac1e5a/LinuxContainer.mp4)
+[!VIDEO https://sec.ch9.ms/ch9/1e5a/08ff93f2-987e-4f8d-8036-2570dcac1e5a/LinuxContainer.mp4]
 
 これを試みるには、次の前提条件を満たす必要があります。
 
