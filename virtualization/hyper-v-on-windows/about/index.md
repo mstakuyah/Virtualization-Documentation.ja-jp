@@ -7,12 +7,12 @@ ms.date: 06/25/2018
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: eb2b827c-4a6c-4327-9354-50d14fee7ed8
-ms.openlocfilehash: 95b7b25ffe47f22f2f00e5911195ebbea660a1c0
-ms.sourcegitcommit: d625ea23c3eea484d54fa7bec10ac545b0386379
-ms.translationtype: HT
+ms.openlocfilehash: d71c5d2ae3c8ff78e36cc54686b10b1dc745e0c3
+ms.sourcegitcommit: 5e5644bff6dba70e384db6c80787b3bbe7adb93c
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "2093679"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "4303908"
 ---
 # <a name="introduction-to-hyper-v-on-windows-10"></a>Windows 10 の Hyper-V の概要
 
@@ -36,9 +36,9 @@ Hyper-V は、具体的には、ハードウェアの仮想化を提供します
 
 ## <a name="system-requirements"></a>システム要件
 
-Hyper-V は、Windows 8 以降の 64 ビット版 Windows Professional、Enterprise、および Education で使用できます。  Hyper-V は Windows Home エディションでは使用できません。
+HYPER-V は 64 ビット バージョンの Windows 10 Pro、エンタープライズ、または教育機関で使用できます。 ホーム edition で使用できません。
 
-> **[設定]** > **[更新とセキュリティ]** > **[ライセンス認証]** の順に移動して、Windows 10 Home エディションを Windows 10 Professional にアップグレードしてください。 ここで Microsoft Store にアクセスして、アップグレードを購入できます。
+> Windows 10 Pro**の設定**を開くには、Windows 10 Home edition からアップグレード > **更新とセキュリティ** > **のアクティブ化**します。 ここで Microsoft Store にアクセスして、アップグレードを購入できます。
 
 ほとんどのコンピューターで Hyper-V を実行できますが、各仮想マシンはまったく別のオペレーティング システムになります。  一般的に、4 GB の RAM を搭載したコンピューターで 1 つまたは複数の仮想マシンを実行できますが、仮想マシンを追加する場合や、ゲーム、ビデオ編集、エンジニアリング設計などのソフトウェアをインストールして実行する場合は、より多くのリソースが必要になります。
 

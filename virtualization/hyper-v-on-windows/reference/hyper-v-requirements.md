@@ -1,31 +1,32 @@
 ---
-title: "Windows 10 Hyper-V のシステム要件"
-description: "Windows 10 Hyper-V のシステム要件"
-keywords: "windows 10、hyper-v"
+title: Windows 10 Hyper-V のシステム要件
+description: Windows 10 Hyper-V のシステム要件
+keywords: windows 10、hyper-v
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 6e5e6b01-7a9d-4123-8cc7-f986e10cd372
-ms.openlocfilehash: 8f7e609e1e7c23181bed64e45c9c6160e425d4b6
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
-ms.translationtype: HT
+ms.openlocfilehash: 51720a92cd04cfae25c7d0c010ee7b441073dd7e
+ms.sourcegitcommit: 5e5644bff6dba70e384db6c80787b3bbe7adb93c
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "4303918"
 ---
-# Windows 10 Hyper-V のシステム要件
+# <a name="windows-10-hyper-v-system-requirements"></a>Windows 10 Hyper-V のシステム要件
 
-Hyper-V は、Windows 8 以降の 64 ビット版 Windows Professional、Enterprise、および Education のエディションでのみ使用できます。  Hyper-V には、第 2 レベルのアドレス変換 (SLAT) 機能が必要です。SLAT とは、Intel と AMD が提供する最新世代の 64 ビット プロセッサに搭載されている機能です。
+HYPER-V は 64 ビット版の Windows 10 Pro、エンタープライズ、または教育機関で使用できます。 Hyper-V には、第 2 レベルのアドレス変換 (SLAT) 機能が必要です。SLAT とは、Intel と AMD が提供する最新世代の 64 ビット プロセッサに搭載されている機能です。
 
 4 GB の RAM を備えたホストでは基本的な仮想マシンを 3 つまたは 4 つ実行することができますが、仮想マシンが増えれば、より多くのリソースが必要となります。 一方で、物理ハードウェアの内容にもよりますが、32 のプロセッサと 512 GB の RAM を備えた大規模な仮想マシンを作成することもできます。
 
-## オペレーティング システムの要件
+## <a name="operating-system-requirements"></a>オペレーティング システムの要件
 
 Hyper-V のロールは、次のバージョンの Windows 10 で有効にすることができます。
 
 - Windows 10 Enterprise
-- Windows 10 Professional
+- Windows 10 Pro
 - Windows 10 Education
 
 Hyper-V のロールは、次のバージョンにはインストール**できません**。
@@ -34,9 +35,9 @@ Hyper-V のロールは、次のバージョンにはインストール**でき�
 - Windows 10 Mobile
 - Windows 10 Mobile Enterprise
 
->Windows 10 Home Edition は、Windows 10 Professional にアップグレードすることができます。 アップグレードを行うには、**[設定]** > **[更新とセキュリティ]** > **[アクティブ化]** の順に開きます。 ここでストアにアクセスして、アップグレードを購入することができます。
+>Windows 10 Pro には、Windows 10 Home edition をアップグレードすることができます。 アップグレードを行うには、**[設定]** > **[更新とセキュリティ]** > **[アクティブ化]** の順に開きます。 ここでストアにアクセスして、アップグレードを購入することができます。
 
-## ハードウェア要件
+## <a name="hardware-requirements"></a>ハードウェア要件
 
 このドキュメントでは、Hyper-V と互換性のあるハードウェアをすべて一覧していませんが、次のアイテムが必要です。
     
@@ -48,7 +49,7 @@ Hyper-V のロールは、次のバージョンにはインストール**でき�
 - 仮想化テクノロジ (マザーボードの製造元によってラベルが異なる場合があります)
 - ハードウェアによるデータ実行防止
 
-## ハードウェアの互換性の検証
+## <a name="verify-hardware-compatibility"></a>ハードウェアの互換性の検証
 
 互換性を検証するには、PowerShell またはコマンド プロンプト (cmd.exe) を開いて、「**systeminfo**」と入力します。 一覧表示された Hyper-V の要件がすべて **Yes** である場合、使用しているシステムで Hyper-V のロールを実行できます。 いずれかの項目が **No** を返す場合、このドキュメントに一覧された要件を確認して、可能な限り調整を行います。
 
