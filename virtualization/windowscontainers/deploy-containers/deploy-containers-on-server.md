@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
-ms.openlocfilehash: b80dd0d231d0f9435b7cc1c5e2b35bbf5a59d793
-ms.sourcegitcommit: a287211a0ed9cac7ebfe1718e3a46f0f26fc8843
+ms.openlocfilehash: 701112cac9c3f6d647fe5fb70309350fd0d07161
+ms.sourcegitcommit: d69ed13d505e96f514f456cdae0f93dab4fd3746
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "2748888"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "4340850"
 ---
 # <a name="container-host-deployment---windows-server"></a>コンテナー ホストの展開 - Windows Server
 
@@ -75,6 +75,24 @@ Install-Package -Name docker -ProviderName DockerMsftProvider -Update -Force -Re
 ## <a name="install-base-container-images"></a>コンテナーの基本イメージのインストール
 
 Windows コンテナーを使用する前に、基本イメージをインストールする必要があります。 基本イメージは、コンテナー オペレーティング システムとして Windows Server Core と Nano Server の両方で使用できます。 Docker コンテナー イメージの詳細については、「[Build your own images on docker.com](https://docs.docker.com/engine/tutorials/dockerimages/)」(docker.com で独自のイメージを構築する) を参照してください。
+
+Windows Server 2019 のリリースでは、Microsoft 供給コンテナーの画像は、Microsoft コンテナー レジストリと呼ばれる新しいレジストリに移動します。 Microsoft が発行したコンテナーの画像は、Docker ハブで検出する続行する必要があります。 新しいコンテナー画像の Windows Server 2019 とだけでなく、する発行、MCR からそれらを抽出できるようになります。 古いコンテナー画像は、Windows Server 2019 する前に発行] の Docker のレジストリから引き出すを続行する必要があります。
+
+### <a name="windows-server-2019-and-newer"></a>Windows Server 2019 と新しい
+
+次の実行 ' Windows Server Core' 基本イメージをインストールするには。
+
+```PowerShell
+docker pull mcr.microsoft.com/windows/servercore:ltsc2019
+```
+
+次の実行 'Nano サーバー' 基本イメージをインストールするには。
+
+```PowerShell
+docker pull mcr.microsoft.com/windows/nanoserver:1809
+```
+
+### <a name="windows-server-2016-versions-1607-1803"></a>Windows Server 2016 (1607 1803 のバージョン)
 
 Windows Server Core 基本イメージをインストールするには、次のコマンドを実行します。
 

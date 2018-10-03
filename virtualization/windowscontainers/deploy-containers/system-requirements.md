@@ -7,12 +7,12 @@ ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: 71719fcbb6021bd26a464339a8caa9c4cb5698b9
-ms.sourcegitcommit: 2b5d806fc978e60fb71ce33ef491d4cfd6fc4456
-ms.translationtype: HT
+ms.openlocfilehash: 8ff9373bd943c360079679a7e41256c24aa21aa8
+ms.sourcegitcommit: d69ed13d505e96f514f456cdae0f93dab4fd3746
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "2596050"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "4340870"
 ---
 # <a name="windows-container-requirements"></a>Windows コンテナーの要件
 
@@ -20,7 +20,7 @@ ms.locfileid: "2596050"
 
 ## <a name="os-requirements"></a>OS 要件
 
-- Windows コンテナーの機能は、Windows Server ビルド 1709、Windows Server 2016 (Core、デスクトップ エクスペリエンス搭載)、Windows 10 Professional および Enterprise (Anniversary Edition) でのみ使用できます。
+- Windows コンテナーの機能は、Windows Server 2016 でのみ (コアとデスクトップ エクスペリエンス)、Windows 10 Professional および Enterprise (記念日のエディション) 以降。
 - Hyper-V コンテナーを実行する前に、Hyper-V ロールをインストールする必要があります。
 - Windows Server コンテナー ホストでは、Windows を c:\ にインストールする必要があります。 Hyper-V コンテナーのみを展開する場合、この制限は適用されません。
 
@@ -29,7 +29,7 @@ ms.locfileid: "2596050"
 Windows コンテナー ホストが Hyper-V 仮想マシンから実行され、Hyper-V コンテナーもホストする場合、入れ子になった仮想化を有効にする必要があります。 入れ子になった仮想化には次の要件があります。
 
 - 仮想化された Hyper-V ホスト用に少なくとも 4 GB の RAM を利用できる。
-- Windows Server ビルド 1709、Windows Server 2016、または ホスト システム上の Windows 10、および仮想マシン内の Windows Server (Full、Core)
+- Windows Server 2019、Windows Server バージョン 1803、ホスト システム、1709、Windows Server 2016、または Windows 10 のバージョンの Windows Server と Windows Server (全、コア)、仮想マシンでします。
 - Intel VT-x に対応したプロセッサ (この機能は現在 Intel プロセッサのみで使用可能です)。
 - コンテナー ホスト VM には、少なくとも 2 つの仮想プロセッサも必要になります。
 
@@ -47,7 +47,7 @@ Windows コンテナーには、Windows Server Core と Nano Server という 2 
 </thead>
 <tbody>
 <tr valign="top">
-<td><center>Windows Server 2016 (Standard または Datacenter)</center></td>
+<td><center>Windows Server 2016/2019 (標準またはデータ センター)</center></td>
 <td><center>Server Core / Nano Server</center></td>
 <td><center>Server Core / Nano Server</center></td>
 </tr>

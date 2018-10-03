@@ -1,13 +1,14 @@
 ---
-title: "Windows コンテナーのバージョンの互換性"
-description: "Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。"
-keywords: "メタデータ, コンテナー, バージョン"
+title: Windows コンテナーのバージョンの互換性
+description: Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。
+keywords: メタデータ, コンテナー, バージョン
 author: patricklang
-ms.openlocfilehash: 5c82c715bca6260e776946d538b942b74b7f1bc1
-ms.sourcegitcommit: 7fc79235cbee052e07366b8a6aa7e035a5e3434f
-ms.translationtype: HT
+ms.openlocfilehash: 8657c03ad71685b0f01532894781c44d76e1b0bc
+ms.sourcegitcommit: d69ed13d505e96f514f456cdae0f93dab4fd3746
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "4340880"
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーのバージョンの互換性
 
@@ -20,7 +21,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 <table>
     <tr>
     <th style="background-color:#BBDEFB">コンテナーの OS バージョン</th>
-    <th span='4' style="background-color:#DCEDC8">ホストの OS バージョン</th>
+    <th span='6' style="background-color:#DCEDC8">ホストの OS バージョン</th>
     </tr>
     <tr>
         <td/>
@@ -28,6 +29,10 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
         <td style="background-color:#F1F8E9"><b>Windows 10 1609、1703</b><br/>ビルド: 14393.*、15063.*</td>
         <td style="background-color:#F1F8E9"><b>Windows Server Version 1709</b><br/>ビルド: 16299.*</td>
         <td style="background-color:#F1F8E9"><b>Windows 10 Fall Creators Update</b><br/>ビルド: 16299.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows Server バージョン 1803</b><br/>ビルド 17134.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows 10 版 1803</b><br/>ビルド 17134.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows Server 2019</b><br/>ビルド 17763.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows 10 版 1809</b><br/>ビルド 17763.*</td>
     </tr>
     <tr>
         <td style="background-color:#E3F2FD"><b>Windows Server 2016</b><br/>ビルド: 14393.*</td>
@@ -35,9 +40,39 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
         <td>サポート対象: <br/> `hyperv` による分離のみ</td>
         <td>サポート対象: <br/> `hyperv` による分離のみ</td>
         <td>サポート対象: <br/> `hyperv` による分離のみ</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
     </tr>
     <tr>
         <td style="background-color:#E3F2FD"><b>Windows Server Version 1709</b><br/>ビルド: 16299.*</td>
+        <td>サポートされていません</td>
+        <td>サポートされていません</td>
+        <td>サポート対象: <br/> `process`  または `hyperv` による分離</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
+    </tr>
+    <tr>
+        <td style="background-color:#E3F2FD"><b>Windows Server バージョン 1803</b><br/>ビルド 17134.*</td>
+        <td>サポートされていません</td>
+        <td>サポートされていません</td>
+        <td>サポートされていません</td>
+        <td>サポートされていません</td>
+        <td>サポート対象: <br/> `process`  または `hyperv` による分離</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
+        <td>サポート対象: <br/> `hyperv` による分離のみ</td>
+    </tr>
+    <tr>
+        <td style="background-color:#E3F2FD"><b>Windows Server 2019</b><br/>ビルド 17763.*</td>
+        <td>サポートされていません</td>
+        <td>サポートされていません</td>
+        <td>サポートされていません</td>
+        <td>サポートされていません</td>
         <td>サポートされていません</td>
         <td>サポートされていません</td>
         <td>サポート対象: <br/> `process`  または `hyperv` による分離</td>
