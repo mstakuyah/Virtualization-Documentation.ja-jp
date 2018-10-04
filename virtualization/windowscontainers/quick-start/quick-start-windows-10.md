@@ -1,18 +1,19 @@
 ---
-title: "Windows 10 の Windows コンテナー"
-description: "コンテナー展開のクイック スタート"
-keywords: "Docker, コンテナー"
+title: Windows 10 の Windows コンテナー
+description: コンテナー展開のクイック スタート
+keywords: Docker, コンテナー
 author: enderb-ms
 ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 77a611205807e7ee718bf3917e2eb0172316a34e
-ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
-ms.translationtype: HT
+ms.openlocfilehash: 02a8013fb5e6c294aaef77ae2afd349cc6431d96
+ms.sourcegitcommit: 97698dc0ed94779ac80039288d01875fb71d6b2e
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "4349761"
 ---
 # <a name="windows-containers-on-windows-10"></a>Windows 10 の Windows コンテナー
 
@@ -29,7 +30,8 @@ ms.lasthandoff: 11/08/2017
 
 > Windows コンテナーが機能するには、重要な更新プログラムがインストールされている必要があります。
 > 使用している OS のバージョンを確認するには、`winver.exe` を実行し、表示されたバージョンを「[Windows 10 の更新履歴](https://support.microsoft.com/en-us/help/12387/windows-10-update-history)」と比較してください。
-> 14393.222 以降であることを確認してから、次に進んでください。
+
+> 14393.222 以降であることを確認してから、次に進んでください。  このバージョンは、1607 上にあるすべてのバージョンを完全にサポートされる必要があるために、Windows 10 版 1607 に対応します。
 
 ## <a name="1-install-docker-for-windows"></a>1. Docker for Windows をインストールする
 

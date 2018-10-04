@@ -39,7 +39,7 @@ docker build -t nanoserverdnc -f Dockerfile-dotnetRuntime .
 ```
 
 ## <a name="run-powershell-core-6-in-a-container"></a>コンテナーでの PowerShell Core 6 の実行
-同じ[多段階ビルド](https://docs.docker.com/engine/userguide/eng-image/multistage-build/)の手法を使用して、[この PowerShell Dockerfile](https://github.com/PowerShell/PowerShell/blob/master/docker/release/nanoserver-insider/Dockerfile) で PowerShell Core 6 コンテナーを作成できます。
+同じ[多段階ビルド](https://docs.docker.com/engine/userguide/eng-image/multistage-build/)の手法を使用して、[この PowerShell Dockerfile](https://github.com/PowerShell/PowerShell-Docker/blob/master/release/stable/nanoserver/docker/Dockerfile) で PowerShell Core 6 コンテナーを作成できます。
 
 
 その後、docker build コマンドを発行して、PowerShell コンテナー イメージを作成します。
@@ -48,7 +48,7 @@ docker build -t nanoserverdnc -f Dockerfile-dotnetRuntime .
 docker build -t nanoserverPowerShell6 -f Dockerfile-PowerShell6 .
 ```
 
-詳しくは、[PowerShell GitHub](https://github.com/PowerShell/PowerShell/tree/master/docker/release) をご覧ください。  PowerShell の zip には、PowerShell Core 6 の構築に必要な .NET Core 2.0 のサブセットが含まれていることに注意してください。  使用する PowerShell モジュールが .NET Core 2.0 に依存している場合は、基本 Nano コンテナーではなく、Nano .NET Core コンテナー上に PowerShell コンテナーを構築するのが安全です。これには、Dockerfile で、FROM microsoft/nanoserver-insider-dotnet を使用します。 
+詳しくは、[PowerShell GitHub](https://github.com/PowerShell/PowerShell-Docker/tree/master/release) をご覧ください。  PowerShell の zip には、PowerShell Core 6 の構築に必要な .NET Core 2.0 のサブセットが含まれていることに注意してください。  使用する PowerShell モジュールが .NET Core 2.0 に依存している場合は、基本 Nano コンテナーではなく、Nano .NET Core コンテナー上に PowerShell コンテナーを構築するのが安全です。これには、Dockerfile で、FROM microsoft/nanoserver-insider-dotnet を使用します。 
 
 ## <a name="next-steps"></a>次の手順
 - Docker Hub にある Nano Server ベースの新しいコンテナー イメージ (基本 Nano Server イメージ、Nano/.NET Core 2.0、Nano/PowerShell Core 6) のいずれかを使用する
