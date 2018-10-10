@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: bb3681a83991b3d4e24348b686146616d4a88c4f
-ms.sourcegitcommit: db508decd9bf6c0dce9952e1a86bf80f00d025eb
+ms.openlocfilehash: 4f21efba8dd1079302b56e98d954b3ba574779e9
+ms.sourcegitcommit: 2779f01978b37ec4f8d895febe7037272fb2c703
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "2315665"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "4492808"
 ---
 # <a name="windows-container-network-drivers"></a>Windows コンテナー ネットワーク ドライバー  
 
@@ -60,7 +60,7 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
 
 | ネットワーク モード/ドライバー | IPAM |
 | -------------------------|:----:|
-| NAT | 内部 NAT サブネット プレフィックスからホスト ネットワーク サービス (HNS) による動的 IP 割り当て/設定 |
+| NAT | 動的な IP 割り当てと割り当てホスト ネットワーク サービス (HNS) で内部 NAT サブネット プレフィックスから |
 | 透過 | コンテナー ホストのネットワーク プレフィックス内で IP アドレスから静的または動的 (外部 DHCP サーバーを使用して) IP 割り当て/設定 |
 | オーバーレイ | Docker エンジン Swarm モードで管理されるプレフィックスからの動的 IP 割り当てと HNS による設定 |
 | L2Bridge | コンテナー ホストのネットワーク プレフィックス内で IP アドレスから静的 IP 割り当て/設定 (HNS プラグインを使用した設定も可能) |
