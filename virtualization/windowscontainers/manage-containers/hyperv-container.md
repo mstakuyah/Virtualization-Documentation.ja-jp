@@ -1,52 +1,53 @@
 ---
-title: "Hyper-V コンテナー"
-description: "Hyper-V コンテナーを展開します。"
-keywords: "Docker, コンテナー"
-author: enderb-ms
-ms.date: 09/13/2016
+title: Hyper-V コンテナー
+description: HYPER-V コンテナーがプロセス コンテナーを異なる方法の説明します。
+keywords: Docker, コンテナー
+author: scooley
+ms.date: 09/13/2018
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
-ms.openlocfilehash: ea131dfede51ee36f7dc703511357612430ccca9
-ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
-ms.translationtype: HT
+ms.openlocfilehash: e1a5b80773128af0ba0095d5201e4fa123a1741c
+ms.sourcegitcommit: 99da24a8c075e0096eabd09a29007a65e3ea35b7
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/04/2018
+ms.locfileid: "6022180"
 ---
 # <a name="hyper-v-containers"></a>Hyper-V コンテナー
 
 **この記事は暫定的な内容であり、変更される可能性があります。** 
 
-Windows コンテナー テクノロジには、Windows Server コンテナーと Hyper-V コンテナーの 2 種類があります。 どちらのコンテナーの作成方法、管理方法、および機能も同じです。 また、作成および使用するコンテナー イメージも同じです。 違うのは、コンテナー、ホスト オペレーティング システム、およびそのホストで実行されているその他のコンテナーとの間で作成される分離レベルです。
+Windows のコンテナー テクノロジには、2 種類コンテナー、Windows Server コンテナー (プロセス コンテナー) および HYPER-V コンテナーにはが含まれています。 どちらのコンテナーの作成方法、管理方法、および機能も同じです。 また、作成および使用するコンテナー イメージも同じです。 違うのは、コンテナー、ホスト オペレーティング システム、およびそのホストで実行されているその他のコンテナーとの間で作成される分離レベルです。
 
-**Windows Server コンテナー** – 名前空間、リソース コントロール、プロセスの分離テクノロジによって提供される分離により、ホスト上で複数のコンテナー インスタンスを同時に実行できます。  Windows Server コンテナーは、ホストとの間で、および互いの間で、同じカーネルを共有します。
+**Windows Server コンテナー** – 名前空間、リソース コントロール、プロセスの分離テクノロジによって提供される分離により、ホスト上で複数のコンテナー インスタンスを同時に実行できます。  Windows Server コンテナーは、ホストとの間で、および互いの間で、同じカーネルを共有します。  これはほぼ同じで、コンテナーが Linux で実行する方法です。
 
-**Hyper-V コンテナー** – ホスト上で複数のコンテナー インスタンスを同時に実行できます。ただし、各コンテナーは特殊な仮想マシン内で実行します。 これは、各 Hyper-V コンテナーとコンテナー ホスト間でのカーネル レベルの分離を提供します。
+**HYPER-V コンテナー** – のホスト上コンテナーの複数のインスタンスを同時に実行できる、ただし、各コンテナーは特別な仮想マシンの内部で実行します。 これは、各 Hyper-V コンテナーとコンテナー ホスト間でのカーネル レベルの分離を提供します。
 
-## <a name="hyper-v-container"></a>Hyper-V コンテナー
+## <a name="hyper-v-container-examples"></a>HYPER-V コンテナーの例
 
 ### <a name="create-container"></a>コンテナーの作成
 
-Docker を使用した Hyper-V コンテナーの管理は、Windows Server コンテナーの管理の場合とほぼ同じです。 Docker を使用して Hyper-V コンテナーを作成する場合には、`--isolation=hyperv` パラメーターを使用します。
+Docker に HYPER-V コンテナーの管理は、Windows Server コンテナーの管理とほぼ同じです。 Docker に HYPER-V コンテナーを作成するには、`--isolation`パラメーターを設定する`--isolation=hyperv`します。
 
-```
+``` cmd
 docker run -it --isolation=hyperv microsoft/nanoserver cmd
 ```
 
 ### <a name="isolation-explanation"></a>分離の説明
 
-この例では、Windows Server コンテナーと Hyper-V コンテナーの分離機能を区別します。 
+この例では、Windows Server と HYPER-V コンテナーの分離機能の違いを示します。 
 
 以下の場合、Windows Server コンテナーが展開されており、実行時間の長い ping プロセスがホストされます。
 
-```
+``` cmd
 docker run -d microsoft/windowsservercore ping localhost -t
 ```
 
 `docker top` コマンドを使用すると、以下のようにコンテナー内の ping プロセスが返されます。 この例のプロセスの ID は 3964 です。
 
-```
+``` cmd
 docker top 1f8bf89026c8f66921a55e773bac1c60174bb6bab52ef427c6c8dbc8698f9d7a
 
 3964 ping
