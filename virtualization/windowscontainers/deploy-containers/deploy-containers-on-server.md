@@ -2,18 +2,18 @@
 title: Windows Server に Windows コンテナーを展開する
 description: Windows Server に Windows コンテナーを展開する
 keywords: Docker, コンテナー
-author: enderb-ms
+author: taylorb-microsoft
 ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
-ms.openlocfilehash: 701112cac9c3f6d647fe5fb70309350fd0d07161
-ms.sourcegitcommit: d69ed13d505e96f514f456cdae0f93dab4fd3746
+ms.openlocfilehash: 0d982996a1aabd434df04551f30725a21b31d500
+ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "4340850"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "6948011"
 ---
 # <a name="container-host-deployment---windows-server"></a>コンテナー ホストの展開 - Windows Server
 

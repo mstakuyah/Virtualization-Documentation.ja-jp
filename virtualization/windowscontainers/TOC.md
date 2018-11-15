@@ -12,15 +12,6 @@
 ## [手順 1 - Insider イメージの使用](quick-start/Using-Insider-Container-Images.md)
 ## [手順 2 - アプリケーションの作成と実行](quick-start/Nano-RS3-.NET-Core-and-PS.md)
 ## [手順 3 - 既知の問題点](quick-start/Insider-Known-Issues.md)
-## [Linux コンテナー のプレビュー](deploy-containers/linux-containers.md)
-
-# Windows コンテナーの展開
-## [システム要件](deploy-containers/system-requirements.md)
-## [バージョンの互換性](deploy-containers/version-compatibility.md)
-## [展開](deploy-containers/deploy-containers-on-server.md)
-## [Hyper-V による分離](manage-containers/hyperv-container.md)
-## [Active Directory サービス コンポーネント](manage-containers/manage-serviceaccounts.md)
-## [ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 
 # Windows 上の Docker の管理
 ## [Windows 上の Docker エンジン](manage-docker/configure-docker-daemon.md)
@@ -28,7 +19,6 @@
 ## [Dockerfile の最適化](manage-docker/optimize-windows-dockerfile.md)
 ## [コンテナーの記憶域](manage-containers/container-storage.md)
 ## [swarm モードの概要](manage-containers/swarm-mode.md)
-## [PowerShell での Docker の管理](https://github.com/Microsoft/Docker-PowerShell)
 ## [Windows Docker ホストのリモート管理](management/manage_remotehost.md)
 ## [リソース コントロール](manage-containers/resource-controls.md)
 
@@ -39,11 +29,14 @@
 ## [詳細ネットワーク オプション](container-networking/advanced.md)
 
 # Windows で使用する Kubernetes 
-## [作業の開始](kubernetes/getting-started-kubernetes-windows.md)
-## [Linux マスター ノードの作成](kubernetes/creating-a-linux-master.md)
-## [ネットワーク トポロジの構成](kubernetes/configuring-host-gateway-mode.md)
-## [Kubernetes バイナリのコンパイル](kubernetes/compiling-kubernetes-binaries.md)
+## [1-概要](kubernetes/getting-started-kubernetes-windows.md)
+## [2 - Kubernetes マスターを作成します。](kubernetes/creating-a-linux-master.md)
+## [3 - ネットワーク ソリューションを選択します。](kubernetes/network-topologies.md)
+## [4 - Windows 作業者への参加](kubernetes/joining-windows-workers.md)
+## [5 - Linux 作業者への参加](kubernetes/joining-linux-workers.md)
+## [6 - Kubernetes リソースを展開します。](kubernetes/deploying-resources.md)
 ## [トラブルシューティング](kubernetes/common-problems.md)
+## [Kubernetes バイナリのコンパイル](kubernetes/compiling-kubernetes-binaries.md)
 
 # Service Fabric クイック スタート
 ## [最初のコンテナーの展開](/azure/service-fabric/service-fabric-quickstart-containers)
@@ -63,5 +56,12 @@
 ## [コミュニティのビデオとブログ](communitylinks.md)
 ## [トラブルシューティング](troubleshooting.md)
 
+# リファレンス
+## [システム要件](deploy-containers/system-requirements.md)
+## [バージョンの互換性](deploy-containers/version-compatibility.md)
+## [Hyper-V による分離](manage-containers/hyperv-container.md)
+## [Windows の Linux コンテナー](deploy-containers/linux-containers.md)
+## [Active Directory サービス コンポーネント](manage-containers/manage-serviceaccounts.md)
+## [ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 
 # [コンテナー OS イメージの使用許諾契約書 (EULA)](Images_EULA.md)

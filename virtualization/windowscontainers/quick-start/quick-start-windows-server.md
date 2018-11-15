@@ -2,28 +2,28 @@
 title: Windows Server の Windows コンテナー
 description: コンテナー展開のクイック スタート
 keywords: Docker, コンテナー
-author: enderb-ms
+author: cwilhit
 ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
-ms.openlocfilehash: 7d526aa64d478516a3f66acaf62b62b45282e5af
-ms.sourcegitcommit: 3d72f15651da378908f134916cd5c9d2064f8f95
-ms.translationtype: HT
+ms.openlocfilehash: ed60470f18f644fcc4fe741d02e6f6e39af48368
+ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "2256935"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "6947991"
 ---
 # <a name="windows-containers-on-windows-server"></a>Windows Server の Windows コンテナー
 
-この演習では、Windows Server 2016 の Windows コンテナー機能の基本的な展開と使用について段階的に確認します。 この演習では、コンテナーの役割をインストールし、単純な Windows Server コンテナーを展開します。 コンテナーの概要については、[コンテナーについてのページ](../about/index.md)」をご覧ください。
+この手順は、Windows Server 2019 で基本的な展開と Windows コンテナー機能の使用について説明します。 この演習では、コンテナーの役割をインストールし、単純な Windows Server コンテナーを展開します。 コンテナーの概要については、[コンテナーについてのページ](../about/index.md)」をご覧ください。
 
-このクイック スタートは Windows Server 2016 の Windows Server コンテナーのみに適用されます。 このページの左側の目次に、Windows 10 のコンテナーを含む追加のクイック スタート文書があります。
+このクイック スタートでは、Windows Server 2019 の Windows Server コンテナーを特定します。 このページの左側の目次に、Windows 10 のコンテナーを含む追加のクイック スタート文書があります。
 
 **前提条件:**
 
-Windows Server 2016 を実行している 1 台のコンピューター システム (物理または仮想)。 Windows Server 2016 TP5 を使用している場合は、[Window Server 2016 Evaluation](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 ) に更新してください。
+1 台のコンピューター システム (物理または仮想) には、Windows Server 2019 が実行されています。 Windows Server 2019 内部のプレビューを使用している場合は、[ウィンドウのサーバー 2019 評価](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019 )を更新してください。
 
 > Windows コンテナー機能が動作するためには、重要な更新プログラムが必要です。 すべての更新プログラムをインストールしてから、このチュートリアルを進めてください。
 
@@ -96,13 +96,13 @@ sconfig
 `docker run` を使用し、.Net コンテナーを展開します。 この操作でコンテナー イメージもダウンロードされるので、処理に数分かかる可能性があります。
 
 ```console
-docker run microsoft/dotnet-samples:dotnetapp-nanoserver
+docker run microsoft/dotnet-samples:dotnetapp-nanoserver-1809
 ```
 
 コンテナーが起動し、hello world メッセージが出力され、終了します。
 
 ```console
-         Dotnet-bot: Welcome to using .NET Core!
+         Hello from .NET Core!
     __________________
                       \
                        \
@@ -143,8 +143,8 @@ docker run microsoft/dotnet-samples:dotnetapp-nanoserver
 
 
 **Environment**
-Platform: .NET Core 2.0
-OS: Microsoft Windows 10.0.14393
+Platform: .NET Core
+OS: Microsoft Windows 10.0.17763
 ```
 
 Docker Run コマンドの詳細については、Docker.com の「[Docker Run リファレンス]( https://docs.docker.com/engine/reference/run/)」をご覧ください。

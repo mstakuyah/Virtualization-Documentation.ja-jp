@@ -1,24 +1,25 @@
 ---
-title: "コンテナー エコシステム"
-description: "コンテナー エコシステムの構築。"
-keywords: "メタデータ、コンテナー"
+title: コンテナー エコシステム
+description: コンテナー エコシステムの構築。
+keywords: メタデータ、コンテナー
 author: PatrickLang
 ms.date: 04/20/2016
 ms.topic: about-article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 29fbe13a-228a-4eaa-9d4d-90ae60da5965
-ms.openlocfilehash: 27808eddb624bdfc61d971d46be609a49c051664
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
-ms.translationtype: HT
+ms.openlocfilehash: e88f2951abef72bdd938c23a068cc912e31628cb
+ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "6948071"
 ---
-# コンテナー エコシステムの構築
+# <a name="building-a-container-ecosystem"></a>コンテナー エコシステムの構築
 
 コンテナーのエコシステムを構築が非常に重要な理由については、説明しましょう。 まず Docker です。
 
-## Docker の魅力
+## <a name="dockers-appeal"></a>Docker の魅力
 
 コンテナーの概念 (名前空間の分離とリソース管理) は、ずっと以前からあり、BSD Jail、Solaris ゾーン、UNIX の基本的な chroot (ルート変更) メカニズムにまでさかのぼります。   Docker が行ってきたことは、共通のツールセット、パッケージ モデル、展開メカニズムの提供です。  これにより、Docker はアプリケーションのコンテナー化と分散を大幅に簡略化しました。  これらのアプリケーションは、任意の Linux ホストで実行でき、Windows でも同様の機能を提供しています。
 
@@ -30,8 +31,7 @@ Docker は、開発のための優れた基盤を提供します。
 
 次に、アプリケーションのエコシステムについて説明し、ニーズに合った開発および展開のワークフローを作成するための Docker 概念を構築する方法について説明しましょう。
 
-
-## コンテナー エコシステムのコンポーネント
+## <a name="components-in-a-container-ecosystem"></a>コンテナー エコシステムのコンポーネント
 
 Windows コンテナーは、大規模なコンテナー エコシステムの主要コンポーネントです。 ソリューション スタックの各層で開発者に選択肢を提供するため、業界全体で取り組んでいます。
 

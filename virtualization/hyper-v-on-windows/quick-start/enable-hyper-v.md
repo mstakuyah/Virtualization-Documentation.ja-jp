@@ -7,12 +7,12 @@ ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
-ms.openlocfilehash: dd4021c653d98a3bd7a338d9f502a572830f344d
-ms.sourcegitcommit: 5e5644bff6dba70e384db6c80787b3bbe7adb93c
+ms.openlocfilehash: cd576f72c9947cd6f79cc362709c1a4ceab9b47e
+ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "4303928"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "6947961"
 ---
 # <a name="install-hyper-v-on-windows-10"></a>Windows 10 上に Hyper-V をインストールする
 
@@ -25,7 +25,7 @@ Hyper-V はさまざまな方法で有効にすることができます。たと
 
 * Windows 10 のエンタープライズ、Pro、または教育機関向け
 * 第 2 レベルのアドレス変換 (SLAT) の 64 ビット プロセッサ。
-* VM モニター モード拡張機能 (Intel CPU の VT-c) の CPU サポート
+* CPU サポート VM モニター モードの拡張機能 (Intel cpu は VT c)。
 * 最小 4 GB のメモリ。
 
 Hyper-V ロールは、Windows 10 Home にはインストール**できません**。
@@ -70,9 +70,11 @@ DISM について詳しくは、[DISM のテクニカル リファレンス](htt
 
 1. Windows ボタンを右クリックし、[アプリと機能] を選択します。
 
-2. **[Windows の機能の有効化または無効化]** を選択します。
+2. 右側にある [関連する設定には、 **[プログラムと機能**を選択します。 
 
-3. **[Hyper-V]** を選択して、**[OK]** をクリックします。
+3. **[Windows の機能の有効化または無効化]** を選択します。
+
+4. **[Hyper-V]** を選択して、**[OK]** をクリックします。
 
 ![Windows のプログラムと機能が示されたダイアログ ボックス](media/enable_role_upd.png)
 

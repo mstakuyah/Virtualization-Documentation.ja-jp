@@ -8,27 +8,27 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
-ms.openlocfilehash: ab8a8b6543d58e71b3ac673c8a9e811698dbb578
-ms.sourcegitcommit: ec186664e76d413d3bf75f2056d5acb556f4205d
-ms.translationtype: HT
+ms.openlocfilehash: 3b592620f4667450c2454f8760b7f3c844c7e2ab
+ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "1875913"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "6948051"
 ---
 # <a name="docker-engine-on-windows"></a>Windows 上の Docker エンジン
 
-Docker エンジンとクライアントは Windows に含まれていないため、個別にインポートして構成する必要があります。 また、Docker エンジンは多くのカスタム構成に対応できます。 たとえば、デーモンで受信要求を受け入れる方法、既定のネットワークキング オプション、デバッグ/ログの設定の構成などです。 Windows でこのような構成を指定するには、構成ファイルまたは Windows サービス コントロール マネージャーを使用します。 このドキュメントでは、Docker エンジンのインストールおよび構成方法について説明します。また、一般的に使用される構成例も紹介します。
+Docker エンジンとクライアントは、Windows に含まれていないし、インストールされ、個別に構成する必要があります。 また、Docker エンジンは多くのカスタム構成に対応できます。 たとえば、デーモンで受信要求を受け入れる方法、既定のネットワークキング オプション、デバッグ/ログの設定の構成などです。 Windows でこのような構成を指定するには、構成ファイルまたは Windows サービス コントロール マネージャーを使用します。 このドキュメントは、インストールして、Docker エンジンを構成する方法の詳細も頻繁に使われる構成の例をいくつか用意されています。
 
 
 ## <a name="install-docker"></a>Docker のインストール
-Windows コンテナーを使用するには Docker が必要です。 Docker は、Docker エンジン (dockerd.exe) と Docker クライアント (docker.exe) で構成されます。 すべてのものをインストールする最も簡単な方法は、クイック スタート ガイドで説明しています。 これらのガイドは、すべてのものをセットアップして最初のコンテナーを実行するのに役立ちます。 
+Windows コンテナーを使用するには Docker が必要です。 Docker は、Docker エンジン (dockerd.exe) と Docker クライアント (docker.exe) で構成されます。 すべてのものをインストールする最も簡単な方法は、クイック スタート ガイドで説明しています。 ヘルプのすべてのアイテムを取得することを設定し、最初のコンテナーを実行します。 
 
 * [Windows Server 2016 の Windows コンテナー](../quick-start/quick-start-windows-server.md)
 * [Windows 10 の Windows コンテナー](../quick-start/quick-start-windows-10.md)
 
 スクリプト化したインストールについては、「[Use a script to install Docker EE](https://docs.docker.com/install/windows/docker-ee/#use-a-script-to-install-docker-ee)」 (スクリプトを使用して Docker EE をインストールする) をご覧ください。
 
-Docker を使用するには、先にコンテナー イメージをインストールする必要があります。 詳しくは、[イメージを使用するためのクイック スタート ガイド](../quick-start/quick-start-images.md)をご覧ください。
+Docker を使用する前にコンテナーの画像をインストールする必要があります。 詳しくは、[イメージを使用するためのクイック スタート ガイド](../quick-start/quick-start-images.md)をご覧ください。
 
 ## <a name="configure-docker-with-configuration-file"></a>構成ファイルを使用して Docker を構成する
 
@@ -81,7 +81,7 @@ Windows で Docker エンジンを構成するには、構成ファイルを使�
 同様に、このサンプルでは、代替パスにイメージとコンテナーを保持するように Docker デーモンが構成されます。 指定しない場合、既定は c:\programdata\docker です。
 
 ```
-{    
+{    
     "data-root": "d:\\docker"
 }
 ```
