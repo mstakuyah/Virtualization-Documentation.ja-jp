@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 68c65445-ce13-40c9-b516-57ded76c1b15
-ms.openlocfilehash: 0b268f796dacd3de60cb5879b1c9c5414b8bdd49
-ms.sourcegitcommit: 9653a3f7451011426f8af934431bb14dbcb30a62
-ms.translationtype: HT
+ms.openlocfilehash: 625a9b36ff782c86065ef3d9124708e5716e066f
+ms.sourcegitcommit: 941a82f463684b893488cd998f79b539c506105b
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "2082935"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "7012575"
 ---
 # <a name="run-hyper-v-in-a-virtual-machine-with-nested-virtualization"></a>入れ子になった仮想化による仮想マシンでの Hyper-V の実行
 
@@ -96,7 +96,7 @@ Netsh interface ip add dnsserver “Ethernet” address=<my DNS server>
 
 次の図は、入れ子になっていない Hyper-V を示しています。  Hyper-V ハイパーバイザーは、ハードウェア仮想化機能 (オレンジ色の矢印) を完全に制御し、ゲスト オペレーティング システムには公開しません。
 
-![](./media/HVNoNesting.png)
+![](./media/HVNoNesting.PNG)
 
 これに対し、次の図は、入れ子になった仮想化が有効な状態の Hyper-V を示しています。 この場合、Hyper-V は、ハードウェア仮想化拡張機能をその仮想マシンに公開します。 入れ子が有効になると、ゲスト仮想マシンは独自のハイパーバイザーをインストールし、独自のゲスト VM を実行します。
 
