@@ -61,6 +61,7 @@
 ## [バージョンの互換性](deploy-containers/version-compatibility.md)
 ## [Hyper-V による分離](manage-containers/hyperv-container.md)
 ## [Windows の Linux コンテナー](deploy-containers/linux-containers.md)
+## [RunHCS と Containerd](deploy-containers/containerd.md)
 ## [Active Directory サービス コンポーネント](manage-containers/manage-serviceaccounts.md)
 ## [ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 
