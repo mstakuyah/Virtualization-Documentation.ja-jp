@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: edfd11c8-ee99-42d8-9878-efc126fe1826
-ms.openlocfilehash: 477c6079d6e90a206386d1810bdb1449e087a4be
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.openlocfilehash: 7db0135e5d5079d3b8cce815d051ecd6a7cb896b
+ms.sourcegitcommit: 614e3ca3e6f4373b999a501a2829adbaa61de4c4
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6948091"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "7277536"
 ---
 # <a name="linux-containers-on-windows"></a>Linux Containers on Windows
 
@@ -43,17 +43,17 @@ Docker を Linux コンテナーを Windows で実行できるようになりま
 
 また、コンテナー、Linux ホスト (Moby VM) Docker デーモンと Docker デーモンの依存関係が実行されている必要があります。
 
-Moby VM で実行しているかどうかを参照するには HYPER-V マネージャーを Moby VM が HYPER-V マネージャー UI を使用するのかを実行して確認`Get-VM`管理者特権 PowerShell ウィンドウにします。
+Moby VM で実行しているかどうかを参照するには HYPER-V マネージャーを Moby VM が HYPER-V マネージャー UI を使用するのかを実行して確認`Get-VM`管理者特権の PowerShell ウィンドウにします。
 
 ## <a name="linux-containers-with-hyper-v-isolation"></a>HYPER-V 分離 Linux コンテナー
 
 LCOW には、[このはじめに-ガイド](../quick-start/quick-start-windows-10.md)の Linux コンテナー指示に従って、
 
-HYPER-V 分離 Linux コンテナーを最適化された Linux 仮想マシンで、コンテナーを実行するには、十分なだけ OS に各 Linux コンテナー (LCOW) を実行します。  Moby VM のアプローチとは異なり、各 LCOW が、独自のカーネルれ、独自の VM サンド ボックスです。  Windows Docker によって直接管理がいるもできます。
+HYPER-V 分離 Linux コンテナーを最適化された Linux 仮想マシンで、コンテナーを実行するには、十分なだけ OS に各 Linux コンテナー (LCOW) を実行します。  各 LCOW では、Moby VM アプローチとは異なり、専用カーネルと独自 VM サンド ボックスがあります。  Windows Docker によって直接管理がいるもできます。
 
 ![HYPER-V 分離 (LCOW) Linux コンテナー](media/lcow-approach.png)
 
-コンテナーの管理を Moby VM アプローチと LCOW 間とは異なる方法で詳しく見ていくで、LCOW モデル コンテナーの管理を常に Windows し GRPC と containerd によって行われ、各 LCOW 管理します。  LCOW の Linux ディストリビューション コンテナーを使用することを意味する量小さい在庫ことができます。  右におを使用している LinuxKit 最適化されたディストリビューション コンテナーを使っていますのような高度な調整 Linux ディストリビューション (クリア Linux) も Kata などの他のプロジェクトを作成します。
+コンテナーの管理を Moby VM アプローチと LCOW 間とは異なる方法で詳しく見ていくで、LCOW モデル コンテナーの管理を常に Windows し GRPC と containerd によって行われ、各 LCOW 管理します。  LCOW の Linux ディストリビューション コンテナーを使用することを意味する量小さい在庫ことができます。  右におを使用している LinuxKit 最適化されたディストリビューション コンテナーを使用してのような高度な調整 Linux ディストリビューション (クリア Linux) も Kata などの他のプロジェクトを作成します。
 
 ここでは、各 LCOW の詳細を確認します。
 
@@ -123,6 +123,6 @@ LCOW は、作業中の開発中です。  [GitHub](https://github.com/moby/moby
 
 ## <a name="other-options-we-considered"></a>検討しましたが、その他のオプション
 
-Windows 上で Linux コンテナーを実行する方法を見てされた、WSL おと見なされます。  最終的には、Windows の Linux コンテナーが Linux の Linux コンテナーと一致できるように、仮想化ベース方法を選択したします。  HYPER-V を使用しても、LCOW セキュリティ。  お今後、評価し直すことがありますが、ここでは、LCOW 引き続き HYPER-V を使用します。
+Windows 上で Linux コンテナーを実行する方法を見てされた、WSL おと見なされます。 最終的には、選択した仮想化に応じたできるように、Windows の Linux コンテナーが Linux の Linux コンテナーと一致します。 HYPER-V を使用しても、LCOW セキュリティ。 お今後、評価し直すことがありますが、ここでは、LCOW 引き続き HYPER-V を使用します。
 
-アイデアを使っている場合は、github や UserVoice フィードバックを送信してください。  表示するには、特定のエクスペリエンスに関するフィードバックを歓迎特に。
+アイデアを使っている場合は、GitHub や UserVoice フィードバックを送信してください。  表示するには、特定のエクスペリエンスに関するフィードバックを歓迎特に。
