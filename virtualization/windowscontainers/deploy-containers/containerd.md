@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: a0e62b32-0c4c-4dd4-9956-8056e9abd9e5
-ms.openlocfilehash: 8a68bf9e5e78add65aedb51fff8521ee258e353e
-ms.sourcegitcommit: 9a61fc06c25d17ddb61124a21a3ca821828b833d
+ms.openlocfilehash: 970de62c9a0011fa09d6741b2665479efd394313
+ms.sourcegitcommit: 166aa2430ea47d7774392e65a9875501f86dd5ed
 ms.translationtype: MT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/20/2018
-ms.locfileid: "7460497"
+ms.locfileid: "7460578"
 ---
 # <a name="container-platform-tools-on-windows"></a>Windows にコンテナー プラットフォーム ツール
 
@@ -46,12 +46,15 @@ Windows では、別の方法がわかったします。  Windows のコンテ�
 
 ## <a name="runhcs"></a>runhcs
 
-RunHCS は、runc の分岐です。  Runc など runhcs コマンド ライン クライアント アプリケーションを開いているコンテナー initiative (英語) (OCI) 書式に従ってパッケージを実行するのには、準拠実装で開いているコンテナー initiative (英語) の仕様のします。  
+`runhcs` 分岐が`runc`します。  ような`runc`、`runhcs`コマンド ライン クライアント アプリケーションを開いているコンテナー initiative (英語) (OCI) 書式に従ってパッケージを実行するのには、準拠実装で開いているコンテナー initiative (英語) の仕様のします。
 
 Runc と runhcs の機能の違いは次のとおりです。
 
-* Windows で実行される runhcs
-* runhcs には、Windows、Windows プロセス コンテナーに加えて Linux [HYPER-V コンテナー](../manage-containers/hyperv-container.md)の両方を実行できます。
+* `runhcs` windows を実行します。  作成し、管理コンテナーに[HCS](containerd.md#hcs)と通信します。
+* `runhcs` さまざまな種類の別のコンテナーを実行できます。
+
+  * Windows と Linux [HYPER-V コンテナー](../manage-containers/hyperv-container.md)
+  * Windows コンテナー (コンテナーの画像は、コンテナーのホストを一致する必要があります) を処理します。
 
 **使い方:**
 
@@ -89,6 +92,18 @@ Runhcs で使用できるコンテナー コマンドは、次のとおりです
 
 複数のコンテナーを考慮する可能性のあるだけで、コマンドは、**リスト**です。  指定されたルートと runhcs が開始したコンテナーを実行している (または一時停止している) が表示されます。
 
+### <a name="hcs"></a>HCS
+
+GitHub に、HCS で利用可能な 2 つのラッパーがあります。 C API、HCS なので、ラッパーしやすいようにより高いレベルの言語から、HCS を発信します。  
+
+* [hcsshim](https://github.com/microsoft/hcsshim) - HCSShim は、外出先で記述されてれ、runhcs の基本です。
+AppVeyor 最新情報を取得するか、自分で作成します。
+* [dotnet computevirtualization](https://github.com/microsoft/dotnet-computevirtualization) -dotnet computevirtualization、HCS の c# 包み紙には
+
+(直接または経由の包み紙に)、HCS を使用する場合は、HCS 周囲錆び/Haskell/InsertYourLanguage の包み紙にする、コメントのままにしてください。
+
+HCS の詳細については、 [John Stark の DockerCon プレゼンテーション](https://www.youtube.com/watch?v=85nCF5S8Qok)をご覧ください。
+
 ## <a name="containerdcri"></a>containerd/cri
 
 > !注 CRI サポートは、サーバー 2019年/Windows 10 1809 で使用できると、後でのみです。
@@ -103,26 +118,3 @@ CRI 仕様へのリンク。
 ![ベース Containerd コンテナーが混在する環境](media/containerd-platform.png)
 
 RunHCS と containerd は、任意の Windows システム Server 2016 以降で管理できる、ポッド (コンテナーのグループ) をサポートするために必要なコンテナー ツールに Windows で変更を解除します。  CRI サポート、Windows Server 2019/Windows 10 1809 以降使用します。
-
-## <a name="hcs"></a>HCS
-
-GitHub に、HCS で利用可能な 2 つのラッパーがあります。 C API、HCS なので、ラッパーしやすいようにより高いレベルの言語から、HCS を発信します。  
-
-### <a name="hcsshim"></a>HCSShim
-
-HCSShim は、外出先で記述されてれ、runhcs の基本です。
-AppVeyor 最新情報を取得するか、自分で作成します。
-
-チェック アウト[GitHub](https://github.com/microsoft/hcsshim)にします。
-
-### <a name="dotnet-computevirtualization"></a>dotnet computevirtualization
-
-> !これは、参照実装 - 開発/テストのみに使用することに注意してください。
-
-dotnet computevirtualization、HCS の c# 包み紙には
-
-チェック アウト[GitHub](https://github.com/microsoft/dotnet-computevirtualization)にします。
-
-(直接または経由の包み紙に)、HCS を使用する場合は、HCS 周囲錆び/Haskell/InsertYourLanguage の包み紙にする、コメントのままにしてください。
-
-HCS の詳細については、 [John Stark の DockerCon プレゼンテーション](https://www.youtube.com/watch?v=85nCF5S8Qok)をご覧ください。
