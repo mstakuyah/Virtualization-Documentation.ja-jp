@@ -1,5 +1,5 @@
 ---
-title: コンテナーの履歴を作成します。
+title: Windows コンテナー プラットフォーム
 description: 新しいコンテナー内の文書パーツ利用可能な Windows の詳細を表示します。
 keywords: LCOW、linux コンテナー、docker、コンテナー、containerd、cri、runhcs、runc
 author: scooley
@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: a0e62b32-0c4c-4dd4-9956-8056e9abd9e5
-ms.openlocfilehash: 970de62c9a0011fa09d6741b2665479efd394313
-ms.sourcegitcommit: 166aa2430ea47d7774392e65a9875501f86dd5ed
+ms.openlocfilehash: 5811ea0761567c3a7db036358b24d1a3e7c51baf
+ms.sourcegitcommit: fdaf666973fca37d8c428e0247454dd47c01f1c3
 ms.translationtype: MT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/20/2018
-ms.locfileid: "7460578"
+ms.locfileid: "7460601"
 ---
 # <a name="container-platform-tools-on-windows"></a>Windows にコンテナー プラットフォーム ツール
 
@@ -106,7 +106,9 @@ HCS の詳細については、 [John Stark の DockerCon プレゼンテーシ�
 
 ## <a name="containerdcri"></a>containerd/cri
 
-> !注 CRI サポートは、サーバー 2019年/Windows 10 1809 で使用できると、後でのみです。
+> [!IMPORTANT]
+> CRI サポートは、サーバー 2019年/Windows 10 1809 で使用できると、後でのみです。  Windows 版の containerd を開発している場合も引き続き積極的にします。
+> 開発/テストのみです。
 
 [CRI](https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/cri/runtime/v1alpha2/api.proto) (コンテナー ランタイム インターフェイス) が共有サンド ボックスで workload(s) としてコンテナーを説明する OCI 仕様には、1 つのコンテナーが定義されているときに環境にポッドが呼び出されます。  ポッドには、1 つ以上のコンテナー ワークロードを含めることができます。  ポッドは Kubernetes とサービス布地へメッシュ処理のメモリ、vNETs などのいくつかの共有リソースと同じホストに置かれるべき作業負荷をグループ化されたようにコンテナー orchestrators ことができます。
 
