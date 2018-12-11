@@ -16,8 +16,9 @@
 ## [仮想スイッチを作成する](quick-start/connect-to-network.md)
 ## [統合サービスの構築](user-guide/make-integration-service.md)
 ## [Hyper-V WMI の移植](user-guide/refactor-wmiv1-to-wmiv2.md)
+## [Azure 仮想ネットワークで入れ子になった仮想マシン](user-guide/nested-virtualization-azure-virtual-network.md) 
 
-# 参照先
+# リファレンス
 ## [Hyper-V の要件](reference/hyper-v-requirements.md)
 ## [サポートされているゲスト オペレーティング システム](about/supported-guest-os.md)
 ## [Hyper-V PowerShell](https://technet.microsoft.com/library/hh848559.aspx)
