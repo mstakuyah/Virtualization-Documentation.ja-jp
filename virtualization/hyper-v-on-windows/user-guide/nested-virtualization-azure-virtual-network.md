@@ -2,20 +2,20 @@
 title: Azure 仮想ネットワークでのリソースを直接やり取り入れ子になった仮想マシンの構成
 description: 入れ子になった仮想化
 keywords: windows 10、ハイパー v Azure
-author: johncslack
+author: mrajess
 ms.date: 12/10/2018
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1ecb85a6-d938-4c30-a29b-d18bd007ba08
-ms.openlocfilehash: f316f4c576eae6dd7c14de367e42012a3c724eac
-ms.sourcegitcommit: a9ab01b718b065124829b05868955f40e9020071
+ms.openlocfilehash: abe6f0da68ff90af0b2b5e675f70f106d42ca81c
+ms.sourcegitcommit: 8db42caaace760b7eeb1367b631b38e7904a9f26
 ms.translationtype: MT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2018
-ms.locfileid: "8917734"
+ms.locfileid: "8962310"
 ---
-# <a name="configuring-nested-vms-to-communicate-directly-with-resources-in-an-azure-virtual-network"></a>Azure 仮想ネットワークでのリソースを直接やり取り入れ子になった仮想マシンの構成
+# <a name="configure-nested-vms-to-communicate-with-resources-in-an-azure-virtual-network"></a>Azure 仮想ネットワークでのリソースとの通信に入れ子になった仮想マシンを構成します。
 
 元の展開と Azure で入れ子になったの仮想マシンの構成に関するガイダンス NAT スイッチでこれらの仮想マシンにアクセスすることが必要です。 これには、いくつかの制限が表示されます。
 
@@ -45,7 +45,7 @@ ms.locfileid: "8917734"
 
 * 背景: 入れ子になった仮想マシンは届きません DHCP 内部または外部スイッチを構成する場合でも、ホストに接続されている VNet から。 
   * これは、場合、HYPER-V ホストが DHCP を提供する必要があります。
-* HYPER-V ホストによってだけを使用するための ip アドレスのブロックを割り当てます。  HYPER-V ホストは、VNet に現在割り当てられているリースの注意をホスト割り当てます IP 既に存在する状況を回避するために HYPER-V ホストをだけで、使用するための ip アドレスのブロックを割り当てるは必要があります。 これにより、重複する IP シナリオを回避することができます。 
+* HYPER-V ホストによってだけを使用するための ip アドレスのブロックを割り当てます。  HYPER-V ホストは、VNet に現在割り当てられているリースの注意をホスト割り当てます IP 既に存在する状況を回避するために HYPER-V ホストをだけで、使用するための ip アドレスのブロックを割り当てるは必要があります。 これにより、重複する IP シナリオを回避することができます。
   * 選択した ip アドレスのブロック内に存在し、HYPER-V ホスト VNet サブネットが対応しています。
   * 既存のサブネットに対応するようにし理由は、ExpressRoute を介して BGP 通知を処理します。 使用する HYPER-V ホストの IP 範囲をだけに適用されたはかどうかは、一連のクライアントを許可する静的ルートを作成する必要があるオンプレミス入れ子になったの仮想マシンで通信します。 これはないハード要件入れ子になったの仮想マシンの IP 範囲を構成するし、クライアントの HYPER-V ホストが必要なすべてのルートを作成し、可能性のあるわけではします。
 * HYPER-V 内の内部のスイッチを作成し、し、割り当てることで、新しく作成されたインターフェイス DHCP を確保し、設定の範囲に含まれる IP アドレス。 次の IP アドレスは、入れ子になった仮想マシンの既定のゲートウェイとなるし、する内部スイッチと VNet 当社に接続されているホストの NIC の間にルーティングするために使用します。
