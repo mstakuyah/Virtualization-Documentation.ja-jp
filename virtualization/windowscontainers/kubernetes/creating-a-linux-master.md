@@ -1,184 +1,149 @@
 ---
-title: "Kubernetes マスターの新規作成"
-author: gkudra-msft
-ms.author: gekudray
-ms.date: 11/16/2017
+title: Kubernetes マスターの新規作成
+author: daschott
+ms.author: daschott
+ms.date: 11/02/2018
 ms.topic: get-started-article
 ms.prod: containers
-description: "Kubernetes クラスター マスターを 1 から作成します。"
-keywords: "kubernetes, 1.9, マスター, linux"
-ms.openlocfilehash: 3ea338f7af3dd921731fce0ec5a8b2cf8c4fef0c
-ms.sourcegitcommit: f542e8c95b5bb31b05b7c88f598f00f76779b519
-ms.translationtype: HT
+description: Kubernetes クラスター マスターを作成します。
+keywords: kubernetes、1.12、マスター、linux
+ms.openlocfilehash: 2bbcf2d382f20d140c73d9b34cf0f13a74debdfa
+ms.sourcegitcommit: 8e9252856869135196fd054e3cb417562f851b51
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "6178855"
 ---
-# <a name="kubernetes-master--from-scratch"></a>Kubernetes マスターの新規作成 #
-このページでは、Kubernetes マスターの手動展開手順を最初から最後まで説明します。
+# <a name="creating-a-kubernetes-master"></a>Kubernetes マスターを作成します。 #
+> [!NOTE]
+> このガイドは、[Kubernetes v1.12 検証されました。 揮発性 Kubernetes のバージョンからのバージョン] の理由により、このセクションと、前提条件を満たす将来のすべてのバージョンの保持しません。 Kubeadm を使用して Kubernetes マスター シェイプを初期化するための公式のマニュアルを参照して[次のとおり](https://kubernetes.io/docs/setup/independent/install-kubeadm/)です。 単に[混在 OS のスケジュール] セクション](#enable-mixed-os-scheduling)を有効にします。
 
-最近更新された Ubuntu のような Linux コンピューターについて理解する必要があります。 この場合、Windows はまったく関与しません。バイナリは、Linux でクロス コンパイルします。
+> [!NOTE]  
+> 更新したばかりの Linux コンピューターが必要に追従します。Kubernetes はマスター [kube dns](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)、 [kube スケジューラ](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/)、および[kube apiserver](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)移植されていないウィンドウをまだようなリソースです。 
+
+> [!tip]
+> Linux 手順は**Ubuntu 16.04**にカスタマイズされています。 Kubernetes を実行するための他の Linux 配布は、代わりに使用できると同じのコマンドを提供もする必要があります。 これらはもと相互運用正常に Windows。
 
 
-> [!Warning]  
-> Kubernetes のバージョン間の揮発性のため、このガイドの内容は将来的に正しくなくなる可能性があります。
+## <a name="initialization-using-kubeadm"></a>初期化 kubeadm を使用します。 ##
+明示的に指定がない限り、 **root**の下にあるコマンドを実行します。
 
-
-## <a name="preparing-the-master"></a>マスターの準備 ##
-まず、すべての前提条件をインストールします。
-
-```bash
-sudo apt-get install curl git build-essential docker.io conntrack python2.7
-```
-
-プロキシの内側にいる場合は、現在のセッションの環境変数を定義します。
-```bash
-HTTP_PROXY=http://proxy.example.com:80/
-HTTPS_PROXY=http://proxy.example.com:443/
-http_proxy=http://proxy.example.com:80/
-https_proxy=http://proxy.example.com:443/
-```
-この設定を永続化する場合は、/etc/environment に変数を追加します (変更を適用するには、ログアウトして再びログインする必要があります)。
-
-[このリポジトリ](https://github.com/Microsoft/SDN/tree/master/Kubernetes/linux)には、セットアップ プロセスを支援するスクリプトのコレクションがあります。 これらを `~/kube/` にチェックアウトします。このディレクトリ全体が、この後の手順で多くの Docker コンテナー用にマウントされるため、このガイドに記載されているものと同じ構造を維持する必要があります。
+最初に、管理者特権のルートをシェルに理解します。
 
 ```bash
-mkdir ~/kube
-mkdir ~/kube/bin
-git clone https://github.com/Microsoft/SDN /tmp/k8s 
-cd /tmp/k8s/Kubernetes/linux
-chmod -R +x *.sh
-chmod +x manifest/generate.py
-mv * ~/kube/
+sudo –s
 ```
 
-
-### <a name="installing-the-linux-binaries"></a>Linux バイナリのインストール ###
-
-> [!Note]  
-> 事前ビルドされたバイナリをダウンロードする代わりにパッチを含める場合や最新の Kubernetes コードを使用する場合は、[このページ](./compiling-kubernetes-binaries.md)をご覧ください。
-
-正式な Linux バイナリを [Kubernetes メインライン](https://github.com/kubernetes/kubernetes/releases/tag/v1.9.1)からダウンロードして、次のようにインストールします。
+コンピューターが最新の状態を確認します。
 
 ```bash
-wget -O kubernetes.tar.gz https://github.com/kubernetes/kubernetes/releases/download/v1.9.1/kubernetes.tar.gz
-tar -vxzf kubernetes.tar.gz 
-cd kubernetes/cluster 
-# follow the prompts from this command, the defaults are generally fine:
-./get-kube-binaries.sh
-cd ../server
-tar -vxzf kubernetes-server-linux-amd64.tar.gz 
-cd kubernetes/server/bin
-cp hyperkube kubectl ~/kube/bin/
+apt-get update -y && apt-get upgrade -y
 ```
 
-どこからでも実行できるように、バイナリを `$PATH` に追加します。 この時点ではセッション用にパスが設定されただけです。永続的な設定を行うには、この行を `~/.profile` に追加します。
+### <a name="install-docker"></a>Docker のインストール ###
+コンテナーを使用できるようにするには、Docker など、コンテナーのエンジンが必要です。 最新バージョンを移動するには、インストール済みの Docker の[次の手順](https://docs.docker.com/install/linux/docker-ce/ubuntu/)を使用できます。 実行して、その docker が正しくインストールされていることを確認することができますが、`hello-world`コンテナー。
 
 ```bash
-$ PATH="$HOME/kube/bin:$PATH"
+docker run hello-world
 ```
 
-### <a name="install-cni-plugins"></a>CNI プラグインのインストール ###
-Kubernetes ネットワークには基本的な CNI プラグインが必要です。 これらのプラグインは[こちら](https://github.com/containernetworking/plugins/releases)からダウンロードできます。`/opt/cni/bin/` に展開してください。
-
-```bash
-DOWNLOAD_DIR="${HOME}/kube/cni-plugins"
-CNI_BIN="/opt/cni/bin/"
-mkdir ${DOWNLOAD_DIR}
-cd $DOWNLOAD_DIR
-curl -L $(curl -s https://api.github.com/repos/containernetworking/plugins/releases/latest | grep browser_download_url | grep 'amd64.*tgz' | head -n 1 | cut -d '"' -f 4) -o cni-plugins-amd64.tgz
-tar -xvzf cni-plugins-amd64.tgz
-sudo mkdir -p ${CNI_BIN}
-sudo cp -r !(*.tgz) ${CNI_BIN}
-ls ${CNI_BIN}
-```
-
-
-### <a name="certificates"></a>証明書 ###
-まず、`ifconfig` または次のコマンドを使用して、ローカル IP アドレスを取得します。
-
-```bash
-$ ip addr show dev eth0
-```
-
-上のコマンドは、インターフェイス名がわかっている場合に使用します。 インターフェイス名は、このプロセス全体で何度も必要になります。環境変数に設定しておくと、作業が簡単になります。 次のスニペットでは、一時的な設定が行われます。セッションまたはシェルが終了した場合は、もう一度設定する必要があります。
-
-```bash
-$ MASTER_IP=10.123.45.67   # example! replace
-```
-
-クラスター内でノード間の通信に使用される証明書を準備します。
-
-```bash
-cd ~/kube/certs
-chmod u+x generate-certs.sh
-./generate-certs.sh $MASTER_IP
-```
-
-### <a name="prepare-manifests--addons"></a>マニフェストとアドオンの準備 ###
-Kubernetes システム ポッドを指定した一連の YAML ファイルを生成します。これには、`manifest` フォルダー内の Python スクリプトにマスターの IP アドレスと*完全*クラスター CIDR を渡します。
-
-```bash
-cd ~/kube/manifest
-./generate.py $MASTER_IP --cluster-cidr 192.168.0.0/16
-```
-
-マニフェストで Kubernetes による混乱が生じないように、Python スクリプトを削除または移動します。この操作を行わないと、後で問題につながります。
+### <a name="install-kubeadm"></a>Kubeadm をインストールします。 ###
+ダウンロード`kubeadm`、Linux 分布バイナリし、自分のクラスターを初期化します。
 
 > [!Important]  
-> Kubernetes バージョンがこのガイドの記述と異なる場合は、スクリプトでさまざまなバージョン管理フラグ (`--api-version` など) を使用して、ポッドによって展開される[イメージをカスタマイズ](https://console.cloud.google.com/gcr/images/google-containers/GLOBAL/hyperkube-amd64)します。 すべてのマニフェストで同じイメージが使用されるわけではなく、バージョン管理スキーマも異なる場合があります (特に `etcd` およびアドオン マネージャー)。
-
-
-#### <a name="manifest-customization"></a>マニフェストのカスタマイズ ####
-この時点では、セットアップ固有の変更が望ましいことがあります。 たとえば、Kubernetes による自動管理を許可するのではなく、手動でサブネットをノードに割り当てる必要性が生じることもあります。 この構成では、スクリプトにオプションを使用できます (`--im-sure` パラメーターについては、`--help` をご覧ください)。
+> Linux 製品によってを置き換える必要があります`kubernetes-xenial`の下にある正しい[コードネーム](https://wiki.ubuntu.com/Releases)とします。
 
 ```bash
-./generate.py $MASTER_IP --im-sure
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+apt-get update && apt-get install -y kubelet kubeadm kubectl 
 ```
 
-その他のカスタム構成オプションでは、生成されたマニフェストに対する手動の変更が必要です。
-
-
-### <a name="configure--run-kubernetes"></a>Kubernetes の構成と実行 ###
-生成された証明書を使用できるように Kubernetes を構成します。 これにより、`~/.kube/config` に構成が作成されます。
+### <a name="prepare-the-master-node"></a>マスター ノードを準備します。 ###
+Kubernetes Linux では、共にスペースをオフにする必要があります。
 
 ```bash
-cd ~/kube
-./configure-kubectl.sh $MASTER_IP
+nano /etc/fstab  # (remove a line referencing 'swap.img' , if it exists)
+swapoff -a 
 ```
 
-ここで、後でポッドが必要になる場所にファイルをコピーします。
+### <a name="initialize-master"></a>マスター シェイプを初期化します。 ###
+サービス サブネット (10.96.0.0/12 など)、クラスター サブネット (10.244.0.0/16 など) を書き留め、kubeadm を使用して、マスター シェイプを初期化します。
 
 ```bash
-mkdir ~/kube/kubelet
-sudo cp ~/.kube/config ~/kube/kubelet/
+kubeadm init --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12
 ```
 
-Kubernetes の "クライアント" である `kubelet` を開始する準備ができました。 以下のスクリプトはどちらも無期限に実行されます。作業を続けるには、各スクリプトの後に別のターミナル セッションを開きます。
+この手順が完了するまで数分かかる場合があります。 完了すると、初期化されて、マスター シェイプの確認はこのような画面が表示されます。
+
+![テキスト](media/kubeadm-init.png)
+
+> [!tip]
+> 注意 kubeadm への参加コマンドの出力*今すぐ*上の画像では失われたを取得する前にします。
+
+> [!tip]
+> 必要な Kubernetes バージョンがある場合を使用するには、渡すことができます、 `--kubernetes-version` kubeadm にフラグを設定します。
+
+おがまだ終了しましたされません。 使用する`kubectl`正規ユーザーは、[次__**を unelevated、ルート以外のユーザー シェルで**__ 実行
 
 ```bash
-cd ~/kube
-sudo ./start-kubelet.sh
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
+今すぐ編集、または自分のクラスターに関する情報を表示する kubectl を使用することができます。
 
-Kubeproxy スクリプトを実行し、部分クラスター CIDR を渡します。
+### <a name="enable-mixed-os-scheduling"></a>混合 OS のスケジュールを有効にします。 ###
+既定では、特定の Kubernetes リソースはすべてのノードでスケジュールされているように書き込まれます。 ただし、環境で書かたくない Linux リソース妨害するし、Windows ノード、その逆に二重スケジュールされていることになります。 このため、 [NodeSelector](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector)ラベルを適用する必要があります。 
+
+ここでは、しようとして更新プログラムの linux kube プロキシ[DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)ターゲット Linux だけにします。
+
+確認の更新方法`kube-proxy`DaemonSet [RollingUpdate](https://kubernetes.io/docs/tasks/manage-daemon/update-daemon-set/)に設定します。
 
 ```bash
-cd ~/kube
-sudo ./start-kubeproxy.sh 192.168
+kubectl get ds/kube-proxy -o go-template='{{.spec.updateStrategy.type}}{{"\n"}}' --namespace=kube-system
 ```
 
+次に、[この nodeSelector](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/l2bridge/manifests/node-selector-patch.yml)をダウンロードして、DaemonSet を修正し、Linux をターゲットのみに適用します。
 
-> [!Important]  
-> これは、予測された*完全な* /16 CIDR ですが、この場合は *CIDR にあるトラフィックが Kubernetes 以外であっても*ノードの実行が失敗となります。 Kubeproxy は、他のホストのトラフィックを妨害しないように、*サービス* サブネットへの Kubernetes トラフィックに*のみ*適用されます。
+```bash
+kubectl patch ds/kube-proxy --patch "$(cat node-selector-patch.yml)" -n=kube-system
+```
 
-> [!Note]  
-> これらのスクリプトはデーモン化することができます。 このガイドでは、セットアップ時にエラーを検出するために最も有効な、手動の実行についてのみ説明します。
+成功すると後の「ノード セレクター」を表示する必要があります`kube-proxy`あり、その他の DaemonSets の設定 `beta.kubernetes.io/os=linux`
 
+```bash
+kubectl get ds -n kube-system
+```
 
-## <a name="verifying-the-master"></a>マスターの検証 ##
+![テキスト](media/kube-proxy-ds.png)
+
+### <a name="collect-cluster-information"></a>クラスター情報を収集します。 ###
+正常に参加するには将来ノード マスターには、次の情報を書き留めておいてください。
+  1. `kubeadm join` 出力 ([次のとおり](#initialize-master)) から] コマンド
+    * 例: `kubeadm join <Master_IP>:6443 --token <some_token> --discovery-token-ca-cert-hash <some_hash>`
+  2. クラスターの中に定義されたサブネット`kubeadm init`([次のとおり](#initialize-master))
+    * 例: `10.244.0.0/16`
+  3. 中に定義されているサービス サブネット`kubeadm init`([次のとおり](#initialize-master))
+    * 例: `10.96.0.0/12`
+    * 使用してあることができます。 `kubectl cluster-info dump | grep -i service-cluster-ip-range`
+  4. Kube dns サービス IP 
+    * 例: `10.96.0.10`
+    * "クラスター IP"フィールドを使用してで見つかる `kubectl get svc/kube-dns -n kube-system`
+  5. Kubernetes`config`後に生成されたファイル`kubeadm init`([次のとおり](#initialize-master))。 手順を実行している場合、これは、次のパスに記載されています。
+    * `/etc/kubernetes/admin.conf`
+    * `$HOME/.kube/config`
+
+## <a name="verifying-the-master"></a>マスター シェイプを確認します。 ##
 数分後、システムは次の状態になります。
 
-  - `docker ps` に、最大 23 のワーカー コンテナーおよびポッド コンテナーが作成されています。
-  - `kubectl cluster-info` を呼び出すと、DNS および Heapster アドオンに加えて Kubernetes マスター API サーバーに関する情報が表示されます。
-  - `ifconfig` により、選択したクラスター CIDR で新しいインターフェイス `cbr0` が表示されます。
+  - `kubectl get pods -n kube-system`、すべての[マスター コンポーネントの Kubernetes](https://kubernetes.io/docs/concepts/overview/components/#master-components)でのポッドがある`Running`状態です。
+  - 呼び出し`kubectl cluster-info`DNS アドオンに加えて Kubernetes マスター API サーバーについての情報が表示されます。
 
+## <a name="next-steps"></a>次のステップ ## 
+ここでは、kubeadm を使用して Kubernetes マスター シェイプをセットアップする方法を説明します。 手順 3 の準備が整いました。
+
+> [!div class="nextstepaction"]
+> [ネットワーク ソリューションを選択します。](./network-topologies.md)

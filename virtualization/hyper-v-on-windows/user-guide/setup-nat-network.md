@@ -1,18 +1,19 @@
 ---
-title: "NAT ネットワークの設定"
-description: "NAT ネットワークの設定"
-keywords: "windows 10、hyper-v"
+title: NAT ネットワークの設定
+description: NAT ネットワークの設定
+keywords: windows 10、hyper-v
 author: jmesser81
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1f8a691c-ca75-42da-8ad8-a35611ad70ec
-ms.openlocfilehash: 6f5872a4f16bcce504af3e6e81ef3e820013d121
-ms.sourcegitcommit: ad5f6344230c7c4977adf3769fb7b01a5eca7bb9
-ms.translationtype: HT
+ms.openlocfilehash: 0c365b9351ee09c946e1711f3a3a5e82eb71c785
+ms.sourcegitcommit: 4090d158dd3573ea90799de5b014c131a206b000
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "6121622"
 ---
 # <a name="set-up-a-nat-network"></a>NAT ネットワークの設定
 
@@ -147,7 +148,7 @@ PS C:\> Get-NetNat | Remove-NetNAT (again, this will remove the NAT but keep the
 PS C:\> New-NetNat -Name SharedNAT -InternalIPInterfaceAddressPrefix <shared prefix>
 PS C:\> Start-Service docker
 ```
-Docker/HNS は <container prefix> から Windows コンテナーに IP アドレスを割り当てます。管理者は、<shared prefix> の別のセットから IP を VM に割り当てます。 <container prefix>
+Docker/HNS は Windows コンテナーに ip アドレスを割り当てるし、管理者は、仮想マシンに ip アドレスを 2 つの違いセットから割り当てられます。
 
 ユーザーは実行中の docker エンジンを使用して Windows コンテナー機能をインストールしました。次に、NAT ネットワークに VM を接続しようと考えています
 ```
@@ -161,7 +162,7 @@ PS C:\> New-NetNat -Name SharedNAT -InternalIPInterfaceAddressPrefix <shared pre
 PS C:\> New-VirtualSwitch -Type internal (attach VMs to this new vSwitch)
 PS C:\> Start-Service docker
 ```
-Docker/HNS は <container prefix> から Windows コンテナーに IP アドレスを割り当てます。管理者は、<shared prefix> の別のセットから IP を VM に割り当てます。 <container prefix>
+Docker/HNS は Windows コンテナーに ip アドレスを割り当てるし、管理者は、仮想マシンに ip アドレスを 2 つの違いセットから割り当てられます。
 
 最後に、2 つの内部 VM スイッチを設定し、そのスイッチ間で共有する NetNat を 1 つ設定する必要があります。
 

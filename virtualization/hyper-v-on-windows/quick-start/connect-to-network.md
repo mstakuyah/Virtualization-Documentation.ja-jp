@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 532195c6-564b-4954-97c2-5a5795368c09
-ms.openlocfilehash: fd2215930487fa292001519dcd18c3ab2138c3e0
-ms.sourcegitcommit: 594cc1728347646609ae1952ecc6c97fc659d0a9
-ms.translationtype: HT
+ms.openlocfilehash: 2079898ee4a3bd7d15e3cbbaea40486d1682a44a
+ms.sourcegitcommit: 4090d158dd3573ea90799de5b014c131a206b000
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "2226197"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "6121562"
 ---
 # <a name="create-a-virtual-network"></a>仮想ネットワークを作成する
 
@@ -96,9 +96,11 @@ Hyper-V には、外部、内部、プライベートの 3 種類の仮想スイ
 NAT ネットワークをセットアップして、仮想マシンに接続するには、[NAT ネットワークのユーザー ガイド](../user-guide/setup-nat-network.md)の手順に従ってください。
 
 ### <a name="the-two-switch-approach"></a>2 つのネットワークを切り替える方法
-ノート PC で Windows 10 Hyper-V を実行しており、ワイヤレス (無線) ネットワークとワイヤード (有線) ネットワークを切り替えることが頻繁にある場合、イーサネットとワイヤレス ネットワーク カードの両方に対応した仮想スイッチを作成することができます。 この構成では、ネットワークへのノート PC の接続方法に応じて、これらのスイッチ間の仮想マシンを変更することができます。 有線と無線の切り替えが仮想マシンによって自動的に行われることはありません。
->注意: ワイヤレス ネットワーク カードでの外部仮想スイッチの構成はサポートされていません。この構成はテスト目的でのみ使用してください。  
 
+ラップトップ コンピューターで Windows 10 HYPER-V を実行している、ワイヤレス ネットワークと有線ネットワークを頻繁に切り替える場合は、イーサネットとワイヤレス ネットワーク カードの両方の仮想スイッチを作成することがあります。  ラップトップ コンピューターがネットワークに接続する方法、によっては、これらのスイッチの間で仮想マシンを変更できます。 仮想マシンがワイヤード (有線) またはワイヤレスの間で切り替えるすれば自動的にします。 
+
+>[!IMPORTANT]
+>2 つの切り替え方法は、ワイヤレス カードで外部としてをサポートしていないと、テスト目的でのみ使用する必要があります。
 
 ## <a name="next-step---create-a-virtual-machine"></a>次の手順 - 仮想マシンを作成する
 [Windows 仮想マシンを作成する](create-virtual-machine.md)

@@ -8,11 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: 6dbc14ae192f40872a2d62253d1a0cf5658f4c04
-ms.sourcegitcommit: 7fdb0c5069605471bee351c4445a82e31c2930bd
-ms.translationtype: HT
+ms.openlocfilehash: 5dcc2af869ba0433b1d755f6d70f5dae6e18cdc5
+ms.sourcegitcommit: 4090d158dd3573ea90799de5b014c131a206b000
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "6121612"
 ---
 # <a name="windows-containers"></a>Windows コンテナー
 
@@ -36,7 +37,7 @@ ms.lasthandoff: 03/15/2018
 
 コンテナーは、分離されリソース制御された、移植可能なランタイム環境であり、ホスト マシンまたは仮想マシン上で実行されます。 コンテナー内で実行されるアプリケーションまたはプロセスは、必要なすべての必要な依存関係および構成ファイルと共にパッケージ化されており、コンテナーの外部で他のプロセスが一切実行されていないかのように動作します。
 
-コンテナーのホストがコンテナーのリソースのセットをプロビジョニングし、コンテナーはこれらのリソースのみを使用します。 コンテナーの認識では、与えられた以外のリソースは存在しないため、近隣のコンテナー用にプロビジョニングされたリソースがあっても使用できません。
+コンテナーのホストがコンテナーのリソースのセットをプロビジョニングし、コンテナーはこれらのリソースのみを使用します。 コンテナーを知っていれば、できる限りは、内容が表示されていますの外部でその他のリソースが存在しないと、ためしますコンテナーが隣接コンテナーのプロビジョニングされているリソースをタッチことはできません。
 
 Windows コンテナーの作成と使用を開始する際には、次の主要な概念が役立ちます。
 

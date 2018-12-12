@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: aa69739697e9e2c668aaf5026c6f5ddc69d43c4d
-ms.sourcegitcommit: f6f53fd0da65ac44d16fb793c5aa1af56c14d90e
+ms.openlocfilehash: d831b5950d84c9f82e2a4874827b2ffb107ad50e
+ms.sourcegitcommit: 4090d158dd3573ea90799de5b014c131a206b000
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "5428994"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "6121582"
 ---
 # <a name="windows-containers-on-windows-10"></a>Windows 10 の Windows コンテナー
 
@@ -35,7 +35,7 @@ ms.locfileid: "5428994"
 
 ## <a name="1-install-docker-for-windows"></a>1. Docker for Windows をインストールする
 
-[Docker for Windows をダウンロード](https://download.docker.com/win/stable/InstallDocker.msi)し、インストーラーを実行します。 [インストールの詳しい手順](https://docs.docker.com/docker-for-windows/install)については、Docker のドキュメントを参照してください。
+[Windows 版の Docker をダウンロード](https://store.docker.com/editions/community/docker-ce-desktop-windows)して実行インストーラー (行う必要がありますにログインします。 作成アカウントを既に持っていない場合)。 [インストールの詳しい手順](https://docs.docker.com/docker-for-windows/install)については、Docker のドキュメントを参照してください。
 
 ## <a name="2-switch-to-windows-containers"></a>2. Windows コンテナーに切り替える
 
