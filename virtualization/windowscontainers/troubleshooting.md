@@ -1,18 +1,19 @@
 ---
-title: "Windows コンテナーのトラブルシューティング"
-description: "Windows コンテナーと Docker に関するトラブルシューティングのヒント、自動スクリプト、およびログ情報"
-keywords: "docker, コンテナー, トラブルシューティング, ログ"
+title: Windows コンテナーのトラブルシューティング
+description: Windows コンテナーと Docker に関するトラブルシューティングのヒント、自動スクリプト、およびログ情報
+keywords: docker, コンテナー, トラブルシューティング, ログ
 author: PatrickLang
 ms.date: 12/19/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ebd79cd3-5fdd-458d-8dc8-fc96408958b5
-ms.openlocfilehash: 4d4b8a533aa5517c5850967f0b92c97da5190296
-ms.sourcegitcommit: 4042339cfd8a4440a5aba2b6f28968a52ab066fa
-ms.translationtype: HT
+ms.openlocfilehash: d67b38b04cf781ab5cba8e0142831f71b65aa974
+ms.sourcegitcommit: 8ab1fccfc680911493c769157a6cfe7cbcf17bde
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "8972056"
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -90,9 +91,9 @@ sc.exe stop docker
 <path\to\>dockerd.exe -D > daemon.log 2>&1
 ```
 
-## <a name="obtaining-stack-dump-and-daemon-data"></a>スタック ダンプとデーモン データを取得する
+## <a name="obtaining-stack-dump"></a>スタック ダンプを取得します。
 
-一般的に、これらが使用されるのは、Microsoft サポートや Docker 開発者によって明示的に要求された場合のみです。 これらを使用して、Docker が停止しているように見える状況を診断することができます。 
+一般的には、これは、Microsoft サポートまたは docker 開発者によって明示的に要求された場合に便利です。 Docker がハング、解決策を診断するために使用できます。 
 
 [docker signal.exe](https://github.com/jhowardmsft/docker-signal) をダウンロードします。
 
@@ -103,11 +104,11 @@ Get-Process dockerd
 docker-signal -pid=<id>
 ```
 
-出力ファイルは、Docker が実行されているデータ ルート ディレクトリに保存されます。 既定のディレクトリは `C:\ProgramData\Docker` です。 実際のディレクトリは、`docker info -f "{{.DockerRootDir}}"` を実行することによって確認できます。
+ファイルに出力されますでデータ ルート ディレクトリ docker が実行されています。 既定のディレクトリは `C:\ProgramData\Docker` です。 実際のディレクトリは、`docker info -f "{{.DockerRootDir}}"` を実行することによって確認できます。
 
-ファイルは `goroutine-stacks-<timestamp>.log` と `daemon-data-<timestamp>.log` です。
+ファイルがある`goroutine-stacks-<timestamp>.log`します。
 
-`daemon-data*.log` には個人情報が含まれている場合があるため、通常、信頼されているサポート スタッフでのみ共有してください。 `goroutine-stacks*.log` に個人情報は含まれません。
+点に注意`goroutine-stacks*.log`に個人情報が含まれていません。
 
 
 # <a name="host-compute-service"></a>ホスト コンピューティング サービス

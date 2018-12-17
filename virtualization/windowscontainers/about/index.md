@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: 5dcc2af869ba0433b1d755f6d70f5dae6e18cdc5
-ms.sourcegitcommit: 4090d158dd3573ea90799de5b014c131a206b000
+ms.openlocfilehash: ade690dbfed2fd154ee94955f3104c47dae40045
+ms.sourcegitcommit: 8ab1fccfc680911493c769157a6cfe7cbcf17bde
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "6121612"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "8972066"
 ---
 # <a name="windows-containers"></a>Windows コンテナー
 
@@ -21,11 +21,11 @@ ms.locfileid: "6121612"
 
 コンテナーとは、分離された独自のボックスにアプリケーションをラップする方法です。 コンテナー内のアプリケーションは、ボックスの外に存在するアプリケーションやプロセスを認識しません。 コンテナー内には、アプリケーションの正常な実行に必要なすべての要素も存在します。  ボックスを移動しても、アプリケーションの実行に必要な要素がすべて揃っているため、アプリケーションが常に正常に実行されます。
 
-これは、すべてが揃ったキッチンのようなものです。 すべての電化製品や家具、鍋やフライパン、食器用洗剤、ハンドタオルがすべてパッケージ化されたキッチン。 これがコンテナーです。
+これは、すべてが揃ったキッチンのようなものです。 すべての電化製品や家具、鍋やフライパン、食器用洗剤、ハンドタオルがすべてパッケージ化されたキッチン。 これは、弊社のコンテナーです。
 
 <center style="margin: 25px">![](media/box1.png)</center>
 
-このコンテナーは移動して、どのようなアパートの部屋 (ホスト) にでも組み込むことができ、移動先で同じキッチンとして機能します。 必要な電化製品がすべて揃っているため、電気と水を接続すれば、すぐに料理を始められます。
+このコンテナーは移動して、どのようなアパートの部屋 (ホスト) にでも組み込むことができ、移動先で同じキッチンとして機能します。 電気や水道を接続することは、すべてを行う必要があり、ないのでが必要なすべての住宅設備!) の料理を開始するには、チェック ボックスをオフで、[は解消します。
 
 <center style="margin: 25px">![](media/apartment.png)</center>
 
