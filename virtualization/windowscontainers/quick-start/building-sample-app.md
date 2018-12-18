@@ -1,17 +1,18 @@
 ---
-title: "サンプル アプリのビルド"
-description: "コンテナーを利用している場合に、サンプル アプリをビルドする方法を説明します。"
-keywords: "Docker, コンテナー"
+title: サンプル アプリのビルド
+description: コンテナーを利用している場合に、サンプル アプリをビルドする方法を説明します。
+keywords: Docker, コンテナー
 author: cwilhit
 ms.date: 07/25/2017
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: b1d0c4bcf35cd40e9ca058d4e2a51fa028cade2c
-ms.sourcegitcommit: 04c78918c77d2ad6053e6a95dc57bc488efbbf8b
-ms.translationtype: HT
+ms.openlocfilehash: 20328cb47d106dad153738628fc282d63371a3ab
+ms.sourcegitcommit: 95cec99aa8e817d3e3cb2163bd62a32d9e8f7181
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "8973602"
 ---
 # <a name="build-a-sample-app"></a>サンプル アプリのビルド
 
@@ -127,6 +128,7 @@ docker run -d -p 5000:80 --name myapp myasp
 
 ここでは Docker を使って ASP.NET の Web アプリを正常に入手し、構成、ビルドして実行中のコンテナーに正常に展開しました。 しかし、さらに進んだ手順を実行することもできます。 Web アプリを複数のコンポーネント (Web API を実行するコンテナー、フロント エンドを実行するコンテナー、SQL Server を実行するコンテナーなど) に分割することができます。
 
-ここで習得したコンテナーの使い方を実際に応用して、優れたソフトウェアを構築してください。 サンプル コンテナーの一覧は、以下でご覧いただけます。
+コンテナーのハングするした後、これでは、存在して移動し、とても便利なコンテナー化ソフトウェアを構築です。
 
-[コンテナーのサンプル](../samples.md)
+> [!div class="nextstepaction"]
+> [チェック アウト コンテナーの他のサンプル](../samples.md)

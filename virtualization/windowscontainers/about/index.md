@@ -8,14 +8,14 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: ade690dbfed2fd154ee94955f3104c47dae40045
-ms.sourcegitcommit: 8ab1fccfc680911493c769157a6cfe7cbcf17bde
+ms.openlocfilehash: 16cf281193ced00ea1b0e2d96291de7f44822284
+ms.sourcegitcommit: 95cec99aa8e817d3e3cb2163bd62a32d9e8f7181
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "8972066"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "8973612"
 ---
-# <a name="windows-containers"></a>Windows コンテナー
+# <a name="containers-on-windows"></a>Windows のコンテナー
 
 ## <a name="what-are-containers"></a>コンテナーとは
 
@@ -31,7 +31,9 @@ ms.locfileid: "8972066"
 
 これとほとんど同じ意味で、コンテナーはこのキッチンに似ています。 このキッチンは、異なる部屋に組み込まれることもあれば、多くの同じ部屋に組み込まれることもあります。 重要なのは、コンテナーには必要なすべての要素がパッケージ化されて付属している点です。
 
-簡単な概要を見る: [Windows ベースのコンテナー: エンタープライズ レベルの制御を使用した最新のアプリ開発](https://youtu.be/Ryx3o0rD5lY)。
+次の短い概要を確認してください。
+<iframe width="800" height="450" src="https://www.youtube.com/embed/Ryx3o0rD5lY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## <a name="container-fundamentals"></a>コンテナーの基礎
 

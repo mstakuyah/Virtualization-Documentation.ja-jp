@@ -1,6 +1,6 @@
 ---
-title: Windows コンテナーに関するドキュメント
-description: Windows コンテナーに関するドキュメント
+title: Windows のドキュメントのコンテナー
+description: Windows でコンテナーを実行するためのドキュメント
 keywords: Docker, コンテナー
 author: cwilhit
 ms.date: 05/02/2016
@@ -8,14 +8,14 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 74c9d604-0915-4d89-bc69-0263b76bc66b
-ms.openlocfilehash: 2b887d8ae92d5134014ea71235237cc446a7816f
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.openlocfilehash: 84e3f318069961853248bcc30abadcd68642649c
+ms.sourcegitcommit: 95cec99aa8e817d3e3cb2163bd62a32d9e8f7181
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6947951"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "8973622"
 ---
-# <a name="windows-containers-documentation"></a>Windows コンテナーに関するドキュメント
+# <a name="containers-on-windows-documentation"></a>Windows のドキュメントのコンテナー
 
 Windows コンテナーは、1 つのシステムで複数の独立したアプリケーションを実行できるオペレーティング システム レベルの仮想化を実現します。 このドキュメント セットでは、クイック スタート ガイド、展開ガイド、管理操作に関する詳しい技術情報を提供します。
 
@@ -34,7 +34,7 @@ Windows コンテナーは、1 つのシステムで複数の独立したアプ�
 <tr>
 <td ><center>![](media/1.png)</center></td>
 <td>**展開**<br /><br />
-Windows Server 2016 で Windows コンテナーを展開する方法について説明します。<br /><br />
+Windows Server 2019 の Windows コンテナーを展開する方法について説明します。<br /><br />
 <ul>
 <li>[システム要件](deploy-containers/system-requirements.md)<br /><br /></li>
 <li>[コンテナー ホストの展開](deploy-containers/deploy-containers-on-server.md)<br /><br /></li>
