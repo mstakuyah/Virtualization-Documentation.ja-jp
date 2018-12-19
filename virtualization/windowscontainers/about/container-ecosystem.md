@@ -8,22 +8,22 @@ ms.topic: about-article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 29fbe13a-228a-4eaa-9d4d-90ae60da5965
-ms.openlocfilehash: e88f2951abef72bdd938c23a068cc912e31628cb
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.openlocfilehash: fec8b08d5bd86102d21ce93b726dc0b931413441
+ms.sourcegitcommit: 69228f28723f366c6b2933c7701077c8df74b32b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6948071"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "8976748"
 ---
 # <a name="building-a-container-ecosystem"></a>コンテナー エコシステムの構築
 
 コンテナーのエコシステムを構築が非常に重要な理由については、説明しましょう。 まず Docker です。
 
-## <a name="dockers-appeal"></a>Docker の魅力
+## <a name="docker"></a>Docker
 
-コンテナーの概念 (名前空間の分離とリソース管理) は、ずっと以前からあり、BSD Jail、Solaris ゾーン、UNIX の基本的な chroot (ルート変更) メカニズムにまでさかのぼります。   Docker が行ってきたことは、共通のツールセット、パッケージ モデル、展開メカニズムの提供です。  これにより、Docker はアプリケーションのコンテナー化と分散を大幅に簡略化しました。  これらのアプリケーションは、任意の Linux ホストで実行でき、Windows でも同様の機能を提供しています。
+コンテナーの概念 (名前空間の分離とリソース管理) は、ずっと以前からあり、BSD Jail、Solaris ゾーン、UNIX の基本的な chroot (ルート変更) メカニズムにまでさかのぼります。   Docker が行ってきたことは、共通のツールセット、パッケージ モデル、展開メカニズムの提供です。  これによって、Docker 簡体字、コンテナリゼーションとアプリケーションの配布します。  これらのアプリケーションは、任意の Linux ホストで実行でき、Windows でも同様の機能を提供しています。
 
-この一般的なテクノロジは、任意のホストに対して同じ管理コマンドを提供することで管理を合理化するだけでなく、シームレスな DevOps にもまたとない機会をもたらします。
+一般的なパッケージ モデルおよび展開テクノロジでは、任意のホストに対して同じ管理コマンドを提供することによって管理を簡素化し、シームレスな DevOps の一意の営業案件を作成します。
 
 テスト マシンを一連の実稼働コンピューターの場合は、任意の環境全体にわたる秒単位で同じ展開は Docker のイメージを作成することができます開発者のデスクトップから。 これにより、Docker コンテナーにパッケージ化された、大規模で拡大するエコシステムが作成されてきました。このエコシステムには、DockerHub と、Docker が保持するパブリック コンテナー化されたアプリケーション レジストリがあります。
 
