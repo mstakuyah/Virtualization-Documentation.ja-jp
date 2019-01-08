@@ -7,12 +7,12 @@ ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: e736199221f06c572f89e8dafac55ce114bf7481
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.openlocfilehash: 478305ff2298a0392935f9857febc445c1199b83
+ms.sourcegitcommit: 5300274fd7b88c6cf5e37b2f4c02779efaa3a613
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6948021"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "8996046"
 ---
 # <a name="windows-container-requirements"></a>Windows コンテナーの要件
 
@@ -35,7 +35,7 @@ Windows コンテナー ホストが Hyper-V 仮想マシンから実行され�
 
 ## <a name="supported-base-images"></a>サポートされる基本イメージ
 
-Windows コンテナーには、Windows Server Core と Nano Server という 2 つのコンテナー イメージが付属しています。 一部の構成は、どちらの OS イメージもサポートしていません。 サポートされている構成を次の表に示します。
+コンテナーの 4 つの基本画像 Windows コンテナーが用意されています。 Windows Server Core、Nano サーバー、Windows、および IoT コアします。 一部の構成は、どちらの OS イメージもサポートしていません。 サポートされている構成を次の表に示します。
 
 <table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:75%" cellpadding="5" cellspacing="5">
 <thead>
@@ -48,18 +48,23 @@ Windows コンテナーには、Windows Server Core と Nano Server という 2 
 <tbody>
 <tr valign="top">
 <td><center>Windows Server 2016/2019 (標準またはデータ センター)</center></td>
-<td><center>Server Core / Nano Server</center></td>
-<td><center>Server Core / Nano Server</center></td>
+<td><center>サーバーの主要な Nano サーバー、Windows</center></td>
+<td><center>サーバーの主要な Nano サーバー、Windows</center></td>
 </tr>
 <tr valign="top">
 <td><center>Nano Server<a href="#warn-1">*</a></center></td>
 <td><center> Nano Server</center></td>
-<td><center>Server Core / Nano Server</center></td>
+<td><center>サーバーの主要な Nano サーバー、Windows</center></td>
 </tr>
 <tr valign="top">
 <td><center>Windows 10 Pro / Enterprise</center></td>
 <td><center>利用不可</center></td>
-<td><center>Server Core / Nano Server</center></td>
+<td><center>サーバーの主要な Nano サーバー、Windows</center></td>
+</tr>
+<tr valign="top">
+<td><center>IoT Core</center></td>
+<td><center>IoT Core</center></td>
+<td><center>利用不可</center></td>
 </tr>
 </tbody>
 </table>
@@ -84,9 +89,16 @@ Windows コンテナーには、Windows Server Core と Nano Server という 2 
 | Server Core | 45 MB                     | 360 MB + 1 GB のページファイル |
 
 
-### <a name="nano-server-vs-windows-server-core"></a>Nano Server と Windows Server Core の比較
+### <a name="base-image-differences"></a>基本イメージの相違点
 
-Windows Server Core と Nano Server のいずれを選択するかは、どのような点を検討すればよいでしょうか。 いずれもユーザーが自由に構築できますが、アプリケーションが .NET Framework との完全な互換性を必要とする場合は、[Windows Server Core](https://hub.docker.com/r/microsoft/windowsservercore/) を使用する必要があります。 それとは逆に、アプリケーションがクラウド用に構築され、.NET Core を使用する場合は、[Nano Server](https://hub.docker.com/r/microsoft/nanoserver/)を使用する必要があります。 これは、Nano Server が可能な限りフットプリントを小さく抑える目的で構築されており、必須でない複数のライブラリが削除されているためです。 Nano Server での構築を検討する場合、以下の点に注意してください。
+基に適切な基本の画像を選ぶにはどうはいずれかのか。 無料で作成するのには、好きは、各画像の一般的なガイドライン。
+
+- [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): これは、使用する最適なイメージ、アプリケーションでは、.NET framework を必要とする場合。
+- [Nano サーバー](https://hub.docker.com/_/microsoft-windows-nanoserver): アプリケーションのみ .NET コア必要がある、Nano サーバーが提供するフルバージョンの量の画像。
+- [Windows](https://hub.docker.com/_/microsoft-windowsfamily-windows): コンポーネントまたは Server Core でが表示されない .dll に依存するアプリケーションまたは Nano サーバー イメージ、GDI ライブラリなどがあります。 このイメージは、Windows の完全な依存関係の設定を実行します。
+- [「IoT コア](https://hub.docker.com/_/microsoft-windows-iotcore): このイメージは、 [「IoT アプリケーション](https://developer.microsoft.com/en-us/windows/iot)に特化します。 「IoT コア ホストを対象とするときに、このコンテナー画像を使用していますください。
+
+ほとんどのユーザーでは、Windows Server Core Nano サーバーなりますほうの画像を使用します。 以下は、点 Nano サーバー上に構築について考えることに注意するいくつかあります。
 
 - サービス スタックが削除されている
 - .NET Core が含まれていない ([.NET Core の Nano Server イメージ](https://hub.docker.com/r/microsoft/dotnet/) は使用できます)

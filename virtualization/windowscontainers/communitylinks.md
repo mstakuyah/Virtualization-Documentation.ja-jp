@@ -1,18 +1,19 @@
 ---
-title: "コミュニティのビデオとブログ"
-description: "Windows コンテナーのコミュニティによって提供された有用なビデオとブログへのリンク"
-keywords: "docker, コンテナー, windows, サンプル"
+title: コミュニティのビデオとブログ
+description: Windows コンテナーのコミュニティによって提供された有用なビデオとブログへのリンク
+keywords: docker, コンテナー, windows, サンプル
 author: taylorb-microsoft
 ms.date: 12/19/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: cfbb2542-fead-48e7-8318-4da92a7b5b6f
-ms.openlocfilehash: 0280e8fbe784629fcd2e2ee9695ed5c253a5643f
-ms.sourcegitcommit: 1bd3d86bfbad8351cb19bdc84129dd5aec976c0c
-ms.translationtype: HT
+ms.openlocfilehash: b62ab1b7e1dc5a8ac8bb9e6e06320ccd6a1c1876
+ms.sourcegitcommit: 5300274fd7b88c6cf5e37b2f4c02779efaa3a613
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "8996026"
 ---
 # <a name="community-videos-and-blogs"></a>コミュニティのビデオとブログ
 このページには、メンバーまたはコンテナーのコミュニティが作成したビデオとブログへのリンクが記載されています。  すばらしいリソースをご存じの場合や、ご自分でリソースを作成した場合は、このリストに追加するための PR を送信してください。
@@ -27,6 +28,10 @@ ms.lasthandoff: 01/25/2018
 
 ## <a name="building-and-examples"></a>構築と例
 [.NET とコンテナーの概要](http://blog.alexellis.io/docker-dotnet-containers/) - Alex Ellis
+
+[Windows アプリケーションを Dockerize する方法: 5 つのステップ](https://blog.sixeyed.com/how-to-dockerize-windows-applications/)-Elton Stoneman
+
+[.NET Framework アプリケーションでは Docker 刷新](https://www.pluralsight.com/courses/modernizing-dotnet-framework-apps-docker?clickid=UVL20JTFpzK6UDSX5n1b5zmyUkgWUPWOz3Pjwg0&irgwc=1&mpid=1197078&utm_source=impactradius&utm_medium=digital_affiliate&utm_campaign=1197078&aid=7010a000001xAKZAA2)- Elton Stoneman
 
 [Microsoft SQL 2016 と ASP.NET を利用した Docker](http://blog.alexellis.io/docker-does-sql2016-aspnet/) - Alex Ellis
 
