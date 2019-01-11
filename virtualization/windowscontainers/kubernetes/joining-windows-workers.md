@@ -8,12 +8,12 @@ ms.prod: containers
 description: Kubernetes v1.12 を使用するには、Windows ノードを結合できます。
 keywords: kubernetes、1.12、windows、作業の開始
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 8051270cac6178bad9adf9a8ef9e2324932f7d01
-ms.sourcegitcommit: 8e9252856869135196fd054e3cb417562f851b51
+ms.openlocfilehash: 764d440837118801226c0bf37f92ffb0d7bdb9e5
+ms.sourcegitcommit: 1aef193cf56dd0870139b5b8f901a8d9808ebdcd
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "6179072"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "9001618"
 ---
 # <a name="joining-windows-server-nodes-to-a-cluster"></a>Windows Server ノード クラスターへの参加 #
 [Kubernetes マスター ノードをセットアップ](./creating-a-linux-master.md)して[、目的のネットワーク ソリューションを選択](./network-topologies.md)したらは、クラスターを形成する Windows Server ノードに参加する準備が整います。 参加する前に、いくつかの[Windows ノードの準備](#preparing-a-windows-node)が必要です。
@@ -61,14 +61,14 @@ Start-Service docker
  特定の Windows のリリースの画像を取り込みます。 たとえば、Windows Server 2019 を実行している場合。
 
  ```powershell
-docker pull microsoft/nanoserver:1803
+docker pull mcr.microsoft.com/windows/nanoserver:1809
  ```
 
 #### <a name="tag-the-image"></a>画像をタグ付けします。 ####
 このガイドの後半で使用する Dockerfiles を探して、`:latest`タグの画像します。 次のように取得するだけ nanoserver イメージをタグ付けには。
 
 ```powershell
-docker tag microsoft/nanoserver:1803 microsoft/nanoserver:latest
+docker tag mcr.microsoft.com/windows/nanoserver:1809 microsoft/nanoserver:latest
 ```
 
 #### <a name="run-the-container"></a>コンテナーを実行します。 ####
@@ -176,6 +176,7 @@ Windows ノードを結合するプロセスをシンプルにのみ実行に必
 
 ```powershell
 cd c:\k
+chcp 65001
 .\start.ps1 -ManagementIP <Windows Node IP> -ClusterCIDR <Cluster CIDR> -ServiceCIDR <Service CIDR> -KubeDnsServiceIP <Kube-dns Service IP> 
 ```
 

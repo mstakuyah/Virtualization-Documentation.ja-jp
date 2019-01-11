@@ -1,18 +1,19 @@
 ---
-title: "Hyper-V と Windows PowerShell の使用"
-description: "Hyper-V と Windows PowerShell の使用"
-keywords: "windows 10、hyper-v"
+title: Hyper-V と Windows PowerShell の使用
+description: Hyper-V と Windows PowerShell の使用
+keywords: windows 10、hyper-v
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 6d1ae036-0841-4ba5-b7e0-733aad31e9a7
-ms.openlocfilehash: bd0175fe209e3311a38af29ccd0f473a2bd32dd8
-ms.sourcegitcommit: 6e3c3b2ff125f949c03a342c3709a6e57c5f736c
-ms.translationtype: HT
+ms.openlocfilehash: 3991895d381897f27c34aa7840fde44d2cedae7e
+ms.sourcegitcommit: 1aef193cf56dd0870139b5b8f901a8d9808ebdcd
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "9001608"
 ---
 # <a name="working-with-hyper-v-and-windows-powershell"></a>Hyper-V と Windows PowerShell の使用
 
@@ -108,10 +109,10 @@ PowerShell を使用してチェックポイントを作成するには、`Get-V
      NewVHDSizeBytes = 53687091200
      BootDevice = "VHD"
      Path = "C:\Virtual Machines\$VMName"
-     SwitchName = (Get-VMSwitch).Name[0]
+     SwitchName = (Get-VMSwitch).Name
  }
 
- New-VM $VM
+ New-VM @VM
   ```
 
 ## <a name="wrap-up-and-references"></a>ラップし、参照

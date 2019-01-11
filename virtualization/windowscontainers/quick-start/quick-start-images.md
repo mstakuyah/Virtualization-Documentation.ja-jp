@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-ms.openlocfilehash: 5da18c7c1e2fc6882d5879070e91d36d0c0a475a
-ms.sourcegitcommit: 95cec99aa8e817d3e3cb2163bd62a32d9e8f7181
+ms.openlocfilehash: 0350e62deef06402991f505dd263db7fd506cba1
+ms.sourcegitcommit: 1aef193cf56dd0870139b5b8f901a8d9808ebdcd
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "8973664"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "9001588"
 ---
 # <a name="automating-builds-and-saving-images"></a>ビルドの自動化とイメージの保存
 
@@ -129,6 +129,8 @@ Login Succeeded
 ```console
 docker push <user>/iis-dockerfile
 ```
+
+Docker Docker ハブまでには、各レイヤーをプッシュと docker は Docker ハブで、またはその他のレジストリ (外部レイヤー) に既に存在しているレイヤーをスキップします。  たとえば、Microsoft コンテナー レジストリ、または、プライベート企業レジストリからレイヤーでホストされている最新のバージョンの Windows Server Core をスキップするといない Docker ハブにプッシュするとします。
 
 これで、`docker pull` を使用して、コンテナー イメージを Docker Hub から任意の Windows コンテナー ホストにダウンロードできるようになります。 このチュートリアルでは、既存のイメージを削除し、Docker Hub からプルします。 
 
