@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
-ms.openlocfilehash: e1a5b80773128af0ba0095d5201e4fa123a1741c
-ms.sourcegitcommit: 99da24a8c075e0096eabd09a29007a65e3ea35b7
+ms.openlocfilehash: caaf4186f43c69dfbc35d04dd8909876ed082906
+ms.sourcegitcommit: 4336d7617c30d26a987ad3450b048e17404c365d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2018
-ms.locfileid: "6022180"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "9001001"
 ---
 # <a name="hyper-v-containers"></a>Hyper-V コンテナー
 
@@ -32,7 +32,7 @@ Windows のコンテナー テクノロジには、2 種類コンテナー、Win
 Docker に HYPER-V コンテナーの管理は、Windows Server コンテナーの管理とほぼ同じです。 Docker に HYPER-V コンテナーを作成するには、`--isolation`パラメーターを設定する`--isolation=hyperv`します。
 
 ``` cmd
-docker run -it --isolation=hyperv microsoft/nanoserver cmd
+docker run -it --isolation=hyperv mcr.microsoft.com/windows/nanoserver:1809 cmd
 ```
 
 ### <a name="isolation-explanation"></a>分離の説明
@@ -42,7 +42,7 @@ docker run -it --isolation=hyperv microsoft/nanoserver cmd
 以下の場合、Windows Server コンテナーが展開されており、実行時間の長い ping プロセスがホストされます。
 
 ``` cmd
-docker run -d microsoft/windowsservercore ping localhost -t
+docker run -d mcr.microsoft.com/windows/servercore:1809 ping localhost -t
 ```
 
 `docker top` コマンドを使用すると、以下のようにコンテナー内の ping プロセスが返されます。 この例のプロセスの ID は 3964 です。
@@ -66,7 +66,7 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
 一方、この例では Hyper-V コンテナーを起動して、ping プロセスも使用します。 
 
 ```
-docker run -d --isolation=hyperv microsoft/nanoserver ping -t localhost
+docker run -d --isolation=hyperv mcr.microsoft.com/windows/nanoserver:1809 ping -t localhost
 ```
 
 同様に、`docker top` を使用して、コンテナーから実行中のプロセスを返すことができます。

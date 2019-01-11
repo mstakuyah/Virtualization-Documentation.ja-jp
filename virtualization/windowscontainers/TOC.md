@@ -54,6 +54,7 @@
 ## [システム要件](deploy-containers/system-requirements.md)
 ## [バージョンの互換性](deploy-containers/version-compatibility.md)
 ## [Hyper-V による分離](manage-containers/hyperv-container.md)
+## [コンテナーのハードウェア デバイス](deploy-containers/hardware-devices-in-containers.md)
 ## [コンテナー プラットフォーム ツール](deploy-containers/containerd.md)
 ## [Active Directory サービス コンポーネント](manage-containers/manage-serviceaccounts.md)
 ## [ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
