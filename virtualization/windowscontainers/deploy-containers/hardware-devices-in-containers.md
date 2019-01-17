@@ -3,12 +3,12 @@ title: Windows のコンテナーでデバイスを使う
 description: Windows のコンテナーにどのようなデバイスのサポートが存在します。
 keywords: docker、コンテナー、デバイス、ハードウェア
 author: cwilhit
-ms.openlocfilehash: f70388bf3724af7cb92f20e2053aa4ddb1f953a3
-ms.sourcegitcommit: 5cbaef0806db21d7bbcc99964837f10f4207a51f
+ms.openlocfilehash: 6397a5050ee0c7cb4b62dc935af4975d9ab6b3db
+ms.sourcegitcommit: 1b6a244c3604e48c42c851e580e3b59e2384c91a
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "9001754"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "9014519"
 ---
 # <a name="devices-in-containers-on-windows"></a>Windows のコンテナーでデバイスを使う
 
@@ -17,9 +17,9 @@ ms.locfileid: "9001754"
 ## <a name="requirements"></a>要件
 
 - Windows を実行する必要があります 2019 以降のサーバーまたは Windows 10 Pro/Enterprise 年 2018年 10 月と更新
-- 必要がありますが実行されている Docker バージョン 18.09 以降。
 - コンテナー イメージのバージョンは、1809 以降である必要があります。
 - コンテナーは、プロセス分離モードで実行されている Windows コンテナーである必要があります。
+- デバイスで Windows の機能は、Docker デーモンに存在しているときにまだ存在しない Docker クライアント (この[取得要求](https://github.com/docker/cli/pull/1606)を追跡するを参照してください)。 [Interrim する必要があります moby ソースから[独自の docker 実行可能ファイルの作成](https://github.com/moby/moby/blob/master/docs/contributing/software-req-win.md)を回避としてします。 次の操作に慣れていない場合は、上にあるリンクされている現在価値が反映されるまで、この機能を試して、待機をお勧めします。
 
 ## <a name="run-a-container-with-a-device"></a>デバイスを使って、コンテナーを実行します。
 
