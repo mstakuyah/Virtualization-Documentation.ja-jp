@@ -7,18 +7,18 @@ ms.date: 04/07/2018
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: f1e75efa-8745-4389-b8dc-91ca931fe5ae
-ms.openlocfilehash: 3bb873a35d905e9eefada151184d6115bb18d2e7
-ms.sourcegitcommit: 9653a3f7451011426f8af934431bb14dbcb30a62
-ms.translationtype: HT
+ms.openlocfilehash: 5975f43859368334cab31b6d0eb37f084e9c03ca
+ms.sourcegitcommit: 51da93c4548c5df7a9f01e54d46d81b338c874cf
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "2082873"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "9031176"
 ---
 # <a name="create-a-virtual-machine-with-hyper-v"></a>Hyper-V による仮想マシンの作成
 
 仮想マシンを作成し、オペレーティング システムをインストールします。
 
-Microsoft ではこれまでに仮想マシンを作成するための新しいツールの作成を行ってきたため、過去の 3 リリースで手順が大きく変わっています。
+過去の 3 つのリリースの上に表示される指示が大幅に変更されたために、仮想マシンを作成するための新しいツール作成したします。
 
 適切な手順については、該当するオペレーティング システムを選択してください。
 
