@@ -7,12 +7,12 @@ ms.date: 07/25/2017
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 20328cb47d106dad153738628fc282d63371a3ab
-ms.sourcegitcommit: 95cec99aa8e817d3e3cb2163bd62a32d9e8f7181
+ms.openlocfilehash: 970f039e97ce0628c7a7f78c417017fc95570f82
+ms.sourcegitcommit: 51da93c4548c5df7a9f01e54d46d81b338c874cf
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "8973602"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "9031166"
 ---
 # <a name="build-a-sample-app"></a>サンプル アプリのビルド
 
@@ -66,7 +66,7 @@ FROM microsoft/aspnetcore-build:1.1 AS build-env
 WORKDIR /app
 ```
 
-次に、.csproj ファイルを一時コンテナーの ”/app” ディレクトリにコピーします。 これは、プロジェクトに必要なパッケージ参照の一覧が、.csproj ファイルに含まれているためです。
+次に、.csproj ファイルを一時コンテナーの ”/app” ディレクトリにコピーします。 .Csproj ファイルには、プロジェクトが必要なパッケージの参照のリストが含まれているため操作します。
 
 このファイルをコピーすると、dotnet によってこのディレクトリからファイルが読み取られ、プロジェクトに必要な依存関係とツールが外部から取得されます。
 
