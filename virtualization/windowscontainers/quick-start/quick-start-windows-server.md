@@ -8,16 +8,16 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
-ms.openlocfilehash: e27148873299543a89eaf92801b40732dd27b402
-ms.sourcegitcommit: 95cec99aa8e817d3e3cb2163bd62a32d9e8f7181
+ms.openlocfilehash: 44e415af08881d18ebb2d82f5f79098f7fb034f8
+ms.sourcegitcommit: f172d14ef1ebfb5a9df1b3529e0722d9103e0eba
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "8973672"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "9112929"
 ---
 # <a name="windows-containers-on-windows-server"></a>Windows Server の Windows コンテナー
 
-この手順は、Windows Server 2019 で基本的な展開と Windows コンテナー機能の使用について説明します。
+この手順は、Windows Server 2019 と Windows Server 2016 の基本的な展開と Windows コンテナー機能の使用について説明します。
 
 このクイック スタートでは、次の実行されます。
 
@@ -27,7 +27,7 @@ ms.locfileid: "8973672"
 
 コンテナーの概要については、[コンテナーについてのページ](../about/index.md)」をご覧ください。
 
-このクイック スタートでは、Windows Server 2019 の Windows Server コンテナーを特定します。 このページの左側の目次に、Windows 10 のコンテナーを含む追加のクイック スタート文書があります。
+このクイック スタートでは、Windows Server 2019 と Windows Server 2016 の Windows Server コンテナーを特定します。 このページの左側の目次に、Windows 10 のコンテナーを含む追加のクイック スタート文書があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -105,10 +105,18 @@ sconfig
 
 この演習では、事前作成された .NET サンプル イメージを Docker Hub レジストリからダウンロードし、.NET Hello World アプリケーションを実行するシンプルなコンテナーを展開します。  
 
-`docker run` を使用し、.Net コンテナーを展開します。 この操作でコンテナー イメージもダウンロードされるので、処理に数分かかる可能性があります。
+`docker run` を使用し、.Net コンテナーを展開します。 この操作でコンテナー イメージもダウンロードされるので、処理に数分かかる可能性があります。 Windows Server のバージョンによってホスト、によってには、下の次のコマンドを実行します。
+
+#### <a name="windows-server-2019"></a>Windows Server 2019
 
 ```console
 docker run microsoft/dotnet-samples:dotnetapp-nanoserver-1809
+```
+
+#### <a name="windows-server-2016"></a>Windows Server 2016
+
+```console
+docker run microsoft/dotnet-samples:dotnetapp-nanoserver-sac2016
 ```
 
 コンテナーが起動し、hello world メッセージが出力され、終了します。

@@ -8,24 +8,24 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-ms.openlocfilehash: 0350e62deef06402991f505dd263db7fd506cba1
-ms.sourcegitcommit: 1aef193cf56dd0870139b5b8f901a8d9808ebdcd
+ms.openlocfilehash: a28b9ced2c9669b65bfa02bd02c1061226dcea7e
+ms.sourcegitcommit: f172d14ef1ebfb5a9df1b3529e0722d9103e0eba
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "9001588"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "9112919"
 ---
 # <a name="automating-builds-and-saving-images"></a>ビルドの自動化とイメージの保存
 
-前の Windows Server クイック スタートでは、以前に作成した .NET Core サンプルから Windows コンテナーを作成しました。 この演習では、Dockerfile を使用してコンテナー イメージの作成を自動化する方法、Docker Hub パブリック レジストリにコンテナー イメージを保存する方法について詳しく説明します。
+前の Windows Server クイック スタートでは、以前に作成した .NET Core サンプルから Windows コンテナーを作成しました。 ここでは、Dockerfile から独自のコンテナー イメージを作成し、Docker ハブ パブリック レジストリにコンテナーの画像を保存する方法を示します。
 
-このクイック スタートは、Windows Server 2016 上の Windows Server コンテナー固有の内容です。Windows Server Core コンテナー基本イメージを使用します。 このページの左側の目次に追加のクイック スタート文書があります。
+このクイック スタートでは、Windows Server 2019 または Windows Server 2016 で Windows Server コンテナーをし、Windows Server Core コンテナーの基本イメージを使用します。 このページの左側の目次に追加のクイック スタート文書があります。
 
 ## <a name="prerequisites"></a>前提条件
 
 次の要件を満たしていることを確認してください。
 
-- Windows Server 2016 を実行している 1 台のコンピューター システム (物理または仮想)。
+- 1 台のコンピューター システムが実行されている Windows Server 2019 (物理または仮想) または Windows Server 2016 します。
 - Windows コンテナー機能と Docker でこのシステムを構成します。 これらの手順のチュートリアルについては、「[Windows Containers on Windows Server](./quick-start-windows-server.md)」 (Windows Server の Windows コンテナー) を参照してください。
 - Docker ID。コンテナー イメージを Docker Hub にプッシュするために使用されます。 Docker ID がない場合は、[Docker Cloud](https://cloud.docker.com/) でサインアップしてください。
 
