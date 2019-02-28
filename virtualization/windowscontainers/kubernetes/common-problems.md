@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Kubernetes の展開と Windows ノードの参加で発生する一般的な問題の解決方法。
 keywords: kubernetes、1.12、linux コンパイルします。
-ms.openlocfilehash: a5e9369b000aa83aa7ec6ec9bb147f0fd844c820
-ms.sourcegitcommit: 8e9252856869135196fd054e3cb417562f851b51
+ms.openlocfilehash: dfc7ab5aab9a04ef39916fb9e9b9886cad2f46a6
+ms.sourcegitcommit: 41318edba7459a9f9eeb182bf8519aac0996a7f1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "6178915"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "9120440"
 ---
 # <a name="troubleshooting-kubernetes"></a>Kubernetes のトラブルシューティング #
 このページでは、Kubernetes のセットアップ、ネットワーク、および展開に関する一般的な問題について説明します。
@@ -32,8 +32,15 @@ ms.locfileid: "6178915"
 Kubelet が表示 kube プロキシを (選択した場合 Flannel ネットワーク ソリューションとして) と flanneld ホスト エージェント プロセスが動作し、ノード、上に表示されているログを実行している分割 PoSh windows します。 これに加えは、Windows ノードが Kubernetes クラスターで「準備が」として登録されている必要があります。
 
 ### <a name="can-i-configure-to-run-all-of-this-in-the-background-instead-of-posh-windows"></a>このすべてを PoSh の windows ではなく、バック グラウンドで実行するを構成することができますか。 ###
-Kubernetes バージョン 1.11 から始めて、kubelet と kube プロキシをネイティブ[Windows サービス](https://kubernetes.io/docs/getting-started-guides/windows/#kubelet-and-kube-proxy-can-now-run-as-windows-services)として実行できます。 常に、 [nssm.exe](https://nssm.cc/)などの別のサービス管理者を使用して、常に (flanneld、kubelet ・ kube プロキシ)、これらのプロセスがバック グラウンドで実行することができます。
+Kubernetes バージョン 1.11 から始めて、ネイティブ[Windows サービス](https://kubernetes.io/docs/getting-started-guides/windows/#kubelet-and-kube-proxy-can-now-run-as-windows-services)として kubelet & kube プロキシが実行できます。 常に、 [nssm.exe](https://nssm.cc/)などの別のサービス管理者を使用して、常に (flanneld、kubelet & kube プロキシ)、これらのプロセスがバック グラウンドで実行することができます。 [Kubernetes の Windows サービス](./kube-windows-services.md)の例の手順を参照してください。
 
+### <a name="i-have-problems-running-kubernetes-processes-as-windows-services"></a>Windows サービスとして Kubernetes プロセスを実行している問題があります。 ###
+初期のトラブルシューティング、出力ファイルに出力し、出力をリダイレクトするのには、 [nssm.exe](https://nssm.cc/)で次のフラグを使用できます。
+```
+nssm set <Service Name> AppStdout C:\k\mysvc.log
+nssm set <Service Name> AppStderr C:\k\mysvc.log
+```
+詳細については、正式な[nssm 使用](https://nssm.cc/usage)ドキュメントを参照してください。
 
 ## <a name="common-networking-errors"></a>ネットワークの一般的なエラー ##
 
@@ -54,6 +61,19 @@ Kubernetes ネットワーク要件の 1 つは、クラスターへの通信 na
                     "10.96.0.0/12",   # Service subnet
                     "10.127.130.0/24" # Management (host) subnet
                 ]
+```
+
+### <a name="after-some-time-vnics-and-hns-endpoints-of-containers-are-being-deleted"></a>いくつかの時間、Vnic、コンテナーの端点を HNS は削除されます。 ###
+場合にこの問題が発生することが、 `hostname-override` [kube](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)プロキシ パラメーターが渡されていません。 その問題を解決するには、ユーザーは kube プロキシにホスト名を次のように渡す必要があります。
+```
+C:\k\kube-proxy.exe --hostname-override=$(hostname)
+```
+
+### <a name="on-flannel-vxlan-mode-my-pods-are-having-connectivity-issues-after-rejoining-the-node"></a>Flannel (vxlan) モードでは、[マイ ポッドがある接続の問題ノードに再度参加後に ###
+削除済みノードをクラスターに参加するが、常に flannelD はノードに新しいポッド サブネットを割り当てるしようとします。 ユーザーは、次のパスで古いポッド サブネット構成ファイルを削除する必要があります。
+```powershell
+Remove-Item C:\k\SourceVip.json
+Remove-Item C:\k\SourceVipRequest.json
 ```
 
 ### <a name="after-launching-startps1-flanneld-is-stuck-in-waiting-for-the-network-to-be-created"></a>Start.ps1 を起動した後、Flanneld が「を作成するネットワークの待機中」に残っています。 ###
@@ -80,7 +100,7 @@ FLANNEL_IPMASQ=true
 2. エンドポイントの記憶域の同時実行の問題には、2 番目の[既知の問題](https://github.com/docker/libnetwork/issues/1950)リーク エンドポイントの原因となります。 修正プログラムを受信するには、Docker EE 18.09 を使用する必要があります以上します。
 
 ### <a name="my-pods-cannot-launch-due-to-network-failed-to-allocate-for-range-errors"></a>期限を自分のポッドを起動できません"ネットワーク: 範囲の割り当てに失敗しました"エラー ###
-これノードの IP アドレス スペースが使用されていることを示します。 [リーク端点](#my-endpointsips-are-leaking)をクリーンアップすると、すべてのリソースに影響を受けるノードを移行するし、次のコマンドを実行してください。
+これノードの IP アドレス スペースが使用されていることを示します。 [リーク端点](#my-endpointsips-are-leaking)をクリーンアップすると、すべてのリソースに影響を受けるノード & の次のコマンドが実行を移行してください。
 ```
 c:\k\stop.ps1
 Get-HNSEndpoint | Remove-HNSEndpoint
@@ -98,7 +118,7 @@ Get-HnsNetwork | ? Name -ieq "cbr0"
 Get-NetAdapter | ? Name -Like "vEthernet (Ethernet*"
 ```
 
-`start-kubelet.ps1`スクリプトの出力を調べて、仮想ネットワークの作成中にエラーが発生していないか確認してください。
+多くの場合のホストのネットワーク アダプターが「イーサネット」をされていない場合、start.ps1 スクリプト[InterfaceName](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/start.ps1#L6)パラメーターを変更することをお勧めします。 出力を確認して、それ以外の場合、`start-kubelet.ps1`スクリプトを使用して仮想ネットワークの作成時にエラーがあるかどうか。 
 
 ### <a name="pods-stop-resolving-dns-queries-successfully-after-some-time-alive"></a>しばらく稼働した後、ポッドが正常な DNS クエリの解決を停止する ###
 Windows Server のネットワーク スタックに懸案事項をキャッシュ既知の DNS が、1803 とその下のバージョンが生じる DNS の要求が失敗することもあります。 この問題を回避するには、0 以下のレジストリ キーを使用して TTL キャッシュの最大値を設定できます。

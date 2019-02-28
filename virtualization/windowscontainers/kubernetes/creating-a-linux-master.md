@@ -2,21 +2,21 @@
 title: Kubernetes マスターの新規作成
 author: daschott
 ms.author: daschott
-ms.date: 11/02/2018
+ms.date: 02/09/2018
 ms.topic: get-started-article
 ms.prod: containers
 description: Kubernetes クラスター マスターを作成します。
-keywords: kubernetes、1.12、マスター、linux
-ms.openlocfilehash: 2bbcf2d382f20d140c73d9b34cf0f13a74debdfa
-ms.sourcegitcommit: 8e9252856869135196fd054e3cb417562f851b51
+keywords: kubernetes、1.13、マスター、linux
+ms.openlocfilehash: 8a3fb073616d115ab84e6cc36f0fb6cedbcf1f7d
+ms.sourcegitcommit: 41318edba7459a9f9eeb182bf8519aac0996a7f1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "6178855"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "9120430"
 ---
 # <a name="creating-a-kubernetes-master"></a>Kubernetes マスターを作成します。 #
 > [!NOTE]
-> このガイドは、[Kubernetes v1.12 検証されました。 揮発性 Kubernetes のバージョンからのバージョン] の理由により、このセクションと、前提条件を満たす将来のすべてのバージョンの保持しません。 Kubeadm を使用して Kubernetes マスター シェイプを初期化するための公式のマニュアルを参照して[次のとおり](https://kubernetes.io/docs/setup/independent/install-kubeadm/)です。 単に[混在 OS のスケジュール] セクション](#enable-mixed-os-scheduling)を有効にします。
+> このガイドは、[Kubernetes v1.13 検証されました。 揮発性 Kubernetes のバージョンからのバージョン] の理由により、このセクションと、前提条件を満たす将来のすべてのバージョンの保持しません。 Kubeadm を使用して Kubernetes マスター シェイプを初期化するための公式のマニュアルを参照して[次のとおり](https://kubernetes.io/docs/setup/independent/install-kubeadm/)です。 単に[混在 OS のスケジュール] セクション](#enable-mixed-os-scheduling)を有効にします。
 
 > [!NOTE]  
 > 更新したばかりの Linux コンピューターが必要に追従します。Kubernetes はマスター [kube dns](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)、 [kube スケジューラ](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/)、および[kube apiserver](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)移植されていないウィンドウをまだようなリソースです。 
@@ -81,7 +81,7 @@ kubeadm init --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12
 ![テキスト](media/kubeadm-init.png)
 
 > [!tip]
-> 注意 kubeadm への参加コマンドの出力*今すぐ*上の画像では失われたを取得する前にします。
+> この kubeadm への参加] コマンドのメモを行う必要があります。 使用する kubeadm トークンの有効期限が切れるとして、`kubeadm token create --print-join-command`新しいトークンを作成します。
 
 > [!tip]
 > 必要な Kubernetes バージョンがある場合を使用するには、渡すことができます、 `--kubernetes-version` kubeadm にフラグを設定します。
@@ -100,6 +100,11 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ここでは、しようとして更新プログラムの linux kube プロキシ[DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)ターゲット Linux だけにします。
 
+最初に、.yaml マニフェスト ファイルを保存するディレクトリを作成します。
+```bash
+mkdir -p kube/yaml && cd kube/yaml
+```
+
 確認の更新方法`kube-proxy`DaemonSet [RollingUpdate](https://kubernetes.io/docs/tasks/manage-daemon/update-daemon-set/)に設定します。
 
 ```bash
@@ -109,6 +114,7 @@ kubectl get ds/kube-proxy -o go-template='{{.spec.updateStrategy.type}}{{"\n"}}'
 次に、[この nodeSelector](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/l2bridge/manifests/node-selector-patch.yml)をダウンロードして、DaemonSet を修正し、Linux をターゲットのみに適用します。
 
 ```bash
+wget https://raw.githubusercontent.com/Microsoft/SDN/master/Kubernetes/flannel/l2bridge/manifests/node-selector-patch.yml
 kubectl patch ds/kube-proxy --patch "$(cat node-selector-patch.yml)" -n=kube-system
 ```
 
@@ -121,7 +127,7 @@ kubectl get ds -n kube-system
 ![テキスト](media/kube-proxy-ds.png)
 
 ### <a name="collect-cluster-information"></a>クラスター情報を収集します。 ###
-正常に参加するには将来ノード マスターには、次の情報を書き留めておいてください。
+正常に参加するには将来のノードをマスターする必要があるの管理、次の情報。
   1. `kubeadm join` 出力 ([次のとおり](#initialize-master)) から] コマンド
     * 例: `kubeadm join <Master_IP>:6443 --token <some_token> --discovery-token-ca-cert-hash <some_hash>`
   2. クラスターの中に定義されたサブネット`kubeadm init`([次のとおり](#initialize-master))
@@ -139,8 +145,11 @@ kubectl get ds -n kube-system
 ## <a name="verifying-the-master"></a>マスター シェイプを確認します。 ##
 数分後、システムは次の状態になります。
 
-  - `kubectl get pods -n kube-system`、すべての[マスター コンポーネントの Kubernetes](https://kubernetes.io/docs/concepts/overview/components/#master-components)でのポッドがある`Running`状態です。
+  - `kubectl get pods -n kube-system`が必要となるため、 [Kubernetes マスター コンポーネント](https://kubernetes.io/docs/concepts/overview/components/#master-components)のポッド`Running`状態です。
   - 呼び出し`kubectl cluster-info`DNS アドオンに加えて Kubernetes マスター API サーバーについての情報が表示されます。
+  
+> [!tip]
+> DNS ポッド内に残って kubeadm がネットワークをセットアップしていないため`ContainerCreating`または`Pending`状態です。 移行されます`Running`[ネットワーク ソリューションを選択](./network-topologies.md)した後の状態。
 
 ## <a name="next-steps"></a>次のステップ ## 
 ここでは、kubeadm を使用して Kubernetes マスター シェイプをセットアップする方法を説明します。 手順 3 の準備が整いました。

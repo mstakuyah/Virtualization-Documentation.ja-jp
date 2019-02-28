@@ -38,6 +38,7 @@
 ### [Linux 作業者への参加](kubernetes/joining-linux-workers.md)
 ### [Kubernetes リソースを展開します。](kubernetes/deploying-resources.md)
 ### [トラブルシューティング](kubernetes/common-problems.md)
+### [Kubernetes の Windows サービス](kubernetes/kube-windows-services.md)
 ### [Kubernetes バイナリのコンパイル](kubernetes/compiling-kubernetes-binaries.md)
 ## Windows サービス布地へ
 ### [最初のコンテナーの展開](/azure/service-fabric/service-fabric-quickstart-containers)

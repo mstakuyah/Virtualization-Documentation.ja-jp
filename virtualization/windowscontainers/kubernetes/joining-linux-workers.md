@@ -2,18 +2,18 @@
 title: Linux ノードへの参加
 author: daschott
 ms.author: daschott
-ms.date: 11/02/2018
+ms.date: 02/09/2018
 ms.topic: get-started-article
 ms.prod: containers
-description: Kubernetes v1.12 を使用するには、Linux ノードを結合できます。
-keywords: kubernetes、1.12、windows、作業の開始
+description: Kubernetes v1.13 を使用するには、Linux ノードを結合できます。
+keywords: kubernetes、1.13、windows、作業の開始
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 97c12d70db9679dbb85877f0985c6053f95fa500
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.openlocfilehash: c32cc300fd97eb53605e2f51e6a83e5889747561
+ms.sourcegitcommit: 41318edba7459a9f9eeb182bf8519aac0996a7f1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6947981"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "9120470"
 ---
 # <a name="joining-linux-nodes-to-a-cluster"></a>Linux ノード クラスターへの参加
 
@@ -88,9 +88,12 @@ sudo sysctl net.bridge.bridge-nf-call-iptables=1
 mkdir -p $HOME/.kube
 ```
 
-1. Kubernetes 証明書ファイルをコピー (`$HOME/.kube/config`)[マスターの](./creating-a-linux-master.md#collect-cluster-information)名前を付けて保存`$HOME/.kube/config`作業者にします。
+2. Kubernetes 証明書ファイルをコピー (`$HOME/.kube/config`)[マスターの](./creating-a-linux-master.md#collect-cluster-information)名前を付けて保存`$HOME/.kube/config`作業者にします。
 
-1. コピーした構成ファイルのファイルの所有権を次のように設定します。
+> [!tip]
+> ノードの間で構成ファイルを転送するのに[WinSCP](https://winscp.net/eng/download.php)など scp ベースのツールを使用することができます。
+
+3. コピーした構成ファイルのファイルの所有権を次のように設定します。
 
 ``` bash
 sudo chown $(id -u):$(id -g) $HOME/.kube/config

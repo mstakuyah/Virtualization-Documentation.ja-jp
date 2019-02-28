@@ -6,14 +6,14 @@ ms.date: 11/02/2018
 ms.topic: get-started-article
 ms.prod: containers
 description: 混合 OS Kubernetes クラスターで Kubernetes resoureces を展開します。
-keywords: kubernetes、1.12、windows、作業の開始
+keywords: kubernetes、1.13、windows、作業の開始
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 608cda1494d03da59e8a875910c8eedd04ba11dc
-ms.sourcegitcommit: 8e9252856869135196fd054e3cb417562f851b51
+ms.openlocfilehash: 7d2f1dd789a96a3ee4898ef196f872e574d6321f
+ms.sourcegitcommit: 41318edba7459a9f9eeb182bf8519aac0996a7f1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "6179035"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "9120480"
 ---
 # <a name="deploying-kubernetes-resources"></a>Kubernetes リソースを展開します。 #
 少なくとも 1 つのマスターと 1 の作業者から成る Kubernetes クラスターがあると仮定して、準備ができたら Kubernetes リソースを配置します。
@@ -72,3 +72,7 @@ watch kubectl get pods -o wide
 
 > [!div class="nextstepaction"]
 > [トラブルシューティング](./common-problems.md)
+
+それ以外の場合もについては、以下の Windows サービスとして Kubernetes コンポーネントを実行します。
+> [!div class="nextstepaction"]
+> [Windows サービス](./kube-windows-services.md)

@@ -5,15 +5,15 @@ ms.author: daschott
 ms.date: 11/02/2018
 ms.topic: get-started-article
 ms.prod: containers
-description: Kubernetes v1.12 を使用するには、Windows ノードを結合できます。
-keywords: kubernetes、1.12、windows、作業の開始
+description: Kubernetes v1.13 を使用するには、Windows ノードを結合できます。
+keywords: kubernetes、1.13、windows、作業の開始
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 764d440837118801226c0bf37f92ffb0d7bdb9e5
-ms.sourcegitcommit: 1aef193cf56dd0870139b5b8f901a8d9808ebdcd
+ms.openlocfilehash: ed0f13bd429e88f05469f91c3fc691bf0188b0a2
+ms.sourcegitcommit: 41318edba7459a9f9eeb182bf8519aac0996a7f1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "9001618"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "9120570"
 ---
 # <a name="joining-windows-server-nodes-to-a-cluster"></a>Windows Server ノード クラスターへの参加 #
 [Kubernetes マスター ノードをセットアップ](./creating-a-linux-master.md)して[、目的のネットワーク ソリューションを選択](./network-topologies.md)したらは、クラスターを形成する Windows Server ノードに参加する準備が整います。 参加する前に、いくつかの[Windows ノードの準備](#preparing-a-windows-node)が必要です。
@@ -96,10 +96,13 @@ mkdir c:\k
 #### <a name="copy-kubernetes-certificate"></a>Kubernetes 証明書をコピーします。 #### 
 Kubernetes 証明書ファイルをコピーする (`$HOME/.kube/config`)[マスターから](./creating-a-linux-master.md#collect-cluster-information)この新規`C:\k`ディレクトリ。
 
+> [!tip]
+> ノードの間で構成ファイルを転送するのに[xcopy](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/xcopy)または[WinSCP](https://winscp.net/eng/download.php)などのツールを使用することができます。
+
 #### <a name="download-kubernetes-binaries"></a>Kubernetes バイナリ ファイルをダウンロードします。 ####
 Kubernetes を実行できるようにするには、最初にダウンロードする必要が、 `kubectl`、 `kubelet`、および`kube-proxy`バイナリします。 これらのリンクからダウンロードできます、`CHANGELOG.md`の[最新リリースで作成された](https://github.com/kubernetes/kubernetes/releases/)ファイル。
- - たとえば、 [v1.12 ノードのバイナリ](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.12.md#node-binaries)を紹介します。
- - [7 Zip](http://www.7-zip.org/)などのツールを使用してアーカイブを展開しにバイナリを配置`C:\k\`します。
+ - たとえば、 [v1.13 ノードのバイナリ](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.13.md#node-binaries)を紹介します。
+ - [展開アーカイブ](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)などのツールを使用してアーカイブを展開しにバイナリを配置`C:\k\`します。
 
 #### <a name="optional-setup-kubectl-on-windows"></a>(オプション)Windows kubectl をセットアップします。 ####
 Windows からクラスターを制御する場合は、作業を使用して、`kubectl`コマンド。 最初に`kubectl`外の利用可能な`C:\k\`ディレクトリを変更する、`PATH`環境変数。
@@ -144,25 +147,18 @@ Kubeconfig の場所を確認してくださいか、何度もコピーしよう
 
 ## <a name="joining-the-windows-node"></a>Windows ノードへの参加 ##
 によっては、[選択したネットワーク ソリューション](./network-topologies.md)では、次の操作を実行できます。
-1. [Windows Server ノード Flannel クラスターへの参加します。](#joining-a-flannel-cluster)
+1. [Windows Server ノード Flannel (vxlan またはホスト校) クラスターへの参加します。](#joining-a-flannel-cluster)
 2. [Windows Server ノード ToR スイッチのクラスターへの参加します。](#joining-a-tor-cluster)
 
 ### <a name="joining-a-flannel-cluster"></a>Flannel クラスターへの参加 ###
-[この Microsoft リポジトリ](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/l2bridge)クラスターにこのノードを結合するのに役立つ Flannel 配置スクリプトのコレクションがあります。
+[この Microsoft リポジトリ](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/overlay)クラスターにこのノードを結合するのに役立つ Flannel 配置スクリプトのコレクションがあります。
 
-ZIP ファイルは、[こちら](https://github.com/Microsoft/SDN/archive/master.zip)から直接ダウンロードできます。 必要なですだけが、`Kubernetes/flannel/l2bridge`ディレクトリの内容を抽出する必要があります`C:\k\`:
+内容を抽出する必要がある、 [Flannel start.ps1](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/start.ps1)スクリプトをダウンロード`C:\k`:
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-wget https://github.com/Microsoft/SDN/archive/master.zip -o master.zip
-Expand-Archive master.zip -DestinationPath master
-mv master/SDN-master/Kubernetes/flannel/l2bridge/* C:/k/
-rm -recurse -force master,master.zip
+wget https://raw.githubusercontent.com/Microsoft/SDN/master/Kubernetes/flannel/start.ps1 -o c:\k\start.ps1
 ```
-
-これに加え、クラスター サブネット (例: チェック「10.244.0.0/16」) が正しいことを確認する必要があります。
-- [ネット conf.json](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/net-conf.json)
-
 
 [事前に準備して Windows ノード](#preparing-a-windows-node)を想定していますと`c:\k`ディレクトリは次のようには、ノードを結合する準備ができたらします。
 
@@ -172,13 +168,78 @@ rm -recurse -force master,master.zip
 Windows ノードを結合するプロセスをシンプルにのみ実行に必要なを起動する 1 つの Windows スクリプト`kubelet`、 `kube-proxy`、 `flanneld`] ノードに参加します。
 
 > [!Note]
-> 更新された次のようなその他のファイルをダウンロードする[このスクリプト](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/start.ps1)`flanneld`実行可能ファイルと[インフラストラクチャ ポッドの Dockerfile](https://github.com/Microsoft/SDN/blob/master/Kubernetes/windows/Dockerfile) *とするを実行*します。 複数の powershell ウィンドウを 2 回目 l2bridge ポッド ネットワークの新しい外部としての作成中に、ネットワーク障害の数秒だけでなく開く/閉じるされている可能性があります。
+> [start.ps1](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/start.ps1) [install.ps1](https://github.com/Microsoft/SDN/blob/master/Kubernetes/windows/install.ps1)、次のような他のファイルをダウンロードするを参照して、`flanneld`実行可能ファイルと[インフラストラクチャ ポッドの Dockerfile](https://github.com/Microsoft/SDN/blob/master/Kubernetes/windows/Dockerfile) *とするをインストール*します。 ネットワーク重ねてローカル UDP ポート 4789 用の[ファイアウォール](https://github.com/Microsoft/SDN/blob/master/Kubernetes/windows/helper.psm1#L111)が開かれます。 複数の powershell ウィンドウを 2 回目ポッド ネットワークの新しい外部としての作成中に、ネットワーク障害の数秒だけでなく開く/閉じるされている可能性があります。
 
 ```powershell
 cd c:\k
-chcp 65001
-.\start.ps1 -ManagementIP <Windows Node IP> -ClusterCIDR <Cluster CIDR> -ServiceCIDR <Service CIDR> -KubeDnsServiceIP <Kube-dns Service IP> 
+.\start.ps1 -ManagementIP <Windows Node IP> -NetworkMode <network mode>  -ClusterCIDR <Cluster CIDR> -ServiceCIDR <Service CIDR> -KubeDnsServiceIP <Kube-dns Service IP> -LogDir <Log directory>
 ```
+# [<a name="managementip"></a>ManagementIP](#tab/ManagementIP)
+Windows ノードに割り当てられている IP アドレス。 使える`ipconfig`を確認します。
+
+|  |  | 
+|---------|---------|
+|パラメーター     | `-ManagementIP`        |
+|既定値    | n.A. **required**        |
+
+# [<a name="networkmode"></a>NetworkMode](#tab/NetworkMode)
+ネットワーク モード`l2bridge`(flannel ホスト校) または`overlay`(flannel vxlan) として[ネットワーク ソリューション](./network-topologies.md)を選択します。
+
+> [!Important] 
+> `overlay` ネットワークのモード (flannel vxlan) 必要 Kubernetes v1.14 バイナリまたはそれ以降。
+
+|  |  | 
+|---------|---------|
+|パラメーター     | `-NetworkMode`        |
+|既定値    | `l2bridge`        |
+
+
+# [<a name="clustercidr"></a>ClusterCIDR](#tab/ClusterCIDR)
+[クラスター サブネット範囲](./getting-started-kubernetes-windows.md#cluster-subnet-def)です。
+
+|  |  | 
+|---------|---------|
+|パラメーター     | `-ClusterCIDR`        |
+|既定値    | `10.244.0.0/16`        |
+
+
+# [<a name="servicecidr"></a>ServiceCIDR](#tab/ServiceCIDR)
+[サービス サブネット範囲](./getting-started-kubernetes-windows.md#service-subnet-def)です。
+
+|  |  | 
+|---------|---------|
+|パラメーター     | `-ServiceCIDR`        |
+|既定値    | `10.96.0.0/12`        |
+
+
+# [<a name="kubednsserviceip"></a>KubeDnsServiceIP](#tab/KubeDnsServiceIP)
+[Kubernetes DNS サービス IP](./getting-started-kubernetes-windows.md#kube-dns-def)します。
+
+|  |  | 
+|---------|---------|
+|パラメーター     | `-KubeDnsServiceIP`        |
+|既定値    | `10.96.0.10`        |
+
+
+# [<a name="interfacename"></a>InterfaceName](#tab/InterfaceName)
+Windows ホストのネットワーク インターフェイスの名前。 使える`ipconfig`を確認します。
+
+|  |  | 
+|---------|---------|
+|パラメーター     | `-InterfaceName`        |
+|既定値    | `Ethernet`        |
+
+
+# [<a name="logdir"></a>LogDir](#tab/LogDir)
+それぞれのそれぞれの出力ファイルに kubelet と kube プロキシのログのリダイレクト先のディレクトリです。
+
+|  |  | 
+|---------|---------|
+|パラメーター     | `-LogDir`        |
+|既定値    | `C:\k`        |
+
+
+---
 
 > [!tip]
 > 既に書き留めたクラスター サブネット、サービス サブネット、および Linux マスター kube DNS IP を[以前](./creating-a-linux-master.md#collect-cluster-information)
@@ -188,6 +249,7 @@ chcp 65001
   * 3 つの powershell ウィンドウを開く] のいずれかを参照してください`kubelet`、1 つの`flanneld`、別の `kube-proxy`
   * ホスト エージェント プロセスを参照してください`flanneld`、 `kubelet`、および`kube-proxy`ノードで実行されています。
 
+成功した場合は、[次の手順](#next-steps)に進みます。
 
 ## <a name="joining-a-tor-cluster"></a>ToR クラスターへの参加 ##
 > [!NOTE]
