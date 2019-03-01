@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
-ms.openlocfilehash: 3b592620f4667450c2454f8760b7f3c844c7e2ab
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.openlocfilehash: bbc405fc2a490cfe5082be112fde724707e24785
+ms.sourcegitcommit: 21d93e5febd9b1b47ae1aa59d08086e6ec1691e0
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6948051"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "9121054"
 ---
 # <a name="docker-engine-on-windows"></a>Windows 上の Docker エンジン
 
@@ -23,7 +23,7 @@ Docker エンジンとクライアントは、Windows に含まれていない�
 ## <a name="install-docker"></a>Docker のインストール
 Windows コンテナーを使用するには Docker が必要です。 Docker は、Docker エンジン (dockerd.exe) と Docker クライアント (docker.exe) で構成されます。 すべてのものをインストールする最も簡単な方法は、クイック スタート ガイドで説明しています。 ヘルプのすべてのアイテムを取得することを設定し、最初のコンテナーを実行します。 
 
-* [Windows Server 2016 の Windows コンテナー](../quick-start/quick-start-windows-server.md)
+* [Windows Server 2019 の Windows コンテナー](../quick-start/quick-start-windows-server.md)
 * [Windows 10 の Windows コンテナー](../quick-start/quick-start-windows-10.md)
 
 スクリプト化したインストールについては、「[Use a script to install Docker EE](https://docs.docker.com/install/windows/docker-ee/#use-a-script-to-install-docker-ee)」 (スクリプトを使用して Docker EE をインストールする) をご覧ください。
