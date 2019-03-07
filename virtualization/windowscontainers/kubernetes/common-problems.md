@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Kubernetes の展開と Windows ノードの参加で発生する一般的な問題の解決方法。
 keywords: kubernetes、1.12、linux コンパイルします。
-ms.openlocfilehash: dfc7ab5aab9a04ef39916fb9e9b9886cad2f46a6
-ms.sourcegitcommit: 41318edba7459a9f9eeb182bf8519aac0996a7f1
+ms.openlocfilehash: 30bb0c064c96ff4bd0b6e1c078221b2d9170d4e7
+ms.sourcegitcommit: 817a629f762a4a5d4bcff58302f2bc2408bf8be1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "9120440"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "9149922"
 ---
 # <a name="troubleshooting-kubernetes"></a>Kubernetes のトラブルシューティング #
 このページでは、Kubernetes のセットアップ、ネットワーク、および展開に関する一般的な問題について説明します。
@@ -62,6 +62,9 @@ Kubernetes ネットワーク要件の 1 つは、クラスターへの通信 na
                     "10.127.130.0/24" # Management (host) subnet
                 ]
 ```
+
+### <a name="my-windows-node-cannot-access-a-nodeport-service"></a>[Windows ノード NodePort サービスにアクセスできません。 ###
+ノードからローカルの NodePort アクセスができなくなります。 これは既知の制限です。 NodePort アクセスが他のノードまたは外部のユーザーから有効です。
 
 ### <a name="after-some-time-vnics-and-hns-endpoints-of-containers-are-being-deleted"></a>いくつかの時間、Vnic、コンテナーの端点を HNS は削除されます。 ###
 場合にこの問題が発生することが、 `hostname-override` [kube](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)プロキシ パラメーターが渡されていません。 その問題を解決するには、ユーザーは kube プロキシにホスト名を次のように渡す必要があります。

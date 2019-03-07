@@ -8,12 +8,12 @@ ms.prod: containers
 description: Kubernetes v1.13 を使用するには、Windows ノードを結合できます。
 keywords: kubernetes、1.13、windows、作業の開始
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: f9348debf427c47f9326368ff02914603de06a1b
-ms.sourcegitcommit: 41318edba7459a9f9eeb182bf8519aac0996a7f1
+ms.openlocfilehash: 2edc940d4132870a6f7d6714bb50faef201136ba
+ms.sourcegitcommit: 817a629f762a4a5d4bcff58302f2bc2408bf8be1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "9120460"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "9149912"
 ---
 # <a name="kubernetes-on-windows"></a>Windows で使用する Kubernetes #
 このページでは、Linux ベースのクラスターを Windows ノードを結合して Kubernetes Windows で使用を開始する概要についてとして機能します。 Windows Server[バージョン 1809](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1809#container-networking-with-kubernetes)Kubernetes 1.13 のリリースでユーザーの活用できます[最新機能](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features)の Kubernetes ベータ版の Windows で。
@@ -45,17 +45,6 @@ ms.locfileid: "9120460"
 > Docker のインストール時に既定で作成される他の Docker ネットワーク (NAT) があります。 代わりにクラスター サブネットの ip アドレスを割り当てることと、windows Kubernetes を操作するには必要ありません。
 
 
-### <a name="disable-anti-spoofing-protection-required-for-l2bridge"></a>(L2bridge に必要な) スプーフィング対策保護を無効にします。 ###
-(別名[flannel ホスト ゲートウェイ](./network-topologies.md#flannel-in-host-gateway-mode))、ネットワークの l2bridge を使用する必要がある Windows コンテナー ホスト (ゲスト) 仮想マシンの MAC アドレスのスプーフィングが有効になっていることを確認する必要があります。 これを実現するには、仮想マシン (HYPER-V で指定されたなど) をホストしているコンピューターに管理者として、次を実行する必要があります。
-
-```powershell
-Get-VMNetworkAdapter -VMName "<name>" | Set-VMNetworkAdapter -MacAddressSpoofing On
-```
-> [!TIP]
-> 仮想化ニーズに合わせてを VMware ベースの製品を使用している場合は、MAC なりすまし要件の[無作為検出モード](https://kb.vmware.com/s/article/1004099)を有効にするのに確認してください。
-
->[!TIP]
-> 独自に展開する Kubernetes Azure または IaaS 仮想マシンでクラウドの他のプロバイダーから、お勧め[ネットワーク揃えで重ねて配置](./network-topologies.md#flannel-in-vxlan-mode)代わりにします。
 
 ## <a name="what-you-will-accomplish"></a>作業内容 ##
 
