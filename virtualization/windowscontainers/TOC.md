@@ -57,7 +57,7 @@
 ## [Hyper-V による分離](manage-containers/hyperv-container.md)
 ## [コンテナーのハードウェア デバイス](deploy-containers/hardware-devices-in-containers.md)
 ## [コンテナー プラットフォーム ツール](deploy-containers/containerd.md)
-## [Active Directory サービス コンポーネント](manage-containers/manage-serviceaccounts.md)
+## [グループの管理サービス アカウントします。](manage-containers/manage-serviceaccounts.md)
 ## [ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 ## [Windows の Linux コンテナー](deploy-containers/linux-containers.md)
 
