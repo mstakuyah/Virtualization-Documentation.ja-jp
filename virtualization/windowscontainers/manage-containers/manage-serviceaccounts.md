@@ -3,17 +3,17 @@ title: Windows のコンテナーのグループの管理サービス アカウ�
 description: Windows のコンテナーのグループの管理サービス アカウントします。
 keywords: docker、コンテナー、active directory、gmsa
 author: rpsqrd
-ms.date: 03/21/2019
+ms.date: 03/22/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 5f80d245984b0cf5c4503971a74cc8bbcca0c19c
-ms.sourcegitcommit: f53b8b3dc695cdf22106095b15698542140ae088
+ms.openlocfilehash: 17c4089c98a74ea5937bac5d0eb4d4f1749aecf7
+ms.sourcegitcommit: b8afbfb63c33a491d7bad44d8d5962e6a60cb566
 ms.translationtype: MT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/22/2019
-ms.locfileid: "9257409"
+ms.locfileid: "9257448"
 ---
 # <a name="group-managed-service-accounts-for-windows-containers"></a>Windows のコンテナーのグループの管理サービス アカウントします。
 
@@ -288,14 +288,14 @@ Cached Tickets: (2)
 [...]
 ```
 
-PowerShell または gMSA アカウントとして別のコンソール アプリを開くには、システム アカウントが標準の ContainerAdministrator (または NanoServer の ContainerUser) ではなくアカウントで実行するためにコンテナーをもらうことができます。
+PowerShell または gMSA アカウントとして別のコンソール アプリを開くには、ネットワーク サービスのアカウントが標準の ContainerAdministrator (または NanoServer の ContainerUser) ではなくアカウントで実行するためにコンテナーをもらうことができます。
 
 ```powershell
 # NOTE: you can only run as SYSTEM on Windows Server 1709 and later
-docker run --security-opt "credentialspec=file://contoso_webapp01.json" --hostname webapp01 --user "NT AUTHORITY\SYSTEM" -it mcr.microsoft.com/windows/servercore:ltsc2019 powershell
+docker run --security-opt "credentialspec=file://contoso_webapp01.json" --hostname webapp01 --user "NT AUTHORITY\NETWORK SERVICE" -it mcr.microsoft.com/windows/servercore:ltsc2019 powershell
 ```
 
-システムを実行しているときに、gMSA としてドメイン コント ローラーの SYSVOL に接続しようとしてネットワークの認証をテストすることができます。
+ネットワーク サービスとして実行すると、gMSA としてドメイン コント ローラーの SYSVOL に接続しようとしてネットワークの認証をテストすることができます。
 
 ```
 # This command should succeed if you're successfully running as the gMSA
@@ -500,7 +500,7 @@ Windows Server 2019 と Windows 10、1809 のバージョンでこの問題が�
     > ローカル ユーザー - ドメイン id ではなく、常にコンテナーにログインするためです。
     > アプリは、ネットワーク サービスとローカル システムを実行する必要がありますネットワーク リソースに述べてときにいつでもコンピューター アカウントを使用して、gMSA 表示されます。
 
-5.  最後に、コンテナーが正しく構成されているようユーザーまたは他のサービスが、コンテナー化アプリに自動的に認証を行うことがない場合は、gMSA アカウントで Spn を確認します。 Clients will locate the gMSA account by the name at which they reach your application. その他必要があります`host`の場合、負荷分散装置またはその他の DNS 名を使用して、アプリにクライアントの接続などの gMSA Spn します。
+5.  最後に、コンテナーが正しく構成されているようユーザーまたは他のサービスが、コンテナー化アプリに自動的に認証を行うことがない場合は、gMSA アカウントで Spn を確認します。 クライアントは、アプリケーション届くその名前が gMSA アカウントを見つけます。 その他必要があります`host`の場合、負荷分散装置またはその他の DNS 名を使用して、アプリにクライアントの接続などの gMSA Spn します。
 
 ## <a name="additional-resources"></a>その他の資料
 -   [グループの管理サービス アカウントの概要](https://docs.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
