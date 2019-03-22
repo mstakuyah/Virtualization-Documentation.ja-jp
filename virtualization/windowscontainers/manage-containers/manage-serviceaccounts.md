@@ -500,7 +500,7 @@ Windows Server 2019 と Windows 10、1809 のバージョンでこの問題が�
     > ローカル ユーザー - ドメイン id ではなく、常にコンテナーにログインするためです。
     > アプリは、ネットワーク サービスとローカル システムを実行する必要がありますネットワーク リソースに述べてときにいつでもコンピューター アカウントを使用して、gMSA 表示されます。
 
-5.  最後に、コンテナーが正しく構成されているようユーザーまたは他のサービスが、コンテナー化アプリに自動的に認証を行うことがない場合は、gMSA アカウントで Spn を確認します。 クライアントは、アプリケーション届くその名前が gMSA アカウントを見つけます。 その他必要があります`host`の場合、負荷分散装置またはその他の DNS 名を使用して、アプリにクライアントの接続などの gMSA Spn します。
+5.  最後に、コンテナーが正しく構成されているようユーザーまたは他のサービスが、コンテナー化アプリに自動的に認証を行うことがない場合は、gMSA アカウントで Spn を確認します。 Clients will locate the gMSA account by the name at which they reach your application. その他必要があります`host`の場合、負荷分散装置またはその他の DNS 名を使用して、アプリにクライアントの接続などの gMSA Spn します。
 
 ## <a name="additional-resources"></a>その他の資料
 -   [グループの管理サービス アカウントの概要](https://docs.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
