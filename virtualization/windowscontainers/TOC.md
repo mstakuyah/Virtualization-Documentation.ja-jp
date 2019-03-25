@@ -55,6 +55,7 @@
 ## [システム要件](deploy-containers/system-requirements.md)
 ## [バージョンの互換性](deploy-containers/version-compatibility.md)
 ## [Hyper-V による分離](manage-containers/hyperv-container.md)
+## [プリンター サービス](deploy-containers/print-spooler.md)
 ## [コンテナーのハードウェア デバイス](deploy-containers/hardware-devices-in-containers.md)
 ## [コンテナー プラットフォーム ツール](deploy-containers/containerd.md)
 ## [グループの管理サービス アカウントします。](manage-containers/manage-serviceaccounts.md)
