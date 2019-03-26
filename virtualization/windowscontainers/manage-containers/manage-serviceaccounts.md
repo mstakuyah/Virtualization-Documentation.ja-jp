@@ -3,17 +3,17 @@ title: Windows のコンテナーのグループの管理サービス アカウ�
 description: Windows のコンテナーのグループの管理サービス アカウントします。
 keywords: docker、コンテナー、active directory、gmsa
 author: rpsqrd
-ms.date: 03/22/2019
+ms.date: 03/25/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 17c4089c98a74ea5937bac5d0eb4d4f1749aecf7
-ms.sourcegitcommit: b8afbfb63c33a491d7bad44d8d5962e6a60cb566
+ms.openlocfilehash: 20daa81a571fde23b91e24e9713e37d225870ec0
+ms.sourcegitcommit: 1dec99a5b295e8a08022ae3dec128c7c7818ad15
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "9257448"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "9262355"
 ---
 # <a name="group-managed-service-accounts-for-windows-containers"></a>Windows のコンテナーのグループの管理サービス アカウントします。
 
@@ -342,8 +342,8 @@ docker service create --credential-spec "file://contoso_webapp01.json" --hostnam
 
 ### <a name="using-gmsa-with-kubernetes"></a>Kubernetes と gMSA を使用します。
 
-スケジュール Kubernetes で gMSAs と Windows コンテナーに対するサポートは、Kubernetes 1.14 における α サポートされます。
-この機能に関する最新の情報と、Kubernetes 配布でテストする方法についての[Windows グループ管理サービスのアカウント](https://github.com/kubernetes/enhancements/blob/master/keps/sig-windows/20181221-windows-group-managed-service-accounts-for-container-identity.md)を確認してください。
+Kubernetes で gMSAs と Windows コンテナーをスケジュールするためのサポートは、Kubernetes 1.14 で α 機能として使用できます。
+この機能に関する最新の情報と、Kubernetes 配布でテストする方法については、 [Windows ポッドやコンテナーの構成 gMSA](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa)を参照してください。
 
 ## <a name="example-uses"></a>使用例
 
