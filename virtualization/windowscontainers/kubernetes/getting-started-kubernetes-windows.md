@@ -8,18 +8,18 @@ ms.prod: containers
 description: Kubernetes v1.13 を使用するには、Windows ノードを結合できます。
 keywords: kubernetes、1.13、windows、作業の開始
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 2edc940d4132870a6f7d6714bb50faef201136ba
-ms.sourcegitcommit: 817a629f762a4a5d4bcff58302f2bc2408bf8be1
+ms.openlocfilehash: df3185db086e8e38143fe60d90db864038980603
+ms.sourcegitcommit: 1715411ac2768159cd9c9f14484a1cad5e7f2a5f
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "9149912"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "9263489"
 ---
 # <a name="kubernetes-on-windows"></a>Windows で使用する Kubernetes #
-このページでは、Linux ベースのクラスターを Windows ノードを結合して Kubernetes Windows で使用を開始する概要についてとして機能します。 Windows Server[バージョン 1809](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1809#container-networking-with-kubernetes)Kubernetes 1.13 のリリースでユーザーの活用できます[最新機能](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features)の Kubernetes ベータ版の Windows で。
+このページでは、Linux ベースのクラスターを Windows ノードを結合して Kubernetes Windows で使用を開始する概要についてとして機能します。 Windows Server[バージョン 1809](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1809#container-networking-with-kubernetes)Kubernetes 1.14 のリリースでユーザーを利用できます、次の機能の Kubernetes で windows。
 
   - **ネットワークを重ねて表示**: 仮想オーバーレイ ネットワークを構成するのには、vxlan モードで Flannel を使用します。
-    - インストールされている KB4482887 または[Windows Server vNext 内部 Preview](https://blogs.windows.com/windowsexperience/tag/windows-insider-program/)ビルド 18317 + いずれかの Windows Server 2019 が必要です。
+    - インストールされている[KB4489899](https://support.microsoft.com/en-us/help/4489899)または[Windows Server vNext 内部 Preview](https://blogs.windows.com/windowsexperience/tag/windows-insider-program/)ビルド 18317 + いずれかの Windows Server 2019 が必要です。
     - Kubernetes v1.14 が必要です (以上) と`WinOverlay`機能ゲートを有効になっています。
     - Flannel v0.11.0 が必要です (以上)
   - **簡素化されたネットワークの管理**: Flannel ホスト ゲートウェイ モードで管理を使用する自動ルーティング ノード間

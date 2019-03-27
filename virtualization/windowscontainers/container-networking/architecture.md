@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 0d43176a07b0ba23f6a893c1b3dcfa1ffddc423d
-ms.sourcegitcommit: db508decd9bf6c0dce9952e1a86bf80f00d025eb
+ms.openlocfilehash: 6cf35208cfcec313cfdd17e6ecef9c72050b85ad
+ms.sourcegitcommit: 1715411ac2768159cd9c9f14484a1cad5e7f2a5f
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "2315655"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "9263479"
 ---
 # <a name="windows-container-networking"></a>Windows コンテナー ネットワーク
 > ***免責事項: 一般的な Docker ネットワークのコマンド、オプション、構文については、[Docker コンテナーのネットワークに関するページ](https://docs.docker.com/engine/userguide/networking/)をご覧ください。*** [以下](#unsupported-features-and-network-options)に記載されている場合を除き、Docker ネットワーク コマンドはすべて、Linux と同じ構文を使用して、Windows でサポートされます。 ただし、Windows と Linux のネットワーク スタックは異なっており、そのためいくつかの Linux ネットワーク コマンド (ifconfig など) は、Windows ではサポートされていません。
@@ -69,8 +69,9 @@ ms.locfileid: "2315655"
 
  ## <a name="unsupported-features-and-network-options"></a>サポートされていない機能とネットワーク オプション
  次のネットワーク オプションは現在**いない**Windows でサポートされています。
+   * L2bridge、NAT、およびオーバーレイ ネットワークに接続されている Windows コンテナーは、IPv6 スタック上の通信をサポートしていません。
    * IPsec によるコンテナーの通信を暗号化します。
-   * コンテナーの HTTP プロキシ サポートします。  この準備の現在価値を追跡する[次のとおり](https://github.com/Microsoft/hcsshim/pull/163)です。
+   * コンテナーの HTTP プロキシ サポートします。
    * HYPER-V コンテナーを実行する端点を添付すると (追加)。
    * 透明なネットワーク ドライバー経由での仮想化された Azure インフラストラクチャで、ネットワーク接続します。
 

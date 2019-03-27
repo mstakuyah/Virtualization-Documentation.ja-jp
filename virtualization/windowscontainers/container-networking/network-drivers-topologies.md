@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 4f21efba8dd1079302b56e98d954b3ba574779e9
-ms.sourcegitcommit: 2779f01978b37ec4f8d895febe7037272fb2c703
+ms.openlocfilehash: ed554acc0aaacf967cbd29d49ef67fa7e916b497
+ms.sourcegitcommit: 1715411ac2768159cd9c9f14484a1cad5e7f2a5f
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "4492808"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "9263499"
 ---
 # <a name="windows-container-network-drivers"></a>Windows コンテナー ネットワーク ドライバー  
 
@@ -32,14 +32,14 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
 
   > 必要があります。 [KB4015217](https://support.microsoft.com/en-us/help/4015217/windows-10-update-kb4015217)、Windows 10 の作成者の更新、またはそれ以降のリリースの Windows Server 2016 が必要です。
 
+  > メモ: Docker EE 18.03 を実行している Windows Server 2019 し、Docker 選ばによって作成されたオーバーレイ ネットワーク上の発信接続 VFP NAT ルールを活用できます。 コンテナーの指定一致受信 IP アドレスを 1 になります。 次のようなツール ICMP ベース`ping`または`Test-NetConnection`デバッグ時のような状況では、その TCP/UDP オプションを使用して構成する必要があります。
+
 - **l2bridge**: 'l2bridge' ドライバーで作成されたネットワークに接続されているコンテナーは、コンテナー ホストと同じ IP サブネットに含まれ、*外部* Hyper-V スイッチを経由して物理ネットワークに接続されます。 IP アドレスは、コンテナー ホストと同じプレフィックスから静的に割り当てる必要があります。 ホスト上のすべてのコンテナー エンドポイントは、入口と出口でのレイヤー 2 のアドレス変換 (MAC の再書き込み) 操作のためにホストと同じ MAC アドレスとなります。
   > 必要があります。 このモードがを使用した場合の仮想化シナリオで (コンテナーのホストでは、VM) _MAC アドレスのスプーフィングが必要です_。
   
   > 必要があります。 するには、Windows Server 2016、Windows 10 の作成者の更新、またはそれ以降のリリースが必要です。
 
-- **l2tunnel**: l2bridge と同様ですが、_このドライバーは Microsoft Cloud Stack のみで使用します_. コンテナーからのパケットは、SDN ポリシーが適用されている仮想化ホストに送信されます。
-
-> Microsoft SDN スタックを使用して既存テナントの仮想ネットワークをコンテナー エンドポイントに接続する方法については、「[Attaching Containers to a Virtual Network](https://technet.microsoft.com/en-us/windows-server-docs/networking/sdn/manage/connect-container-endpoints-to-a-tenant-virtual-network)」 (仮想ネットワークにコンテナーを接続する) をご覧ください。
+- **l2tunnel** - l2bridge のようなただし_のみ Azure などの Microsoft クラウド スタックでこのドライバーを使用する必要があります_。 コンテナーからのパケットは、SDN ポリシーが適用されている仮想化ホストに送信されます。
 
 
 ## <a name="network-topologies-and-ipam"></a>ネットワーク トポロジと IPAM
@@ -49,10 +49,10 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
 
   | Docker Windows ネットワーク ドライバー | 一般的な用途 | コンテナー間 (単一ノード) | コンテナーから外部 (単一ノード + 複数ノード) | コンテナー間 (複数ノード) |
   |-------------------------------|:------------:|:------------------------------------:|:------------------------------------------------:|:-----------------------------------:|
-  | **NAT (既定)** | 開発者向け | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li> クロス サブネット: WS2016 ではサポートされていません (NAT 内部プレフィックスが 1 つのみ)</li></ul> | 管理 vNIC (WinNAT にバインド) を経由してルーティング | 直接サポート外: ホストを経由してポートを公開する必要があります |
+  | **NAT (既定)** | 開発者向け | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li> クロス サブネット: (1 つだけの NAT 内部プレフィックス) がサポートされていません</li></ul> | 管理 vNIC (WinNAT にバインド) を経由してルーティング | 直接サポート外: ホストを経由してポートを公開する必要があります |
   | **透過** | 開発者または小規模な開発向け | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li>クロス サブネット: コンテナー ホストを経由してルーティング</li></ul> | (物理) ネットワーク アダプターへの直接アクセスでコンテナー ホストを経由してルーティング | (物理) ネットワーク アダプターへの直接アクセスでコンテナー ホストを経由してルーティング |
-  | **オーバーレイ** | Docker Swarm、マルチノードに必要 | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li>クロス サブネット: ネットワーク トラフィックをカプセル化し、Mgmt vNIC を経由してルーティング</li></ul> | 直接サポート外: NAT ネットワークに接続されている 2 番目のコンテナー エンドポイントが必要です | 同一/クロス サブネット: VXLAN を使用してネットワーク トラフィックをカプセル化し、Mgmt vNIC を経由してルーティング |
-  | **L2Bridge** | Kubernetes および Microsoft SDN に使用 | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li> クロス サブネット: コンテナーの MAC アドレスを入口と出口で書き換えてルーティング</li></ul> | コンテナーの MAC アドレスを入口と出口で書き換え | <ul><li>同一サブネット: ブリッジ接続</li><li>クロス サブネット: WS2016 ではサポートされていません</li></ul> |
+  | **オーバーレイ** | その他の複数のノードのヒントDocker 選ば、Kubernetes で利用できるために必要な | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li>クロス サブネット: ネットワーク トラフィックをカプセル化し、Mgmt vNIC を経由してルーティング</li></ul> | 直接サポート外: NAT ネットワークに接続されている 2 番目のコンテナー エンドポイントが必要です | 同一/クロス サブネット: VXLAN を使用してネットワーク トラフィックをカプセル化し、Mgmt vNIC を経由してルーティング |
+  | **L2Bridge** | Kubernetes および Microsoft SDN に使用 | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li> クロス サブネット: コンテナーの MAC アドレスを入口と出口で書き換えてルーティング</li></ul> | コンテナーの MAC アドレスを入口と出口で書き換え | <ul><li>同一サブネット: ブリッジ接続</li><li>管理 vNIC WSv1709 と上部にある経由、クロス サブネット。</li></ul> |
   | **L2Tunnel**| Azure のみ | 同一/クロス サブネット: ポリシーが適用される物理ホストの Hyper-V 仮想スイッチに折り返し | トラフィックは Azure の仮想ネットワーク ゲートウェイを経由する必要があります | 同一/クロス サブネット: ポリシーが適用される物理ホストの Hyper-V 仮想スイッチに折り返し |
 
 ### <a name="ipam"></a>IPAM 
@@ -63,7 +63,7 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
 | NAT | 動的な IP 割り当てと割り当てホスト ネットワーク サービス (HNS) で内部 NAT サブネット プレフィックスから |
 | 透過 | コンテナー ホストのネットワーク プレフィックス内で IP アドレスから静的または動的 (外部 DHCP サーバーを使用して) IP 割り当て/設定 |
 | オーバーレイ | Docker エンジン Swarm モードで管理されるプレフィックスからの動的 IP 割り当てと HNS による設定 |
-| L2Bridge | コンテナー ホストのネットワーク プレフィックス内で IP アドレスから静的 IP 割り当て/設定 (HNS プラグインを使用した設定も可能) |
+| L2Bridge | 静的 IP 割り当てと (可能性のあるもが割り当てられている HNS を通じて) コンテナー ホストのネットワーク プレフィックス内の IP アドレスの割り当て |
 | L2Tunnel | Azure のみ: プラグインから動的 IP 割り当て/設定 |
 
 ### <a name="service-discovery"></a>サービス検出
@@ -71,7 +71,7 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
 
 |  | ローカル サービス検出  | グローバル サービス検出 |
 | :---: | :---------------     |  :---                |
-| nat | 使用可能 | NA |  
-| overlay | 使用可能 | Docker EE で使用可能 |
-| transparent | 使用不可 | 使用不可 |
-| l2bridge | 使用不可 | Kube-DNS で使用可能 |
+| nat | 使用可能 | Docker EE で使用可能 |  
+| overlay | 使用可能 | [はい] と Docker EE kube dns |
+| transparent | NO | 使用不可 |
+| l2bridge | 使用不可 | はい。 kube dns |
