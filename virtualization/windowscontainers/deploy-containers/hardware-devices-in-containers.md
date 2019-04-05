@@ -3,25 +3,27 @@ title: Windows のコンテナーでデバイスを使う
 description: Windows のコンテナーにどのようなデバイスのサポートが存在します。
 keywords: docker、コンテナー、デバイス、ハードウェア
 author: cwilhit
-ms.openlocfilehash: da9785b051826efa4bb2c64542a7c75a12ddd2b4
-ms.sourcegitcommit: 4490d384ade48699e7f56dc265185dac75bf9d77
+ms.openlocfilehash: 18ae4ab229a677c63c3e17d684a3c3193df49c5e
+ms.sourcegitcommit: 3c81b0efd1ac2c4c93d58f16edae1044c9a5ad55
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "9058992"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "9284596"
 ---
-**これは、現在、プレビューの数量単価型です。 詳細については、'要件」セクションの下で、4 番目のアイテムを参照してください。**
-
 # <a name="devices-in-containers-on-windows"></a>Windows のコンテナーでデバイスを使う
 
 既定では、Windows コンテナーはホスト デバイス Linux コンテナーと同じように、最低限のアクセスを与えられます。 メリット - または - にアクセスして、ホスト ハードウェア デバイスとの通信も必要である特定のワークロードがあります。 このガイドは、コンテナーではサポートされているデバイスと作業を開始する方法について説明します。
 
+> [!IMPORTANT]
+> この機能をサポートしている Docker のバージョンを必要とする`--device`Windows コンテナーのコマンド ライン オプション。 正式な Docker サポートがスケジュールされている次回リリースされる Docker EE エンジン 19.03 します。 それまでは、Docker の[上位のソース](https://master.dockerproject.org/)には、必要なビットが含まれています。
+
 ## <a name="requirements"></a>要件
 
-- Windows を実行する必要があります 2019 以降のサーバーまたは Windows 10 Pro/Enterprise 年 2018年 10 月と更新
-- コンテナー イメージのバージョンは、1809 以降である必要があります。
+この機能を利用するには、現在の環境は、次の要件を満たす必要があります。
+- コンテナーのホストでは、Windows Server 2019 または Windows 10、1809 以降のバージョンが実行されている必要があります。
+- コンテナー基本イメージ バージョンは、1809 以降である必要があります。
 - コンテナーは、プロセス分離モードで実行されている Windows コンテナーである必要があります。
-- デバイスで Windows の機能は、Docker デーモンに存在しているときにまだ存在しない Docker クライアント (この[取得要求](https://github.com/docker/cli/pull/1606)を追跡するを参照してください)。 Docker for Windows の将来のリリースを待つ必要があります/この機能を活用するには、次のコード Docker EE します。 このドキュメントは、状態が変更されたときに更新されます。
+- コンテナー ホストは、Docker エンジン 19.03 以降を実行している必要があります。
 
 ## <a name="run-a-container-with-a-device"></a>デバイスを使って、コンテナーを実行します。
 
@@ -71,16 +73,20 @@ Windows では、すべてのデバイスの宣言を実装するインターフ
 <td><center>[SPI バス</center></td>
 <td><center>DCDE6AF9-6610-4285-828F-CAAF78C424CC</center></td>
 </tr>
+<tr valign="top">
+<td><center>DirectX GPU アクセラレータ</center></td>
+<td><center>専用のドキュメントを参照してください。</center></td>
+</tr>
 </tbody>
 </table>
 
 > [!TIP]
 > 上記のデバイスでは、Windows コンテナーで現在サポートされている_のみ_デバイス。 その他のすべてのクラス Guid を渡すしようとすると、開始に失敗しますコンテナーが発生します。
 
-## <a name="hyper-v-container-device-support"></a>HYPER-V コンテナー デバイスのサポート
+## <a name="hyper-v-isolated-windows-container-support"></a>Windows のハイパー V 分離コンテナーのサポート
 
-デバイスの割り当てとデバイスの共有でサポートされていない HYPER-V 分離コンテナー今日します。
+デバイスの割り当てとデバイス ハイパー V 分離 Windows コンテナー内の作業負荷の共有が現在サポートされていません。
 
-## <a name="linux-containers-on-windows-lcow-device-support"></a>Windows (LCOW) デバイスのサポートの Linux コンテナー
+## <a name="hyper-v-isolated-linux-container-support"></a>ハイパー V 分離 Linux コンテナーのサポート
 
-デバイスの割り当てとデバイスの共有でサポートされていない LCOW 今日します。
+デバイスの割り当てとの共有ハイパー V 分離 Linux コンテナー内の作業負荷をデバイスが現在サポートされていません。
