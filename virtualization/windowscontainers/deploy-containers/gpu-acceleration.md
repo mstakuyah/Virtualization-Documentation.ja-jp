@@ -3,12 +3,12 @@ title: Windows のコンテナー GPU アクセラレータ
 description: GPU アクセラレータのレベルが Windows コンテナーに存在します。
 keywords: docker、コンテナー、デバイス、ハードウェア
 author: cwilhit
-ms.openlocfilehash: 518ce8fd8373060b5ebb1147a2d25e3d24517861
-ms.sourcegitcommit: 3c81b0efd1ac2c4c93d58f16edae1044c9a5ad55
+ms.openlocfilehash: fbee74e1d40838922ae938afd8fda5715a6abaf7
+ms.sourcegitcommit: af1d0d6c0642ee44bd34db7a9a58fe6c65f73a33
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "9284615"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "9285946"
 ---
 # <a name="gpu-acceleration-in-windows-containers"></a>Windows のコンテナー GPU アクセラレータ
 
@@ -17,7 +17,7 @@ ms.locfileid: "9284615"
 Gpu は、既に従来のレンダリングと機械学習トレーニングと自動推定シミュレーションから、多くの一般的なワークロードの一般的なツールです。 Windows コンテナー DirectX とその上に組み込まれているすべてのフレームワーク GPU アクセラレータをサポートします。
 
 > [!IMPORTANT]
-> この機能は、バージョンの Docker でサポートされている必要が必要です、 `--device` Windows コンテナーのコマンド ライン オプション。 正式な Docker サポートがスケジュールされている次回リリースされる Docker EE エンジン 19.03 します。 それまでは、Docker の[上位のソース](https://master.dockerproject.org/)には、必要なビットが含まれています。
+> この機能をサポートしている Docker のバージョンを必要とする`--device`Windows コンテナーのコマンド ライン オプション。 正式な Docker サポートがスケジュールされている次回リリースされる Docker EE エンジン 19.03 します。 それまでは、Docker の[上位のソース](https://master.dockerproject.org/)には、必要なビットが含まれています。
 
 ## <a name="requirements"></a>要件
 
