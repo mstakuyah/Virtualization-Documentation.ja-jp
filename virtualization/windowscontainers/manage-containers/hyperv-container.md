@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
-ms.openlocfilehash: db0f8c45c1cdb6617e4c347251284509e2a7d3bc
-ms.sourcegitcommit: 914e0dd1168daf1d2b0f22bd011035016cc08baf
+ms.openlocfilehash: 4ab473c1752c377955bb23bdf6c9ef83a3336aa8
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "9099340"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380126"
 ---
 # <a name="hyper-v-isolation"></a>Hyper-V による分離
 
@@ -35,9 +35,9 @@ docker run -it --isolation=hyperv mcr.microsoft.com/windows/nanoserver:1809 cmd
 
 ### <a name="isolation-explanation"></a>分離の説明
 
-この例では、Windows Server と HYPER-V コンテナーの分離機能の違いを示します。 
+この例では、Windows Server と HYPER-V 分離の分離機能の違いを示します。
 
-ここでは、分離コンテナーが展開されていると、長時間 ping プロセスをホストするプロセスです。
+ここでは、分離コンテナーが展開されていると、時間のかかる ping プロセスをホストするプロセスです。
 
 ``` cmd
 docker run -d mcr.microsoft.com/windows/servercore:1809 ping localhost -t
@@ -61,7 +61,7 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
      67       5      820       3836 ...71     0.03   3964   3 PING
 ```
 
-コントラスト] には、この例は、ping プロセスも HYPER-V 分離コンテナーを起動します。 
+コントラスト] には、この例は、ping プロセスも HYPER-V 分離コンテナーを起動します。
 
 ```
 docker run -d --isolation=hyperv mcr.microsoft.com/windows/nanoserver:1809 ping -t localhost

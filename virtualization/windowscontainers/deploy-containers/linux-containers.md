@@ -8,14 +8,14 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: edfd11c8-ee99-42d8-9878-efc126fe1826
-ms.openlocfilehash: 7db0135e5d5079d3b8cce815d051ecd6a7cb896b
-ms.sourcegitcommit: 614e3ca3e6f4373b999a501a2829adbaa61de4c4
+ms.openlocfilehash: 8597a93f035f5e451df8176d1563299120c95cb8
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "7277536"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380176"
 ---
-# <a name="linux-containers-on-windows"></a>Linux Containers on Windows
+# <a name="linux-containers-on-windows"></a>Windows の Linux コンテナー
 
 Linux コンテナーしますコンテナー システム全体の大きな % を行い、開発エクスペリエンスと実運用環境の両方に基本的なします。  コンテナーのコンテナー ホスト カーネルと共有するため、Windows 上で直接 Linux コンテナーを実行しているされていないオプション[*](linux-containers.md#other-options-we-considered)します。  これは、図に仮想化になります。
 
@@ -59,11 +59,11 @@ HYPER-V 分離 Linux コンテナーを最適化された Linux 仮想マシン�
 
 ![LCOW アーキテクチャ](media/lcow.png)
 
-移動する LCOW を使用しているかどうかを表示するには、`C:\Program Files\Linux Containers`します。  LCOW を使用する Docker を構成する場合、ここで各 HYPER-V コンテナーで実行される最低限の LinuxKit ディストリビューションが含まれるいくつかのファイルがあります。  最適化された VM コンポーネントは 100 MB 未満、Moby 仮想マシンに LinuxKit イメージよりもはるかに小さいことを確認します。
+移動する LCOW を使用しているかどうかを表示するには、`C:\Program Files\Linux Containers`します。 LCOW を使用する Docker を構成する場合、次のとおり HYPER-V 分離で実行されている各コンテナーで実行される最低限の LinuxKit ディストリビューションが含まれるいくつかのファイルがあります。  最適化された VM コンポーネントは 100 MB 未満、Moby 仮想マシンに LinuxKit イメージよりもはるかに小さいことを確認します。
 
 ### <a name="work-in-progress"></a>進行中の作業
 
-LCOW は、作業中の開発中です。  [GitHub](https://github.com/moby/moby/issues/33850)で Moby プロジェクトの進行状況を追跡します。
+LCOW は、作業中の開発中です。 [GitHub](https://github.com/moby/moby/issues/33850)で Moby プロジェクトの進行状況を追跡します。
 
 #### <a name="bind-mounts"></a>バインド マウント
 
@@ -108,18 +108,18 @@ LCOW は、作業中の開発中です。  [GitHub](https://github.com/moby/moby
 
 右、ことをお勧め Moby VM メソッドの人に Linux コンテナーを実行します。
 
-1. コンテナーの安定した環境をしたいです。  これは、Docker for Windows の既定値です。
-1. Windows または Linux のコンテナーが同時に両方のほとんどを実行します。
-1. 複雑なまたはカスタム ネットワーク Linux コンテナー間での要件です。
-1. Linux コンテナー間でカーネル分離 (HYPER-V 分離) は必要ありません。
+- コンテナーの安定した環境をしたいです。  これは、Docker for Windows の既定値です。
+- Windows または Linux のコンテナーが同時に両方のほとんどを実行します。
+- 複雑なまたはカスタム ネットワーク Linux コンテナー間での要件です。
+- Linux コンテナー間でカーネル分離 (HYPER-V 分離) は必要ありません。
 
 ### <a name="when-to-use-lcow"></a>LCOW を使用する場合
 
 右にことをお勧め LCOW 人にします。
 
-1. 最新テクノロジをテストします。
-1. Windows と Linux コンテナーを同時に実行します。
-1. Linux コンテナー間でカーネル分離 (HYPER-V 分離) 必要があります。
+- 最新テクノロジをテストします。
+- Windows と Linux コンテナーを同時に実行します。
+- Linux コンテナー間でカーネル分離 (HYPER-V 分離) 必要があります。
 
 ## <a name="other-options-we-considered"></a>検討しましたが、その他のオプション
 

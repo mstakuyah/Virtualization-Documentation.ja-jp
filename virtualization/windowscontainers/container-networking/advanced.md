@@ -8,21 +8,22 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: cf5173a98032820e1ad72e99e9b6e874dedbed83
-ms.sourcegitcommit: 1715411ac2768159cd9c9f14484a1cad5e7f2a5f
+ms.openlocfilehash: 001f1abaeefaf34e12b0f7e3323bf32140080d05
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "9263519"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380006"
 ---
 # <a name="advanced-network-options-in-windows"></a>Windows での高度なネットワーク オプション
+
 Windows に固有の機能を活用するために、いくつかのネットワーク ドライバーのオプションがサポートされています。 
 
 ## <a name="switch-embedded-teaming-with-docker-networks"></a>Docker ネットワークを使用したスイッチ埋め込みチーミング
 
-> すべてのネットワーク ドライバーに適用されます。 
+> すべてのネットワーク ドライバーに適用されます。
 
-Docker で使用するコンテナー ホスト ネットワークを作成するときに、`-o com.docker.network.windowsshim.interface` オプションで複数のネットワーク アダプターを (コンマで区切って) 指定することにより、[スイッチ埋め込みチーミング](https://technet.microsoft.com/en-us/windows-server-docs/networking/technologies/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming#a-namebkmksswitchembeddedaswitch-embedded-teaming-set)を活用できます。 
+Docker で使用するコンテナー ホスト ネットワークを作成するときに、`-o com.docker.network.windowsshim.interface` オプションで複数のネットワーク アダプターを (コンマで区切って) 指定することにより、[スイッチ埋め込みチーミング](https://technet.microsoft.com/en-us/windows-server-docs/networking/technologies/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming#a-namebkmksswitchembeddedaswitch-embedded-teaming-set)を活用できます。
 
 ```
 C:\> docker network create -d transparent -o com.docker.network.windowsshim.interface="Ethernet 2", "Ethernet 3" TeamedNet
@@ -30,7 +31,7 @@ C:\> docker network create -d transparent -o com.docker.network.windowsshim.inte
 
 ## <a name="set-the-vlan-id-for-a-network"></a>ネットワークの VLAN ID の設定
 
-> transparent および l2bridge ネットワーク ドライバーに適用されます。 
+> transparent および l2bridge ネットワーク ドライバーに適用されます。
 
 ネットワークの VLAN ID を設定するには、`docker network create` コマンドに `-o com.docker.network.windowsshim.vlanid=<VLAN ID>` オプションを使用します。 たとえば、次のコマンドを使用して、VLAN ID が 11 である透過ネットワークを作成できます。
 

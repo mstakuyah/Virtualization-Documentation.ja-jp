@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
-ms.openlocfilehash: b58bdd79da1c644281ebd9e79c16587d9fc156f4
-ms.sourcegitcommit: 21d93e5febd9b1b47ae1aa59d08086e6ec1691e0
+ms.openlocfilehash: fd2de24a4c8c03817978a53b340e2a77285c69ad
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "9121044"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380416"
 ---
 # <a name="windows-containers-on-windows-server"></a>Windows Server の Windows コンテナー
 
@@ -34,7 +34,7 @@ ms.locfileid: "9121044"
 次の要件を満たしていることを確認してください。
 - 1 台のコンピューター システム (物理または仮想) には、Windows Server 2019 が実行されています。 Windows Server 2019 内部のプレビューを使用している場合は、[ウィンドウのサーバー 2019 評価](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019 )を更新してください。
 
-> Windows コンテナー機能が動作するためには、重要な更新プログラムが必要です。 すべての更新プログラムをインストールしてから、このチュートリアルを進めてください。
+> 重要な更新プログラムは、Windows コンテナー機能を使用するために必要です。 すべての更新プログラムをインストールしてから、このチュートリアルを進めてください。
 
 Azure に展開する場合は、こちらの[テンプレート](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-server-container-tools/containers-azure-template)を使用すると展開が簡単です。
 

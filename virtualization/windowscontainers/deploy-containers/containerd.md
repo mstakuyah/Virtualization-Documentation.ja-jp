@@ -8,35 +8,34 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: a0e62b32-0c4c-4dd4-9956-8056e9abd9e5
-ms.openlocfilehash: 5811ea0761567c3a7db036358b24d1a3e7c51baf
-ms.sourcegitcommit: fdaf666973fca37d8c428e0247454dd47c01f1c3
+ms.openlocfilehash: 9f38775d56a95d96bef42b3a33c2571cc5fb2ca0
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "7460601"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380186"
 ---
 # <a name="container-platform-tools-on-windows"></a>Windows にコンテナー プラットフォーム ツール
 
-Windows コンテナー プラットフォームを展開します。  コンテナーの他のプラットフォーム ツールで作ったはこれで、docker はしますコンテナーの旅の最初の部分をでした。
+Windows コンテナー プラットフォームを展開します。 コンテナーの他のプラットフォーム ツールで作ったはこれで、docker はしますコンテナーの旅の最初の部分をでした。
 
-1. [containerd/cri](https://github.com/containerd/cri) - 新しい Windows Server 2019/Windows 10 1809 します。
-1. [runhcs](https://github.com/Microsoft/hcsshim/tree/master/cmd/runhcs) - runc に Windows のコンテナーのホストに対応します。
-1. [hcs](https://docs.microsoft.com/virtualization/api/) - ホスト計算サービス + 便利な shim を使用するが簡単にします。
-
-    * [hcsshim](https://github.com/microsoft/hcsshim)
-    * [dotnet computevirtualization](https://github.com/microsoft/dotnet-computevirtualization)
+* [containerd/cri](https://github.com/containerd/cri) - 新しい Windows Server 2019/Windows 10 1809 します。
+* [runhcs](https://github.com/Microsoft/hcsshim/tree/master/cmd/runhcs) - runc に Windows のコンテナーのホストに対応します。
+* [hcs](https://docs.microsoft.com/virtualization/api/) - ホスト計算サービス + 便利な shim を使用するが簡単にします。
+  * [hcsshim](https://github.com/microsoft/hcsshim)
+  * [dotnet computevirtualization](https://github.com/microsoft/dotnet-computevirtualization)
 
 この記事は Windows および Linux コンテナー プラットフォームと各コンテナー プラットフォーム ツールについて説明します。
 
 ## <a name="windows-and-linux-container-platform"></a>Windows と Linux コンテナー プラットフォーム
 
-Linux 環境で Docker などのコンテナーの管理ツールの [コンテナー ツール - [runc](https://github.com/opencontainers/runc)と[containerd](https://containerd.io/)のより詳細な設定で構築します。
+[コンテナー ツール一式をより詳細な Linux 環境で Docker などのコンテナーの管理ツールが組み込まれている: [runc](https://github.com/opencontainers/runc)と[containerd](https://containerd.io/)します。
 
 ![Linux docker アーキテクチャ](media/docker-on-linux.png)
 
-`runc` 作成して実行[OCI コンテナー ランタイムの仕様](https://github.com/opencontainers/runtime-spec)に従ってコンテナー Linux コマンド ライン ツールです。
+`runc` Linux コマンド ライン ツールを作成および[OCI コンテナー ランタイムの仕様](https://github.com/opencontainers/runtime-spec)に従ってコンテナーを実行しているのためです。
 
-`containerd` ダウンロードして、コンテナーの実行、監視して、コンテナーの画像を展開して、コンテナーのライフ サイクルを管理するデーモンです。
+`containerd` ダウンロードして、コンテナーの実行を監視、コンテナーの画像を展開して、コンテナーのライフ サイクルを管理するデーモンです。
 
 Windows では、別の方法がわかったします。  Windows のコンテナーをサポートする Docker で作業を開始したときは、HCS (計算サービスをホストする) に直接開発されています。  [ブログの投稿](https://blogs.technet.microsoft.com/virtualization/2017/01/27/introducing-the-host-compute-service-hcs/)は、HCS を作成した理由と理由はこのアプローチ コンテナーに最初にについての完全なです。
 
@@ -53,7 +52,7 @@ Runc と runhcs の機能の違いは次のとおりです。
 * `runhcs` windows を実行します。  作成し、管理コンテナーに[HCS](containerd.md#hcs)と通信します。
 * `runhcs` さまざまな種類の別のコンテナーを実行できます。
 
-  * Windows と Linux [HYPER-V コンテナー](../manage-containers/hyperv-container.md)
+  * Windows と Linux [HYPER-V 分離](../manage-containers/hyperv-container.md)
   * Windows コンテナー (コンテナーの画像は、コンテナーのホストを一致する必要があります) を処理します。
 
 **使い方:**
@@ -69,8 +68,8 @@ Runc と同様、バンドルを使用するコンテナーが構成されます
 
 OCI 仕様ファイル、"config.json"、2 つのフィールドが正常に実行するには。
 
-1. コンテナーのスクラッチ領域へのパス
-1. コンテナーのレイヤー ディレクトリへのパス
+* コンテナーのスクラッチ領域へのパス
+* コンテナーのレイヤー ディレクトリへのパス
 
 Runhcs で使用できるコンテナー コマンドは、次のとおりです。
 
@@ -90,7 +89,7 @@ Runhcs で使用できるコンテナー コマンドは、次のとおりです
   * 指定されたシグナルを送信**を強制終了**(既定: SIGTERM) コンテナーの初期プロセス
   * **コンテナーのデタッチ コンテナーと使用頻度が保持しているすべてのリソースを削除します。**
 
-複数のコンテナーを考慮する可能性のあるだけで、コマンドは、**リスト**です。  指定されたルートと runhcs が開始したコンテナーを実行している (または一時停止している) が表示されます。
+複数のコンテナーを考慮する可能性のあるだけで、コマンドは、**リスト**です。  指定されたルートと runhcs が開始した実行中または一時停止しているコンテナーが表示されます。
 
 ### <a name="hcs"></a>HCS
 

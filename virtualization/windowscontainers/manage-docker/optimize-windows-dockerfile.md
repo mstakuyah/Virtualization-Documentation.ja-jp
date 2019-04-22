@@ -8,16 +8,16 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
-ms.openlocfilehash: aad0c1f2fa7aea564b7348d662df46256a82abc4
-ms.sourcegitcommit: f376676c7864ae19fcb1649006ce6b60c6218634
+ms.openlocfilehash: 5d9e95d2263c9603712054376bfa9e7190feb1b0
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "8989451"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380406"
 ---
 # <a name="optimize-windows-dockerfiles"></a>Windows Dockerfile を最適化する
 
-Docker のビルド プロセスと結果の Docker イメージの両方を最適化するには、複数の方法を使用できます。 このドキュメントでは、Docker ビルド プロセスのしくみについて詳しく説明し、Windows コンテナーでの最適なイメージの作成に使用できるいくつかの方法を示します。
+Docker のビルド プロセスと結果の Docker イメージの両方を最適化するには、複数の方法を使用できます。 このドキュメントの詳細 Docker ビルド プロセスの動作、および最適な画像の使用可能、いくつかの方法を示します Windows コンテナーを作成します。
 
 ## <a name="docker-build"></a>Docker のビルド
 
@@ -54,9 +54,9 @@ f0e017e5b088        21 seconds ago       cmd /S /C echo "Hello World - Dockerfil
 
 ## <a name="optimize-image-size"></a>イメージのサイズを最適化する
 
-Docker コンテナー イメージを構築するときは、イメージのサイズが重要な要因になる場合があります。 コンテナー イメージは、レジストリとホストの間を移動され、エクスポートおよびインポートされて、最終的にはスペースを消費します。 Docker ビルド プロセスの間にイメージのサイズを最小限に抑えるには、複数の方法を使用できます。 このセクションでは、Windows コンテナーに固有のいくつかの方法について説明します。 
+Docker コンテナー イメージを構築するときは、イメージのサイズが重要な要因になる場合があります。 コンテナー イメージは、レジストリとホストの間を移動され、エクスポートおよびインポートされて、最終的にはスペースを消費します。 Docker ビルド プロセスの間にイメージのサイズを最小限に抑えるには、複数の方法を使用できます。 ここでは、これらの戦術 Windows コンテナーに固有のいくつかについて説明します。
 
-Dockerfile のベスト プラクティスについては、「[Best practices for writing Dockerfiles on Docker.com]( https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)」(Docker.com で Dockerfile を作成するときのベスト プラクティス) を参照してください。
+Dockerfile のベスト プラクティスについては、「[Best practices for writing Dockerfiles on Docker.com](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)」(Docker.com で Dockerfile を作成するときのベスト プラクティス) を参照してください。
 
 ### <a name="group-related-actions"></a>関連するアクションをグループ化する
 

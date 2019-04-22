@@ -8,24 +8,24 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
-ms.openlocfilehash: 0d982996a1aabd434df04551f30725a21b31d500
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.openlocfilehash: 35f35b490ce5aa80068578d78a6427ace7352b73
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6948011"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380166"
 ---
-# <a name="container-host-deployment---windows-server"></a>コンテナー ホストの展開 - Windows Server
+# <a name="container-host-deployment-windows-server"></a>コンテナーのホストの展開: Windows Server
 
 Windows コンテナー ホストの展開手順は、オペレーティング システムやホスト システムの種類 (物理または仮想) によって異なります。 このドキュメントでは、物理または仮想システム上で、Windows Server 2016 または Windows Server Core 2016 のいずれかに対して Windows コンテナー ホストを展開する方法を詳しく説明します。
 
 ## <a name="install-docker"></a>Docker のインストール
 
-Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。 
+Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントから構成されます。
 
-Docker をインストールするには、[OneGet プロバイダー PowerShell モジュール](https://github.com/OneGet/MicrosoftDockerProvider)を使用します。 プロバイダーは、コンピューターでコンテナー機能を有効にして、Docker をインストールします。これには、再起動が必要です。 
+Docker をインストールするのには、 [OneGet プロバイダー PowerShell モジュール](https://github.com/OneGet/MicrosoftDockerProvider)を使用します。 プロバイダーは、コンテナー、コンピューターでこの機能を有効にするし、再起動が必要になります Docker をインストールします。
 
-管理者特権の PowerShell セッションを開き、次のコマンドを実行します。
+管理者特権の PowerShell セッションを開くし、次のコマンドレットを実行します。
 
 OneGet PowerShell モジュールをインストールします。
 
@@ -72,7 +72,7 @@ Update-Module DockerMsftProvider
 Install-Package -Name docker -ProviderName DockerMsftProvider -Update -Force -RequiredVersion 18.03
 ```
 
-## <a name="install-base-container-images"></a>コンテナーの基本イメージのインストール
+## <a name="install-base-container-images"></a>基本コンテナーの画像をインストールします。
 
 Windows コンテナーを使用する前に、基本イメージをインストールする必要があります。 基本イメージは、コンテナー オペレーティング システムとして Windows Server Core と Nano Server の両方で使用できます。 Docker コンテナー イメージの詳細については、「[Build your own images on docker.com](https://docs.docker.com/engine/tutorials/dockerimages/)」(docker.com で独自のイメージを構築する) を参照してください。
 
@@ -106,11 +106,11 @@ Nano Server 基本イメージをインストールするには、次のコマ�
 docker pull microsoft/nanoserver
 ```
 
-> Windows Containers OS Image 使用許諾契約書 (EULA) を参照してください。こちらの「[EULA](../images-eula.md)」に掲載されています。
+> OS の画像を参照してください:[使用許諾契約書](../images-eula.md)使用許諾契約書 Windows コンテナーを参照してください。
 
-## <a name="hyper-v-container-host"></a>Hyper-V コンテナー ホスト
+## <a name="hyper-v-isolation-host"></a>HYPER-V 分離ホスト
 
-Hyper-V コンテナーを実行するには、Hyper-V ロールが必要になります。 Windows コンテナー ホスト自体が Hyper-V 仮想マシンの場合、Hyper-V ロールをインストールする前に、入れ子になった仮想化を有効にする必要があります。 入れ子になった仮想化の詳細については、「[入れ子になった仮想化]( https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting)」を参照してください。
+HYPER-V 分離を実行する HYPER-V 役割が必要です。 Windows コンテナー ホスト自体が Hyper-V 仮想マシンの場合、Hyper-V ロールをインストールする前に、入れ子になった仮想化を有効にする必要があります。 入れ子になった仮想化の詳細については、「[入れ子になった仮想化](https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting)」を参照してください。
 
 ### <a name="nested-virtualization"></a>入れ子になった仮想化
 
@@ -132,7 +132,7 @@ Get-VMNetworkAdapter -VMName $vm | Set-VMNetworkAdapter -MacAddressSpoofing On
 
 ### <a name="enable-the-hyper-v-role"></a>Hyper-V ロールの有効化
 
-PowerShell を使用してHyper-V 機能を有効にするには、管理者特権の PowerShell セッションで次のコマンドを実行します。
+PowerShell を使用して HYPER-V 機能を有効にするには、管理者特権の PowerShell セッションで次のコマンドレットを実行します。
 
 ```PowerShell
 Install-WindowsFeature hyper-v

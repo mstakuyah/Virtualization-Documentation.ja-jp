@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-ms.openlocfilehash: a28b9ced2c9669b65bfa02bd02c1061226dcea7e
-ms.sourcegitcommit: f172d14ef1ebfb5a9df1b3529e0722d9103e0eba
+ms.openlocfilehash: 41fa89dcaba38d43d39681240a1a108c9250ba78
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "9112919"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380436"
 ---
 # <a name="automating-builds-and-saving-images"></a>ビルドの自動化とイメージの保存
 
@@ -26,7 +26,7 @@ ms.locfileid: "9112919"
 次の要件を満たしていることを確認してください。
 
 - 1 台のコンピューター システムが実行されている Windows Server 2019 (物理または仮想) または Windows Server 2016 します。
-- Windows コンテナー機能と Docker でこのシステムを構成します。 これらの手順のチュートリアルについては、「[Windows Containers on Windows Server](./quick-start-windows-server.md)」 (Windows Server の Windows コンテナー) を参照してください。
+- Windows コンテナーの機能と Docker このシステムを構成します。 次の手順でチュートリアルについては、 [Windows Server の Windows コンテナー](./quick-start-windows-server.md)を参照してください。
 - Docker ID。コンテナー イメージを Docker Hub にプッシュするために使用されます。 Docker ID がない場合は、[Docker Cloud](https://cloud.docker.com/) でサインアップしてください。
 
 ## <a name="container-image---dockerfile"></a>コンテナーの画像 - Dockerfile

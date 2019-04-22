@@ -1,15 +1,20 @@
 ---
 title: Windows コンテナーについて
 description: Windows コンテナーについて学習します。
-keywords: 'Docker, コンテナー'
+keywords: Docker, コンテナー
 author: taylorb-microsoft
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
+ms.openlocfilehash: 6473c323c675fc59360dd982a14895a93743098a
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380046"
 ---
-
 # <a name="containers-on-windows"></a>Windows のコンテナー
 
 ## <a name="what-are-containers"></a>コンテナーとは
@@ -29,16 +34,15 @@ ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
 次の短い概要を確認してください。
 <iframe width="800" height="450" src="https://www.youtube.com/embed/Ryx3o0rD5lY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
 ## <a name="container-fundamentals"></a>コンテナーの基礎
 
 コンテナーは、分離されリソース制御された、移植可能なランタイム環境であり、ホスト マシンまたは仮想マシン上で実行されます。 アプリケーションまたはコンテナーで実行するプロセスは、すべての必須の依存関係と構成ファイルにパッケージ化されてコンテナーの外部で実行されているその他のプロセスがないように見えますが与えられています。
 
 コンテナーのホストがコンテナーのリソースのセットをプロビジョニングし、コンテナーはこれらのリソースのみを使用します。 コンテナーを知っていれば、できる限りは、内容が表示されていますの外部でその他のリソースが存在しないと、ためしますコンテナーが隣接コンテナーのプロビジョニングされているリソースをタッチことはできません。
 
-Windows コンテナーの作成と使用を開始する際には、次の主要な概念が役立ちます。
+作成を開始するように、次の重要な概念が役に立つする Windows コンテナを操作するとします。
 
-**コンテナー ホスト:** Windows コンテナー機能を使用して構成された物理または仮想のコンピューター システム。 コンテナー ホストは、1 つ以上の Windows コンテナーを実行します。
+**コンテナー ホスト:** 物理または仮想コンピューターのシステム構成 Windows コンテナー機能を使用します。 コンテナーのホストには、1 つまたは複数の Windows コンテナーが実行されます。
 
 **コンテナー イメージ:** ソフトウェアのインストールなどによってコンテナー ファイル システムまたはレジストリに変更が加えられると、それらの変更がサンドボックスでキャプチャされます。 これらの変更を継承する新しいコンテナーを作成できるように、この状態をキャプチャする場合がよくあります。 それがイメージです。いったんコンテナーが停止したら、そのサンドボックスを破棄するか、サンドボックスを新しいコンテナー イメージに変換することができます。 たとえば、Windows Server Core OS イメージからコンテナーを展開したとします。 次に、MySQL をこのコンテナーにインストールします。 このコンテナーから新しいイメージを作成すると、コンテナーの展開可能なバージョンとして機能します。 このイメージには、加えられた変更 (MySQL) のみが含まれますが、コンテナーの OS イメージの最上位レイヤーとして機能します。
 
@@ -56,7 +60,7 @@ Windows コンテナーの作成と使用を開始する際には、次の主要
 
 ## <a name="windows-container-types"></a>Windows コンテナーの種類
 
-Windows コンテナーには、2 つの異なるタイプのコンテナー (ランタイム) が含まれます。
+Windows のコンテナーには、次の 2 つの異なるコンテナーの種類、またはランタイムが含まれます。
 
 **Windows Server コンテナー** – プロセスと名前空間の分離テクノロジを使用してアプリケーションを分離します。 Windows Server コンテナーでは、コンテナー ホストおよびそのホスト上で実行されているすべてのコンテナーとの間でカーネルを共有します。 これらのコンテナーは、敵対的なセキュリティ境界を提供しないため、信頼されていないコードを分離するために使用しないでください。 これらのコンテナーはカーネルを共有しているため、カーネルのバージョンと構成を同一にする必要があります。
 
@@ -70,9 +74,9 @@ Windows でコンテナーの実行に Hyper-V の分離を使用するかどう
 
 ![コンテナーと Docker](media/docker.png)
 
-Windows Server コンテナーは、他のコンテナーと同様、[Docker](https://www.docker.com) によって管理できます。
+その他の任意のコンテナーと同じように[Docker](https://www.docker.com)と Windows Server コンテナーを管理できます。
 
-## <a name="containers-for-developers"></a>開発者向けのコンテナー ##
+## <a name="containers-for-developers"></a>開発者向けのコンテナー
 
 開発者のデスクトップからテスト マシン、実稼働コンピューター群に至るまで、環境全体にまったく同じように展開される Docker イメージを瞬時に作成できます。 これにより、Docker コンテナーにパッケージ化された、大規模に拡大するエコシステムが作成されています。このエコシステムには、DockerHub と、Docker が保持するパブリック コンテナー化されたアプリケーション レジストリがあり、パブリック コミュニティ リポジトリには、現在、180,000 以上のアプリケーションが公開されています。
 
@@ -84,13 +88,14 @@ Windows Server コンテナーは、他のコンテナーと同様、[Docker](ht
 
 コンテナーを使用すると、開発者は、より品質の高いアプリケーションをより短時間で作成し出荷することができます。
 
-## <a name="containers-for-it-professionals"></a>IT プロフェッショナル向けのコンテナー ##
+## <a name="containers-for-it-professionals"></a>IT プロフェッショナル向けのコンテナー
 
 IT プロフェッショナルは、コンテナーを使用して、開発、品質保証、運用の各チームに標準化された環境を提供することができます。 これにより、複雑なインストールと構成手順について心配する必要がなくなります。 コンテナーを使用して、システム管理者は、OS のインストールと基礎となるインフラストラクチャとの差を取り除きます。
 
 コンテナーは、管理者が更新と管理が簡単なインフラストラクチャを作成することに役立ちます。
 
 ## <a name="container-orchestrators"></a>コンテナー オーケストレーター
+
 コンテナーは、サイズが小さく、アプリケーション向けであるため、アジャイル配信環境やマイクロサービス ベースのアーキテクチャに最適です。 ただし、コンテナーとマイクロサービスを使用すると、環境内のコンポーネントは容易に数百個から数千個に達します。  数十台の仮想マシンや物理サーバーは手動で管理することができますが、オートメーションを使用せず、実稼働規模のコンテナー環境を管理する方法はありません。  多数のコンテナーおよびコンテナー間のやり取りを自動化して管理するタスクは、オーケストレーションと呼ばれます。 
 
 標準的なオーケストレーションの定義には、次のタスクが含まれています。
@@ -110,11 +115,11 @@ Azure には、Azure Container Service (AKS) と Service Fabric の 2 つのコ�
 
 [Azure Service Fabric](/azure/service-fabric/) は、スケーラブルで信頼性の高いマイクロサービスとコンテナーを容易にパッケージ化、展開、管理できる分散システム プラットフォームです。 Service Fabric によって、クラウド ネイティブ アプリケーションを開発、管理する際の重要な問題を解決します。 開発者や管理者は、複雑なインフラストラクチャの問題を回避し、ミッション クリティカルで要求の厳しいワークロードを、スケーラブルで、信頼性が高く、管理しやすい方法で実装することに集中できます。 Service Fabric は、このようなエンタープライズ クラス、階層 1、クラウド規模のアプリケーションを構築および管理するための次世代プラットフォームです。
 
-## <a name="video-overview"></a>概要に関するビデオ
+## <a name="video-overview"></a>ビデオの概要
 
 <iframe src="https://channel9.msdn.com/Blogs/containers/Containers-101-with-Microsoft-and-Docker/player" width="800" height="450" allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
 
-## <a name="try-windows-server-containers"></a>Windows Server コンテナーを使ってみる
+## <a name="try-windows-server-containers"></a>コンテナーの Windows Server を実行してください。
 
 コンテナーの優れた機能を試してみるには、 以下のリンクをクリックして、最初のコンテナーを実際に展開してみましょう。 <br/>
 Windows Server をお使いの場合は、[Windows Server クイック スタートの概要](../quick-start/quick-start-windows-server.md)をご覧ください。 <br/>

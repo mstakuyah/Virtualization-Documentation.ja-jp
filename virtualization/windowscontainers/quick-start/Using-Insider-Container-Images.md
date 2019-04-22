@@ -70,7 +70,7 @@ docker pull mcr.microsoft.com/windows/servercore/insider
 ```
 
 > [!IMPORTANT]
-> コンテナーの Windows OS イメージ[使用許諾契約書](../EULA.md )と Windows 内部プログラム[Terms of Use](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver)を参照してください。
+> Windows OS の画像の[使用許諾契約書](../EULA.md )と Windows 内部プログラム[Terms of Use](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver)コンテナーを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

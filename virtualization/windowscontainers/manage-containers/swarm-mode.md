@@ -1,18 +1,19 @@
 ---
-title: "swarm モードの概要"
-description: "swarm クラスターの開始、オーバーレイ ネットワークの作成、ネットワークへのサービスのアタッチ。"
-keywords: "docker,コンテナー, swarm, オーケストレーション"
+title: swarm モードの概要
+description: swarm クラスターの開始、オーバーレイ ネットワークの作成、ネットワークへのサービスのアタッチ。
+keywords: docker,コンテナー, swarm, オーケストレーション
 author: kallie-b
 ms.date: 02/9/2017
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 5ceb9626-7c48-4d42-81f8-9c936595ad85
-ms.openlocfilehash: 8dc87c28d402ed3bf7e704e7ffc7128e5a5aa15e
-ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
-ms.translationtype: HT
+ms.openlocfilehash: d3543d9e6f9e28278ab9f64fb1f4fa19d1507b08
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380446"
 ---
 # <a name="getting-started-with-swarm-mode"></a>swarm モードの概要 
 
@@ -22,13 +23,14 @@ swarm モードは、Docker ホストのネイティブなクラスタリング�
 ## <a name="manager-nodes-and-worker-nodes"></a>マネージャー ノードとワーカー ノード
 1 つの swarm は、*マネージャー ノード*と*ワーカー ノード*の 2 種類のコンテナー ホストで構成されます。 すべての swarm はマネージャー ノードを介して初期化され、swarm を制御および監視するためのすべての Docker CLI コマンドは、いずれかのマネージャー ノードから実行する必要があります。 マネージャー ノードは、swarm の状態の ”管理ノード” と考えることができます。マネージャー ノードは連携してコンセンサス・グループを形成し、その swarm で実行されているサービスの状態を常に監視します。マネージャー ノードの役目は、swarm の実際の状態が、開発者や管理者によって定義される意図した状態に常に一致するように維持することがです。 
 
->   **注:** swarm は複数のマネージャー ノードを持つことができますが、*1 つ以上*のマネージャー ノードが必要です。 
+>[!NOTE]
+>任意指定の群れでは、複数のマネージャー ノードを使用できますが、*少なくとも 1 つ*必要があります。 
 
 ワーカー ノードは、マネージャー ノードを介して Docker swarm によってオーケストレーションされます。 ワーカー ノードを swarm に参加させるには、swarm の初期化時にマネージャー ノードで生成された "join トークン" を使う必要があります。 ワーカー ノードは、マネージャー ノードから単純にタスクを単に受信して実行するノードであるため、swarm の状態を認識 (および保持) する必要はありません。
 
 ## <a name="swarm-mode-system-requirements"></a>swarm モードのシステム要件
 
-**Windows 10 Creators Update** または **Windows Server 2016** *とすべての最新の更新プログラム\**を実行し、コンテナー ホストとしてセットアップされた (Windows 10 で Docker コンテナーを使い始める方法について詳しくは、「[Windows 10 の Windows コンテナー](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-10)」または「[Windows Server の Windows コンテナー](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-server)」をご覧ください) 1 台以上の物理または仮想コンピューター システム (swarm の機能をフルに活用するには、複数ノードの使用をお勧めします)。
+少なくとも 1 つの物理または仮想コンピューター システム (少なくとも群れのすべての機能を使用する 2 つのノードを推奨) を実行するか、 **Windows 10 の作成者の更新**または**Windows Server 2016** *のすべての最新の updates\ **、として設定します。コンテナーのホスト ( [Windows 10 の Windows コンテナー](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-10)または[Windows Server の Windows コンテナー](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-server)のトピックは、Windows 10 の Docker コンテナーの使用を開始する方法の詳細について参照してください)。
 
 \***注**: Windows Server 2016 で Docker swarm を使用するには [KB4015217](https://support.microsoft.com/en-us/help/4015217/windows-10-update-kb4015217) が必要です。
 
@@ -51,9 +53,10 @@ C:\> docker swarm init --advertise-addr=<HOSTIPADDRESS> --listen-addr <HOSTIPADD
 
 ## <a name="adding-nodes-to-a-swarm"></a>swarm へのノードの追加
 
-> **注:** swarm モードやオーバーレイ ネットワーク機能の使用には、複数のノードは*必要ありません*。 すべての swarm 機能やオーバーレイ機能は、swarm ノードで実行する 1 つのホスト (つまり、`docker swarm init`コマンドで swarm モードに設定したマネージャー ノード) で使用できます。
+複数のノードは、機能を活用群れのモードと重ねてネットワークに必要な*されません*。 すべての swarm 機能やオーバーレイ機能は、swarm ノードで実行する 1 つのホスト (つまり、`docker swarm init`コマンドで swarm モードに設定したマネージャー ノード) で使用できます。
 
 ### <a name="adding-workers-to-a-swarm"></a>swarm へのワーカーの追加
+
 マネージャー ノードから swarm を初期したら、他のホストをワーカーとして swarm に追加できます。これには次のような簡単なコマンドを使います。
 
 ```
@@ -108,7 +111,8 @@ C:\> docker service create --name=<SERVICENAME> --endpoint-mode dnsrr --network=
 
 ここで、\<SERVICENAME\> は、指定するサービス名です。この名前は、サービス ディスカバリでサービスを参照するために使います (サービス ディスカバリには、Docker のネイティブな DNS サーバーが使われます)。 \<NETWORKNAME\> は、このサービスを接続するネットワークの名前です (例: "myOverlayNet")。 \<CONTAINERIMAGE\> は、サービスを定義するコンテナー イメージの名前です。
 
-> **注:** このコマンドの 2 番目の引数 `--endpoint-mode dnsrr` は、Docker エンジンに対し、サービス コンテナー エンドポイント間でのネットワーク トラフィックの負荷分散に、DNS ラウンド ロビン ポリシーが使用されることを指定するために必要です。 DNS ラウンド ロビンは、現在 Windows でサポートされている唯一の負荷分散方法です。Windows Docker ホスト用の[ルーティング メッシュ](https://docs.docker.com/engine/swarm/ingress/)はまだサポートされていませんが、まもなく追加される予定です。 他の負荷分散方法を使用する場合は、外部のロード バランサー (NGINXなど) を設定したうえで、swarm の[公開ポート モード](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish)を使って、負荷分散の際に経由するコンテナー ホスト ポートを公開します。
+>[!NOTE]
+>このコマンドは、2 番目の引数`--endpoint-mode dnsrr`、Docker エンジン サービス コンテナーの端点の間でネットワーク トラフィックを分散 DNS 巡回ポリシーを使用することを指定する必要があります。 DNS ラウンド ロビンは、現在 Windows でサポートされている唯一の負荷分散方法です。Windows Docker ホスト用の[ルーティング メッシュ](https://docs.docker.com/engine/swarm/ingress/)はまだサポートされていませんが、まもなく追加される予定です。 他の負荷分散方法を使用する場合は、外部のロード バランサー (NGINXなど) を設定したうえで、swarm の[公開ポート モード](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish)を使って、負荷分散の際に経由するコンテナー ホスト ポートを公開します。
 
 ## <a name="scaling-a-service"></a>サービスの縮小拡大
 swarm クラスターにサービスが展開されると、そのサービスを構成するコンテナー インスタンスがクラスターに展開されます。 既定では、サービスをサポートするコンテナー インスタンスの数 ("レプリカ"、つまりサービス用の "タスク" の数) は 1 つです。 ただし、`docker service create` コマンドで `--replicas`オプションを使って、複数のタスクを持つサービスを作成したり、サービスの作成後にサービスを拡大縮小したりすることができます。
@@ -176,7 +180,8 @@ C:\> docker swarm init --advertise-addr=<HOSTIPADDRESS> --listen-addr <HOSTIPADD
 ### <a name="adding-labels-to-swarm-nodes"></a>swarm ノードへのラベルの追加
 混在 OS swarm クラスターに対して Docker サービスを起動するには、そのサービスの対象となる OS を実行している swarm ノードと、それ以外のノードを判別する方法が必要です。 [Docker オブジェクト ラベル](https://docs.docker.com/engine/userguide/labels-custom-metadata/)は、ノードにラベル付けするのに便利な方法であり、OS に一致するノードでのみ実行されるように、サービスを作成および構成できます。 
 
-> 注: [Docker オブジェクト ラベル](https://docs.docker.com/engine/userguide/labels-custom-metadata/)は、さまざまな Docker オブジェクト (コンテナー イメージ、コンテナー、ボリューム、ネットワークなど) にメタデータを適用するために使用できるほか、さまざまな目的に使用できます。たとえば、ラベルを使用してアプリケーションの "フロントエンド" と "バックエンド" のコンポーネントを区別することで、フロントエンドのマイクロサービスを "front-end" のラベルが付けられたノードでのみスケジュールし、バックエンドのマイクロサービスを "back-end" のラベルが付けられたノードでのみスケジュールすることができます。 ここでは、ノードのラベルを使用して、Windows OS ノードと Linux OS ノードを区別します。
+>[!NOTE]
+>[Docker オブジェクトのラベル](https://docs.docker.com/engine/userguide/labels-custom-metadata/)を使用して、さまざまな Docker などのオブジェクト コンテナーの画像、コンテナー、ボリューム、ネットワーク、さまざまな目的 (例: ラベルを使用して 'フロント エンド' と 'バックエンド' コンポーネントを分離するメタデータを適用することアプリケーション、フロント エンドの microservices secheduled 'フロント エンド' にのみを許可することによってラベルが付いたノードと 'バックエンド' ノードのラベルが付いたのみにスケジュールするバックエンド mircoservices)。 ここでは、ノードのラベルを使用して、Windows OS ノードと Linux OS ノードを区別します。
 
 既存の swarm ノードにラベルを付けるには、次の構文を使います。
 
