@@ -7,12 +7,12 @@ ms.date: 04/07/2018
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: f1e75efa-8745-4389-b8dc-91ca931fe5ae
-ms.openlocfilehash: d9531164022b99a4be9b3c8e09736828a2da2f61
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 970e92def02e5386d38a2e72d5ef921aa8321fdf
+ms.sourcegitcommit: 08cc38955faad26f075b912a64b8ffb6b36f190c
 ms.translationtype: MT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576553"
+ms.locfileid: "9578685"
 ---
 # <a name="create-a-virtual-machine-with-hyper-v"></a>Hyper-V による仮想マシンの作成
 
@@ -22,9 +22,9 @@ ms.locfileid: "9576553"
 
 適切な手順については、該当するオペレーティング システムを選択してください。
 
-* [Windows 10 秋作成者の更新プログラム (v1709) 以降のバージョン](quick-create-virtual-machine.md#windows-10-fall-creators-update)
-* [Windows 10 の作成者の更新プログラム (v1703)](quick-create-virtual-machine.md#windows-10-creators-update)
-* [Windows 10 の記念日の更新プログラム (v1607) とそれ以前のバージョン](quick-create-virtual-machine.md#before-windows-10-creators-update)
+* [Windows 10 秋作成者の更新プログラム (v1709) 以降のバージョン](quick-create-virtual-machine.md#windows-10-fall-creators-update-windows-10-version-1709)
+* [Windows 10 の作成者の更新プログラム (v1703)](quick-create-virtual-machine.md#windows-10-creators-update-windows-10-version-1703)
+* [Windows 10 の記念日の更新プログラム (v1607) とそれ以前のバージョン](quick-create-virtual-machine.md#before-windows-10-creators-update-windows-10-version-1607-and-earlier)
 
 それでは始めましょう。
 
@@ -81,7 +81,7 @@ Fall Creators Update で新しい仮想マシンを作成するには:
 
 > **注意:** ボリューム ライセンス版の Windows を実行している場合を除き、仮想マシン内で実行する Windows については、別途ライセンスが必要です。 仮想マシンのオペレーティング システムは、ホストのオペレーティング システムから独立しています。
 
-## <a name="before-windows-10-creators-update-windows-10-version-1607-and-older"></a>Windows 10 の作成者の更新プログラム (Windows 10 1607 と以前のバージョン) の前に
+## <a name="before-windows-10-creators-update-windows-10-version-1607-and-earlier"></a>Windows 10 の作成者の更新プログラム (Windows 10 1607 およびそれ以前のバージョン) の前に
 
 Windows 10 Creators Update 以降を実行していない場合は、仮想マシンの新規作成ウィザードを使用して以下の手順に従います。
 
