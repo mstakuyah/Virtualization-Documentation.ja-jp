@@ -7,12 +7,12 @@ ms.date: 04/07/2018
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: f1e75efa-8745-4389-b8dc-91ca931fe5ae
-ms.openlocfilehash: 5975f43859368334cab31b6d0eb37f084e9c03ca
-ms.sourcegitcommit: 51da93c4548c5df7a9f01e54d46d81b338c874cf
+ms.openlocfilehash: d9531164022b99a4be9b3c8e09736828a2da2f61
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "9031176"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9576553"
 ---
 # <a name="create-a-virtual-machine-with-hyper-v"></a>Hyper-V による仮想マシンの作成
 
@@ -22,13 +22,13 @@ ms.locfileid: "9031176"
 
 適切な手順については、該当するオペレーティング システムを選択してください。
 
-* [Windows 10 Fall Creators Update 以降](quick-create-virtual-machine.md#windows-10-fall-creators-update)
-* [Windows 10 Creators Update](quick-create-virtual-machine.md#windows-10-creators-update)
-* [Windows 10 Anniversary Update 以前](quick-create-virtual-machine.md#before-windows-10-creators-update)
+* [Windows 10 秋作成者の更新プログラム (v1709) 以降のバージョン](quick-create-virtual-machine.md#windows-10-fall-creators-update)
+* [Windows 10 の作成者の更新プログラム (v1703)](quick-create-virtual-machine.md#windows-10-creators-update)
+* [Windows 10 の記念日の更新プログラム (v1607) とそれ以前のバージョン](quick-create-virtual-machine.md#before-windows-10-creators-update)
 
 それでは始めましょう。
 
-## <a name="windows-10-fall-creators-update"></a>Windows 10 Fall Creators Update
+## <a name="windows-10-fall-creators-update-windows-10-version-1709"></a>Windows 10 秋作成者の更新プログラム (Windows 10 版 1709)
 
 Fall Creators Update ではクイック作成が拡張され、Hyper-V マネージャーから個別に起動できる仮想マシン ギャラリーが追加されています。
 
@@ -53,7 +53,7 @@ Fall Creators Update で新しい仮想マシンを作成するには:
 
 これで完了です。  残りの操作はクイック作成によって行われます。
 
-## <a name="windows-10-creators-update"></a>Windows 10 Creators Update
+## <a name="windows-10-creators-update-windows-10-version-1703"></a>Windows 10 の作成者の更新プログラム (Windows 10 版 1703)
 
 ![クイック作成 UI のスクリーン ショット](media/quickcreatesteps_inked.jpg)
 
@@ -81,7 +81,7 @@ Fall Creators Update で新しい仮想マシンを作成するには:
 
 > **注意:** ボリューム ライセンス版の Windows を実行している場合を除き、仮想マシン内で実行する Windows については、別途ライセンスが必要です。 仮想マシンのオペレーティング システムは、ホストのオペレーティング システムから独立しています。
 
-## <a name="before-windows-10-creators-update"></a>Windows 10 Creators Update 以前
+## <a name="before-windows-10-creators-update-windows-10-version-1607-and-older"></a>Windows 10 の作成者の更新プログラム (Windows 10 1607 と以前のバージョン) の前に
 
 Windows 10 Creators Update 以降を実行していない場合は、仮想マシンの新規作成ウィザードを使用して以下の手順に従います。
 

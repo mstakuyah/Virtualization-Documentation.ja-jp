@@ -9,11 +9,11 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
 ms.openlocfilehash: a32d66251d8d9dddcd8abb1b64600459c903e317
-ms.sourcegitcommit: 2c22506a7fdbbbe5ab4138281fc9256a98b51efd
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "3386057"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9574803"
 ---
 # <a name="dockerfile-on-windows"></a>Windows 上の Dockerfile
 
@@ -71,7 +71,7 @@ Dockerfile 命令は、Docker エンジンに対して、コンテナー イメ�
 
 `FROM` 命令では、新しいイメージ作成プロセス中に使用されるコンテナー イメージを設定します。 たとえば、命令 `FROM microsoft/windowsservercore` を使用すると、結果のイメージは Windows Server Core ベース OS イメージから派生し、依存します。 指定したイメージが、Docker ビルド プロセスが実行されているシステムに存在しない場合、Docker エンジンは、パブリックまたはプライベートのイメージ レジストリからイメージのダウンロードを試行します。
 
-**Format (形式)**
+**形式**
 
 FROM 命令の形式は、次のとおりです。
 
@@ -91,7 +91,7 @@ FROM 命令の詳細については、[Docker.com の FROM リファレンス]( 
 
 `RUN` 命令は、コマンドを実行し、新しいコンテナー イメージにキャプチャするように指定します。 これらのコマンドには、ソフトウェアのインストール、ファイルとディレクトリの作成、環境構成の作成などの項目が含まれます。
 
-**Format (形式)**
+**形式**
 
 RUN 命令の形式は、次のとおりです。
 

@@ -9,11 +9,11 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d9c398c4-ee72-45c6-9ce8-4f06569dae6c
 ms.openlocfilehash: 7ed9c5e3c3067bd8ddfa8005f4d9307c76dce4cd
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6948031"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9575403"
 ---
 # <a name="using-checkpoints-to-revert-virtual-machines-to-a-previous-state"></a>チェックポイントを使用して仮想マシンを以前の状態に戻す
 
@@ -42,7 +42,7 @@ Windows 10 Hyper-V には、次の 2 種類のチェックポイントが含ま�
 <br />
 ![](media/checkpoint_upd.png)
 
-**PowerShell を使用**
+**PowerShell を使用する**
 
 PowerShell では、次のコマンドを実行してチェックポイントを変更できます。 
 
@@ -72,7 +72,7 @@ Set-VM -Name <vmname> -CheckpointType ProductionOnly
 2. 仮想マシンの名前を右クリックし、**[チェックポイント]** をクリックします。
 3. プロセスが完了すると、**Hyper-V マネージャー**の **[チェックポイント]** の下にチェックポイントが表示されます。
 
-**PowerShell を使用**
+**PowerShell を使用する**
 
 **CheckPoint-VM** コマンドを使用して、チェックポイントを作成します。  
 
@@ -101,7 +101,7 @@ Get-VMCheckpoint -VMName <VMName>
   
   チェックポイントを作成して適用するには、いずれかの適用オプションを選択してください。
 
-**PowerShell を使用**
+**PowerShell を使用する**
 
 5. 仮想マシンのチェックポイントの一覧を表示するには、**Get-VMCheckpoint** コマンドを使用します。
 
@@ -133,7 +133,7 @@ virtual_machine_name (MM/DD/YYY -hh:mm:ss AM\PM)
 3.  チェックポイントの新しい名前を入力します。 100 文字未満をする必要があり、フィールドを空にすることはできません。
 4.  終了したら、**Enter** キーを押します。
 
-**PowerShell を使用**
+**PowerShell を使用する**
 
 ``` powershell
 Rename-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name> -NewName <new checkpoint name>
@@ -155,7 +155,7 @@ Rename-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name> -NewN
 2.  **チェックポイント**] セクションを削除し、[削除] をクリックするチェックポイントを右クリックします。 チェックポイントと後続のすべてのチェックポイントを削除することもできます。 これを行うには、削除する最初のチェックポイントを右クリックして、******[チェックポイントのサブツリーを削除]** をクリックします。
 3.  チェックポイントを削除することを確認するように求められる場合があります。 正しいチェックポイントであることを確認したら、**[削除]** をクリックします。 
  
-**PowerShell を使用**
+**PowerShell を使用する**
 ```powershell
 Remove-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name>
 ```

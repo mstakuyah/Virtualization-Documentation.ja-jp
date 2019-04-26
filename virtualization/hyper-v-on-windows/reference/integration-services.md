@@ -9,11 +9,11 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 18930864-476a-40db-aa21-b03dfb4fda98
 ms.openlocfilehash: 84974f093cc80f8a216518bab051e13397e89b6e
-ms.sourcegitcommit: 4090d158dd3573ea90799de5b014c131a206b000
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "6121632"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9577433"
 ---
 # <a name="hyper-v-integration-services"></a>Hyper-V 統合サービス
 
@@ -30,7 +30,7 @@ ms.locfileid: "6121632"
 | 名前 | Windows サービス名 | Linux デーモン名 |  説明 | 無効にした場合に VM に与える影響 |
 |:---------|:---------|:---------|:---------|:---------|
 | [Hyper-V ハートビート サービス](#hyper-v-heartbeat-service) |  vmicheartbeat | hv_utils | 仮想マシンが正しく動作していることを報告します。 | 不定 |
-| [Hyper-V ゲスト シャットダウン サービス](#hyper-v-guest-shutdown-service) | vmicshutdown | hv_utils |  ホストが仮想マシンのシャットダウンをトリガーするのを許可します。 | **高** |
+| [Hyper-V ゲスト シャットダウン サービス](#hyper-v-guest-shutdown-service) | vmicshutdown | hv_utils |  ホストが仮想マシンのシャットダウンをトリガーするのを許可します。 | **High** |
 | [Hyper-V 時刻の同期サービス](#hyper-v-time-synchronization-service) | vmictimesync | hv_utils | 仮想マシンのクロックをホスト コンピューターのクロックに同期します。 | **高** |
 | [Hyper-V データ交換サービス (KVP)](#hyper-v-data-exchange-service-kvp) | vmickvpexchange | hv_kvp_daemon | 仮想マシンとホストとの間で基本的なメタデータを交換する手段を提供します。 | 中 |
 | [Hyper-V ボリューム シャドウ コピー リクエスター](#hyper-v-volume-shadow-copy-requestor) | vmicvss | hv_vss_daemon | 仮想マシンをシャットダウンすることなく仮想マシンのバックアップを作成することをボリューム シャドウ コピー サービスに許可します。 | 不定 |
@@ -126,7 +126,7 @@ DemoVM  Running  Operating normally
 **追加先:** Windows Server 2012 R2、Windows 8.1  
 **影響:** 無効にした場合、ホストは、`Copy-VMFile` を使用してゲストとの間でファイルをコピーできなくなります。  Copy-VMFile コマンドレットについては、[こちら](https://technet.microsoft.com/library/dn464282.aspx)を参照してください。  
 
-**注:**  
+**注意事項:**  
 既定では無効  [Copy-Item を使用した PowerShell ダイレクト](../user-guide/powershell-direct.md#copy-files-with-new-pssession-and-copy-item)に関するページを参照してください。 
 
 

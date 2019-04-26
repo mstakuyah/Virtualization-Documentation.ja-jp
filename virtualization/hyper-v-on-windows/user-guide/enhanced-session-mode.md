@@ -1,6 +1,6 @@
 ---
-title: "Windows 仮装マシンとのデバイスの共有"
-description: "Hyper-V 仮想マシンとの間でデバイス (USB、オーディオ、マイク、マウントされたドライブ) を共有する手順を説明します"
+title: Windows 仮装マシンとのデバイスの共有
+description: Hyper-V 仮想マシンとの間でデバイス (USB、オーディオ、マイク、マウントされたドライブ) を共有する手順を説明します
 keywords: Windows 10, Hyper-V
 ms.author: scooley
 ms.date: 10/20/2017
@@ -9,10 +9,11 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d1aeb9cb-b18f-43cb-a568-46b33346a188
 ms.openlocfilehash: 52d51fca03f454a311a123f20e5aeda9376fdc3d
-ms.sourcegitcommit: 3ec9917c456875f68180323eb9e0470d5115325a
-ms.translationtype: HT
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9578523"
 ---
 # <a name="share-devices-with-your-virtual-machine"></a>仮装マシンとのデバイスの共有
 

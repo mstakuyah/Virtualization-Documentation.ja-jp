@@ -1,7 +1,7 @@
 ---
-title: "コミュニティ リソース"
-description: "コミュニティ リソース"
-keywords: "windows 10, hyper-v, コンテナー, docker"
+title: コミュニティ リソース
+description: コミュニティ リソース
+keywords: windows 10, hyper-v, コンテナー, docker
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
@@ -9,16 +9,17 @@ ms.prod: virtualization
 ms.service: virtualization
 ms.assetid: 731ed95a-ce13-4c6e-a450-49563bdc498c
 ms.openlocfilehash: d4fd2dbaf362ac3ad52667743177a203174b397d
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
-ms.translationtype: HT
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9578624"
 ---
-# ドキュメントに投稿する
+# <a name="contribute-to-the-docs"></a>ドキュメントに投稿する
 
 > **注:** ドキュメントに投稿するには、[GitHub](https://www.github.com) アカウントを所有している必要があります。
 
-## 既存のドキュメントの編集
+## <a name="edit-an-existing-doc"></a>既存のドキュメントの編集
 
 1. 編集するドキュメントを探します。  
 
@@ -59,12 +60,12 @@ ms.lasthandoff: 07/21/2017
 
 7. [プル要求](contribute-to-docs.md#pull-requests)の作成  
 
-## プル要求
+## <a name="pull-requests"></a>プル要求
 
 ほとんどの変更はプル要求を介してコミットされます。  プル要求は、複数のレビューアーで変更セットを審査したり、変更を加えたり、現在のコンテンツについてコメントしたりする手段です。
 
 
-## リポジトリの分岐とローカルでの編集
+## <a name="fork-the-repo-and-edit-locally"></a>リポジトリの分岐とローカルでの編集
 
 ドキュメントで長時間作業する場合、リポジトリをローカルにクローンし、自分のコンピューター上で作業することができます。
 
@@ -85,7 +86,7 @@ ms.lasthandoff: 07/21/2017
   * Git 用の VSCode。便利ないくつかの機能を説明します。
   * 最初のコミットの実行。
 
-### Git のセットアップ
+### <a name="set-up-git"></a>Git のセットアップ
 
 1. (Windows の場合) Git のインストール ([ここ](https://git-for-windows.github.io/)をクリック)
 
@@ -179,7 +180,7 @@ ms.lasthandoff: 07/21/2017
   }
   ```
 
-### 資格情報の検証と格納
+### <a name="validate-and-stash-credentials"></a>資格情報の検証と格納
 
   リポジトリが正しくセットアップされたことの検証には、新しいコンテンツの取得を試行します。
 
@@ -188,7 +189,7 @@ ms.lasthandoff: 07/21/2017
   ```
 
 
-### マークダウン編集環境のセットアップ
+### <a name="set-up-markdown-editing-environment"></a>マークダウン編集環境のセットアップ
 
 1. VSCode のダウンロード
 

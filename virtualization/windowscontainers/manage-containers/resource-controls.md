@@ -9,11 +9,11 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8ccd4192-4a58-42a5-8f74-2574d10de98e
 ms.openlocfilehash: e004bd4ca97960499826eeefdfb8e58b08e494b2
-ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "9380496"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9574773"
 ---
 # <a name="implementing-resource-controls-for-windows-containers"></a>Windows コンテナーのリソース コントロールの実装
 リソース コントロールには、コンテナー単位およびリソース単位で実装できるものがいくつかあります。  既定では、一般的な Windows リソース管理 (通常はフェアシェア ベース) によって、実行されるコンテナーが決まりますが、リソース コントロールを構成することで、開発者や管理者はリソース使用の制限または調整を行うことができます。  コントロール可能なリソースには、CPU/プロセッサ、メモリ/RAM、ディスク/記憶域、ネットワーク/スループットなどがあります。

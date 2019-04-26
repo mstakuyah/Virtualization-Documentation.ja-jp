@@ -8,11 +8,11 @@ ms.prod: containers
 description: Kubernetes の展開と Windows ノードの参加で発生する一般的な問題の解決方法。
 keywords: kubernetes、1.12、linux コンパイルします。
 ms.openlocfilehash: 1c5a5ec90b828a4f2430508f02cb9b9afb1c4d53
-ms.sourcegitcommit: 1715411ac2768159cd9c9f14484a1cad5e7f2a5f
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "9263509"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9577083"
 ---
 # <a name="troubleshooting-kubernetes"></a>Kubernetes のトラブルシューティング #
 このページでは、Kubernetes のセットアップ、ネットワーク、および展開に関する一般的な問題について説明します。

@@ -8,16 +8,16 @@ ms.prod: containers
 description: ソースからの Kubernetes バイナリのコンパイルとクロスコンパイル
 keywords: kubernetes、1.12、linux コンパイルします。
 ms.openlocfilehash: 40bf7e65a8910cdab095abb269aa0a92508189cd
-ms.sourcegitcommit: 8e9252856869135196fd054e3cb417562f851b51
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "6178875"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9574823"
 ---
 # <a name="compiling-kubernetes-binaries"></a>Kubernetes バイナリのコンパイル #
 Kubernetes のコンパイルには、有効な Go 環境が必要です。 このページでは、Linux バイナリをコンパイルし、Windows バイナリをクロスコンパイルするための複数の方法を確認します。
 > [!NOTE] 
-> このページは、任意でのみ、関心 Kubernetes 開発者向けの最新と最大のソース コードを試すに含まれています。
+> このページは、任意でのみ、関心 Kubernetes 開発者向けの最新の & 最大ソース コードを試すに含まれています。
 
 > [!tip]
 > 購読していることが最新の開発に関する通知を受信する[@kubernetes-announce](https://groups.google.com/forum/#!forum/kubernetes-announce)します。

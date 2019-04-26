@@ -4,11 +4,11 @@ description: GPU アクセラレータのレベルが Windows コンテナーに
 keywords: docker、コンテナー、デバイス、ハードウェア
 author: cwilhit
 ms.openlocfilehash: 281241e07e4bc184e73c4e74a117b44253a775be
-ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "9380056"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9578664"
 ---
 # <a name="gpu-acceleration-in-windows-containers"></a>Windows のコンテナー GPU アクセラレータ
 

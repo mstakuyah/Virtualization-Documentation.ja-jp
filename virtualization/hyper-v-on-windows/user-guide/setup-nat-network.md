@@ -1,6 +1,6 @@
 ---
-title: NAT ネットワークの設定
-description: NAT ネットワークの設定
+title: NAT ネットワークのセットアップ
+description: NAT ネットワークのセットアップ
 keywords: windows 10、hyper-v
 author: jmesser81
 ms.date: 05/02/2016
@@ -9,11 +9,11 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1f8a691c-ca75-42da-8ad8-a35611ad70ec
 ms.openlocfilehash: 0c365b9351ee09c946e1711f3a3a5e82eb71c785
-ms.sourcegitcommit: 4090d158dd3573ea90799de5b014c131a206b000
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "6121622"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9577313"
 ---
 # <a name="set-up-a-nat-network"></a>NAT ネットワークの設定
 

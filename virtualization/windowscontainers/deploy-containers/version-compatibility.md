@@ -4,11 +4,11 @@ description: Windows の複数のバージョン間で、ビルドとコンテ�
 keywords: メタデータ, コンテナー, バージョン
 author: taylorb-microsoft
 ms.openlocfilehash: c744da429ed8116363437d3117ae1432d7a94f8d
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6948081"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9574953"
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーのバージョンの互換性
 
@@ -47,7 +47,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
     </tr>
     <tr>
         <td style="background-color:#E3F2FD"><b>Windows Server Version 1709</b><br/>ビルド: 16299.*</td>
-        <td>サポートされていません</td>
+        <td>サポートされていません。</td>
         <td>サポートされていません</td>
         <td>サポート対象: <br/> `process`  または `hyperv` による分離</td>
         <td>サポート対象: <br/> `hyperv` による分離のみ</td>
@@ -58,7 +58,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
     </tr>
     <tr>
         <td style="background-color:#E3F2FD"><b>Windows Server バージョン 1803</b><br/>ビルド 17134.*</td>
-        <td>サポートされていません</td>
+        <td>サポートされない</td>
         <td>サポートされていません</td>
         <td>サポートされていません</td>
         <td>サポートされていません</td>
@@ -69,7 +69,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
     </tr>
     <tr>
         <td style="background-color:#E3F2FD"><b>Windows Server 2019</b><br/>ビルド 17763.*</td>
-        <td>サポートされていません</td>
+        <td>サポートされない</td>
         <td>サポートされていません</td>
         <td>サポートされていません</td>
         <td>サポートされていません</td>
