@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: dc500a7b6c0f8f078820407e6ed80ca5868bf4f3
-ms.sourcegitcommit: 95cec99aa8e817d3e3cb2163bd62a32d9e8f7181
+ms.openlocfilehash: 07f5929505226a50a161b4ae7df5669c2ad89d83
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "8973652"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9575523"
 ---
 # <a name="windows-containers-on-windows-10"></a>Windows 10 の Windows コンテナー
 
@@ -72,7 +72,7 @@ microsoft/nanoserver   latest              105d76d0f40e        4 days ago       
 ```
 
 > [!IMPORTANT]
-> コンテナーの Windows OS イメージ[使用許諾契約書](../images-eula.md)を参照してください。
+> Windows コンテナー OS 画像の[使用許諾契約書](../images-eula.md)を参照してください。
 
 ## <a name="run-your-first-windows-container"></a>初めて Windows コンテナーを実行します。
 
@@ -122,7 +122,7 @@ docker images
 docker run --rm helloworld cmd.exe /s /c type Hello.txt
 ```
 
-結果、 `docker run` ] コマンドが、HYPER-V コンテナーが 'HelloWorld' イメージから作成された、cmd のインスタンスでコンテナーが開始したファイル (shell エコー出力) し、[停止し、削除、コンテナーの閲覧を実行します。
+結果、 `docker run` ] コマンドを HYPER-V 分離で実行されているコンテナーが 'HelloWorld' イメージから作成された、cmd のインスタンスでコンテナーが開始したファイル (shell エコー出力) し、[コンテナーの閲覧を実行します。停止して削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

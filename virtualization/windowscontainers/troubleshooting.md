@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ebd79cd3-5fdd-458d-8dc8-fc96408958b5
-ms.openlocfilehash: d67b38b04cf781ab5cba8e0142831f71b65aa974
-ms.sourcegitcommit: 8ab1fccfc680911493c769157a6cfe7cbcf17bde
+ms.openlocfilehash: 4fac4d6e091fdf25e9683adca438302ca3beebfb
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "8972056"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9576703"
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -28,7 +28,7 @@ Invoke-WebRequest https://aka.ms/Debug-ContainerHost.ps1 -UseBasicParsing | Invo
 
 
 ## <a name="finding-logs"></a>ログを見つける
-Windows コンテナーの管理には、さまざまなサービスが使用されています。 次の各セクションで、ログの場所をサービス別に示します。
+Windows のコンテナーを管理するため、複数のサービスがあります。 次の各セクションで、ログの場所をサービス別に示します。
 
 # <a name="docker-engine"></a>Docker エンジン
 Docker エンジンは、ファイルではなく Windows 'アプリケーション' イベント ログに記録します。 これらのログは、Windows PowerShell を使用することで、簡単に読み取り、並べ替え、およびフィルター処理することができます。

@@ -1,6 +1,6 @@
 ---
 title: Windows コンテナーのサンプル
-description: Windows コンテナーを使用した一般的なプロジェクトとコードのサンプルへのリンクを確認してください。
+description: 人気のあるプロジェクトと Windows コンテナーを使用する、コード サンプルへのリンクを検索します。
 keywords: docker, コンテナー, windows, サンプル
 author: cwilhit
 ms.date: 12/19/2016
@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 5c6f6350-f8d6-4426-b53d-9fb09c2bf267
-ms.openlocfilehash: 6d0f85e46ab5f2c73fb378d4862a2fc3107e47b3
-ms.sourcegitcommit: 69228f28723f366c6b2933c7701077c8df74b32b
+ms.openlocfilehash: fb6910f535337d25b7635ffe339345a7063daa92
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "8976768"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9574553"
 ---
 # <a name="windows-container-samples"></a>Windows コンテナーのサンプル
 

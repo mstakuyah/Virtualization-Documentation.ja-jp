@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 036e4f80eaa6e7ce2c151d7732e670c0492bc61f
-ms.sourcegitcommit: 95cec99aa8e817d3e3cb2163bd62a32d9e8f7181
+ms.openlocfilehash: f9b54dbc9fc7c79bdb9b9aa106d5811401c365f3
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "8973815"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9578633"
 ---
 # <a name="linux-containers-on-windows-10"></a>Windows 10 の Linux コンテナー
 
@@ -44,7 +44,7 @@ ms.locfileid: "8973815"
 
 > インストールされている Docker がある場合 LCOW をサポートするには、18.02 以降のバージョンがあることを確認します。 チェックを実行して`docker -v`や*に関する Docker*をチェックします。
 
-> '実験機能] のオプションで*Docker 設定 > デーモン*LCOW コンテナーを実行するアクティブ化する必要があります。
+> LCOW コンテナーを実行するのには、 *Docker 設定 _gt デーモン*で '実験機能] オプションをアクティブにする必要があります。
 
 ## <a name="run-your-first-lcow-container"></a>最初の LCOW コンテナーを実行します。
 

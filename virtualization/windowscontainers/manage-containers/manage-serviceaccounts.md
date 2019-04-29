@@ -9,11 +9,11 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
 ms.openlocfilehash: 20daa81a571fde23b91e24e9713e37d225870ec0
-ms.sourcegitcommit: 1dec99a5b295e8a08022ae3dec128c7c7818ad15
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "9262355"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9574963"
 ---
 # <a name="group-managed-service-accounts-for-windows-containers"></a>Windows のコンテナーのグループの管理サービス アカウントします。
 
@@ -500,7 +500,7 @@ Windows Server 2019 と Windows 10、1809 のバージョンでこの問題が�
     > ローカル ユーザー - ドメイン id ではなく、常にコンテナーにログインするためです。
     > アプリは、ネットワーク サービスとローカル システムを実行する必要がありますネットワーク リソースに述べてときにいつでもコンピューター アカウントを使用して、gMSA 表示されます。
 
-5.  最後に、コンテナーが正しく構成されているようユーザーまたは他のサービスが、コンテナー化アプリに自動的に認証を行うことがない場合は、gMSA アカウントで Spn を確認します。 Clients will locate the gMSA account by the name at which they reach your application. その他必要があります`host`の場合、負荷分散装置またはその他の DNS 名を使用して、アプリにクライアントの接続などの gMSA Spn します。
+5.  最後に、コンテナーが正しく構成されているようユーザーまたは他のサービスが、コンテナー化アプリに自動的に認証を行うことがない場合は、gMSA アカウントで Spn を確認します。 クライアントは、アプリケーション届くその名前が gMSA アカウントを見つけます。 その他必要があります`host`の場合、負荷分散装置またはその他の DNS 名を使用して、アプリにクライアントの接続などの gMSA Spn します。
 
 ## <a name="additional-resources"></a>その他の資料
 -   [グループの管理サービス アカウントの概要](https://docs.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)

@@ -8,14 +8,14 @@ ms.topic: about-article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 29fbe13a-228a-4eaa-9d4d-90ae60da5965
-ms.openlocfilehash: fec8b08d5bd86102d21ce93b726dc0b931413441
-ms.sourcegitcommit: 69228f28723f366c6b2933c7701077c8df74b32b
+ms.openlocfilehash: c30b28d867a23537699bce99fafa2748d3747fa9
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "8976748"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9576103"
 ---
-# <a name="building-a-container-ecosystem"></a>コンテナー エコシステムの構築
+# <a name="building-a-container-ecosystem"></a>コンテナーのシステムの構築
 
 コンテナーのエコシステムを構築が非常に重要な理由については、説明しましょう。 まず Docker です。
 
@@ -33,7 +33,7 @@ Docker は、開発のための優れた基盤を提供します。
 
 ## <a name="components-in-a-container-ecosystem"></a>コンテナー エコシステムのコンポーネント
 
-Windows コンテナーは、大規模なコンテナー エコシステムの主要コンポーネントです。 ソリューション スタックの各層で開発者に選択肢を提供するため、業界全体で取り組んでいます。
+Windows コンテナーとは、大きなコンテナーのシステムの主要コンポーネントです。 ソリューション スタックの各層で開発者に選択肢を提供するため、業界全体で取り組んでいます。
 
 コンテナー エコシステムでは、コンテナーの管理、コンテナーの共有、コンテナーで実行されるアプリケーションの開発の方法を提供します。
 

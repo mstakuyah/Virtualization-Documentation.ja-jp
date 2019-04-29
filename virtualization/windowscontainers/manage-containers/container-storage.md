@@ -4,11 +4,11 @@ description: Windows Server コンテナーがホストとその他の種類の�
 keywords: コンテナー, ボリューム, 記憶域, マウント, bindmount
 author: patricklang
 ms.openlocfilehash: 7d22a149da21a3367b82f2920c189ae9a4b1c173
-ms.sourcegitcommit: 2c22506a7fdbbbe5ab4138281fc9256a98b51efd
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "3386047"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9574873"
 ---
 # <a name="overview"></a>概要
 

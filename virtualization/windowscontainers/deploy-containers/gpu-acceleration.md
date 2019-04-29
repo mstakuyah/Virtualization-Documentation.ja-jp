@@ -3,12 +3,12 @@ title: Windows のコンテナー GPU アクセラレータ
 description: GPU アクセラレータのレベルが Windows コンテナーに存在します。
 keywords: docker、コンテナー、デバイス、ハードウェア
 author: cwilhit
-ms.openlocfilehash: fbee74e1d40838922ae938afd8fda5715a6abaf7
-ms.sourcegitcommit: af1d0d6c0642ee44bd34db7a9a58fe6c65f73a33
+ms.openlocfilehash: 281241e07e4bc184e73c4e74a117b44253a775be
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "9285946"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9578664"
 ---
 # <a name="gpu-acceleration-in-windows-containers"></a>Windows のコンテナー GPU アクセラレータ
 
@@ -22,6 +22,7 @@ Gpu は、既に従来のレンダリングと機械学習トレーニングと�
 ## <a name="requirements"></a>要件
 
 この機能を利用するには、現在の環境は、次の要件を満たす必要があります。
+
 - コンテナーのホストでは、Windows Server 2019 または Windows 10、1809 以降のバージョンが実行されている必要があります。
 - コンテナーの基本イメージ必要があります[mcr.microsoft.com/windows:1809](https://hub.docker.com/_/microsoft-windowsfamily-windows)以降。 Windows Server Core と Nano サーバー コンテナーの画像は現在サポートされていません。
 - コンテナー ホストは、Docker エンジン 19.03 以降を実行している必要があります。
