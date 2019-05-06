@@ -10,7 +10,7 @@
 ## Windows Server のクイック スタート
 ### [最初のコンテナーを実行する](quick-start/quick-start-windows-server.md)
 ### [コンテナーのビルドを自動化する](quick-start/quick-start-images.md)
-## Windows Insider のクイック スタート
+## Windows の内部のクイック スタート
 ### [内部の画像の使用](quick-start/Using-Insider-Container-Images.md)
 ### [作成してアプリケーションを実行するには.](quick-start/Nano-RS3-.NET-Core-and-PS.md)
 ### [既知の問題](quick-start/Insider-Known-Issues.md)
@@ -21,13 +21,13 @@
 ## [Dockerfile の最適化](manage-docker/optimize-windows-dockerfile.md)
 ## [コンテナーの記憶域](manage-containers/container-storage.md)
 ## [Windows Docker ホストのリモート管理](management/manage_remotehost.md)
-## [リソース コントロール](manage-containers/resource-controls.md)
+## [リソースのコントロール](manage-containers/resource-controls.md)
 
 # Windows のコンテナー ネットワーク
 ## [コンテナー ネットワークの概要](container-networking/architecture.md)
 ## [ネットワーク トポロジとドライバー](container-networking/network-drivers-topologies.md)
-## [ネットワーク分離とセキュリティ](container-networking/network-isolation-security.md)
-## [詳細ネットワーク オプション](container-networking/advanced.md)
+## [ネットワークの分離とセキュリティ](container-networking/network-isolation-security.md)
+## [ネットワークの各オプションの詳細](container-networking/advanced.md)
 
 # オーケストレーション
 ## Windows で使用する Kubernetes 
@@ -39,21 +39,21 @@
 ### [Kubernetes リソースを展開します。](kubernetes/deploying-resources.md)
 ### [トラブルシューティング](kubernetes/common-problems.md)
 ### [Kubernetes の Windows サービス](kubernetes/kube-windows-services.md)
-### [Kubernetes バイナリのコンパイル](kubernetes/compiling-kubernetes-binaries.md)
+### [コンパイル Kubernetes バイナリ](kubernetes/compiling-kubernetes-binaries.md)
 ## Windows サービス布地へ
 ### [最初のコンテナーの展開](/azure/service-fabric/service-fabric-quickstart-containers)
 ### [Windows コンテナー内での .NET アプリケーションの展開](/azure/service-fabric/service-fabric-host-app-in-a-container) 
 ## Docker 群れ
-### [swarm モードの概要](manage-containers/swarm-mode.md)
+### [群れのモードの使用を開始します。](manage-containers/swarm-mode.md)
 
 # コミュニティとサポート
-## [コンテナー フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)
+## [コンテナーのフォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)
 ## [コミュニティのビデオとブログ](communitylinks.md)
 ## [トラブルシューティング](troubleshooting.md)
 
 # リファレンス
 ## [システム要件](deploy-containers/system-requirements.md)
-## [バージョンの互換性](deploy-containers/version-compatibility.md)
+## [バージョン間の互換性](deploy-containers/version-compatibility.md)
 ## [Hyper-V による分離](manage-containers/hyperv-container.md)
 ## [プリンター サービス](deploy-containers/print-spooler.md)
 ## [GPU アクセラレータ](deploy-containers/gpu-acceleration.md)
@@ -65,4 +65,4 @@
 
 # [コンテナーのサンプル](samples.md)
 
-# [コンテナー OS イメージの使用許諾契約書 (EULA)](Images_EULA.md)
+# [コンテナー OS 使用許諾契約書をイメージします。](Images_EULA.md)
