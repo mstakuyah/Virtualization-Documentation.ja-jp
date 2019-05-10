@@ -5,15 +5,15 @@ ms.author: daschott
 ms.date: 11/02/2018
 ms.topic: get-started-article
 ms.prod: containers
-description: Kubernetes v1.13 を使用するには、Windows ノードを結合できます。
-keywords: kubernetes、1.13、windows、作業の開始
+description: Kubernetes v1.14 を使用するには、Windows ノードを結合できます。
+keywords: kubernetes、1.14、windows、作業の開始
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: ed0f13bd429e88f05469f91c3fc691bf0188b0a2
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: c1781a6ce48ebaa8433f5649a34ac79b852beae6
+ms.sourcegitcommit: aaf115a9de929319cc893c29ba39654a96cf07e1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9578243"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "9622967"
 ---
 # <a name="joining-windows-server-nodes-to-a-cluster"></a>Windows Server ノード クラスターへの参加 #
 [Kubernetes マスター ノードをセットアップ](./creating-a-linux-master.md)して[、目的のネットワーク ソリューションを選択](./network-topologies.md)したらは、クラスターを形成する Windows Server ノードに参加する準備が整います。 参加する前に、いくつかの[Windows ノードの準備](#preparing-a-windows-node)が必要です。
@@ -83,7 +83,7 @@ docker run microsoft/nanoserver:latest
 ![テキスト](./media/docker-run-sample.png)
 
 > [!tip]
-> 実行できない場合、コンテナーください」をご覧ください:[コンテナーの画像を含むコンテナー ホスト バージョンを一致します。](https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility#matching-container-host-version-with-container-image-versions)
+> 実行できない場合、コンテナーください」をご覧ください:[コンテナーの画像を含むコンテナー ホスト バージョンを一致します。](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility#matching-container-host-version-with-container-image-versions)
 
 
 #### <a name="prepare-kubernetes-for-windows-directory"></a>Windows 版の Kubernetes ディレクトリを準備します。 ####
@@ -97,11 +97,11 @@ mkdir c:\k
 Kubernetes 証明書ファイルをコピーする (`$HOME/.kube/config`)[マスターから](./creating-a-linux-master.md#collect-cluster-information)この新規`C:\k`ディレクトリ。
 
 > [!tip]
-> ノードの間で構成ファイルを転送するのに[xcopy](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/xcopy)または[WinSCP](https://winscp.net/eng/download.php)などのツールを使用することができます。
+> ノードの間で構成ファイルを転送するのに[xcopy](https://docs.microsoft.com/windows-server/administration/windows-commands/xcopy)または[WinSCP](https://winscp.net/eng/download.php)などのツールを使用することができます。
 
 #### <a name="download-kubernetes-binaries"></a>Kubernetes バイナリ ファイルをダウンロードします。 ####
 Kubernetes を実行できるようにするには、最初にダウンロードする必要が、 `kubectl`、 `kubelet`、および`kube-proxy`バイナリします。 これらのリンクからダウンロードできます、`CHANGELOG.md`の[最新リリースで作成された](https://github.com/kubernetes/kubernetes/releases/)ファイル。
- - たとえば、 [v1.13 ノードのバイナリ](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.13.md#node-binaries)を紹介します。
+ - たとえば、 [v1.14 ノードのバイナリ](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.14.md#node-binaries)を紹介します。
  - [展開アーカイブ](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6)などのツールを使用してアーカイブを展開しにバイナリを配置`C:\k\`します。
 
 #### <a name="optional-setup-kubectl-on-windows"></a>(オプション)Windows kubectl をセットアップします。 ####
@@ -186,7 +186,7 @@ Windows ノードに割り当てられている IP アドレス。 使える`ipc
 ネットワーク モード`l2bridge`(flannel ホスト校) または`overlay`(flannel vxlan) として[ネットワーク ソリューション](./network-topologies.md)を選択します。
 
 > [!Important] 
-> `overlay` ネットワークのモード (flannel vxlan) 必要 Kubernetes v1.14 バイナリまたはそれ以降。
+> `overlay` ネットワークのモード (flannel vxlan) Kubernetes v1.14 バイナリが必要です (以上) と[KB4489899](https://support.microsoft.com/help/4489899)します。
 
 |  |  | 
 |---------|---------|
@@ -213,7 +213,7 @@ Windows ノードに割り当てられている IP アドレス。 使える`ipc
 
 
 # [<a name="kubednsserviceip"></a>KubeDnsServiceIP](#tab/KubeDnsServiceIP)
-[Kubernetes DNS サービス IP](./getting-started-kubernetes-windows.md#kube-dns-def)します。
+[Kubernetes DNS サービス IP](./getting-started-kubernetes-windows.md#plan-ip-addressing-for-your-cluster)します。
 
 |  |  | 
 |---------|---------|

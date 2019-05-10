@@ -6,14 +6,14 @@ ms.date: 11/02/2018
 ms.topic: get-started-article
 ms.prod: containers
 description: 混合 OS Kubernetes クラスターで Kubernetes resoureces を展開します。
-keywords: kubernetes、1.13、windows、作業の開始
+keywords: kubernetes、1.14、windows、作業の開始
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 7d2f1dd789a96a3ee4898ef196f872e574d6321f
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 6ede914def6c5a94313164ad78eeecf61c4fab4a
+ms.sourcegitcommit: aaf115a9de929319cc893c29ba39654a96cf07e1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9574903"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "9622937"
 ---
 # <a name="deploying-kubernetes-resources"></a>Kubernetes リソースを展開します。 #
 少なくとも 1 つのマスターと 1 の作業者から成る Kubernetes クラスターがあると仮定して、準備ができたら Kubernetes リソースを配置します。
@@ -31,7 +31,7 @@ kubectl get nodes
 
 すべてのアイテムが意図した場合は、ダウンロードして、次のサービスを実行します。
 > [!Important] 
-> 前に`kubectl apply`、変更を確認するダブルクリック-check/、 `microsoft/windowsservercore` [、ノードによって実行されるコンテナーの画像](https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility#choosing-container-os-versions)にサンプル ファイル内のイメージです。
+> 前に`kubectl apply`、変更を確認するダブルクリック-check/、 `microsoft/windowsservercore` [、ノードによって実行されるコンテナーの画像](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility#choosing-container-os-versions)にサンプル ファイル内のイメージです。
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/SDN/master/Kubernetes/flannel/l2bridge/manifests/simpleweb.yml -O win-webserver.yaml

@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: a0e62b32-0c4c-4dd4-9956-8056e9abd9e5
-ms.openlocfilehash: 9f38775d56a95d96bef42b3a33c2571cc5fb2ca0
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 74e22702aa4be30055b3f4f48c7fac926d793095
+ms.sourcegitcommit: 03e9203e9769997d8be3f66dc7935a3e5c0a83e1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9578383"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9621610"
 ---
 # <a name="container-platform-tools-on-windows"></a>Windows にコンテナー プラットフォーム ツール
 
@@ -37,7 +37,7 @@ Windows コンテナー プラットフォームを展開します。 コンテ�
 
 `containerd` ダウンロードして、コンテナーの実行を監視、コンテナーの画像を展開して、コンテナーのライフ サイクルを管理するデーモンです。
 
-Windows では、別の方法がわかったします。  Windows のコンテナーをサポートする Docker で作業を開始したときは、HCS (計算サービスをホストする) に直接開発されています。  [ブログの投稿](https://blogs.technet.microsoft.com/virtualization/2017/01/27/introducing-the-host-compute-service-hcs/)は、HCS を作成した理由と理由はこのアプローチ コンテナーに最初にについての完全なです。
+Windows では、別の方法がわかったします。  Windows のコンテナーをサポートする Docker で作業を開始したときは、HCS (計算サービスをホストする) に直接開発されています。  [ブログの投稿](https://techcommunity.microsoft.com/t5/Containers/Introducing-the-Host-Compute-Service-HCS/ba-p/382332)は、HCS を作成した理由と理由はこのアプローチ コンテナーに最初にについての完全なです。
 
 ![Windows の初期 Docker エンジン アーキテクチャ](media/hcs.png)
 
@@ -110,6 +110,16 @@ HCS の詳細については、 [John Stark の DockerCon プレゼンテーシ�
 > 開発/テストのみです。
 
 [CRI](https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/cri/runtime/v1alpha2/api.proto) (コンテナー ランタイム インターフェイス) が共有サンド ボックスで workload(s) としてコンテナーを説明する OCI 仕様には、1 つのコンテナーが定義されているときに環境にポッドが呼び出されます。  ポッドには、1 つ以上のコンテナー ワークロードを含めることができます。  ポッドは Kubernetes とサービス布地へメッシュ処理のメモリ、vNETs などのいくつかの共有リソースと同じホストに置かれるべき作業負荷をグループ化されたようにコンテナー orchestrators ことができます。
+
+containerd/cri には、次の互換性マトリックスのポッドが有効にします。
+
+| ホスト OS | OS のコンテナー | 分離 | ポッド サポートですか。 |
+|:-------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:---------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| <ul><li>Windows Server 2019/1809</ul></li><ul><li>Windows 10 1809</ul></li> | Linux | `hyperv` | [はい]: 複数のコンテナー ポッド、true をサポートしています。 |
+|  | Windows Server 2019/1809 | `process`* または `hyperv` | [はい]: サポート true 複数コンテナー ポッド各ワークロード コンテナー OS ユーティリティ VM OS に一致します。 |
+|  | Windows Server 2016、</br>Windows Server 1709、</br>Windows Server 1803 | `hyperv` | 部分的な-ポッド コンテナー OS ユーティリティ VM OS に一致する場合は、ユーティリティ VM あたり 1 つのステップに分離コンテナーをサポートできるサンド ボックスをサポートしています。 |
+
+\*Windows 10 ホストのみ HYPER-V 分離をサポートします。
 
 CRI 仕様へのリンク。
 

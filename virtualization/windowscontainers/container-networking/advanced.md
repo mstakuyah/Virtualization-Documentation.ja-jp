@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 001f1abaeefaf34e12b0f7e3323bf32140080d05
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 492e3b0ba3b1abe1109de3f6091f5b60831036df
+ms.sourcegitcommit: aaf115a9de929319cc893c29ba39654a96cf07e1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9575083"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "9622977"
 ---
 # <a name="advanced-network-options-in-windows"></a>Windows での高度なネットワーク オプション
 
@@ -23,7 +23,7 @@ Windows に固有の機能を活用するために、いくつかのネットワ
 
 > すべてのネットワーク ドライバーに適用されます。
 
-Docker で使用するコンテナー ホスト ネットワークを作成するときに、`-o com.docker.network.windowsshim.interface` オプションで複数のネットワーク アダプターを (コンマで区切って) 指定することにより、[スイッチ埋め込みチーミング](https://technet.microsoft.com/en-us/windows-server-docs/networking/technologies/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming#a-namebkmksswitchembeddedaswitch-embedded-teaming-set)を活用できます。
+Docker で使用するコンテナー ホスト ネットワークを作成するときに、`-o com.docker.network.windowsshim.interface` オプションで複数のネットワーク アダプターを (コンマで区切って) 指定することにより、[スイッチ埋め込みチーミング](https://docs.microsoft.com/windows-server/virtualization/hyper-v-virtual-switch/RDMA-and-Switch-Embedded-Teaming#a-namebkmksswitchembeddedaswitch-embedded-teaming-set)を活用できます。
 
 ```
 C:\> docker network create -d transparent -o com.docker.network.windowsshim.interface="Ethernet 2", "Ethernet 3" TeamedNet
@@ -41,6 +41,22 @@ C:\> docker network create -d transparent -o com.docker.network.windowsshim.vlan
 ネットワークの VLAN ID を設定すると、そのネットワークに接続されるあらゆるコンテナー エンドポイントの VLAN 分離が設定されます。
 
 > タグ付けされたすべてのトラフィックを正しい VLAN 上でアクセス モードの vNIC (コンテナー エンドポイント) ポートを持つ vSwitch によって処理するためには、(物理的) ホスト ネットワーク アダプターがトランク モードであることを確認します。
+
+## <a name="specify-outboundnat-policy-for-a-network"></a>ネットワークの OutboundNAT ポリシーを指定します。
+
+> L2bridge ネットワークに適用されます。
+
+作成した場合、通常、`l2bridge`コンテナーのネットワークを使用して`docker network create`、コンテナーの端点がありません HNS OutboundNAT ポリシーを適用すると、外部の世界に到達できないコンテナーのようになります。 使えるネットワークを作成する場合、`-o com.docker.network.windowsshim.enable_outboundnat=<true|false>`外部コンテナーのアクセス権の付与 OutboundNAT HNS ポリシーを適用するオプション。
+
+```
+C:\> docker network create -d l2bridge -o com.docker.network.windowsshim.enable_outboundnat=true MyL2BridgeNetwork
+```
+
+NAT'ing に実行されるようにしたい場所の (例: コンテナーの接続が必要です) の宛先のセットがある場合も、ExceptionList を指定する必要があります。
+
+```
+C:\> docker network create -d l2bridge -o com.docker.network.windowsshim.enable_outboundnat=true -o com.docker.network.windowsshim.outboundnat_exceptions=10.244.10.0/24
+```
 
 ## <a name="specify-the-name-of-a-network-to-the-hns-service"></a>HNS サービスへのネットワーク名の指定
 
@@ -80,13 +96,13 @@ C:\> docker network create -d transparent -o com.docker.network.windowsshim.dnss
 
 ## <a name="vfp"></a>VFP
 
-詳しくは、[こちらの記事](https://www.microsoft.com/en-us/research/project/azure-virtual-filtering-platform/)をご覧ください。
+詳しくは、[こちらの記事](https://www.microsoft.com/research/project/azure-virtual-filtering-platform/)をご覧ください。
 
 ## <a name="tips--insights"></a>ヒントとインサイト
 ここでは、Windows コンテナーのネットワークに関してコミュニティに寄せられたよくある質問をまとめた、便利なヒントと情報の一覧を示します。
 
 #### <a name="hns-requires-that-ipv6-is-enabled-on-container-host-machines"></a>HNS では、コンテナーのホスト コンピューターで IPv6 が有効になっている必要がある 
-[KB4015217](https://support.microsoft.com/en-us/help/4015217/windows-10-update-kb4015217) でも説明されているように、HNSでは、Windows コンテナー ホストで IPv6 が有効になっている必要があります。 次のようなエラーが発生した場合は、ホスト コンピューターで IPv6 が無効になっている可能性があります。
+[KB4015217](https://support.microsoft.com/help/4015217/windows-10-update-kb4015217) でも説明されているように、HNSでは、Windows コンテナー ホストで IPv6 が有効になっている必要があります。 次のようなエラーが発生した場合は、ホスト コンピューターで IPv6 が無効になっている可能性があります。
 ```
 docker: Error response from daemon: container e15d99c06e312302f4d23747f2dfda4b11b92d488e8c5b53ab5e4331fd80636d encountered an error during CreateContainer: failure in a Windows system call: Element not found.
 ```
@@ -99,7 +115,7 @@ C:\> reg delete HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Para
 
 #### <a name="linux-containers-on-windows"></a>Linux Containers on Windows
 
-**最新情報:** 現在、_Moby Linux VM を使用せずに_ Linux と Windows のコンテナーをサイド バイ サイドで実行できるよう取り組んでいます。 詳しくは、[Linux Containers on Windows (LCOW) に関するこちらのブログ記事](https://blog.docker.com/2017/11/docker-for-windows-17-11/)をご覧ください。 ここでは、手順を[ご紹介](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-10-linux)します。
+**最新情報:** 現在、_Moby Linux VM を使用せずに_ Linux と Windows のコンテナーをサイド バイ サイドで実行できるよう取り組んでいます。 詳しくは、[Linux Containers on Windows (LCOW) に関するこちらのブログ記事](https://blog.docker.com/2017/11/docker-for-windows-17-11/)をご覧ください。 ここでは、手順を[ご紹介](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10-linux)します。
 > 注意: LCOW は Moby Linux VM に代わるものであり、既定の HNS "nat" 内部 vSwitch を使用します。
 
 #### <a name="moby-linux-vms-use-dockernat-switch-with-docker-for-windows-a-product-of-docker-cehttpswwwdockercomcommunity-edition"></a>Moby Linux VM では、Docker for Windows ([Docker CE](https://www.docker.com/community-edition) の製品) と共に DockerNAT スイッチを使用しています。
@@ -163,7 +179,7 @@ l2bridge ドライバーを使って作成されたコンテナー ネットワ�
 PS C:\> restart-service hns
 PS C:\> restart-service docker
 ```
-* もう 1 つの選択肢は、'-o com.docker.network.windowsshim.interface' オプションを利用し、透過ネットワークの外部 vSwitch をコンテナー ホストでまだ使用されていない特定のネットワーク アダプター (すなわち、帯域外で作成された vSwitch で利用されているネットワーク アダプター以外のネットワーク アダプター) に関連付けることです。 '-o' オプションに関する説明は、このドキュメントの「[透過ネットワーク](https://msdn.microsoft.com/virtualization/windowscontainers/management/container_networking#transparent-network)」セクションに記載されています。
+* もう 1 つの選択肢は、'-o com.docker.network.windowsshim.interface' オプションを利用し、透過ネットワークの外部 vSwitch をコンテナー ホストでまだ使用されていない特定のネットワーク アダプター (すなわち、帯域外で作成された vSwitch で利用されているネットワーク アダプター以外のネットワーク アダプター) に関連付けることです。 [' の o のアイコン オプション詳細については、このドキュメントの[1 つのコンテナーのホストに透明な複数のネットワークを作成する](advanced.md#creating-multiple-transparent-networks-on-a-single-container-host)] セクションでします。
 
 
 ## <a name="windows-server-2016-work-arounds"></a>Windows Server 2016 の回避策 

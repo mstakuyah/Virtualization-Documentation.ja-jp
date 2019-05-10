@@ -3,12 +3,12 @@ title: Windows コンテナーのバージョンの互換性
 description: Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。
 keywords: メタデータ, コンテナー, バージョン
 author: taylorb-microsoft
-ms.openlocfilehash: 76549bbfbaf374acb79f1be4280949aecf4e87f0
-ms.sourcegitcommit: c48dcfe43f73b96e0ebd661164b6dd164c775bfa
+ms.openlocfilehash: 64b6b400e12060b86594b90474fdedd73dfef45e
+ms.sourcegitcommit: 561eaf94c0c0698d43228ebfcd316a7fcd835a59
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "9610282"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "9622787"
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーのバージョン互換性
 
@@ -98,7 +98,7 @@ PS C:\Users\Administrator> (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows N
 14393.321.amd64fre.rs1_release_inmarket.161004-2338
 ```
 
-どのようなバージョンを確認するには、基本イメージで使用するには、Docker ハブまたは画像の説明で提供されている画像ハッシュ テーブルにノート シールを確認します。 [Windows 10 の履歴を更新する](https://support.microsoft.com/en-us/help/12387/windows-10-update-history)] ページでは、各ビルドと変更履歴のリリース時に一覧表示します。
+どのようなバージョンを確認するには、基本イメージで使用するには、Docker ハブまたは画像の説明で提供されている画像ハッシュ テーブルにノート シールを確認します。 [Windows 10 の履歴を更新する](https://support.microsoft.com/help/12387/windows-10-update-history)] ページでは、各ビルドと変更履歴のリリース時に一覧表示します。
 
 ### <a name="hyper-v-isolation-for-containers"></a>コンテナーの HYPER-V 分離
 
@@ -116,40 +116,40 @@ docker: Error response from daemon: container b81ed896222eb87906ccab1c3dd2fc4932
 
 このエラーを解決する 3 つの方法があります。
 
-- 適切なバージョンのに基づいて、コンテナーを再構築`microsoft/nanoserver`または `microsoft/windowsservercore`
+- 適切なバージョンのに基づいて、コンテナーを再構築`mcr.microsoft.com/windows/nanoserver`または `mcr.microsoft.com/windows/servercore`
 - 実行する場合は、新しいホスト場合は、 **docker 実行--分離 =... hyperv**
 - Windows のバージョンが同じで別のホストにコンテナーを実行してください。
 
 ## <a name="choose-which-container-os-version-to-use"></a>使用するコンテナー OS のバージョンを選ぶ
 
 >[!NOTE]
->Windows Server 2016、現在の[長期的なサービス チャネル製品](https://docs.microsoft.com/en-us/windows-server/get-started/semi-annual-channel-overview)と、「最新」ノート シールが更新されます。 次の手順では、Windows Server バージョン 1709 のリリースに一致するコンテナーの画像です。
+>2019 年 4 月 16日における「最新」ノート シールが不要になった発行または[Windows OS コンテナーの画像を基](https://hub.docker.com/_/microsoft-windows-base-os-images)に維持します。 特定のタグ、または次のリポジトリから画像を参照するときに宣言してください。
 
-コンテナーを使用する必要があります。 どちらのバージョンを知る必要があります。 たとえば、する 1709 のバージョンの Windows Server を使用しているの最新の更新プログラムを使用する場合は、タグを使用する必要があります`1709`を指定する基本 OS コンテナーの画像のバージョン、次のようにしている場合。
+コンテナーを使用する必要があります。 どちらのバージョンを知る必要があります。 たとえば、1809 のバージョンの Windows Server を目的コンテナー OS としてしてに最新の更新プログラムを使用する場合は、タグを使用する必要があります`1809`を指定する基本 OS コンテナーの画像のバージョン、次のようにしている場合。
 
 ``` dockerfile
-FROM microsoft/windowsservercore:1709
+FROM mcr.microsoft.com/windows/nanoserver:1809
 ...
 ```
 
-ただし、Windows Server 1709 のバージョンの特定の修正プログラムを実行する場合に、タグにサポート技術情報の数を指定できます。 たとえば、Windows Server のバージョンが 1709、KB4043961 の適用から Nano サーバー ベースの OS コンテナー イメージを取得する指定する場合次のようにします。
+ただし、Windows Server 1809 のバージョンの特定の修正プログラムを実行する場合に、タグにサポート技術情報の数を指定できます。 たとえば、Windows Server のバージョンが 1809、KB4493509 の適用から Nano サーバー ベースの OS コンテナー イメージを取得する指定する場合次のようにします。
 
 ``` dockerfile
-FROM microsoft/nanoserver:1709_KB4043961
-...
-```
-
-Windows Server 2016 から Nano サーバー ベース OS コンテナー イメージを必要がある場合は、「最新」タグを使用して、最新バージョンの基本 OS コンテナー画像引き続きアクセスできます。
-
-``` dockerfile
-FROM microsoft/nanoserver
+FROM mcr.microsoft.com/windows/nanoserver:1809-KB4493509
 ...
 ```
 
 タグの OS のバージョンを指定して、以前に使用してスキーマをする必要がある正確な更新プログラムを指定することもできます。
 
 ``` dockerfile
-FROM microsoft/nanoserver:10.0.14393.1770
+FROM mcr.microsoft.com/windows/nanoserver:10.0.17763.437
+...
+```
+
+Windows Server 2019 と Windows Server 2016 に基づいて Server Core 基本イメージは、[長期的なサービス チャンネル (LTSC)](https://docs.microsoft.com/en-us/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)を解放します。 LTSC を設定できる場合の Windows Server 2019 Server Core 画像のコンテナー OS としての最新の更新プログラムを使用する、次のようにリリースします。
+
+``` dockerfile
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 ...
 ```
 
