@@ -3,12 +3,12 @@ title: Windows のコンテナー GPU アクセラレータ
 description: GPU アクセラレータのレベルが Windows コンテナーに存在します。
 keywords: docker、コンテナー、デバイス、ハードウェア
 author: cwilhit
-ms.openlocfilehash: 281241e07e4bc184e73c4e74a117b44253a775be
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 066f97b859b133a03e24df5db95cafe405ea3110
+ms.sourcegitcommit: 2b456022ee666863ef53082580ac1d432de86939
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9578664"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "9657370"
 ---
 # <a name="gpu-acceleration-in-windows-containers"></a>Windows のコンテナー GPU アクセラレータ
 
@@ -17,7 +17,7 @@ ms.locfileid: "9578664"
 Gpu は、既に従来のレンダリングと機械学習トレーニングと自動推定シミュレーションから、多くの一般的なワークロードの一般的なツールです。 Windows コンテナー DirectX とその上に組み込まれているすべてのフレームワーク GPU アクセラレータをサポートします。
 
 > [!IMPORTANT]
-> この機能をサポートしている Docker のバージョンを必要とする`--device`Windows コンテナーのコマンド ライン オプション。 正式な Docker サポートがスケジュールされている次回リリースされる Docker EE エンジン 19.03 します。 それまでは、Docker の[上位のソース](https://master.dockerproject.org/)には、必要なビットが含まれています。
+> この機能をサポートしている Docker のバージョンを必要とする`--device`Windows コンテナーのコマンド ライン オプション。 この機能は、現在のみで利用できる、`Docker Desktop for Windows Edge`を解放します。 Docker のエッジ リリースをダウンロードする[次のとおり](https://docs.docker.com/docker-for-windows/edge-release-notes/)です。
 
 ## <a name="requirements"></a>要件
 

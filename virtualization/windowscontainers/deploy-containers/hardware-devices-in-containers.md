@@ -3,12 +3,12 @@ title: Windows のコンテナーでデバイスを使う
 description: Windows のコンテナーにどのようなデバイスのサポートが存在します。
 keywords: docker、コンテナー、デバイス、ハードウェア
 author: cwilhit
-ms.openlocfilehash: 18ae4ab229a677c63c3e17d684a3c3193df49c5e
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: feff730ed21c439312cda65c7b5ccc1a6cf5ae86
+ms.sourcegitcommit: 2b456022ee666863ef53082580ac1d432de86939
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576683"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "9657360"
 ---
 # <a name="devices-in-containers-on-windows"></a>Windows のコンテナーでデバイスを使う
 
@@ -33,7 +33,7 @@ ms.locfileid: "9576683"
 docker run --isolation=process --device="class/{interface class GUID}" mcr.microsoft.com/windows/servercore:1809
 ```
 
-置き換える必要があります、`{interface class guid}`適切な[デバイス インターフェイス クラス GUID](https://docs.microsoft.com/en-us/windows-hardware/drivers/install/overview-of-device-interface-classes)に含まれている次のセクションでします。
+置き換える必要があります、`{interface class guid}`適切な[デバイス インターフェイス クラス GUID](https://docs.microsoft.com/windows-hardware/drivers/install/overview-of-device-interface-classes)に含まれている次のセクションでします。
 
 複数のデバイスには、コンテナーを開始するには、次のコマンドを使用して、つなげて複数`--device`引数。
 
@@ -75,7 +75,7 @@ Windows では、すべてのデバイスの宣言を実装するインターフ
 </tr>
 <tr valign="top">
 <td><center>DirectX GPU アクセラレータ</center></td>
-<td><center>専用のドキュメントを参照してください。</center></td>
+<td><center><a href="https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/gpu-acceleration">GPU アクセラレータ</a>ドキュメントを参照してください。</center></td>
 </tr>
 </tbody>
 </table>
