@@ -1,68 +1,71 @@
 # 概要
-## [バージョン情報](about/index.md)
+## [Windows コンテナーについて](about/index.md)
+## [Docker について](about/docker-overview.md)
+## [Windows コンテナーオーケストレーションについて](about/overview-container-orchestrators.md)
+## [コンテナー ecosystems の構築について](about/container-ecosystem.md)
 ## [FAQ](about/faq.md)
 
-# クイック スタート
-## Windows 10 のクイック スタート
-### [最初に WCOW コンテナーの実行](quick-start/quick-start-windows-10.md)
-### [最初に LCOW コンテナーの実行](quick-start/quick-start-windows-10-linux.md)
+# スタート
+## Windows 10 のクイックスタート
+### [初めての WCOW コンテナーの実行](quick-start/quick-start-windows-10.md)
+### [最初の LCOW コンテナーの実行](quick-start/quick-start-windows-10-linux.md)
 ### [サンプル アプリのビルド](quick-start/building-sample-app.md)
-## Windows Server のクイック スタート
+## Windows Server クイックスタート
 ### [最初のコンテナーを実行する](quick-start/quick-start-windows-server.md)
 ### [コンテナーのビルドを自動化する](quick-start/quick-start-images.md)
-## Windows の内部のクイック スタート
-### [内部の画像の使用](quick-start/Using-Insider-Container-Images.md)
-### [作成してアプリケーションを実行するには.](quick-start/Nano-RS3-.NET-Core-and-PS.md)
+## Windows Insider クイックスタート
+### [Insider 画像を使用する](quick-start/Using-Insider-Container-Images.md)
+### [アプリケーションをビルドして実行する](quick-start/Nano-RS3-.NET-Core-and-PS.md)
 ### [既知の問題](quick-start/Insider-Known-Issues.md)
 
 # Windows 上の Docker
 ## [Windows 上の Docker エンジン](manage-docker/configure-docker-daemon.md)
 ## [Windows 上の Dockerfile](manage-docker/manage-windows-dockerfile.md)
 ## [Dockerfile の最適化](manage-docker/optimize-windows-dockerfile.md)
-## [コンテナーの記憶域](manage-containers/container-storage.md)
-## [Windows Docker ホストのリモート管理](management/manage_remotehost.md)
-## [リソースのコントロール](manage-containers/resource-controls.md)
+## [コンテナーストレージ](manage-containers/container-storage.md)
+## [Windows Docker host のリモート管理](management/manage_remotehost.md)
+## [リソースコントロール](manage-containers/resource-controls.md)
 
 # Windows のコンテナー ネットワーク
 ## [コンテナー ネットワークの概要](container-networking/architecture.md)
-## [ネットワーク トポロジとドライバー](container-networking/network-drivers-topologies.md)
-## [ネットワークの分離とセキュリティ](container-networking/network-isolation-security.md)
-## [ネットワークの各オプションの詳細](container-networking/advanced.md)
+## [ネットワークトポロジとドライバー](container-networking/network-drivers-topologies.md)
+## [ネットワーク分離とセキュリティ](container-networking/network-isolation-security.md)
+## [高度なネットワークオプション](container-networking/advanced.md)
 
-# オーケストレーション
+# 連携
 ## Windows で使用する Kubernetes 
 ### [概要](kubernetes/getting-started-kubernetes-windows.md)
-### [Kubernetes マスターを作成します。](kubernetes/creating-a-linux-master.md)
-### [ネットワーク ソリューションを選択します。](kubernetes/network-topologies.md)
-### [Windows の作業者への参加](kubernetes/joining-windows-workers.md)
-### [Linux 作業者への参加](kubernetes/joining-linux-workers.md)
-### [Kubernetes リソースを展開します。](kubernetes/deploying-resources.md)
+### [Kubernetes マスターの作成](kubernetes/creating-a-linux-master.md)
+### [ネットワークソリューションの選択](kubernetes/network-topologies.md)
+### [Windows ワーカーへの参加](kubernetes/joining-windows-workers.md)
+### [Linux ワーカに参加する](kubernetes/joining-linux-workers.md)
+### [Kubernetes リソースの展開](kubernetes/deploying-resources.md)
 ### [トラブルシューティング](kubernetes/common-problems.md)
 ### [Kubernetes の Windows サービス](kubernetes/kube-windows-services.md)
-### [コンパイル Kubernetes バイナリ](kubernetes/compiling-kubernetes-binaries.md)
-## Windows サービス布地へ
+### [Kubernetes バイナリのコンパイル](kubernetes/compiling-kubernetes-binaries.md)
+## Windows のサービスファブリック
 ### [最初のコンテナーの展開](/azure/service-fabric/service-fabric-quickstart-containers)
 ### [Windows コンテナー内での .NET アプリケーションの展開](/azure/service-fabric/service-fabric-host-app-in-a-container) 
 ## Docker 群れ
-### [群れのモードの使用を開始します。](manage-containers/swarm-mode.md)
+### [群れモードで作業を開始する](manage-containers/swarm-mode.md)
 
 # コミュニティとサポート
-## [コンテナーのフォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)
+## [コンテナーフォーラム](https://social.msdn.microsoft.com/Forums/home?forum=windowscontainers)
 ## [コミュニティのビデオとブログ](communitylinks.md)
 ## [トラブルシューティング](troubleshooting.md)
 
 # リファレンス
 ## [システム要件](deploy-containers/system-requirements.md)
-## [バージョン間の互換性](deploy-containers/version-compatibility.md)
+## [バージョンの互換性](deploy-containers/version-compatibility.md)
 ## [Hyper-V による分離](manage-containers/hyperv-container.md)
-## [プリンター サービス](deploy-containers/print-spooler.md)
+## [プリンターサービス](deploy-containers/print-spooler.md)
 ## [GPU アクセラレータ](deploy-containers/gpu-acceleration.md)
-## [コンテナーのハードウェア デバイス](deploy-containers/hardware-devices-in-containers.md)
-## [コンテナー プラットフォーム ツール](deploy-containers/containerd.md)
-## [グループの管理サービス アカウントします。](manage-containers/manage-serviceaccounts.md)
-## [ウイルス対策の最適化](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
+## [コンテナー内のハードウェアデバイス](deploy-containers/hardware-devices-in-containers.md)
+## [コンテナプラットフォームツール](deploy-containers/containerd.md)
+## [グループ管理サービスアカウント](manage-containers/manage-serviceaccounts.md)
+## [ウイルス対策の最適化](https://docs.microsoft.com/windows-hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 ## [Windows の Linux コンテナー](deploy-containers/linux-containers.md)
 
 # [コンテナーのサンプル](samples.md)
 
-# [コンテナー OS 使用許諾契約書をイメージします。](Images_EULA.md)
+# [コンテナー OS イメージ EULA](Images_EULA.md)
