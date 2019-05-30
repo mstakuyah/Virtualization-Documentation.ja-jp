@@ -7,16 +7,16 @@ ms.date: 04/07/2017
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 1ef8f18c-3d76-4c06-87e4-11d8d4e31aea
-ms.openlocfilehash: 966ca3ff267e03e8c380391281c8dde723e4b1dd
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: b0bbca7bcb4c8c05c50ca68965637a6162a0ab85
+ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9575329"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "9681002"
 ---
 # <a name="make-your-own-integration-services"></a>独自の統合サービスを作成する
 
-Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレス ファミリと仮想マシンを対象とした特殊なエンドポイントを備えた Windows ソケット) を使って Hyper-V ホストと仮想マシン間の通信を行うアプリケーションをだれでも作成できるようになりました。  Hyper-V を介したすべての通信はネットワークを使わずに実行され、すべてのデータは同じ物理メモリにとどまります。   Hyper-V ソケットを使うアプリケーションは、Hyper-V の統合サービスと似ています。
+Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレス ファミリと仮想マシンを対象とした特殊なエンドポイントを備えた Windows ソケット) を使って Hyper-V ホストと仮想マシン間の通信を行うアプリケーションをだれでも作成できるようになりました。  Hyper-V を介したすべての通信はネットワークを使わずに実行され、すべてのデータは同じ物理メモリにとどまります。 Hyper-V ソケットを使うアプリケーションは、Hyper-V の統合サービスと似ています。
 
 このドキュメントでは、Hyper-V ソケット上に単純なプログラムを構築する手順を説明します。
 
@@ -27,7 +27,7 @@ Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレ�
 **サポートされているゲスト OS**
 * Windows 10 以降
 * Windows Server 2016 以降
-* Linux ゲストと Linux 統合サービス (「[Supported Linux and FreeBSD virtual machines for Hyper-V on Windows (Windows 上の Hyper-V 向けにサポートされる Linux と FreeBSD 仮想マシン)](https://technet.microsoft.com/library/dn531030.aspx)」をご覧ください)
+* Linux ゲストと Linux 統合サービス (「[Supported Linux and FreeBSD virtual machines for Hyper-V on Windows (Windows 上の Hyper-V 向けにサポートされる Linux と FreeBSD 仮想マシン)](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Linux-and-FreeBSD-virtual-machines-for-Hyper-V-on-Windows)」をご覧ください)
 > **注意:** サポートされる Linux ゲストでは、以下のコマンドに対応するカーネル サポートが必要です。
 > ```bash
 > CONFIG_VSOCKET=y
@@ -48,7 +48,7 @@ Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレ�
 * [Windows 10 SDK](https://developer.microsoft.com/windows/downloads/windows-10-sdk): Visual Studio 2015 with Update 3 以降でプレインストールされています。
 * 上記のいずれかのホスト オペレーティング システムと 1 つ以上の仮想マシンが実行されているコンピューター。 これは、アプリケーションのテスト用です。
 
-> **注:** Hyper-V ソケットの API は、Windows 10 で公開されています。  HVSocket を使うアプリケーションは、あらゆる Widnows 10 ホストとゲストで実行できますが、開発には Windows SDK ビルド 14290 以降が必要です。
+> **注:** Hyper-v ソケットの API は、Windows 10 記念日更新プログラムで公開されます。 HVSocket を使うアプリケーションは、Windows 10 のすべてのホストとゲストで動作しますが、ビルド14290よりも後の Windows SDK でのみ開発できます。
 
 ## <a name="register-a-new-application"></a>新しいアプリケーションの登録
 Hyper-V ソケットを使用するには、アプリケーションを Hyper-V ホストのレジストリに登録する必要があります。
@@ -117,9 +117,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 
 最も基本的な例で、ソケットの定義には、アドレス ファミリ、接続の種類、およびプロトコルが必要です。
 
-次に、簡単な[ソケット定義](
-https://msdn.microsoft.com/en-us/library/windows/desktop/ms740506(v=vs.85).aspx
-)を示します。
+次に、簡単な[ソケット定義](https://docs.microsoft.com/windows/desktop/api/winsock2/nf-winsock2-socket)を示します。
 
 ``` C
 // Windows
@@ -152,7 +150,7 @@ int sock = socket(AF_VSOCK, SOCK_STREAM, 0);
 
 バインドは、ソケットと接続情報を関連付けます。
 
-便宜上、下に関数定義をコピーしていますが、バインドの詳細については[こちら](https://msdn.microsoft.com/en-us/library/windows/desktop/ms737550.aspx)をご覧ください。
+便宜上、下に関数定義をコピーしていますが、バインドの詳細については[こちら](https://docs.microsoft.com/windows/desktop/api/winsock/nf-winsock-bind)をご覧ください。
 
 ``` C
 // Windows
@@ -202,7 +200,7 @@ IP またはホスト名の代わりに、AF_HYPERV エンドポイントは 2 �
   ```PowerShell
   (Get-VM -Name $VMName).Id
   ```
-* サービス ID - アプリケーションを Hyper-V ホスト レジストリに登録するための[上記の](#RegisterANewApplication) GUID。
+* サービス ID - アプリケーションを Hyper-V ホスト レジストリに登録するための[上記の](#register-a-new-application) GUID。
 
 接続が特定の仮想マシンとの接続でない場合は、一連の VMID ワイルドカードを使用することもできます。
 
@@ -229,6 +227,6 @@ IP またはホスト名の代わりに、AF_HYPERV エンドポイントは 2 �
 Socket() Bind() Connect() Send() Listen() Accept()
 
 ## <a name="useful-links"></a>役に立つリンク
-[完全な WinSock API](https://msdn.microsoft.com/en-us/library/windows/desktop/ms741394.aspx)
+[完全な WinSock API](https://docs.microsoft.com/windows/desktop/WinSock/winsock-functions)
 
 [Hyper-V 統合サービスの参照](../reference/integration-services.md)

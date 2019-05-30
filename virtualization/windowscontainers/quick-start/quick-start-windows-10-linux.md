@@ -1,5 +1,5 @@
 ---
-title: Windows、Windows 10 の Linux コンテナー
+title: Windows 10 の windows と Linux のコンテナー
 description: コンテナー展開のクイック スタート
 keywords: docker、コンテナー、LCOW
 author: taylorb-microsoft
@@ -8,65 +8,69 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: f9b54dbc9fc7c79bdb9b9aa106d5811401c365f3
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 91031f9394cb3fcb1af6c4813f8805ad6f79bf8c
+ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9578633"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "9681102"
 ---
 # <a name="linux-containers-on-windows-10"></a>Windows 10 の Linux コンテナー
 
 > [!div class="op_single_selector"]
 > - [Linux Containers on Windows](quick-start-windows-10-linux.md)
-> - [Windows 版の Windows コンテナー](quick-start-windows-10.md)
+> - [Windows の windows コンテナー](quick-start-windows-10.md)
 
-練習を作成および Linux コンテナーを実行して、Windows 10 で説明します。
+この練習では、Windows 10 での Linux コンテナーの作成と実行について説明します。
 
-このクイック スタートでは、次の実行されます。
+このクイックスタートでは、次のことを実行します。
 
-1. Windows 版の Docker がインストールされています。
-2. Windows (LCOW) で Linux コンテナーを使用して単純な Linux コンテナーを実行します。
+1. Docker デスクトップのインストール
+2. Windows 上の Linux コンテナーを使って簡単な Linux コンテナーを実行する (LCOW)
 
-このクイック スタートは、Windows 10 に固有です。 その他のクイック スタート ドキュメントは、このページの左側の目次に記載されています。
+このクイック スタートは、Windows 10 に固有です。 その他のクイックスタートドキュメントは、このページの左側にある目次に記載されています。
 
 ## <a name="prerequisites"></a>前提条件
 
-次の要件を満たしていることを確認してください。
-- Windows 10 Professional または Enterprise 秋作成者の更新プログラム (バージョン 1709) またはそれ以降を実行して、1 つの物理コンピューター システム
-- [HYPER-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/hyper-v-requirements)が有効になっていることを確認します。
+次の要件を満たしていることを確認してください: <<<<<<< HEAD
+- Windows 10 Professional または Enterprise (バージョン 1709) 以降を搭載した1つの物理コンピューターシステム
+- [Hyper-v](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements)が有効になっていることを確認します。
+=======
+- Windows 10 Professional、Windows 10 Enterprise、または Windows Server 2019 バージョン1809以降を実行している1台の物理コンピューターシステム
+- [Hyper-v](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/hyper-v-requirements)が有効になっていることを確認します。
+>>>>>>> 原点/マスター
 
-***HYPER-V 分離:*** Windows の Linux コンテナーを開発者に提供するために Windows 10 で HYPER-V 分離を必要としますコンテナーを実行する適切な linux します。 HYPER-V に関する分離あります [[コンテナーのバージョン情報](../about/index.md)] ページ。
+***Hyper-v 分離:*** Windows 上の linux コンテナーでは、開発者が適切な Linux カーネルを使ってコンテナーを実行するために、Windows 10 の Hyper-v 分離が必要です。 Hyper-v 分離の詳細については、「 [Windows コンテナーについて](../about/index.md)」のページをご覧ください。
 
-## <a name="install-docker-for-windows"></a>Windows 版の Docker をインストールします。
+## <a name="install-docker-desktop"></a>Docker デスクトップをインストールする
 
-[Windows 版の Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)をダウンロードして (にログインする必要があるインストーラーを実行します。 作成アカウントを既に持っていない場合)。 [インストールの詳しい手順](https://docs.docker.com/docker-for-windows/install)については、Docker のドキュメントを参照してください。
+[Docker デスクトップ](https://store.docker.com/editions/community/docker-ce-desktop-windows)をダウンロードしてインストーラーを実行します (ログインする必要があります)。 まだアカウントを持っていない場合は、アカウントを作成します)。 [インストールの詳しい手順](https://docs.docker.com/docker-for-windows/install)については、Docker のドキュメントを参照してください。
 
-> インストールされている Docker がある場合 LCOW をサポートするには、18.02 以降のバージョンがあることを確認します。 チェックを実行して`docker -v`や*に関する Docker*をチェックします。
+> 既に Docker をインストールしている場合は、LCOW をサポートするバージョン18.02 またはそれ以降をご利用ください。 Docker の実行`docker -v`または** チェックを確認します。
 
-> LCOW コンテナーを実行するのには、 *Docker 設定 _gt デーモン*で '実験機能] オプションをアクティブにする必要があります。
+> *Docker Settings _GT_ デーモン*の [実験的な機能] オプションは、lcow コンテナーを実行するためにアクティブ化する必要があります。
 
-## <a name="run-your-first-lcow-container"></a>最初の LCOW コンテナーを実行します。
+## <a name="run-your-first-lcow-container"></a>最初の LCOW コンテナーを実行する
 
-この例では、BusyBox コンテナーが配置されます。 まず、' Hello World' BusyBox のイメージを実行します。
+この例では、BusyBox コンテナーが配置されます。 まず、"Hello World" BusyBox のイメージを実行してみます。
 
 ```console
 docker run --rm busybox echo hello_world
 ```
 
-このエラーを返します Docker イメージを取得しようとしたときに注意してください。 これは、Dockers 経由でディレクティブを必要とするため、`--platform`画像とホスト オペレーティング システムが適切に一致することを確認するフラグを設定します。 Windows コンテナー モードで既定のプラットフォームが Windows であるため、追加する`--platform linux`フラグを抽出し、コンテナーを実行します。
+これは、Docker がイメージをプルしようとしたときにエラーが返されることに注意してください。 これは、Dockers が、イメージとホスト`--platform`オペレーティングシステムが適切に一致していることを確認するために、フラグによってディレクティブが必要であるために発生します。 Windows コンテナーモードの既定のプラットフォームは Windows であるため、 `--platform linux`コンテナーを取得して実行するためのフラグを追加します。
 
 ```console
 docker run --rm --platform linux busybox echo hello_world
 ```
 
-画像が表示された、プラットフォームのとして別途された後、`--platform`フラグが不要になった。 これをテストすることがなくコマンドを実行します。
+指定したプラットフォームでイメージがプルされると、 `--platform`フラグは不要になります。 これをテストするには、このコマンドを使わずにコマンドを実行します。
 
 ```console
 docker run --rm busybox echo hello_world
 ```
 
-実行`docker images`にインストールされている画像のリストを返します。 この例では、Windows および Linux の両方の画像。
+実行`docker images`して、インストールされている画像の一覧を返します。 この場合、Windows と Linux の両方のイメージ。
 
 ```console
 docker images
@@ -77,9 +81,9 @@ busybox                latest              59788edf1f3e        4 weeks ago      
 ```
 
 > [!TIP]
-> ボーナス: は、LCOW を実行して Docker の対応する[ブログ投稿記事](https://blog.docker.com/2018/02/docker-for-windows-18-02-with-windows-10-fall-creators-update/)を参照してください。
+> ボーナス: 実行時に、Docker の[ブログ投稿](https://blog.docker.com/2018/02/docker-for-windows-18-02-with-windows-10-fall-creators-update/)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [サンプルのアプリを作成する方法をについてください。](./building-sample-app.md)
+> [サンプルアプリを作成する方法について説明します。](./building-sample-app.md)

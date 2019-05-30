@@ -1,5 +1,5 @@
 ---
-title: Windows、Windows 10 の Linux コンテナー
+title: Windows 10 の windows と Linux のコンテナー
 description: コンテナー展開のクイック スタート
 keywords: docker、コンテナー、LCOW
 author: taylorb-microsoft
@@ -8,45 +8,45 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 07f5929505226a50a161b4ae7df5669c2ad89d83
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: ae311ecccdfbfc30b1079330a8eb02c1ce3ac94b
+ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9575523"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "9680972"
 ---
 # <a name="windows-containers-on-windows-10"></a>Windows 10 の Windows コンテナー
 
 > [!div class="op_single_selector"]
 > - [Linux Containers on Windows](quick-start-windows-10-linux.md)
-> - [Windows 版の Windows コンテナー](quick-start-windows-10.md)
+> - [Windows の windows コンテナー](quick-start-windows-10.md)
 
-練習を作成して、Windows 10 の Windows コンテナーを実行しているを紹介します。
+この練習では、Windows 10 での Windows コンテナーの作成と実行について説明します。
 
-このクイック スタートでは、次の実行されます。
+このクイックスタートでは、次のことを実行します。
 
-1. Windows 版の Docker をインストールします。
-2. 単純な Windows コンテナーの実行
+1. Docker デスクトップのインストール
+2. 簡単な Windows コンテナーの実行
 
-このクイック スタートは、Windows 10 に固有です。 その他のクイック スタート ドキュメントは、このページの左側の目次に記載されています。
+このクイック スタートは、Windows 10 に固有です。 その他のクイックスタートドキュメントは、このページの左側にある目次に記載されています。
 
 ## <a name="prerequisites"></a>前提条件
 次の要件を満たしていることを確認してください。
-- 1 つの物理コンピューター システムが Windows 10 Professional または Enterprise の記念日の更新プログラム (バージョン 1607) またはそれ以降を実行します。 
-- [HYPER-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/hyper-v-requirements)が有効になっていることを確認します。
+- Windows 10 Professional または Enterprise for 記念日更新プログラム (バージョン 1607) 以降を実行している1つの物理コンピューターシステム。 
+- [Hyper-v](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements)が有効になっていることを確認します。
 
-***HYPER-V 分離:*** Windows Server コンテナーで同じバージョンのカーネルと運用環境で使用される構成開発者に提供するために Windows 10 で HYPER-V 分離を必要より HYPER-V に関する分離にある [[バージョン情報コンテナー](../about/index.md)のページ。
+***Hyper-v 分離:*** Windows Server コンテナーには、開発者に対して、製造時に使用されるのと同じカーネルバージョンと構成を提供するために、windows 10 の Hyper-v 分離が必要です。 Hyper-v の分離について詳しくは、「 [windows コンテナーのバージョン情報](../about/index.md)」ページをご覧ください。
 
 > [!NOTE]
-> Windows 10 月の更新プログラム 2018 のリリースで実行されている Windows コンテナー プロセス分離モードで Windows 10 のエンタープライズまたは Professional 開発/テスト用のユーザーなった禁止します。 詳細については、[よく寄せられる質問](../about/faq.md)を参照してください。
+> Windows 10 年10月の更新プログラム2018のリリースでは、開発者/テスト目的で、windows 10 Enterprise または Professional のプロセス分離モードでユーザーが Windows コンテナーを実行することを許可することはなくなりました。 詳細については、[よく寄せ](../about/faq.md)られる質問を参照してください。
 
-## <a name="install-docker-for-windows"></a>Windows 版の Docker をインストールします。
+## <a name="install-docker-desktop"></a>Docker デスクトップをインストールする
 
-[Windows 版の Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)をダウンロードして (にログインする必要があるインストーラーを実行します。 作成アカウントを既に持っていない場合)。 [インストールの詳しい手順](https://docs.docker.com/docker-for-windows/install)については、Docker のドキュメントを参照してください。
+[Docker デスクトップ](https://store.docker.com/editions/community/docker-ce-desktop-windows)をダウンロードしてインストーラーを実行します (ログインする必要があります)。 まだアカウントを持っていない場合は、アカウントを作成します)。 [インストールの詳しい手順](https://docs.docker.com/docker-for-windows/install)については、Docker のドキュメントを参照してください。
 
-## <a name="switch-to-windows-containers"></a>コンテナーをウィンドウに切り替える
+## <a name="switch-to-windows-containers"></a>Windows コンテナーに切り替える
 
-インストール後、Docker for Windows の既定では、Linux コンテナーが実行されます。 Docker トレイ] メニューを使用して、Windows コンテナーに切り替えるか、PowerShell で次のコマンドを実行して、メッセージを表示します。
+インストール後の Docker デスクトップの既定では、Linux コンテナーが実行されています。 Docker トレイメニューを使用するか、PowerShell プロンプトで次のコマンドを実行して、Windows コンテナーに切り替えます。
 
 ```console
 & $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon .
@@ -72,11 +72,11 @@ microsoft/nanoserver   latest              105d76d0f40e        4 days ago       
 ```
 
 > [!IMPORTANT]
-> Windows コンテナー OS 画像の[使用許諾契約書](../images-eula.md)を参照してください。
+> Windows コンテナ OS イメージ使用[許諾契約書](../images-eula.md)をお読みください。
 
-## <a name="run-your-first-windows-container"></a>初めて Windows コンテナーを実行します。
+## <a name="run-your-first-windows-container"></a>Windows の最初のコンテナーを実行する
 
-このシンプルな例では、' Hello World' コンテナーの画像を作成し、展開します。 最適なパフォーマンスでご利用いただくために、管理者特権で起動した Windows CMD シェルまたは PowerShell で以下のコマンドを実行します。
+この簡単な例では、"Hello World" コンテナーイメージを作成し、展開します。 最適なパフォーマンスでご利用いただくために、管理者特権で起動した Windows CMD シェルまたは PowerShell で以下のコマンドを実行します。
 
 > Windows PowerShell ISE は、コンテナーとの対話型セッションには機能しません。 コンテナーが実行されている場合でも、ハングしているように見えます。
 
@@ -86,7 +86,7 @@ microsoft/nanoserver   latest              105d76d0f40e        4 days ago       
 docker run -it mcr.microsoft.com/windows/nanoserver:1809 cmd.exe
 ```
 
-コンテナー内単純な ' Hello World' テキスト ファイルを作成します。
+コンテナー内に、単純な "Hello World" テキストファイルを作成します。
 
 ```cmd
 echo "Hello World!" > Hello.txt
@@ -122,9 +122,9 @@ docker images
 docker run --rm helloworld cmd.exe /s /c type Hello.txt
 ```
 
-結果、 `docker run` ] コマンドを HYPER-V 分離で実行されているコンテナーが 'HelloWorld' イメージから作成された、cmd のインスタンスでコンテナーが開始したファイル (shell エコー出力) し、[コンテナーの閲覧を実行します。停止して削除します。
+この`docker run`コマンドの結果として、hyper-v の分離環境で実行されているコンテナーが ' HelloWorld ' イメージから作成されたため、コンテナーで cmd のインスタンスが開始され、そのファイル (シェルへのエコー) が実行され、次にコンテナーが実行されました。停止して削除されました。
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [サンプルのアプリを作成する方法をについてください。](./building-sample-app.md)
+> [サンプルアプリを作成する方法について説明します。](./building-sample-app.md)

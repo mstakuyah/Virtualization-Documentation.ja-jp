@@ -7,30 +7,30 @@ ms.date: 02/15/2019
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
-ms.openlocfilehash: 53152d0237a7f81858a5cb2f0fd8aabd439c4613
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: e1b6b55b2e17ac4f0883078748d75f6d4b9fcafa
+ms.sourcegitcommit: 3c06d6b5cebeacc4c0185dca5c20680ad67655bd
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9578273"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "9681903"
 ---
 # <a name="install-hyper-v-on-windows-10"></a>Windows 10 上に Hyper-V をインストールする
 
 Windows 10 上に仮想マシンを作成するには、Hyper-V を有効にします。  
-Hyper-V はさまざまな方法で有効にすることができます。たとえば、Windows 10 のコントロール パネルや PowerShell (私のお気に入りの方法です) を使用したり、展開イメージのサービスと管理 (DISM) ツールを使用する方法などがあります。 このドキュメントでは、それぞれの方法について説明します。
+Hyper-v は、Windows 10 コントロールパネル、PowerShell の使用、または展開イメージングのサービスと管理ツール (DISM) の使用など、さまざまな方法で有効にすることができます。 このドキュメントでは、それぞれの方法について説明します。
 
 > **注意:** Hyper-V はオプション機能として Windows に組み込まれています。Hyper-V を単体でダウンロードすることはできません。
 
 ## <a name="check-requirements"></a>要件の確認
 
-* Windows 10 のエンタープライズ、Pro、または教育機関向け
+* Windows 10 Enterprise、Pro、または教育機関向け
 * 第 2 レベルのアドレス変換 (SLAT) の 64 ビット プロセッサ。
-* CPU サポート VM モニター モードの拡張機能 (Intel cpu は VT c)。
+* VM モニターモード拡張機能の CPU サポート (Intel Cpu の VT-c)。
 * 最小 4 GB のメモリ。
 
 Hyper-V ロールは、Windows 10 Home にはインストール**できません**。
 
-Windows 10 Pro**設定**を開くには、Windows 10 Home edition からアップグレード > **更新とセキュリティ** > **のアクティブ化**します。
+Windows 10 Home edition から windows 10 Pro にアップグレードするには**** > **、[設定の更新とセキュリティ** > の**アクティブ化**] を開きます。
 
 詳しい情報とトラブルシューティングについては、「[Windows 10 Hyper-V のシステム要件](../reference/hyper-v-requirements.md)」をご覧ください。
 
@@ -64,13 +64,13 @@ DISM を使用して Hyper-V ロールを有効にするには:
 
   ![Hyper-V を有効にしているコンソール ウィンドウ。](media/dism_upd.png)
 
-DISM について詳しくは、[DISM のテクニカル リファレンス](https://technet.microsoft.com/en-us/library/hh824821.aspx)をご覧ください。
+DISM について詳しくは、[DISM のテクニカル リファレンス](<https://docs.microsoft.com/previous-versions/windows/it-pro/windows-8.1-and-8/hh824821(v=win.10)>)をご覧ください。
 
 ## <a name="enable-the-hyper-v-role-through-settings"></a>[設定] で Hyper-V ロールを有効にする
 
 1. Windows ボタンを右クリックし、[アプリと機能] を選択します。
 
-2. 右側にある [関連する設定には、 **[プログラムと機能**を選択します。 
+2. 適切な [関連設定] の下にある [**プログラムと機能**] を選択します。 
 
 3. **[Windows の機能の有効化または無効化]** を選択します。
 
