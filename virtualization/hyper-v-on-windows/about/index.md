@@ -7,12 +7,12 @@ ms.date: 06/25/2018
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: eb2b827c-4a6c-4327-9354-50d14fee7ed8
-ms.openlocfilehash: d71c5d2ae3c8ff78e36cc54686b10b1dc745e0c3
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: aab6a285e9c1ed9918b39cb1de88e3e2243fb3a9
+ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576353"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "9680962"
 ---
 # <a name="introduction-to-hyper-v-on-windows-10"></a>Windows 10 の Hyper-V の概要
 
@@ -36,13 +36,13 @@ Hyper-V は、具体的には、ハードウェアの仮想化を提供します
 
 ## <a name="system-requirements"></a>システム要件
 
-HYPER-V は 64 ビット バージョンの Windows 10 Pro、エンタープライズ、または教育機関で使用できます。 ホーム edition で使用できません。
+Hyper-v は、64ビット版の Windows 10 Pro、Enterprise、および教育機関で利用できます。 この機能は、Home エディションでは利用できません。
 
-> Windows 10 Pro**の設定**を開くには、Windows 10 Home edition からアップグレード > **更新とセキュリティ** > **のアクティブ化**します。 ここで Microsoft Store にアクセスして、アップグレードを購入できます。
+> Windows 10 Home edition から windows 10 Pro にアップグレードするに**** > **は、[設定の更新とセキュリティ** > の**アクティブ化**] を開きます。 ここで Microsoft Store にアクセスして、アップグレードを購入できます。
 
-ほとんどのコンピューターで Hyper-V を実行できますが、各仮想マシンはまったく別のオペレーティング システムになります。  一般的に、4 GB の RAM を搭載したコンピューターで 1 つまたは複数の仮想マシンを実行できますが、仮想マシンを追加する場合や、ゲーム、ビデオ編集、エンジニアリング設計などのソフトウェアをインストールして実行する場合は、より多くのリソースが必要になります。
+ほとんどのコンピューターでは Hyper-v が実行されますが、各仮想マシンは、完全に独立したオペレーティングシステムを実行します。  一般的に、4 GB の RAM を搭載したコンピューターで 1 つまたは複数の仮想マシンを実行できますが、仮想マシンを追加する場合や、ゲーム、ビデオ編集、エンジニアリング設計などのソフトウェアをインストールして実行する場合は、より多くのリソースが必要になります。
 
-Hyper-V のシステム要件と、コンピューター上で Hyper-V が実行されていることを確認する方法について詳しくは、[Hyper-V の要件に関するリファレンス](..\reference\hyper-v-requirements.md)をご覧ください。
+Hyper-V のシステム要件と、コンピューター上で Hyper-V が実行されていることを確認する方法について詳しくは、[Hyper-V の要件に関するリファレンス](../reference/hyper-v-requirements.md)をご覧ください。
 
 ## <a name="operating-systems-you-can-run-in-a-virtual-machine"></a>仮想マシンで実行できるオペレーティング システム
 
@@ -50,7 +50,7 @@ Windows 上の Hyper-V では、Linux、FreeBSD、Windows の各種リリース�
 
 なおに、仮想マシンで使用するすべてのオペレーティング システムの有効なライセンスを持っている必要があります。
 
-Windows の Hyper-V でゲストとしてサポートされているオペレーティング システムについては、[サポートされている Windows ゲスト オペレーティング システム](supported-guest-os.md)と[サポートされている Linux ゲスト オペレーティング システム](https://technet.microsoft.com/library/dn531030.aspx)に関する情報をご覧ください。
+Windows の Hyper-V でゲストとしてサポートされているオペレーティング システムについては、[サポートされている Windows ゲスト オペレーティング システム](supported-guest-os.md)と[サポートされている Linux ゲスト オペレーティング システム](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Linux-and-FreeBSD-virtual-machines-for-Hyper-V-on-Windows)に関する情報をご覧ください。
 
 ## <a name="differences-between-hyper-v-on-windows-and-hyper-v-on-windows-server"></a>Windows の Hyper-V と Windows Server の Hyper-V の相違点
 
@@ -79,4 +79,4 @@ Windows 上の Hyper-V では、メモリ管理モデルが異なります。 �
 
 ## <a name="next-step"></a>次の手順
 
-[Windows 10 上に Hyper-V をインストールする](..\quick-start\enable-hyper-v.md)
+[Windows 10 上に Hyper-V をインストールする](../quick-start/enable-hyper-v.md)
