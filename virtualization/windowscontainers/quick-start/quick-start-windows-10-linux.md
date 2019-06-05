@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 91031f9394cb3fcb1af6c4813f8805ad6f79bf8c
-ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
+ms.openlocfilehash: 926e5cd64053b5ea795bb2c75a231700aed443ca
+ms.sourcegitcommit: f6457ee0635864e8e8bb07da43a6f76388ee3cd1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "9681102"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "9734656"
 ---
 # <a name="linux-containers-on-windows-10"></a>Windows 10 の Linux コンテナー
 
@@ -32,13 +32,9 @@ ms.locfileid: "9681102"
 
 ## <a name="prerequisites"></a>前提条件
 
-次の要件を満たしていることを確認してください: <<<<<<< HEAD
-- Windows 10 Professional または Enterprise (バージョン 1709) 以降を搭載した1つの物理コンピューターシステム
-- [Hyper-v](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements)が有効になっていることを確認します。
-=======
+次の要件を満たしていることを確認してください。
 - Windows 10 Professional、Windows 10 Enterprise、または Windows Server 2019 バージョン1809以降を実行している1台の物理コンピューターシステム
-- [Hyper-v](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/hyper-v-requirements)が有効になっていることを確認します。
->>>>>>> 原点/マスター
+- [Hyper-v](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements)が有効になっていることを確認します。
 
 ***Hyper-v 分離:*** Windows 上の linux コンテナーでは、開発者が適切な Linux カーネルを使ってコンテナーを実行するために、Windows 10 の Hyper-v 分離が必要です。 Hyper-v 分離の詳細については、「 [Windows コンテナーについて](../about/index.md)」のページをご覧ください。
 
@@ -48,7 +44,7 @@ ms.locfileid: "9681102"
 
 > 既に Docker をインストールしている場合は、LCOW をサポートするバージョン18.02 またはそれ以降をご利用ください。 Docker の実行`docker -v`または** チェックを確認します。
 
-> *Docker Settings _GT_ デーモン*の [実験的な機能] オプションは、lcow コンテナーを実行するためにアクティブ化する必要があります。
+> *Docker Settings > デーモン*の [実験的な機能] オプションは、lcow コンテナーを実行するためにアクティブ化する必要があります。
 
 ## <a name="run-your-first-lcow-container"></a>最初の LCOW コンテナーを実行する
 
