@@ -57,6 +57,7 @@
 # リファレンス
 ## [システム要件](deploy-containers/system-requirements.md)
 ## [バージョンの互換性](deploy-containers/version-compatibility.md)
+## [基本イメージのサービスライフサイクル](deploy-containers/base-image-lifecycle.md)
 ## [Hyper-V による分離](manage-containers/hyperv-container.md)
 ## [プリンターサービス](deploy-containers/print-spooler.md)
 ## [GPU アクセラレータ](deploy-containers/gpu-acceleration.md)
