@@ -8,12 +8,12 @@ ms.date: 06/17/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: c26f4b225287fbc25566e36376eb8cd604d45a68
-ms.sourcegitcommit: 9cd1aa792a417e71192c7aa39e409ae6ca0bc710
+ms.openlocfilehash: d3a8240dbba8af3c74ce5d185620e129d103ef81
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "9788551"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9883185"
 ---
 # <a name="base-image-servicing-lifecycles"></a>基本イメージのサービスライフサイクル
 
@@ -35,4 +35,4 @@ Windows コンテナーベースの画像は、半期チャネルリリースま
 |Server Core                      |長期        |1607   |14393   |10/15/2016  |2022 年 1 月 11 日                 |2027 年 1 月 11 日           |
 |Nano Server                      |半期      |1607   |14393   |10/15/2016  |10/09/2018                 |該当せず                  |
 
-サービス要件およびその他の追加情報については、「 [Windows ライフサイクルの FAQ](https://support.microsoft.com/help/18581/lifecycle-faq-windows-products)」、「 [windows Server リリース情報](https://docs.microsoft.com/en-us/windows-server/get-started/windows-server-release-info)」、「 [Windows ベース OS イメージの Docker hub リポジトリ](https://hub.docker.com/_/microsoft-windows-base-os-images)」を参照してください。
+サービス要件およびその他の追加情報については、「 [Windows ライフサイクルの FAQ](https://support.microsoft.com/help/18581/lifecycle-faq-windows-products)」、「 [windows Server リリース情報](https://docs.microsoft.com/windows-server/get-started/windows-server-release-info)」、「 [Windows ベース OS イメージの Docker hub リポジトリ](https://hub.docker.com/_/microsoft-windows-base-os-images)」を参照してください。

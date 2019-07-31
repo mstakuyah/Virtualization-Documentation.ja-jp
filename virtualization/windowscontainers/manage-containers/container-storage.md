@@ -3,12 +3,12 @@ title: Windows Server コンテナー記憶域
 description: Windows Server コンテナーがホストとその他の種類の記憶域を使用する方法
 keywords: コンテナー, ボリューム, 記憶域, マウント, bindmount
 author: patricklang
-ms.openlocfilehash: 20179f09260b6ae5de802c2372958356f8de3aee
-ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
+ms.openlocfilehash: bddfb3a3510a6af674be73349a7e422434c1e0f4
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "9680942"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9882975"
 ---
 # <a name="overview"></a>概要
 
@@ -40,7 +40,7 @@ ms.locfileid: "9680942"
 コンテナーの実行では、ほとんどの NTFS 操作を使用できます (トランザクションを除く)。 これには ACL の設定が含まれており、すべての ACL はコンテナー内でチェックされます。 1 つのコンテナー内で複数のユーザーとしてプロセスを実行するには、`RUN net user /create ...` で `Dockerfile` 内にユーザーを作成し、ファイルの ACL を設定します。次に、[Dockerfile USER ディレクティブ](https://docs.docker.com/engine/reference/builder/#user)を使用して、そのユーザーで実行するプロセスを構成します。
 
 
-##  <a name="image-size"></a>画像のサイズ
+## <a name="image-size"></a>画像のサイズ
 Windows アプリケーションでは、新しいファイルをインストールまたは作成する前に、または一時ファイルのクリーンアップのトリガーとして、空きディスク領域の量を照会することが一般的なパターンとなっています。  アプリケーションの互換性を最大限に高める目的で、Windows コンテナーの C: ドライブは 20 GB の空き仮想サイズとなります。  ユーザーによっては、この既定値を上書きして空き領域の増減が必要になることがあります。この操作は、"storage-opt" 構成の "size" オプションで実現できます。
 
 ### <a name="examples"></a>例

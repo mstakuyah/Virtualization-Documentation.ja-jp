@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ebd79cd3-5fdd-458d-8dc8-fc96408958b5
-ms.openlocfilehash: 4fac4d6e091fdf25e9683adca438302ca3beebfb
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 652b1a8e0ab12ac67dd2754051e36c523e3de509
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576703"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9882945"
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -24,11 +24,11 @@ Invoke-WebRequest https://aka.ms/Debug-ContainerHost.ps1 -UseBasicParsing | Invo
 ```
 このスクリプトで実行されるすべてのテストの一覧と一般的な解決策が、スクリプトの [Readme ファイル](https://github.com/Microsoft/Virtualization-Documentation/blob/live/windows-server-container-tools/Debug-ContainerHost/README.md)に記載されています。
 
-問題の原因を特定できない場合は、スクリプトの出力を[コンテナー フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)で投稿してください。 Windows Insider 参加者や開発者も集まるこのコミュニティは、手助けを求めるには最適の場所です。
+問題の原因を特定できない場合は、スクリプトの出力を[コンテナー フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=windowscontainers)で投稿してください。 Windows Insider 参加者や開発者も集まるこのコミュニティは、手助けを求めるには最適の場所です。
 
 
 ## <a name="finding-logs"></a>ログを見つける
-Windows のコンテナーを管理するため、複数のサービスがあります。 次の各セクションで、ログの場所をサービス別に示します。
+Windows コンテナーを管理するために使用されるサービスが複数あります。 次の各セクションで、ログの場所をサービス別に示します。
 
 # <a name="docker-engine"></a>Docker エンジン
 Docker エンジンは、ファイルではなく Windows 'アプリケーション' イベント ログに記録します。 これらのログは、Windows PowerShell を使用することで、簡単に読み取り、並べ替え、およびフィルター処理することができます。
@@ -71,7 +71,7 @@ SERVICE_NAME: docker
 - " をそれぞれ \ でエスケープする
 - コマンド全体を " で囲む
 
-変更したら、`sc.exe config docker binpath= ` の後に変更後の文字列を付けて実行します。 たとえば、 
+変更したら、`sc.exe config docker binpath=` の後に変更後の文字列を付けて実行します。 たとえば、 
 ```
 sc.exe config docker binpath= "\"C:\Program Files\Docker\dockerd.exe\" --run-service -D"
 ```
@@ -91,9 +91,9 @@ sc.exe stop docker
 <path\to\>dockerd.exe -D > daemon.log 2>&1
 ```
 
-## <a name="obtaining-stack-dump"></a>スタック ダンプを取得します。
+## <a name="obtaining-stack-dump"></a>スタックダンプを取得しています。
 
-一般的には、これは、Microsoft サポートまたは docker 開発者によって明示的に要求された場合に便利です。 Docker がハング、解決策を診断するために使用できます。 
+通常、これは、Microsoft サポートまたは docker の開発者によって明示的に要求された場合にのみ役立ちます。 これを使って、docker がハングしているような状況を診断することができます。 
 
 [docker signal.exe](https://github.com/jhowardmsft/docker-signal) をダウンロードします。
 
@@ -104,11 +104,11 @@ Get-Process dockerd
 docker-signal -pid=<id>
 ```
 
-ファイルに出力されますでデータ ルート ディレクトリ docker が実行されています。 既定のディレクトリは `C:\ProgramData\Docker` です。 実際のディレクトリは、`docker info -f "{{.DockerRootDir}}"` を実行することによって確認できます。
+出力ファイルは、データルートディレクトリ docker の中にあります。 既定のディレクトリは `C:\ProgramData\Docker` です。 実際のディレクトリは、`docker info -f "{{.DockerRootDir}}"` を実行することによって確認できます。
 
-ファイルがある`goroutine-stacks-<timestamp>.log`します。
+ファイルが表示さ`goroutine-stacks-<timestamp>.log`れます。
 
-点に注意`goroutine-stacks*.log`に個人情報が含まれていません。
+個人情報`goroutine-stacks*.log`が含まれていないことに注意してください。
 
 
 # <a name="host-compute-service"></a>ホスト コンピューティング サービス
@@ -131,12 +131,12 @@ Hyper-V Compute の分析/デバッグ ログを有効にし、`hcslog.evtx` に
 ```PowerShell
 # Enable the analytic logs
 wevtutil.exe sl Microsoft-Windows-Hyper-V-Compute-Analytic /e:true /q:true
-     
+
 # <reproduce your issue>
-     
+
 # Export to an evtx
 wevtutil.exe epl Microsoft-Windows-Hyper-V-Compute-Analytic <hcslog.evtx>
-     
+
 # Disable
 wevtutil.exe sl Microsoft-Windows-Hyper-V-Compute-Analytic /e:false /q:true
 ```

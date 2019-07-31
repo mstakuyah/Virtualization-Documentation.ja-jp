@@ -8,16 +8,16 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 6e5e6b01-7a9d-4123-8cc7-f986e10cd372
-ms.openlocfilehash: ba0a0a83d74aa6ae73dabddf4057eebc98700f66
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: d4e3f7c1e94d0162ae9ee6251d9c6d8cc51bf1d3
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576073"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9883075"
 ---
 # <a name="windows-10-hyper-v-system-requirements"></a>Windows 10 Hyper-V のシステム要件
 
-HYPER-V は 64 ビット版の Windows 10 Pro、エンタープライズ、または教育機関で使用できます。 Hyper-V には、第 2 レベルのアドレス変換 (SLAT) 機能が必要です。SLAT とは、Intel と AMD が提供する最新世代の 64 ビット プロセッサに搭載されている機能です。
+Hyper-v は、64ビット版の Windows 10 Pro、Enterprise、および教育機関で利用できます。 Hyper-V には、第 2 レベルのアドレス変換 (SLAT) 機能が必要です。SLAT とは、Intel と AMD が提供する最新世代の 64 ビット プロセッサに搭載されている機能です。
 
 4 GB の RAM を備えたホストでは基本的な仮想マシンを 3 つまたは 4 つ実行することができますが、仮想マシンが増えれば、より多くのリソースが必要となります。 一方で、物理ハードウェアの内容にもよりますが、32 のプロセッサと 512 GB の RAM を備えた大規模な仮想マシンを作成することもできます。
 
@@ -35,12 +35,12 @@ Hyper-V のロールは、次のバージョンにはインストール**でき�
 - Windows 10 Mobile
 - Windows 10 Mobile Enterprise
 
->Windows 10 Pro には、Windows 10 Home edition をアップグレードすることができます。 アップグレードを行うには、**[設定]** > **[更新とセキュリティ]** > **[アクティブ化]** の順に開きます。 ここでストアにアクセスして、アップグレードを購入することができます。
+>Windows 10 Home edition は Windows 10 Pro にアップグレードできます。 アップグレードを行うには、**[設定]** > **[更新とセキュリティ]** > **[アクティブ化]** の順に開きます。 ここでストアにアクセスして、アップグレードを購入することができます。
 
 ## <a name="hardware-requirements"></a>ハードウェア要件
 
 このドキュメントでは、Hyper-V と互換性のあるハードウェアをすべて一覧していませんが、次のアイテムが必要です。
-    
+
 - 第 2 レベルのアドレス変換 (SLAT) の 64 ビット プロセッサ
 - VM モニター モード拡張機能 (Intel CPU の VT-c) の CPU サポート
 - 最小 4 GB のメモリ。 仮想マシンは Hyper-V ホストとメモリを共有するため、予想される仮想ワークロードを処理するために十分なメモリを提供する必要があります。

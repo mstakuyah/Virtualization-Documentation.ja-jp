@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1f8a691c-ca75-42da-8ad8-a35611ad70ec
-ms.openlocfilehash: 0c365b9351ee09c946e1711f3a3a5e82eb71c785
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: e69775c15359645f3659c9bee3562733415228d5
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9577313"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9882885"
 ---
 # <a name="set-up-a-nat-network"></a>NAT ネットワークの設定
 
@@ -28,7 +28,7 @@ Windows 10 Hyper-V では、仮想ネットワークのネイティブ ネット
 * Windows 10 Anniversary Update 以降
 * Hyper-V が有効になっている (詳しくは[こちら](../quick-start/enable-hyper-v.md)をご覧ください)
 
-> **注:** 現時点では、ホストごとに 1 つの NAT ネットワークのみを作成できます。 Windows NAT (WinNAT) の実装、機能、制限事項について詳しくは、[WinNAT の機能と制限事項に関するブログ記事](https://blogs.technet.microsoft.com/virtualization/2016/05/25/windows-nat-winnat-capabilities-and-limitations/)をご覧ください
+> **注:** 現時点では、ホストごとに 1 つの NAT ネットワークのみを作成できます。 Windows NAT (WinNAT) の実装、機能、制限事項について詳しくは、[WinNAT の機能と制限事項に関するブログ記事](https://techcommunity.microsoft.com/t5/Virtualization/Windows-NAT-WinNAT-Capabilities-and-limitations/ba-p/382303)をご覧ください
 
 ## <a name="nat-overview"></a>NAT 概要
 NAT は、ホスト コンピューターの IP アドレスと内部 Hyper-V 仮想スイッチを通じてポートを利用することで、ネットワーク リソースへのアクセスを仮想マシンに与えます。
@@ -37,7 +37,7 @@ NAT は、ホスト コンピューターの IP アドレスと内部 Hyper-V �
 
 また、NAT を利用すれば、同じ (内部) 通信ポートを必要とするアプリケーションを複数の仮想マシンがホストできます。アプリケーションを一意の外部ポートにマッピングします。
 
-以上の理由から、NAT ネットワーキングはコンテナー技術として一般的になっています (「[コンテナーのネットワーク](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/management/container_networking)」参照)。
+以上の理由から、NAT ネットワーキングはコンテナー技術として一般的になっています (「[コンテナーのネットワーク](https://docs.microsoft.com/virtualization/windowscontainers/container-networking/architecture)」参照)。
 
 
 ## <a name="create-a-nat-virtual-network"></a>NAT 仮想ネットワークを作成する
@@ -148,7 +148,7 @@ PS C:\> Get-NetNat | Remove-NetNAT (again, this will remove the NAT but keep the
 PS C:\> New-NetNat -Name SharedNAT -InternalIPInterfaceAddressPrefix <shared prefix>
 PS C:\> Start-Service docker
 ```
-Docker/HNS は Windows コンテナーに ip アドレスを割り当てるし、管理者は、仮想マシンに ip アドレスを 2 つの違いセットから割り当てられます。
+Docker/HNS は、Windows コンテナーに Ip を割り当てます。管理者は、2つの相違点のセットから Vm に Ip を割り当てます。
 
 ユーザーは実行中の docker エンジンを使用して Windows コンテナー機能をインストールしました。次に、NAT ネットワークに VM を接続しようと考えています
 ```
@@ -162,7 +162,7 @@ PS C:\> New-NetNat -Name SharedNAT -InternalIPInterfaceAddressPrefix <shared pre
 PS C:\> New-VirtualSwitch -Type internal (attach VMs to this new vSwitch)
 PS C:\> Start-Service docker
 ```
-Docker/HNS は Windows コンテナーに ip アドレスを割り当てるし、管理者は、仮想マシンに ip アドレスを 2 つの違いセットから割り当てられます。
+Docker/HNS は、Windows コンテナーに Ip を割り当てます。管理者は、2つの相違点のセットから Vm に Ip を割り当てます。
 
 最後に、2 つの内部 VM スイッチを設定し、そのスイッチ間で共有する NetNat を 1 つ設定する必要があります。
 

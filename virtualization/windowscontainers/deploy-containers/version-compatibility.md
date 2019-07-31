@@ -3,12 +3,12 @@ title: Windows コンテナーのバージョンの互換性
 description: Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。
 keywords: メタデータ, コンテナー, バージョン
 author: taylorb-microsoft
-ms.openlocfilehash: 4d01fb1d11ee9e8a5fa4271699a5a7c59c27409d
-ms.sourcegitcommit: 71e46750813a996cecc445181974a79b95affc8c
+ms.openlocfilehash: 019dafe855e0fba696db4618a862ec086d435005
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "9685347"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9882995"
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーバージョンの互換性
 
@@ -16,53 +16,85 @@ Windows Server 2016 および Windows 10 記念日更新プログラム (両方�
 
 Windows コンテナーは、その機能を改善する過程で、互換性に影響を与える変更が行われています。 古いコンテナーは、 [hyper-v 分離](../manage-containers/hyperv-container.md)を使用して、新しいホストでも同じように動作し、同じ (古い) カーネルバージョンを使います。 ただし、新しい Windows ビルドに基づいてコンテナーを実行する場合は、新しいホストビルドでのみ実行できます。
 
-|コンテナーの OS バージョン|ホストの OS バージョン|互換性|
-|---|---|---|
-|Windows Server 2019、バージョン1903<br>ビルド18362。 * |Windows Server バージョン1903<br>ビルド18362。 * |サポート`process`また`hyperv`は分離|
-|Windows Server 2019、バージョン1903<br>ビルド18362。 * |Windows 10 バージョン1903<br>ビルド18362。 * |分離のみ`hyperv`をサポート|
-|Windows Server 2019、バージョン1903<br>ビルド18362。 * |Windows 10 バージョン1809<br>ビルド17763。 * |サポートされない|
-|Windows Server 2019、バージョン1903<br>ビルド18362。 * |Windows Server 2019<br>ビルド17763。 * |サポートされない|
-|Windows Server 2019、バージョン1903<br>ビルド18362。 * |Windows 10 バージョン 1803<br>ビルド17134。 * |サポートされない|
-|Windows Server 2019、バージョン1903<br>ビルド18362。 * |Windows Server バージョン1803<br>ビルド17134。 * |サポートされない|
-|Windows Server 2019、バージョン1903<br>ビルド18362。 * |Windows 10 Fall Creators Update<br>ビルド: 16299.* |サポートされていません|
-|Windows Server 2019、バージョン1903<br>ビルド18362。 * |Windows Server バージョン 1709<br>ビルド: 16299.* |サポートされていません|
-|Windows Server 2019、バージョン1903<br>ビルド18362。 * |Windows Server 2016<br>ビルド: 14393.* |サポートされない|
-|Windows Server 2019<br>ビルド17763。 * |Windows Server バージョン1903<br>ビルド18362。 * |分離のみ`hyperv`をサポート|
-|Windows Server 2019<br>ビルド17763。 * |Windows 10 バージョン1903<br>ビルド18362。 * |分離のみ`hyperv`をサポート|
-|Windows Server 2019<br>ビルド17763。 * |Windows 10 バージョン1809<br>ビルド17763。 * |分離のみ`hyperv`をサポート|
-|Windows Server 2019<br>ビルド17763。 * |Windows Server 2019<br>ビルド17763。 * |サポート`process`また`hyperv`は分離|
-|Windows Server 2019<br>ビルド17763。 * |Windows 10 バージョン 1803<br>ビルド17134。 * |サポートされない|
-|Windows Server 2019<br>ビルド17763。 * |Windows Server バージョン1803<br>ビルド17134。 * |サポートされない|
-|Windows Server 2019<br>ビルド17763。 * |Windows 10 Fall Creators Update<br>ビルド: 16299.* |サポートされていません|
-|Windows Server 2019<br>ビルド17763。 * |Windows Server バージョン 1709<br>ビルド: 16299.* |サポートされていません|
-|Windows Server 2019<br>ビルド17763。 * |Windows Server 2016<br>ビルド: 14393.* |サポートされない|
-|Windows Server バージョン1803<br>ビルド17134。 * |Windows Server バージョン1903<br>ビルド18362。 * |分離のみ`hyperv`をサポート|
-|Windows Server バージョン1803<br>ビルド17134。 * |Windows 10 バージョン1903<br>ビルド18362。 * |分離のみ`hyperv`をサポート|
-|Windows Server バージョン1803<br>ビルド17134。 * |Windows 10 バージョン1809<br>ビルド17763。 * |分離のみ`hyperv`をサポート|
-|Windows Server バージョン1803<br>ビルド17134。 * |Windows Server 2019<br>ビルド17763。 * |分離のみ`hyperv`をサポート|
-|Windows Server バージョン1803<br>ビルド17134。 * |Windows 10 バージョン 1803<br>ビルド17134。 * |分離のみ`hyperv`をサポート|
-|Windows Server バージョン1803<br>ビルド17134。 * |Windows Server バージョン1803<br>ビルド17134。 * |サポート`process`また`hyperv`は分離|
-|Windows Server バージョン1803<br>ビルド17134。 * |Windows 10 Fall Creators Update<br>ビルド: 16299.* |サポートされていません|
-|Windows Server バージョン1803<br>ビルド17134。 * |Windows Server バージョン 1709<br>ビルド: 16299.* |サポートされていません|
-|Windows Server バージョン1803<br>ビルド17134。 * |Windows Server 2016<br>ビルド: 14393.* |サポートされない|
-|Windows Server バージョン 1709<br>ビルド: 16299.* |Windows Server バージョン1903<br>ビルド18362。 * |分離のみ`hyperv`をサポート|
-|Windows Server バージョン 1709<br>ビルド: 16299.* |Windows 10 バージョン1903<br>ビルド18362。 * |分離のみ`hyperv`をサポート|
-|Windows Server バージョン 1709<br>ビルド: 16299.* |Windows 10 バージョン1809<br>ビルド17763。 * |分離のみ`hyperv`をサポート|
-|Windows Server バージョン 1709<br>ビルド: 16299.* |Windows Server 2019<br>ビルド17763。 * |分離のみ`hyperv`をサポート|
-|Windows Server バージョン 1709<br>ビルド: 16299.* |Windows 10 バージョン 1803<br>ビルド17134。 * |分離のみ`hyperv`をサポート|
-|Windows Server バージョン 1709<br>ビルド: 16299.* |Windows Server バージョン1803<br>ビルド17134。 * |分離のみ`hyperv`をサポート|
-|Windows Server バージョン 1709<br>ビルド: 16299.* |Windows 10 Fall Creators Update<br>ビルド: 16299.* |分離のみ`hyperv`をサポート|
-|Windows Server バージョン 1709<br>ビルド: 16299.* |Windows Server バージョン 1709<br>ビルド: 16299.* |サポート`process`また`hyperv`は分離|
-|Windows Server バージョン 1709<br>ビルド: 16299.* |Windows Server 2016<br>ビルド: 14393.* |サポートされない|
-|Windows Server 2016<br>ビルド: 14393.* |Windows Server バージョン1903<br>ビルド18362。 * |分離のみ`hyperv`をサポート|
-|Windows Server 2016<br>ビルド: 14393.* |Windows 10 バージョン1903<br>ビルド18362。 * |分離のみ`hyperv`をサポート|
-|Windows Server 2016<br>ビルド: 14393.* |Windows 10 バージョン1809<br>ビルド17763。 * |分離のみ`hyperv`をサポート|
-|Windows Server 2016<br>ビルド: 14393.* |Windows Server 2019<br>ビルド17763。 * |分離のみ`hyperv`をサポート|
-|Windows Server 2016<br>ビルド: 14393.* |Windows 10 Fall Creators Update<br>ビルド: 16299.* |分離のみ`hyperv`をサポート|
-|Windows Server 2016<br>ビルド: 14393.* |Windows Server バージョン1803<br>ビルド17134。 * |分離のみ`hyperv`をサポート|
-|Windows Server 2016<br>ビルド: 14393.* |Windows 10 バージョン 1803<br>ビルド17134。 * |分離のみ`hyperv`をサポート|
-|Windows Server 2016<br>ビルド: 14393.* |Windows Server Version 1709<br>ビルド: 16299.* |分離のみ`hyperv`をサポート|
-|Windows Server 2016<br>ビルド: 14393.* |Windows Server 2016<br>ビルド: 14393.* |サポート`process`また`hyperv`は分離|
+## <a name="windows-server-version-1903-host-os-compatibility"></a>Windows Server、バージョン1903ホスト OS の互換性
+
+|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|---|:---:|:---:|
+|Windows Server バージョン1903|あり|○|
+|Windows Server 2019|○|X|
+|Windows Server バージョン1803|○|X|
+|Windows Server バージョン 1709|○|X|
+|Windows Server 2016|○|X|
+
+## <a name="windows-server-2019-host-os-compatibility"></a>Windows Server 2019 ホスト OS の互換性
+
+|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|---|:---:|:---:|
+|Windows Server バージョン1903|×|×|
+|Windows Server 2019|あり|○|
+|Windows Server バージョン1803|○|X|
+|Windows Server バージョン 1709|○|X|
+|Windows Server 2016|○|X|
+
+## <a name="windows-server-version-1803-host-os-compatibility"></a>Windows Server、バージョン1803ホスト OS の互換性
+
+|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|---|:---:|:---:|
+|Windows Server バージョン1903|×|×|
+|Windows Server 2019|×|×|
+|Windows Server バージョン1803|あり|○|
+|Windows Server バージョン 1709|○|X|
+|Windows Server 2016|○|X|
+
+## <a name="windows-server-version-1709-host-os-compatibility"></a>Windows Server、バージョン1709ホスト OS の互換性
+
+|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|---|:---:|:---:|
+|Windows Server バージョン1903|×|×|
+|Windows Server 2019|×|×|
+|Windows Server バージョン1803|×|×|
+|Windows Server バージョン 1709|あり|要|
+|Windows Server 2016|○|X|
+
+## <a name="windows-10-version-1903-host-os-compatibility"></a>Windows 10 バージョン1903ホスト OS の互換性
+
+|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|---|:---:|:---:|
+|Windows Server バージョン1903|×|×|
+|Windows Server 2019|×|×|
+|Windows Server バージョン1803|×|×|
+|Windows Server バージョン 1709|×|×|
+|Windows Server 2016|要|○|
+
+## <a name="windows-10-version-1809-host-os-compatibility"></a>Windows 10 バージョン1809ホスト OS の互換性
+
+|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|---|:---:|:---:|
+|Windows Server バージョン1903|×|×|
+|Windows Server 2019|○|X|
+|Windows Server バージョン1803|○|X|
+|Windows Server バージョン 1709|○|X|
+|Windows Server 2016|○|X|
+
+## <a name="windows-10-version-1803-host-os-compatibility"></a>Windows 10 バージョン1803ホスト OS の互換性
+
+|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|---|:---:|:---:|
+|Windows サービス、バージョン1903|×|×|
+|Windows Server 2019|×|×|
+|Windows Server バージョン1803|○|X||
+|Windows Server バージョン 1709|○|X|
+|Windows Server 2016|○|X|
+
+## <a name="windows-10-fall-creators-update-host-os-compatibility"></a>Windows 10 での作成者によるホスト OS の互換性の更新
+
+|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|---|:---:|:---:|
+|Windows Server バージョン1903|×|×|
+|Windows Server 2019|×|×|
+|Windows Server バージョン1803|×|×|
+|Windows Server バージョン 1709|○|X|
+|Windows Server 2016|○|X|
 
 ## <a name="matching-container-host-version-with-container-image-versions"></a>コンテナーのイメージバージョンに対応するコンテナーホストのバージョン
 
@@ -163,7 +195,7 @@ FROM mcr.microsoft.com/windows/nanoserver:10.0.17763.437
 ...
 ```
 
-Windows Server 2019 および Windows Server 2016 に基づく Server Core ベースの画像は、[長期サービスチャネル (LTSC)](https://docs.microsoft.com/en-us/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)のリリースです。 サーバーのコアイメージのコンテナー OS として Windows Server 2019 が必要な場合に、最新の更新プログラムを適用するには、次のように LTSC release を指定します。
+Windows Server 2019 および Windows Server 2016 に基づく Server Core ベースの画像は、[長期サービスチャネル (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)のリリースです。 サーバーのコアイメージのコンテナー OS として Windows Server 2019 が必要な場合に、最新の更新プログラムを適用するには、次のように LTSC release を指定します。
 
 ``` dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019

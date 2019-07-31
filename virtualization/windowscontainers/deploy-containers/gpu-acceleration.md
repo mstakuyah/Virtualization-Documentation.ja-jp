@@ -1,52 +1,49 @@
 ---
-title: Windows のコンテナー GPU アクセラレータ
-description: GPU アクセラレータのレベルが Windows コンテナーに存在します。
+title: Windows コンテナーでの GPU アクセラレータ
+description: Windows コンテナーに存在する GPU アクセラレータのレベル
 keywords: docker、コンテナー、デバイス、ハードウェア
 author: cwilhit
-ms.openlocfilehash: 066f97b859b133a03e24df5db95cafe405ea3110
-ms.sourcegitcommit: 2b456022ee666863ef53082580ac1d432de86939
+ms.openlocfilehash: 6e5010efee10f9b488cbeb57b14bc86f30c1e766
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "9657370"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9883275"
 ---
-# <a name="gpu-acceleration-in-windows-containers"></a>Windows のコンテナー GPU アクセラレータ
+# <a name="gpu-acceleration-in-windows-containers"></a>Windows コンテナーでの GPU アクセラレータ
 
-多くのコンテナー化ワークロードの CPU 計算リソースは、十分なパフォーマンスを提供します。 ただし、特定のクラスのワークロードの Gpu (グラフィックス処理単位) によって提供される並列計算 power 時間を短縮できます操作桁、コストを停止、非常にスループットの向上します。
+多くのコンテナーワークロードについては、CPU 計算リソースが十分なパフォーマンスを提供します。 ただし、特定のワークロードのクラスについては、Gpu (グラフィックス処理ユニット) で提供される強力な並列計算機能を使用すると、負荷の高い速度で操作を高速化して、コストを削減し、スループットの immensely を向上させることができます。
 
-Gpu は、既に従来のレンダリングと機械学習トレーニングと自動推定シミュレーションから、多くの一般的なワークロードの一般的なツールです。 Windows コンテナー DirectX とその上に組み込まれているすべてのフレームワーク GPU アクセラレータをサポートします。
-
-> [!IMPORTANT]
-> この機能をサポートしている Docker のバージョンを必要とする`--device`Windows コンテナーのコマンド ライン オプション。 この機能は、現在のみで利用できる、`Docker Desktop for Windows Edge`を解放します。 Docker のエッジ リリースをダウンロードする[次のとおり](https://docs.docker.com/docker-for-windows/edge-release-notes/)です。
+Gpu は、従来のレンダリングやシミュレーションからマシン学習トレーニング、推定など、多くの一般的なワークロードで既に一般的なツールとなっています。 Windows コンテナーでは、DirectX およびその上に構築されたすべてのフレームワークの GPU アクセラレータをサポートしています。
 
 ## <a name="requirements"></a>要件
 
-この機能を利用するには、現在の環境は、次の要件を満たす必要があります。
+この機能が機能するためには、環境が次の要件を満たしている必要があります。
 
-- コンテナーのホストでは、Windows Server 2019 または Windows 10、1809 以降のバージョンが実行されている必要があります。
-- コンテナーの基本イメージ必要があります[mcr.microsoft.com/windows:1809](https://hub.docker.com/_/microsoft-windowsfamily-windows)以降。 Windows Server Core と Nano サーバー コンテナーの画像は現在サポートされていません。
-- コンテナー ホストは、Docker エンジン 19.03 以降を実行している必要があります。
-- コンテナー ホスト GPU 実行表示ドライバー バージョン対応 2.5 以降が必要です。
+- コンテナーホストでは、Windows Server 2019 または Windows 10 バージョン1809以降を実行している必要があります。
+- コンテナーの基本イメージは、 [mcr.microsoft.com/windows:1809](https://hub.docker.com/_/microsoft-windowsfamily-windows)以上である必要があります。 Windows Server Core および Nano Server コンテナーのイメージは現在サポートされていません。
+- コンテナーホストは、Docker Engine 19.03 以降を実行している必要があります。
+- コンテナーホストには、ディスプレイドライバーバージョンの WDDM 2.5 以降を実行している GPU が必要です。
 
-ディスプレイ ドライバーの対応バージョンを確認するには、コンテナー ホストの DirectX 診断ツール (dxdiag.exe) を実行します。 ツールの「表示」] タブの [以下に示す「ドライバー」セクションで確認します。
+ディスプレイドライバーの WDDM バージョンを確認するには、コンテナーホストで DirectX 診断ツール (dxdiag) を実行します。 ツールの「表示」タブで、次に示す「Drivers」セクションを確認します。
 
-![Dxdiag](media/dxdiag.png)
+![診断](media/dxdiag.png)
 
-## <a name="run-a-container-with-gpu-acceleration"></a>GPU アクセラレータとコンテナーを実行します。
+## <a name="run-a-container-with-gpu-acceleration"></a>GPU アクセラレータでコンテナーを実行する
 
-GPU アクセラレータを使用して、コンテナーを起動するには、次のコマンドを実行します。
+GPU アクセラレータでコンテナーを開始するには、次のコマンドを実行します。
 
 ```shell
 docker run --isolation process --device class/5B45201D-F2F2-4F3B-85BB-30FF1F953599 mcr.microsoft.com/windows:1809
 ```
 
 > [!IMPORTANT]
-> DirectX (とその上に組み込まれているすべてのフレームワーク) GPU を高速化できる Api だけを今日です。 サード パーティ製フレームワークはサポートされません。
+> DirectX (およびその上に構築されたすべてのフレームワーク) は、現在 GPU との間で加速できる唯一の Api です。 サードパーティのフレームワークはサポートされていません。
 
-## <a name="hyper-v-isolated-windows-container-support"></a>Windows のハイパー V 分離コンテナーのサポート
+## <a name="hyper-v-isolated-windows-container-support"></a>Hyper-v-分離された Windows コンテナーのサポート
 
-ハイパー V 分離 Windows コンテナー内の作業負荷の GPU アクセラレータは現在サポートされていません。
+Hyper-v-分離された Windows コンテナーでのワークロードの GPU アクセラレータは、現在サポートされていません。
 
-## <a name="hyper-v-isolated-linux-container-support"></a>ハイパー V 分離 Linux コンテナーのサポート
+## <a name="hyper-v-isolated-linux-container-support"></a>Hyper-v-分離された Linux コンテナーのサポート
 
-ハイパー V 分離 Linux コンテナー内の作業負荷の GPU アクセラレータは現在サポートされていません。
+Hyper-v でのワークロードの GPU 加速-分離された Linux コンテナーは現在サポートされていません。
