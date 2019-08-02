@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Kubernetes の展開と Windows ノードの参加で発生する一般的な問題の解決方法。
 keywords: kubernetes、1.14、linux、compile
-ms.openlocfilehash: bdf1fd78bbbebcad3562872d9e71c961be6c64eb
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: a0b24782a0e511dfc8b6cf1a0c0bc24882ff977a
+ms.sourcegitcommit: 42cb47ba4f3e22163869d094bd0c9cff415a43b0
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883005"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "9884993"
 ---
 # <a name="troubleshooting-kubernetes"></a>Kubernetes のトラブルシューティング #
 このページでは、Kubernetes のセットアップ、ネットワーク、および展開に関する一般的な問題について説明します。
@@ -68,6 +68,12 @@ Windows Server バージョン1903のユーザーは、次のレジストリの�
 \\Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\NicList
 ```
 
+### <a name="containers-on-my-flannel-host-gw-deployment-on-azure-cannot-reach-the-internet"></a>Azure でのフランネルのホストのコンテナーの展開がインターネットに接続できない ###
+Azure でフランネルをホスト-gw モードで展開する場合、パケットは Azure 物理ホスト vSwitch を通過する必要があります。 ユーザーは、ノードに割り当てられている各サブネットに対して、種類が "仮想アプライアンス" の[ユーザー定義のルート](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview#user-defined)をプログラムする必要があります。 これは、Azure ポータル ([ここで](https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-create-route-table-portal)は例を参照) または azure `az` CLI 経由で行うことができます。 次に示すのは、IP 10.0.0.4 とそれぞれの pod subnet 10.244.0.0/24 を持つノードに対して az コマンドを使った "MyRoute" という名前の UDR の例です。
+```
+az network route-table create --resource-group <my_resource_group> --name BridgeRoute 
+az network route-table route create  --resource-group <my_resource_group> --address-prefix 10.244.0.0/24 --route-table-name BridgeRoute  --name MyRoute --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.0.4 
+```
 
 ### <a name="my-windows-pods-cannot-ping-external-resources"></a>Windows ポッドが外部リソースに ping できない ###
 Windows ポッドには、現在 ICMP プロトコル用にプログラムされた送信ルールはありません。 ただし、TCP/UDP はサポートされています。 クラスター外のリソースへの接続を示す場合は、対応する`ping <IP>` `curl <IP>`コマンドに置き換えてください。
