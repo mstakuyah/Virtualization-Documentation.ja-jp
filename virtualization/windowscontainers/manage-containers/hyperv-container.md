@@ -1,6 +1,6 @@
 ---
 title: Hyper-V による分離
-description: コンテナーを分離する説明のプロセスから分離の HYPER-V の違いについて説明します。
+description: Hyper-v 分離のプロセス分離コンテナーとの違いについて Explaination します。
 keywords: Docker, コンテナー
 author: scooley
 ms.date: 09/13/2018
@@ -8,26 +8,26 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
-ms.openlocfilehash: 2ff2d1204e1f973d49af5e1d4441e4eacd946101
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 092312848173102bec5a791f2c48fe8166e70d5f
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576903"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998329"
 ---
 # <a name="hyper-v-isolation"></a>Hyper-V による分離
 
-Windows のコンテナー テクノロジには、2 つの異なるコンテナー、プロセス、HYPER-V 分離の分離レベルが含まれています。 両方の種類を作成、管理し、同じように機能します。 また、作成および使用するコンテナー イメージも同じです。 違うのは、コンテナー、ホスト オペレーティング システム、およびそのホストで実行されているその他のコンテナーとの間で作成される分離レベルです。
+Windows コンテナーテクノロジには、コンテナー、プロセス、Hyper-v 分離の2つの異なる分離レベルが含まれています。 どちらの種類も、同じように作成、管理、関数になります。 また、作成および使用するコンテナー イメージも同じです。 違うのは、コンテナー、ホスト オペレーティング システム、およびそのホストで実行されているその他のコンテナーとの間で作成される分離レベルです。
 
-**プロセス分離**– 分離のホストにインスタンスを同時に実行できる複数のコンテナーを通じて提供名前空間、リソース管理、およびプロセスの分離テクノロジされます。  コンテナーでは、ホストと他のと同じカーネルを共有します。  これはほぼ同じで、コンテナーが Linux で実行する方法です。
+**プロセス分離**–複数のコンテナーインスタンスは、名前空間、リソースコントロール、プロセス分離技術を介して提供される分離機能を使って、ホストで同時に実行できます。  コンテナーは、同じカーネルをホストと共に共有します。  これは、Linux でのコンテナーの動作とほぼ同じです。
 
-**HYPER-V 分離**: のホスト上コンテナーの複数のインスタンスを同時に実行できる、ただし、各コンテナーは特別な仮想マシンの内部で実行します。 これは、各コンテナーとコンテナー ホスト間カーネル レベルの分離を提供します。
+**Hyper-v 分離**–複数のコンテナーインスタンスをホストで同時に実行できます。ただし、各コンテナーは、特別な仮想マシンの内部で実行されます。 これにより、各コンテナーとコンテナーのホストとの間で、カーネルレベルの分離が提供されます。
 
-## <a name="hyper-v-isolation-examples"></a>HYPER-V 分離の例
+## <a name="hyper-v-isolation-examples"></a>Hyper-v 分離の例
 
 ### <a name="create-container"></a>コンテナーの作成
 
-Docker に HYPER-V 分離コンテナーの管理は、Windows Server コンテナーの管理とほぼ同じです。 HYPER-V 分離コンテナーを作成するのには完全な Docker を使用して、`--isolation`パラメーターを設定する`--isolation=hyperv`します。
+Docker での Hyper-v 分離コンテナーの管理は、Windows Server コンテナーの管理とほぼ同じです。 Hyper-v 分離を備えたコンテナーを作成するには、 `--isolation`パラメーターを使用して`--isolation=hyperv`設定します。
 
 ``` cmd
 docker run -it --isolation=hyperv mcr.microsoft.com/windows/nanoserver:1809 cmd
@@ -35,9 +35,9 @@ docker run -it --isolation=hyperv mcr.microsoft.com/windows/nanoserver:1809 cmd
 
 ### <a name="isolation-explanation"></a>分離の説明
 
-この例では、Windows Server と HYPER-V 分離の分離機能の違いを示します。
+次の例は、Windows Server と Hyper-v 分離の間の分離機能の違いを示しています。
 
-ここでは、分離コンテナーが展開されていると、時間のかかる ping プロセスをホストするプロセスです。
+ここでは、プロセス分離コンテナーが展開されており、実行時間の長い ping プロセスがホストされています。
 
 ``` cmd
 docker run -d mcr.microsoft.com/windows/servercore:1809 ping localhost -t
@@ -61,7 +61,7 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
      67       5      820       3836 ...71     0.03   3964   3 PING
 ```
 
-コントラスト] には、この例は、ping プロセスも HYPER-V 分離コンテナーを起動します。
+対照的に、この例では、ping プロセスと共に Hyper-v の分離されたコンテナーを開始します。
 
 ```
 docker run -d --isolation=hyperv mcr.microsoft.com/windows/nanoserver:1809 ping -t localhost

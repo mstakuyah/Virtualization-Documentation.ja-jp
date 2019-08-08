@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 492e3b0ba3b1abe1109de3f6091f5b60831036df
-ms.sourcegitcommit: aaf115a9de929319cc893c29ba39654a96cf07e1
+ms.openlocfilehash: 6480f0657d7def8d6da69bfc52ace81d08b0add4
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "9622977"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998810"
 ---
 # <a name="advanced-network-options-in-windows"></a>Windows での高度なネットワーク オプション
 
@@ -42,17 +42,17 @@ C:\> docker network create -d transparent -o com.docker.network.windowsshim.vlan
 
 > タグ付けされたすべてのトラフィックを正しい VLAN 上でアクセス モードの vNIC (コンテナー エンドポイント) ポートを持つ vSwitch によって処理するためには、(物理的) ホスト ネットワーク アダプターがトランク モードであることを確認します。
 
-## <a name="specify-outboundnat-policy-for-a-network"></a>ネットワークの OutboundNAT ポリシーを指定します。
+## <a name="specify-outboundnat-policy-for-a-network"></a>ネットワークの OutboundNAT ポリシーを指定する
 
-> L2bridge ネットワークに適用されます。
+> L2bridge ネットワークに適用されます
 
-作成した場合、通常、`l2bridge`コンテナーのネットワークを使用して`docker network create`、コンテナーの端点がありません HNS OutboundNAT ポリシーを適用すると、外部の世界に到達できないコンテナーのようになります。 使えるネットワークを作成する場合、`-o com.docker.network.windowsshim.enable_outboundnat=<true|false>`外部コンテナーのアクセス権の付与 OutboundNAT HNS ポリシーを適用するオプション。
+通常、を使って`l2bridge` `docker network create`コンテナーネットワークを作成すると、コンテナエンドポイントには、HNS の outboundnat ポリシーが適用されません。その結果、コンテナーは外部の世界に到達できません。 ネットワークを作成する場合は、OutboundNAT の HNS `-o com.docker.network.windowsshim.enable_outboundnat=<true|false>`ポリシーを適用するオプションを使用して、コンテナーが外部の世界へのアクセスを許可することができます。
 
 ```
 C:\> docker network create -d l2bridge -o com.docker.network.windowsshim.enable_outboundnat=true MyL2BridgeNetwork
 ```
 
-NAT'ing に実行されるようにしたい場所の (例: コンテナーの接続が必要です) の宛先のセットがある場合も、ExceptionList を指定する必要があります。
+NAT'ing を発生させたくない場所 (コンテナへのコンテナー接続が必要な場合など) がある場合は、次のようにして、を指定する必要があります。
 
 ```
 C:\> docker network create -d l2bridge -o com.docker.network.windowsshim.enable_outboundnat=true -o com.docker.network.windowsshim.outboundnat_exceptions=10.244.10.0/24
@@ -115,7 +115,7 @@ C:\> reg delete HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Para
 
 #### <a name="linux-containers-on-windows"></a>Linux Containers on Windows
 
-**最新情報:** 現在、_Moby Linux VM を使用せずに_ Linux と Windows のコンテナーをサイド バイ サイドで実行できるよう取り組んでいます。 詳しくは、[Linux Containers on Windows (LCOW) に関するこちらのブログ記事](https://blog.docker.com/2017/11/docker-for-windows-17-11/)をご覧ください。 ここでは、手順を[ご紹介](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10-linux)します。
+**最新情報:** 現在、_Moby Linux VM を使用せずに_ Linux と Windows のコンテナーをサイド バイ サイドで実行できるよう取り組んでいます。 詳しくは、[Linux Containers on Windows (LCOW) に関するこちらのブログ記事](https://blog.docker.com/2017/11/docker-for-windows-17-11/)をご覧ください。 まず、次の[](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10-linux)手順を実行します。
 > 注意: LCOW は Moby Linux VM に代わるものであり、既定の HNS "nat" 内部 vSwitch を使用します。
 
 #### <a name="moby-linux-vms-use-dockernat-switch-with-docker-for-windows-a-product-of-docker-cehttpswwwdockercomcommunity-edition"></a>Moby Linux VM では、Docker for Windows ([Docker CE](https://www.docker.com/community-edition) の製品) と共に DockerNAT スイッチを使用しています。
@@ -179,7 +179,7 @@ l2bridge ドライバーを使って作成されたコンテナー ネットワ�
 PS C:\> restart-service hns
 PS C:\> restart-service docker
 ```
-* もう 1 つの選択肢は、'-o com.docker.network.windowsshim.interface' オプションを利用し、透過ネットワークの外部 vSwitch をコンテナー ホストでまだ使用されていない特定のネットワーク アダプター (すなわち、帯域外で作成された vSwitch で利用されているネットワーク アダプター以外のネットワーク アダプター) に関連付けることです。 [' の o のアイコン オプション詳細については、このドキュメントの[1 つのコンテナーのホストに透明な複数のネットワークを作成する](advanced.md#creating-multiple-transparent-networks-on-a-single-container-host)] セクションでします。
+* もう 1 つの選択肢は、'-o com.docker.network.windowsshim.interface' オプションを利用し、透過ネットワークの外部 vSwitch をコンテナー ホストでまだ使用されていない特定のネットワーク アダプター (すなわち、帯域外で作成された vSwitch で利用されているネットワーク アダプター以外のネットワーク アダプター) に関連付けることです。 「-O」オプションについて詳しくは、このドキュメントの「[単一コンテナーホストに複数の透過ネットワークを作成](advanced.md#creating-multiple-transparent-networks-on-a-single-container-host)する」を参照してください。
 
 
 ## <a name="windows-server-2016-work-arounds"></a>Windows Server 2016 の回避策 

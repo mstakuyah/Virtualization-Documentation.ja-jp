@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 88e6e080-cf8f-41d8-a301-035959dc5ce0
-ms.openlocfilehash: eb2df861021f889e335d49a337b379ecbf17a47d
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 0ec6eccbcf69532d583c32136f1a0c50c9811a8b
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576923"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998369"
 ---
 # <a name="windows-container-base-image-history"></a>Windows コンテナーの基本イメージの履歴
 
@@ -34,7 +34,7 @@ ms.locfileid: "9576923"
 
 これは、Microsoft によって提供されたイメージ内に 2 つのレイヤーがあることを表しています。 最初のレイヤーは一定であり、最初の Windows Server リリースを表しています。2 つ目のレイヤーは、含まれている最新の累積的な更新プログラムに基づいて変化します。
 
-各バージョンの変更内容を確認する場合は、「[Windows 10 および Windows Server 2016 の更新履歴](https://support.microsoft.com/en-us/help/12387/windows-10-update-history)」で該当するバージョンのサポート技術情報をご覧ください。
+各バージョンの変更内容を確認する場合は、「[Windows 10 および Windows Server 2016 の更新履歴](https://support.microsoft.com/help/12387/windows-10-update-history)」で該当するバージョンのサポート技術情報をご覧ください。
 
 
 ## <a name="tools-to-simplify-this-process"></a>このプロセスを簡略化するためのツール

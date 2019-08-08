@@ -16,16 +16,16 @@
 ## [仮想スイッチを作成する](quick-start/connect-to-network.md)
 ## [統合サービスの構築](user-guide/make-integration-service.md)
 ## [Hyper-V WMI の移植](user-guide/refactor-wmiv1-to-wmiv2.md)
-## [Azure 仮想ネットワークで入れ子になった仮想マシン](user-guide/nested-virtualization-azure-virtual-network.md) 
+## [Azure 仮想ネットワークの入れ子になった Vm](user-guide/nested-virtualization-azure-virtual-network.md) 
 
 # リファレンス
 ## [Hyper-V の要件](reference/hyper-v-requirements.md)
 ## [サポートされているゲスト オペレーティング システム](about/supported-guest-os.md)
-## [Hyper-V PowerShell](https://technet.microsoft.com/library/hh848559.aspx)
+## [Hyper-V PowerShell](https://docs.microsoft.com/powershell/module/hyper-v/index?view=win10-ps)
 ## [Hyper-V 統合サービス](reference/integration-services.md)
 ## [Hyper-V のアーキテクチャ](reference/hyper-v-architecture.md)
 ## [ハイパーバイザーの仕様](reference/tlfs.md)
-## [HYPER-V バックアップ方法](reference/HyperVBackupApproaches.md)
+## [Hyper-v バックアップの方法](reference/HyperVBackupApproaches.md)
 
 # コミュニティとサポート
-## [Hyper-V フォーラム](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home?forum=winserverhyperv)
+## [Hyper-V フォーラム](https://social.technet.microsoft.com/Forums/windowsserver/home?forum=winserverhyperv)

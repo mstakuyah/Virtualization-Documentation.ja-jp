@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 18930864-476a-40db-aa21-b03dfb4fda98
-ms.openlocfilehash: 84974f093cc80f8a216518bab051e13397e89b6e
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 6568b68a77fc5506b58249caea44ec78e3e44de2
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9577433"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998939"
 ---
 # <a name="hyper-v-integration-services"></a>Hyper-V 統合サービス
 
@@ -22,7 +22,7 @@ ms.locfileid: "9577433"
 この記事は、Windows で利用可能な各統合サービスに関するリファレンスです。  また、特定の統合サービスまたはそれらの履歴に関連する情報の出発点としての役割も果たしています。
 
 **ユーザー ガイド:**  
-* [統合サービスの管理](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/manage/manage-Hyper-V-integration-services)
+* [統合サービスの管理](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/Manage-Hyper-V-integration-services)
 
 
 ## <a name="quick-reference"></a>クイック リファレンス
@@ -52,7 +52,7 @@ ms.locfileid: "9577433"
 
 ### <a name="check-heartbeat-with-powershell"></a>PowerShell を使用してハートビートをチェックする
 
-仮想マシンのハートビートを確認するには、[Get-VM](https://technet.microsoft.com/en-us/library/hh848479.aspx) を管理者として実行します。
+仮想マシンのハートビートを確認するには、[Get-VM](https://docs.microsoft.com/powershell/module/hyper-v/get-vm?view=win10-ps) を管理者として実行します。
 ``` PowerShell
 Get-VM -VMName $VMName | select Name, State, Status
 ```
@@ -74,7 +74,7 @@ DemoVM  Running  Operating normally
 **Linux デーモン名:** hv_utils  
 **説明:** Hyper-V が仮想マシンのシャットダウンを要求できるようにします。  ホストはいつでも仮想マシンを強制的に停止させることができますが、それはシャットダウンを選択するのではなく、電源スイッチをオフにするようなものです。  
 **追加先:** Windows Server 2012、Windows 8  
-**影響:** **影響: 大**  無効にした場合、ホストは仮想マシンで安全なシャットダウンをトリガーできなくなります。  すべてのシャット ダウン オフである、ハード power-、データの損失やデータの破損が発生する可能性があります。  
+**影響:** **影響: 大**  無効にした場合、ホストは仮想マシンで安全なシャットダウンをトリガーできなくなります。  すべてのシャットダウンがハードな電力オフになり、データの損失またはデータの破損が発生する可能性があります。  
 
 
 ## <a name="hyper-v-time-synchronization-service"></a>Hyper-V 時刻の同期サービス
@@ -102,7 +102,7 @@ DemoVM  Running  Operating normally
 
 
 **ユーザー ガイド:**  
-* [キー/値ペアを使用して Hyper-V 上のホストとゲストの間で情報を共有する](https://technet.microsoft.com/en-us/library/dn798287.aspx)。  
+* [キー/値ペアを使用して Hyper-V 上のホストとゲストの間で情報を共有する](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn798287(v=ws.11))。  
 
 
 ## <a name="hyper-v-volume-shadow-copy-requestor"></a>Hyper-V ボリューム シャドウ コピー リクエスター
@@ -113,9 +113,9 @@ DemoVM  Running  Operating normally
 **追加先:** Windows Server 2012、Windows 8  
 **影響:** 無効にした場合、仮想マシンを実行中にバックアップできなくなります (VSS を使用)。  
 
-ボリューム シャドウ コピー サービス ([VSS](https://msdn.microsoft.com/en-us/library/aa384589.aspx)) には、ボリューム シャドウ コピー リクエスター統合サービスが必要です。  ボリューム シャドウ コピー サービス (VSS) では、実行中のシステム (特にサーバー) 上で、それらが提供しているパフォーマンスおよびサービスを低下させることなく、バックアップのイメージをキャプチャおよびコピーします。  この統合サービスは、仮想マシンのワークロードとホストのバックアップ プロセスを調整してこれを実現します。
+ボリューム シャドウ コピー サービス ([VSS](https://docs.microsoft.com/windows/desktop/VSS/overview-of-processing-a-backup-under-vss)) には、ボリューム シャドウ コピー リクエスター統合サービスが必要です。  ボリューム シャドウ コピー サービス (VSS) では、実行中のシステム (特にサーバー) 上で、それらが提供しているパフォーマンスおよびサービスを低下させることなく、バックアップのイメージをキャプチャおよびコピーします。  この統合サービスは、仮想マシンのワークロードとホストのバックアップ プロセスを調整してこれを実現します。
 
-ボリューム シャドウ コピーの詳細については、[こちら](https://msdn.microsoft.com/en-us/library/dd405549.aspx)を参照してください。
+ボリューム シャドウ コピーの詳細については、[こちら](https://docs.microsoft.com/previous-versions/windows/desktop/virtual/backing-up-and-restoring-virtual-machines)を参照してください。
 
 
 ## <a name="hyper-v-guest-service-interface"></a>Hyper-V ゲスト サービス インターフェイス
@@ -124,7 +124,7 @@ DemoVM  Running  Operating normally
 **Linux デーモン名:** hv_fcopy_daemon  
 **説明:** Hyper-V ホストが仮想マシンとの間で双方向のファイル コピーを実行できるようにするためのインターフェイスを提供します。  
 **追加先:** Windows Server 2012 R2、Windows 8.1  
-**影響:** 無効にした場合、ホストは、`Copy-VMFile` を使用してゲストとの間でファイルをコピーできなくなります。  Copy-VMFile コマンドレットについては、[こちら](https://technet.microsoft.com/library/dn464282.aspx)を参照してください。  
+**影響:** 無効にした場合、ホストは、`Copy-VMFile` を使用してゲストとの間でファイルをコピーできなくなります。  Copy-VMFile コマンドレットについては、[こちら](https://docs.microsoft.com/powershell/module/hyper-v/copy-vmfile?view=win10-ps)を参照してください。  
 
 **注意事項:**  
 既定では無効  [Copy-Item を使用した PowerShell ダイレクト](../user-guide/powershell-direct.md#copy-files-with-new-pssession-and-copy-item)に関するページを参照してください。 

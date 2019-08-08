@@ -8,34 +8,34 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
-ms.openlocfilehash: 354469199f3c7e886760e8a391edccde067986af
-ms.sourcegitcommit: c48dcfe43f73b96e0ebd661164b6dd164c775bfa
+ms.openlocfilehash: 953dfaf71170de656f4e6ba5e91d524708d5a12a
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "9610292"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998219"
 ---
 # <a name="docker-engine-on-windows"></a>Windows 上の Docker エンジン
 
-Docker エンジンとクライアントは、Windows に含まれていないし、インストールされ、個別に構成する必要があります。 また、Docker エンジンは多くのカスタム構成に対応できます。 たとえば、デーモンで受信要求を受け入れる方法、既定のネットワークキング オプション、デバッグ/ログの設定の構成などです。 Windows でこのような構成を指定するには、構成ファイルまたは Windows サービス コントロール マネージャーを使用します。 このドキュメントは、インストールして、Docker エンジンを構成する方法の詳細も頻繁に使われる構成の例をいくつか用意されています。
+Docker エンジンとクライアントは、Windows に含まれていないため、個別にインストールして構成する必要があります。 また、Docker エンジンは多くのカスタム構成に対応できます。 たとえば、デーモンで受信要求を受け入れる方法、既定のネットワークキング オプション、デバッグ/ログの設定の構成などです。 Windows でこのような構成を指定するには、構成ファイルまたは Windows サービス コントロール マネージャーを使用します。 このドキュメントでは、Docker エンジンのインストールと構成の方法について説明し、一般的に使用される構成の例をいくつか示します。
 
 ## <a name="install-docker"></a>Docker のインストール
 
-Windows コンテナを操作するために Docker する必要があります。 Docker は、Docker エンジン (dockerd.exe) と Docker クライアント (docker.exe) で構成されます。 インストールされているすべてのアイテムを取得する最も簡単な方法が、クイック スタート ガイドで、すべてのアイテムを取得するために役立つを設定して、最初のコンテナーを実行します。
+Windows コンテナーを操作するためには、Docker が必要です。 Docker は、Docker エンジン (dockerd.exe) と Docker クライアント (docker.exe) で構成されます。 すべての機能をインストールするには、クイックスタートガイドを参照してください。これは、すべての設定を取得して最初のコンテナーを実行するのに役立ちます。
 
-- [Windows Server 2019 の Windows コンテナー](../quick-start/quick-start-windows-server.md)
-- [Windows 10 の Windows コンテナー](../quick-start/quick-start-windows-10.md)
+- [Windows Server 2019 の windows コンテナー](../quick-start/quick-start-windows-server.md)
+- [Windows 10 の windows コンテナー](../quick-start/quick-start-windows-10.md)
 
-スクリプトのインストール[Docker EE をインストールするスクリプトを使用する](https://docs.docker.com/install/windows/docker-ee/#use-a-script-to-install-docker-ee)を参照してください。
+スクリプトによるインストールの場合は、「スクリプトを使用して[DOCKER EE をインストールする](https://docs.docker.com/install/windows/docker-ee/#use-a-script-to-install-docker-ee)」を参照してください。
 
-Docker を使用するには、コンテナー イメージをインストールする必要があります。 詳細については、[画像を使用するためのクイック スタート ガイド](../quick-start/quick-start-images.md)を参照してください。
+Docker を使うには、コンテナイメージをインストールする必要があります。 詳細については、「[画像を使用するためのクイックスタートガイド](../quick-start/quick-start-images.md)」を参照してください。
 
-## <a name="configure-docker-with-a-configuration-file"></a>構成ファイルと Docker を構成します。
+## <a name="configure-docker-with-a-configuration-file"></a>構成ファイルを使用して Docker を構成する
 
-Windows で Docker エンジンを構成するには、構成ファイルを使用する方法がお勧めです。 構成ファイルは、'C:\ProgramData\Docker\config\daemon.json' にあります。 存在しない場合は、このファイルを作成できます。
+Windows で Docker エンジンを構成するには、構成ファイルを使用する方法がお勧めです。 構成ファイルは、'C:\ProgramData\Docker\config\daemon.json' にあります。 まだ存在しない場合は、このファイルを作成できます。
 
 >[!NOTE]
->すべての利用可能な Docker 構成オプションは、windows Docker に適用されます。 次の例では、適用の設定オプションを示します。 Docker エンジン構成の詳細については、 [Docker デーモン構成ファイル](https://docs.docker.com/engine/reference/commandline/dockerd/#/windows-configuration-file)を参照してください。
+>使用可能なすべての Docker 構成オプションが Windows の Docker に適用されるわけではありません。 次の例は、適用される構成オプションを示しています。 Docker Engine 構成の詳細については、「 [docker デーモン構成ファイル](https://docs.docker.com/engine/reference/commandline/dockerd/#/windows-configuration-file)」を参照してください。
 
 ```json
 {
@@ -71,7 +71,7 @@ Windows で Docker エンジンを構成するには、構成ファイルを使�
 }
 ```
 
-のみ構成ファイルに必要な変更を追加する必要があります。 たとえば、次の例では、ポート 2375 での着信接続を受け入れるには、Docker エンジンを構成します。 その他のすべての構成オプションには、既定値が使用されます。
+必要な構成変更を構成ファイルに追加するだけです。 たとえば、次のサンプルでは、ポート2375での着信接続を受け入れるように Docker エンジンを構成します。 その他のすべての構成オプションには、既定値が使用されます。
 
 ```json
 {
@@ -79,7 +79,7 @@ Windows で Docker エンジンを構成するには、構成ファイルを使�
 }
 ```
 
-同様に、次の例では、代替パスに画像およびコンテナーを常に Docker デーモンを構成します。 既定では指定しない場合、`c:\programdata\docker`します。
+同様に、次のサンプルでは、Docker デーモンを構成して、イメージとコンテナーを代替パスに保持します。 指定しない場合、既定値`c:\programdata\docker`はです。
 
 ```json
 {    
@@ -87,7 +87,7 @@ Windows で Docker エンジンを構成するには、構成ファイルを使�
 }
 ```
 
-次の例では、のみポート 2376 経由でセキュリティで保護された接続を許可する Docker デーモンを構成します。
+次のサンプルでは、ポート2376経由でセキュリティで保護された接続のみを受け入れるように、Docker デーモンを構成します。
 
 ```json
 {
@@ -99,16 +99,16 @@ Windows で Docker エンジンを構成するには、構成ファイルを使�
 }
 ```
 
-## <a name="configure-docker-on-the-docker-service"></a>Docker Docker サービスを構成します。
+## <a name="configure-docker-on-the-docker-service"></a>Docker サービスでの Docker の構成
 
-Docker サービスを変更することによって、Docker エンジンを構成することも`sc config`します。 この方法の場合、Docker エンジンのフラグは Docker サービスに直接設定されます。 コマンド プロンプト (PowerShell ではなく cmd.exe) で、次のコマンドを実行します。
+Docker エンジンは、Docker サービスを変更して構成すること`sc config`もできます。 この方法の場合、Docker エンジンのフラグは Docker サービスに直接設定されます。 コマンド プロンプト (PowerShell ではなく cmd.exe) で、次のコマンドを実行します。
 
 ```cmd
 sc config docker binpath= "\"C:\Program Files\docker\dockerd.exe\" --run-service -H tcp://0.0.0.0:2375"
 ```
 
 >[!NOTE]
->Daemon.json ファイルが既に含まれている場合は、このコマンドを実行する必要はありませんが、`"hosts": ["tcp://0.0.0.0:2375"]`入力します。
+>Daemon.log ファイルに既に`"hosts": ["tcp://0.0.0.0:2375"]`エントリが含まれている場合は、このコマンドを実行する必要はありません。
 
 ## <a name="common-configuration"></a>一般的な構成
 
@@ -116,7 +116,7 @@ sc config docker binpath= "\"C:\Program Files\docker\dockerd.exe\" --run-service
 
 ### <a name="default-network-creation"></a>既定のネットワークの作成
 
-既定 NAT ネットワークを作成していないように Docker エンジンを構成するには、次の構成を使用します。
+既定の NAT ネットワークを作成しないように Docker エンジンを構成するには、次の構成を使用します。
 
 ```json
 {
@@ -126,9 +126,9 @@ sc config docker binpath= "\"C:\Program Files\docker\dockerd.exe\" --run-service
 
 詳細については、「[コンテナーのネットワーク](../container-networking/network-drivers-topologies.md)」を参照してください。
 
-### <a name="set-docker-security-group"></a>Docker セキュリティ グループを設定します。
+### <a name="set-docker-security-group"></a>Docker セキュリティグループを設定する
 
-Docker ホストにサインインして Docker コマンドを実行しているローカルにすると、名前付きパイプでこれらのコマンドが実行されます。 既定では、Administrators グループのメンバーのみが、名前付きパイプ経由で Docker エンジンにアクセスできます。 このアクセス権を持つセキュリティ グループを指定するには、`group` フラグを使用します。
+Docker のホストにサインインして、Docker コマンドをローカルで実行している場合、これらのコマンドは名前付きパイプを介して実行されます。 既定では、Administrators グループのメンバーのみが、名前付きパイプ経由で Docker エンジンにアクセスできます。 このアクセス権を持つセキュリティ グループを指定するには、`group` フラグを使用します。
 
 ```json
 {
@@ -150,20 +150,20 @@ Docker ホストにサインインして Docker コマンドを実行してい�
 Restart-Service docker
 ```
 
-詳細については、 [Windows Docker.com 構成ファイル](https://docs.docker.com/engine/reference/commandline/dockerd/#/windows-configuration-file)を参照してください。
+詳細については、「 [Docker.com の Windows 構成ファイル](https://docs.docker.com/engine/reference/commandline/dockerd/#/windows-configuration-file)」を参照してください。
 
 ## <a name="how-to-uninstall-docker"></a>Docker をアンインストールする方法
 
-このセクションでは、Windows 10 または Windows Server 2016 システムから Docker システム コンポーネントの完全なクリーンアップを行い、Docker をアンインストールする方法を説明します。
+このセクションでは、Docker をアンインストールし、Windows 10 または Windows Server 2016 システムから Docker システムコンポーネントの完全なクリーンアップを実行する方法について説明します。
 
 >[!NOTE]
->管理者特権の PowerShell セッションから次の手順では、すべてのコマンドを実行する必要があります。
+>次の手順では、管理者による PowerShell セッションからすべてのコマンドを実行する必要があります。
 
-### <a name="prepare-your-system-for-dockers-removal"></a>Docker の削除、システムを準備します。
+### <a name="prepare-your-system-for-dockers-removal"></a>Docker の削除のためにシステムを準備する
 
-Docker をアンインストールする前に、システムでコンテナーが実行されていないことを確認します。
+Docker をアンインストールする前に、システムでコンテナーが実行されていないことを確認してください。
 
-コンテナーを実行するためのチェックには、次のコマンドレットを実行します。
+実行しているコンテナーを確認するには、次のコマンドレットを実行します。
 
 ```powershell
 # Leave swarm mode (this will automatically stop and remove services and overlay networks)
@@ -173,7 +173,7 @@ docker swarm leave --force
 docker ps --quiet | ForEach-Object {docker stop $_}
 ```
 
-Docker を削除する前に、システムからすべてのコンテナー、コンテナーの画像、ネットワーク、およびボリュームを削除することをお勧めします。 次のコマンドレットを実行して、これを行うことができます。
+また、Docker を削除する前に、システムからコンテナー、コンテナーイメージ、ネットワーク、ボリュームをすべて削除することをお勧めします。 これを行うには、次のコマンドレットを実行します。
 
 ```powershell
 docker system prune --volumes --all
@@ -181,17 +181,17 @@ docker system prune --volumes --all
 
 ### <a name="uninstall-docker"></a>Docker のアンインストール
 
-次に、実際に Docker をアンインストールする必要があります。
+次に、Docker を実際にアンインストールする必要があります。
 
 Windows 10 で Docker をアンインストールするには
 
-- [**設定** > Windows 10 のコンピューター上の**アプリ**
-- [**アプリの & 機能**、 **Docker for Windows**を見つける
-- **Windows 版の Docker**に > **をアンインストールします。**
+- Windows 10 コンピューターの [**設定** > ]**アプリ**に移動する
+- [**アプリ & 機能**] で、 **Windows 用の Docker**を検索します。
+-  > **** **Windows のアンインストールのための Docker**に移動する
 
-Windows Server 2016 で Docker をアンインストールするには。
+Windows Server 2016 で Docker をアンインストールするには、次の操作を行います。
 
-管理者特権 PowerShell セッションをからには、次の例のように Docker モジュールと対応するパッケージ管理プロバイダーをシステムから削除するのには、**アンインストール パッケージ**と**アンインストール モジュール**のコマンドレットを使用します。
+管理者の PowerShell セッションから、**アンインストールパッケージ**と**アンインストールモジュール**のコマンドレットを使用して、次の例に示すように、Docker モジュールとそれに対応するパッケージ管理プロバイダーをシステムから削除します。
 
 ```powershell
 Uninstall-Package -Name docker -ProviderName DockerMsftProvider
@@ -199,17 +199,17 @@ Uninstall-Module -Name DockerMsftProvider
 ```
 
 >[!TIP]
->Docker をインストールするために使用するパッケージ プロバイダーを見つけてできます。 `PS C:\> Get-PackageProvider -Name *Docker*`
+>Docker をインストールするために使用したパッケージプロバイダーを見つけることができます。 `PS C:\> Get-PackageProvider -Name *Docker*`
 
-### <a name="clean-up-docker-data-and-system-components"></a>Docker データとシステム コンポーネントをクリーンアップします。
+### <a name="clean-up-docker-data-and-system-components"></a>Docker データとシステムコンポーネントをクリーンアップする
 
-Docker をアンインストールした後、ため、Docker が削除した後、システムで、構成してもされません Docker の既定のネットワークを削除する必要があります。 次のコマンドレットを実行して、これを行うことができます。
+Docker をアンインストールした後は、docker の既定のネットワークを削除する必要があります。これにより、その構成は、Docker の廃止後もシステムに残ります。 これを行うには、次のコマンドレットを実行します。
 
 ```powershell
 Get-HNSNetwork | Remove-HNSNetwork
 ```
 
-システムから Docker のプログラムのデータを削除するのには、次のコマンドレットを実行します。
+次のコマンドレットを実行して、Docker のプログラムデータをシステムから削除します。
 
 ```powershell
 Remove-Item "C:\ProgramData\Docker" -Recurse
@@ -217,30 +217,30 @@ Remove-Item "C:\ProgramData\Docker" -Recurse
 
 Windows 上の Docker/コンテナーに関連付けられている Windows オプション機能も必要に応じて削除します。
 
-これには、Docker がインストールされているときに、Windows 10 または Windows Server 2016 で自動的に有効に、「コンテナー」機能が含まれます。 また、"Hyper-V" 機能も含まれる可能性があります。これは、Windows 10 では Docker のインストール時に自動的に有効になりますが、Windows Server 2016 では明示的に有効にする必要がある機能です。
+これには、Docker がインストールされているときに、Windows 10 または Windows Server 2016 で自動的に有効になる "コンテナー" 機能が含まれます。 また、"Hyper-V" 機能も含まれる可能性があります。これは、Windows 10 では Docker のインストール時に自動的に有効になりますが、Windows Server 2016 では明示的に有効にする必要がある機能です。
 
 >[!IMPORTANT]
->[[HYPER-V 機能](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/about/)は、コンテナーだけでなくできるようにする一般的な仮想化機能です。 HYPER-V 機能を無効にする前に、システムでは、その他に HYPER-V を必要と仮想化されたコンポーネントがないになっていることを確認します。
+>[Hyper-v 機能](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/)は、コンテナーだけではなく、非常に多くの機能を実現する一般的な仮想化機能です。 Hyper-v 機能を無効にする前に、Hyper-v が必要なその他の仮想化されたコンポーネントがシステムにないことを確認します。
 
-Windows 10 の Windows の機能を削除するには。
+Windows 10 の Windows 機能を削除するには、次の操作を行います。
 
-- **コントロール パネル]** を [ > **プログラム** > **プログラムと機能** > **Windows の機能のオンまたはオフに**します。
-- 機能または無効に機能の名前を検索する: この場合は**コンテナー**および (オプション) **HYPER-V**します。
-- 無効に機能の名前の横にあるボックスをオフにします。
-- **"OK"** を選択します。
+- **コントロールパネル** > **** > の [**プログラムと機能** > ] に移動して、**Windows の機能をオンまたはオフ**にします。
+- 無効にする機能の名前 (この例では、**コンテナー**と (任意) **hyper-v**) を見つけます。
+- 無効にする機能の名前の横にあるチェックボックスをオフにします。
+- [ **OK** ] を選ぶ
 
-Windows Server 2016 で Windows の機能を削除するには。
+Windows Server 2016 で Windows の機能を削除するには、次の操作を行います。
 
-管理者特権 PowerShell セッションを**コンテナー**と (省略可能) システムから**HYPER-V**機能を無効にするのには、次のコマンドレットを実行します。
+管理者の PowerShell セッションで、次のコマンドレットを実行して、**コンテナー**を無効にし、(必要に応じて) システムの**hyper-v**機能を無効にします。
 
 ```powershell
 Remove-WindowsFeature Containers
 Remove-WindowsFeature Hyper-V
 ```
 
-### <a name="reboot-your-system"></a>コンピューターを再起動します。
+### <a name="reboot-your-system"></a>システムを再起動する
 
-アンインストールとクリーンアップを完了するには、するには、管理者特権 PowerShell セッション、コンピューターを再起動してから、次のコマンドレットを実行します。
+アンインストールとクリーンアップを完了するには、管理者の PowerShell セッションから次のコマンドレットを実行して、システムを再起動します。
 
 ```powershell
 Restart-Computer -Force

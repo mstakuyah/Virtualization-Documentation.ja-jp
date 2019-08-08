@@ -1,59 +1,59 @@
 ---
-title: Windows コンテナー プラットフォーム
-description: 新しいコンテナー内の文書パーツ利用可能な Windows の詳細を表示します。
-keywords: LCOW、linux コンテナー、docker、コンテナー、containerd、cri、runhcs、runc
+title: Windows コンテナプラットフォーム
+description: 詳細については、「Windows で利用できる新しいコンテナー文書パーツ」を参照してください。
+keywords: LCOW、linux コンテナー、docker、コンテナー、cri の入っている erd、、runhcs、runc
 author: scooley
 ms.date: 11/19/2018
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: a0e62b32-0c4c-4dd4-9956-8056e9abd9e5
-ms.openlocfilehash: 74e22702aa4be30055b3f4f48c7fac926d793095
-ms.sourcegitcommit: 03e9203e9769997d8be3f66dc7935a3e5c0a83e1
+ms.openlocfilehash: 3107eb48dc9c75224b0c9dd9b436af6f0f451871
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9621610"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998419"
 ---
-# <a name="container-platform-tools-on-windows"></a>Windows にコンテナー プラットフォーム ツール
+# <a name="container-platform-tools-on-windows"></a>Windows のコンテナプラットフォームツール
 
-Windows コンテナー プラットフォームを展開します。 コンテナーの他のプラットフォーム ツールで作ったはこれで、docker はしますコンテナーの旅の最初の部分をでした。
+Windows コンテナプラットフォームが拡張されています。 Docker は、現在のコンテナーの最初の部分であるため、他のコンテナープラットフォームツールを構築しています。
 
-* [containerd/cri](https://github.com/containerd/cri) - 新しい Windows Server 2019/Windows 10 1809 します。
-* [runhcs](https://github.com/Microsoft/hcsshim/tree/master/cmd/runhcs) - runc に Windows のコンテナーのホストに対応します。
-* [hcs](https://docs.microsoft.com/virtualization/api/) - ホスト計算サービス + 便利な shim を使用するが簡単にします。
+* 含まれる[erd/cri](https://github.com/containerd/cri) -windows Server 2019/windows 10 1809 に新しく追加されています。
+* [runhcs](https://github.com/Microsoft/hcsshim/tree/master/cmd/runhcs) -runc に対応する Windows コンテナーホスト。
+* [hcs](https://docs.microsoft.com/virtualization/api/) -ホストコンピューティングサービス + 便利な shim を使って、使いやすくすることができます。
   * [hcsshim](https://github.com/microsoft/hcsshim)
-  * [dotnet computevirtualization](https://github.com/microsoft/dotnet-computevirtualization)
+  * [.net-computevirtualization](https://github.com/microsoft/dotnet-computevirtualization)
 
-この記事は Windows および Linux コンテナー プラットフォームと各コンテナー プラットフォーム ツールについて説明します。
+この記事では、Windows と Linux のコンテナプラットフォーム、および各コンテナプラットフォームツールについて説明します。
 
-## <a name="windows-and-linux-container-platform"></a>Windows と Linux コンテナー プラットフォーム
+## <a name="windows-and-linux-container-platform"></a>Windows と Linux のコンテナプラットフォーム
 
-[コンテナー ツール一式をより詳細な Linux 環境で Docker などのコンテナーの管理ツールが組み込まれている: [runc](https://github.com/opencontainers/runc)と[containerd](https://containerd.io/)します。
+Linux 環境では、Docker などのコンテナー管理ツールは、 [runc](https://github.com/opencontainers/runc)と "いい[erd](https://containerd.io/)" のように、より細かいコンテナーツールのセットに組み込まれています。
 
-![Linux docker アーキテクチャ](media/docker-on-linux.png)
+![Linux の Docker アーキテクチャ](media/docker-on-linux.png)
 
-`runc` Linux コマンド ライン ツールを作成および[OCI コンテナー ランタイムの仕様](https://github.com/opencontainers/runtime-spec)に従ってコンテナーを実行しているのためです。
+`runc` は、 [OCI コンテナーランタイムの仕様](https://github.com/opencontainers/runtime-spec)に従ってコンテナーを作成して実行するための Linux コマンドラインツールです。
 
-`containerd` ダウンロードして、コンテナーの実行を監視、コンテナーの画像を展開して、コンテナーのライフ サイクルを管理するデーモンです。
+`containerd` コンテナのライフサイクルを管理するデーモンであり、コンテナの実行と監督へのコンテナーイメージのダウンロードとアンパックを行います。
 
-Windows では、別の方法がわかったします。  Windows のコンテナーをサポートする Docker で作業を開始したときは、HCS (計算サービスをホストする) に直接開発されています。  [ブログの投稿](https://techcommunity.microsoft.com/t5/Containers/Introducing-the-Host-Compute-Service-HCS/ba-p/382332)は、HCS を作成した理由と理由はこのアプローチ コンテナーに最初にについての完全なです。
+Windows では、別のアプローチが採用されました。  Windows コンテナーをサポートするために、Docker を使って作業を開始した場合は、HCS (ホストコンピューティングサービス) に直接組み込まれています。  [このブログの投稿](https://techcommunity.microsoft.com/t5/Containers/Introducing-the-Host-Compute-Service-HCS/ba-p/382332)には、なぜ hcs を構築したのかに関する情報があります。この方法では、最初にこの方法でコンテナーを作成しました。
 
-![Windows の初期 Docker エンジン アーキテクチャ](media/hcs.png)
+![Windows 上の最初の Docker エンジンアーキテクチャ](media/hcs.png)
 
-この時点では、まだ Docker が、HCS に直接呼び出します。 今後、ただし、コンテナーの管理ツールが Windows コンテナー コンテナー ホスト containerd と runhcs に containerd と linux runc に電話をかける方法との通話の可能性のある Windows など、展開します。
+この時点では、Docker はまだ HCS に直接通話を発信しています。 ただし、Windows コンテナーを含めるためにコンテナー管理ツールが拡張されています。 Windows コンテナーホストでは、windows のコンテナーが含まれています。この場合、Windows コンテナーホストは、Linux 上での erd と runc での呼び出し方法として、コンテナーと runhcs に呼び出します。
 
 ## <a name="runhcs"></a>runhcs
 
-`runhcs` 分岐が`runc`します。  ような`runc`、`runhcs`コマンド ライン クライアント アプリケーションを開いているコンテナー initiative (英語) (OCI) 書式に従ってパッケージを実行するのには、準拠実装で開いているコンテナー initiative (英語) の仕様のします。
+`runhcs` はの`runc`フォークです。  Like `runc`は`runhcs` 、open container イニシアチブ (OCI) 形式に従ってパッケージ化されたアプリケーションを実行するためのコマンドラインクライアントであり、open container イニシアチブ仕様の準拠実装です。
 
 Runc と runhcs の機能の違いは次のとおりです。
 
-* `runhcs` windows を実行します。  作成し、管理コンテナーに[HCS](containerd.md#hcs)と通信します。
-* `runhcs` さまざまな種類の別のコンテナーを実行できます。
+* `runhcs` Windows で実行されます。  このアプリは、 [Hcs](containerd.md#hcs)と通信して、コンテナーの作成と管理を行います。
+* `runhcs` さまざまな種類のコンテナーを実行できます。
 
-  * Windows と Linux [HYPER-V 分離](../manage-containers/hyperv-container.md)
-  * Windows コンテナー (コンテナーの画像は、コンテナーのホストを一致する必要があります) を処理します。
+  * Windows と Linux[の hyper-v 分離](../manage-containers/hyperv-container.md)
+  * Windows プロセスコンテナー (コンテナーの画像はコンテナーのホストと一致する必要があります)
 
 **使い方:**
 
@@ -61,71 +61,71 @@ Runc と runhcs の機能の違いは次のとおりです。
 runhcs run [ -b bundle ] <container-id>
 ```
 
-`<container-id>` 開始しているコンテナーのインスタンスの名前です。 名前は、コンテナーのホスト上で一意である必要があります。
+`<container-id>` は、開始するコンテナーインスタンスの名前です。 この名前は、コンテナーホストで一意である必要があります。
 
-バンドル ディレクトリ (を使用して`-b bundle`) はオプションです。  
-Runc と同様、バンドルを使用するコンテナーが構成されます。 コンテナーのバンドルが、コンテナーの OCI 仕様ファイル ディレクトリ"config.json"します。  「バンドル」の既定値は、現在のディレクトリです。
+バンドルディレクトリ (使用`-b bundle`) はオプションです。  
+Runc の場合と同様に、コンテナーはバンドルを使って構成されます。 コンテナーのバンドルは、コンテナーの OCI 仕様ファイル "config. json" を含むディレクトリです。  "バンドル" の既定値は、現在のディレクトリです。
 
-OCI 仕様ファイル、"config.json"、2 つのフィールドが正常に実行するには。
+OCI spec ファイル "config.xml" は、正しく実行するために2つのフィールドを持つ必要があります。
 
 * コンテナーのスクラッチ領域へのパス
-* コンテナーのレイヤー ディレクトリへのパス
+* コンテナーのレイヤーディレクトリへのパス
 
-Runhcs で使用できるコンテナー コマンドは、次のとおりです。
+Runhcs で使用できるコンテナーコマンドには次のものがあります。
 
-* 作成して、コンテナーを実行するためのツール
-  * **実行**作成し、コンテナーの実行
-  * コンテナーを**作成する**作成します。
+* コンテナーを作成して実行するためのツール
+  * **run**コンテナーを作成して実行します。
+  * コンテナーの作成を**作成**する
 
-* コンテナーの実行中のプロセスを管理するためのツール。
-  * 作成したコンテナー内のユーザー定義処理を実行**開始**
-  * **実行**コンテナー内の新しいプロセスを実行します。
-  * 一時停止] を**ポイント**しますコンテナー内のすべてのプロセスを停止します。
-  * 以前に一時停止されているすべてのプロセスを再開する**再開します。**
-  * **ps** ps は、コンテナーの内部を実行しているプロセスを表示します。
+* コンテナーで実行されているプロセスを管理するためのツール:
+  * **start**作成したコンテナーでユーザー定義のプロセスを実行します。
+  * **exec**は、コンテナー内で新しいプロセスを実行します。
+  * **** 一時停止 pause は、コンテナー内のすべてのプロセスを停止します
+  * **resume**は、以前に一時停止されているすべてのプロセスを再開します
+  * **ps** ps は、コンテナー内で実行されているプロセスを表示する
 
 * コンテナーの状態を管理するためのツール
-  * **状態**をコンテナーの状態を出力します。
-  * 指定されたシグナルを送信**を強制終了**(既定: SIGTERM) コンテナーの初期プロセス
-  * **コンテナーのデタッチ コンテナーと使用頻度が保持しているすべてのリソースを削除します。**
+  * **状態**はコンテナーの状態を出力します。
+  * **kill**は、指定されたシグナル (既定: SIGTERM) をコンテナーの init プロセスに送信します。
+  * **delete**は、デタッチされたコンテナーで頻繁に使われるコンテナーが保持しているリソースを削除します
 
-複数のコンテナーを考慮する可能性のあるだけで、コマンドは、**リスト**です。  指定されたルートと runhcs が開始した実行中または一時停止しているコンテナーが表示されます。
+複数のコンテナーと見なされる唯一のコマンドは**list**です。  これは、指定されたルートを使って、runhcs で開始される実行中または一時停止のコンテナーを一覧表示します。
 
 ### <a name="hcs"></a>HCS
 
-GitHub に、HCS で利用可能な 2 つのラッパーがあります。 C API、HCS なので、ラッパーしやすいようにより高いレベルの言語から、HCS を発信します。  
+HCS とのインターフェイスには、GitHub で利用可能な2つのラッパがあります。 HCS は C API であるため、ラッパーでは、より高いレベルの言語から HCS を簡単に呼び出すことができます。  
 
-* [hcsshim](https://github.com/microsoft/hcsshim) - HCSShim は、外出先で記述されてれ、runhcs の基本です。
-AppVeyor 最新情報を取得するか、自分で作成します。
-* [dotnet computevirtualization](https://github.com/microsoft/dotnet-computevirtualization) -dotnet computevirtualization、HCS の c# 包み紙には
+* [hcsshim](https://github.com/microsoft/hcsshim) -Hcsshim は Go で書かれており、runhcs の基礎となっています。
+AppVeyor から最新情報を入手するか、自分で作成します。
+* [.net-computevirtualization](https://github.com/microsoft/dotnet-computevirtualization) -.net-computevirtualization は、Hcs の C# ラッパーです。
 
-(直接または経由の包み紙に)、HCS を使用する場合は、HCS 周囲錆び/Haskell/InsertYourLanguage の包み紙にする、コメントのままにしてください。
+HCS (直接またはラッパー経由) を使用する場合、または、Rust/Haskell/Inserta the the the the the the the the the the the the comment (英語)
 
-HCS の詳細については、 [John Stark の DockerCon プレゼンテーション](https://www.youtube.com/watch?v=85nCF5S8Qok)をご覧ください。
+HCS の詳細については、 [John はっきりの DockerCon プレゼンテーション](https://www.youtube.com/watch?v=85nCF5S8Qok)をご覧ください。
 
-## <a name="containerdcri"></a>containerd/cri
+## <a name="containerdcri"></a>cri
 
 > [!IMPORTANT]
-> CRI サポートは、サーバー 2019年/Windows 10 1809 で使用できると、後でのみです。  Windows 版の containerd を開発している場合も引き続き積極的にします。
-> 開発/テストのみです。
+> CRI のサポートは、サーバー 2019/Windows 10 1809 以降でのみ使用できます。  また、Windows 用のお客様のために、現在も活発な erd を開発しています。
+> 開発/テストのみ。
 
-[CRI](https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/cri/runtime/v1alpha2/api.proto) (コンテナー ランタイム インターフェイス) が共有サンド ボックスで workload(s) としてコンテナーを説明する OCI 仕様には、1 つのコンテナーが定義されているときに環境にポッドが呼び出されます。  ポッドには、1 つ以上のコンテナー ワークロードを含めることができます。  ポッドは Kubernetes とサービス布地へメッシュ処理のメモリ、vNETs などのいくつかの共有リソースと同じホストに置かれるべき作業負荷をグループ化されたようにコンテナー orchestrators ことができます。
+OCI の仕様では1つのコンテナーが定義されていますが、 [CRI](https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/cri/runtime/v1alpha2/api.proto) (container runtime interface) は pod と呼ばれる共有サンドボックス環境のワークロードとしてコンテナーを記述します。  ポッドには、1つ以上のコンテナーのワークロードを含めることができます。  Pod は、Kubernetes やサービスファブリックメッシュなどのグループ化されたワークロードを、メモリや vNETs などの共有リソースを使って、同じホスト上にある必要があります。
 
-containerd/cri には、次の互換性マトリックスのポッドが有効にします。
+cri は、pod の次の互換性マトリックスを有効にします。
 
-| ホスト OS | OS のコンテナー | 分離 | ポッド サポートですか。 |
+| ホスト OS | コンテナー OS | 隔離 | ポッドのサポート |
 |:-------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:---------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------|
-| <ul><li>Windows Server 2019/1809</ul></li><ul><li>Windows 10 1809</ul></li> | Linux | `hyperv` | [はい]: 複数のコンテナー ポッド、true をサポートしています。 |
-|  | Windows Server 2019/1809 | `process`* または `hyperv` | [はい]: サポート true 複数コンテナー ポッド各ワークロード コンテナー OS ユーティリティ VM OS に一致します。 |
-|  | Windows Server 2016、</br>Windows Server 1709、</br>Windows Server 1803 | `hyperv` | 部分的な-ポッド コンテナー OS ユーティリティ VM OS に一致する場合は、ユーティリティ VM あたり 1 つのステップに分離コンテナーをサポートできるサンド ボックスをサポートしています。 |
+| <ul><li>Windows Server 2019/1809</ul></li><ul><li>Windows 10 1809</ul></li> | Linux | `hyperv` | Yes —真の複数コンテナーポッドをサポートします。 |
+|  | Windows Server 2019/1809 | `process`* または `hyperv` | Yes —各ワークロードコンテナー OS がユーティリティ VM OS と一致する場合に、真の複数コンテナーポッドをサポートします。 |
+|  | Windows Server 2016</br>Windows Server 1709</br>Windows Server 1803 | `hyperv` | Partial —コンテナー OS がユーティリティ VM OS と一致した場合に、1つのプロセスで分離されたコンテナーをユーティリティ VM ごとにサポートできる pod サンドボックスをサポートします。 |
 
-\*Windows 10 ホストのみ HYPER-V 分離をサポートします。
+\ * Windows 10 ホストは、Hyper-v 分離のみをサポートします
 
-CRI 仕様へのリンク。
+CRI spec へのリンク:
 
-* [RunPodSandbox](https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/cri/runtime/v1alpha2/api.proto#L24) - ポッドの仕様
-* [CreateContainer](https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/cri/runtime/v1alpha2/api.proto#L47) - ワークロードの仕様
+* [Runpodsandbox](https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/cri/runtime/v1alpha2/api.proto#L24) -ポッドスペック
+* [Createcontainer](https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/cri/runtime/v1alpha2/api.proto#L47) -ワークロードの仕様
 
-![ベース Containerd コンテナーが混在する環境](media/containerd-platform.png)
+![格納用 erd ベースのコンテナー環境](media/containerd-platform.png)
 
-RunHCS と containerd は、任意の Windows システム Server 2016 以降で管理できる、ポッド (コンテナーのグループ) をサポートするために必要なコンテナー ツールに Windows で変更を解除します。  CRI サポート、Windows Server 2019/Windows 10 1809 以降使用します。
+RunHCS とインプレース erd はどちらも Windows システムサーバー2016以降で管理できますが、Pod (コンテナーのグループ) をサポートするには、Windows のコンテナーツールへの変更を壊す必要があります。  CRI のサポートは、Windows Server 2019/Windows 10 1809 以降で利用できます。

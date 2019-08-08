@@ -7,12 +7,12 @@ ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: d3df0631a8a61db16ad207f49163a7304c5db717
-ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
+ms.openlocfilehash: 5fc9b5c9135e87a0d3246952c35c9755e9ad209e
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "9681052"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998469"
 ---
 # <a name="windows-container-requirements"></a>Windows コンテナーの要件
 
@@ -21,72 +21,21 @@ ms.locfileid: "9681052"
 ## <a name="os-requirements"></a>OS 要件
 
 - Windows コンテナー機能は、Windows Server 2016 (コアおよびデスクトップエクスペリエンス)、Windows 10 Professional、Enterprise (記念日) 以降でのみ使用できます。
-<<<<<<< HEAD
 - Hyper-v の分離を実行する前に、Hyper-v の役割をインストールする必要があります。
 - Windows Server コンテナー ホストでは、Windows を c:\ にインストールする必要があります。 この制限は、Hyper-v の分離されたコンテナーのみを展開する場合には適用されません。
-=======
-- Hyper-v ロールをインストールしてから、Hyper-v 分離でコンテナーを実行する必要があります。
-- Windows Server コンテナー ホストでは、Windows を c:\ にインストールする必要があります。 Hyper-V コンテナーのみを展開する場合、この制限は適用されません。
->>>>>>> 原点/マスター
 
 ## <a name="virtualized-container-hosts"></a>仮想化されたコンテナーホスト
 
-<<<<<<< HEAD Windows コンテナーホストが Hyper-v 仮想マシンから実行され、Hyper-v 分離をホストする場合は、入れ子になった仮想化を有効にする必要があります。 入れ子になった仮想化には、次の要件があります。 = = = = = = = = = = = =: Windows コンテナーホストは、hyper-v 仮想マシンから実行され、Hyper-v 分離を備えたコンテナーとしても、入れ子になった仮想化を有効にする必要があります。 入れ子になった仮想化には次の要件があります。
->>>>>>> 原点/マスター
+Windows コンテナーホストを Hyper-v 仮想マシンから実行し、Hyper-v 分離をホストする場合は、入れ子になった仮想化を有効にする必要があります。 入れ子になった仮想化には次の要件があります。
 
 - 仮想化された Hyper-V ホスト用に少なくとも 4 GB の RAM を利用できる。
 - Windows Server 2019、Windows server バージョン1803、windows Server バージョン1709、windows Server 2016、ホストシステム上の windows 10、仮想マシンの windows Server (フル、コア)。
 - Intel VT-x に対応したプロセッサ (この機能は現在 Intel プロセッサのみで使用可能です)。
-<<<<<<< HEAD
 - コンテナーホスト VM には、少なくとも2つの仮想プロセッサが必要です。
 
 ## <a name="supported-base-images"></a>サポートされている基本イメージ
 
-<a name="windows-containers-are-offered-with-four-container-base-images-windows-server-core-nano-server-windows-and-iot-core-not-all-configurations-support-both-os-images-this-table-details-the-supported-configurations"></a>Windows コンテナーは、Windows Server Core、Nano Server、Windows、IoT Core という4つのコンテナーベースのイメージで提供されます。 一部の構成は、どちらの OS イメージもサポートしていません。 サポートされている構成を次の表に示します。
-=======
-- コンテナー ホスト VM には、少なくとも 2 つの仮想プロセッサも必要になります。
-
-## <a name="supported-base-images"></a>サポートされる基本イメージ
-
 Windows コンテナーは、Windows Server Core、Nano Server、Windows、IoT Core という4つのコンテナーベースのイメージで提供されます。 一部の構成は、どちらの OS イメージもサポートしていません。 サポートされている構成を次の表に示します。
-
-<table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:75%" cellpadding="5" cellspacing="5">
-<thead>
-<tr valign="top">
-<th><center>ホスト オペレーティング システム</center></th>
-<th><center>Windows Server コンテナー</center></th>
-<th><center>Hyper-V による分離</center></th>
-</tr>
-</thead>
-<tbody>
-<tr valign="top">
-<td><center>Windows Server 2016/2019 (標準またはデータセンター)</center></td>
-<td><center>Server Core、Nano Server、Windows</center></td>
-<td><center>Server Core、Nano Server、Windows</center></td>
-</tr>
-<tr valign="top">
-<td><center>Nano Server<a href="#warn-1">*</a></center></td>
-<td><center> Nano Server</center></td>
-<td><center>Server Core、Nano Server、Windows</center></td>
-</tr>
-<tr valign="top">
-<td><center>Windows 10 Pro / Enterprise</center></td>
-<td><center>窓<a href="#warn-2">**</a></center></td>
-<td><center>Server Core、Nano Server、Windows</center></td>
-</tr>
-<tr valign="top">
-<td><center>IoT Core</center></td>
-<td><center>IoT Core</center></td>
-<td><center>利用不可</center></td>
-</tr>
-</tbody>
-</table>
-
-> [!Warning]  
-> <span id="warn-1">* Windows Server 以降、バージョン 1709 Nano Server は、コンテナーホストとしては使用できなくなりました。</span>
-
-> <span id="warn-2">* * Windows 10 年 2018 10 月の更新プログラムが必要です。また、を使用してコンテナーを実行するときに、プロセスの分離を直接要求することもできます。</span>
->>>>>>> 原点/マスター
 
 |ホストオペレーティングシステム|Windows コンテナー|Hyper-V による分離|
 |---------------------|-----------------|-----------------|

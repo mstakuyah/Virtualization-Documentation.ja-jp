@@ -8,30 +8,30 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-ms.openlocfilehash: 41fa89dcaba38d43d39681240a1a108c9250ba78
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 93c56dba88715df41cab054cda676879b275380b
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9575173"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9999209"
 ---
 # <a name="automating-builds-and-saving-images"></a>ビルドの自動化とイメージの保存
 
-前の Windows Server クイック スタートでは、以前に作成した .NET Core サンプルから Windows コンテナーを作成しました。 ここでは、Dockerfile から独自のコンテナー イメージを作成し、Docker ハブ パブリック レジストリにコンテナーの画像を保存する方法を示します。
+前の Windows Server クイック スタートでは、以前に作成した .NET Core サンプルから Windows コンテナーを作成しました。 この演習では、Dockerfile から独自のコンテナーイメージを作成し、Docker Hub パブリックレジストリにコンテナーイメージを格納する方法について説明します。
 
-このクイック スタートでは、Windows Server 2019 または Windows Server 2016 で Windows Server コンテナーをし、Windows Server Core コンテナーの基本イメージを使用します。 このページの左側の目次に追加のクイック スタート文書があります。
+このクイックスタートは、windows server 2019 または windows Server 2016 の Windows Server コンテナー固有のものであり、Windows Server Core container のベースイメージを使います。 このページの左側の目次に追加のクイック スタート文書があります。
 
 ## <a name="prerequisites"></a>前提条件
 
 次の要件を満たしていることを確認してください。
 
-- 1 台のコンピューター システムが実行されている Windows Server 2019 (物理または仮想) または Windows Server 2016 します。
-- Windows コンテナーの機能と Docker このシステムを構成します。 次の手順でチュートリアルについては、 [Windows Server の Windows コンテナー](./quick-start-windows-server.md)を参照してください。
+- Windows Server 2019 または Windows Server 2016 を実行している1台のコンピューターシステム (物理または仮想)。
+- Windows container 機能と Docker を使って、このシステムを構成します。 この手順のチュートリアルについては、「 [Windows Server の windows コンテナー](./quick-start-windows-server.md)」を参照してください。
 - Docker ID。コンテナー イメージを Docker Hub にプッシュするために使用されます。 Docker ID がない場合は、[Docker Cloud](https://cloud.docker.com/) でサインアップしてください。
 
-## <a name="container-image---dockerfile"></a>コンテナーの画像 - Dockerfile
+## <a name="container-image---dockerfile"></a>コンテナーイメージ-Dockerfile
 
-コンテナーは手動で作成、変更して、新しいコンテナー イメージにキャプチャすることもできますが、Docker には、Dockerfile を使用してこのプロセスを自動化するためのメソッドが含まれています。 この演習には Docker ID が必要です。 Docker ID がない場合は、[Docker Cloud]( https://cloud.docker.com/) でサインアップしてください。
+コンテナーは手動で作成、変更して、新しいコンテナー イメージにキャプチャすることもできますが、Docker には、Dockerfile を使用してこのプロセスを自動化するためのメソッドが含まれています。 この演習には Docker ID が必要です。 Docker ID がない場合は、[Docker Cloud](https://cloud.docker.com/) でサインアップしてください。
 
 コンテナー ホストで、ディレクトリ `c:\build` を作成し、このディレクトリ内に `Dockerfile` という名前のファイルを作成します。 注記 – このファイルにはファイル拡張子を与えません。
 
@@ -130,7 +130,7 @@ Login Succeeded
 docker push <user>/iis-dockerfile
 ```
 
-Docker Docker ハブまでには、各レイヤーをプッシュと docker は Docker ハブで、またはその他のレジストリ (外部レイヤー) に既に存在しているレイヤーをスキップします。  たとえば、Microsoft コンテナー レジストリ、または、プライベート企業レジストリからレイヤーでホストされている最新のバージョンの Windows Server Core をスキップするといない Docker ハブにプッシュするとします。
+Docker は、各レイヤーを Docker Hub までプッシュします。 docker は、Docker Hub または他のレジストリ (外部レイヤー) に既に存在するレイヤーをスキップします。  たとえば、Microsoft Container レジストリでホストされている Windows Server Core の最近のバージョン、またはプライベートな企業レジストリのレイヤーはスキップされ、Docker Hub にプッシュされません。
 
 これで、`docker pull` を使用して、コンテナー イメージを Docker Hub から任意の Windows コンテナー ホストにダウンロードできるようになります。 このチュートリアルでは、既存のイメージを削除し、Docker Hub からプルします。 
 

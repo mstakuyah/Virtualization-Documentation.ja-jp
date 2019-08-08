@@ -19,4 +19,4 @@ Microsoft は、本条項で明記されていないその他のすべての権�
 
 この追加機能を使用すると、本ライセンス条項に同意したものと見なされます。 本ライセンス条項に同意されない場合、この追加機能を使用しないでください。
 
-Windows コンテナーのコンテナー OS イメージの補足条項の一部として、しても、基になる Windows Server host ソフトウェア ライセンス条項に配置するの適用対象:https://www.microsoft.com/en-us/usetermsします。  
+Windows コンテナー用のコンテナー OS イメージの補足ライセンス条項の一部として、次https://www.microsoft.com/usetermsの場所にある、基礎となる windows Server host software ライセンス条項も適用されます。  

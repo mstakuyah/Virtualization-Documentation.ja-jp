@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
-ms.openlocfilehash: 90894278885fde54feab222bb2bf44ca3eba331b
-ms.sourcegitcommit: daf1d2b5879c382404fc4d59f1c35c88650e20f7
+ms.openlocfilehash: 0aa93b721ab1279cb789e3a18cad04bb668d2644
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "9674737"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998519"
 ---
 # <a name="frequently-asked-questions-about-containers"></a>コンテナーについてよく寄せられる質問
 
@@ -41,7 +41,7 @@ Windows Server コンテナーでは、スピンアップ時間の短縮や入�
 
 ## <a name="can-i-run-windows-containers-in-process-isolated-mode-on-windows-10-enterprise-or-professional"></a>Windows 10 Enterprise または Professional で、プロセス分離モードで Windows コンテナーを実行できますか?
 
-Windows 10 年 2018 10 月の更新プログラムでは、プロセス分離を使用して windows コンテナーを実行できますが、まず、コンテナーを実行するときにフラグを使用してプロセスの分離を要求する必要があります。
+Windows 10 年 2018 10 月の更新プログラムでは、プロセス分離を使用して Windows コンテナーを実行でき`--isolation=process` `docker run`ますが、まず、コンテナーを実行するときにフラグを使用してプロセスの分離を要求する必要があります。
 
 このようにして Windows コンテナーを実行する場合は、ホストが Windows 10 ビルド 17763 + を実行していて、エンジン18.09 以降を搭載した Docker バージョンがインストールされていることを確認する必要があります。
 

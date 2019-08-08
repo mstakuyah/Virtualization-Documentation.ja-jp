@@ -7,12 +7,12 @@ ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: ae4a18ed-996b-4104-90c5-539c90798e4c
-ms.openlocfilehash: c14027e6ba1b0cd475ec1543205b315240662f2c
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 25c72b910af15fc0b498a5b2abce72d32e6d1efd
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9575863"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9999039"
 ---
 # <a name="supported-windows-guests"></a>サポートされる Windows ゲスト
 
@@ -37,18 +37,18 @@ Microsoft では、次のようにサポートを提供します。
 | Windows 10 | 32 |拡張セッション モードは、Windows 10 Home エディションでは機能しません |
 | Windows 8.1 | 32 | |
 | Windows 8 | 32 ||
-| Windows 7 Service Pack 1 (SP 1) | 4 | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
-| Windows 7 | 4 | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
-| WindowsVista Service Pack2 (SP2) | 2 | Business、Enterprise、および Ultimate (N および KN エディションを含む)。 |
+| Windows 7 Service Pack 1 (SP 1) | 4d | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
+| Windows 7 | 4d | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
+| WindowsVista Service Pack2 (SP2) | 両面 | Business、Enterprise、および Ultimate (N および KN エディションを含む)。 |
 | - | | |
-| [Windows Server 半期チャネル](https://docs.microsoft.com/en-us/windows-server/get-started/semi-annual-channel-overview) | 64 | |
+| [Windows Server 半期チャネル](https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview) | 64 | |
 | Windows Server 2019 | 64 | |
 | Windows Server 2016 | 64 | |
 | Windows Server 2012 R2 | 64 | |
 | Windows Server 2012 | 64 | |
 | Windows Server 2008 R2 Service Pack 1 (SP 1) | 64 | Datacenter、Enterprise、Standard、および Web Edition。 |
-| Windows Server 2008 Service Pack 2 (SP 2) | 4 | Datacenter、Enterprise、Standard、および Web Edition (32 ビットおよび 64 ビット)。 |
-| Windows Home Server 2011 | 4 | |
+| Windows Server 2008 Service Pack 2 (SP 2) | 4d | Datacenter、Enterprise、Standard、および Web Edition (32 ビットおよび 64 ビット)。 |
+| Windows Home Server 2011 | 4d | |
 | Windows Small Business Server 2011 | Essentials edition - 2、Standard edition - 4 | |
 
 > Windows 10 は、Windows 8.1 と Windows Server 2012 R2 Hyper-V ホスト上でゲスト オペレーティング システムとして実行できます。
@@ -57,11 +57,11 @@ Microsoft では、次のようにサポートを提供します。
 
 | ゲスト オペレーティング システム |  |
 |:-----|:------|
-| [CentOS と Red Hat Enterprise Linux](https://technet.microsoft.com/library/dn531026.aspx) | |
-| [Hyper-V の Debian 仮想マシン](https://technet.microsoft.com/library/dn614985.aspx) | |
-| [SUSE](https://technet.microsoft.com/en-us/library/dn531027.aspx) | |
-| [Oracle Linux](https://technet.microsoft.com/en-us/library/dn609828.aspx)  | |
-| [Ubuntu](https://technet.microsoft.com/en-us/library/dn531029.aspx) | |
-| [FreeBSD](https://technet.microsoft.com/library/dn848318.aspx) | |
+| [CentOS と Red Hat Enterprise Linux](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-CentOS-and-Red-Hat-Enterprise-Linux-virtual-machines-on-Hyper-V) | |
+| [Hyper-V の Debian 仮想マシン](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Debian-virtual-machines-on-Hyper-V) | |
+| [SUSE](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-SUSE-virtual-machines-on-Hyper-V) | |
+| [Oracle Linux](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Oracle-Linux-virtual-machines-on-Hyper-V)  | |
+| [Ubuntu](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Ubuntu-virtual-machines-on-Hyper-V) | |
+| [FreeBSD](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-FreeBSD-virtual-machines-on-Hyper-V) | |
 
-過去のバージョンの Hyper-V におけるサポート情報などの詳細については、「[Hyper V の Linux と FreeBSD 仮想マシン](https://technet.microsoft.com/library/dn531030.aspx)」をご覧ください。
+過去のバージョンの Hyper-V におけるサポート情報などの詳細については、「[Hyper V の Linux と FreeBSD 仮想マシン](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Linux-and-FreeBSD-virtual-machines-for-Hyper-V-on-Windows)」をご覧ください。

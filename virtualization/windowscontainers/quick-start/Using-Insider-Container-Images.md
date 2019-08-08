@@ -11,7 +11,7 @@
 - Windows Insider Program から提供された Windows Server の最新ビルドや、Windows Insider Program から提供された Windows 10 の最新ビルドが実行されている 1 台のコンピューター システム (物理マシンまたは仮想マシン)。
 
 > [!IMPORTANT]
-> Windows Server のビルド プログラムで Windows Server 内部のプレビューを使用する必要があります。 または基本の画像を使用する Windows 内部プレビュー プログラムから Windows 10 のビルド以下で説明します。 これらのビルドを使用せずに、対象の基本イメージを使用した場合、コンテナーを開始できません。
+> Windows server Insider Preview プログラムまたは windows 10 のビルドから windows Server のビルドを使用する必要があります。 windows Insider Preview プログラムでは、以下に示す基本イメージを使用します。 これらのビルドを使用せずに、対象の基本イメージを使用した場合、コンテナーを開始できません。
 
 ## <a name="install-docker-enterprise-edition-ee"></a>Docker Enterprise Edition (EE) のインストール
 
@@ -20,7 +20,7 @@ Windows コンテナーを使用するには Docker EE が必要です。 Docker
 Docker EE をインストールするには、OneGet プロバイダー PowerShell モジュールを使用します。 このプロバイダーは、コンピューターでコンテナー機能を有効にして、Docker EE をインストールします。これには、再起動が必要です。 管理者特権の PowerShell セッションを開き、次のコマンドを実行します。
 
 > [!NOTE]
-> Windows Server 内部ビルド Docker EE をインストールするには、いずれかの内部ではないビルドに使用される以外の OneGet プロバイダーが必要です。 Docker EE と DockerMsftProvider OneGet プロバイダーが既にインストールされている場合は、続行する前に削除します。
+> Windows Server Insider ビルドでの Docker EE のインストールには、Insider 以外のビルドに使用されるものとは異なる OneGet provider が必要です。 Docker EE と DockerMsftProvider OneGet プロバイダーが既にインストールされている場合は、続行する前に削除します。
 
 ```powershell
 Stop-Service docker
@@ -70,9 +70,9 @@ docker pull mcr.microsoft.com/windows/servercore/insider
 ```
 
 > [!IMPORTANT]
-> Windows OS の画像の[使用許諾契約書](../EULA.md )と Windows 内部プログラム[Terms of Use](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver)コンテナーを参照してください。
+> Windows コンテナ OS イメージ[EULA](../EULA.md )と windows Insider プログラム[利用規約](https://www.microsoft.com/software-download/windowsinsiderpreviewserver)をお読みください。
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [作成してサンプル アプリケーションを実行するには.](./Nano-RS3-.NET-Core-and-PS.md)
+> [サンプルアプリケーションをビルドして実行する](./Nano-RS3-.NET-Core-and-PS.md)

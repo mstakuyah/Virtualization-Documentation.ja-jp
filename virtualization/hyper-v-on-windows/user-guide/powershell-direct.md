@@ -8,29 +8,29 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: fb228e06-e284-45c0-b6e6-e7b0217c3a49
-ms.openlocfilehash: 779dcf51d4903c9467cc52dbadb865beb9929bd2
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: ed96c7ba30c83906cd3245a279ab078229400d8d
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9577323"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998729"
 ---
 # <a name="virtual-machine-automation-and-management-using-powershell"></a>PowerShell を使用した仮想マシンの自動化と管理
- 
+
 PowerShell ダイレクトを使用すると、ネットワークの構成やリモート管理の設定に関係なく、Hyper-V ホストから、Windows 10 仮想マシンまたは Windows Server 2016 仮想マシンで任意の PowerShell を実行することができます。
 
-**PowerShell ダイレクトを実行する方法:**  
-* 対話型セッションとして -- Enter-PSSession を使用して対話型 PowerShell セッションを作成および終了するには、[ここをクリック](#create-and-exit-an-interactive-powershell-session)してください。
-* 単一のコマンドまたはスクリプトを実行する一時使用セッションとして -- Invoke-Command を使用してスクリプトまたはコマンド実行するには[ここをクリック](#run-a-script-or-command-with-invoke-command)してください。
-* 永続的なセッションとして (ビルド 14280 以降) -- New-PSSession を使用して永続的なセッションを作成するには[ここをクリック](#copy-files-with-new-pssession-and-copy-item)してください。  
-続行するには、Copy-Item を使用してファイルを仮想マシンにコピーおよび仮想マシンからコピーし、接続を切断するには Remove-PSSession を使用します。
+PowerShell Direct を実行するには、次のような方法があります。
+
+* [入力-PSSession コマンドレットを使用した対話型セッション](#create-and-exit-an-interactive-powershell-session)
+* [呼び出しコマンドコマンドレットを使用して単一のコマンドまたはスクリプトを実行する単一のユースセクション](#run-a-script-or-command-with-invoke-command)
+* [新しい PSSession、コピーアイテム、削除のコマンドレットを使用した、persistant セッション (ビルド14280以降)](#copy-files-with-new-pssession-and-copy-item)
 
 ## <a name="requirements"></a>要件
 **オペレーティング システムの要件:**
 * ホスト: Windows 10、Windows Server 2016、または Hyper-V を実行するそれ以降のバージョン。
 * ゲスト/仮想マシン: Windows 10、Windows Server 2016、またはそれ以降のバージョン。
 
-以前の仮想マシンを管理している場合は、仮想マシン接続 (VMConnect) を使用するか、[仮想マシン用の仮想ネットワークを構成します](http://technet.microsoft.com/library/cc816585.aspx)。 
+以前の仮想マシンを管理している場合は、仮想マシン接続 (VMConnect) を使用するか、[仮想マシン用の仮想ネットワークを構成します](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc816585(v=ws.10))。 
 
 **構成に必要な条件:**    
 * 仮想マシンがホスト上でローカルに実行されている必要があります。
@@ -77,7 +77,7 @@ PowerShell ダイレクトを使用すると、ネットワークの構成やリ
 
 > 注: セッションが接続されない場合は、考えられる原因の「[トラブルシューティング](#troubleshooting)」を参照してください。 
 
-これらのコマンドレットの詳細については、「[Enter-PSSession](http://technet.microsoft.com/library/hh849707.aspx)」と「[Exit-PSSession](http://technet.microsoft.com/library/hh849743.aspx)」を参照してください。 
+これらのコマンドレットの詳細については、「[Enter-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Core/Enter-PSSession?view=powershell-5.1)」と「[Exit-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Core/Exit-PSSession?view=powershell-5.1)」を参照してください。 
 
 -------------
 
@@ -116,7 +116,7 @@ PowerShell ダイレクトと Invoke-Command コマンドの組み合わせは�
    
    仮想マシンでスクリプトが実行されます。  コマンドが実行されるとすぐに、接続が自動的に切断されます。
 
-このコマンドレットの詳細については、「[Invoke-Command](http://technet.microsoft.com/library/hh849719.aspx)」を参照してください。 
+このコマンドレットの詳細については、「[Invoke-Command](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Core/Invoke-Command?view=powershell-5.1)」を参照してください。 
 
 -------------
 
@@ -126,7 +126,7 @@ PowerShell ダイレクトと Invoke-Command コマンドの組み合わせは�
 
 永続的な PowerShell セッションは、1 つまたは複数のリモート コンピューターを対象にした動作を調整するスクリプトを記述する際にとても便利です。  いったん作成された永続的なセッションは、それを削除するまで、バック グラウンドに保持されます。  すなわち、資格情報を渡さなくても`Invoke-Command` または `Enter-PSSession` を使用して、同じセッションを何度でも繰り返し参照することができます。
 
-セッションは同じトークンにより状態を保持します。  永続的なセッションは存続するので、セッションで作成された変数またはセッションに渡された変数はいずれも複数回の呼び出しにわたり保持されます。 永続的なセッションでの作業で使用できるさまざまなツールがあります。  たとえば、[New-PSSession](https://technet.microsoft.com/en-us/library/hh849717.aspx) および [Copy-Item](https://technet.microsoft.com/en-us/library/hh849793.aspx) を使用して、ホストから仮想マシンへ、仮想マシンからホストへデータを移動することができます。
+セッションは同じトークンにより状態を保持します。  永続的なセッションは存続するので、セッションで作成された変数またはセッションに渡された変数はいずれも複数回の呼び出しにわたり保持されます。 永続的なセッションでの作業で使用できるさまざまなツールがあります。  たとえば、[New-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Core/New-PSSession?view=powershell-5.1) および [Copy-Item](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Management/Copy-Item?view=powershell-5.1) を使用して、ホストから仮想マシンへ、仮想マシンからホストへデータを移動することができます。
 
 **セッションを作成し、ファイルをコピーするには:**  
 
@@ -205,13 +205,13 @@ Enter-PSSession : An error has occurred which Windows PowerShell cannot handle. 
 
 **考えられる原因:**
 * 仮想マシンは存在しますが、まだ実行されていません。
-* ゲスト OS が PowerShell Direct をサポートしていない (「[要件](#Requirements)」を参照してください)
+* ゲスト OS が PowerShell Direct をサポートしていない (「[要件](#requirements)」を参照してください)
 * PowerShell がまだゲストで使用できない
   * オペレーティング システムが起動を完了していない
   * オペレーティング システムが正しく起動できない
   * ユーザー入力が必要な起動時のイベントがある
 
-[GeT-VM](http://technet.microsoft.com/library/hh848479.aspx) コマンドレットを使用すれば、どの VM がホストで実行されているかを確認することができます。
+[GeT-VM](https://docs.microsoft.com/powershell/module/hyper-v/get-vm?view=win10-ps) コマンドレットを使用すれば、どの VM がホストで実行されているかを確認することができます。
 
 **エラー メッセージ:**  
 ```
@@ -253,7 +253,7 @@ Enter-PSSession : The credential is invalid.
 * ゲストの資格情報を検証できない
   * 指定された資格情報が誤っていた。
   * ゲストにユーザー アカウントがない (前もって OS が起動されていない)
-  * 管理者として接続する場合: 管理者がアクティブなユーザーとして設定されていない。  詳細については、[こちら](https://technet.microsoft.com/en-us/library/hh825104.aspx)をご覧ください。
+  * 管理者として接続する場合: 管理者がアクティブなユーザーとして設定されていない。  詳細については、[こちら](<https://docs.microsoft.com/previous-versions/windows/it-pro/windows-8.1-and-8/hh825104(v=win.10)>)をご覧ください。
   
 ### <a name="error-the-input-vmname-parameter-does-not-resolve-to-any-virtual-machine"></a>エラー: 入力 VMName パラメーターが仮想マシンに解決されません。
 
@@ -266,7 +266,7 @@ Enter-PSSession : The input VMName parameter does not resolve to any virtual mac
 * Hyper-V の管理者ではありません。  
 * 仮想マシンが存在しません。
 
-[Get-VM](http://technet.microsoft.com/library/hh848479.aspx) コマンドレットを使用して、使用している資格情報に Hyper-V 管理者の役割があることを確認し、ホスト上でローカルで実行されている、起動した VM を確認することができます。
+[Get-VM](https://docs.microsoft.com/powershell/module/hyper-v/get-vm?view=win10-ps) コマンドレットを使用して、使用している資格情報に Hyper-V 管理者の役割があることを確認し、ホスト上でローカルで実行されている、起動した VM を確認することができます。
 
 
 -------------

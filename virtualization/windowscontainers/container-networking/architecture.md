@@ -1,5 +1,5 @@
 ---
-title: Windows コンテナー ネットワーク
+title: Windows コンテナーネットワーク
 description: Windows コンテナー ネットワークのアーキテクチャを簡単に紹介します。
 keywords: Docker, コンテナー
 author: jmesser81
@@ -8,17 +8,17 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: ac0088995dfbda73351d39a494435c431e0939e7
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: cff56843a0eeb48ca5d19b694eb8eb4e758002aa
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576333"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998459"
 ---
-# <a name="windows-container-networking"></a>Windows コンテナー ネットワーク
+# <a name="windows-container-networking"></a>Windows コンテナーネットワーク
 
 >[!IMPORTANT]
->[Docker コンテナーのネットワーク](https://docs.docker.com/engine/userguide/networking/)を参照してくださいネットワーク コマンド、オプション、および syntax.* * * 以外の場合は、[サポートされていない機能とネットワークのオプション](#unsupported-features-and-network-options)、ネットワークのコマンドがすべて Docker で説明する一般的な docker のLinux では、同じ構文を使用して windows サポート。 ただし、Windows および Linux ネットワーク スタック、および Linux ネットワーク コマンド (たとえば、ifconfig) が、Windows でサポートされていないことを確認がよう異なります。
+>一般的な docker のネットワークコマンド、オプション、構文については、「 [Docker Container ネットワーク](https://docs.docker.com/engine/userguide/networking/)」を参照してください。 * * * サポートされて[いない機能とネットワークオプション](#unsupported-features-and-network-options)で示されているケースを除き、すべての docker ネットワークコマンドはWindows では、Linux と同じ構文でサポートされています。 ただし、Windows と Linux のネットワークスタックは異なるため、Windows では一部の Linux ネットワークコマンド (ifconfig など) がサポートされていないことがわかります。
 
 ## <a name="basic-networking-architecture"></a>基本的なネットワーク アーキテクチャ
 
@@ -30,8 +30,8 @@ ms.locfileid: "9576333"
 
 ![テキスト](media/docker-network-ls.png)
 
-- **内部**としてとは、コンテナー ホスト上のネットワーク アダプターに直接接続していないことです。
-- **外部**としては、コンテナー ホスト上のネットワーク アダプターに直接接続されています。
+- **内部**vSwitch は、コンテナーホストのネットワークアダプターに直接接続されていないものです。
+- **外部**vSwitch は、コンテナーホスト上のネットワークアダプターに直接接続されたものです。
 
 ![テキスト](media/get-vmswitch.png)
 
@@ -64,13 +64,13 @@ ms.locfileid: "9576333"
 
 ## <a name="unsupported-features-and-network-options"></a>サポートされていない機能とネットワーク オプション
 
-次のネットワーク オプションは現在**いない**Windows でサポートされています。
+Windows では、現在、次のネットワークオプションがサポートされて**いません**。
 
-- L2bridge、NAT、およびオーバーレイ ネットワークに接続されている Windows コンテナーは、IPv6 スタック上の通信をサポートしていません。
-- IPsec によるコンテナーの通信を暗号化します。
-- コンテナーの HTTP プロキシ サポートします。
-- HYPER-V 単独で実行する端点を添付すると (追加)。
-- 透明なネットワーク ドライバー経由での仮想化された Azure インフラストラクチャで、ネットワーク接続します。
+- L2bridge、NAT、オーバーレイネットワークに接続された Windows コンテナーは、IPv6 スタック経由の通信をサポートしていません。
+- IPsec 経由の暗号化されたコンテナーの通信。
+- コンテナーの HTTP プロキシのサポート。
+- Hyper-v 分離 (ホットアド) で実行するエンドポイントをアタッチする
+- 透過的なネットワークドライバーを使用した、仮想化された Azure インフラストラクチャのネットワーク。
 
 | コマンド        | サポートされていないオプション   |
 |---------------|:--------------------:|

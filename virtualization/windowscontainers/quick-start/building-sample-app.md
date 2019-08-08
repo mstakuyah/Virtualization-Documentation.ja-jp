@@ -7,18 +7,18 @@ ms.date: 07/25/2017
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 970f039e97ce0628c7a7f78c417017fc95570f82
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 08efc1092777e5649ecce4d978b056a4df644564
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576883"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998229"
 ---
 # <a name="build-a-sample-app"></a>サンプル アプリのビルド
 
 この演習では、サンプル ASP.net アプリを入手し、それをコンテナーで実行できるように変換する手順を説明します。 Windows 10 でコンテナーを使い始める方法については、「[Windows 10 のクイック スタート](./quick-start-windows-10.md)」をご覧ください。
 
-このクイック スタートは、Windows 10 に固有です。 このページの左側の目次に追加のクイック スタート文書があります。 このチュートリアルの主眼はコンテナーにあるため、コードの記述は別の機会に譲り、コンテナーについてのみ説明します。 チュートリアルをゼロから作成する場合は、[ASP.NET Core のドキュメント](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app-xplat/)をご覧ください。
+このクイック スタートは、Windows 10 に固有です。 このページの左側の目次に追加のクイック スタート文書があります。 このチュートリアルの主眼はコンテナーにあるため、コードの記述は別の機会に譲り、コンテナーについてのみ説明します。 チュートリアルをゼロから作成する場合は、[ASP.NET Core のドキュメント](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app-xplat/)をご覧ください。
 
 Git ソース管理がまだコンピューターにインストールされていない場合は、[Git のページ](https://git-scm.com/download)から取得できます。
 
@@ -66,7 +66,7 @@ FROM microsoft/aspnetcore-build:1.1 AS build-env
 WORKDIR /app
 ```
 
-次に、.csproj ファイルを一時コンテナーの ”/app” ディレクトリにコピーします。 .Csproj ファイルには、プロジェクトが必要なパッケージの参照のリストが含まれているため操作します。
+次に、.csproj ファイルを一時コンテナーの ”/app” ディレクトリにコピーします。 これは、.csproj ファイルにプロジェクトで必要なパッケージ参照の一覧が含まれているためです。
 
 このファイルをコピーすると、dotnet によってこのディレクトリからファイルが読み取られ、プロジェクトに必要な依存関係とツールが外部から取得されます。
 
@@ -128,7 +128,7 @@ docker run -d -p 5000:80 --name myapp myasp
 
 ここでは Docker を使って ASP.NET の Web アプリを正常に入手し、構成、ビルドして実行中のコンテナーに正常に展開しました。 しかし、さらに進んだ手順を実行することもできます。 Web アプリを複数のコンポーネント (Web API を実行するコンテナー、フロント エンドを実行するコンテナー、SQL Server を実行するコンテナーなど) に分割することができます。
 
-コンテナーのハングするした後、これでは、存在して移動し、とても便利なコンテナー化ソフトウェアを構築です。
+これでコンテナーが停止しました。次に、コンテナー内の優れたソフトウェアを構築して構築します。
 
 > [!div class="nextstepaction"]
-> [チェック アウト コンテナーの他のサンプル](../samples.md)
+> [その他のコンテナーのサンプルを確認する](../samples.md)

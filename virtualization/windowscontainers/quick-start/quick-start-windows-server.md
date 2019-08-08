@@ -8,33 +8,33 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
-ms.openlocfilehash: fd2de24a4c8c03817978a53b340e2a77285c69ad
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 665e6186ff5f9530f12ba3d0a400d82bcac755a7
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576713"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9999199"
 ---
 # <a name="windows-containers-on-windows-server"></a>Windows Server の Windows コンテナー
 
-この手順は、Windows Server 2019 と Windows Server 2016 の基本的な展開と Windows コンテナー機能の使用について説明します。
+この演習では、windows Server 2019 および Windows Server 2016 での Windows コンテナー機能の基本的な展開と使用について説明します。
 
-このクイック スタートでは、次の実行されます。
+このクイックスタートでは、次のことを実行します。
 
-1. Windows Server でコンテナーの機能を有効にします。
-2. Docker をインストールします。
-3. 単純な Windows コンテナーの実行
+1. Windows Server でコンテナー機能を有効にする
+2. Docker のインストール
+3. 簡単な Windows コンテナーの実行
 
 コンテナーの概要については、[コンテナーについてのページ](../about/index.md)」をご覧ください。
 
-このクイック スタートでは、Windows Server 2019 と Windows Server 2016 の Windows Server コンテナーを特定します。 このページの左側の目次に、Windows 10 のコンテナーを含む追加のクイック スタート文書があります。
+このクイックスタートは、windows server 2019 および Windows Server 2016 の Windows Server コンテナーに固有のものです。 このページの左側の目次に、Windows 10 のコンテナーを含む追加のクイック スタート文書があります。
 
 ## <a name="prerequisites"></a>前提条件
 
 次の要件を満たしていることを確認してください。
-- 1 台のコンピューター システム (物理または仮想) には、Windows Server 2019 が実行されています。 Windows Server 2019 内部のプレビューを使用している場合は、[ウィンドウのサーバー 2019 評価](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019 )を更新してください。
+- Windows Server 2019 を実行している1台のコンピューターシステム (物理または仮想)。 Windows Server 2019 Insider Preview を使用している場合は、 [Window server 2019 の評価](https://www.microsoft.com/evalcenter/evaluate-windows-server-2019 )に更新してください。
 
-> 重要な更新プログラムは、Windows コンテナー機能を使用するために必要です。 すべての更新プログラムをインストールしてから、このチュートリアルを進めてください。
+> Windows コンテナー機能を機能させるには、重要な更新プログラムが必要です。 すべての更新プログラムをインストールしてから、このチュートリアルを進めてください。
 
 Azure に展開する場合は、こちらの[テンプレート](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-server-container-tools/containers-azure-template)を使用すると展開が簡単です。
 
@@ -46,7 +46,7 @@ Azure に展開する場合は、こちらの[テンプレート](https://github
 
 ## <a name="install-docker"></a>Docker のインストール
 
-Docker をインストールするのには、ここでは、インストールを実行するプロバイダーと[MicrosoftDockerProvider](https://github.com/OneGet/MicrosoftDockerProvider)都合が良い[OneGet プロバイダー PowerShell モジュール](https://github.com/oneget/oneget)を使用します。 プロバイダーは、コンピューターでコンテナーの機能を有効にします。 また、再起動が必要になる Docker をインストールします。 Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。
+Docker をインストールするには、 [Oneget Provider PowerShell モジュール](https://github.com/oneget/oneget)(この例では、 [Microsoft dockerprovider](https://github.com/OneGet/MicrosoftDockerProvider)) を使ってインストールを実行します。 プロバイダーは、コンピューターでコンテナーの機能を有効にします。 また、再起動が必要になる Docker をインストールします。 Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。
 
 管理者特権の PowerShell セッションを開き、次のコマンドを実行します。
 
@@ -69,7 +69,7 @@ Restart-Computer -Force
 ```
 
 > [!TIP]
-> Docker を後で更新する場合。
+> Docker を後で更新する場合は、次の操作を行います。
 >  - 次を実行して、インストールされているバージョンを確認します。 `Get-Package -Name Docker -ProviderName DockerMsftProvider`
 >  - 次を実行して、最新のバージョンを検索します。 `Find-Package -Name Docker -ProviderName DockerMsftProvider`
 >  - 準備ができたら、`Install-Package -Name Docker -ProviderName DockerMsftProvider -Update -Force` を実行してアップグレードした後、次を実行します。 `Start-Service Docker`
@@ -102,11 +102,11 @@ sconfig
 
 画面の指示に従い、オプション A を選択してすべての更新プログラムをダウンロードします。
 
-## <a name="deploy-your-first-container"></a>最初にコンテナーを展開します。
+## <a name="deploy-your-first-container"></a>最初のコンテナーを展開する
 
 この演習では、事前作成された .NET サンプル イメージを Docker Hub レジストリからダウンロードし、.NET Hello World アプリケーションを実行するシンプルなコンテナーを展開します。  
 
-`docker run` を使用し、.Net コンテナーを展開します。 この操作でコンテナー イメージもダウンロードされるので、処理に数分かかる可能性があります。 Windows Server のバージョンによってホスト、によってには、下の次のコマンドを実行します。
+`docker run` を使用し、.Net コンテナーを展開します。 この操作でコンテナー イメージもダウンロードされるので、処理に数分かかる可能性があります。 使用している Windows Server のバージョンに応じて、次のコマンドを実行します。
 
 #### <a name="windows-server-2019"></a>Windows Server 2019
 
@@ -168,9 +168,9 @@ Platform: .NET Core
 OS: Microsoft Windows 10.0.17763
 ```
 
-Docker Run コマンドの詳細については、Docker.com の「[Docker Run リファレンス]( https://docs.docker.com/engine/reference/run/)」をご覧ください。
+Docker Run コマンドの詳細については、Docker.com の「[Docker Run リファレンス](https://docs.docker.com/engine/reference/run/)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [コンテナー ビルドを自動化してイメージを保存する方法を学習します。](./quick-start-images.md)
+> [コンテナーの作成を自動化して画像を保存する方法について説明します。](./quick-start-images.md)

@@ -2,7 +2,7 @@
 
 このリリースの Nano Server の基本 OS コンテナー イメージでは、.NET Core と PowerShell が削除されていますが、NET Core と PowerShell はいずれも、基本 Nano Server コンテナーの上のアドオン複数層コンテナとしてサポートされています。  
 
-コンテナーがネイティブ コードまたは Node.js、Python、Ruby などのオープン フレームワークを実行する場合は、基本 Nano Server コンテナーで十分です。  1 つの小さな相違点として、このリリースは、Windows Server 2016 リリースと比較して、[フット プリントが削減](https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel)されているため、特定のネイティブ コードが実行できないことがあります。 以前のバージョンにはなかった不具合が発生した場合は、[フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)を通じてマイクロソフトにお知らせください。 
+コンテナーがネイティブ コードまたは Node.js、Python、Ruby などのオープン フレームワークを実行する場合は、基本 Nano Server コンテナーで十分です。  1 つの小さな相違点として、このリリースは、Windows Server 2016 リリースと比較して、[フット プリントが削減](https://docs.microsoft.com/windows-server/get-started/nano-in-semi-annual-channel)されているため、特定のネイティブ コードが実行できないことがあります。 以前のバージョンにはなかった不具合が発生した場合は、[フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=windowscontainers)を通じてマイクロソフトにお知らせください。 
 
 Dockerfile からコンテナーを構築するには docker build を使用し、それを実行するには docker run を使用します。  次のコマンドを実行すると、Nano Server コンテナーの基本 OS イメージがダウンロードされ (数分かかることがあります)、"Hello World!"  というメッセージがホストのコンソールに表示されます。
 
@@ -10,7 +10,7 @@ Dockerfile からコンテナーを構築するには docker build を使用し�
 docker run microsoft/nanoserver-insider cmd /c echo Hello World!
 ```
 
-[Windows 上の Dockerfile](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile) で、FROM、RUN、COPY、ADD、CMD などの Dockerfile 構文を使用すると、さらに複雑なアプリケーションを構築できます。この基本イメージでは、一部のコマンドが即座に実行できなくなりますが、アプリケーションの機能に必要な要素のみを含むコンテナ イメージを作成できるようになります。
+[Windows 上の Dockerfile](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile) で、FROM、RUN、COPY、ADD、CMD などの Dockerfile 構文を使用すると、さらに複雑なアプリケーションを構築できます。この基本イメージでは、一部のコマンドが即座に実行できなくなりますが、アプリケーションの機能に必要な要素のみを含むコンテナ イメージを作成できるようになります。
 
 基本 Nano Server コンテナー OS イメージでは、.NET Core と PowerShell がいずれも利用できないため、圧縮 zip 形式のコンテンツを含むコンテナーの作成方法が 1 つの課題となります。 Docker 17.05 に搭載されている[多段階ビルド](https://docs.docker.com/engine/userguide/eng-image/multistage-build/)機能を使用すると、別のコンテナの PowerShell を利用して、コンテンツを解凍し、Nano コンテナーにコピーできます。 このアプローチを使用すると、.NET Core コンテナーと PowerShell コンテナーを作成することができます。 
 
