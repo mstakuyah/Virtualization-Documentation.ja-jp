@@ -3,18 +3,21 @@ title: Windows コンテナーのバージョンの互換性
 description: Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。
 keywords: メタデータ, コンテナー, バージョン
 author: taylorb-microsoft
-ms.openlocfilehash: 019dafe855e0fba696db4618a862ec086d435005
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: 84c78947284e18dac347bc04b1ea5fcd96e3a814
+ms.sourcegitcommit: c9062b2c75838fcac64e8cd9bcc75d2f1a324d76
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9882995"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "10008658"
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーバージョンの互換性
 
 Windows Server 2016 および Windows 10 記念日更新プログラム (両方ともバージョン 14393) は、Windows Server コンテナーを構築して実行できる最初の Windows のリリースです。 これらのバージョンを使用してビルドされたコンテナーは、Windows Server Version 1709 などの新しいリリースで実行できますが、作業を開始する前にいくつかの注意点があります。
 
 Windows コンテナーは、その機能を改善する過程で、互換性に影響を与える変更が行われています。 古いコンテナーは、 [hyper-v 分離](../manage-containers/hyperv-container.md)を使用して、新しいホストでも同じように動作し、同じ (古い) カーネルバージョンを使います。 ただし、新しい Windows ビルドに基づいてコンテナーを実行する場合は、新しいホストビルドでのみ実行できます。
+
+>[!NOTE]
+> \ * Windows Server、バージョン1709はサポートされなくなりました。 詳細については、「[基本イメージサービスのライフサイクル](base-image-lifecycle.md)」を参照してください。
 
 ## <a name="windows-server-version-1903-host-os-compatibility"></a>Windows Server、バージョン1903ホスト OS の互換性
 
@@ -23,7 +26,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 |Windows Server バージョン1903|あり|○|
 |Windows Server 2019|○|X|
 |Windows Server バージョン1803|○|X|
-|Windows Server バージョン 1709|○|X|
+|Windows Server バージョン 1709 *|○|X|
 |Windows Server 2016|○|X|
 
 ## <a name="windows-server-2019-host-os-compatibility"></a>Windows Server 2019 ホスト OS の互換性
@@ -33,7 +36,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 |Windows Server バージョン1903|×|×|
 |Windows Server 2019|あり|○|
 |Windows Server バージョン1803|○|X|
-|Windows Server バージョン 1709|○|X|
+|Windows Server バージョン 1709 *|○|X|
 |Windows Server 2016|○|X|
 
 ## <a name="windows-server-version-1803-host-os-compatibility"></a>Windows Server、バージョン1803ホスト OS の互換性
@@ -43,18 +46,28 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 |Windows Server バージョン1903|×|×|
 |Windows Server 2019|×|×|
 |Windows Server バージョン1803|あり|○|
-|Windows Server バージョン 1709|○|X|
+|Windows Server バージョン 1709 *|○|X|
 |Windows Server 2016|○|X|
 
-## <a name="windows-server-version-1709-host-os-compatibility"></a>Windows Server、バージョン1709ホスト OS の互換性
+## <a name="windows-server-version-1709-host-os-compatibility"></a>Windows Server、バージョン1709ホスト OS の互換性 *
 
 |コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
 |---|:---:|:---:|
 |Windows Server バージョン1903|×|×|
 |Windows Server 2019|×|×|
 |Windows Server バージョン1803|×|×|
-|Windows Server バージョン 1709|あり|要|
+|Windows Server バージョン 1709 *|あり|要|
 |Windows Server 2016|○|X|
+
+## <a name="windows-server-2016-host-os-compatibility"></a>Windows Server 2016 ホスト OS の互換性
+
+|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|---|:---:|:---:|
+|Windows Server 2019、バージョン1903|×|×|
+|Windows Server 2019|×|×|
+|Windows Server バージョン1803|×|×|
+|Windows Server バージョン 1709 *|×|×|
+|Windows Server 2016|要|○|
 
 ## <a name="windows-10-version-1903-host-os-compatibility"></a>Windows 10 バージョン1903ホスト OS の互換性
 
@@ -63,7 +76,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 |Windows Server バージョン1903|×|×|
 |Windows Server 2019|×|×|
 |Windows Server バージョン1803|×|×|
-|Windows Server バージョン 1709|×|×|
+|Windows Server バージョン 1709 *|×|×|
 |Windows Server 2016|要|○|
 
 ## <a name="windows-10-version-1809-host-os-compatibility"></a>Windows 10 バージョン1809ホスト OS の互換性
@@ -73,7 +86,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 |Windows Server バージョン1903|×|×|
 |Windows Server 2019|○|X|
 |Windows Server バージョン1803|○|X|
-|Windows Server バージョン 1709|○|X|
+|Windows Server バージョン 1709 *|○|X|
 |Windows Server 2016|○|X|
 
 ## <a name="windows-10-version-1803-host-os-compatibility"></a>Windows 10 バージョン1803ホスト OS の互換性
@@ -83,7 +96,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 |Windows サービス、バージョン1903|×|×|
 |Windows Server 2019|×|×|
 |Windows Server バージョン1803|○|X||
-|Windows Server バージョン 1709|○|X|
+|Windows Server バージョン 1709 *|○|X|
 |Windows Server 2016|○|X|
 
 ## <a name="windows-10-fall-creators-update-host-os-compatibility"></a>Windows 10 での作成者によるホスト OS の互換性の更新
@@ -93,7 +106,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 |Windows Server バージョン1903|×|×|
 |Windows Server 2019|×|×|
 |Windows Server バージョン1803|×|×|
-|Windows Server バージョン 1709|○|X|
+|Windows Server バージョン 1709 *|○|X|
 |Windows Server 2016|○|X|
 
 ## <a name="matching-container-host-version-with-container-image-versions"></a>コンテナーのイメージバージョンに対応するコンテナーホストのバージョン
