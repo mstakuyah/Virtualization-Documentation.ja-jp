@@ -3,18 +3,21 @@ title: Windows コンテナーでの GPU アクセラレータ
 description: Windows コンテナーに存在する GPU アクセラレータのレベル
 keywords: docker、コンテナー、デバイス、ハードウェア
 author: cwilhit
-ms.openlocfilehash: 6e5010efee10f9b488cbeb57b14bc86f30c1e766
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: c6746b45caece9802134831eb6cb3da885957ac5
+ms.sourcegitcommit: 2f8fd4b2e7113fbb7c323d89f3c72df5e1a4437e
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883275"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "10045042"
 ---
 # <a name="gpu-acceleration-in-windows-containers"></a>Windows コンテナーでの GPU アクセラレータ
 
 多くのコンテナーワークロードについては、CPU 計算リソースが十分なパフォーマンスを提供します。 ただし、特定のワークロードのクラスについては、Gpu (グラフィックス処理ユニット) で提供される強力な並列計算機能を使用すると、負荷の高い速度で操作を高速化して、コストを削減し、スループットの immensely を向上させることができます。
 
 Gpu は、従来のレンダリングやシミュレーションからマシン学習トレーニング、推定など、多くの一般的なワークロードで既に一般的なツールとなっています。 Windows コンテナーでは、DirectX およびその上に構築されたすべてのフレームワークの GPU アクセラレータをサポートしています。
+
+> [!NOTE]
+> この機能は、Docker デスクトップ、バージョン2.1、Docker エンジン (エンタープライズ、バージョン19.03 以降) で利用できます。
 
 ## <a name="requirements"></a>要件
 
@@ -42,8 +45,12 @@ docker run --isolation process --device class/5B45201D-F2F2-4F3B-85BB-30FF1F9535
 
 ## <a name="hyper-v-isolated-windows-container-support"></a>Hyper-v-分離された Windows コンテナーのサポート
 
-Hyper-v-分離された Windows コンテナーでのワークロードの GPU アクセラレータは、現在サポートされていません。
+Hyper-v のワークロードの GPU アクセラレータ (分離された Windows コンテナー) は、現在サポートされていません。
 
 ## <a name="hyper-v-isolated-linux-container-support"></a>Hyper-v-分離された Linux コンテナーのサポート
 
-Hyper-v でのワークロードの GPU 加速-分離された Linux コンテナーは現在サポートされていません。
+Hyper-v でのワークロードの GPU アクセラレータ (分離された Linux コンテナー) は現在サポートされていません。
+
+## <a name="more-information"></a>詳細情報
+
+GPU アクセラレーションを活用する、コンテナーとなる DirectX アプリの完全な例については、「 [DirectX コンテナーのサンプル](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/master/windows-container-samples/directx)」をご覧ください。

@@ -3,12 +3,12 @@ title: Windows のコンテナー内のデバイス
 description: Windows のコンテナーにはどのようなデバイスがサポートされるか
 keywords: docker、コンテナー、デバイス、ハードウェア
 author: cwilhit
-ms.openlocfilehash: ee9c5da5ef87dceb3374977670da2ea50ea87382
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: 1ad63c158a42f116882c949b242274dde8d893fc
+ms.sourcegitcommit: 2f8fd4b2e7113fbb7c323d89f3c72df5e1a4437e
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883165"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "10045032"
 ---
 # <a name="devices-in-containers-on-windows"></a>Windows のコンテナー内のデバイス
 
@@ -77,13 +77,13 @@ Windows では、すべてのデバイスが実装するインターフェイス
 </tbody>
 </table>
 
-> [!TIP]
-> ここに記載されているデバイスは、現在 Windows コンテナーでサポートされている_唯一_のデバイスです。 他のクラス Guid に合格しようとすると、コンテナーが開始できなくなります。
+> [!IMPORTANT]
+> デバイスのサポートは、ドライバーに依存します。 上の表で定義されていないクラス Guid を渡そうとすると、未定義の動作が発生する可能性があります。
 
 ## <a name="hyper-v-isolated-windows-container-support"></a>Hyper-v-分離された Windows コンテナーのサポート
 
-Hyper-v-分離された Windows コンテナーのワークロードに対するデバイスの割り当てとデバイスの共有は、現在サポートされていません。
+Hyper-v-分離された Windows コンテナーでのワークロードのデバイス割り当てとデバイス共有は、現在サポートされていません。
 
 ## <a name="hyper-v-isolated-linux-container-support"></a>Hyper-v-分離された Linux コンテナーのサポート
 
-Hyper-v でのワークロードのためのデバイスの割り当てとデバイス共有は、現在サポートされていません。
+Hyper-v でのワークロードのためのデバイスの割り当てとデバイス共有 (分離された Linux コンテナーは現在サポートされていません)。
