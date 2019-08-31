@@ -3,12 +3,12 @@ title: Windows コンテナーのバージョンの互換性
 description: Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。
 keywords: メタデータ, コンテナー, バージョン
 author: taylorb-microsoft
-ms.openlocfilehash: 84c78947284e18dac347bc04b1ea5fcd96e3a814
-ms.sourcegitcommit: c9062b2c75838fcac64e8cd9bcc75d2f1a324d76
+ms.openlocfilehash: 5fe1cca67c330cb59362e82762651d719708b526
+ms.sourcegitcommit: 27e9cd37beaf11e444767699886e5fdea5e1a2d0
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "10008658"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "10058507"
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーバージョンの互換性
 
@@ -73,11 +73,11 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 
 |コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
 |---|:---:|:---:|
-|Windows Server バージョン1903|×|×|
-|Windows Server 2019|×|×|
-|Windows Server バージョン1803|×|×|
-|Windows Server バージョン 1709 *|×|×|
-|Windows Server 2016|要|○|
+|Windows Server バージョン1903|○|X|
+|Windows Server 2019|○|X|
+|Windows Server バージョン1803|○|X|
+|Windows Server バージョン 1709 *|○|X|
+|Windows Server 2016|○|X|
 
 ## <a name="windows-10-version-1809-host-os-compatibility"></a>Windows 10 バージョン1809ホスト OS の互換性
 

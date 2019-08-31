@@ -7,12 +7,12 @@ ms.date: 07/25/2017
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 08efc1092777e5649ecce4d978b056a4df644564
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 7ffc16e9d5b7c4b4a935a06c012b1d28b5e70f1a
+ms.sourcegitcommit: 27e9cd37beaf11e444767699886e5fdea5e1a2d0
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998229"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "10058487"
 ---
 # <a name="build-a-sample-app"></a>サンプル アプリのビルド
 
@@ -59,7 +59,8 @@ ENTRYPOINT ["dotnet", "MvcMovie.dll"]
 
 最初の一連の行では、コンテナー構築の基盤として使う基本イメージを宣言します。 ローカル システムにこのイメージがまだ存在しない場合、docker が自動的に取得を試みます。 aspnetcore-build には、ここでプロジェクトをコンパイルするための依存関係がパッケージ化されて含まれています。 次に、コンテナー内の作業ディレクトリを "/app" に変更します。これにより、dockerfile 内のすべてのコマンドがこのディレクトリで実行されます。
 
-_注:_: ここではプロジェクトをビルドする必要があるため、まず一時コンテナーを作成し、それを使ってプロジェクトをビルドした後、終了時に廃棄します。
+>[!NOTE]
+>プロジェクトを構築する必要があるため、最初に作成する最初のコンテナーは一時的なコンテナーであり、これを実行するために使用するので、最後に破棄します。
 
 ```Dockerfile
 FROM microsoft/aspnetcore-build:1.1 AS build-env
@@ -84,7 +85,8 @@ RUN dotnet publish -c Release -o out
 
 これでプロジェクトのコンパイルが完了しました。 次に完成したコンテナーをビルドする必要があります。 アプリケーションが ASP.NET であるため、イメージとそれらのライブラリをソースとして指定します。 次に、一時コンテナーの出力ディレクトリから、すべてのファイルを最終コンテナーにコピーします。 コンテナーを起動したときに、先ほどコンパイルした新しい .dll を使用してコンテナーが実行されるように構成します。
 
-_注:_: この最終コンテナーに対して使った基本イメージは、上記の ```FROM``` コマンドと似ていますが同じではありません。"FROM" コマンドのライブラリでは ASP.NET アプリは実行できますが、_ビルド_はできません。
+>[!NOTE]
+>この最終的なコンテナーの基本イメージは似ていますが```FROM``` 、上記のコマンドとは似ていますが、ASP.NET アプリを_構築_できるライブラリはありません。実行してください。
 
 ```Dockerfile
 FROM microsoft/aspnetcore:1.1
@@ -99,7 +101,8 @@ ENTRYPOINT ["dotnet", "MvcMovie.dll"]
 
 dockerfile を作成したら、後はアプリをビルドし、コンテナーを実行するように docker を構成するだけです。 パブリッシュするポートを指定し、コンテナーに "myapp" というタグを付けます。 PowerShell で、以下のコマンドを実行します。
 
-_注:_: PowerShell コンソールの現在の作業ディレクトリには、上記で作成した、dockerfile が存在するディレクトリを指定する必要があります。
+>[!NOTE]
+>PowerShell 本体の現在の作業ディレクトリは、上で作成された dockerfile が存在するディレクトリである必要があります。
 
 ```Powershell
 docker build -t myasp .
@@ -120,7 +123,7 @@ docker run -d -p 5000:80 --name myapp myasp
 
 お好みの Web ブラウザーにこの IP アドレスを入力すると、コンテナーでアプリケーションが正常に実行されている様子が確認できます。
 
-<center style="margin: 25px">![](media/SampleAppScreenshot.png)</center>
+>![](media/SampleAppScreenshot.png)
 
 ナビゲーション バーで [MvcMovie] をクリックすると、映画のエントリを入力、編集、削除できる Web ページが表示されます。
 
