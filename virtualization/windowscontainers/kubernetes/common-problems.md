@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Kubernetes の展開と Windows ノードの参加で発生する一般的な問題の解決方法。
 keywords: kubernetes、1.14、linux、compile
-ms.openlocfilehash: a0b24782a0e511dfc8b6cf1a0c0bc24882ff977a
-ms.sourcegitcommit: 42cb47ba4f3e22163869d094bd0c9cff415a43b0
+ms.openlocfilehash: b6e4e648ff050e13a0930f2834949867e44ce895
+ms.sourcegitcommit: d252f356a3de98f224e1550536810dfc75345303
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "9884993"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "10069936"
 ---
 # <a name="troubleshooting-kubernetes"></a>Kubernetes のトラブルシューティング #
 このページでは、Kubernetes のセットアップ、ネットワーク、および展開に関する一般的な問題について説明します。
@@ -43,6 +43,9 @@ nssm set <Service Name> AppStderr C:\k\mysvc.log
 詳細については、「公式[nssm の使用](https://nssm.cc/usage)に関するドキュメント」を参照してください。
 
 ## <a name="common-networking-errors"></a>一般的なネットワークエラー ##
+
+### <a name="hostport-publishing-is-not-working"></a>HostPort publishing が機能していない ###
+現時点では、Kubernetes `containers.ports.hostPort`フィールドを使ってポートを公開することはできません。このフィールドは Windows CNI プラグインによって適用されるわけではありません。 ノードでポートを公開する時間には、NodePort publishing を使用してください。
 
 ### <a name="i-am-seeing-errors-such-as-hnscall-failed-in-win32-the-wrong-diskette-is-in-the-drive"></a>「Win32 での実行に失敗しました。」というエラーが表示される (ドライブに間違ったフロッピーディスクがあります)。 ###
 このエラーは、古い HNS オブジェクトを切断せずに、HNS オブジェクトに対してカスタムの変更を行ったり、新しい Windows Update をインストールして、HNS に変更を加えるときに発生する可能性があります。 更新前に以前に作成された HNS オブジェクトが、現在インストールされている HNS バージョンと互換性がないことを示します。

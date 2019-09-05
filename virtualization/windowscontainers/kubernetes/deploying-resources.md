@@ -8,12 +8,12 @@ ms.prod: containers
 description: OS 混在の Kubernetes クラスターに Kubernetes resoureces を展開する。
 keywords: kubernetes、1.14、windows、はじめに
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 8c21581433f672a22a247db6643a19168eedea6c
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: e6c569ae8d5bf50e24ea0fc7a6dd04734b60a863
+ms.sourcegitcommit: d252f356a3de98f224e1550536810dfc75345303
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883195"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "10069946"
 ---
 # <a name="deploying-kubernetes-resources"></a>Kubernetes リソースの展開 #
 少なくとも1つの master と1つのワーカーで構成されている Kubernetes クラスターがある場合は、Kubernetes リソースを展開することができます。
@@ -54,18 +54,6 @@ watch kubectl get pods -o wide
 
 > [!Note]  
 > Windows*コンテナホスト*は、スケジュール設定されているサービスからはサービス IP にアクセスでき**ません**。 これは、Windows Server 向けの将来のバージョンで強化される[既知のプラットフォームの制限](./common-problems.md#my-windows-node-cannot-access-my-services-using-the-service-ip)です。 ただし、Windows*ポッド***は**サービス IP にアクセスできます。
-
-### <a name="port-mapping"></a>ポートマッピング ### 
-ノードのポートをマップすることによって、ポッドでホストされているサービスにそれぞれのノードからアクセスすることもできます。 この機能を示すための[サンプル YAML](https://github.com/Microsoft/SDN/blob/master/Kubernetes/PortMapping.yaml) では、ノードのポート 4444 をポッドのポート 80 にマップしています。 これを展開するには、さきほどと同じ手順に従います。
-
-```bash
-wget https://raw.githubusercontent.com/Microsoft/SDN/master/Kubernetes/PortMapping.yaml -O win-webserver-port-mapped.yaml
-kubectl apply -f win-webserver-port-mapped.yaml
-watch kubectl get pods -o wide
-```
-
-これで、ポート 4444 の*ノード* IP で `curl` を実行し、Web サーバーの応答を受信することができます。 このとき 1 対 1 のマッピングを適用する必要があるため、スケーリングはノードあたり単一ポッドに制限される点に注意してください。
-
 
 ## <a name="next-steps"></a>次のステップ ##
 このセクションでは、Windows ノードでの Kubernetes リソースのスケジュール方法について説明します。 これでガイドが終わります。 問題がある場合は、「トラブルシューティング」を参照してください。
