@@ -1,48 +1,56 @@
 ---
-title: サンプル アプリのビルド
-description: コンテナーを利用している場合に、サンプル アプリをビルドする方法を説明します。
+title: .NET コアアプリの Containerize
+description: コンテナーを含む .NET core アプリのサンプルをビルドする方法について学習する
 keywords: Docker, コンテナー
 author: cwilhit
-ms.date: 07/25/2017
+ms.date: 09/10/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 7ffc16e9d5b7c4b4a935a06c012b1d28b5e70f1a
-ms.sourcegitcommit: 27e9cd37beaf11e444767699886e5fdea5e1a2d0
+ms.openlocfilehash: f5a51fd1211868195126f06d917c0bef6e496c3d
+ms.sourcegitcommit: f3b6b470dd9cde8e8cac7b13e7e7d8bf2a39aa34
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "10058487"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "10077473"
 ---
-# <a name="build-a-sample-app"></a>サンプル アプリのビルド
+# <a name="containerize-a-net-core-app"></a>.NET コアアプリの Containerize
 
-この演習では、サンプル ASP.net アプリを入手し、それをコンテナーで実行できるように変換する手順を説明します。 Windows 10 でコンテナーを使い始める方法については、「[Windows 10 のクイック スタート](./quick-start-windows-10.md)」をご覧ください。
 
-このクイック スタートは、Windows 10 に固有です。 このページの左側の目次に追加のクイック スタート文書があります。 このチュートリアルの主眼はコンテナーにあるため、コードの記述は別の機会に譲り、コンテナーについてのみ説明します。 チュートリアルをゼロから作成する場合は、[ASP.NET Core のドキュメント](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app-xplat/)をご覧ください。
+このクイックスタートでは、簡単な .NET コアアプリケーションを containerize する方法について説明します。 そうするでしょう：
 
-Git ソース管理がまだコンピューターにインストールされていない場合は、[Git のページ](https://git-scm.com/download)から取得できます。
+> [!div class="checklist"]
+> * GitHub からサンプルのアプリソースを複製する
+> * アプリソースを使ってコンテナーイメージを構築するための dockerfile を作成する
+> * ローカルの Docker 環境でコンテナーに含まれる .NET コアアプリをテストする
 
-## <a name="getting-started"></a>はじめに
+## <a name="before-you-begin"></a>始める前に
 
-このサンプル プロジェクトは、[VSCode](https://code.visualstudio.com/) を使ってセットアップされています。 また、このチュートリアルでは Powershell も使います。 それでは GitHub からデモ コードを取得しましょう。 Git を使ってリポジトリを複製するか、[SampleASPContainerApp](https://github.com/cwilhit/SampleASPContainerApp) から直接プロジェクトをダウンロードします。
+このクイックスタートでは、開発環境がコンテナーを使用するように構成されていることを前提とします。 コンテナー用の環境が構成されていない場合は、 [Windows 10 のクイックスタート](./quick-start-windows-10.md)にアクセスして、使用を開始する方法を確認してください。
+
+コンピューターに Git ソースコントロールシステムがインストールされている必要があります。 ここから取得できます。 [Git](https://git-scm.com/download)
+
+## <a name="getting-started"></a>開始するには
+
+すべてのコンテナーサンプルのソースコードは、と呼ばれる`windows-container-samples`フォルダー内の[仮想化ドキュメント](https://github.com/MicrosoftDocs/Virtualization-Documentation)git リポジトリの下に保持されます。 この git リポジトリを curent のワーキングディレクトリに複製します。
 
 ```Powershell
-git clone https://github.com/cwilhit/SampleASPContainerApp.git
+git clone https://github.com/MicrosoftDocs/Virtualization-Documentation.git
 ```
 
-プロジェクト ディレクトリに移動し、Dockerfile を作成します。 [Dockerfile](https://docs.docker.com/engine/reference/builder/) は、makefile に似た、コンテナー イメージの構築方法を記述した命令の一覧です。
+で`<directory where clone occured>\Virtualization-Documentation\windows-container-samples\asp-net-getting-started`見つかったサンプルディレクトリに移動し、Dockerfile を作成します。 [Dockerfile](https://docs.docker.com/engine/reference/builder/)は、メイクファイルのようなものであり、コンテナーイメージの構築方法についてコンテナーエンジンに指示する命令の一覧です。
 
 ```Powershell
-#Create the dockerfile for our proj
-New-Item C:/Your/Proj/Location/Dockerfile -type file
+#Create the dockerfile for our project
+New-Item -name dockerfile -type file
 ```
 
-## <a name="writing-our-dockerfile"></a>Dockerfile の作成
+## <a name="write-the-dockerfile"></a>Dockerfile を作成する
 
-それでは、ルート フォルダーに作成した Dockerfile をお好みのテキスト エディターで開き、ロジックを追加しましょう。 その後、このファイルで行われている作業を 1 行ずつ説明していきます。
+作成した dockerfile (任意のテキストエディター) を開き、次の内容を追加します。
 
 ```Dockerfile
-FROM microsoft/aspnetcore-build:1.1 AS build-env
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build-env
 WORKDIR /app
 
 COPY *.csproj ./
@@ -51,87 +59,82 @@ RUN dotnet restore
 COPY . ./
 RUN dotnet publish -c Release -o out
 
-FROM microsoft/aspnetcore:1.1
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.1
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "MvcMovie.dll"]
+ENTRYPOINT ["dotnet", "asp-net-getting-started.dll"]
 ```
 
-最初の一連の行では、コンテナー構築の基盤として使う基本イメージを宣言します。 ローカル システムにこのイメージがまだ存在しない場合、docker が自動的に取得を試みます。 aspnetcore-build には、ここでプロジェクトをコンパイルするための依存関係がパッケージ化されて含まれています。 次に、コンテナー内の作業ディレクトリを "/app" に変更します。これにより、dockerfile 内のすべてのコマンドがこのディレクトリで実行されます。
-
->[!NOTE]
->プロジェクトを構築する必要があるため、最初に作成する最初のコンテナーは一時的なコンテナーであり、これを実行するために使用するので、最後に破棄します。
+1行おきに分割して、各手順について説明します。
 
 ```Dockerfile
-FROM microsoft/aspnetcore-build:1.1 AS build-env
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build-env
 WORKDIR /app
 ```
 
-次に、.csproj ファイルを一時コンテナーの ”/app” ディレクトリにコピーします。 これは、.csproj ファイルにプロジェクトで必要なパッケージ参照の一覧が含まれているためです。
-
-このファイルをコピーすると、dotnet によってこのディレクトリからファイルが読み取られ、プロジェクトに必要な依存関係とツールが外部から取得されます。
+最初の一連の行では、コンテナー構築の基盤として使う基本イメージを宣言します。 ローカル システムにこのイメージがまだ存在しない場合、docker が自動的に取得を試みます。 は`mcr.microsoft.com/dotnet/core/sdk:2.1` 、.net CORE 2.1 SDK をインストールしてパッケージ化されています。そのため、バージョン2.1 をターゲットとする ASP .net コアプロジェクトを構築することができます。 次の命令は、コンテナー内の作業ディレクトリを変更`/app`するため、このコンテキストに続くすべてのコマンドはこのコンテキストで実行されます。
 
 ```Dockerfile
 COPY *.csproj ./
 RUN dotnet restore
 ```
 
-それらすべての依存関係が取得されたら、一時コンテナーにコピーします。 次に dotnet でアプリケーションをリリース構成と共に公開し、出力パスを指定します。
+次に、これらの命令は、.csproj ファイルを`build-env`コンテナーの`/app`ディレクトリにコピーします。 このファイルをコピーした後、.NET によって読み取りが行われ、プロジェクトで必要なすべての依存関係とツールが取得されます。
 
 ```Dockerfile
 COPY . ./
 RUN dotnet publish -c Release -o out
 ```
 
-これでプロジェクトのコンパイルが完了しました。 次に完成したコンテナーをビルドする必要があります。 アプリケーションが ASP.NET であるため、イメージとそれらのライブラリをソースとして指定します。 次に、一時コンテナーの出力ディレクトリから、すべてのファイルを最終コンテナーにコピーします。 コンテナーを起動したときに、先ほどコンパイルした新しい .dll を使用してコンテナーが実行されるように構成します。
+.NET がすべての依存関係を`build-env`コンテナーにプルすると、次の命令では、すべてのプロジェクトソースファイルがコンテナーにコピーされます。 次に、.NET にリリース構成を使ってアプリケーションを公開することを通知し、で出力パスを指定します。
 
->[!NOTE]
->この最終的なコンテナーの基本イメージは似ていますが```FROM``` 、上記のコマンドとは似ていますが、ASP.NET アプリを_構築_できるライブラリはありません。実行してください。
+コンパイルは成功します。 これで、最終的な画像を作成する必要があります。 
+
+> [!TIP]
+> この quickstart はソースから .NET コアプロジェクトを構築します。 コンテナーイメージを作成する場合は、運用ペイロードとその依存関係_だけ_をコンテナーイメージに含めることをお勧めします。 アプリを構築するために呼び出さ`build-env`れる SDK と共にパッケージ化された一時的なコンテナーを使用するように dockerfile が作成されているため、最終的な画像には .NET core SDK は必要ありません。
 
 ```Dockerfile
-FROM microsoft/aspnetcore:1.1
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.1
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "MvcMovie.dll"]
+ENTRYPOINT ["dotnet", "asp-net-getting-started.dll"]
 ```
 
-これで、_マルチステージ ビルド_と呼ばれる作業が完了しました。 ここでは一時コンテナーを使ってイメージをビルドした後、公開した dll を別のコンテナーに移動することで、最終結果のフットプリントを最小限に抑えました。 またこのコンテナーの依存関係を実行に絶対必要な最小限度に抑えました。最初のイメージをそのまま使うと、必須でない (ASP.NET アプリを構築するための) その他のレイヤーがパッケージ化されて含まれるため、イメージのサイズが大きくなります。
+このアプリケーションは ASP.NET であるため、このランタイムに含まれている画像を指定します。 次に、一時コンテナーの出力ディレクトリから、すべてのファイルを最終コンテナーにコピーします。 コンテナーが開始されたときに、新しいアプリがエントリポイントとして実行されるようにコンテナーを構成します。
 
-## <a name="running-the-app"></a>アプリの実行
+_複数ステージのビルド_を実行するために、dockerfile を作成しました。 Dockerfile が実行されると、一時コンテナー ( `build-env`.net CORE 2.1 SDK) を使ってサンプルアプリを構築し、.net core 2.1 ランタイムのみを含む別のコンテナーに出力されたバイナリをコピーして、最終的なコンテナー。
 
-dockerfile を作成したら、後はアプリをビルドし、コンテナーを実行するように docker を構成するだけです。 パブリッシュするポートを指定し、コンテナーに "myapp" というタグを付けます。 PowerShell で、以下のコマンドを実行します。
+## <a name="run-the-app"></a>アプリを実行する
 
->[!NOTE]
->PowerShell 本体の現在の作業ディレクトリは、上で作成された dockerfile が存在するディレクトリである必要があります。
+Dockerfile が記述されていると、dockerfile で Docker を参照し、イメージを作成するように指示することができます。 
+
+>[!IMPORTANT]
+>以下で実行するコマンドは、dockerfile が存在するディレクトリで実行する必要があります。
 
 ```Powershell
-docker build -t myasp .
-docker run -d -p 5000:80 --name myapp myasp
+docker build -t my-asp-app .
 ```
 
-このアプリの実行を確認するには、それが実行されているアドレスにアクセスする必要があります。 このコマンドを実行して、IP アドレスを取得してみましょう。
+コンテナーを実行するには、下のコマンドを実行します。
 
 ```Powershell
- docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" myapp
+docker run -d -p 5000:80 --name myapp my-asp-app
 ```
 
-このコマンドを実行すると、実行中のコンテナーの IP アドレスが生成されます。 この出力の例を以下に示します。
+このコマンドを dissect しましょう。
 
-```Powershell
- 172.19.172.12
-```
+* `-d` Docker tun はコンテナー ' デタッチ ' を実行します。これは、コンテナー内のコンソールにコンソールがフックされないことを意味します。 コンテナーはバックグラウンドで実行されます。 
+* `-p 5000:80` ホスト上のポート5000をコンテナーのポート80にマップするように Docker に指示します。 各コンテナーは、独自の IP アドレスを取得します。 ASP .NET は、既定でポート80でリッスンします。 ポートマッピングを使用すると、マップされたポートでホストの IP アドレスにアクセスでき、Docker はすべてのトラフィックをコンテナー内の宛先ポートに転送します。
+* `--name myapp` このコンテナーにクエリのための便利な名前を与えるように Docker に指示します (実行時には、Docker によって割り当てられた、オブジェクトを検索する必要はありません)。
+* `my-asp-app` は、Docker で実行する画像です。 これは、 `docker build`プロセスの culmination として作成されたコンテナーイメージです。
 
-お好みの Web ブラウザーにこの IP アドレスを入力すると、コンテナーでアプリケーションが正常に実行されている様子が確認できます。
+Web ブラウザーの web ブラウザーを開き、コンテナー `https://localhost:5000`アプリケーションの表示に移動します。
 
 >![](media/SampleAppScreenshot.png)
 
-ナビゲーション バーで [MvcMovie] をクリックすると、映画のエントリを入力、編集、削除できる Web ページが表示されます。
+## <a name="next-steps"></a>次のステップ
 
-## <a name="next-steps"></a>次の手順
-
-ここでは Docker を使って ASP.NET の Web アプリを正常に入手し、構成、ビルドして実行中のコンテナーに正常に展開しました。 しかし、さらに進んだ手順を実行することもできます。 Web アプリを複数のコンポーネント (Web API を実行するコンテナー、フロント エンドを実行するコンテナー、SQL Server を実行するコンテナーなど) に分割することができます。
-
-これでコンテナーが停止しました。次に、コンテナー内の優れたソフトウェアを構築して構築します。
+ASP.NET web アプリのコンテナーを正常にコンテナーにしました。 その他のアプリのサンプルと関連付けられた dockerfiles を表示するには、下のボタンをクリックします。
 
 > [!div class="nextstepaction"]
 > [その他のコンテナーのサンプルを確認する](../samples.md)

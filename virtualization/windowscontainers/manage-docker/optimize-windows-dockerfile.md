@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
-ms.openlocfilehash: 056ab87189e8e423df5758be0f622a43b92c9056
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: ae633c7ba5d9672335addcc582988fc47c13ed79
+ms.sourcegitcommit: f3b6b470dd9cde8e8cac7b13e7e7d8bf2a39aa34
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9882955"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "10077453"
 ---
 # <a name="optimize-windows-dockerfiles"></a>Windows Dockerfile を最適化する
 
@@ -23,12 +23,12 @@ Docker のビルドプロセスと生成される Docker 画像の両方を最�
 
 Docker のビルドを最適化するには、Docker のビルドのしくみを理解する必要があります。 Docker ビルド プロセスでは、Dockerfile が使用されて、アクション可能な各命令が 1 つずつ専用の一時的なコンテナーで実行されます。 その結果、アクション可能な各命令に対して新しいイメージ レイヤーが作成されます。
 
-たとえば、次のサンプル Dockerfile は、 `windowsservercore`ベース OS イメージを使用し、IIS をインストールして、単純な web サイトを作成します。
+たとえば、次のサンプル Dockerfile は、 `mcr.microsoft.com/windows/servercore:ltsc2019`ベース OS イメージを使用し、IIS をインストールして、単純な web サイトを作成します。
 
 ```dockerfile
 # Sample Dockerfile
 
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 RUN dism /online /enable-feature /all /featurename:iis-webserver /NoRestart
 RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 CMD [ "cmd" ]
@@ -67,7 +67,7 @@ Dockerfile のベストプラクティスの詳細については、「 [Docker.
 次のグループ化されていない例の Dockerfile は、Windows 用の Python をダウンロードしてインストールし、インストールが完了するとダウンロードしたセットアップファイルを削除します。 この Dockerfile では、各アクションに固有`RUN`の命令が与えられます。
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell.exe -Command Invoke-WebRequest "https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe" -OutFile c:\python-3.5.1.exe
 RUN powershell.exe -Command Start-Process c:\python-3.5.1.exe -ArgumentList '/quiet InstallAllUsers=1 PrependPath=1' -Wait
@@ -88,7 +88,7 @@ a395ca26777f        15 seconds ago      cmd /S /C powershell.exe -Command Remove
 2番目の例は、まったく同じ操作を実行する Dockerfile です。 ただし、すべての関連アクションは1つ`RUN`の命令の下にグループ化されています。 `RUN`命令の各手順は Dockerfile の新しい行にありますが、' \ \ ' 文字は行の折り返しに使用されます。
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell.exe -Command \
   $ErrorActionPreference = 'Stop'; \
@@ -113,7 +113,7 @@ IMAGE               CREATED             CREATED BY                              
 次の Dockerfile の例では、Python パッケージがダウンロードされ、実行された後、削除されています。 このすべてを 1 つの `RUN` 操作で行うので、作成されるイメージ レイヤーは 1 つです。
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell.exe -Command \
   $ErrorActionPreference = 'Stop'; \
@@ -131,7 +131,7 @@ RUN powershell.exe -Command \
 次の例では、Apache と Visual Studio の両方のパッケージを再頒布して、不要になったファイルを削除することによってパッケージを再配布します。 これはすべて1つ`RUN`の命令で実行されます。 これらの操作のいずれかが更新されると、すべての操作が再実行されます。
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell -Command \
 
@@ -167,7 +167,7 @@ IMAGE               CREATED             CREATED BY                              
 ここでは、3つ`RUN`の手順に分かれた同じ操作を次に示します。 この場合、各`RUN`命令はコンテナーのイメージレイヤーにキャッシュされ、それ以降の Dockerfile ビルドで再実行する必要があるのは、変更されたものだけです。
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell -Command \
     $ErrorActionPreference = 'Stop'; \
@@ -209,7 +209,7 @@ Dockerfile は上から下に処理され、各命令はキャッシュされて
 次の例は、Dockerfile 命令の順序がキャッシュの有効性に与える影響を示しています。 この簡単な例の Dockerfile には、4つの番号付きフォルダーがあります。  
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN mkdir test-1
 RUN mkdir test-2
@@ -233,7 +233,7 @@ afba1a3def0a        38 seconds ago       cmd /S /C mkdir test-4   42.46 MB
 この次の Dockerfile が少し変更され、3番`RUN`目の命令が新しいファイルに変更されました。 この Dockerfile に対して Docker ビルドを実行すると、前の例と同じ最初の 3 つの命令は、キャッシュされたイメージ レイヤーを使用します。 ただし、変更さ`RUN`れた命令はキャッシュされないため、変更された命令と後続のすべての命令に対して新しいレイヤーが作成されます。
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN mkdir test-1
 RUN mkdir test-2
@@ -265,7 +265,7 @@ Dockerfile 命令では大文字と小文字は区別されませんが、大文
 ```dockerfile
 # Sample Dockerfile
 
-from windowsservercore
+from mcr.microsoft.com/windows/servercore:ltsc2019
 run dism /online /enable-feature /all /featurename:iis-webserver /NoRestart
 run echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 cmd [ "cmd" ]
@@ -276,7 +276,7 @@ cmd [ "cmd" ]
 ```dockerfile
 # Sample Dockerfile
 
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 RUN dism /online /enable-feature /all /featurename:iis-webserver /NoRestart
 RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 CMD [ "cmd" ]
@@ -287,7 +287,7 @@ CMD [ "cmd" ]
 長整数型と複雑な操作は、バックスラッシュ`\`文字で複数の行に分けることができます。 次の Dockerfile は、Visual Studio の再頒布可能パッケージをインストールし、インストーラー ファイルを削除して、構成ファイルを作成します。 これら 3 つの操作すべてが 1 行で指定されています。
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell -Command c:\vcredist_x86.exe /quiet ; Remove-Item c:\vcredist_x86.exe -Force ; New-Item c:\config.ini
 ```
@@ -295,7 +295,7 @@ RUN powershell -Command c:\vcredist_x86.exe /quiet ; Remove-Item c:\vcredist_x86
 コマンドはバックスラッシュで分割して、1つ`RUN`の命令からの各操作がそれぞれの行で指定されるようにすることができます。
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell -Command \
     $ErrorActionPreference = 'Stop'; \
