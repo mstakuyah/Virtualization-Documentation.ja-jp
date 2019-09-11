@@ -41,7 +41,12 @@
 ### [Docker 群れ](manage-containers/swarm-mode.md)
 ### [Windows Docker host のリモート管理](management/manage_remotehost.md)
 ## 配分
-### [グループ管理サービスアカウント](manage-containers/manage-serviceaccounts.md)
+### グループ管理サービスアカウント
+#### [gMSA を作成します](manage-containers/manage-serviceaccounts.md)
+#### [GMSA を使用するようにアプリを構成する](manage-containers/gmsa-configure-app.md)
+#### [GMSA でコンテナーを実行する](manage-containers/gmsa-run-container.md)
+#### [GMSA でコンテナーを調整する](manage-containers/gmsa-orchestrate-containers.md)
+#### [GMSAs のトラブルシューティング](manage-containers/gmsa-troubleshooting.md)
 ### [プリンターサービス](deploy-containers/print-spooler.md)
 ## ネットワーク
 ### [概要](container-networking/architecture.md)
