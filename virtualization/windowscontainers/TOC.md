@@ -38,6 +38,11 @@
 ### [最初の LCOW コンテナーを実行する](quick-start/quick-start-windows-10-linux.md)
 
 # 概念
+## Windows Container の基礎
+### [リソースコントロール](manage-containers/resource-controls.md)
+### [Hyper-V による分離](manage-containers/hyperv-container.md)
+### [バージョンの互換性](deploy-containers/version-compatibility.md)
+### [コンテナーの基本イメージ](manage-containers/container-base-images.md)
 ## Docker
 ### [Windows 上の Docker エンジン](manage-docker/configure-docker-daemon.md)
 ### [Docker 群れ](manage-containers/swarm-mode.md)
@@ -60,11 +65,8 @@
 ## デバイス
 ### [ハードウェアデバイス](deploy-containers/hardware-devices-in-containers.md)
 ### [GPU アクセラレータ](deploy-containers/gpu-acceleration.md)
-## [リソースコントロール](manage-containers/resource-controls.md)
-## [Hyper-V による分離](manage-containers/hyperv-container.md)
 
 # リファレンス
-## [バージョンの互換性](deploy-containers/version-compatibility.md)
 ## [基本イメージのサービスライフサイクル](deploy-containers/base-image-lifecycle.md)
 ## [ウイルス対策の最適化](https://docs.microsoft.com/windows-hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 ## [コンテナプラットフォームツール](deploy-containers/containerd.md)

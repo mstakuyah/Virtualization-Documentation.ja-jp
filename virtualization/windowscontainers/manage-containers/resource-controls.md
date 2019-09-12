@@ -8,19 +8,19 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8ccd4192-4a58-42a5-8f74-2574d10de98e
-ms.openlocfilehash: 2cc5853648a9e1bb62ae684472fa7d9512cdb978
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 3e9f7e3208222cd6c0f512c5f892453ac6e6980c
+ms.sourcegitcommit: 73134bf279f3ed18235d24ae63cdc2e34a20e7b7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998339"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "10107876"
 ---
 # <a name="implementing-resource-controls-for-windows-containers"></a>Windows コンテナーのリソース コントロールの実装
 リソース コントロールには、コンテナー単位およびリソース単位で実装できるものがいくつかあります。  既定では、一般的な Windows リソース管理 (通常はフェアシェア ベース) によって、実行されるコンテナーが決まりますが、リソース コントロールを構成することで、開発者や管理者はリソース使用の制限または調整を行うことができます。  コントロール可能なリソースには、CPU/プロセッサ、メモリ/RAM、ディスク/記憶域、ネットワーク/スループットなどがあります。
 
 Windows コンテナーでは、各コンテナーに関連付するプロセスのグループ化と追跡に、[ジョブ オブジェクト](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)が使用されます。  リソース コントロールは、コンテナーに関連付けられた親ジョブ オブジェクトに実装されます。 
 
-[Hyper-V による分離](https://docs.microsoft.com/virtualization/windowscontainers/about/index#windows-container-types)の場合、リソース コントロールは仮想マシンにも、仮想マシン内で実行されているコンテナーのジョブ オブジェクトにも自動的に適用されます。これにより、コンテナー内で実行されているプロセスがジョブ オブジェクトのコントロールをバイパスまたはエスケープした場合も、定義されているリソース コントロールを超過しないよう仮想マシンによって制御されます。
+[Hyper-V による分離](./hyperv-container.md)の場合、リソース コントロールは仮想マシンにも、仮想マシン内で実行されているコンテナーのジョブ オブジェクトにも自動的に適用されます。これにより、コンテナー内で実行されているプロセスがジョブ オブジェクトのコントロールをバイパスまたはエスケープした場合も、定義されているリソース コントロールを超過しないよう仮想マシンによって制御されます。
 
 ## <a name="resources"></a>リソース
 このセクションでは、各リソースについて、リソース コントロールの使用例として Docker コマンド ライン インターフェイス (オーケストレータまたはその他のツールによって構成される場合もあります) および対応する Windows ホスト コンピューティング サービス (HCS) API を示します。また、Windows によるリソース コントロールの一般的な実装方法も示します (ここに示す説明は概要であり、基になる実装は変わることがあります)。
