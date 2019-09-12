@@ -1,51 +1,211 @@
 ---
+layout: LandingPage
 title: Windows ドキュメントのコンテナー
 description: Windows でのコンテナーの実行に関するドキュメント
 keywords: Docker, コンテナー
 author: cwilhit
-ms.date: 05/02/2016
-ms.topic: article
+ms.date: 09/11/2019
+ms.topic: landing-page
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 74c9d604-0915-4d89-bc69-0263b76bc66b
-ms.openlocfilehash: 771a4ef644525334e9135b8605da74503c16f21b
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 22585a9783066043aed16ccebb49770f9b6fe443
+ms.sourcegitcommit: b50270ba1f84e65dff60aef7a8d7fa66b1ebad52
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998769"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "10107709"
 ---
-# <a name="containers-on-windows-documentation"></a>Windows ドキュメントのコンテナー
-
-Windows コンテナーは、複数の分離されたアプリケーションを単一のシステムで実行できるようにするオペレーティングシステムレベルの仮想化を提供します。 このドキュメント セットでは、クイック スタート ガイド、展開ガイド、管理操作に関する詳しい技術情報を提供します。
-
-## <a name="getting-started"></a>はじめに
-コンテナーについて学習し、実際に使ってみます。
-* [Windows コンテナーについて](about/index.md)
-* [Windows Server でのコンテナーの使用](quick-start/quick-start-windows-server.md)
-* [Windows 10 でのコンテナーの使用](quick-start/quick-start-windows-10.md)
-
-## <a name="deployment"></a>展開
-Windows Server 2019 に Windows コンテナーを展開する方法について説明します。
-
-* [システム要件](deploy-containers/system-requirements.md)
-* [コンテナー ホストの展開](deploy-containers/deploy-containers-on-server.md)
-* [ウイルス対策の最適化](https://docs.microsoft.com/windows-hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
-
-## <a name="docker-on-windows"></a>Windows 上の Docker
-Windows 上の Docker の管理について説明しています。
-* [Windows 上の Docker エンジン](manage-docker/configure-docker-daemon.md)
-* [Windows 上の Dockerfile](manage-docker/manage-windows-dockerfile.md)
-* [Dockerfile の最適化](manage-docker/optimize-windows-dockerfile.md)
-* [コンテナーのネットワーク](container-networking/architecture.md)
-
-## <a name="watch"></a>視聴する
-Windows コンテナチームからのデモと面接に興味がある場合
-* [コンテナー チャネル](https://channel9.msdn.com/Blogs/containers)
-
-## <a name="community"></a>コミュニティ
-コミュニティでやり取りしたり、サンプルを試してみたりできるほか、その他のリソースを探すこともできます。
-* [コンテナー フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=windowscontainers)
-* [コミュニティのビデオとブログ](communitylinks.md)
-* [コンテナーのサンプル](https://docs.microsoft.com/virtualization/windowscontainers/samples)
-* [UserVoice](https://windowsserver.uservoice.com/forums/304624-containers)
+<div id="main" class="v2">
+    <ul class="cardsY panelContent featuredContent">
+        <li>
+            <a href="https://docs.microsoft.com/en-us/azure/aks/windows-container-cli" data-linktype="external">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/logo_kubernetes.svg" alt="" data-linktype="relative-path">
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>AKS で Windows コンテナーをお試しください。</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="https://hub.docker.com/_/microsoft-windows-base-os-images" data-linktype="external">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/logo_docker.svg" alt="" data-linktype="relative-path">
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Docker Hub でコンテナーイメージを確認する</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="https://techcommunity.microsoft.com/t5/Containers/bg-p/Containers" data-linktype="external">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/i_blog.svg" alt="" data-linktype="relative-path">
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>コンテナーのブログをお読みください。</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+    <h1>Windows ドキュメントのコンテナー</h1>
+    <br/>
+    <div class="abstract">Windows コンテナーを使うと、ユーザーはアプリの依存関係をパッケージ化し、オペレーティングシステムレベルの仮想化を活用して、1つのシステム上で迅速かつ完全に分離された環境を実現できます。 Windows コンテナーの使い方については、クイックスタートガイド、展開ガイド、サンプルをご覧ください。</div>
+    <ul class="cardsW panelContent featuredContent">
+        <li>
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage bgdAccent1">
+                                <img src="media/virtualization-containers-about.svg" alt="" data-linktype="relative-path">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3 style="margin: 8px 0 2px 0;">概要</h3>
+                            <ul>
+                                <li><a href="/en-us/virtualization/windowscontainers/about/index" data-linktype="absolute-path">コンテナー101</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/deploy-containers/system-requirements" data-linktype="absolute-path">システム要件</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/about/faq" data-linktype="absolute-path">FAQ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage bgdAccent1">
+                                <img src="media/virtualization-containers-quick-start.svg" alt="" data-linktype="relative-path">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3 style="margin: 8px 0 2px 0;">はじめに</h3>
+                            <ul>
+                                <li><a href="/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-10" data-linktype="external">Windows 10</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-server" data-linktype="external">Windows Server</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/quick-start/using-insider-container-images" data-linktype="external">Windows Insider</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage bgdAccent1">
+                                <img src="media/container-tutorials.svg" alt="" data-linktype="relative-path">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3 style="margin: 8px 0 2px 0;">チュートリアル</h3>
+                            <ul>
+                                <li><a href="/en-us/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile" data-linktype="external">Windows コンテナーを構築する</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/kubernetes/getting-started-kubernetes-windows" data-linktype="external">Windows で使用する Kubernetes</a></li>
+                                <li><a href="/en-us/azure/service-fabric/service-fabric-quickstart-containers" data-linktype="external">Windows のサービスファブリック</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/deploy-containers/linux-containers" data-linktype="external">Windows の Linux コンテナー</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage bgdAccent1">
+                                <img src="media/virtualization-containers-management-tools.svg" alt="" data-linktype="relative-path">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3 style="margin: 8px 0 2px 0;">概念</h3>
+                            <ul>
+                                <li><a href="/en-us/virtualization/windowscontainers/manage-docker/configure-docker-daemon" data-linktype="external">Docker</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/manage-containers/manage-serviceaccounts" data-linktype="external">配分</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/container-networking/architecture" data-linktype="external">ネットワーク</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/manage-containers/container-storage" data-linktype="external">ストレージ</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/deploy-containers/hardware-devices-in-containers" data-linktype="external">デバイス</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/manage-containers/hyperv-container" data-linktype="external">Hyper-V による分離</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage bgdAccent1">
+                                <img src="media/container-reference.svg" alt="" data-linktype="relative-path">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3 style="margin: 8px 0 2px 0;">リファレンス</h3>
+                            <ul>
+                                <li><a href="/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility" data-linktype="external">バージョンの互換性</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/deploy-containers/base-image-lifecycle" data-linktype="external">イメージサービスのライフサイクル</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/images-eula" data-linktype="external">コンテナー OS イメージ EULA</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="cardSize">
+                <div class="cardPadding">
+                    <div class="card">
+                        <div class="cardImageOuter">
+                            <div class="cardImage bgdAccent1">
+                                <img src="media/virtualization-containers-community.svg" alt="" data-linktype="relative-path">
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <h3 style="margin: 8px 0 2px 0;">参考資料</h3>
+                            <ul>
+                                <li><a href="/en-us/virtualization/windowscontainers/samples" data-linktype="external">サンプル</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/troubleshooting" data-linktype="external">トラブルシューティング</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/communitylinks" data-linktype="external">コミュニティのビデオとブログ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
