@@ -7,30 +7,20 @@ ms.date: 09/10/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: f5a51fd1211868195126f06d917c0bef6e496c3d
-ms.sourcegitcommit: f3b6b470dd9cde8e8cac7b13e7e7d8bf2a39aa34
+ms.openlocfilehash: 8165d9c7ee3744fae31711e28be028208140813e
+ms.sourcegitcommit: 868a64eb97c6ff06bada8403c6179185bf96675f
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "10077473"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "10129272"
 ---
 # <a name="containerize-a-net-core-app"></a>.NET コアアプリの Containerize
 
-
-このクイックスタートでは、簡単な .NET コアアプリケーションを containerize する方法について説明します。 そうするでしょう：
-
-> [!div class="checklist"]
-> * GitHub からサンプルのアプリソースを複製する
-> * アプリソースを使ってコンテナーイメージを構築するための dockerfile を作成する
-> * ローカルの Docker 環境でコンテナーに含まれる .NET コアアプリをテストする
-
-## <a name="before-you-begin"></a>始める前に
-
-このクイックスタートでは、開発環境がコンテナーを使用するように構成されていることを前提とします。 コンテナー用の環境が構成されていない場合は、 [Windows 10 のクイックスタート](./quick-start-windows-10.md)にアクセスして、使用を開始する方法を確認してください。
+このセグメントは、コンテナーを使うために開発環境が既に構成されていることを前提としています。 コンテナー用の環境が構成されていない場合は、「[環境をセットアップ](./set-up-environment.md)する」を参照してください。
 
 コンピューターに Git ソースコントロールシステムがインストールされている必要があります。 ここから取得できます。 [Git](https://git-scm.com/download)
 
-## <a name="getting-started"></a>開始するには
+## <a name="clone-the-sample-code"></a>サンプルコードの複製
 
 すべてのコンテナーサンプルのソースコードは、と呼ばれる`windows-container-samples`フォルダー内の[仮想化ドキュメント](https://github.com/MicrosoftDocs/Virtualization-Documentation)git リポジトリの下に保持されます。 この git リポジトリを curent のワーキングディレクトリに複製します。
 

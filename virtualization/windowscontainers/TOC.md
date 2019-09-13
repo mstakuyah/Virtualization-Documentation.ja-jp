@@ -6,15 +6,9 @@
 ## [FAQ](about/faq.md)
 
 # はじめに
-## Windows 10
-### [初めての WCOW コンテナーを実行する](quick-start/quick-start-windows-10.md)
-### [サンプル アプリのビルド](quick-start/building-sample-app.md)
-## Windows Server
-### [Windows Server の初めてのコンテナーを実行します。](quick-start/quick-start-windows-server.md)
-### [コンテナーのビルドを自動化する](quick-start/quick-start-images.md)
-## Windows Insider
-### [Insider 画像を使用する](quick-start/Using-Insider-Container-Images.md)
-### [アプリケーションをビルドして実行する](quick-start/Nano-RS3-.NET-Core-and-PS.md)
+## [環境をセットアップする](quick-start/set-up-environment.md)
+## [最初のコンテナーを実行する](quick-start/run-your-first-container.md)
+## [サンプルアプリの Containerize](quick-start/building-sample-app.md)
 
 # チュートリアル
 ## Windows コンテナーを構築する

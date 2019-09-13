@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
-ms.openlocfilehash: f23fe8c5e5ad9dc3257f8b99d239b5fc97607add
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 9fef74c029dc3efc220b1f9924d2695cdbaa61be
+ms.sourcegitcommit: 868a64eb97c6ff06bada8403c6179185bf96675f
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998239"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "10129302"
 ---
 # <a name="dockerfile-on-windows"></a>Windows 上の Dockerfile
 
@@ -31,7 +31,7 @@ Docker build は、Dockerfile を利用し、イメージ作成プロセスを�
 
 このトピックでは、Windows コンテナーでの Dockerfiles の使い方、基本的な構文の理解、および最も一般的な Dockerfiles 命令の内容について説明します。
 
-このドキュメントでは、コンテナイメージとコンテナイメージレイヤーの概念について説明します。 画像と画像の階層化の詳細については、「[画像のクイックスタートガイド](../quick-start/quick-start-images.md)」を参照してください。
+このドキュメントでは、コンテナイメージとコンテナイメージレイヤーの概念について説明します。 画像と画像の階層化の詳細については、「[コンテナーの基本イメージ](../manage-containers/container-base-images.md)」をご覧ください。
 
 Dockerfiles について詳しくは、 [Dockerfiles リファレンス](https://docs.docker.com/engine/reference/builder/)をご覧ください。
 
@@ -69,7 +69,7 @@ Dockerfile 命令は、コンテナーイメージを作成するために必要
 
 ### <a name="from"></a>FROM
 
-`FROM` 命令では、新しいイメージ作成プロセス中に使用されるコンテナー イメージを設定します。 たとえば、命令 `FROM microsoft/windowsservercore` を使用すると、結果のイメージは Windows Server Core ベース OS イメージから派生し、依存します。 指定したイメージが、Docker ビルド プロセスが実行されているシステムに存在しない場合、Docker エンジンは、パブリックまたはプライベートのイメージ レジストリからイメージのダウンロードを試行します。
+`FROM` 命令では、新しいイメージ作成プロセス中に使用されるコンテナー イメージを設定します。 たとえば、命令 `FROM mcr.microsoft.com/windows/servercore` を使用すると、結果のイメージは Windows Server Core ベース OS イメージから派生し、依存します。 指定したイメージが、Docker ビルド プロセスが実行されているシステムに存在しない場合、Docker エンジンは、パブリックまたはプライベートのイメージ レジストリからイメージのダウンロードを試行します。
 
 FROM 命令の書式は、次のようになります。
 

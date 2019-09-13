@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
-ms.openlocfilehash: 953dfaf71170de656f4e6ba5e91d524708d5a12a
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: c84a6652b5918238ee8ef6e1fa7a9b2aa596aefd
+ms.sourcegitcommit: 868a64eb97c6ff06bada8403c6179185bf96675f
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998219"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "10129262"
 ---
 # <a name="docker-engine-on-windows"></a>Windows 上の Docker エンジン
 
@@ -23,12 +23,11 @@ Docker エンジンとクライアントは、Windows に含まれていない�
 
 Windows コンテナーを操作するためには、Docker が必要です。 Docker は、Docker エンジン (dockerd.exe) と Docker クライアント (docker.exe) で構成されます。 すべての機能をインストールするには、クイックスタートガイドを参照してください。これは、すべての設定を取得して最初のコンテナーを実行するのに役立ちます。
 
-- [Windows Server 2019 の windows コンテナー](../quick-start/quick-start-windows-server.md)
-- [Windows 10 の windows コンテナー](../quick-start/quick-start-windows-10.md)
+- [Docker のインストール](../quick-start/set-up-environment.md)
 
 スクリプトによるインストールの場合は、「スクリプトを使用して[DOCKER EE をインストールする](https://docs.docker.com/install/windows/docker-ee/#use-a-script-to-install-docker-ee)」を参照してください。
 
-Docker を使うには、コンテナイメージをインストールする必要があります。 詳細については、「[画像を使用するためのクイックスタートガイド](../quick-start/quick-start-images.md)」を参照してください。
+Docker を使うには、コンテナイメージをインストールする必要があります。 詳細については、「[コンテナーベースの画像のドキュメント](../manage-containers/container-base-images.md)」を参照してください。
 
 ## <a name="configure-docker-with-a-configuration-file"></a>構成ファイルを使用して Docker を構成する
 
