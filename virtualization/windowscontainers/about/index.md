@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: 1a66ef0fd07162f8bcd78b9bffa159d3f96e4763
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: dbe0e629428bbd8ecfe3ec01bb1a69e3c9c3e231
+ms.sourcegitcommit: 9100d2218c160bbe9fbf24f3524c8ff5e3dd826c
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998799"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "10135345"
 ---
 # <a name="about-windows-containers"></a>Windows コンテナーについて
 
@@ -85,4 +85,4 @@ Hyper-v 分離を使用しているかどうかにかかわらず、Windows で�
 
 Windows Server でコンテナーをセットアップするには、「 [Windows server のクイックスタート](../quick-start/quick-start-windows-server.md)」を参照してください。
 
-Windows 10 でコンテナーを設定するには、「 [windows 10 のクイックスタート](../quick-start/quick-start-windows-10.md)」を参照してください。
+Windows 10 でコンテナーを設定する方法については、「[はじめに: コンテナーの環境を構成](../quick-start/set-up-environment.md?tabs=Windows-10-Client)する」を参照してください。

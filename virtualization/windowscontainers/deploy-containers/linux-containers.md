@@ -3,17 +3,17 @@ title: Linux Containers on Windows
 description: Hyper-v を使用して、ネイティブであるかのように、Windows で Linux コンテナーを実行するさまざまな方法について説明します。
 keywords: LCOW、linux コンテナー、docker、コンテナー
 author: scooley
-ms.date: 11/02/2018
+ms.date: 09/17/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: edfd11c8-ee99-42d8-9878-efc126fe1826
-ms.openlocfilehash: 0426b14c423c06a0f12ea91529ce794f7a972f47
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 14445f3e9d292dbdab28986e772d0c045fca1586
+ms.sourcegitcommit: 9100d2218c160bbe9fbf24f3524c8ff5e3dd826c
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998479"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "10135325"
 ---
 # <a name="linux-containers-on-windows"></a>Windows の Linux コンテナー
 
@@ -21,8 +21,8 @@ Linux コンテナーは、コンテナー全体のエコシステムの大部�
 
 現在、Windows と Hyper-v の Docker で Linux コンテナーを実行するには、次の2つの方法があります。
 
-1. Linux のコンテナーを完全な Linux VM で実行します。これは、現在の Docker です。
-1. [Hyper-v 分離](../manage-containers/hyperv-container.md)(lcow) を使用して Linux コンテナーを実行します。これは、Docker for Windows の新しいオプションです。
+- Linux のコンテナーを完全な Linux VM で実行します。これは、現在の Docker です。
+- [Hyper-v 分離](../manage-containers/hyperv-container.md)(lcow) を使用して Linux コンテナーを実行します。これは、Docker for Windows の新しいオプションです。
 
 この記事では、各方法のしくみについて説明します。どのソリューションを選択するか、進行中の作業を共有するかについてのガイダンスを示します。
 
@@ -30,7 +30,7 @@ Linux コンテナーは、コンテナー全体のエコシステムの大部�
 
 Linux のコンテナーを Linux VM で実行するには、 [Docker の](https://docs.docker.com/docker-for-windows/)「はじめに」ガイドに記載されている手順に従ってください。
 
-Docker は、Hyper-v で実行されている[Linuxkit](https://github.com/linuxkit/linuxkit)ベースの仮想マシンを使って、(hyper-v 分離または lcow が利用可能になる前に) 2016 で最初にリリースされたため、Windows デスクトップで Linux コンテナーを実行できるようになりました。
+Docker は、Hyper-v で実行されている[Linuxkit](https://github.com/linuxkit/linuxkit)ベースの仮想マシンを使用して、最初に 2016 (hyper-v 分離または Linux コンテナーが利用可能になる前に) でリリースされた windows デスクトップで linux コンテナーを実行できました。
 
 このモデルでは、Docker クライアントは Windows デスクトップで実行されますが、Linux VM では Docker デーモンに呼び出されます。
 
@@ -47,9 +47,9 @@ Moby VM で実行しているかどうかを確認するには、Hyper-v Manager
 
 ## <a name="linux-containers-with-hyper-v-isolation"></a>Hyper-v 分離を使用した Linux コンテナー
 
-[この作業を開始](../quick-start/quick-start-windows-10.md)するには、次の「はじめに」のガイドに記載されている Linux コンテナの手順に従ってください。
+Windows (LCOW) で Linux コンテナーを試すには、 [windows 10 の linux](../quick-start/quick-start-windows-10-linux.md)コンテナーの linux コンテナ命令に従います。
 
-Hyper-v 分離を備えた linux コンテナーでは、最適化された Linux VM で、コンテナーを実行するための十分な OS だけで Linux コンテナー (LCOW) を実行します。  Moby VM のアプローチとは異なり、各 LCOW には独自のカーネルと独自の VM サンドボックスがあります。  また、Windows の Docker によって直接管理されています。
+Hyper-v 分離を搭載した linux のコンテナーでは、最適な Linux VM で、コンテナーを実行するための十分な OS だけで、各 Linux コンテナーを実行します。 Moby VM のアプローチとは異なり、各 Linux コンテナーには独自のカーネルと独自の VM サンドボックスがあります。 また、Windows の Docker によって直接管理されています。
 
 ![Hyper-v 分離を備えた Linux コンテナー (LCOW)](media/lcow-approach.png)
 
