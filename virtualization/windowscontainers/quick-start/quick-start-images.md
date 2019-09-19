@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-ms.openlocfilehash: 01e687cfa2fd479eb87e5639581e1552ed801aef
-ms.sourcegitcommit: 9100d2218c160bbe9fbf24f3524c8ff5e3dd826c
+ms.openlocfilehash: 99b324c8cae5c8c8ed887b6e39d6818d9eddba15
+ms.sourcegitcommit: 668d0c0a81e6d74d75a655be5a47c2bbc5e268de
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "10135335"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "10138503"
 ---
 # <a name="automating-builds-and-saving-images"></a>ビルドの自動化とイメージの保存
 
@@ -26,7 +26,7 @@ ms.locfileid: "10135335"
 次の要件を満たしていることを確認してください。
 
 - Windows Server 2019 または Windows Server 2016 を実行している1台のコンピューターシステム (物理または仮想)。
-- Windows container 機能と Docker を使って、このシステムを構成します。 この手順のチュートリアルについては、「 [Windows Server の windows コンテナー](./quick-start-windows-server.md)」を参照してください。
+- Windows container 機能と Docker を使って、このシステムを構成します。 この手順のチュートリアルについては、「[はじめに: コンテナーの環境を構成する](../quick-start/set-up-environment.md)」を参照してください。
 - Docker ID。コンテナー イメージを Docker Hub にプッシュするために使用されます。 Docker ID がない場合は、[Docker Cloud](https://cloud.docker.com/) でサインアップしてください。
 
 ## <a name="container-image---dockerfile"></a>コンテナーイメージ-Dockerfile
@@ -159,4 +159,4 @@ docker pull <user>/iis-dockerfile
 サンプル ASP.NET アプリケーションをパッケージ化する方法については、下のリンクで Windows 10 のチュートリアルをご覧ください。
 
 > [!div class="nextstepaction"]
-> [Windows 10 のコンテナー](./set-up-environment.md?tabs=Windows-10-Client)
+> [Windows 10 のコンテナー](set-up-environment.md?tabs=Windows-10-Client)
