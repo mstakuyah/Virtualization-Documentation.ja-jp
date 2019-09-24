@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 05269ce0-a54f-4ad8-af75-2ecf5142b866
-ms.openlocfilehash: daecf2701972a00f4587b409c2271a23a70684ab
-ms.sourcegitcommit: 66f6cba600432f8fac1c214f357b27eb783cb1ff
+ms.openlocfilehash: 0621a06832844b0350b33c763f0546afa9b596e6
+ms.sourcegitcommit: 62fff5436770151a28b6fea2be3a8818564f3867
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "9794589"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "10147305"
 ---
 # <a name="hyper-v-on-windows-10"></a>Windows 10 の Hyper-V 
 
@@ -25,15 +25,15 @@ Windows 10 の多くのバージョンに Hyper-V 仮想化テクノロジが含
 次の記事では、Windows 上にし、その HYPER-V に関する情報を提供します。
 
 * [Hyper-V の概要](./about/index.md)
-* [サポートされているゲスト オペレーティング システム](about\supported-guest-os.md)
+* [サポートされているゲスト オペレーティング システム](about/supported-guest-os.md)
 
 ## <a name="get-started-with-hyper-v"></a>Hyper-V の概要
 次のドキュメントには、Windows 10 の Hyper-V の概要が記載されています。
 
-* [Hyper-V をインストールする](quick-start\enable-hyper-v.md)
-* [仮想マシンを作成する](quick-start\create-virtual-machine.md)
-* [仮想スイッチを作成する](quick-start\connect-to-network.md)
-* [Hyper-V と PowerShell](quick-start\try-hyper-v-powershell.md)
+* [Hyper-V をインストールする](quick-start/enable-hyper-v.md)
+* [仮想マシンを作成する](quick-start/create-virtual-machine.md)
+* [仮想スイッチを作成する](quick-start/connect-to-network.md)
+* [Hyper-V と PowerShell](quick-start/try-hyper-v-powershell.md)
 
 ## <a name="connect-with-community-and-support"></a>コミュニティとサポートへの接続
 テクニカル サポートとコミュニティからも情報が得られます。

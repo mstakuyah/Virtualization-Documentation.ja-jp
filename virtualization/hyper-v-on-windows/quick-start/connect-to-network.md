@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 532195c6-564b-4954-97c2-5a5795368c09
-ms.openlocfilehash: 749251e67b4e2eaffba8e43638fe4f596b31bba5
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: 0139f51e909149dde59f4030c6571aee82fed27e
+ms.sourcegitcommit: 62fff5436770151a28b6fea2be3a8818564f3867
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9882905"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "10147245"
 ---
 # <a name="create-a-virtual-network"></a>仮想ネットワークを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "9882905"
 
 ## <a name="connect-virtual-machines-to-the-internet"></a>仮想マシンをインターネットに接続する
 
-Hyper-V には、外部、内部、プライベートの 3 種類の仮想スイッチがあります。 コンピューターのネットワークを、そのネットワーク上で実行されている仮想マシンと共有するには、外部スイッチを作成します。
+Hyper-V には、外部、内部、プライベートの 3 種類の仮想スイッチがあります。 外部スイッチを作成して、コンピューターのネットワークを実行している仮想マシンと共有します。
 
 この演習では、外部仮想スイッチを作成する手順について説明します。 この演習が完了すると、Hyper-V ホストに仮想スイッチが構成されます。この仮想スイッチによって、仮想マシンはコンピューターのネットワーク接続を経由してインターネットに接続することができます。 
 
