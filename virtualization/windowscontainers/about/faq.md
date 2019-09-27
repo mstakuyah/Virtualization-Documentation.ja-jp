@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
-ms.openlocfilehash: 0aa93b721ab1279cb789e3a18cad04bb668d2644
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: af12aff787cf178ff80d5db15cc926266816882f
+ms.sourcegitcommit: 579349d7bc6a7dbf68445339c468ad8d2b87d7de
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998519"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "10152733"
 ---
 # <a name="frequently-asked-questions-about-containers"></a>コンテナーについてよく寄せられる質問
 
@@ -46,7 +46,7 @@ Windows 10 年 2018 10 月の更新プログラムでは、プロセス分離を
 このようにして Windows コンテナーを実行する場合は、ホストが Windows 10 ビルド 17763 + を実行していて、エンジン18.09 以降を搭載した Docker バージョンがインストールされていることを確認する必要があります。
 
 > [!WARNING]
-> この機能は、開発/テストのみを目的としています。 引き続き Windows Server を運用展開用のホストとして使用する必要があります。 この機能を使うには、ホストとコンテナーのバージョンタグが一致していることを確認する必要があります。そうでないと、コンテナーの開始に失敗したり、未定義の動作が発生したりする可能性があります。
+> この機能は、開発とテストのみを目的としています。 引き続き Windows Server を運用展開用のホストとして使用する必要があります。 この機能を使うには、ホストとコンテナーのバージョンタグが一致していることを確認する必要があります。そうでないと、コンテナーの開始に失敗したり、未定義の動作が発生したりする可能性があります。
 
 ## <a name="how-do-i-make-my-container-images-available-on-air-gapped-machines"></a>Gapped コンピューターでコンテナーの画像を使用できるようにするにはどうすればよいですか?
 
@@ -63,4 +63,4 @@ Windows コンテナーのベースイメージには、配布がライセンス
 
 ## <a name="additional-feedback"></a>その他のフィードバック
 
-FAQ に何かを追加しますか? [コメント] セクションで新しいフィードバックの問題を開くか、GitHub でこのページのプル要求をセットアップします。
+FAQ に何かを追加しますか? [コメント] セクションで新しいフィードバックの問題を開くか、GitHub でこのページのプル要求を設定します。
