@@ -1,51 +1,135 @@
 ---
-title: Windows コンテナーの基本イメージの履歴
-description: SHA256 レイヤー ハッシュと共にリリースされた Windows コンテナー イメージの一覧
+title: Windows コンテナーの基本イメージ
+description: Windows コンテナーの基本イメージの概要と、その使用方法を説明します。
 keywords: docker, コンテナー, ハッシュ
 author: patricklang
-ms.date: 01/12/2018
+ms.date: 09/25/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 88e6e080-cf8f-41d8-a301-035959dc5ce0
-ms.openlocfilehash: b2f2d6418fdda2ad0aa0b81c05efad6b99f74375
-ms.sourcegitcommit: 73134bf279f3ed18235d24ae63cdc2e34a20e7b7
+ms.openlocfilehash: f5dcaf4958828b1bcf31a96e5fb70eda0508eb96
+ms.sourcegitcommit: e9dda81f1f68359ece9ef132a184a30880bcdb1b
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "10107906"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "10161749"
 ---
 # <a name="container-base-images"></a>コンテナーの基本イメージ
 
-## <a name="supported-base-images"></a>サポートされている基本イメージ
+Windows では、ユーザーが作成できるコンテナーベースの画像が4つ用意されています。 各基本イメージは、Windows OS のさまざまなフレーバーであり、ディスク上のメモリ領域が異なり、Windows API セットのさまざまな量が含まれています。
 
-Windows コンテナーは、Windows Server Core、Nano Server、Windows、IoT Core という4つのコンテナーベースのイメージで提供されます。 一部の構成は、どちらの OS イメージもサポートしていません。 サポートされている構成を次の表に示します。
+<ul class="columns is-multiline has-margin-left-none has-margin-bottom-none has-padding-top-medium">
+    <li class="column is-one-quarter has-padding-top-small-mobile has-padding-bottom-small">
+        <a class="is-undecorated is-full-height is-block"
+            href="https://hub.docker.com/_/microsoft-windows-servercore" data-linktype="external">
+            <article class="card has-outline-hover is-relative is-full-height has-padding-none">
+                    <div class="cardImageOuter bgdAccent1 has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
+                        <div class="cardImage centered has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
+                            <img src="media/Microsoft_logo.svg" alt="" data-linktype="relative-path">
+                        </div>
+                    </div>
+                <div class="card-content has-text-overflow-ellipsis has-padding-top-small">
+                    <div class="has-padding-bottom-none">
+                        <h3 class="is-size-4 has-margin-top-none has-margin-bottom-none has-text-primary">Windows Server Core</h3>
+                    </div>
+                    <div class="is-size-7 has-margin-top-small has-line-height-reset">
+                        <p>従来の .NET framework アプリケーションをサポートしています。</p>
+                    </div>
+                </div>
+            </article>
+        </a>
+    </li>
+    <li class="column is-one-quarter has-padding-top-small-mobile has-padding-bottom-small">
+        <a class="is-undecorated is-full-height is-block"
+            href="https://hub.docker.com/_/microsoft-windows-nanoserver" data-linktype="external">
+            <article class="card has-outline-hover is-relative is-full-height has-padding-none">
+                    <div class="cardImageOuter bgdAccent1 has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
+                        <div class="cardImage centered has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
+                            <img src="media/Microsoft_logo.svg" alt="" data-linktype="relative-path">
+                        </div>
+                    </div>
+                <div class="card-content has-text-overflow-ellipsis has-padding-top-small">
+                    <div class="has-padding-bottom-none">
+                        <h3 class="is-size-4 has-margin-top-none has-margin-bottom-none has-text-primary">Nano Server</h3>
+                    </div>
+                    <div class="is-size-7 has-margin-top-small has-line-height-reset">
+                        <p>.NET コアアプリケーション向けに開発されています。</p>
+                    </div>
+                </div>
+            </article>
+        </a>
+    </li>
+    <li class="column is-one-quarter has-padding-top-small-mobile has-padding-bottom-small">
+        <a class="is-undecorated is-full-height is-block"
+            href="https://hub.docker.com/_/microsoft-windows" data-linktype="external">
+            <article class="card has-outline-hover is-relative is-full-height has-padding-none">
+                    <div class="cardImageOuter bgdAccent1 has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
+                        <div class="cardImage centered has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
+                            <img src="media/Microsoft_logo.svg" alt="" data-linktype="relative-path">
+                        </div>
+                    </div>
+                <div class="card-content has-text-overflow-ellipsis has-padding-top-small">
+                    <div class="has-padding-bottom-none">
+                        <h3 class="is-size-4 has-margin-top-none has-margin-bottom-none has-text-primary">Windows</h3>
+                    </div>
+                    <div class="is-size-7 has-margin-top-small has-line-height-reset">
+                        <p>完全な Windows API セットを提供します。</p>
+                    </div>
+                </div>
+            </article>
+        </a>
+    </li>
+    <li class="column is-one-quarter has-padding-top-small-mobile has-padding-bottom-small">
+        <a class="is-undecorated is-full-height is-block"
+            href="https://hub.docker.com/_/microsoft-windows-iotcore" data-linktype="external">
+            <article class="card has-outline-hover is-relative is-full-height has-padding-none">
+                    <div class="cardImageOuter bgdAccent1 has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
+                        <div class="cardImage centered has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
+                            <img src="media/Microsoft_logo.svg" alt="" data-linktype="relative-path">
+                        </div>
+                    </div>
+                <div class="card-content has-text-overflow-ellipsis has-padding-top-small">
+                    <div class="has-padding-bottom-none">
+                        <h3 class="is-size-4 has-margin-top-none has-margin-bottom-none has-text-primary">Windows IoT Core</h3>
+                    </div>
+                    <div class="is-size-7 has-margin-top-small has-line-height-reset">
+                        <p>IoT アプリケーション向けに設計された用途</p>
+                    </div>
+                </div>
+            </article>
+        </a>
+    </li>
+</ul>
 
-|ホストオペレーティングシステム|Windows コンテナー|Hyper-V による分離|
-|---------------------|-----------------|-----------------|
-|Windows Server 2016 または Windows Server 2019 (標準またはデータセンター)|Server Core、Nano Server、Windows|Server Core、Nano Server、Windows|
-|Nano Server|Nano Server|Server Core、Nano Server、Windows|
-|Windows 10 Pro または Windows 10 Enterprise|使用できません|Server Core、Nano Server、Windows|
-|IoT Core|IoT Core|使用できません|
+## <a name="image-discovery"></a>イメージの検出
 
-> [!WARNING]  
-> Windows Server バージョン1709以降では、Nano Server はコンテナーホストとしては利用できなくなりました。
+すべての Windows コンテナーベース画像は、 [Docker Hub](https://hub.docker.com/_/microsoft-windows-base-os-images)から見つけることができます。 Windows コンテナーの基本イメージは、 [mcr.microsoft.com](https://azure.microsoft.com/en-us/services/container-registry/)、Microsoft container Registry (mcr) から提供されます。 Windows コンテナーベースの画像の pull コマンドは、次のようになります。
 
-## <a name="base-image-differences"></a>基本イメージの相違点
+```code
+docker pull mcr.microsoft.com/windows/servercore:ltsc2019
+```
 
-どのようにして適切な基本イメージを作成するか。 必要に応じてビルドを無料で行うことができます。各画像の一般的なガイドラインを次に示します。
+MCR には、独自のカタログ操作はありません。また、Docker Hub などの既存のカタログをサポートすることを目的としています。 Azure のグローバルなフットプリントと Azure CDN を組み合わせることで、MCR は一貫して高速のイメージプルエクスペリエンスを提供します。 Azure でのワークロードの実行、azure での作業負荷の実行、ネットワーク内でのパフォーマンスの強化、および MCR (Microsoft コンテナイメージのソース) との緊密な統合、Azure Marketplace、および提供されている Azure でのサービスの拡張数の向上展開パッケージ形式としてのコンテナー。
 
-- [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): アプリケーションで .net framework が完全に必要な場合は、この画像を使用するのが最適です。
-- [Nano server](https://hub.docker.com/_/microsoft-windows-nanoserver): .net Core のみを必要とするアプリケーションの場合、nano server では、フルな画像が提供されます。
-- [Windows](https://hub.docker.com/_/microsoft-windowsfamily-windows): アプリケーションは、サーバー Core または Nano server のイメージ (GDI ライブラリなど) に含まれていないコンポーネントまたは .dll に依存している可能性があります。 この画像は、すべての Windows の依存関係のセットを保持します。
-- [Iot Core](https://hub.docker.com/_/microsoft-windows-iotcore): この画像は、 [iot アプリケーション](https://developer.microsoft.com/windows/iot)で使用することを目的としています。 IoT Core ホストをターゲットとする場合は、このコンテナーイメージを使用する必要があります。
+## <a name="choosing-a-base-image"></a>基本イメージの選択
 
-ほとんどのユーザーは、Windows Server Core または Nano Server を使用するのに最適なイメージとなります。 Nano Server 上での構築について考えている場合は、次の点に注意してください。
+作成する適切な基本イメージを選択する方法を教えてください。 ほとんどのユーザーの`Windows Server Core`場合`Nanoserver`は、最も適切な画像が使用されます。
 
-- サービス スタックが削除されている
-- .NET Core が含まれていない ([.NET Core の Nano Server イメージ](https://hub.docker.com/r/microsoft/dotnet/) は使用できます)
-- PowerShell が削除されている
-- WMI が削除されている
-- Windows Server Version 1709 からは、アプリケーションがユーザー コンテキストで実行されるため、管理者特権を必要とするコマンドは失敗となります。 ユーザーフラグ (docker run--user ContainerAdministrator など) を使用して、コンテナー管理者アカウントを指定できますが、今後は NanoServer から管理者アカウントを完全に削除することを意図しています。
+### <a name="guidelines"></a>ガイドライン
 
-ここには特に重要な相違点が記載されていますが、すべてが網羅されているわけではありません。 上に記載されている以外にも、除外されているコンポーネントがあります。 Nano Server 上には、いつでもレイヤーを追加できることに注意してください。 この例については、[.NET Core の Nano Server の Dockerfile](https://github.com/dotnet/dotnet-docker/blob/master/2.1/sdk/nanoserver-1803/amd64/Dockerfile) をご覧ください。
+ 任意の画像をターゲットにすることはできますが、次のガイドラインを参考にしてください。
+
+- **アプリケーションには完全な .NET framework が必要ですか?** この質問への回答が「はい」の場合は`Windows Server Core`、ターゲットを指定する必要があります。
+- **.NET Core に基づいて Windows アプリを構築していますか?** この質問への回答が「はい」の場合は`Nanoserver`、ターゲットを指定する必要があります。
+- **IoT アプリケーションを構築していますか?** この質問への回答が「はい」の場合は`IoT Core`、ターゲットを指定する必要があります。
+- **Windows Server Core コンテナの画像にアプリの依存関係がありませんか?** この質問への回答が「はい」の場合は、ターゲット`Windows`を指定してください。 この画像は、他の基本イメージよりも大幅に大きくなっていますが、主要な Windows ライブラリの多く (GDI ライブラリなど) を備えています。
+
+> [!TIP]
+> 多くの Windows ユーザーは、.NET に依存するアプリケーションを containerize したいと思います。 ここで説明する4つの基本イメージに加えて、Microsoft では、 [.net framework](https://hub.docker.com/_/microsoft-dotnet-framework)イメージや[ASP .net](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/)イメージなどの一般的な Microsoft フレームワークで事前構成されているいくつかの Windows コンテナーイメージを公開しています。
+
+### <a name="windows-server-core-vs-nanoserver"></a>Windows Server Core vs Nanoserver
+
+`Windows Server Core` これ`Nanoserver`は、ターゲットとなる最も一般的な基本イメージです。 これらの画像の主な違いは、Nanoserver の API サーフェスが大幅に小さくなることです。 PowerShell、WMI、および Windows サービススタックが Nanoserver のイメージから省略されています。
+
+Nanoserver は、.NET core またはその他のモダンオープンソースフレームワークに依存するアプリを実行するために十分な API サーフェイスを提供するように設計されています。 小さい APi サーフェスに対するトレードオフとして、Nanoserver の画像は、Windows の基本イメージの他の領域よりも、ディスクの使用量が大幅に小さくなります。 Nano Server 上には、いつでもレイヤーを追加できることに注意してください。 この例については、[.NET Core の Nano Server の Dockerfile](https://github.com/dotnet/dotnet-docker/blob/master/2.1/sdk/nanoserver-1803/amd64/Dockerfile) をご覧ください。

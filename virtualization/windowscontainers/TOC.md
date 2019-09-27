@@ -33,14 +33,16 @@
 
 # 概念
 ## Windows Container の基礎
-### [リソースコントロール](manage-containers/resource-controls.md)
-### [Hyper-V による分離](manage-containers/hyperv-container.md)
-### [バージョンの互換性](deploy-containers/version-compatibility.md)
 ### [コンテナーの基本イメージ](manage-containers/container-base-images.md)
+### [分離モード](manage-containers/hyperv-container.md)
+### [バージョンの互換性](deploy-containers/version-compatibility.md)
+### [リソースコントロール](manage-containers/resource-controls.md)
 ## Docker
 ### [Windows 上の Docker エンジン](manage-docker/configure-docker-daemon.md)
 ### [Docker 群れ](manage-containers/swarm-mode.md)
 ### [Windows Docker host のリモート管理](management/manage_remotehost.md)
+## コンテナーのオーケストレーション
+### [概要](about/overview-container-orchestrators.md)
 ## 配分
 ### グループ管理サービスアカウント
 #### [gMSA を作成します](manage-containers/manage-serviceaccounts.md)
