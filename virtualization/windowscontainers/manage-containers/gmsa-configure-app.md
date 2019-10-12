@@ -2,18 +2,18 @@
 title: グループ管理サービスアカウントを使用するようにアプリを構成する
 description: Windows コンテナーのグループ管理サービスアカウント (gMSAs) を使用するようにアプリを構成する方法について説明します。
 keywords: docker、コンテナー、active directory、gmsa、アプリ、アプリケーション、グループ管理サービスアカウント、グループ管理サービスアカウント、構成
-author: Heidilohr
+author: rpsqrd
 ms.date: 09/10/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 234909d7f0cb0f30ee7fbf4796dd0381bfbff89f
-ms.sourcegitcommit: 5d4b6823b82838cb3b574da3cd98315cdbb95ce2
+ms.openlocfilehash: 6635381d5f7ddbebf7bdea4624af241b9f6a6864
+ms.sourcegitcommit: 22dcc1400dff44fb85591adf0fc443360ea92856
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "10079749"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "10209872"
 ---
 # <a name="configure-your-app-to-use-a-gmsa"></a>GMSA を使用するようにアプリを構成する
 

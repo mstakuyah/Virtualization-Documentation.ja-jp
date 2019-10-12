@@ -9,12 +9,12 @@ ms.topic: landing-page
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 74c9d604-0915-4d89-bc69-0263b76bc66b
-ms.openlocfilehash: d28f91ca5c0957a91c38d51b461449ef869f7493
-ms.sourcegitcommit: 868a64eb97c6ff06bada8403c6179185bf96675f
+ms.openlocfilehash: 9a5b08f87983e285418ae333e3a948af9911d73d
+ms.sourcegitcommit: 22dcc1400dff44fb85591adf0fc443360ea92856
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "10129282"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "10209742"
 ---
 <div id="main" class="v2">
     <ul class="cardsY panelContent featuredContent">
@@ -47,7 +47,7 @@ ms.locfileid: "10129282"
                                 </div>
                             </div>
                             <div class="cardText">
-                                <h3>Docker Hub でコンテナーイメージを確認する</h3>
+                                <h3>Docker Hub のコンテナーイメージをご覧ください。</h3>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@ ms.locfileid: "10129282"
                         <div class="cardText">
                             <h3 style="margin: 8px 0 2px 0;">概要</h3>
                             <ul>
-                                <li><a href="/en-us/virtualization/windowscontainers/about/index" data-linktype="absolute-path">コンテナー101</a></li>
+                                <li><a href="/en-us/virtualization/windowscontainers/about/index" data-linktype="absolute-path">Windows コンテナーについて</a></li>
                                 <li><a href="/en-us/virtualization/windowscontainers/deploy-containers/system-requirements" data-linktype="absolute-path">システム要件</a></li>
                                 <li><a href="/en-us/virtualization/windowscontainers/about/faq" data-linktype="absolute-path">FAQ</a></li>
                             </ul>
@@ -132,9 +132,9 @@ ms.locfileid: "10129282"
                             <h3 style="margin: 8px 0 2px 0;">チュートリアル</h3>
                             <ul>
                                 <li><a href="/en-us/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile" data-linktype="external">Windows コンテナーを構築する</a></li>
-                                <li><a href="/en-us/virtualization/windowscontainers/kubernetes/getting-started-kubernetes-windows" data-linktype="external">Windows で使用する Kubernetes</a></li>
-                                <li><a href="/en-us/azure/service-fabric/service-fabric-quickstart-containers" data-linktype="external">Windows のサービスファブリック</a></li>
-                                <li><a href="/en-us/virtualization/windowscontainers/deploy-containers/linux-containers" data-linktype="external">Windows の Linux コンテナー</a></li>
+                                <li><a href="/azure/aks/windows-container-cli" data-linktype="external">AKS で実行する</a></li>
+                                <li><a href="/azure/service-fabric/service-fabric-quickstart-containers" data-linktype="external">サービスファブリックで実行する</a></li>
+                                <li><a href="/azure/app-service/app-service-web-get-started-windows-container" data-linktype="external">Azure App Service で実行する</a></li>
                             </ul>
                         </div>
                     </div>
@@ -154,11 +154,8 @@ ms.locfileid: "10129282"
                             <h3 style="margin: 8px 0 2px 0;">概念</h3>
                             <ul>
                                 <li><a href="/en-us/virtualization/windowscontainers/manage-docker/configure-docker-daemon" data-linktype="external">Docker</a></li>
-                                <li><a href="/en-us/virtualization/windowscontainers/manage-containers/manage-serviceaccounts" data-linktype="external">配分</a></li>
-                                <li><a href="/en-us/virtualization/windowscontainers/container-networking/architecture" data-linktype="external">ネットワーク</a></li>
-                                <li><a href="/en-us/virtualization/windowscontainers/manage-containers/container-storage" data-linktype="external">ストレージ</a></li>
-                                <li><a href="/en-us/virtualization/windowscontainers/deploy-containers/hardware-devices-in-containers" data-linktype="external">デバイス</a></li>
-                                <li><a href="/en-us/virtualization/windowscontainers/manage-containers/hyperv-container" data-linktype="external">Hyper-V による分離</a></li>
+                                <li><a href="/virtualization/windowscontainers/about/overview-container-orchestrators" data-linktype="external">コンテナーのオーケストレーション</a></li>
+                                <li><a href="/virtualization/windowscontainers/manage-containers/container-base-images" data-linktype="external">Windows container の基礎</a></li>
                             </ul>
                         </div>
                     </div>

@@ -14,19 +14,15 @@
 ## Windows コンテナーを構築する
 ### [Dockerfile を作成する](manage-docker/manage-windows-dockerfile.md)
 ### [Dockerfile を最適化する](manage-docker/optimize-windows-dockerfile.md)
-## Windows で使用する Kubernetes
-### [Windows で使用する Kubernetes](kubernetes/getting-started-kubernetes-windows.md)
-### [Kubernetes マスターを作成する](kubernetes/creating-a-linux-master.md)
-### [ネットワークソリューションを選ぶ](kubernetes/network-topologies.md)
-### [Windows ワーカーに参加する](kubernetes/joining-windows-workers.md)
-### [Linux ワーカに参加する](kubernetes/joining-linux-workers.md)
-### [Kubernetes リソースの展開](kubernetes/deploying-resources.md)
-### [トラブルシューティング](kubernetes/common-problems.md)
-### [Kubernetes の Windows サービス](kubernetes/kube-windows-services.md)
-### [コンパイル Kubernetes バイナリ](kubernetes/compiling-kubernetes-binaries.md)
-## Windows のサービスファブリック
+## Azure Kubernetes サービスで実行する
+### [AKS で Windows コンテナークラスターを作成する](/azure/aks/windows-container-cli)
+### [現在の制限事項](/azure/aks/windows-node-limitations)
+## サービスファブリックで実行する
 ### [最初のコンテナーの展開](/azure/service-fabric/service-fabric-quickstart-containers)
 ### [Windows コンテナー内での .NET アプリケーションの展開](/azure/service-fabric/service-fabric-host-app-in-a-container)
+## Azure App Service で実行する
+### [Azure App Service のクイックスタート](/azure/app-service/app-service-web-get-started-windows-container)
+### [Windows コンテナーと Azure App Service を使用して ASP.NET アプリを移行する](/azure/app-service/app-service-web-tutorial-windows-containers-custom-fonts)
 ## Windows の Linux コンテナー
 ### [概要](deploy-containers/linux-containers.md)
 ### [最初の LCOW コンテナーを実行する](quick-start/quick-start-windows-10-linux.md)
@@ -39,10 +35,24 @@
 ### [リソースコントロール](manage-containers/resource-controls.md)
 ## Docker
 ### [Windows 上の Docker エンジン](manage-docker/configure-docker-daemon.md)
-### [Docker 群れ](manage-containers/swarm-mode.md)
 ### [Windows Docker host のリモート管理](management/manage_remotehost.md)
 ## コンテナーのオーケストレーション
 ### [概要](about/overview-container-orchestrators.md)
+### Windows で使用する Kubernetes
+#### [Windows で使用する Kubernetes](kubernetes/getting-started-kubernetes-windows.md)
+#### [Kubernetes マスターを作成する](kubernetes/creating-a-linux-master.md)
+#### [ネットワークソリューションを選ぶ](kubernetes/network-topologies.md)
+#### [Windows ワーカーに参加する](kubernetes/joining-windows-workers.md)
+#### [Linux ワーカに参加する](kubernetes/joining-linux-workers.md)
+#### [Kubernetes リソースの展開](kubernetes/deploying-resources.md)
+#### [トラブルシューティング](kubernetes/common-problems.md)
+#### [Kubernetes の Windows サービス](kubernetes/kube-windows-services.md)
+#### [コンパイル Kubernetes バイナリ](kubernetes/compiling-kubernetes-binaries.md)
+### サービスファブリック
+#### [サービスファブリックとコンテナー](/azure/service-fabric/service-fabric-containers-overview)
+#### [リソースガバナンス](/azure/service-fabric/service-fabric-resource-governance)
+### Docker 群れ
+#### [群れモード](manage-containers/swarm-mode.md)
 ## 配分
 ### グループ管理サービスアカウント
 #### [gMSA を作成します](manage-containers/manage-serviceaccounts.md)
@@ -58,6 +68,7 @@
 ### [詳細なネットワークオプションを構成する](container-networking/advanced.md)
 ## ストレージ
 ### [概要](manage-containers/container-storage.md)
+### [常設ストレージ](manage-containers/persistent-storage.md)
 ## デバイス
 ### [ハードウェアデバイス](deploy-containers/hardware-devices-in-containers.md)
 ### [GPU アクセラレータ](deploy-containers/gpu-acceleration.md)

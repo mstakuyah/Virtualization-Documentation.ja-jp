@@ -2,18 +2,18 @@
 title: Windows コンテナー用の gMSAs トラブルシューティング
 description: Windows コンテナーのグループ管理サービスアカウント (gMSAs) のトラブルシューティングを行う方法について説明します。
 keywords: docker、コンテナー、active directory、gmsa、グループ管理サービスアカウント、グループ管理サービスアカウント、トラブルシューティング、トラブルシューティング
-author: Heidilohr
-ms.date: 09/10/2019
+author: rpsqrd
+ms.date: 10/03/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 00a0d9b1367da55b7669fc26a3eca303272967ab
-ms.sourcegitcommit: 5d4b6823b82838cb3b574da3cd98315cdbb95ce2
+ms.openlocfilehash: 89f255e307c2a48fd743d5abd1a49bba7703aaf3
+ms.sourcegitcommit: 22dcc1400dff44fb85591adf0fc443360ea92856
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "10079744"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "10209852"
 ---
 # <a name="troubleshoot-gmsas-for-windows-containers"></a>Windows コンテナー用の gMSAs トラブルシューティング
 
@@ -142,9 +142,43 @@ Active Directory で使用されるすべてのポートの一覧については
 
     GMSA が利用可能で`NERR_SUCCESS`あり、ネットワーク接続によってコンテナーがドメインと通信できる場合は、信頼の確認が返されます。 失敗した場合は、ホストとコンテナーのネットワーク構成を確認します。 どちらの場合も、ドメインコントローラーと通信できる必要があります。
 
-4. アプリが gMSA を[使用するように構成](gmsa-configure-app.md)されていることを確認します。 GMSA を使用しても、コンテナー内のユーザーアカウントは変更されません。 代わりに、システムアカウントは、他のネットワークリソースと通信するときに gMSA を使います。 つまり、gMSA id を使用するには、アプリがネットワークサービスまたはローカルシステムとして実行されている必要があります。
+4. コンテナーが有効な Kerberos チケット保証チケット (TGT) を取得できるかどうかを確認します。
+
+    ```powershell
+    klist get krbtgt
+    ```
+
+    このコマンドを実行すると、"krbtgt へのチケットが正常に取得されました。" とチケットの取得に使用されたドメインコントローラーの一覧が返されます。 TGT を取得できても`nltest` 、前の手順で不合格になった場合は、gMSA アカウントが正しく構成されていないことを示している可能性があります。 詳細について[は、「gMSA アカウントを確認](#check-the-gmsa-account)する」を参照してください。
+
+    コンテナー内の TGT を取得できない場合、これは DNS またはネットワーク接続の問題を示している可能性があります。 コンテナーがドメイン DNS 名を使用してドメインコントローラーを解決できること、ドメインコントローラーがコンテナーからルーティングされていることを確認します。
+
+5. アプリが gMSA を[使用するように構成](gmsa-configure-app.md)されていることを確認します。 GMSA を使用しても、コンテナー内のユーザーアカウントは変更されません。 代わりに、システムアカウントは、他のネットワークリソースと通信するときに gMSA を使います。 つまり、gMSA id を使用するには、アプリがネットワークサービスまたはローカルシステムとして実行されている必要があります。
 
     > [!TIP]
     > コンテナー内の`whoami`現在のユーザーコンテキストを特定するために別のツールを実行するか、別のツールを使用すると、gMSA 名自体は表示されません。 これは、ドメイン id ではなく、ローカルユーザーとしてコンテナーに常にサインインしているためです。 GMSA は、コンピューターアカウントがネットワークリソースと通信するたびに使用されます。これは、アプリがネットワークサービスまたはローカルシステムとして実行する必要がある理由です。
 
-5. 最後に、コンテナーが正しく構成されているように見えても、ユーザーまたは他のサービスがコンテナー内のアプリに自動的に認証できない場合は、gMSA アカウントの Spn を確認します。 クライアントは、アプリケーションに到達したときの名前で gMSA account を検索します。 これは、たとえば、クライアントがロード`host`バランサーまたは別の DNS 名を使用してアプリに接続している場合に、gMSA に追加の spn が必要になることを意味します。
+### <a name="check-the-gmsa-account"></a>GMSA アカウントを確認する
+
+1. コンテナーが正しく構成されているように見えても、ユーザーまたは他のサービスがコンテナー内のアプリに対して自動的に認証できない場合は、gMSA アカウントの Spn を確認してください。 クライアントは、アプリケーションに到達したときの名前で gMSA account を検索します。 これは、たとえば、クライアントがロード`host`バランサーまたは別の DNS 名を使用してアプリに接続している場合に、gMSA に追加の spn が必要になることを意味します。
+
+2. GMSA とコンテナーホストが同じ Active Directory ドメインに属していることを確認します。 GMSA が別のドメインに属している場合、コンテナーホストは gMSA パスワードを取得できません。
+
+3. GMSA と同じ名前のアカウントが1つだけ存在することを確認します。 gMSA オブジェクトには、それぞれの SAM アカウント名にドル記号 ($) が追加されているため、"マイアカウント $" という名前の gMSA を、同じドメイン内の "マイアカウント" という名前のユーザーアカウントにすることができます。 これにより、ドメインコントローラーまたはアプリケーションが名前で gMSA を検索する必要がある場合に、問題が発生する可能性があります。 次のコマンドを使用して、同様の名前付きオブジェクトの広告を検索することができます。
+
+    ```powershell
+    # Replace "GMSANAMEHERE" with your gMSA account name (no trailing dollar sign)
+    Get-ADObject -Filter 'sAMAccountName -like "GMSANAMEHERE*"'
+    ```
+
+4. GMSA アカウントで無制限の委任を有効にしている場合は、 [UserAccountControl 属性](https://support.microsoft.com/en-us/help/305144/how-to-use-useraccountcontrol-to-manipulate-user-account-properties)の`WORKSTATION_TRUST_ACCOUNT`フラグが有効になっていることを確認します。 アプリで SID への名前の解決が必要な場合のように、このフラグは、コンテナー内の NETLOGON がドメインコントローラーと通信するために必要です。 次のコマンドを使用して、フラグが正しく構成されているかどうかを確認できます。
+
+    ```powershell
+    $gMSA = Get-ADServiceAccount -Identity 'yourGmsaName' -Properties UserAccountControl
+    ($gMSA.UserAccountControl -band 0x1000) -eq 0x1000
+    ```
+
+    上記のコマンドが返さ`False`れた場合は、次の`WORKSTATION_TRUST_ACCOUNT`コマンドを使用して、gMSA account の UserAccountControl プロパティにフラグを追加します。 このコマンドを実行すると`NORMAL_ACCOUNT`、 `INTERDOMAIN_TRUST_ACCOUNT`UserAccountControl プロパティ`SERVER_TRUST_ACCOUNT`の、、、およびフラグもクリアされます。
+
+    ```powershell
+    Set-ADObject -Identity $gMSA -Replace @{ userAccountControl = ($gmsa.userAccountControl -band 0x7FFFC5FF) -bor 0x1000 }
+    ```
