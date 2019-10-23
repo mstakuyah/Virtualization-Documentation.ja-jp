@@ -3,24 +3,25 @@ title: Windows コンテナーの要件
 description: Windows コンテナーの要件
 keywords: メタデータ、コンテナー
 author: taylorb-microsoft
-ms.date: 09/26/2016
+ms.author: taylorb
+ms.date: 10/22/2019
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: df5d8e17d0d512f7f53fcacf6c2c2a2652f3e7c0
-ms.sourcegitcommit: 73134bf279f3ed18235d24ae63cdc2e34a20e7b7
+ms.openlocfilehash: 74f501e5efab3a93e60c9d4797464cea283cdc0b
+ms.sourcegitcommit: d0411b05d1ef7328a770766b84fd0743f9d9c237
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "10107866"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "10254262"
 ---
 # <a name="windows-container-requirements"></a>Windows コンテナーの要件
 
 このガイドでは、Windows コンテナーホストの要件を示します。
 
-## <a name="os-requirements"></a>OS 要件
+## <a name="operating-system-requirements"></a>オペレーティング システムの要件
 
-- Windows コンテナー機能は、Windows Server 2016 (コアおよびデスクトップエクスペリエンス)、Windows 10 Professional、Enterprise (記念日) 以降でのみ使用できます。
+- Windows コンテナー機能は、Windows Server (半期チャネル)、Windows Server 2019、Windows Server 2016、および Windows 10 Professional と Enterprise Edition (バージョン1607以降) で利用できます。
 - Hyper-v の分離を実行する前に、Hyper-v の役割をインストールする必要があります。
 - Windows Server コンテナー ホストでは、Windows を c:\ にインストールする必要があります。 この制限は、Hyper-v の分離されたコンテナーのみを展開する場合には適用されません。
 
@@ -29,7 +30,7 @@ ms.locfileid: "10107866"
 Windows コンテナーホストを Hyper-v 仮想マシンから実行し、Hyper-v 分離をホストする場合は、入れ子になった仮想化を有効にする必要があります。 入れ子になった仮想化には次の要件があります。
 
 - 仮想化された Hyper-V ホスト用に少なくとも 4 GB の RAM を利用できる。
-- Windows Server 2019、Windows server バージョン1803、windows Server バージョン1709、windows Server 2016、ホストシステム上の windows 10、仮想マシンの windows Server (フル、コア)。
+- ホストシステム上の windows Server (半期チャネル)、Windows Server 2019、Windows Server 2016、または Windows 10。仮想マシンの Windows Server (フルまたはサーバーコア)。
 - Intel VT-x に対応したプロセッサ (この機能は現在 Intel プロセッサのみで使用可能です)。
 - コンテナーホスト VM には、少なくとも2つの仮想プロセッサが必要です。
 
@@ -47,9 +48,13 @@ Windows コンテナーホストを Hyper-v 仮想マシンから実行し、Hyp
 | Nano Server | 40 MB                     | 130 MB + 1 GB ページファイル |
 | Server Core | 50 MB                     | 325 MB + 1 GB ページファイル |
 
-#### <a name="windows-server-version-1709"></a>Windows Server Version 1709
+#### <a name="windows-server-semi-annual-channel"></a>Windows Server (半期チャネル)
 
 | 基本イメージ  | Windows Server コンテナー | Hyper-V による分離    |
 | ----------- | ------------------------ | -------------------- |
 | Nano Server | 30 MB                     | 110 MB + 1 GB ページファイル |
 | Server Core | 45 MB                     | 360 MB + 1 GB ページファイル |
+
+## <a name="see-also"></a>関連項目
+
+[オンプレミスのシナリオでの Windows コンテナーと Docker のサポートポリシー](https://support.microsoft.com/help/4489234/support-policy-for-windows-containers-and-docker-on-premises)

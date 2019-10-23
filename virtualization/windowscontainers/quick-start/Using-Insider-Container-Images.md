@@ -11,7 +11,7 @@
 - Windows Insider Program から提供された Windows Server の最新ビルドや、Windows Insider Program から提供された Windows 10 の最新ビルドが実行されている 1 台のコンピューター システム (物理マシンまたは仮想マシン)。
 
 > [!IMPORTANT]
-> Windows server Insider Preview プログラムまたは windows 10 のビルドから windows Server のビルドを使用する必要があります。 windows Insider Preview プログラムでは、以下に示す基本イメージを使用します。 これらのビルドを使用せずに、対象の基本イメージを使用した場合、コンテナーを開始できません。
+> Windows では、コンテナー OS のバージョンと一致するように、ホスト OS のバージョンが必要です。 新しい Windows ビルドに基づいてコンテナーを実行する場合は、同等のホストビルドがあることを確認してください。 そうしないと、Hyper-v 分離を使って、新しいホストビルドで古いコンテナーを実行できます。 詳細については、コンテナードキュメントの「Windows コンテナーバージョンの互換性」を参照してください。
 
 ## <a name="install-docker-enterprise-edition-ee"></a>Docker Enterprise Edition (EE) のインストール
 
@@ -48,25 +48,33 @@ Restart-Computer -Force
 
 ## <a name="install-base-container-image"></a>コンテナーの基本イメージのインストール
 
-Windows コンテナーを使用する前に、基本イメージをインストールする必要があります。 Windows Insider Program に参加すると、これらの基本イメージの最新ビルドをテストすることもできます。 Insider の基本イメージでは、現在、Windows Server に基づく 4 つの基本イメージが用意されています。 以下の表に、それぞれの基本イメージの使用目的を示します。
+Windows コンテナーを使用する前に、基本イメージをインストールする必要があります。 Windows Insider Program に参加すると、これらの基本イメージの最新ビルドをテストすることもできます。 Insider ベースの画像を使用すると、Windows Server に基づく6つの基本画像が提供されます。 以下の表に、それぞれの基本イメージの使用目的を示します。
 
 | 基本 OS イメージ                       | 使い方                      |
 |-------------------------------------|----------------------------|
 | mcr.microsoft.com/windows/servercore         | 実稼働と開発 |
 | mcr.microsoft.com/windows/nanoserver              | 実稼働と開発 |
+| mcr.microsoft.com/windows/              | 実稼働と開発 |
 | mcr.microsoft.com/windows/servercore/insider | 開発専用           |
 | mcr.microsoft.com/windows/nanoserver/insider        | 開発専用           |
+| mcr.microsoft.com/windows/insider        | 開発専用           |
 
-Nano Server Insider 基本イメージをプルするには、次のコマンドを実行します。
+Server Core Insider ベースのイメージを取得するには、次の形式を使用するために、 [Server Core Insider Hub リポジトリ](https://hub.docker.com/_/microsoft-windows-servercore-insider)上の特集タグを参照してください。
 
 ```console
-docker pull mcr.microsoft.com/nanoserver/insider
+docker pull mcr.microsoft.com/windows/servercore/insider:10.0.{build}.{revision}
 ```
 
-Windows Server Core Insider 基本イメージをプルするには、次のコマンドを実行します。
+Nano Server Insider ベースのイメージを取得するには、次の形式を使用するために[Nano Server Insider Docker Hub リポジトリ](https://store.docker.com/_/microsoft-windows-nanoserver-insider)上の特集タグを参照してください。
 
 ```console
-docker pull mcr.microsoft.com/windows/servercore/insider
+docker pull mcr.microsoft.com/windows/nanoserver/insider:10.0.{build}.{revision}
+```
+
+Windows Insider ベースのイメージを取得するには、 [Windows Insider Docker Hub リポジトリ](https://store.docker.com/_/microsoft-windows-insider)上の特集タグを参照して、次の形式を使用します。
+
+```console
+docker pull mcr.microsoft.com/windows/insider:10.0.{build}.{revision}
 ```
 
 > [!IMPORTANT]

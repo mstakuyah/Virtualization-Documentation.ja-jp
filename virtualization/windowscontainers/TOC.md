@@ -2,6 +2,7 @@
 
 # 概要
 ## [Windows コンテナーについて](about/index.md)
+## [コンテナーと Vm](about/containers-vs-vm.md)
 ## [システム要件](deploy-containers/system-requirements.md)
 ## [FAQ](about/faq.md)
 
@@ -26,6 +27,8 @@
 ## Windows の Linux コンテナー
 ### [概要](deploy-containers/linux-containers.md)
 ### [最初の LCOW コンテナーを実行する](quick-start/quick-start-windows-10-linux.md)
+## Windows Insider プログラムでコンテナーを使う
+### [概要](deploy-containers/insider-overview.md)
 
 # 概念
 ## Windows Container の基礎

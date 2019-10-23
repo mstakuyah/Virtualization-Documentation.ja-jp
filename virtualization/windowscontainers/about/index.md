@@ -1,84 +1,112 @@
 ---
 title: Windows コンテナーについて
-description: Windows コンテナーについて学習します。
+description: コンテナーは、オンプレミスのさまざまな環境で、またはクラウドでアプリをパッケージ化して実行するためのテクノロジです。 このトピックでは、Docker と Azure Kubernetes サービスの使用など、コンテナーでのアプリの開発と展開について説明します。
 keywords: Docker, コンテナー
 author: taylorb-microsoft
-ms.date: 05/22/2019
+ms.date: 10/22/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: 55fc032613b901ef1f5f9cf989891ceef99aac36
-ms.sourcegitcommit: 668d0c0a81e6d74d75a655be5a47c2bbc5e268de
+ms.openlocfilehash: acce214cc8991f20c979b6dbe636590416841cb9
+ms.sourcegitcommit: d0411b05d1ef7328a770766b84fd0743f9d9c237
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "10138513"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "10254292"
 ---
-# <a name="about-windows-containers"></a>Windows コンテナーについて
+# <a name="windows-and-containers"></a>Windows とコンテナー
 
-これは、すべてが揃ったキッチンのようなものです。 この単一の部屋の中には、料理、パン、流し台など、料理をクックするために必要なものがすべて含まれています。 これは、コンテナーです。
+コンテナーは、オンプレミスとクラウドでのさまざまな環境で Windows アプリと Linux アプリケーションをパッケージ化して実行するためのテクノロジです。 コンテナーは、アプリの開発、展開、管理を簡単にするための軽量な分離環境を提供します。 コンテナーはすぐに起動して停止するため、変更要求に迅速に対応する必要があるアプリに最適です。 コンテナーの軽量な性質も、インフラストラクチャの密度と使用率を向上させるのに便利なツールです。
 
-![黒いボックスの内側に黄色の壁紙が付いた、完全に協力したキッチンの図です。](media/box1.png)
+![クラウドまたはオンプレミスでコンテナーを実行する方法を示すグラフィック。ほぼすべての言語で記述されたモノリシックアプリまたはマイクロサービスをサポートしています。](media/about-3-box.png)
 
-ここでは、建物内にこのキッチンをスライドさせて、ブックを本棚にスライドするということを想像してみてください。 キッチンが機能する必要があるものはすべて既に用意されているため、料理を開始するには、電気と配管をつなげる必要があります。
+## <a name="the-microsoft-container-ecosystem"></a>Microsoft コンテナーエコシステム
 
-![黒いボックスの2つの積み重ねで構成されたアパートメントの建物。 これらのボックスの4つは、キッチンで使用されているのと同じ黄色のボックスで、建物内の任意の場所に配置されています。残りの部分は、多色の生きた部屋、または空で灰色表示されています。](media/apartment.png)
+Microsoft には、コンテナーでアプリを開発して展開するためのツールとプラットフォームが数多く用意されています。
 
-それが停止するのはなぜですか? 好きな方法で建物をカスタマイズできます。多くの種類の会議室での入力、同一の部屋での入力、またはこの2つの組み合わせを行うことができます。
+- Windows <strong>10 で windows ベースのコンテナーまたは Linux ベースのコンテナーを実行</strong>し、 [Docker デスクトップ](https://store.docker.com/editions/community/docker-ce-desktop-windows)を使用して開発およびテストを行い、windows に組み込まれているコンテナー機能を使用します。 [Windows Server でネイティブにコンテナーを実行](../quick-start/set-up-environment.md?tabs=Windows-Server)することもできます。
+- Docker、Docker の作成、Kubernetes、ヘルム、その他の便利な機能を備えた[Visual studio](https://docs.microsoft.com/visualstudio/containers/overview)と[visual studio コード](https://code.visualstudio.com/docs/azure/docker)での強力なコンテナーのサポートを使用して、 <strong>Windows ベースのコンテナーの開発、テスト、公開、展開</strong>を行います。各種.
+- 他のユーザーが使用するために、<strong>アプリをコンテナーイメージとして</strong>公開されるように公開します。または、組織の開発と展開のためのプライベート[Azure container レジストリ](https://azure.microsoft.com/services/container-registry/)に、Visual Studio と visual studio コード内から直接プッシュおよびプルします。.
+- Azure またはその他のクラウド<strong>のスケールでコンテナーを展開</strong>します。
 
-このルームは、キッチンでクックしながらアプリを実行することによって機能します。 コンテナーは、アプリとアプリが独自の分離ボックス内に実行する必要があるものすべてを配置します。 このため、分離されたアプリは、そのコンテナーの外部に存在する他のアプリやプロセスについては一切関知しません。 コンテナーにはアプリの実行に必要なものがすべて含まれているため、他のコンテナー用にプロビジョニングされたリソースに関係なく、コンテナーをどこでも移動できます。
+  - Azure Container レジストリなどのコンテナーレジストリからアプリ (コンテナーイメージ) を取得し、 [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)などのオーケストレータ (Windows ベースのアプリの場合はプレビュー) または azure サービスなどの orchestrator を使用して展開および管理します。 [ファブリック](https://docs.microsoft.com/azure/service-fabric/)。
+  - Azure Kubernetes Service は、コンテナー、数百、または数千のコンテナーなど、さまざまな方法で、Azure 仮想マシンにコンテナーを展開して管理します。 Azure 仮想マシンは、カスタマイズされた Windows Server イメージ (Windows ベースのアプリを展開している場合)、またはカスタマイズされた Ubuntu Linux イメージ (Linux ベースのアプリを展開している場合) のいずれかを実行します。
+- [AKS エンジン](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)(プレビュー版は Linux コンテナー)、または openshift を使った[Azure Stack](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-azure-stack)で azure stack を使用して、<strong>オンプレミスのコンテナーを展開</strong>します。 Windows Server で Kubernetes をセットアップすることもできます (「 [windows の Kubernetes](../kubernetes/getting-started-kubernetes-windows.md)」を参照してください)。また、windows[コンテナーを RedHat Openshift コンテナープラットフォームで](https://techcommunity.microsoft.com/t5/Networking-Blog/Managing-Windows-containers-with-Red-Hat-OpenShift-Container/ba-p/339821)も実行できるように取り組んでいます。
 
-次のビデオでは、Windows コンテナーで何ができるかについて詳しく説明します。また、Docker との Microsoft のパートナーシップは、オープンソースのコンテナー開発のための、同期されていない環境の作成に役立ちます。
+## <a name="how-containers-work"></a>コンテナーのしくみ
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/Ryx3o0rD5lY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+コンテナーは、ホストオペレーティングシステム上でアプリケーションを実行するための、分離された簡易サイロです。 コンテナーは、次の図に示すように、ホストオペレーティングシステムのカーネル (オペレーティングシステムの埋め込み機能とも呼ばれます) の上に構築されます。
 
-## <a name="container-fundamentals"></a>コンテナーの基本
+![コンテナーがカーネル上でどのように動作するかを示すアーキテクチャ図](media/container-diagram.svg)
 
-Windows コンテナーの操作を開始するときに役立つ用語について説明します。
+コンテナーは、ホストオペレーティングシステムのカーネルを共有していますが、コンテナーは unfettered アクセスを取得しません。 代わりに、コンテナーは分離を取得します。また、一部の状況では、システムの表示が仮想化されています。 たとえば、コンテナーはファイルシステムとレジストリの仮想化されたバージョンにアクセスできますが、変更はコンテナーにのみ影響し、停止すると破棄されます。 データを保存するために、コンテナーは[Azure ディスク](https://azure.microsoft.com/services/storage/disks/)やファイル共有 ( [azure Files](https://azure.microsoft.com/services/storage/files/)を含む) などの固定記憶域をマウントできます。
 
-- コンテナーホスト: Windows コンテナー機能で構成された物理または仮想コンピューターシステム。 コンテナーホストは、1つ以上の Windows コンテナーを実行します。
-- サンドボックス: コンテナーに対して行ったすべての変更をキャプチャするレイヤー (ファイルシステムの変更、レジストリの変更、ソフトウェアのインストールなど)。
-- 基本イメージ: コンテナーのオペレーティングシステム環境を提供するコンテナーのイメージレイヤーの最初のレイヤー。 ベースイメージを変更することはできません。
-- コンテナイメージ: コンテナーを作成するための手順の読み取り専用テンプレート。 画像は、改変されていない基本的なオペレーティングシステム環境に基づくことができますが、変更されたコンテナーのサンドボックスから作成することもできます。 これらの変更された画像は、基本イメージレイヤーの上で変更をレイヤー化します。これらのレイヤーは、他の基本イメージにコピーして再適用することで、同じ変更内容を含む新しい画像を作成することができます。
-- コンテナーリポジトリ: 新しいイメージを作成するたびに、コンテナイメージとその依存関係を格納するローカルリポジトリ。 格納されている画像は、コンテナーホストで何度でも再利用できます。 また、コンテナーのイメージを、Docker Hub などのパブリックまたはプライベートなレジストリに格納して、さまざまなコンテナーホスト間で使用できるようにすることもできます。
-- コンテナーオーケストレータ: 多数のコンテナーを自動化して管理し、互いの相互作用をどのように処理するかを指定します。 詳細については、「 [Windows コンテナーオーケストレーションについ](overview-container-orchestrators.md)て」を参照してください。
-- Docker: コンテナーイメージをパッケージ化して配信する自動化されたプロセス。 詳しくは、「Docker の[概要](docker-overview.md)」、「 [Windows の docker エンジン](../manage-docker/configure-docker-daemon.md)」、または「 [docker web サイト](https://www.docker.com)」をご覧ください。
+コンテナーはカーネルの上に構築されますが、カーネルでは、アプリで実行する必要があるすべての Api とサービスを提供するわけではありません。これらのほとんどは、カーネルの上でユーザーモードで実行されるシステムファイル (ライブラリ) によって提供されます。 コンテナーは、ホストのユーザーモード環境から分離されているため、コンテナーには、基本イメージと呼ばれるものにパッケージ化された、ユーザーモードシステムファイルの独自のコピーが必要です。 基本イメージは、コンテナーが構築されている基礎レイヤーとして機能し、カーネルによって提供されていないオペレーティングシステムサービスを提供します。 ただし、後では、コンテナの画像について詳しく説明します。
 
-![コンテナーの作成方法を示すフローチャート。 アプリケーションと基本イメージは、サンドボックスと新しいアプリケーションイメージを作成するために使用されます。これは、基本イメージの上に重ねて配置され、新しいコンテナーを構築します。](media/containerfund.png)
+## <a name="containers-vs-virtual-machines"></a>コンテナーと仮想マシン
 
-仮想マシンに慣れているユーザーは、コンテナーと仮想マシンが似ているように思えることがあります。 コンテナーはオペレーティングシステムを実行し、ファイルシステムを持ち、物理または仮想コンピューターシステムと同様にネットワーク経由でアクセスできます。 ただし、コンテナーの背後にあるテクノロジと概念は、仮想マシンのものとは大きく異なります。 これらの概念の詳細については、「Russinovich の[ブログ投稿](https://azure.microsoft.com/blog/containers-docker-windows-and-trends/)にマークを付ける」を参照してください。違いについて詳しく説明します。
+コンテナーとは異なり、仮想マシン (Vm) では、次の図に示すように、独自のカーネルを含む完全なオペレーティングシステムを実行します。
 
-### <a name="windows-container-types"></a>Windows コンテナーの種類
+![Vm がホストオペレーティングシステムの横に完全なオペレーティングシステムを実行する方法を示すアーキテクチャ図](media/virtual-machine-diagram.svg)
 
-また、2つの異なるコンテナー型 (ランタイムとも呼ばれます) が存在することに注意する必要があります。
+各コンテナーと仮想マシンはそれぞれの用途を持っています。実際には、コンテナーの多くの展開では、ハードウェア上で直接実行されるのではなく、仮想マシンをホストオペレーティングシステムとして使用します。特に、クラウドでコンテナーを実行している場合です。
 
-Windows Server コンテナーは、プロセスと名前空間分離テクノロジによってアプリケーション分離を提供します。このため、これらのコンテナーは、プロセス分離されたコンテナーとも呼ばれます。 Windows Server コンテナーは、コンテナー ホストとそのホストで実行されているすべてのコンテナーと、カーネルを共有します。 これらのプロセス分離されたコンテナーは、悪意のあるセキュリティ境界を持たないため、信頼されていないコードを分離するために使わないでください。 これらのコンテナーはカーネルを共有しているため、カーネルのバージョンと構成を同一にする必要があります。
+これらの補完的なテクノロジの類似点と相違点について詳しくは、「[コンテナーと仮想マシン](containers-vs-vm.md)」をご覧ください。
 
-Hyper-v 分離は、高度に最適化された仮想マシンで各コンテナーを実行することによって、Windows Server コンテナーによって提供される分離を拡張します。 この構成では、コンテナーホストは、そのカーネルを同じホスト上の他のコンテナーと共有しません。 これらのコンテナーは、仮想マシンと同じセキュリティが保証されているため、敵対的なマルチテナント ホスティングに適しています。 これらのコンテナーは、ホスト上のホストまたは他のコンテナーとカーネルを共有しないため、(サポートされているバージョンの) 異なるバージョンと構成でカーネルを実行することができます。 たとえば、Windows 10 のすべての Windows コンテナーでは、Windows Server カーネルのバージョンと構成を利用するために、Hyper-v 分離が使用されます。
+## <a name="container-images"></a>コンテナーイメージ
 
-Hyper-v 分離を使用しているかどうかにかかわらず、Windows でコンテナーを実行することは、実行時に決定されます。 最初に、Hyper-v 分離を使用してコンテナーを作成します。次に、実行時に後で、代わりに Windows Server コンテナーとして実行することを選択します。
+すべてのコンテナーは、コンテナイメージから作成されます。 コンテナーの画像は、ローカルコンピューターまたはリモートコンテナーレジストリに存在する一連のレイヤーに編成されたファイルのバンドルです。 コンテナーのイメージは、アプリをサポートするために必要なユーザーモードのオペレーティングシステムファイル、アプリ、アプリのランタイムまたは依存関係、およびアプリで適切に実行する必要があるその他の構成ファイルで構成されます。
+
+Microsoft には、独自のコンテナーイメージを作成するための出発点として使用できる、いくつかの画像 (基本イメージ) が用意されています。
+
+* <strong>Windows</strong> -windows api とシステムサービスの完全なセット (-server の役割) が含まれています。
+* <strong>Windows Server Core</strong> -Windows server api のサブセット、つまり完全な .net framework を含む小さな画像。 また、ほとんどのサーバーの役割も含まれていますが、Fax サーバーではありません。
+* <strong>Nano Server</strong> -.Net Core api と一部のサーバーの役割をサポートする最小の Windows サーバーイメージ。
+* <strong>Windows 10 IoT Core</strong> -ARM または x86 プロセッサを搭載した、小規模インターネット用のハードウェアメーカーによって使用される windows のバージョン。
+
+前に説明したように、コンテナーの画像は、一連のレイヤーで構成されています。 各レイヤーには、コンテナーの画像を表す一連のファイルが含まれています。 コンテナーのレイヤーの性質上、Windows コンテナーを構築するために常に基本イメージをターゲットにする必要はありません。 代わりに、目的のフレームワークを既に持っている別のイメージをターゲットにすることもできます。 たとえば、.net チームは .net core runtime を含む[.net core イメージ](https://hub.docker.com/_/microsoft-dotnet-core)を公開します。 .NET core のインストールプロセスを複製する必要がなくなり、このコンテナーイメージのレイヤーを再利用することができます。 .NET core イメージ自体は、Nano Server に基づいて構築されます。
+
+詳しくは、「[コンテナーの基本イメージ](../manage-containers/container-base-images.md)」をご覧ください。
 
 ## <a name="container-users"></a>コンテナーユーザー
 
 ### <a name="containers-for-developers"></a>開発者のためのコンテナー
 
-コンテナーを使うと、開発者はより高品質のアプリケーションのビルドと出荷をより迅速に行うことができます。 開発者は、すべての環境で同じように展開される Docker イメージを数秒で作成できます。 Docker のコンテナーにパッケージ化されたアプリケーションの大規模な拡大エコシステムがあります。 Docker Kerhub は、Docker によって管理されているパブリックのコンテナーアプリケーションのレジストリであり、そのパブリックコミュニティリポジトリで18万を超えるアプリケーションを公開しています。この番号は増加し続けています。
+コンテナーを使うと、開発者はより高品質のアプリを迅速に構築および出荷することができます。 コンテナーでは、開発者は、環境に合わせて、数秒で展開されるコンテナーイメージを作成できます。 コンテナーは、チーム間でコードを共有するための簡単なメカニズムとして機能し、ホストのファイルシステムに影響を及ぼすことなく、開発環境をブートストラップします。
 
-開発者がアプリを containerizes すると、アプリと、実行する必要があるコンポーネントのみが、画像にまとめられます。 その後、必要に応じて、このイメージからコンテナーが作成されます。 イメージを別のイメージを作成するためのベースラインとして使用して、イメージの作成をさらに高速化することもできます。 複数のコンテナーで同じ画像を共有できます。この場合、コンテナーは非常に早く開始され、使用できるリソースが少なくなります。 たとえば、開発者はコンテナーを使って、分散アプリの軽量で移植可能なアプリコンポーネント (microservices とも呼ばれます) をスピンアップし、各サービスを個別に簡単にスケールすることができます。
-
-コンテナーは持ち運び可能であり、さまざまな言語で記述することができ、Windows Server 2016 を実行しているコンピューターと互換性があります。 開発者は、自分のノート pc またはデスクトップでローカルにコンテナーを作成してテストし、その同じコンテナーイメージを会社のプライベートクラウド、パブリッククラウド、またはサービスプロバイダに展開することができます。 コンテナーの自然なアジリティは、大規模な仮想化されたクラウド環境での先進のアプリ開発パターンをサポートしています。
+コンテナーには、ポータブルで汎用性があり、任意の言語で記述されたアプリを実行でき、Windows 10、バージョン1607以降、または Windows 2016 以降を実行しているコンピューターと互換性があります。 開発者は、自分のノート pc またはデスクトップでローカルにコンテナーを作成してテストし、その同じコンテナーイメージを会社のプライベートクラウド、パブリッククラウド、またはサービスプロバイダーに展開することができます。 コンテナーの自然なアジリティは、大規模な仮想化されたクラウド環境での先進のアプリ開発パターンをサポートしています。
 
 ### <a name="containers-for-it-professionals"></a>IT プロフェッショナル向けのコンテナー
 
-コンテナーを使うと、管理者は簡単に更新して管理できるインフラストラクチャを作成できます。 IT プロフェッショナルは、コンテナーを使用して、開発、QA、および運用チーム向けに標準化された環境を提供できます。 複雑なインストールと構成手順について心配する必要はありません。 コンテナーを使用することで、システム管理者は OS のインストールと基盤となるインフラストラクチャの相違点を抽象化します。
+コンテナーを使うと、管理者は簡単に更新して維持することができ、ハードウェアリソースをより完全に活用できます。 IT プロフェッショナルは、コンテナーを使用して、開発、QA、および運用チーム向けに標準化された環境を提供できます。 コンテナーを使用することで、システム管理者はオペレーティングシステムのインストールと基盤となるインフラストラクチャの相違点を抽象化します。
 
-## <a name="containers-101-video-presentation"></a>コンテナー101ビデオプレゼンテーション
+## <a name="container-orchestration"></a>コンテナーのオーケストレーション
 
-次のビデオでは、Windows コンテナーの履歴と実装について詳しく説明します。
+オーケストレーションの基盤は、コンテナーベースの環境をセットアップするときに重要なインフラストラクチャです。 Docker と Windows を使って、いくつかのコンテナーを手動で管理することもできますが、多くの場合、アプリは、オーケストレーションの提供元である5、10、または数百のコンテナーを使用します。
 
-<iframe src="https://channel9.msdn.com/Blogs/containers/Containers-101-with-Microsoft-and-Docker/player" width="800" height="450" allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
+コンテナーオーケストレーションは、スケーラビリティと運用環境でのコンテナーの管理を支援するために構築されました。 オーケストレーションは、次の機能を提供します。
 
-## <a name="try-windows-server-containers"></a>Windows Server コンテナーを試す
+- 縮尺での展開
+- ワークロードのスケジュール設定
+- 正常性の監視
+- ノードに障害が発生した場合のフェールオーバー
+- 拡大縮小
+- ネットワーク
+- サービス検出
+- アプリのアップグレードの調整
+- クラスターノードのアフィニティ
 
-Windows Server または Windows 10 のコンテナーの使用を開始するには、「[はじめに: コンテナーの環境を構成](../quick-start/set-up-environment.md)する」を参照してください。
+Windows コンテナーで使うことができるさまざまなオーケストレーションがあります。Microsoft が提供するオプションを次に示します。
+- [Azure Kubernetes service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes) -管理された azure Kubernetes サービスを使用する
+- [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/) -マネージサービスを使用する
+- [AKS Engine での Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) -オンプレミスの Azure Kubernetes サービスの使用
+- [Windows 上の Kubernetes](../kubernetes/getting-started-kubernetes-windows.md) -Windows で Kubernetes をセットアップする
+
+## <a name="try-containers-on-windows"></a>Windows でコンテナーを試す
+
+Windows Server または Windows 10 のコンテナーの使用を開始するには、次の情報を参照してください。
+> [!div class="nextstepaction"]
+> [はじめに: コンテナーの環境の構成](../quick-start/set-up-environment.md)
+
+シナリオに適した Azure サービスを決定する方法については、「 [azure container services](https://azure.microsoft.com/product-categories/containers/) 」および「[アプリケーションをホストするために使用する Azure サービスを選択](https://docs.microsoft.com/azure/architecture/guide/technology-choices/compute-decision-tree)する」を参照してください。

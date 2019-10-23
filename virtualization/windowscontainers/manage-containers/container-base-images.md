@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 88e6e080-cf8f-41d8-a301-035959dc5ce0
-ms.openlocfilehash: f5dcaf4958828b1bcf31a96e5fb70eda0508eb96
-ms.sourcegitcommit: e9dda81f1f68359ece9ef132a184a30880bcdb1b
+ms.openlocfilehash: 2a69fbace51589cce08476bd68fdb5c34a7907e6
+ms.sourcegitcommit: d0411b05d1ef7328a770766b84fd0743f9d9c237
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "10161749"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "10254272"
 ---
 # <a name="container-base-images"></a>コンテナーの基本イメージ
 
@@ -124,9 +124,21 @@ MCR には、独自のカタログ操作はありません。また、Docker Hub
 - **.NET Core に基づいて Windows アプリを構築していますか?** この質問への回答が「はい」の場合は`Nanoserver`、ターゲットを指定する必要があります。
 - **IoT アプリケーションを構築していますか?** この質問への回答が「はい」の場合は`IoT Core`、ターゲットを指定する必要があります。
 - **Windows Server Core コンテナの画像にアプリの依存関係がありませんか?** この質問への回答が「はい」の場合は、ターゲット`Windows`を指定してください。 この画像は、他の基本イメージよりも大幅に大きくなっていますが、主要な Windows ライブラリの多く (GDI ライブラリなど) を備えています。
+- **Windows Insider の場合** [はい] の場合は、insider バージョンの画像の使用を検討してください。 以下の「Windows insider 用の基本イメージ」を参照してください。
 
 > [!TIP]
 > 多くの Windows ユーザーは、.NET に依存するアプリケーションを containerize したいと思います。 ここで説明する4つの基本イメージに加えて、Microsoft では、 [.net framework](https://hub.docker.com/_/microsoft-dotnet-framework)イメージや[ASP .net](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/)イメージなどの一般的な Microsoft フレームワークで事前構成されているいくつかの Windows コンテナーイメージを公開しています。
+
+### <a name="base-images-for-windows-insiders"></a>Windows Insider の基本イメージ
+
+Microsoft には、各コンテナーの基本イメージの "insider" バージョンが用意されています。 これらの insider コンテナーの画像には、コンテナーイメージ内の最新の最大機能開発が含まれています。 Insider バージョンの Windows (Windows Insider または Windows Server Insider) であるホストを実行している場合は、これらの画像を使うことをお勧めします。 Insider の画像は、Docker Hub で入手できます。
+
+- [mcr.microsoft.com/windows/servercore/insider](https://hub.docker.com/_/microsoft-windows-servercore-insider)
+- [mcr.microsoft.com/windows/nanoserver/insider](https://hub.docker.com/_/microsoft-windows-nanoserver-insider)
+- [mcr.microsoft.com/windows/iotcore/insider](https://hub.docker.com/_/microsoft-windows-iotcore-insider)
+- [mcr.microsoft.com/windows/insider](https://hub.docker.com/_/microsoft-windows-insider)
+
+詳細につい[ては、「Windows Insider プログラムでコンテナーを使用](../deploy-containers/insider-overview.md)する」を参照してください。
 
 ### <a name="windows-server-core-vs-nanoserver"></a>Windows Server Core vs Nanoserver
 
