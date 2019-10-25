@@ -7,12 +7,12 @@ ms.date: 09/10/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 8165d9c7ee3744fae31711e28be028208140813e
-ms.sourcegitcommit: 868a64eb97c6ff06bada8403c6179185bf96675f
+ms.openlocfilehash: cf8a14002e962242c34e9a10086120e6942d382b
+ms.sourcegitcommit: 6080b2c5053720490d374f6fb0daa870d5ddd4e8
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "10129272"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "10257776"
 ---
 # <a name="containerize-a-net-core-app"></a>.NET コアアプリの Containerize
 
@@ -28,11 +28,14 @@ ms.locfileid: "10129272"
 git clone https://github.com/MicrosoftDocs/Virtualization-Documentation.git
 ```
 
-で`<directory where clone occured>\Virtualization-Documentation\windows-container-samples\asp-net-getting-started`見つかったサンプルディレクトリに移動し、Dockerfile を作成します。 [Dockerfile](https://docs.docker.com/engine/reference/builder/)は、メイクファイルのようなものであり、コンテナーイメージの構築方法についてコンテナーエンジンに指示する命令の一覧です。
+で`Virtualization-Documentation\windows-container-samples\asp-net-getting-started`見つかったサンプルディレクトリに移動し、Dockerfile を作成します。 [Dockerfile](https://docs.docker.com/engine/reference/builder/)は、メイクファイルのようなものであり、コンテナーイメージの構築方法についてコンテナーエンジンに指示する命令の一覧です。
 
 ```Powershell
-#Create the dockerfile for our project
-New-Item -name dockerfile -type file
+# navigate into the sample directory
+Set-Location -Path Virtualization-Documentation\windows-container-samples\asp-net-getting-started
+
+# create the Dockerfile for our project
+New-Item -Name Dockerfile -ItemType file
 ```
 
 ## <a name="write-the-dockerfile"></a>Dockerfile を作成する
