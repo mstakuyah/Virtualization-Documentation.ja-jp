@@ -3,12 +3,12 @@ title: Windows コンテナーでの GPU アクセラレータ
 description: Windows コンテナーに存在する GPU アクセラレータのレベル
 keywords: docker、コンテナー、デバイス、ハードウェア
 author: cwilhit
-ms.openlocfilehash: c6746b45caece9802134831eb6cb3da885957ac5
-ms.sourcegitcommit: 2f8fd4b2e7113fbb7c323d89f3c72df5e1a4437e
+ms.openlocfilehash: 8f63c74d7839385e21206188263b9e5d08e7eb60
+ms.sourcegitcommit: da762ce138467e50dce22d5086ad407138b38e48
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "10045042"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "10261861"
 ---
 # <a name="gpu-acceleration-in-windows-containers"></a>Windows コンテナーでの GPU アクセラレータ
 
@@ -24,7 +24,7 @@ Gpu は、従来のレンダリングやシミュレーションからマシン�
 この機能が機能するためには、環境が次の要件を満たしている必要があります。
 
 - コンテナーホストでは、Windows Server 2019 または Windows 10 バージョン1809以降を実行している必要があります。
-- コンテナーの基本イメージは、 [mcr.microsoft.com/windows:1809](https://hub.docker.com/_/microsoft-windowsfamily-windows)以上である必要があります。 Windows Server Core および Nano Server コンテナーのイメージは現在サポートされていません。
+- コンテナーの基本イメージは、 [mcr.microsoft.com/windows:1809](https://hub.docker.com/_/microsoft-windows)以上である必要があります。 Windows Server Core および Nano Server コンテナーのイメージは現在サポートされていません。
 - コンテナーホストは、Docker Engine 19.03 以降を実行している必要があります。
 - コンテナーホストには、ディスプレイドライバーバージョンの WDDM 2.5 以降を実行している GPU が必要です。
 
