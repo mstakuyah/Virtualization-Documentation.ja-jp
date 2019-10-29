@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
-ms.openlocfilehash: 19ff54ec032d61b24aea9fec4f14e8fce301d33a
-ms.sourcegitcommit: 347d7c9d34f4c1d2473eb6c94c8ad6187318a037
+ms.openlocfilehash: aeb2b5dd0d9df95ee417b3a160d10d4991304689
+ms.sourcegitcommit: 4b37076f988608b6bf1270497c24325993ef41d3
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "10257954"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "10264363"
 ---
 # <a name="frequently-asked-questions-about-containers"></a>コンテナーについてよく寄せられる質問
 
@@ -40,9 +40,12 @@ Windows コンテナーイメージ[EULA](../images-eula.md)は、有効なラ�
 |Windows Server Standard                                         |無制限                                          |両面                                                  |
 |Windows Server Datacenter                                       |無制限                                          |無制限                                          |
 |Windows 10 Pro と Enterprise                                   |無制限 *(テストまたは開発目的のみ)*|無制限 *(テストまたは開発目的のみ)*|
-|Windows 10 IoT Core および Enterprise)                             |無制限 *(テストまたは開発目的のみ)*|無制限 *(テストまたは開発目的のみ)*|
+|Windows 10 IoT Core と Enterprise                             |無限                                         |無限                                          |
 
-Windows Server コンテナーイメージの使用状況は、その[エディション](/windows-server/get-started-19/editions-comparison-19.md)でサポートされている仮想ゲストの数を読み取ることによって決定されます。 Windows の IoT edition でのコンテナーの運用方法は、追加のライセンスの制限によって異なります。 何が許可されているかを正確に把握するには、[コンテナイメージの EULA](../images-eula.md)をお読みください。
+Windows Server コンテナーイメージの使用状況は、その[エディション](/windows-server/get-started-19/editions-comparison-19.md)でサポートされている仮想ゲストの数を読み取ることによって決定されます。 <br/>
+
+>[!NOTE]
+>\ * Windows 10 のコアランタイムイメージまたは Windows 10 IoT Enterprise デバイスライセンス ("Windows IoT 商業的契約") に関する Microsoft の利用規約に同意した場合は、Windows の IoT edition のコンテナーの実使用状況が異なります。 Windows IoT 商業契約の追加条項と制限は、実稼働環境でのコンテナーイメージの使用に適用されます。 何が許可されているかを正確に把握するには、[コンテナイメージの EULA](../images-eula.md)をお読みください。
 
 ## <a name="as-a-developer-do-i-have-to-rewrite-my-app-for-each-type-of-container"></a>開発者として、コンテナーの種類ごとにアプリを書き換える必要がありますか?
 
