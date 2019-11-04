@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
-ms.openlocfilehash: aeb2b5dd0d9df95ee417b3a160d10d4991304689
-ms.sourcegitcommit: 4b37076f988608b6bf1270497c24325993ef41d3
+ms.openlocfilehash: 405b2abc43a4ae2c546de351679deb755e4a9317
+ms.sourcegitcommit: 64573b539438de6ec5564b2949642ef12e55fc62
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "10264363"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "10274069"
 ---
 # <a name="frequently-asked-questions-about-containers"></a>コンテナーについてよく寄せられる質問
 
@@ -55,14 +55,14 @@ Windows Server コンテナーイメージの使用状況は、その[エディ�
 
 Windows Server コンテナーでは、スピンアップ時間の短縮や入れ子になった構成とのランタイムのパフォーマンスの高速化などの速度が重要な場合に、高い密度とパフォーマンスを実現しています。 Hyper-v 分離は、その名前に対して true であり、分離性が高くなり、1つのコンテナーで実行されているコードが、同じホスト上で実行されているホストオペレーティングシステムや他のコンテナーに悪影響を与えたり、影響を受ける可能性があります。 これは、SaaS アプリケーションやコンピューティングホスティングなど、信頼されていないコードをホストするための要件を持つマルチテナントシナリオで役立ちます。
 
-## <a name="can-i-run-windows-containers-in-process-isolated-mode-on-windows-10-enterprise-or-professional"></a>Windows 10 Enterprise または Professional で、プロセス分離モードで Windows コンテナーを実行できますか?
+## <a name="can-i-run-windows-containers-in-process-isolated-mode-on-windows-10"></a>Windows 10 でプロセス分離モードで Windows コンテナーを実行できますか?
 
-Windows 10 年 2018 10 月の更新プログラムでは、プロセス分離を使用して Windows コンテナーを実行でき`--isolation=process` `docker run`ますが、まず、コンテナーを実行するときにフラグを使用してプロセスの分離を要求する必要があります。
+Windows 10 年 2018 10 月の更新プログラムでは、プロセス分離を使用して Windows コンテナーを実行でき`--isolation=process` `docker run`ますが、まず、コンテナーを実行するときにフラグを使用してプロセスの分離を要求する必要があります。 プロセス分離は、Windows 10 Pro、windows 10 Enterprise、Windows 10 IoT Core、Windows 10 IoT Enterprise に対応しています。
 
 このようにして Windows コンテナーを実行する場合は、ホストが Windows 10 ビルド 17763 + を実行していて、エンジン18.09 以降を搭載した Docker バージョンがインストールされていることを確認する必要があります。
 
 > [!WARNING]
-> この機能は、開発とテストのみを目的としています。 引き続き Windows Server を運用展開用のホストとして使用する必要があります。 この機能を使うには、ホストとコンテナーのバージョンタグが一致していることを確認する必要があります。そうでないと、コンテナーの開始に失敗したり、未定義の動作が発生したりする可能性があります。
+> この機能は、IoT Core と IoT Enterprise ホスト (追加の利用規約と制限を受けた後) ではないため、開発とテストにのみ使用できます。 引き続き Windows Server を運用展開用のホストとして使用する必要があります。 この機能を使うには、ホストとコンテナーのバージョンタグが一致していることを確認する必要があります。そうでないと、コンテナーの開始に失敗したり、未定義の動作が発生したりする可能性があります。
 
 ## <a name="how-do-i-make-my-container-images-available-on-air-gapped-machines"></a>Gapped コンピューターでコンテナーの画像を使用できるようにするにはどうすればよいですか?
 
