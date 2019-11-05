@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 6480f0657d7def8d6da69bfc52ace81d08b0add4
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: deea1bfbcd3032f52a6912eb0c36ba467d8b9a9c
+ms.sourcegitcommit: b38f6abb399c87c57e1bb146f3dbcdaefd991245
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998810"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "10276495"
 ---
 # <a name="advanced-network-options-in-windows"></a>Windows での高度なネットワーク オプション
 
@@ -115,7 +115,7 @@ C:\> reg delete HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Para
 
 #### <a name="linux-containers-on-windows"></a>Linux Containers on Windows
 
-**最新情報:** 現在、_Moby Linux VM を使用せずに_ Linux と Windows のコンテナーをサイド バイ サイドで実行できるよう取り組んでいます。 詳しくは、[Linux Containers on Windows (LCOW) に関するこちらのブログ記事](https://blog.docker.com/2017/11/docker-for-windows-17-11/)をご覧ください。 まず、次の[](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10-linux)手順を実行します。
+**最新情報:** 現在、_Moby Linux VM を使用せずに_ Linux と Windows のコンテナーをサイド バイ サイドで実行できるよう取り組んでいます。 詳しくは、[Linux Containers on Windows (LCOW) に関するこちらのブログ記事](https://blog.docker.com/2017/11/docker-for-windows-17-11/)をご覧ください。 まず、次の手順を実行[します。](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10-linux)
 > 注意: LCOW は Moby Linux VM に代わるものであり、既定の HNS "nat" 内部 vSwitch を使用します。
 
 #### <a name="moby-linux-vms-use-dockernat-switch-with-docker-for-windows-a-product-of-docker-cehttpswwwdockercomcommunity-edition"></a>Moby Linux VM では、Docker for Windows ([Docker CE](https://www.docker.com/community-edition) の製品) と共に DockerNAT スイッチを使用しています。
@@ -162,7 +162,6 @@ l2bridge ドライバーを使って作成されたコンテナー ネットワ�
 
 #### <a name="ip-assignment-on-stopped-vs-running-containers"></a>停止しているコンテナーと実行中のコンテナーでの IP の割り当て
 静的な IP の割り当ては、コンテナーのネットワーク アダプターに対して直接行い、コンテナーが停止状態にある場合にのみ実行する必要があります。 コンテナーの実行中は、コンテナーのネットワーク アダプターの "ホット アド" またはネットワーク スタックに対する変更は実行できません (Windows Server 2016 の場合)。
-> 注: この動作は、Windows 10 Creators Update では変更され、プラットフォームで "ホット アド" がサポートされるようになりました。 この機能によって、この[未処理の Docker プル要求](https://github.com/docker/libnetwork/pull/1661)が結合された後、E2E が開始されます。
 
 #### <a name="existing-vswitch-not-visible-to-docker-can-block-transparent-network-creation"></a>既存の vSwitch (Docker には表示されない) が透過ネットワークの作成をブロックする場合がある
 透過ネットワークの作成中にエラーが発生した場合、Docker で自動検出されなかった外部 vSwitch がシステムに存在し、それが透過ネットワークとコンテナー ホストの外部ネットワーク アダプターの関連付けを阻んでいる可能性があります。 
