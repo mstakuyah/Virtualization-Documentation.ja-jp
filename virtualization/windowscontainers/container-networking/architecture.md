@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: cff56843a0eeb48ca5d19b694eb8eb4e758002aa
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 8d2ddb80aa05b511dbc8c9532654b18956e340da
+ms.sourcegitcommit: 7fd95333bd7fd2ef3627b0b5c558067e0bd0e09f
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998459"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "10276517"
 ---
 # <a name="windows-container-networking"></a>Windows コンテナーネットワーク
 
@@ -58,7 +58,7 @@ ms.locfileid: "9998459"
 - 既定の NAT ネットワーク: HNS は、WinNAT ポート フォワーディング規則/マッピングを、対応する Windows ファイアウォールの ALLOW 規則と共に作成します。
 - その他すべてのネットワーク: HNS は、仮想フィルタリング プラットフォーム (VFP) を利用してポリシーを作成します。
     - これには、負荷分散、ACL、カプセル化などが含まれます。
-    - HNS API およびスキーマが**近日中に公開されます**。
+    - [ここで](https://docs.microsoft.com/en-us/windows-server/networking/technologies/hcn/hcn-top)公開されている HNS api とスキーマを参照してください。
 
 ![テキスト](media/HNS-Management-Stack.png)
 
