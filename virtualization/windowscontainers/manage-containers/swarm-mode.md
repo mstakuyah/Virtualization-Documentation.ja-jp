@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 5ceb9626-7c48-4d42-81f8-9c936595ad85
-ms.openlocfilehash: 088bc844790d94d30f6b4b05c5cd189392f47e66
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 560e9ffc92728628268d7d557b8fa8428316c8ec
+ms.sourcegitcommit: 551b783410ba49b4d439e3da084986cceffcb7e0
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998279"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "10278964"
 ---
 # <a name="getting-started-with-swarm-mode"></a>swarm モードの概要 
 
@@ -112,7 +112,7 @@ C:\> docker service create --name=<SERVICENAME> --endpoint-mode dnsrr --network=
 ここで、\<SERVICENAME\> は、指定するサービス名です。この名前は、サービス ディスカバリでサービスを参照するために使います (サービス ディスカバリには、Docker のネイティブな DNS サーバーが使われます)。 \<NETWORKNAME\> は、このサービスを接続するネットワークの名前です (例: "myOverlayNet")。 \<CONTAINERIMAGE\> は、サービスを定義するコンテナー イメージの名前です。
 
 >[!NOTE]
->このコマンド`--endpoint-mode dnsrr`の2番目の引数は、DNS ラウンドロビンポリシーがサービスコンテナーのエンドポイント間でのネットワークトラフィックのバランスを取るために使用される Docker エンジンに指定する必要があります。 DNS ラウンド ロビンは、現在 Windows でサポートされている唯一の負荷分散方法です。Windows Docker ホスト用の[ルーティング メッシュ](https://docs.docker.com/engine/swarm/ingress/)はまだサポートされていませんが、まもなく追加される予定です。 他の負荷分散方法を使用する場合は、外部のロード バランサー (NGINXなど) を設定したうえで、swarm の[公開ポート モード](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish)を使って、負荷分散の際に経由するコンテナー ホスト ポートを公開します。
+>このコマンド`--endpoint-mode dnsrr`の2番目の引数は、DNS ラウンドロビンポリシーがサービスコンテナーのエンドポイント間でのネットワークトラフィックのバランスを取るために使用される Docker エンジンに指定する必要があります。 現時点では、Windows Server 2016 でサポートされているロードバランシング戦略は、DNS ラウンドロビンのみです。Windows docker ホストの[ルーティングメッシュ](https://docs.docker.com/engine/swarm/ingress/)は windows server 2019 (以上) でサポートされていますが、windows server 2016 ではサポートされていません。 Windows Server 2016 で別の負荷分散戦略を探しているユーザーは、外部のロードバランサー (NGINX など) を設定し、群れの[発行ポートモード](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish)を使って、トラフィックのバランスを取るコンテナーホストポートを公開できます。
 
 ## <a name="scaling-a-service"></a>サービスの縮小拡大
 swarm クラスターにサービスが展開されると、そのサービスを構成するコンテナー インスタンスがクラスターに展開されます。 既定では、サービスをサポートするコンテナー インスタンスの数 ("レプリカ"、つまりサービス用の "タスク" の数) は 1 つです。 ただし、`docker service create` コマンドで `--replicas`オプションを使って、複数のタスクを持つサービスを作成したり、サービスの作成後にサービスを拡大縮小したりすることができます。
@@ -224,10 +224,13 @@ C:\> docker service create --name=linux_s1 --endpoint-mode dnsrr --network testo
 ## <a name="limitations"></a>制限事項
 現在、Windows 上の swarm モードには次の制限があります。
 - データプレーンの暗号化 (`--opt encrypted`オプションを使用したコンテナー間のトラフィック) はサポートされていません。
-- Windows Docker ホスト用の[ルーティング メッシュ](https://docs.docker.com/engine/swarm/ingress/)はまだサポートされていませんがまもなく公開予定です。 他の負荷分散方法を使用する場合は、外部のロード バランサー (NGINXなど) を設定したうえで、swarm の[公開ポート モード](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish)を使って、負荷分散の際に経由するコンテナー ホスト ポートを公開します。 以下で詳しく説明します。
+- Windows サーバー2016以降では、windows server 以降では2019、Windows docker ホストの[ルーティングメッシュ](https://docs.docker.com/engine/swarm/ingress/)はサポートされません。 他の負荷分散方法を使用する場合は、外部のロード バランサー (NGINXなど) を設定したうえで、swarm の[公開ポート モード](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish)を使って、負荷分散の際に経由するコンテナー ホスト ポートを公開します。 以下で詳しく説明します。
+
+ >[!NOTE]
+>Docker 群れのルーティングメッシュのセットアップ方法の詳細については、この[ブログの投稿](https://docs.microsoft.com/en-us/virtualization/community/team-blog/2017/20170926-docker-s-routing-mesh-available-with-windows-server-version-1709)を参照してください。
 
 ## <a name="publish-ports-for-service-endpoints"></a>サービス エンドポイントのポートの公開
-Docker Swarm の[ルーティング メッシュ](https://docs.docker.com/engine/swarm/ingress/)機能は、Windows ではまだサポートされていませんが、サービス エンドポイントのポートを公開する方法を探している場合は、現在でもポート公開モードを使用して行うことができます。 
+ サービスエンドポイントのポートを公開しようとしているユーザーは、現在、パブリッシュポートモード、または Docker の群れの[ルーティングメッシュ](https://docs.docker.com/engine/swarm/ingress/)機能を使って、この操作を行うことができます。 
 
 サービスを定義するタスク/コンテナー エンドポイントのそれぞれについて、ホスト ポートを公開するには、`docker service create` コマンドで `--publish mode=host,target=<CONTAINERPORT>` 引数を使用します。
 
