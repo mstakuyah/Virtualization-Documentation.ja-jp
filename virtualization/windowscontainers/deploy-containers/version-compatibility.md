@@ -3,117 +3,101 @@ title: Windows コンテナーのバージョンの互換性
 description: Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。
 keywords: メタデータ, コンテナー, バージョン
 author: taylorb-microsoft
-ms.openlocfilehash: 5fe1cca67c330cb59362e82762651d719708b526
-ms.sourcegitcommit: 27e9cd37beaf11e444767699886e5fdea5e1a2d0
+ms.openlocfilehash: 74e708969a33b9d98b627165a9a47b8017ce2129
+ms.sourcegitcommit: 604323c8815860679cd13e96b2f533b7a0e83c23
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "10058507"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "10286526"
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーバージョンの互換性
 
-Windows Server 2016 および Windows 10 記念日更新プログラム (両方ともバージョン 14393) は、Windows Server コンテナーを構築して実行できる最初の Windows のリリースです。 これらのバージョンを使用してビルドされたコンテナーは、Windows Server Version 1709 などの新しいリリースで実行できますが、作業を開始する前にいくつかの注意点があります。
+Windows Server 2016 および Windows 10 記念日更新プログラム (両方ともバージョン 14393) は、Windows Server コンテナーを構築して実行できる最初の Windows のリリースです。 これらのバージョンを使用して作成されたコンテナーは、新しいリリースで実行できますが、作業を開始する前に知っておく必要があることがいくつかあります。
 
 Windows コンテナーは、その機能を改善する過程で、互換性に影響を与える変更が行われています。 古いコンテナーは、 [hyper-v 分離](../manage-containers/hyperv-container.md)を使用して、新しいホストでも同じように動作し、同じ (古い) カーネルバージョンを使います。 ただし、新しい Windows ビルドに基づいてコンテナーを実行する場合は、新しいホストビルドでのみ実行できます。
 
->[!NOTE]
-> \ * Windows Server、バージョン1709はサポートされなくなりました。 詳細については、「[基本イメージサービスのライフサイクル](base-image-lifecycle.md)」を参照してください。
+## <a name="windows-server-host-os-compatibility"></a>Windows Server ホストの OS の互換性
 
-## <a name="windows-server-version-1903-host-os-compatibility"></a>Windows Server、バージョン1903ホスト OS の互換性
+<!-- start tab view -->
+# [<a name="windows-server-version-1909"></a>Windows Server バージョン1909](#tab/windows-server-1909)
 
-|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|コンテナーベースイメージ OS バージョン|Hyper-v 分離のサポート|プロセス分離のサポート|
 |---|:---:|:---:|
-|Windows Server バージョン1903|あり|○|
-|Windows Server 2019|○|X|
-|Windows Server バージョン1803|○|X|
-|Windows Server バージョン 1709 *|○|X|
-|Windows Server 2016|○|X|
+|Windows Server バージョン1909|&#10004;|&#10004;|
+|Windows Server バージョン1903|&#10004;|&#10060;|
+|Windows Server 2019|&#10004;|&#10060;|
+|Windows Server 2016|&#10004;|&#10060;|
 
-## <a name="windows-server-2019-host-os-compatibility"></a>Windows Server 2019 ホスト OS の互換性
+# [<a name="windows-server-version-1903"></a>Windows Server バージョン1903](#tab/windows-server-1903)
 
-|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|コンテナーベースイメージ OS バージョン|Hyper-v 分離のサポート|プロセス分離のサポート|
 |---|:---:|:---:|
-|Windows Server バージョン1903|×|×|
-|Windows Server 2019|あり|○|
-|Windows Server バージョン1803|○|X|
-|Windows Server バージョン 1709 *|○|X|
-|Windows Server 2016|○|X|
+|Windows Server バージョン1909|&#10060;|&#10060;|
+|Windows Server バージョン1903|&#10004;|&#10004;|
+|Windows Server 2019|&#10004;|&#10060;|
+|Windows Server 2016|&#10004;|&#10060;|
 
-## <a name="windows-server-version-1803-host-os-compatibility"></a>Windows Server、バージョン1803ホスト OS の互換性
+# [<a name="windows-server-2019"></a>Windows Server 2019](#tab/windows-server-2019)
 
-|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|コンテナーベースイメージ OS バージョン|Hyper-v 分離のサポート|プロセス分離のサポート|
 |---|:---:|:---:|
-|Windows Server バージョン1903|×|×|
-|Windows Server 2019|×|×|
-|Windows Server バージョン1803|あり|○|
-|Windows Server バージョン 1709 *|○|X|
-|Windows Server 2016|○|X|
+|Windows Server バージョン1909|&#10060;|&#10060;|
+|Windows Server バージョン1903|&#10060;|&#10060;|
+|Windows Server 2019|&#10004;|&#10004;|
+|Windows Server 2016|&#10004;|&#10060;|
 
-## <a name="windows-server-version-1709-host-os-compatibility"></a>Windows Server、バージョン1709ホスト OS の互換性 *
+# [<a name="windows-server-2016"></a>Windows Server 2016](#tab/windows-server-2016)
 
-|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|コンテナーベースイメージ OS バージョン|Hyper-v 分離のサポート|プロセス分離のサポート|
 |---|:---:|:---:|
-|Windows Server バージョン1903|×|×|
-|Windows Server 2019|×|×|
-|Windows Server バージョン1803|×|×|
-|Windows Server バージョン 1709 *|あり|要|
-|Windows Server 2016|○|X|
+|Windows Server バージョン1909|&#10060;|&#10060;|
+|Windows Server バージョン1903|&#10060;|&#10060;|
+|Windows Server 2019|&#10060;|&#10060;|
+|Windows Server 2016|&#10004;|&#10004;|
 
-## <a name="windows-server-2016-host-os-compatibility"></a>Windows Server 2016 ホスト OS の互換性
+---
+<!-- stop tab view -->
 
-|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+## <a name="windows-10-host-os-compatibility"></a>Windows 10 ホストの OS の互換性
+
+<!-- start tab view -->
+
+# [<a name="windows-10-version-1903"></a>Windows 10 バージョン1903](#tab/windows-10-1903)
+
+|コンテナーベースイメージ OS バージョン|Hyper-v 分離のサポート|プロセス分離のサポート|
 |---|:---:|:---:|
-|Windows Server 2019、バージョン1903|×|×|
-|Windows Server 2019|×|×|
-|Windows Server バージョン1803|×|×|
-|Windows Server バージョン 1709 *|×|×|
-|Windows Server 2016|要|○|
+|Windows Server バージョン1909|&#10060;|&#10060;|
+|Windows Server バージョン1903|&#10004;|&#10060;|
+|Windows Server 2019|&#10004;|&#10060;|
+|Windows Server バージョン1803|&#10004;|&#10060;|
+|Windows Server 2016|&#10004;|&#10060;|
 
-## <a name="windows-10-version-1903-host-os-compatibility"></a>Windows 10 バージョン1903ホスト OS の互換性
+# [<a name="windows-10-version-1809"></a>Windows 10 バージョン1809](#tab/windows-10-1809)
 
-|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|コンテナーベースイメージ OS バージョン|Hyper-v 分離のサポート|プロセス分離のサポート|
 |---|:---:|:---:|
-|Windows Server バージョン1903|○|X|
-|Windows Server 2019|○|X|
-|Windows Server バージョン1803|○|X|
-|Windows Server バージョン 1709 *|○|X|
-|Windows Server 2016|○|X|
+|Windows Server バージョン1909|&#10060;|&#10060;|
+|Windows Server バージョン1903|&#10060;|&#10060;|
+|Windows Server 2019|&#10004;|&#10060;|
+|Windows Server 2016|&#10004;|&#10060;|
 
-## <a name="windows-10-version-1809-host-os-compatibility"></a>Windows 10 バージョン1809ホスト OS の互換性
+# [<a name="windows-10-version-1803"></a>Windows 10 バージョン 1803](#tab/windows-10-1803)
 
-|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
+|コンテナーベースイメージ OS バージョン|Hyper-v 分離のサポート|プロセス分離のサポート|
 |---|:---:|:---:|
-|Windows Server バージョン1903|×|×|
-|Windows Server 2019|○|X|
-|Windows Server バージョン1803|○|X|
-|Windows Server バージョン 1709 *|○|X|
-|Windows Server 2016|○|X|
+|Windows Server バージョン1909|&#10060;|&#10060;|
+|Windows Server バージョン1903|&#10060;|&#10060;|
+|Windows Server 2019|&#10060;|&#10060;|
+|Windows Server 2016|&#10004;|&#10060;|
 
-## <a name="windows-10-version-1803-host-os-compatibility"></a>Windows 10 バージョン1803ホスト OS の互換性
-
-|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
-|---|:---:|:---:|
-|Windows サービス、バージョン1903|×|×|
-|Windows Server 2019|×|×|
-|Windows Server バージョン1803|○|X||
-|Windows Server バージョン 1709 *|○|X|
-|Windows Server 2016|○|X|
-
-## <a name="windows-10-fall-creators-update-host-os-compatibility"></a>Windows 10 での作成者によるホスト OS の互換性の更新
-
-|コンテナー OS|Hyper-v 分離のサポート|プロセス分離のサポート|
-|---|:---:|:---:|
-|Windows Server バージョン1903|×|×|
-|Windows Server 2019|×|×|
-|Windows Server バージョン1803|×|×|
-|Windows Server バージョン 1709 *|○|X|
-|Windows Server 2016|○|X|
+---
+<!-- stop tab view -->
 
 ## <a name="matching-container-host-version-with-container-image-versions"></a>コンテナーのイメージバージョンに対応するコンテナーホストのバージョン
 
 ### <a name="windows-server-containers"></a>Windows Server コンテナー
 
-Windows Server コンテナーと、基になるホストが1つのカーネルを共有するため、コンテナーの基本イメージはホストと一致する必要があります。 バージョンが異なる場合は、コンテナーが起動する可能性がありますが、すべての機能が保証されるわけではありません。 Windows オペレーティングシステムのバージョン管理には、メジャー、マイナー、ビルド、リビジョンの4つのレベルがあります。 たとえば、バージョン10.0.14393.103 は、10のメジャーバージョン、マイナーバージョンが0、ビルド番号14393、および103のリビジョン番号です。 ビルド番号が変更されるのは、バージョン1709、1803、秋の作成者の更新など、OS の新しいバージョンが公開されている場合のみです。 リビジョン番号は、Windows 更新プログラムが適用されると更新されます。
+Windows Server コンテナーと基礎となるホストが1つのカーネルを共有するため、コンテナーの基本イメージ OS バージョンはホストと一致する必要があります。 バージョンが異なる場合は、コンテナーが起動する可能性がありますが、すべての機能が保証されるわけではありません。 Windows オペレーティングシステムのバージョン管理には、メジャー、マイナー、ビルド、リビジョンの4つのレベルがあります。 たとえば、バージョン10.0.14393.103 は、10のメジャーバージョン、マイナーバージョンが0、ビルド番号14393、および103のリビジョン番号です。 ビルド番号が変更されるのは、バージョン1709、1903などの新しいバージョンの OS が公開されている場合のみです。 リビジョン番号は、Windows 更新プログラムが適用されると更新されます。
 
 #### <a name="build-number-new-release-of-windows"></a>ビルド番号 (Windows の新しいリリース)
 
@@ -144,7 +128,7 @@ C:\>ver
 Microsoft Windows [Version 10.0.16299.125]
 ```
 
-方法 2: 次のレジストリキーをクエリします。 HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion
+方法 2: 次のレジストリキーをクエリします。 HKEY_LOCAL_MACHINE \Software\Microsoft\Windows NT\CurrentVersion
 
 次に例を示します。
 
@@ -343,7 +327,7 @@ Hyper-v 分離をコンテナーごとに使用することをサポートする
 
 2. サービスの制約を追加します。
 
-    各ノードのラベルが付けられたので、サービスの配置を決定する制約を更新できます。 次の例では、"contoso_service" を実際のサービスの名前に置き換えます。
+    各ノードのラベルが付けられたので、サービスの配置を決定する制約を更新できます。 次の例では、"contoso_service" を実際のサービス名に置き換えます。
 
     ```powershell
     docker service update \
