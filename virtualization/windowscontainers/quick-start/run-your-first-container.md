@@ -3,94 +3,94 @@ title: Windows 10 の windows と Linux のコンテナー
 description: コンテナー展開のクイック スタート
 keywords: docker、コンテナー、LCOW
 author: cwilhit
-ms.date: 09/11/2019
+ms.author: crwilhit
+ms.date: 11/12/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 3d651a4a68acefa25f1b647b1b33618bbfb91ae9
-ms.sourcegitcommit: 868a64eb97c6ff06bada8403c6179185bf96675f
+ms.openlocfilehash: a664b5b8eb87adffdf7eba3ffca9f4194128df80
+ms.sourcegitcommit: e61db4d98d9476a622e6cc8877650d9e7a6b4dd9
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "10129372"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "10288130"
 ---
-# <a name="get-started-run-your-first-container"></a>はじめに: 最初のコンテナーを実行する
+# <a name="get-started-run-your-first-windows-container"></a>はじめに: Windows の最初のコンテナーを実行する
 
-前の[セグメント](./set-up-environment.md)で、コンテナーを実行するための環境を構成しました。 この演習では、コンテナーイメージを取得して実行する方法について説明します。
+このトピックでは、「[はじめに: コンテナーのための windows の準備](./set-up-environment.md)」の説明に従って、環境のセットアップ後に初めて windows コンテナーを実行する方法について説明します。 コンテナーを実行するには、最初に基本イメージをインストールします。これは、オペレーティングシステムサービスの基本レイヤーをコンテナーに提供します。 次に、基本イメージに基づいて、コンテナーイメージを作成して実行します。 詳細については、「」を参照してください。
 
-## <a name="install-container-base-image"></a>コンテナーベースイメージをインストールする
+## <a name="install-a-container-base-image"></a>コンテナーの基本イメージをインストールする
 
-すべてのコンテナーはから`container images`インスタンス化されます。 Microsoft には、いくつかの "スターター `base images`" 画像 (呼び出されます) が用意されています。 次のコマンドは、Nano Server の基本イメージをプルします。
+すべてのコンテナーは、コンテナイメージから作成されます。 Microsoft では、基本イメージと呼ばれるいくつかのスターターイメージを提供しています (詳しくは、「[コンテナーベースの画像](../manage-containers/container-base-images.md)」をご覧ください)。 この手順では、軽量の Nano Server ベースイメージをプル (ダウンロードおよびインストール) します。
 
-```console
-docker pull mcr.microsoft.com/windows/nanoserver:1809
-```
+1. コマンドプロンプトウィンドウ (組み込みのコマンドプロンプト、PowerShell、 [Windows ターミナル](https://www.microsoft.com/p/windows-terminal-preview/9n0dx20hk701?activetab=pivot:overviewtab)など) を開き、次のコマンドを実行して基本イメージをダウンロードしてインストールします。
 
-> [!TIP]
-> "という`no matching manifest for unknown in the manifest list entries`エラーメッセージが表示される場合は、Docker が Linux コンテナーを実行するように構成されていないことを確認します。
+   ```console
+   docker pull mcr.microsoft.com/windows/nanoserver:1903
+   ```
 
-画像が引き出されたら、ローカルの docker イメージリポジトリを照会することによって、その画像がコンピューターに存在することを確認できます。 このコマンド`docker images`を実行すると、インストールされている画像の一覧が返されます。この場合は、Nano Server のイメージです。
+   > [!TIP]
+   > "という`no matching manifest for unknown in the manifest list entries`エラーメッセージが表示される場合は、Docker が Linux コンテナーを実行するように構成されていないことを確認します。
 
-```console
-docker images
+2. 画像のダウンロードが完了したら、お使いのお使いの pc で、ローカルの docker イメージリポジトリを照会することによって、使用[許諾契約](../images-eula.md)をお読みください。 このコマンド`docker images`を実行すると、インストールされている画像の一覧が返されます。
 
-REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
-microsoft/nanoserver   latest              105d76d0f40e        4 days ago          652 MB
-```
+   Nano Server のイメージを示す出力の例を次に示します。
 
-> [!IMPORTANT]
-> Windows コンテナ OS イメージ使用[許諾契約書](../images-eula.md)をお読みください。
+   ```console
+   REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+   microsoft/nanoserver   latest              105d76d0f40e        4 days ago          652 MB
+   ```
 
-## <a name="run-your-first-windows-container"></a>Windows の最初のコンテナーを実行する
+## <a name="run-a-windows-container"></a>Windows コンテナーを実行する
 
-この簡単な例では、"Hello World" コンテナーイメージを作成し、展開します。 最適なエクスペリエンスを実現するには、昇格された Windows CMD shell または PowerShell で次のコマンドを実行します。
+この簡単な例では、"Hello World" コンテナーイメージを作成し、展開します。 最適なエクスペリエンスを実現するには、昇格されたコマンドプロンプトウィンドウで次のコマンドを実行します (ただし、Windows PowerShell ISE は使用しません。コンテナーを使った対話型セッションでは、コンテナーがハングするように見えるため機能しません)。
 
-> Windows PowerShell ISE は、コンテナーとの対話型セッションには機能しません。 コンテナーが実行されている場合でも、ハングしているように見えます。
+1. コマンドプロンプトウィンドウで次のコマンドを入力`nanoserver`して、イメージから対話型セッションでコンテナーを開始します。
 
-まず、`nanoserver` イメージから対話型セッションでコンテナーを起動します。 コンテナーが開始されると、コンテナー内からコマンドシェルが表示されます。  
+   ```console
+   docker run -it mcr.microsoft.com/windows/nanoserver:1903 cmd.exe
+   ```
+2. コンテナーが開始されると、コマンドプロンプトウィンドウによってコンテキストがコンテナーに変わります。 コンテナー内で、単純な "Hello World" テキストファイルを作成し、次のコマンドを入力してコンテナーを終了します。
 
-```console
-docker run -it mcr.microsoft.com/windows/nanoserver:1809 cmd.exe
-```
+   ```cmd
+   echo "Hello World!" > Hello.txt
+   exit
+   ```   
 
-コンテナー内で、シンプルな "Hello World" テキストファイルを作成します。
+3. 次のように、 [docker ps](https://docs.docker.com/engine/reference/commandline/ps/)コマンドを実行して、終了したコンテナーのコンテナー ID を取得します。
 
-```cmd
-echo "Hello World!" > Hello.txt
-```   
+   ```console
+   docker ps -a
+   ```
 
-スクリプトが完成したら、コンテナーを終了します。
+4. 最初に実行したコンテナーの変更を含む、新しい "HelloWorld" イメージを作成します。 そのためには、次のように[docker commit](https://docs.docker.com/engine/reference/commandline/commit/)コマンドを実行して、コンテナーの ID に置き換え`<containerid>`ます。
 
-```cmd
-exit
-```
+   ```console
+   docker commit <containerid> helloworld
+   ```
 
-変更したコンテナーから新しいコンテナーイメージを作成します。 実行されている、または終了しているコンテナーの一覧を表示するには、次を実行して、コンテナー id をメモします。
+   操作を完了すると、hello world スクリプトを含むカスタム イメージが作成されます。 これは、 [docker images](https://docs.docker.com/engine/reference/commandline/images/)コマンドで表示できます。
 
-```console
-docker ps -a
-```
+   ```console
+   docker images
+   ```
 
-次のコマンドを実行して、"HelloWorld" というイメージを新たに作成します。 `<containerid>` を目的のコンテナーの ID に置き換えます。
+   この場合の出力例を以下に示します。
 
-```console
-docker commit <containerid> helloworld
-```
+   ```console
+   REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
+   helloworld                             latest              a1064f2ec798        10 seconds ago      258MB
+   mcr.microsoft.com/windows/nanoserver   1903                2b9c381d0911        3 weeks ago         256MB
+   ```
 
-操作を完了すると、hello world スクリプトを含むカスタム イメージが作成されます。 これは、次のコマンドで確認できます。
+5. 最後に、コマンドライン (cmd.exe) が停止した後に`--rm` 、コンテナーを自動的に削除するパラメーターを使用し[て、新しい](https://docs.docker.com/engine/reference/commandline/run/)コンテナーを実行します。
 
-```console
-docker images
-```
+   ```console
+   docker run --rm helloworld cmd.exe /s /c type Hello.txt
+   ```
 
-最後に、 `docker run`コマンドを使用してコンテナーを実行します。
-
-```console
-docker run --rm helloworld cmd.exe /s /c type Hello.txt
-```
-
-`docker run`コマンドの結果として、コンテナーが ' HelloWorld ' イメージから作成されたため、コンテナーで cmd のインスタンスが開始され、ファイルの読み取り (シェルへのエコーが発生) が実行され、次にコンテナーが停止および削除されます。
+   その結果、コンテナーは ' HelloWorld ' イメージから作成されました。 cmd.exe のインスタンスは、ファイルを読み取ってシェルにファイルの内容を出力するコンテナーで開始され、コンテナーが停止して削除されました。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.date: 06/17/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: d3a8240dbba8af3c74ce5d185620e129d103ef81
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: bb5e5fabadde421de9d420edd2fc921457432930
+ms.sourcegitcommit: e61db4d98d9476a622e6cc8877650d9e7a6b4dd9
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883185"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "10288140"
 ---
 # <a name="base-image-servicing-lifecycles"></a>基本イメージのサービスライフサイクル
 
@@ -27,6 +27,7 @@ Windows コンテナーベースの画像は、半期チャネルリリースま
 
 |基本イメージ                       |サービス チャネル|Version|OS ビルド|対象|メインストリーム サポートの終了日|延長サポート日|
 |---------------------------------|-----------------|-------|--------|------------|---------------------------|---------------------|
+|Server Core、Nano Server、Windows|半期      |1909   |18363   |11/12/2019  |05/11/2021                 |該当せず                  |
 |Server Core、Nano Server、Windows|半期      |1903   |18362   |05/21/2019  |12/08/2020                 |該当せず                  |
 |Server Core                      |長期        |1809   |17763   |11/13/2018  |01/09/2024                 |01/09/2029           |
 |Server Core、Nano Server、Windows|半期      |1809   |17763   |11/13/2018  |05/12/2020                 |該当せず                  |
