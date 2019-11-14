@@ -3,12 +3,12 @@ title: Windows コンテナーのバージョンの互換性
 description: Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。
 keywords: メタデータ, コンテナー, バージョン
 author: taylorb-microsoft
-ms.openlocfilehash: 74e708969a33b9d98b627165a9a47b8017ce2129
-ms.sourcegitcommit: 604323c8815860679cd13e96b2f533b7a0e83c23
+ms.openlocfilehash: 1f068cd011b2172e75c240d566473ccab25d984a
+ms.sourcegitcommit: 48ede8f27e089926b5b867037f31d14500af84ce
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "10286526"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "10296032"
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーバージョンの互換性
 
@@ -62,6 +62,15 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 
 <!-- start tab view -->
 
+# [<a name="windows-10-version-1909"></a>Windows 10 バージョン1909](#tab/windows-10-1909)
+
+|コンテナーベースイメージ OS バージョン|Hyper-v 分離のサポート|プロセス分離のサポート|
+|---|:---:|:---:|
+|Windows Server バージョン1909|&#10004;|&#10060;|
+|Windows Server バージョン1903|&#10004;|&#10060;|
+|Windows Server 2019|&#10004;|&#10060;|
+|Windows Server 2016|&#10004;|&#10060;|
+
 # [<a name="windows-10-version-1903"></a>Windows 10 バージョン1903](#tab/windows-10-1903)
 
 |コンテナーベースイメージ OS バージョン|Hyper-v 分離のサポート|プロセス分離のサポート|
@@ -69,7 +78,6 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 |Windows Server バージョン1909|&#10060;|&#10060;|
 |Windows Server バージョン1903|&#10004;|&#10060;|
 |Windows Server 2019|&#10004;|&#10060;|
-|Windows Server バージョン1803|&#10004;|&#10060;|
 |Windows Server 2016|&#10004;|&#10060;|
 
 # [<a name="windows-10-version-1809"></a>Windows 10 バージョン1809](#tab/windows-10-1809)
@@ -79,15 +87,6 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 |Windows Server バージョン1909|&#10060;|&#10060;|
 |Windows Server バージョン1903|&#10060;|&#10060;|
 |Windows Server 2019|&#10004;|&#10060;|
-|Windows Server 2016|&#10004;|&#10060;|
-
-# [<a name="windows-10-version-1803"></a>Windows 10 バージョン 1803](#tab/windows-10-1803)
-
-|コンテナーベースイメージ OS バージョン|Hyper-v 分離のサポート|プロセス分離のサポート|
-|---|:---:|:---:|
-|Windows Server バージョン1909|&#10060;|&#10060;|
-|Windows Server バージョン1903|&#10060;|&#10060;|
-|Windows Server 2019|&#10060;|&#10060;|
 |Windows Server 2016|&#10004;|&#10060;|
 
 ---
