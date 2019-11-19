@@ -8,17 +8,17 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 8d2ddb80aa05b511dbc8c9532654b18956e340da
-ms.sourcegitcommit: 7fd95333bd7fd2ef3627b0b5c558067e0bd0e09f
+ms.openlocfilehash: e9d4a9ac88c6853ce019a2469ee80688490b8fdf
+ms.sourcegitcommit: bb4ec1f05921f982c00bdb3ace6d9bc1d5355296
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "10276517"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "10297243"
 ---
 # <a name="windows-container-networking"></a>Windows コンテナーネットワーク
 
 >[!IMPORTANT]
->一般的な docker のネットワークコマンド、オプション、構文については、「 [Docker Container ネットワーク](https://docs.docker.com/engine/userguide/networking/)」を参照してください。 * * * サポートされて[いない機能とネットワークオプション](#unsupported-features-and-network-options)で示されているケースを除き、すべての docker ネットワークコマンドはWindows では、Linux と同じ構文でサポートされています。 ただし、Windows と Linux のネットワークスタックは異なるため、Windows では一部の Linux ネットワークコマンド (ifconfig など) がサポートされていないことがわかります。
+>一般的な docker ネットワークコマンド、オプション、構文については、「 [Docker Container ネットワーク](https://docs.docker.com/engine/userguide/networking/)」を参照してください。 * * * サポートされて[いない機能とネットワークオプション](#unsupported-features-and-network-options)で説明されているケースを除き、すべての docker ネットワークコマンドは、Linux と同じ構文で Windows でサポートされています。 ただし、Windows と Linux のネットワークスタックは異なるため、Windows では一部の Linux ネットワークコマンド (ifconfig など) がサポートされていないことがわかります。
 
 ## <a name="basic-networking-architecture"></a>基本的なネットワーク アーキテクチャ
 
@@ -69,7 +69,7 @@ Windows では、現在、次のネットワークオプションがサポート
 - L2bridge、NAT、オーバーレイネットワークに接続された Windows コンテナーは、IPv6 スタック経由の通信をサポートしていません。
 - IPsec 経由の暗号化されたコンテナーの通信。
 - コンテナーの HTTP プロキシのサポート。
-- Hyper-v 分離 (ホットアド) で実行するエンドポイントをアタッチする
+- [ホストモード](https://docs.docker.com/ee/ucp/interlock/config/host-mode-networking/)のネットワーク 
 - 透過的なネットワークドライバーを使用した、仮想化された Azure インフラストラクチャのネットワーク。
 
 | コマンド        | サポートされていないオプション   |

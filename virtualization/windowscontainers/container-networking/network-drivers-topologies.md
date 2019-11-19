@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: f044cf6f9d0457dd4cc9b444dcbeebc97f22f17b
-ms.sourcegitcommit: bea2c90f31a38fc7fda356619f0dd812f79d008f
+ms.openlocfilehash: 46eefb03f8f5a53333f5e7eca7074ab34e72a767
+ms.sourcegitcommit: bb4ec1f05921f982c00bdb3ace6d9bc1d5355296
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "9685289"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "10297253"
 ---
 # <a name="windows-container-network-drivers"></a>Windows コンテナーネットワークドライバー  
 
@@ -33,20 +33,26 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
   
   > 必要: このモードが仮想化シナリオで使用される場合 (コンテナーホストは VM)、 _MAC アドレスのなりすましが必要_です。
 
-- **overlay**: Docker エンジンが [swarm モード](../manage-containers/swarm-mode.md)で動作している場合、オーバーレイ ネットワークに接続されたコンテナーは、複数のコンテナー ホストの間で、同じネットワークに接続された他のコンテナーと通信できます。 Swarm クラスター上の各オーバーレイ ネットワークの作成には、プライベート IP プレフィックスによって定義される独自の IP サブネットが使用されます。 overlay ネットワーク ドライバーでは、VXLAN カプセル化が使用されます。 **適切なネットワーク コントロール プレーン (Flannel または OVN) の使用時に、Kubernetes で使用できます。**
+- **overlay**: Docker エンジンが [swarm モード](../manage-containers/swarm-mode.md)で動作している場合、オーバーレイ ネットワークに接続されたコンテナーは、複数のコンテナー ホストの間で、同じネットワークに接続された他のコンテナーと通信できます。 Swarm クラスター上の各オーバーレイ ネットワークの作成には、プライベート IP プレフィックスによって定義される独自の IP サブネットが使用されます。 overlay ネットワーク ドライバーでは、VXLAN カプセル化が使用されます。 **適切なネットワーク制御平面 (フランネルなど) を使用する場合は、Kubernetes と共に使うことができます。**
   > 必要: 環境がオーバーレイネットワークの作成に必要な[前提条件](https://docs.docker.com/network/overlay/#operations-for-all-overlay-networks)を満たしていることを確認してください。
 
-  > 必須: Windows Server 2016 には、 [KB4015217](https://support.microsoft.com/help/4015217/windows-10-update-kb4015217)、Windows 10 クリエーター更新プログラム、またはそれ以降のリリースが必要です。
+  > 必要: Windows Server 2019 では、 [KB4489899](https://support.microsoft.com/help/4489899)が必要です。
+
+  > 必要: Windows Server 2016 では、 [KB4015217](https://support.microsoft.com/help/4015217/windows-10-update-kb4015217)が必要です。
 
   >[!NOTE]
-  >Docker EE 18.03 以降を実行している Windows Server 2019 では、Docker 群れによって作成されたオーバーレイネットワークを送信接続用の VFP NAT ルールを活用しています。 これは、thata 指定されたコンテナーが1つの IP アドレスを受け取ることを意味します。 `ping`また、またはのような ICMP ベースのツール`Test-NetConnection`を、デバッグ状況では TCP/UDP オプションを使って構成する必要があることを意味します。
+  >Windows Server 2019 では、Docker 群れによって作成されたオーバーレイネットワークでは、VFP NAT ルールを使用して送信接続を行うことができます。 これは、1つのコンテナーが1つの IP アドレスを受信することを意味します。 `ping`また、またはのような ICMP ベースのツール`Test-NetConnection`を、デバッグ状況では TCP/UDP オプションを使って構成する必要があることを意味します。
 
-- **l2bridge**: 'l2bridge' ドライバーで作成されたネットワークに接続されているコンテナーは、コンテナー ホストと同じ IP サブネットに含まれ、*外部* Hyper-V スイッチを経由して物理ネットワークに接続されます。 IP アドレスは、コンテナー ホストと同じプレフィックスから静的に割り当てる必要があります。 ホスト上のすべてのコンテナー エンドポイントは、入口と出口でのレイヤー 2 のアドレス変換 (MAC の再書き込み) 操作のためにホストと同じ MAC アドレスとなります。
+- **l2bridge** -ネットワークモード`transparent`に似ています。 ' l2bridge ' ドライバーで作成されたネットワークに接続されているコンテナーは、*外部*の hyper-v スイッチによって物理ネットワークに接続されます。 L2bridge の違いは、入り口と出口でのレイヤー2アドレス変換 (MAC の再書き込み) 操作によって、コンテナーエンドポイントがホストと同じ MAC アドレスになることです。 クラスタリングシナリオでは、有効期間が短いコンテナーの MAC アドレスを学習するために、スイッチでの負荷を軽減することができます。 L2bridge のネットワークを構成するには、次の2つの方法があります。
+  1. L2bridge network がコンテナーホストと同じ IP サブネットで構成されている
+  2. L2bridge network が新しいカスタム IP サブネットで構成されている
+  
+  構成2ユーザーは、ゲートウェイとして機能するホストネットワークコンパートメントにエンドポイントを追加し、指定されたプレフィックスのルーティング機能を構成する必要があります。 
   > 必要: Windows Server 2016、Windows 10 の作成者の更新プログラム、またはそれ以降のリリースが必要です。
 
   > 必要: 外部接続用の[Outboundnat ポリシー](./advanced.md#specify-outboundnat-policy-for-a-network) 。
 
-- **l2tunnel**: l2bridge と同様ですが、_このドライバーは Microsoft Cloud Stack のみで使用します_. コンテナーからのパケットは、SDN ポリシーが適用されている仮想化ホストに送信されます。
+- **l2tunnel** -l2bridge に似ていますが、_このドライバーは Microsoft Cloud Stack (Azure) でのみ使用_してください。 コンテナーからのパケットは、SDN ポリシーが適用されている仮想化ホストに送信されます。
 
 
 ## <a name="network-topologies-and-ipam"></a>ネットワークトポロジと IPAM
@@ -55,12 +61,12 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
 
 ### <a name="networking-modesdocker-drivers"></a>ネットワークモード/Docker ドライバー
 
-  | Docker Windows ネットワーク ドライバー | 一般的な os | コンテナー間 (単一ノード) | コンテナー間 (単一ノード + 複数ノード) | コンテナー間 (複数ノード) |
+  | Docker Windows ネットワーク ドライバー | 一般的な用途 | コンテナー間 (単一ノード) | コンテナー間 (単一ノード + 複数ノード) | コンテナー間 (複数ノード) |
   |-------------------------------|:------------:|:------------------------------------:|:------------------------------------------------:|:-----------------------------------:|
   | **NAT (既定)** | 開発者向け | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li> クロスサブネット: サポートされていない (1 つの NAT 内部プレフィックスのみ)</li></ul> | 管理 vNIC (WinNAT にバインド) を経由してルーティング | 直接サポート外: ホストを経由してポートを公開する必要があります |
   | **透過** | 開発者または小規模な開発向け | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li>クロス サブネット: コンテナー ホストを経由してルーティング</li></ul> | (物理) ネットワーク アダプターへの直接アクセスでコンテナー ホストを経由してルーティング | (物理) ネットワーク アダプターへの直接アクセスでコンテナー ホストを経由してルーティング |
-  | **オーバーレイ** | マルチノードの場合に適しています。Kubernetes で利用可能な Docker 群れに必要 | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li>クロス サブネット: ネットワーク トラフィックをカプセル化し、Mgmt vNIC を経由してルーティング</li></ul> | 直接サポート外: NAT ネットワークに接続されている 2 番目のコンテナー エンドポイントが必要です | 同一/クロス サブネット: VXLAN を使用してネットワーク トラフィックをカプセル化し、Mgmt vNIC を経由してルーティング |
-  | **L2Bridge** | Kubernetes および Microsoft SDN に使用 | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li> クロス サブネット: コンテナーの MAC アドレスを入口と出口で書き換えてルーティング</li></ul> | コンテナーの MAC アドレスを入口と出口で書き換え | <ul><li>同一サブネット: ブリッジ接続</li><li>クロスサブネット: WSv1709 以上の管理 vNIC 経由でルーティングされます。</li></ul> |
+  | **オーバーレイ** | マルチノードの場合に適しています。Kubernetes で利用可能な Docker 群れに必要 | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li>クロス サブネット: ネットワーク トラフィックをカプセル化し、Mgmt vNIC を経由してルーティング</li></ul> | 直接サポートされていない-windows Server 2016 または Windows server 2019 の VFP NAT ルールで、NAT ネットワークに2番目のコンテナーエンドポイントが接続されている必要があります。  | 同一/クロス サブネット: VXLAN を使用してネットワーク トラフィックをカプセル化し、Mgmt vNIC を経由してルーティング |
+  | **L2Bridge** | Kubernetes および Microsoft SDN に使用 | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li> クロス サブネット: コンテナーの MAC アドレスを入口と出口で書き換えてルーティング</li></ul> | コンテナーの MAC アドレスを入口と出口で書き換え | <ul><li>同一サブネット: ブリッジ接続</li><li>クロスサブネット: WSv1809 以上の管理 vNIC 経由でルーティングされます。</li></ul> |
   | **L2Tunnel**| Azure のみ | 同一/クロス サブネット: ポリシーが適用される物理ホストの Hyper-V 仮想スイッチに折り返し | トラフィックは Azure の仮想ネットワーク ゲートウェイを経由する必要があります | 同一/クロス サブネット: ポリシーが適用される物理ホストの Hyper-V 仮想スイッチに折り返し |
 
 ### <a name="ipam"></a>IPAM
