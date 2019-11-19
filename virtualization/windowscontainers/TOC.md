@@ -49,7 +49,7 @@
 #### [Linux ワーカに参加する](kubernetes/joining-linux-workers.md)
 #### [Kubernetes リソースの展開](kubernetes/deploying-resources.md)
 #### [トラブルシューティング](kubernetes/common-problems.md)
-#### [Kubernetes の Windows サービス](kubernetes/kube-windows-services.md)
+#### [Windows サービスとしての Kubernetes](kubernetes/kube-windows-services.md)
 #### [コンパイル Kubernetes バイナリ](kubernetes/compiling-kubernetes-binaries.md)
 ### サービスファブリック
 #### [サービスファブリックとコンテナー](/azure/service-fabric/service-fabric-containers-overview)
