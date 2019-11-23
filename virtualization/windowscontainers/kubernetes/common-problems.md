@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Kubernetes の展開と Windows ノードの参加で発生する一般的な問題の解決方法。
 keywords: kubernetes、1.14、linux、compile
-ms.openlocfilehash: b6e4e648ff050e13a0930f2834949867e44ce895
-ms.sourcegitcommit: d252f356a3de98f224e1550536810dfc75345303
+ms.openlocfilehash: 8bebc83e03fe919f6af3968b0e0463ab3c6bb987
+ms.sourcegitcommit: 6b925368d122ba600d7d4c73bd240cdcb915cccd
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "10069936"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "10305726"
 ---
 # <a name="troubleshooting-kubernetes"></a>Kubernetes のトラブルシューティング #
 このページでは、Kubernetes のセットアップ、ネットワーク、および展開に関する一般的な問題について説明します。
@@ -43,6 +43,19 @@ nssm set <Service Name> AppStderr C:\k\mysvc.log
 詳細については、「公式[nssm の使用](https://nssm.cc/usage)に関するドキュメント」を参照してください。
 
 ## <a name="common-networking-errors"></a>一般的なネットワークエラー ##
+
+### <a name="load-balancers-are-plumbed-inconsistently-across-the-cluster-nodes"></a>ロードバランサーがクラスターノード間で一貫性がない ###
+(既定) kube プロキシ構成では、100以上のロードバランサーを含むクラスターは、(DSR 以外の) ロードバランサーの各ノードで予約されている多くのポートを使用して、利用可能な短期 (動的) ポートを実行することがあります。 これにより、次のような kube のエラーが表示されることがあります。
+```
+Policy creation failed: hcnCreateLoadBalancer failed in Win32: The specified port already exists.
+```
+
+ユーザーがこの問題を特定するには、 [Collectlogs. ps1](https://github.com/microsoft/SDN/blob/master/Kubernetes/windows/debug/collectlogs.ps1)スクリプト`*portrange.txt`を実行して、ファイルを確認します。 Heuristical の概要もに`reservedports.txt`生成されます。
+
+この問題を解決するには、いくつかの手順を実行します。
+1.  永続的な解決策としては、kube の負荷分散を[DSR モード](https://techcommunity.microsoft.com/t5/Networking-Blog/Direct-Server-Return-DSR-in-a-nutshell/ba-p/693710)に設定する必要があります。 残念ながら、DSR モードは新しい[Windows Server Insider build 18945](https://blogs.windows.com/windowsexperience/2019/07/30/announcing-windows-server-vnext-insider-preview-build-18945/#o1bs7T2DGPFpf7HM.97) (またはそれ以降) のみに完全に実装されています。
+2. 回避策として、ユーザーは、などのコマンドを使用して、利用可能な一時的`netsh int ipv4 dynamicportrange TCP <start_range> <end_range>`なポートの既定の Windows 構成を増やすこともできます。 *警告:* 既定の動的ポートの範囲を上書きすると、ホスト上の非短期範囲の利用可能な TCP ポートに依存する他のプロセス/サービスに影響を与える可能性があるため、この範囲は慎重に選ぶ必要があります。
+3. また、2020年第1四半期の累積的な更新プログラムでリリースされる予定のインテリジェントポートプール共有を使用して、非 DSR モードのロードバランサーのスケーラビリティを強化しています。
 
 ### <a name="hostport-publishing-is-not-working"></a>HostPort publishing が機能していない ###
 現時点では、Kubernetes `containers.ports.hostPort`フィールドを使ってポートを公開することはできません。このフィールドは Windows CNI プラグインによって適用されるわけではありません。 ノードでポートを公開する時間には、NodePort publishing を使用してください。
@@ -84,7 +97,7 @@ Windows ポッドには、現在 ICMP プロトコル用にプログラムされ
 それでも問題が解決されない場合は、 [cni](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf)のネットワーク構成で、十分な注意を払う必要があります。 この静的ファイルはいつでも編集できます。構成は、新しく作成された Kubernetes リソースに適用されます。
 
 どうしてでしょうか。
-Kubernetes のネットワーク要件の1つ ( [Kubernetes モデル](https://kubernetes.io/docs/concepts/cluster-administration/networking/)を参照) は、内部で NAT を使わずにクラスター通信を行うために使用されます。 この要件を満たすために、送信[](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf#L20) NAT が行われないようにするすべての通信のための "の追加されていない" という情報が含まれています。 ただし、これは、クエリを実行しようとしている外部 IP を例外除外から除外する必要があることも意味します。 その後、Windows ポッドから発信されたトラフィックは、外部の世界からの応答を受信するために正しく送信されます。 この点を考慮して、 `cni.conf`の場合は次のようにします。
+Kubernetes のネットワーク要件の1つ ( [Kubernetes モデル](https://kubernetes.io/docs/concepts/cluster-administration/networking/)を参照) は、内部で NAT を使わずにクラスター通信を行うために使用されます。 この要件を満たすために、送信 NAT が行われないようにするすべての通信のための "の追加されていない[" という](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf#L20)情報が含まれています。 ただし、これは、クエリを実行しようとしている外部 IP を例外除外から除外する必要があることも意味します。 その後、Windows ポッドから発信されたトラフィックは、外部の世界からの応答を受信するために正しく送信されます。 この点を考慮して、 `cni.conf`の場合は次のようにします。
 ```conf
 "ExceptionList": [
   "10.244.0.0/16",  # Cluster subnet
