@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Kubernetes の展開と Windows ノードの参加で発生する一般的な問題の解決方法。
 keywords: kubernetes、1.14、linux、compile
-ms.openlocfilehash: 54396f4b350fa7dfe59e073601f41b0a73f06dca
-ms.sourcegitcommit: 76dce6463e820420073dda2dbad822ca4a6241ef
+ms.openlocfilehash: 471731ec50c7c03816a956bd7aae859ad218be6d
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "10307265"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "10332363"
 ---
 # Kubernetes のトラブルシューティング #
 このページでは、Kubernetes のセットアップ、ネットワーク、および展開に関する一般的な問題について説明します。
@@ -45,7 +45,7 @@ nssm set <Service Name> AppStderr C:\k\mysvc.log
 ## 一般的なネットワークエラー ##
 
 ### ロードバランサーがクラスターノード間で一貫性がない ###
-(既定) kube プロキシ構成では、100 + ロードバランサーを含むクラスターは、利用可能な一時的 TCP ポートを使用しなくなる可能性があります (別名 動的ポート範囲 (DSR 以外の) ロードバランサーの各ノードで予約されているポートの数が多いため、通常は、ポート 49152 ~ 65535 を対象としています。 これにより、次のような kube のエラーが表示されることがあります。
+Windows では、kube は、クラスター内のすべての Kubernetes サービスについて、HNS ロードバランサーを作成します。 (既定) kube プロキシ構成では、多くの (通常は100以上) ロードバランサーを含むクラスター内のノードで、使用可能な一時的 TCP ポートが不足することがあります (別名 動的なポート範囲 (既定では、ポート 49152 ~ 65535) が対象となります。 これは、すべての (DSR 以外の) ロードバランサーの各ノードで予約されているポートの数が多いためです。 この問題は、次のような kube プロキシのエラーによって自動的に表示されることがあります。
 ```
 Policy creation failed: hcnCreateLoadBalancer failed in Win32: The specified port already exists.
 ```
@@ -55,9 +55,9 @@ Policy creation failed: hcnCreateLoadBalancer failed in Win32: The specified por
 また`CollectLogs.ps1` 、では、一時的な TCP ポートの範囲でポートプールの割り当ての可用性をテストし、の`reservedports.txt`成功/失敗を報告するために、HNS の割り当てロジックにも似ています。 このスクリプトは、10個の 64 TCP 短期ポート (HNS の動作をエミュレートするため) を予約して、予約の成功 & 失敗し、割り当てられたポート範囲を解放します。 成功数が10未満の場合、短期プールの空き領域が不足していることを示します。 Heuristical の64ブロックポート予約の数の概要は、に`reservedports.txt`も生成されます。
 
 この問題を解決するには、いくつかの手順を実行します。
-1.  永続的な解決策としては、kube の負荷分散を[DSR モード](https://techcommunity.microsoft.com/t5/Networking-Blog/Direct-Server-Return-DSR-in-a-nutshell/ba-p/693710)に設定する必要があります。 残念ながら、DSR モードは新しい[Windows Server Insider build 18945](https://blogs.windows.com/windowsexperience/2019/07/30/announcing-windows-server-vnext-insider-preview-build-18945/#o1bs7T2DGPFpf7HM.97) (またはそれ以降) のみに完全に実装されています。
+1.  永続的な解決策としては、kube の負荷分散を[DSR モード](https://techcommunity.microsoft.com/t5/Networking-Blog/Direct-Server-Return-DSR-in-a-nutshell/ba-p/693710)に設定する必要があります。 DSR モードは完全に実装されており、新しい[Windows Server Insider ビルド 18945](https://blogs.windows.com/windowsexperience/2019/07/30/announcing-windows-server-vnext-insider-preview-build-18945/#o1bs7T2DGPFpf7HM.97) (またはそれ以降) のみで利用できます。
 2. 回避策として、ユーザーは、などのコマンドを使用して、利用可能な一時的`netsh int ipv4 set dynamicportrange TCP <start_port> <port_count>`なポートの既定の Windows 構成を増やすこともできます。 *警告:* 既定の動的ポートの範囲を上書きすると、ホスト上の非短期範囲の利用可能な TCP ポートに依存する他のプロセス/サービスに影響を与える可能性があるため、この範囲は慎重に選ぶ必要があります。
-3. また、2020年第1四半期の累積的な更新プログラムでリリースされる予定のインテリジェントポートプール共有を使用して、非 DSR モードのロードバランサーのスケーラビリティを強化しています。
+3. インテリジェントポートプールの共有を使用すると、非 DSR モードのロードバランサーにスケーラビリティが適用されます。これは、2020年の累積更新プログラムによってリリースされる予定です。
 
 ### HostPort publishing が機能していない ###
 現時点では、Kubernetes `containers.ports.hostPort`フィールドを使ってポートを公開することはできません。このフィールドは Windows CNI プラグインによって適用されるわけではありません。 ノードでポートを公開する時間には、NodePort publishing を使用してください。
