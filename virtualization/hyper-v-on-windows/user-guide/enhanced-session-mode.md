@@ -8,14 +8,14 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d1aeb9cb-b18f-43cb-a568-46b33346a188
-ms.openlocfilehash: c891a723d43a9e6e0a0a8bc7bfc2b47a960732d1
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 52d51fca03f454a311a123f20e5aeda9376fdc3d
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998949"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911072"
 ---
-# <a name="share-devices-with-your-virtual-machine"></a>仮装マシンとのデバイスの共有
+# <a name="share-devices-with-your-virtual-machine"></a>仮想マシンとのデバイスの共有
 
 > ここで説明する手順は、Windows 仮想マシンでのみ使用できます。
 
@@ -24,7 +24,7 @@ ms.locfileid: "9998949"
 RDP/拡張セッション モードには、次の機能があります。
 
 * 仮想マシンがサイズ変更可能になり、高 DPI に対応します。
-* 仮装マシンがさらに緊密に連携します。
+* 仮想マシンがさらに緊密に連携します。
   * クリップボードの共有
   * ドラッグ アンド ドロップやコピーと貼り付けによるファイルの共有
 * デバイスを共有できます。
@@ -91,7 +91,7 @@ vmconnect.exe
 
 ![](media/esm-button-location.png)
 
-| アイコン | 接続状態 |
+| icon | 接続状態 |
 |:-----|:---------|
 |![](media/esm-basic.png)| 現在、拡張セッション モードで実行しています。  このアイコンをクリックすると、仮想マシンが基本モードで再接続されます。 |
 |![](media/esm-connect.png)| 現在、基本セッション モードで実行していますが、拡張セッション モードが利用可能です。  このアイコンをクリックすると、仮想マシンが拡張セッション モードで再接続されます。  |

@@ -6,21 +6,21 @@ ms.date: 11/02/2018
 ms.topic: get-started-article
 ms.prod: containers
 description: ソースからの Kubernetes バイナリのコンパイルとクロスコンパイル
-keywords: kubernetes、1.12、linux コンパイルします。
+keywords: kubernetes、1.12、linux、コンパイル
 ms.openlocfilehash: 40bf7e65a8910cdab095abb269aa0a92508189cd
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9574823"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74909872"
 ---
 # <a name="compiling-kubernetes-binaries"></a>Kubernetes バイナリのコンパイル #
 Kubernetes のコンパイルには、有効な Go 環境が必要です。 このページでは、Linux バイナリをコンパイルし、Windows バイナリをクロスコンパイルするための複数の方法を確認します。
 > [!NOTE] 
-> このページは、任意でのみ、関心 Kubernetes 開発者向けの最新の & 最大ソース コードを試すに含まれています。
+> このページは完全に自発的であり、Kubernetes の開発者にのみ含まれており、最新の & 最大のソースコードを試してみることをお勧めします。
 
 > [!tip]
-> 購読していることが最新の開発に関する通知を受信する[@kubernetes-announce](https://groups.google.com/forum/#!forum/kubernetes-announce)します。
+> [@kubernetes-announce](https://groups.google.com/forum/#!forum/kubernetes-announce)にサブスクライブできる最新の開発に関する通知を受け取ることができます。
 
 ## <a name="installing-go"></a>Go のインストール ##
 ここでは、わかりやすくするために、カスタムの一時的な場所に Go をインストールします。
@@ -47,11 +47,11 @@ export PATH="$GOROOT/bin:$PATH"
 Windows バイナリを各ノードにコピーするには、[WinSCP](https://winscp.net/eng/download.php) などのビジュアル ツールや、[pscp](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) などのコマンドライン ツールを使用して、`C:\k` ディレクトリに転送します。
 
 
-## <a name="building-locally"></a>ローカルでの文書 ##
+## <a name="building-locally"></a>ローカルでのビルド ##
 > [!Tip]  
 > "アクセス許可の拒否" エラーが発生する場合は、[`acs-engine`](https://github.com/Azure/acs-engine/blob/master/scripts/build-windows-k8s.sh#L176) の注釈に記載されているように、Linux の `kubelet` を先にビルドすることで回避できます。
 >  
-> _Kubernetes Windows ビルド システムの現在の状況では、`_output/bin/deepcopy-gen` を生成するには、先に Linux バイナリをビルドする必要があります。 これを行わずに Windows にビルドすると、空の `deepcopy-gen` が生成されます。_
+> _Kubernetes Windows ビルドシステムでは、バグのように見えますが、最初に Linux バイナリをビルドして `_output/bin/deepcopy-gen`を生成する必要があります。この操作を行うと、Windows へのビルドでは空の `deepcopy-gen`が生成されます。_
 
 まず、Kubernetes リポジトリを取得します。
 

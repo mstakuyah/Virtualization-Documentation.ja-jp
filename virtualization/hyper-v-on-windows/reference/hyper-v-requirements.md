@@ -1,7 +1,7 @@
 ---
 title: Windows 10 Hyper-V のシステム要件
 description: Windows 10 Hyper-V のシステム要件
-keywords: windows 10、hyper-v
+keywords: Windows 10, Hyper-V
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
@@ -9,15 +9,15 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 6e5e6b01-7a9d-4123-8cc7-f986e10cd372
 ms.openlocfilehash: d4e3f7c1e94d0162ae9ee6251d9c6d8cc51bf1d3
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883075"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911222"
 ---
 # <a name="windows-10-hyper-v-system-requirements"></a>Windows 10 Hyper-V のシステム要件
 
-Hyper-v は、64ビット版の Windows 10 Pro、Enterprise、および教育機関で利用できます。 Hyper-V には、第 2 レベルのアドレス変換 (SLAT) 機能が必要です。SLAT とは、Intel と AMD が提供する最新世代の 64 ビット プロセッサに搭載されている機能です。
+Hyper-v は、Windows 10 Pro、Enterprise、および教育の64ビットバージョンで使用できます。 Hyper-V には、第 2 レベルのアドレス変換 (SLAT) 機能が必要です。SLAT とは、Intel と AMD が提供する最新世代の 64 ビット プロセッサに搭載されている機能です。
 
 4 GB の RAM を備えたホストでは基本的な仮想マシンを 3 つまたは 4 つ実行することができますが、仮想マシンが増えれば、より多くのリソースが必要となります。 一方で、物理ハードウェアの内容にもよりますが、32 のプロセッサと 512 GB の RAM を備えた大規模な仮想マシンを作成することもできます。
 
@@ -35,13 +35,13 @@ Hyper-V のロールは、次のバージョンにはインストール**でき�
 - Windows 10 Mobile
 - Windows 10 Mobile Enterprise
 
->Windows 10 Home edition は Windows 10 Pro にアップグレードできます。 アップグレードを行うには、**[設定]** > **[更新とセキュリティ]** > **[アクティブ化]** の順に開きます。 ここでストアにアクセスして、アップグレードを購入することができます。
+>Windows 10 Home edition は、Windows 10 Pro にアップグレードできます。 アップグレードを行うには、 **[設定]**  >  **[更新とセキュリティ]**  >  **[アクティブ化]** の順に開きます。 ここでストアにアクセスして、アップグレードを購入することができます。
 
 ## <a name="hardware-requirements"></a>ハードウェア要件
 
 このドキュメントでは、Hyper-V と互換性のあるハードウェアをすべて一覧していませんが、次のアイテムが必要です。
 
-- 第 2 レベルのアドレス変換 (SLAT) の 64 ビット プロセッサ
+- 第 2 レベルのアドレス変換 (SLAT) の 64 ビット プロセッサ。
 - VM モニター モード拡張機能 (Intel CPU の VT-c) の CPU サポート
 - 最小 4 GB のメモリ。 仮想マシンは Hyper-V ホストとメモリを共有するため、予想される仮想ワークロードを処理するために十分なメモリを提供する必要があります。
 

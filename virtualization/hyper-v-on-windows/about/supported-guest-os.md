@@ -1,18 +1,18 @@
 ---
 title: サポートされる Windows ゲスト
 description: サポートされる Windows ゲスト
-keywords: windows 10、hyper-v
+keywords: Windows 10, Hyper-V
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: ae4a18ed-996b-4104-90c5-539c90798e4c
-ms.openlocfilehash: 25c72b910af15fc0b498a5b2abce72d32e6d1efd
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: e3255d236a3fbb5ac4d908143750b84e3db82ceb
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9999039"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911682"
 ---
 # <a name="supported-windows-guests"></a>サポートされる Windows ゲスト
 
@@ -26,20 +26,20 @@ Microsoft では、次のようにサポートを提供します。
 
 * オペレーティング システム ベンダーによって Hyper-V の実行が認定されている、他のオペレーティング システムで検出された問題については、ベンダーによってサポートが提供されます。
 
-* その他のオペレーティング システムでの問題については、Microsoft がマルチベンダー サポート コミュニティ [TSANet](http://www.tsanet.org/) に問題を提出します。
+* 他のオペレーティング システムで見つかった問題は、Microsoft は、マルチ ベンダー サポート コミュニティに問題を送信する [TSANet](http://www.tsanet.org/)します。
 
 サポートを受けるには、すべてのオペレーティング システム (ゲストとホスト) を最新の状態にしておく必要があります。  Windows Update で緊急更新プログラムがないか確認してください。
 
 ## <a name="supported-guest-operating-systems"></a>サポートされているゲスト オペレーティング システム
 
-| ゲスト オペレーティング システム |  仮想プロセッサの最大数 | メモ |
+| ゲスト オペレーティング システム |  仮想プロセッサの最大数 | 説明 |
 |:-----|:-----|:-----|
 | Windows 10 | 32 |拡張セッション モードは、Windows 10 Home エディションでは機能しません |
 | Windows 8.1 | 32 | |
 | Windows 8 | 32 ||
-| Windows 7 Service Pack 1 (SP 1) | 4d | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
-| Windows 7 | 4d | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
-| WindowsVista Service Pack2 (SP2) | 両面 | Business、Enterprise、および Ultimate (N および KN エディションを含む)。 |
+| Windows 7 Service Pack 1 (SP 1) | 4 | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
+| Windows 7 | 4 | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
+| Windows Vista Service Pack 2 (SP2) | 2 | Business、Enterprise、および Ultimate (N および KN エディションを含む)。 |
 | - | | |
 | [Windows Server 半期チャネル](https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview) | 64 | |
 | Windows Server 2019 | 64 | |
@@ -47,8 +47,8 @@ Microsoft では、次のようにサポートを提供します。
 | Windows Server 2012 R2 | 64 | |
 | Windows Server 2012 | 64 | |
 | Windows Server 2008 R2 Service Pack 1 (SP 1) | 64 | Datacenter、Enterprise、Standard、および Web Edition。 |
-| Windows Server 2008 Service Pack 2 (SP 2) | 4d | Datacenter、Enterprise、Standard、および Web Edition (32 ビットおよび 64 ビット)。 |
-| Windows Home Server 2011 | 4d | |
+| Windows Server 2008 Service Pack 2 (SP 2) | 4 | Datacenter、Enterprise、Standard、および Web Edition (32 ビットおよび 64 ビット)。 |
+| Windows Home Server 2011 | 4 | |
 | Windows Small Business Server 2011 | Essentials edition - 2、Standard edition - 4 | |
 
 > Windows 10 は、Windows 8.1 と Windows Server 2012 R2 Hyper-V ホスト上でゲスト オペレーティング システムとして実行できます。
@@ -58,7 +58,7 @@ Microsoft では、次のようにサポートを提供します。
 | ゲスト オペレーティング システム |  |
 |:-----|:------|
 | [CentOS と Red Hat Enterprise Linux](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-CentOS-and-Red-Hat-Enterprise-Linux-virtual-machines-on-Hyper-V) | |
-| [Hyper-V の Debian 仮想マシン](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Debian-virtual-machines-on-Hyper-V) | |
+| [Hyper-v の Debian 仮想マシン](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Debian-virtual-machines-on-Hyper-V) | |
 | [SUSE](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-SUSE-virtual-machines-on-Hyper-V) | |
 | [Oracle Linux](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Oracle-Linux-virtual-machines-on-Hyper-V)  | |
 | [Ubuntu](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Ubuntu-virtual-machines-on-Hyper-V) | |

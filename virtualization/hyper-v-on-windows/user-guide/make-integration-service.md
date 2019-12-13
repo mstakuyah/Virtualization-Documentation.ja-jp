@@ -8,11 +8,11 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 1ef8f18c-3d76-4c06-87e4-11d8d4e31aea
 ms.openlocfilehash: 89a36ee87bce1da18852f0ebff248e239165eb7d
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883015"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911032"
 ---
 # <a name="make-your-own-integration-services"></a>独自の統合サービスを作成する
 
@@ -20,11 +20,11 @@ Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレ�
 
 このドキュメントでは、Hyper-V ソケット上に単純なプログラムを構築する手順を説明します。
 
-**サポートされているホスト OS**
+**サポートされるホスト OS**
 * Windows 10 以降
 * Windows Server 2016 以降
 
-**サポートされているゲスト OS**
+**サポートされるゲスト OS**
 * Windows 10 以降
 * Windows Server 2016 以降
 * Linux ゲストと Linux 統合サービス (「[Supported Linux and FreeBSD virtual machines for Hyper-V on Windows (Windows 上の Hyper-V 向けにサポートされる Linux と FreeBSD 仮想マシン)](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Linux-and-FreeBSD-virtual-machines-for-Hyper-V-on-Windows)」をご覧ください)
@@ -48,7 +48,7 @@ Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレ�
 * [Windows 10 SDK](https://developer.microsoft.com/windows/downloads/windows-10-sdk): Visual Studio 2015 with Update 3 以降でプレインストールされています。
 * 上記のいずれかのホスト オペレーティング システムと 1 つ以上の仮想マシンが実行されているコンピューター。 これは、アプリケーションのテスト用です。
 
-> **注:** Hyper-v ソケットの API は、Windows 10 記念日更新プログラムで公開されます。 HVSocket を使うアプリケーションは、Windows 10 のすべてのホストとゲストで動作しますが、ビルド14290よりも後の Windows SDK でのみ開発できます。
+> **注:** Hyper-v ソケット用の API は、Windows 10 周年記念プログラムで一般公開されています。 HVSocket を使用するアプリケーションは、任意の Windows 10 ホストとゲスト上で実行されますが、ビルド14290より後の Windows SDK でのみ開発できます。
 
 ## <a name="register-a-new-application"></a>新しいアプリケーションの登録
 Hyper-V ソケットを使用するには、アプリケーションを Hyper-V ホストのレジストリに登録する必要があります。
@@ -133,7 +133,7 @@ int socket(int domain, int type, int protocol);
 
 Hyper-V ソケットの場合:
 * アドレス ファミリ - `AF_HYPERV` (Windows) または `AF_VSOCK` (Linux ゲスト)
-* タイプ - `SOCK_STREAM`
+* 種類 - `SOCK_STREAM`
 * プロトコル - `HV_PROTOCOL_RAW` (Windows) または `0` (Linux ゲスト)
 
 
@@ -216,7 +216,7 @@ IP またはホスト名の代わりに、AF_HYPERV エンドポイントは 2 �
 | HV_GUID_PARENT | a42e7cda-d03f-480c-9cc2-a4de20abb878 | 親アドレス。 この VmId を使用して、コネクタの親パーティションに接続します。* |
 
 
-\* `HV_GUID_PARENT` 仮想マシンの親は、その仮想マシンのホストです。  コンテナーの親は、コンテナーのホストです。
+バーチャルマシンの親 `HV_GUID_PARENT` \* は、そのホストであることを示します。  コンテナーの親は、コンテナーのホストです。
 仮想マシンで実行しているコンテナーからの接続は、コンテナーをホストしている仮想マシンに接続します。
 この VmId でのリッスンでは、次からの接続を受け入れることができます: (コンテナー内): コンテナー ホスト。
 (VM 内: コンテナー ホスト/コンテナーなし): VM ホスト。
@@ -229,4 +229,4 @@ Socket() Bind() Connect() Send() Listen() Accept()
 ## <a name="useful-links"></a>役に立つリンク
 [完全な WinSock API](https://docs.microsoft.com/windows/desktop/WinSock/winsock-functions)
 
-[Hyper-V 統合サービスの参照](../reference/integration-services.md)
+[Hyper-v Integration Services リファレンス](../reference/integration-services.md)

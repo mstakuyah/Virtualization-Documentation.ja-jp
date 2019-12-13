@@ -1,6 +1,6 @@
 ---
 title: 分離モード
-description: Hyper-v 分離がプロセス分離コンテナーとどのように異なるかについて説明します。
+description: Hyper-v の分離とプロセス分離コンテナーとの違いについて説明します。
 keywords: Docker, コンテナー
 author: crwilhit
 ms.date: 09/26/2019
@@ -9,24 +9,24 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
 ms.openlocfilehash: fa95ffe1c699a2c837076fcc1b662f6b792b7dfb
-ms.sourcegitcommit: e9dda81f1f68359ece9ef132a184a30880bcdb1b
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "10161729"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74909752"
 ---
 # <a name="isolation-modes"></a>分離モード
 
-Windows コンテナーには`process` 、実行時分離の2つ`Hyper-V`のモードと分離が用意されています。 両方の分離モードで実行されているコンテナーは、同じように作成、管理、関数になります。 また、作成および使用するコンテナー イメージも同じです。 分離モードの違いは、コンテナー、ホストオペレーティングシステム、およびそのホストで実行されている他のすべてのコンテナーの間に作成される分離レベルです。
+Windows コンテナーには、`process` と `Hyper-V` 分離という2つの異なるランタイム分離モードが用意されています。 両方の分離モードで実行されているコンテナーは、同じように作成、管理、および機能します。 また、作成および使用するコンテナー イメージも同じです。 分離モードの違いは、コンテナー、ホストオペレーティングシステム、およびそのホストで実行されている他のすべてのコンテナーとの間に作成される分離の程度です。
 
-## <a name="process-isolation"></a>プロセス分離
+## <a name="process-isolation"></a>プロセスの分離
 
-これはコンテナーの "従来の" 分離モードであり、 [Windows コンテナーの概要](../about/index.md)で説明されているものです。 プロセス分離を使うと、名前空間、リソースコントロール、プロセス分離技術を通じて分離された分離機能を使用して、複数のコンテナーインスタンスを指定したホストで同時に実行できます。 このモードで実行されている場合、コンテナーは同じカーネルをホストと共に共有します。  これは、Linux コンテナーの実行方法とほぼ同じです。
+これは、コンテナーの "従来の" 分離モードであり、「 [Windows コンテナーの概要](../about/index.md)」で説明されています。 プロセス分離を使用すると、名前空間、リソースコントロール、およびプロセス分離テクノロジによって提供される分離により、特定のホストで複数のコンテナーインスタンスを同時に実行できます。 このモードで実行すると、コンテナーは同じカーネルをホストと相互に共有します。  これは、Linux コンテナーの実行方法とほぼ同じです。
 
 ![](media/container-arch-process.png)
 
 ## <a name="hyper-v-isolation"></a>Hyper-V による分離
-この分離モードでは、ホストとコンテナーのバージョンのセキュリティと互換性が強化されています。 Hyper-v 分離では、複数のコンテナーインスタンスがホストで同時に実行されます。ただし、各コンテナーは、高度に最適化された仮想マシンの内部で実行されるため、独自のカーネルを実質的に取得できます。 仮想マシンの存在は、コンテナーホストと共に、各コンテナーとの間でハードウェアレベルで分離されます。
+この分離モードでは、ホストとコンテナーのバージョン間でセキュリティが強化され、より広範な互換性が提供されます。 Hyper-v の分離を使用すると、ホスト上で複数のコンテナーインスタンスを同時に実行できます。ただし、各コンテナーは、高度に最適化された仮想マシンの内部で実行され、独自のカーネルを効果的に取得します。 仮想マシンの存在により、各コンテナーとコンテナーホストの間にハードウェアレベルの分離が提供されます。
 
 ![](media/container-arch-hyperv.png)
 
@@ -34,30 +34,30 @@ Windows コンテナーには`process` 、実行時分離の2つ`Hyper-V`のモ�
 
 ### <a name="create-container"></a>コンテナーの作成
 
-Docker での Hyper-v の分離されたコンテナーの管理は、プロセス分離コンテナーの管理とほぼ同じです。 Hyper-v 分離を備えたコンテナーを作成するには、 `--isolation`パラメーターを使用して`--isolation=hyperv`設定します。
+Docker を使用した Hyper-v 分離コンテナーの管理は、プロセス分離コンテナーの管理とほぼ同じです。 Hyper-v の分離を完全に使用してコンテナーを作成するには、`--isolation` パラメーターを使用して `--isolation=hyperv`を設定します。
 
 ```cmd
 docker run -it --isolation=hyperv mcr.microsoft.com/windows/servercore:ltsc2019 cmd
 ```
 
-プロセス分離の完全な Docker でコンテナーを作成するに`--isolation`は、パラメーター `--isolation=process`を使用して設定します。
+プロセス分離の完全な Docker を使用してコンテナーを作成するには、`--isolation` パラメーターを使用して `--isolation=process`を設定します。
 
 ```cmd
 docker run -it --isolation=process mcr.microsoft.com/windows/servercore:ltsc2019 cmd
 ```
 
-Windows Server で実行されている windows コンテナーは、プロセス分離を使用して実行されます。 Windows 10 Pro で実行される windows コンテナーと、Hyper-v 分離を使って実行されるエンタープライズの既定 Windows 10 年 2018 10 月の更新プログラムから、Windows 10 Pro または Enterprise host を実行しているユーザーは、プロセス分離を使用して Windows コンテナーを実行できます。 ユーザーは、フラグを使ってプロセスの`--isolation=process`分離を直接要求する必要があります。
+Windows Server で実行されている windows コンテナーは、既定でプロセス分離を使用して実行されます。 Windows 10 Pro および Enterprise で実行されている windows コンテナーは、Hyper-v 分離で実行されるように既定で設定されています。 Windows 10 10 月2018更新プログラム以降では、Windows 10 Pro またはエンタープライズホストを実行するユーザーは、プロセス分離を使用して Windows コンテナーを実行できます。 ユーザーは、`--isolation=process` フラグを使用してプロセスの分離を直接要求する必要があります。
 
 > [!WARNING]
-> Windows 10 Pro と Enterprise でプロセス分離を実行することは、開発/テストを目的としています。 ホストで Windows 10 ビルド 17763 + が実行されている必要があります。また、エンジン18.09 以降を搭載した Docker バージョンが必要です。
+> Windows 10 Pro および Enterprise でのプロセス分離を使用した実行は、開発/テストを目的としています。 ホストで Windows 10 build 17763 + が実行されている必要があります。また、エンジン18.09 以降の Docker バージョンが必要です。
 > 
-> 引き続き Windows Server を運用展開用のホストとして使用する必要があります。 Windows 10 Pro と Enterprise でこの機能を使用することによって、ホストとコンテナーのバージョンタグが一致していることを確認する必要があります。そうでないと、コンテナーが起動しないか、未定義の動作が発生する可能性があります。
+> 運用環境の展開では、引き続き Windows Server をホストとして使用する必要があります。 Windows 10 Pro および Enterprise でこの機能を使用することにより、ホストとコンテナーのバージョンタグが一致することを確認する必要があります。そうしないと、コンテナーの起動に失敗したり、未定義の動作が発生したりする可能性があります。
 
 ### <a name="isolation-explanation"></a>分離の説明
 
-次の例は、プロセスと Hyper-v 分離の間の分離機能の違いを示しています。
+この例では、プロセスと Hyper-v 分離の分離機能の違いについて説明します。
 
-ここでは、プロセス分離されたコンテナーが展開されており、実行時間の長い ping プロセスがホストされています。
+ここでは、プロセス分離コンテナーが配置され、実行時間の長い ping プロセスがホストされます。
 
 ``` cmd
 docker run -d mcr.microsoft.com/windows/servercore:ltsc2019 ping localhost -t
@@ -81,7 +81,7 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
      67       5      820       3836 ...71     0.03   3964   3 PING
 ```
 
-対照的に、この例では、ping プロセスと共に、Hyper-v と、それに対応するコンテナーを開始しています。
+これに対して、この例では、ping プロセスも含めて、Hyper-v 対応のコンテナーを起動します。
 
 ```
 docker run -d --isolation=hyperv mcr.microsoft.com/windows/servercore:ltsc2019 ping localhost -t
@@ -95,7 +95,7 @@ docker top 5d5611e38b31a41879d37a94468a1e11dc1086dcd009e2640d36023aa1663e62
 1732 ping
 ```
 
-ただし、コンテナーホストでプロセスを検索すると、ping プロセスが見つからず、エラーがスローされます。
+ただし、コンテナーホストでプロセスを検索するときに、ping プロセスが見つからず、エラーがスローされます。
 
 ```
 get-process -Name ping

@@ -1,7 +1,7 @@
 ---
 title: Hyper-V と Windows PowerShell の使用
 description: Hyper-V と Windows PowerShell の使用
-keywords: windows 10、hyper-v
+keywords: Windows 10, Hyper-V
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
@@ -9,11 +9,11 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 6d1ae036-0841-4ba5-b7e0-733aad31e9a7
 ms.openlocfilehash: d53bdce3438c6dafe3a1e0350c7a5df30ff8210b
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883125"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911512"
 ---
 # <a name="working-with-hyper-v-and-windows-powershell"></a>Hyper-V と Windows PowerShell の使用
 
@@ -67,7 +67,7 @@ Get-Command -Module hyper-v | Out-GridView
 
 ### <a name="start-and-shut-down-virtual-machines"></a>起動し、仮想マシンをシャットダウン
 
-1. 特定のバーチャル マシンを開始するには、仮想マシンの名前で、次のコマンドを実行します。
+1. 特定の仮想マシンを起動するには、仮想マシンの名前を指定して次のコマンドを実行します。
 
  ```powershell
  Start-VM -Name <virtual machine name>
@@ -117,5 +117,5 @@ PowerShell を使用してチェックポイントを作成するには、`Get-V
 
 ## <a name="wrap-up-and-references"></a>ラップし、参照
 
-このドキュメントはいくつかのサンプル シナリオと同様に、HYPER-V の PowerShell モジュールに、エクスプ ローラーにいくつかの簡単な手順を説明しました。 Hyper-V PowerShell モジュールの詳細については、[Windows PowerShell リファレンスの Hyper-V コマンドレット](https://docs.microsoft.com/powershell/module/hyper-v/index?view=win10-ps)をご覧ください。  
+このドキュメントでは、Hyper-V PowerShell モジュールについて知るための簡単な手順といくつかのサンプル シナリオを紹介しました。 Hyper-V PowerShell モジュールの詳細については、[Windows PowerShell リファレンスの Hyper-V コマンドレット](https://docs.microsoft.com/powershell/module/hyper-v/index?view=win10-ps)をご覧ください。  
  

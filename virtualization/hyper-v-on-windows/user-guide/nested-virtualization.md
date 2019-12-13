@@ -1,19 +1,19 @@
 ---
 title: 入れ子になった仮想化
 description: 入れ子になった仮想化
-keywords: windows 10、hyper-v
+keywords: Windows 10, Hyper-V
 author: johncslack
 ms.date: 12/18/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 68c65445-ce13-40c9-b516-57ded76c1b15
-ms.openlocfilehash: f819ac04773188525af202d370ba271a2d93e259
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 625a9b36ff782c86065ef3d9124708e5716e066f
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998919"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74910932"
 ---
 # <a name="run-hyper-v-in-a-virtual-machine-with-nested-virtualization"></a>入れ子になった仮想化による仮想マシンでの Hyper-V の実行
 

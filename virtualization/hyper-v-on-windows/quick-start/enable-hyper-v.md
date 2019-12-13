@@ -1,36 +1,36 @@
 ---
 title: Windows 10 での Hyper-V の有効化
 description: Windows 10 上に Hyper-V をインストールする
-keywords: windows 10、hyper-v
+keywords: Windows 10, Hyper-V
 author: scooley
 ms.date: 02/15/2019
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
-ms.openlocfilehash: bad59fcc65bf66ab3c6dc940a17111e46a9bc226
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: e1b6b55b2e17ac4f0883078748d75f6d4b9fcafa
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9999029"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74909462"
 ---
 # <a name="install-hyper-v-on-windows-10"></a>Windows 10 上に Hyper-V をインストールする
 
 Windows 10 上に仮想マシンを作成するには、Hyper-V を有効にします。  
-Hyper-v は、Windows 10 コントロールパネル、PowerShell の使用、または展開イメージングのサービスと管理ツール (DISM) の使用など、さまざまな方法で有効にすることができます。 このドキュメントでは、それぞれの方法について説明します。
+Hyper-v は、Windows 10 のコントロールパネル、PowerShell、または展開イメージのサービスと管理ツール (DISM) の使用など、さまざまな方法で有効にすることができます。 このドキュメントでは、それぞれの方法について説明します。
 
 > **注意:** Hyper-V はオプション機能として Windows に組み込まれています。Hyper-V を単体でダウンロードすることはできません。
 
 ## <a name="check-requirements"></a>要件の確認
 
-* Windows 10 Enterprise、Pro、または教育機関向け
+* Windows 10 Enterprise、Pro、または教育
 * 第 2 レベルのアドレス変換 (SLAT) の 64 ビット プロセッサ。
-* VM モニターモード拡張機能の CPU サポート (Intel Cpu の VT-c)。
+* VM モニター モード拡張機能 (Intel CPU 上の VT-c) の CPU サポート。
 * 最小 4 GB のメモリ。
 
 Hyper-V ロールは、Windows 10 Home にはインストール**できません**。
 
-Windows 10 Home edition から windows 10 Pro にアップグレードするには**** > **、[設定の更新とセキュリティ** > の**アクティブ化**] を開きます。
+Windows 10 Home edition から Windows 10 Pro にアップグレードするには、 **更新とセキュリティ** > の**ライセンス認証** > **設定**を開きます。
 
 詳しい情報とトラブルシューティングについては、「[Windows 10 Hyper-V のシステム要件](../reference/hyper-v-requirements.md)」をご覧ください。
 
@@ -70,11 +70,11 @@ DISM について詳しくは、[DISM のテクニカル リファレンス](<ht
 
 1. Windows ボタンを右クリックし、[アプリと機能] を選択します。
 
-2. 適切な [関連設定] の下にある [**プログラムと機能**] を選択します。 
+2. 関連する設定 の右側にある **プログラムと機能** を選択します。 
 
 3. **[Windows の機能の有効化または無効化]** を選択します。
 
-4. **[Hyper-V]** を選択して、**[OK]** をクリックします。
+4. **[Hyper-V]** を選択して、 **[OK]** をクリックします。
 
 ![Windows のプログラムと機能が示されたダイアログ ボックス](media/enable_role_upd.png)
 

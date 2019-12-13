@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 18930864-476a-40db-aa21-b03dfb4fda98
-ms.openlocfilehash: 6568b68a77fc5506b58249caea44ec78e3e44de2
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 762b82f3714651ffb488f682581680c9526404a8
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998939"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911152"
 ---
 # <a name="hyper-v-integration-services"></a>Hyper-V 統合サービス
 
@@ -21,7 +21,7 @@ ms.locfileid: "9998939"
 
 この記事は、Windows で利用可能な各統合サービスに関するリファレンスです。  また、特定の統合サービスまたはそれらの履歴に関連する情報の出発点としての役割も果たしています。
 
-**ユーザー ガイド:**  
+**ユーザーガイド:**  
 * [統合サービスの管理](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/Manage-Hyper-V-integration-services)
 
 
@@ -30,12 +30,12 @@ ms.locfileid: "9998939"
 | 名前 | Windows サービス名 | Linux デーモン名 |  説明 | 無効にした場合に VM に与える影響 |
 |:---------|:---------|:---------|:---------|:---------|
 | [Hyper-V ハートビート サービス](#hyper-v-heartbeat-service) |  vmicheartbeat | hv_utils | 仮想マシンが正しく動作していることを報告します。 | 不定 |
-| [Hyper-V ゲスト シャットダウン サービス](#hyper-v-guest-shutdown-service) | vmicshutdown | hv_utils |  ホストが仮想マシンのシャットダウンをトリガーするのを許可します。 | **High** |
+| [Hyper-V ゲスト シャットダウン サービス](#hyper-v-guest-shutdown-service) | vmicshutdown | hv_utils |  ホストが仮想マシンのシャットダウンをトリガーするのを許可します。 | **高** |
 | [Hyper-V 時刻の同期サービス](#hyper-v-time-synchronization-service) | vmictimesync | hv_utils | 仮想マシンのクロックをホスト コンピューターのクロックに同期します。 | **高** |
-| [Hyper-V データ交換サービス (KVP)](#hyper-v-data-exchange-service-kvp) | vmickvpexchange | hv_kvp_daemon | 仮想マシンとホストとの間で基本的なメタデータを交換する手段を提供します。 | 中 |
+| [Hyper-v データ交換サービス (KVP)](#hyper-v-data-exchange-service-kvp) | vmickvpexchange | hv_kvp_daemon | 仮想マシンとホストとの間で基本的なメタデータを交換する手段を提供します。 | 中 |
 | [Hyper-V ボリューム シャドウ コピー リクエスター](#hyper-v-volume-shadow-copy-requestor) | vmicvss | hv_vss_daemon | 仮想マシンをシャットダウンすることなく仮想マシンのバックアップを作成することをボリューム シャドウ コピー サービスに許可します。 | 不定 |
 | [Hyper-V ゲスト サービス インターフェイス](#hyper-v-powershell-direct-service) | vmicguestinterface | hv_fcopy_daemon | Hyper-V ホストが仮想マシンとの間でファイルをコピーするのに必要なインターフェイスを提供します。 | 低 |
-| [Hyper-V PowerShell ダイレクト サービス](#hyper-v-powershell-direct-service) | vmicvmsession | 利用不可 | ネットワークに接続することなく PowerShell を使用して仮想マシンを管理する方法を提供します。 | 低 |  
+| [Hyper-v PowerShell Direct Service](#hyper-v-powershell-direct-service) | vmicvmsession | 利用不可 | ネットワークに接続することなく PowerShell を使用して仮想マシンを管理する方法を提供します。 | 低 |  
 
 
 ## <a name="hyper-v-heartbeat-service"></a>Hyper-V ハートビート サービス
@@ -74,7 +74,7 @@ DemoVM  Running  Operating normally
 **Linux デーモン名:** hv_utils  
 **説明:** Hyper-V が仮想マシンのシャットダウンを要求できるようにします。  ホストはいつでも仮想マシンを強制的に停止させることができますが、それはシャットダウンを選択するのではなく、電源スイッチをオフにするようなものです。  
 **追加先:** Windows Server 2012、Windows 8  
-**影響:** **影響: 大**  無効にした場合、ホストは仮想マシンで安全なシャットダウンをトリガーできなくなります。  すべてのシャットダウンがハードな電力オフになり、データの損失またはデータの破損が発生する可能性があります。  
+**影響:** **影響: 大**  無効にした場合、ホストは仮想マシンで安全なシャットダウンをトリガーできなくなります。  すべてのシャットダウンがハード電源オフになり、データの損失やデータの破損が発生する可能性があります。  
 
 
 ## <a name="hyper-v-time-synchronization-service"></a>Hyper-V 時刻の同期サービス
@@ -101,7 +101,7 @@ DemoVM  Running  Operating normally
 データ交換サービスは仮想マシンに関する情報を維持するのに優れたツールです。対話型データの共有またはデータ転送の場合は、[PowerShell ダイレクト](#hyper-v-powershell-direct-service)を使用します。 
 
 
-**ユーザー ガイド:**  
+**ユーザーガイド:**  
 * [キー/値ペアを使用して Hyper-V 上のホストとゲストの間で情報を共有する](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn798287(v=ws.11))。  
 
 
@@ -126,8 +126,8 @@ DemoVM  Running  Operating normally
 **追加先:** Windows Server 2012 R2、Windows 8.1  
 **影響:** 無効にした場合、ホストは、`Copy-VMFile` を使用してゲストとの間でファイルをコピーできなくなります。  Copy-VMFile コマンドレットについては、[こちら](https://docs.microsoft.com/powershell/module/hyper-v/copy-vmfile?view=win10-ps)を参照してください。  
 
-**注意事項:**  
-既定では無効  [Copy-Item を使用した PowerShell ダイレクト](../user-guide/powershell-direct.md#copy-files-with-new-pssession-and-copy-item)に関するページを参照してください。 
+**注:**  
+既定では無効になっています。  [Copy-Item を使用した PowerShell ダイレクト](../user-guide/powershell-direct.md#copy-files-with-new-pssession-and-copy-item)に関するページを参照してください。 
 
 
 ## <a name="hyper-v-powershell-direct-service"></a>Hyper-V PowerShell ダイレクト サービス
@@ -146,6 +146,6 @@ PowerShell ダイレクトでは、Hyper-V ホストまたは仮想マシンの�
 
 PowerShell ダイレクトの詳細については、[こちら](../user-guide/powershell-direct.md)を参照してください。  
 
-**ユーザー ガイド:**  
+**ユーザーガイド:**  
 * [仮想マシンでのスクリプトの実行](../user-guide/powershell-direct.md#run-a-script-or-command-with-invoke-command)
-* [仮想マシンとの間でのファイルのコピー](../user-guide/powershell-direct.md#copy-files-with-new-pssession-and-copy-item)
+* [バーチャルマシンとの間でのファイルのコピー](../user-guide/powershell-direct.md#copy-files-with-new-pssession-and-copy-item)

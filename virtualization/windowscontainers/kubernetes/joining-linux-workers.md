@@ -1,38 +1,38 @@
 ---
-title: Linux ノードへの参加
+title: Linux ノードの結合
 author: daschott
 ms.author: daschott
 ms.date: 02/09/2018
 ms.topic: get-started-article
 ms.prod: containers
-description: Kubernetes v1.13 を使用するには、Linux ノードを結合できます。
-keywords: kubernetes、1.13、windows、作業の開始
+description: Linux ノードを Kubernetes クラスターに追加する (v 1.14)。
+keywords: kubernetes、1.14、windows、はじめに
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: c32cc300fd97eb53605e2f51e6a83e5889747561
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 88207939c82bfe8ffa0b088cfd61cf4ab22cb10a
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9577933"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74909952"
 ---
-# <a name="joining-linux-nodes-to-a-cluster"></a>Linux ノード クラスターへの参加
+# <a name="joining-linux-nodes-to-a-cluster"></a>クラスターへの Linux ノードの参加
 
-[Kubernetes マスター ノードをセットアップ](creating-a-linux-master.md)して[、目的のネットワーク ソリューションを選択](network-topologies.md)したらは、自分のクラスターにノードを結合する準備が整います。 参加する前に、いくつかの[Linux ノードの準備](joining-linux-workers.md#preparing-a-linux-node)が必要です。
+[Kubernetes マスターノードを設定](creating-a-linux-master.md)し、目的の[ネットワークソリューションを選択](network-topologies.md)したら、Linux ノードをクラスターに参加させることができます。 これを行うには、参加する前に[Linux ノードの準備を](joining-linux-workers.md#preparing-a-linux-node)行う必要があります。
 > [!tip]
-> Linux 手順は**Ubuntu 16.04**にカスタマイズされています。 Kubernetes を実行するための他の Linux 配布は、代わりに使用できると同じのコマンドを提供もする必要があります。 これらはもと相互運用正常に Windows。
+> Linux の手順は、 **Ubuntu 16.04**に合わせて調整されています。 Kubernetes を実行するために認定された他の Linux ディストリビューションにも、代替として使用できる同等のコマンドが用意されています。 また、Windows との相互運用も正常に行われます。
 
-## <a name="preparing-a-linux-node"></a>Linux ノードを準備します。
+## <a name="preparing-a-linux-node"></a>Linux ノードの準備
 
 > [!NOTE]
-> 明示的に指定しない限り、しない限り、**管理者特権、ルート ユーザー シェル**でコマンドを実行します。
+> 明示的に指定されている場合を除き、**管理者特権のルートユーザーシェル**で任意のコマンドを実行します。
 
-最初に、ルート シェルに理解します。
+まず、ルートシェルにアクセスします。
 
 ```bash
 sudo –s
 ```
 
-コンピューターが最新の状態を確認します。
+コンピューターが最新の状態であることを確認します。
 
 ```bash
 apt-get update && apt-get upgrade
@@ -40,18 +40,18 @@ apt-get update && apt-get upgrade
 
 ## <a name="install-docker"></a>Docker のインストール
 
-コンテナーを使用できるようにするには、Docker など、コンテナーのエンジンが必要です。 最新バージョンを移動するには、インストール済みの Docker の[次の手順](https://docs.docker.com/install/linux/docker-ce/ubuntu/)を使用できます。 実行して、その docker が正しくインストールされていることを確認できる`hello-world`の画像。
+コンテナーを使用できるようにするには、Docker などのコンテナーエンジンが必要です。 最新バージョンを入手するには、Docker のインストールに関する[次の手順](https://docs.docker.com/install/linux/docker-ce/ubuntu/)を使用します。 `hello-world` イメージを実行して、docker が正しくインストールされていることを確認できます。
 
 ```bash
 docker run hello-world
 ```
 
-## <a name="install-kubeadm"></a>Kubeadm をインストールします。
+## <a name="install-kubeadm"></a>Kubeadm のインストール
 
-ダウンロード`kubeadm`、Linux 分布バイナリし、自分のクラスターを初期化します。
+Linux ディストリビューションのバイナリをダウンロードして、クラスターを初期化します。 `kubeadm` します。
 
 > [!Important]  
-> Linux 製品によってを置き換える必要があります`kubernetes-xenial`の下にある正しい[コードネーム](https://wiki.ubuntu.com/Releases)とします。
+> Linux ディストリビューションによっては、以下の `kubernetes-xenial` を正しい[コードネーム](https://wiki.ubuntu.com/Releases)に置き換える必要がある場合があります。
 
 ``` bash
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
@@ -61,58 +61,58 @@ EOF
 apt-get update && apt-get install -y kubelet kubeadm kubectl 
 ```
 
-## <a name="disable-swap"></a>共にを無効にします。
+## <a name="disable-swap"></a>スワップを無効にする
 
-Kubernetes Linux では、共にスペースをオフにする必要があります。
+Linux 上の Kubernetes では、スワップ領域を無効にする必要があります。
 
 ``` bash
 nano /etc/fstab  # (remove a line referencing 'swap.img' , if it exists)
 swapoff -a
 ```
 
-## <a name="flannel-only-enable-bridged-ipv4-traffic-to-iptables"></a>(Flannel のみ)Iptables IPv4 トラフィック ブリッジを有効にします。
+## <a name="flannel-only-enable-bridged-ipv4-traffic-to-iptables"></a>(Flannel のみ)Iptables への IPv4 トラフィックのブリッジを有効にする
 
-ネットワーク ソリューションを有効にすることをお勧めに Flannel を選択した場合は、iptables チェーンに IPv4 トラフィックをブリッジします。 必要があります[マスターの場合は、この処理を実行](network-topologies.md#flannel-in-host-gateway-mode)してへの参加 Linux ノードの繰り返す必要があります。 それを実行できる、次のコマンドを使用します。
+ネットワークソリューションとして Flannel を選択した場合は、iptables チェーンへのブリッジされた IPv4 トラフィックを有効にすることをお勧めします。 [これはマスターに対して既に実行](network-topologies.md#flannel-in-host-gateway-mode)されている必要があります。また、これを Linux ノードに参加させるために繰り返す必要があります。 これは、次のコマンドを使用して行うことができます。
 
 ``` bash
 sudo sysctl net.bridge.bridge-nf-call-iptables=1
 ```
 
-## <a name="copy-kubernetes-certificate"></a>Kubernetes 証明書をコピーします。
+## <a name="copy-kubernetes-certificate"></a>Kubernetes 証明書のコピー
 
-**通常、(ルートではない) ユーザーとして**、次の 3 つの手順を実行します。
+**通常の (非ルート) ユーザーとして**、次の3つの手順を実行します。
 
-1. Linux ディレクトリの Kubernetes を作成します。
+1. Linux ディレクトリ用の Kubernetes を作成します。
 
 ```bash
 mkdir -p $HOME/.kube
 ```
 
-2. Kubernetes 証明書ファイルをコピー (`$HOME/.kube/config`)[マスターの](./creating-a-linux-master.md#collect-cluster-information)名前を付けて保存`$HOME/.kube/config`作業者にします。
+2. [マスターから](./creating-a-linux-master.md#collect-cluster-information)Kubernetes 証明書ファイル (`$HOME/.kube/config`) をコピーし、ワーカーに `$HOME/.kube/config` として保存します。
 
 > [!tip]
-> ノードの間で構成ファイルを転送するのに[WinSCP](https://winscp.net/eng/download.php)など scp ベースのツールを使用することができます。
+> [Winscp](https://winscp.net/eng/download.php)などの scp ベースのツールを使用して、構成ファイルをノード間で転送できます。
 
-3. コピーした構成ファイルのファイルの所有権を次のように設定します。
+3. コピーした構成ファイルのファイル所有権を次のように設定します。
 
 ``` bash
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-## <a name="joining-node"></a>ノードへの参加
+## <a name="joining-node"></a>ノードの結合
 
-最後に、クラスターへの参加] を実行、 `kubeadm join` **root**[述べたダウン](./creating-a-linux-master.md#initialize-master)コマンドします。
+最後に、クラスターに参加するには、[先ほどメモ](./creating-a-linux-master.md#initialize-master)した `kubeadm join` コマンドを**root として**実行します。
 
 ```bash
 kubeadm join <Master_IP>:6443 --token <some_token> --discovery-token-ca-cert-hash <some_hash>
 ```
 
-成功した場合、次のような出力が表示されます。
+成功した場合は、次のような出力が表示されます。
 
 ![テキスト](./media/node-join.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-このセクションは、Linux 作業者を Kubernetes クラスターへの参加方法を説明します。 手順 6 の準備が整いました。
+このセクションでは、Linux ワーカーを Kubernetes クラスターに参加させる方法について説明します。 これで、手順6の準備ができました。
 > [!div class="nextstepaction"]
-> [Kubernetes リソースを展開します。](./deploying-resources.md)
+> [Kubernetes リソースのデプロイ](./deploying-resources.md)

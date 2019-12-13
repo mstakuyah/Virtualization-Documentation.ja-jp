@@ -9,16 +9,16 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
 ms.openlocfilehash: e9d4a9ac88c6853ce019a2469ee80688490b8fdf
-ms.sourcegitcommit: bb4ec1f05921f982c00bdb3ace6d9bc1d5355296
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "10297243"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74910702"
 ---
 # <a name="windows-container-networking"></a>Windows コンテナーネットワーク
 
 >[!IMPORTANT]
->一般的な docker ネットワークコマンド、オプション、構文については、「 [Docker Container ネットワーク](https://docs.docker.com/engine/userguide/networking/)」を参照してください。 * * * サポートされて[いない機能とネットワークオプション](#unsupported-features-and-network-options)で説明されているケースを除き、すべての docker ネットワークコマンドは、Linux と同じ構文で Windows でサポートされています。 ただし、Windows と Linux のネットワークスタックは異なるため、Windows では一部の Linux ネットワークコマンド (ifconfig など) がサポートされていないことがわかります。
+>一般的な docker ネットワークコマンド、オプション、構文については、 [Docker コンテナーネットワーク](https://docs.docker.com/engine/userguide/networking/)に関するページを参照してください。 * * * サポートされて[いない機能とネットワークオプション](#unsupported-features-and-network-options)で説明されているケースを除き、すべての docker ネットワークコマンドは、Linux と同じ構文の Windows でサポートされています。 ただし、Windows と Linux のネットワークスタックは異なります。そのため、一部の Linux ネットワークコマンド (ifconfig など) は Windows ではサポートされていません。
 
 ## <a name="basic-networking-architecture"></a>基本的なネットワーク アーキテクチャ
 
@@ -30,14 +30,14 @@ ms.locfileid: "10297243"
 
 ![テキスト](media/docker-network-ls.png)
 
-- **内部**vSwitch は、コンテナーホストのネットワークアダプターに直接接続されていないものです。
-- **外部**vSwitch は、コンテナーホスト上のネットワークアダプターに直接接続されたものです。
+- **内部**vSwitch は、コンテナーホスト上のネットワークアダプターに直接接続されていないものです。
+- **外部**vSwitch は、コンテナーホスト上のネットワークアダプターに直接接続されている vSwitch です。
 
 ![テキスト](media/get-vmswitch.png)
 
-'nat' ネットワークとは、Windows で実行されているコンテナー用の既定ネットワークです。 特定のネットワーク構成を実装するフラグや引数を指定せずに Windows で実行されているすべてのコンテナーは、既定の 'nat' ネットワークに接続され、'nat' ネットワークの内部プレフィックス IP 範囲から自動的に IP アドレスが割り当てられます。 'nat' に使用される既定の内部 IP プレフィックスは、172.16.0.0/16 です。 
+'nat' ネットワークとは、Windows で実行されているコンテナーの既定のネットワークです。 特定のネットワーク構成を実装するフラグや引数を指定せずに Windows で実行されているすべてのコンテナーは、既定の 'nat' ネットワークに接続され、'nat' ネットワークの内部プレフィックス IP 範囲から自動的に IP アドレスが割り当てられます。 'nat' 用に使用される既定の内部 IP プレフィックスは、172.16.0.0/16 です。 
 
-## <a name="container-network-management-with-host-network-service"></a>ホスト ネットワーク サービスによるコンテナー ネットワーク管理
+## <a name="container-network-management-with-host-network-service"></a>ホスト ネットワーク サービスによるコンテナーのネットワークの管理
 
 ホスト ネットワーク サービス (HNS) とホスト コンピューティング サービス (HCS) は、連携してコンテナーを作成し、エンドポイントをネットワークに接続します。
 
@@ -58,21 +58,21 @@ ms.locfileid: "10297243"
 - 既定の NAT ネットワーク: HNS は、WinNAT ポート フォワーディング規則/マッピングを、対応する Windows ファイアウォールの ALLOW 規則と共に作成します。
 - その他すべてのネットワーク: HNS は、仮想フィルタリング プラットフォーム (VFP) を利用してポリシーを作成します。
     - これには、負荷分散、ACL、カプセル化などが含まれます。
-    - [ここで](https://docs.microsoft.com/en-us/windows-server/networking/technologies/hcn/hcn-top)公開されている HNS api とスキーマを参照してください。
+    - [ここで](https://docs.microsoft.com/en-us/windows-server/networking/technologies/hcn/hcn-top)公開されている HNS api とスキーマについては、こちらを参照してください
 
 ![テキスト](media/HNS-Management-Stack.png)
 
 ## <a name="unsupported-features-and-network-options"></a>サポートされていない機能とネットワーク オプション
 
-Windows では、現在、次のネットワークオプションがサポートされて**いません**。
+次のネットワークオプションは、現在 Windows ではサポートされて**いません**。
 
-- L2bridge、NAT、オーバーレイネットワークに接続された Windows コンテナーは、IPv6 スタック経由の通信をサポートしていません。
-- IPsec 経由の暗号化されたコンテナーの通信。
-- コンテナーの HTTP プロキシのサポート。
-- [ホストモード](https://docs.docker.com/ee/ucp/interlock/config/host-mode-networking/)のネットワーク 
-- 透過的なネットワークドライバーを使用した、仮想化された Azure インフラストラクチャのネットワーク。
+- L2bridge、NAT、およびオーバーレイネットワークに接続されている Windows コンテナーは、IPv6 スタック経由の通信をサポートしていません。
+- IPsec 経由の暗号化されたコンテナー通信。
+- コンテナーの HTTP プロキシサポート。
+- [ホストモード](https://docs.docker.com/ee/ucp/interlock/config/host-mode-networking/)ネットワーク 
+- 透過的なネットワークドライバーを使用した、仮想化された Azure インフラストラクチャ上のネットワーク。
 
 | コマンド        | サポートされていないオプション   |
 |---------------|:--------------------:|
-| ``docker run``|   ``--ip6``, ``--dns-option`` |
-| ``docker network create``| ``--aux-address``, ``--internal``, ``--ip-range``, ``--ipam-driver``, ``--ipam-opt``, ``--ipv6``, ``--opt encrypted`` |
+| ``docker run``|   ``--ip6``、``--dns-option`` |
+| ``docker network create``| ``--aux-address``､``--internal``、``--ip-range``、``--ipam-driver``、``--ipam-opt``、``--ipv6``、``--opt encrypted`` |

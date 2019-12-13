@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d9238389-7028-4015-8140-27253b156f37
-ms.openlocfilehash: 1348b9923d9de1314818f13414abdacee2cb9735
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: c7a6462b331f469148eb4cf5a0a2740c9929fa29
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998609"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911062"
 ---
 # <a name="create-a-custom-virtual-machine-gallery"></a>カスタム仮想マシン ギャラリーの作成
 
@@ -39,17 +39,17 @@ Fall Creators Update ではクイック作成が拡張され、仮想マシン �
 
 ![ギャラリーのアーキテクチャ](media/vmgallery-architecture.png)
 
-レジストリ キー:  `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization`
+レジストリキー: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization`
 
-値の名前:  `GalleryLocations`
+値の名前: `GalleryLocations`
 
-タイプ:  `REG_MULTI_SZ`
+型: `REG_MULTI_SZ`
 
 ## <a name="create-gallery-compatible-virtual-machines"></a>ギャラリーと互換性がある仮想マシンを作成する
 
 ギャラリー内の仮想マシンは、ディスク イメージ (.iso) または仮想ハード ドライブ (.vhdx) のいずれかです。
 
-仮想ハード ディスク ドライブからのバーチャル マシンには、いくつかの構成要件があります。
+仮想ハード ディスク ドライブからの仮想マシンには、いくつかの構成要件があります。
 
 1. UEFI ファームウェアをサポートするように構築されていること。 Hyper-V を使用して作成された場合は、第 2 世代 VM になります。
 1. 仮想ハード ドライブは 20 GB 以上にすること。これは最大サイズです。  Hyper-V では、VM がアクティブに使用していない領域が占有されません。
@@ -60,13 +60,13 @@ Fall Creators Update ではクイック作成が拡張され、仮想マシン �
 
 仮想マシンイメージの起動と実行を確認するには:
 
-1. VM ギャラリー (Hyper-V クイック作成) を開き、**[ローカル インストール ソース]** を選択します。
-  ![ローカル インストール ソースを使用するためのボタン](media/use-local-source.png)
+1. VM ギャラリー (Hyper-V クイック作成) を開き、 **[ローカル インストール ソース]** を選択します。
+  ローカルインストールソースを使用する ![ボタン](media/use-local-source.png)
 1. **[インストール元の変更]** を選択します。
-  ![ローカル インストール ソースを使用するためのボタン](media/change-source.png)
+  ローカルインストールソースを使用する ![ボタン](media/change-source.png)
 1. ギャラリーで使用する .iso または .vhdx を選択します。
 1. イメージが Linux イメージの場合は、セキュア ブート オプションを選択解除します。
-  ![ローカル インストール ソースを使用するためのボタン](media/toggle-secure-boot.png)
+  ローカルインストールソースを使用する ![ボタン](media/toggle-secure-boot.png)
 1. 仮想マシンを作成します。  仮想マシンが正しく起動する場合は、ギャラリーに追加する準備が完了です。
 
 ## <a name="build-a-new-gallery-source"></a>新しいギャラリー ソースを作成する
@@ -109,7 +109,7 @@ Fall Creators Update ではクイック作成が拡張され、仮想マシン �
   Get-FileHash -Path .\TMLogo.jpg -Algorithm SHA256
   ```
 
-以下の JSON テンプレートには、スターター項目とギャラリーのスキーマが含まれています。  これを VSCode で編集すると、自動的に IntelliSense が提供されます。
+以下 JSON テンプレートには、スターター項目とギャラリーのスキーマが含まれています。  これを VSCode で編集すると、自動的に IntelliSense が提供されます。
 
 [!code-json[main](../../../hyperv-tools/vmgallery/vm-gallery-template.json)]
 
@@ -118,12 +118,12 @@ Fall Creators Update ではクイック作成が拡張され、仮想マシン �
 カスタムのギャラリー ソースを VM ギャラリーに追加する最も簡単な方法は、regedit で追加することです。
 
 1. **regedit.exe** を開きます。
-1. 次の場所に移動します:  `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\`
+1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\` に移動します。
 1. `GalleryLocations` という項目を探します。
 
-    既に存在する場合は、**[編集]** メニューの **[修正]** に移動します。
+    既に存在する場合は、 **[編集]** メニューの **[修正]** に移動します。
 
-    既に存在していない場合は、**[編集]** メニューに移動し、**[新規]**、**[複数行文字列値]** の順に選択します。
+    既に存在していない場合は、 **[編集]** メニューに移動し、 **[新規]** 、 **[複数行文字列値]** の順に選択します。
 
 1. ギャラリーを `GalleryLocations` レジストリ キーに追加します。
 
@@ -136,7 +136,7 @@ Fall Creators Update ではクイック作成が拡張され、仮想マシン �
 仮想マシン ギャラリーでのエラー報告は、Windows イベント ビューアーで確認できます。  エラーをチェックするには:
 
 1. イベント ビューアーを開きます。
-1. **[Windows ログ]** -> **[Application]** に移動します。
+1. **[Windows ログ]**  ->  **[Application]** に移動します。
 1. ソース VMCreate からのイベントを探します。
 
 ## <a name="resources"></a>参考資料

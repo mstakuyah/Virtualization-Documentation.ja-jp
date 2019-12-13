@@ -9,11 +9,11 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
 ms.openlocfilehash: 6e3996af36b4a710f9a12b3a1371138b053a43d8
-ms.sourcegitcommit: f3b6b470dd9cde8e8cac7b13e7e7d8bf2a39aa34
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "10077503"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74909902"
 ---
 # <a name="container-host-deployment-windows-server"></a>コンテナーホストの展開: Windows Server
 
@@ -21,11 +21,11 @@ Windows コンテナー ホストの展開手順は、オペレーティング �
 
 ## <a name="install-docker"></a>Docker のインストール
 
-Docker は Windows コンテナーで使用するために必要です。 Docker は、Docker エンジンと Docker クライアントで構成されます。
+Docker は Windows コンテナーで使用するために必要です。 Docker は、docker エンジンと Docker クライアントで構成されています。
 
-Docker をインストールするには、 [Oneget Provider PowerShell モジュール](https://github.com/OneGet/MicrosoftDockerProvider)を使います。 プロバイダーは、コンピューター上のコンテナー機能を有効にし、Docker をインストールします。これにより、再起動が必要になります。
+Docker をインストールするには、 [Oneget Provider PowerShell モジュール](https://github.com/OneGet/MicrosoftDockerProvider)を使用します。 プロバイダーは、コンピューターでコンテナー機能を有効にし、Docker をインストールします。これにより、再起動が必要になります。
 
-管理者特権の PowerShell セッションを開いて、次のコマンドレットを実行します。
+管理者特権の PowerShell セッションを開き、次のコマンドレットを実行します。
 
 OneGet PowerShell モジュールをインストールします。
 
@@ -45,20 +45,20 @@ Install-Package -Name docker -ProviderName DockerMsftProvider
 Restart-Computer -Force
 ```
 
-## <a name="install-a-specific-version-of-docker"></a>特定のバージョンの Docker をインストールする
+## <a name="install-a-specific-version-of-docker"></a>Docker の特定のバージョンをインストールする
 
-現在、Windows Server 向けの Docker EE には、次の2つのチャネルが用意されています。
+現在、Docker EE for Windows Server で使用できるチャネルは2つあります。
 
-* `17.06` -Docker Enterprise Edition (Docker Engine、UCP、DTR) を使っている場合は、このバージョンを使用します。 `17.06` は既定です。
-* `18.03` -Docker EE エンジンだけを実行している場合は、このバージョンを使用します。
+* `17.06`-Docker Enterprise Edition (Docker エンジン、UCP、DTR) を使用している場合は、このバージョンを使用します。 `17.06` が既定値です。
+* `18.03`-Docker EE エンジンのみを実行している場合は、このバージョンを使用します。
 
-特定のバージョンをインストールするには`RequiredVersion` 、次のフラグを使用します。
+特定のバージョンをインストールするには、`RequiredVersion` フラグを使用します。
 
 ```PowerShell
 Install-Package -Name docker -ProviderName DockerMsftProvider -Force -RequiredVersion 18.03
 ```
 
-特定の Docker EE バージョンをインストールするには、以前にインストールされた DockerMsftProvider モジュールの更新が必要になることがあります。 更新するには:
+特定の Docker EE バージョンをインストールするには、以前にインストールした DockerMsftProvider モジュールの更新が必要になる場合があります。 更新するには:
 
 ```PowerShell
 Update-Module DockerMsftProvider
@@ -66,27 +66,27 @@ Update-Module DockerMsftProvider
 
 ## <a name="update-docker"></a>Docker の更新
 
-以前のチャネルから後のチャネルに向けて Docker EE エンジンを更新する必要がある場合`-Update`は`-RequiredVersion` 、とフラグの両方を使用します。
+以前のチャネルから後のチャネルに Docker EE エンジンを更新する必要がある場合は、`-Update` と `-RequiredVersion` の両方のフラグを使用します。
 
 ```PowerShell
 Install-Package -Name docker -ProviderName DockerMsftProvider -Update -Force -RequiredVersion 18.03
 ```
 
-## <a name="install-base-container-images"></a>ベースコンテナーのイメージをインストールする
+## <a name="install-base-container-images"></a>基本コンテナーイメージのインストール
 
 Windows コンテナーを使用する前に、基本イメージをインストールする必要があります。 基本イメージは、コンテナー オペレーティング システムとして Windows Server Core と Nano Server の両方で使用できます。 Docker コンテナー イメージの詳細については、「[Build your own images on docker.com](https://docs.docker.com/engine/tutorials/dockerimages/)」(docker.com で独自のイメージを構築する) を参照してください。
 
-Windows Server 2019 のリリースでは、Microsoft が供給しているコンテナーのイメージは、Microsoft Container レジストリという新しいレジストリに移動します。 Microsoft によって公開されたコンテナーイメージは、引き続き Docker Hub から検出される必要があります。 Windows Server 2019 以降で公開されている新しいコンテナーイメージについては、MCR から引き出すことを検討してください。 Windows Server 2019 より前に公開されている古いコンテナーイメージの場合は、引き続き Docker のレジストリからそのイメージを取得する必要があります。
+Windows Server 2019 のリリースでは、Microsoft が供給するコンテナーイメージは、Microsoft Container Registry と呼ばれる新しいレジストリに移動しています。 Microsoft によって発行されたコンテナーイメージは、引き続き Docker Hub を使用して検出される必要があります。 Windows Server 2019 以降で公開された新しいコンテナーイメージについては、MCR からプルするようにしてください。 Windows Server 2019 より前に発行された古いコンテナーイメージの場合は、Docker のレジストリから引き続きプルする必要があります。
 
 ### <a name="windows-server-2019-and-newer"></a>Windows Server 2019 以降
 
-「Windows Server Core」のベース画像をインストールするには、次の操作を実行します。
+"Windows Server Core" 基本イメージをインストールするには、次のように実行します。
 
 ```PowerShell
 docker pull mcr.microsoft.com/windows/servercore:ltsc2019
 ```
 
-"Nano Server" のベースイメージをインストールするには、次の操作を実行します。
+' Nano Server ' 基本イメージをインストールするには、次のように実行します。
 
 ```PowerShell
 docker pull mcr.microsoft.com/windows/nanoserver:1809
@@ -106,7 +106,7 @@ Nano Server 基本イメージをインストールするには、次のコマ�
 docker pull mcr.microsoft.com/windows/nanoserver:1803
 ```
 
-> Windows コンテナ OS イメージ EULA (ここに記載されています) については、「 [eula](../images-eula.md)」を参照してください。
+> Windows コンテナー OS イメージの使用許諾契約書 ( [eula](../images-eula.md)) を参照してください。
 
 ## <a name="hyper-v-isolation-host"></a>Hyper-v 分離ホスト
 

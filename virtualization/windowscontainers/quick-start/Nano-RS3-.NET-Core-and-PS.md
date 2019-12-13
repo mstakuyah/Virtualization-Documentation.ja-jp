@@ -4,7 +4,7 @@
 
 コンテナーがネイティブ コードまたは Node.js、Python、Ruby などのオープン フレームワークを実行する場合は、基本 Nano Server コンテナーで十分です。  1 つの小さな相違点として、このリリースは、Windows Server 2016 リリースと比較して、[フット プリントが削減](https://docs.microsoft.com/windows-server/get-started/nano-in-semi-annual-channel)されているため、特定のネイティブ コードが実行できないことがあります。 以前のバージョンにはなかった不具合が発生した場合は、[フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=windowscontainers)を通じてマイクロソフトにお知らせください。 
 
-Dockerfile からコンテナーを構築するには docker build を使用し、それを実行するには docker run を使用します。  次のコマンドを実行すると、Nano Server コンテナーの基本 OS イメージがダウンロードされ (数分かかることがあります)、"Hello World!"  というメッセージがホストのコンソールに表示されます。
+Dockerfile からコンテナーを構築するには docker build を使用し、それを実行するには docker run を使用します。  次のコマンドを実行すると、Nano Server コンテナーの基本 OS イメージがダウンロードされ (数分かかることがあります)、"Hello World!" というメッセージがホストのコンソールに表示されます。
 
 ```
 docker run microsoft/nanoserver-insider cmd /c echo Hello World!
@@ -50,6 +50,6 @@ docker build -t nanoserverPowerShell6 -f Dockerfile-PowerShell6 .
 
 詳しくは、[PowerShell GitHub](https://github.com/PowerShell/PowerShell-Docker/tree/master/release) をご覧ください。  PowerShell の zip には、PowerShell Core 6 の構築に必要な .NET Core 2.0 のサブセットが含まれていることに注意してください。  使用する PowerShell モジュールが .NET Core 2.0 に依存している場合は、基本 Nano コンテナーではなく、Nano .NET Core コンテナー上に PowerShell コンテナーを構築するのが安全です。これには、Dockerfile で、FROM microsoft/nanoserver-insider-dotnet を使用します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Docker Hub にある Nano Server ベースの新しいコンテナー イメージ (基本 Nano Server イメージ、Nano/.NET Core 2.0、Nano/PowerShell Core 6) のいずれかを使用する
 - このガイドに含まれている Dockerfile コンテンツのサンプルを使用し、新しい Nano Server コンテナー基本 OS イメージに基づいて、独自のコンテナー イメージを構築する 

@@ -9,11 +9,11 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
 ms.openlocfilehash: deea1bfbcd3032f52a6912eb0c36ba467d8b9a9c
-ms.sourcegitcommit: b38f6abb399c87c57e1bb146f3dbcdaefd991245
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "10276495"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74910712"
 ---
 # <a name="advanced-network-options-in-windows"></a>Windows での高度なネットワーク オプション
 
@@ -46,13 +46,13 @@ C:\> docker network create -d transparent -o com.docker.network.windowsshim.vlan
 
 > L2bridge ネットワークに適用されます
 
-通常、を使って`l2bridge` `docker network create`コンテナーネットワークを作成すると、コンテナエンドポイントには、HNS の outboundnat ポリシーが適用されません。その結果、コンテナーは外部の世界に到達できません。 ネットワークを作成する場合は、OutboundNAT の HNS `-o com.docker.network.windowsshim.enable_outboundnat=<true|false>`ポリシーを適用するオプションを使用して、コンテナーが外部の世界へのアクセスを許可することができます。
+通常、`docker network create`を使用して `l2bridge` コンテナーネットワークを作成する場合、コンテナーエンドポイントには、HNS OutboundNAT ポリシーが適用されていないため、コンテナーが外部に届かなくなる可能性があります。 ネットワークを作成する場合は、`-o com.docker.network.windowsshim.enable_outboundnat=<true|false>` オプションを使用して、コンテナーに外部へのアクセスを許可するために OutboundNAT HNS ポリシーを適用できます。
 
 ```
 C:\> docker network create -d l2bridge -o com.docker.network.windowsshim.enable_outboundnat=true MyL2BridgeNetwork
 ```
 
-NAT'ing を発生させたくない場所 (コンテナへのコンテナー接続が必要な場合など) がある場合は、次のようにして、を指定する必要があります。
+NAT'ing を発生させたくない場所に、一連の宛先 (コンテナーからコンテナーへの接続が必要な場合など) がある場合は、次のようにして、追加の設定を指定する必要があります。
 
 ```
 C:\> docker network create -d l2bridge -o com.docker.network.windowsshim.enable_outboundnat=true -o com.docker.network.windowsshim.outboundnat_exceptions=10.244.10.0/24
@@ -78,7 +78,7 @@ C:\> docker network create -d transparent -o com.docker.network.windowsshim.netw
 C:\> docker network create -d transparent -o com.docker.network.windowsshim.interface="Ethernet 2" TransparentNet2
 ```
 
-> 注意: *com.docker.network.windowsshim.interface* の値は、ネットワーク アダプターの*名前*です。これは次のコマンドを使って確認できます。
+> 注: *com.docker.network.windowsshim.interface* の値は、ネットワーク アダプターの*名前*です。これは次のコマンドを使って確認できます。
 
 ```
 PS C:\> Get-NetAdapter
@@ -115,7 +115,7 @@ C:\> reg delete HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Para
 
 #### <a name="linux-containers-on-windows"></a>Linux Containers on Windows
 
-**最新情報:** 現在、_Moby Linux VM を使用せずに_ Linux と Windows のコンテナーをサイド バイ サイドで実行できるよう取り組んでいます。 詳しくは、[Linux Containers on Windows (LCOW) に関するこちらのブログ記事](https://blog.docker.com/2017/11/docker-for-windows-17-11/)をご覧ください。 まず、次の手順を実行[します。](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10-linux)
+**最新情報:** 現在、_Moby Linux VM を使用せずに_ Linux と Windows のコンテナーをサイド バイ サイドで実行できるよう取り組んでいます。 詳しくは、[Linux Containers on Windows (LCOW) に関するこちらのブログ記事](https://blog.docker.com/2017/11/docker-for-windows-17-11/)をご覧ください。 [開始](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10-linux)方法を次に示します。
 > 注意: LCOW は Moby Linux VM に代わるものであり、既定の HNS "nat" 内部 vSwitch を使用します。
 
 #### <a name="moby-linux-vms-use-dockernat-switch-with-docker-for-windows-a-product-of-docker-cehttpswwwdockercomcommunity-edition"></a>Moby Linux VM では、Docker for Windows ([Docker CE](https://www.docker.com/community-edition) の製品) と共に DockerNAT スイッチを使用しています。
@@ -144,7 +144,7 @@ C:\> docker network create -d transparent -o com.docker.network.windowsshim.inte
 ```
 
 #### <a name="remember-to-specify---subnet-and---gateway-when-using-static-ip-assignment"></a>静的 IP 割り当てを使用する場合は、必ず *--subnet* と *--gateway* を指定する
-IP を静的に割り当てる場合、ネットワークの作成時に、*--subnet* および *--gateway* パラメーターが指定されていることを最初に確認する必要があります。 サブネットとゲートウェイの IP アドレスは、コンテナー ホスト (つまり、物理ネットワーク) のネットワーク設定と同じにする必要があります。 たとえば、静的 IP の割り当てを使用して、透過ネットワークを作成し、そのネットワーク上でエンドポイントを実行する方法は次のようになります。
+IP を静的に割り当てる場合、ネットワークの作成時に、 *--subnet* および *--gateway* パラメーターが指定されていることを最初に確認する必要があります。 サブネットとゲートウェイの IP アドレスは、コンテナー ホスト (つまり、物理ネットワーク) のネットワーク設定と同じにする必要があります。 たとえば、静的 IP の割り当てを使用して、透過ネットワークを作成し、そのネットワーク上でエンドポイントを実行する方法は次のようになります。
 
 ```
 # Example: Create a transparent network using static IP assignment
@@ -178,7 +178,7 @@ l2bridge ドライバーを使って作成されたコンテナー ネットワ�
 PS C:\> restart-service hns
 PS C:\> restart-service docker
 ```
-* もう 1 つの選択肢は、'-o com.docker.network.windowsshim.interface' オプションを利用し、透過ネットワークの外部 vSwitch をコンテナー ホストでまだ使用されていない特定のネットワーク アダプター (すなわち、帯域外で作成された vSwitch で利用されているネットワーク アダプター以外のネットワーク アダプター) に関連付けることです。 「-O」オプションについて詳しくは、このドキュメントの「[単一コンテナーホストに複数の透過ネットワークを作成](advanced.md#creating-multiple-transparent-networks-on-a-single-container-host)する」を参照してください。
+* もう 1 つの選択肢は、'-o com.docker.network.windowsshim.interface' オプションを利用し、透過ネットワークの外部 vSwitch をコンテナー ホストでまだ使用されていない特定のネットワーク アダプター (すなわち、帯域外で作成された vSwitch で利用されているネットワーク アダプター以外のネットワーク アダプター) に関連付けることです。 「-O」オプションについては、このドキュメントの「 [1 つのコンテナーホストに複数の透過的ネットワークを作成する](advanced.md#creating-multiple-transparent-networks-on-a-single-container-host)」で詳しく説明します。
 
 
 ## <a name="windows-server-2016-work-arounds"></a>Windows Server 2016 の回避策 
@@ -230,4 +230,4 @@ networks:
       - subnet: 172.16.3.0/24
 ```
 
-Docker Compose を利用し、コンテナー ネットワークを定義/構成する方法については、[Compose ファイルのリファレンス](https://docs.docker.com/compose/compose-file/)をご覧ください。
+Docker Compose を利用し、コンテナー ネットワークを定義/構成する方法については、「[Compose ファイル参照](https://docs.docker.com/compose/compose-file/)」を参照してください。

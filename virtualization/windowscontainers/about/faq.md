@@ -1,6 +1,6 @@
 ---
 title: Windows コンテナーに関する FAQ
-description: Windows Server コンテナーについてよく寄せられる質問
+description: Windows Server コンテナーに関する FAQ
 keywords: Docker, コンテナー
 author: PatrickLang
 ms.date: 10/25/2019
@@ -9,70 +9,70 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
 ms.openlocfilehash: 405b2abc43a4ae2c546de351679deb755e4a9317
-ms.sourcegitcommit: 64573b539438de6ec5564b2949642ef12e55fc62
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "10274069"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74910802"
 ---
-# <a name="frequently-asked-questions-about-containers"></a>コンテナーについてよく寄せられる質問
+# <a name="frequently-asked-questions-about-containers"></a>コンテナーに関してよく寄せられる質問
 
-## <a name="whats-the-difference-between-linux-and-windows-server-containers"></a>Linux と Windows Server コンテナーの違いは何ですか?
+## <a name="whats-the-difference-between-linux-and-windows-server-containers"></a>Linux と Windows Server のコンテナーの違いは何ですか。
 
 Linux と Windows Server はどちらも、カーネルとコアオペレーティングシステム内に同様のテクノロジを実装しています。 違いは、プラットフォームと、コンテナー内で実行されるワークロードに由来します。  
 
-顧客が Windows Server コンテナーを使っている場合は、.NET、ASP.NET、PowerShell などの既存の Windows テクノロジと統合することができます。
+顧客が Windows Server のコンテナーを使用する場合は、.NET、ASP.NET、PowerShell などの既存の Windows テクノロジと統合できます。
 
-## <a name="what-are-the-prerequisites-for-running-containers-on-windows"></a>Windows でコンテナーを実行するための前提条件を教えてください。
+## <a name="what-are-the-prerequisites-for-running-containers-on-windows"></a>Windows でコンテナーを実行するための前提条件は何ですか。
 
-コンテナーは、Windows Server 2016 でプラットフォームに導入されました。 コンテナーを使用するには、Windows Server 2016 または Windows 10 記念日更新プログラム (バージョン 1607) 以降が必要です。 詳細については、[システム要件](../deploy-containers/system-requirements.md)を参照してください。
+コンテナーは、Windows Server 2016 でプラットフォームに導入されました。 コンテナーを使用するには、Windows Server 2016 または Windows 10 の記念日更新プログラム (バージョン 1607) 以降が必要です。 詳細については、[システム要件](../deploy-containers/system-requirements.md)を参照してください。
 
-## <a name="what-are-wcow-and-lcow"></a>WCOW と LCOW とは何ですか?
+## <a name="what-are-wcow-and-lcow"></a>WCOW と LCOW とは
 
-WCOW は、"windows 上の Windows コンテナー" には短いものです。 LCOW は、"Linux の Windows 上のコンテナー" には短いものです。
+WCOW は、"Windows 上の Windows コンテナー" の略です。 LCOW は、"Windows 上の Linux コンテナー" の略です。
 
-## <a name="how-are-containers-licensed-is-there-a-limit-to-the-number-of-containers-i-can-run"></a>コンテナーのライセンスについて 実行できるコンテナーの数に制限はありますか?
+## <a name="how-are-containers-licensed-is-there-a-limit-to-the-number-of-containers-i-can-run"></a>コンテナーはどのようにしてライセンス供与されますか。 実行できるコンテナーの数に制限はありますか。
 
-Windows コンテナーイメージ[EULA](../images-eula.md)は、有効なライセンスを持つホスト OS を使用しているユーザーに依存する使用法を示しています。 ユーザーが実行できるコンテナーの数は、ホストの OS エディションと、コンテナーが実行されている[分離モード](../manage-containers/hyperv-container.md)、およびこれらのコンテナーが開発/テスト目的で実行されているか、または運用環境で実行されているかによって異なります。
+Windows コンテナーイメージの[EULA](../images-eula.md)では、有効なライセンスを持つホスト OS を持つユーザーに依存する使用法について説明しています。 ユーザーが実行できるコンテナーの数は、ホスト OS のエディションとコンテナーが実行されている[分離モード](../manage-containers/hyperv-container.md)によって異なります。また、これらのコンテナーが開発/テスト目的または運用環境のどちらで実行されているかによっても異なります。
 
-|ホスト OS                                                         |プロセス-分離されたコンテナーの制限                   |Hyper-v-分離されたコンテナーの制限                   |
+|ホスト OS                                                         |プロセス分離コンテナーの制限                   |Hyper-v 分離コンテナーの制限                   |
 |----------------------------------------------------------------|---------------------------------------------------|---------------------------------------------------|
-|Windows Server Standard                                         |無制限                                          |両面                                                  |
+|Windows Server Standard                                         |無制限                                          |2                                                  |
 |Windows Server Datacenter                                       |無制限                                          |無制限                                          |
-|Windows 10 Pro と Enterprise                                   |無制限 *(テストまたは開発目的のみ)*|無制限 *(テストまたは開発目的のみ)*|
-|Windows 10 IoT Core と Enterprise                             |無限                                         |無限                                          |
+|Windows 10 Pro および Enterprise                                   |無制限 *(テストまたは開発目的のみ)*|無制限 *(テストまたは開発目的のみ)*|
+|Windows 10 IoT Core および Enterprise                             |無数                                         |無数                                          |
 
-Windows Server コンテナーイメージの使用状況は、その[エディション](/windows-server/get-started-19/editions-comparison-19.md)でサポートされている仮想ゲストの数を読み取ることによって決定されます。 <br/>
+Windows Server コンテナーイメージの使用量は、その[エディション](/windows-server/get-started-19/editions-comparison-19.md)でサポートされている仮想化ゲストの数を確認することによって決定されます。 <br/>
 
 >[!NOTE]
->\ * Windows 10 のコアランタイムイメージまたは Windows 10 IoT Enterprise デバイスライセンス ("Windows IoT 商業的契約") に関する Microsoft の利用規約に同意した場合は、Windows の IoT edition のコンテナーの実使用状況が異なります。 Windows IoT 商業契約の追加条項と制限は、実稼働環境でのコンテナーイメージの使用に適用されます。 何が許可されているかを正確に把握するには、[コンテナイメージの EULA](../images-eula.md)をお読みください。
+>windows 10 コアのランタイムイメージまたは Windows 10 IoT Enterprise デバイスライセンス (以下「Windows IoT コマーシャル契約」といいます) の Microsoft の商用使用条件に同意したかどうかによって、Windows の IoT エディションでのコンテナーの実稼働環境の使用が \*されます。 Windows IoT の商用契約書に記載されている追加の条件は、運用環境でのコンテナーイメージの使用に適用されます。 許可されている内容と何ではないものを正確に把握するには、[コンテナーイメージの EULA](../images-eula.md)を参照してください。
 
-## <a name="as-a-developer-do-i-have-to-rewrite-my-app-for-each-type-of-container"></a>開発者として、コンテナーの種類ごとにアプリを書き換える必要がありますか?
+## <a name="as-a-developer-do-i-have-to-rewrite-my-app-for-each-type-of-container"></a>開発者は、コンテナーの種類ごとにアプリを書き直す必要がありますか。
 
-できません。 Windows コンテナーの画像は、Windows Server コンテナーと Hyper-v 分離で共通しています。 コンテナーを開始すると、コンテナーの種類の選択が行われます。 開発者の観点から見ると、Windows Server コンテナーと Hyper-v 分離は、同じものの2つのフレーバーです。 これにより、開発、プログラミング、管理のエクスペリエンスが変わり、オープンで拡張可能になり、Docker と同じレベルの統合とサポートが提供されます。
+いいえ。 Windows コンテナーイメージは、Windows Server のコンテナーと Hyper-v の分離の両方で共通です。 コンテナーを開始すると、コンテナーの種類の選択が行われます。 開発者の観点から見ると、Windows Server のコンテナーと Hyper-v の分離は、同じことの2種類です。 同じ開発、プログラミング、および管理のエクスペリエンスを提供し、オープンで拡張可能で、Docker と同じレベルの統合とサポートが含まれています。
 
-開発者は、Windows Server コンテナーを使ってコンテナーイメージを作成し、Hyper-v 分離で展開するか、適切なランタイムフラグを指定する以外に何も変更せずにそのまま展開できます。
+開発者は、Windows Server コンテナーを使用してコンテナーイメージを作成し、Hyper-v の分離またはその逆に展開できます。これに加えて、適切なランタイムフラグを指定する必要はありません。
 
-Windows Server コンテナーでは、スピンアップ時間の短縮や入れ子になった構成とのランタイムのパフォーマンスの高速化などの速度が重要な場合に、高い密度とパフォーマンスを実現しています。 Hyper-v 分離は、その名前に対して true であり、分離性が高くなり、1つのコンテナーで実行されているコードが、同じホスト上で実行されているホストオペレーティングシステムや他のコンテナーに悪影響を与えたり、影響を受ける可能性があります。 これは、SaaS アプリケーションやコンピューティングホスティングなど、信頼されていないコードをホストするための要件を持つマルチテナントシナリオで役立ちます。
+Windows Server コンテナーでは、入れ子になった構成と比較して、スピンアップ時間が短縮され、実行時のパフォーマンスが向上するなど、速度が重要な場合の密度とパフォーマンスが向上しています。 Hyper-v の分離では、名前が真であるため、分離が向上し、1つのコンテナーで実行されているコードが、同じホスト上で実行されているホストオペレーティングシステムまたは他のコンテナーに対してセキュリティを侵害したり、影響を与えることがなくなります。 これは、SaaS アプリケーションやコンピューティングホスティングなど、信頼されていないコードをホストするための要件を持つマルチテナントシナリオに役立ちます。
 
-## <a name="can-i-run-windows-containers-in-process-isolated-mode-on-windows-10"></a>Windows 10 でプロセス分離モードで Windows コンテナーを実行できますか?
+## <a name="can-i-run-windows-containers-in-process-isolated-mode-on-windows-10"></a>Windows 10 でプロセス分離モードで Windows コンテナーを実行できますか。
 
-Windows 10 年 2018 10 月の更新プログラムでは、プロセス分離を使用して Windows コンテナーを実行でき`--isolation=process` `docker run`ますが、まず、コンテナーを実行するときにフラグを使用してプロセスの分離を要求する必要があります。 プロセス分離は、Windows 10 Pro、windows 10 Enterprise、Windows 10 IoT Core、Windows 10 IoT Enterprise に対応しています。
+Windows 10 10 月2018更新プログラム以降では、プロセス分離を使用して Windows コンテナーを実行できますが、まず、`docker run`でコンテナーを実行するときに `--isolation=process` フラグを使用してプロセス分離を直接要求する必要があります。 プロセス分離は、windows 10 Pro、Windows 10 Enterprise、Windows 10 IoT Core、Windows 10 IoT Enterprise と互換性があります。
 
-このようにして Windows コンテナーを実行する場合は、ホストが Windows 10 ビルド 17763 + を実行していて、エンジン18.09 以降を搭載した Docker バージョンがインストールされていることを確認する必要があります。
+この方法で Windows コンテナーを実行する場合は、ホストで Windows 10 build 17763 + が実行されていること、およびエンジン18.09 以降の Docker バージョンがあることを確認する必要があります。
 
 > [!WARNING]
-> この機能は、IoT Core と IoT Enterprise ホスト (追加の利用規約と制限を受けた後) ではないため、開発とテストにのみ使用できます。 引き続き Windows Server を運用展開用のホストとして使用する必要があります。 この機能を使うには、ホストとコンテナーのバージョンタグが一致していることを確認する必要があります。そうでないと、コンテナーの開始に失敗したり、未定義の動作が発生したりする可能性があります。
+> IoT Core および IoT Enterprise ホスト (追加の使用条件に同意した後) とは別に、この機能は開発とテストのみを目的としています。 運用環境の展開では、引き続き Windows Server をホストとして使用する必要があります。 この機能を使用することにより、ホストとコンテナーのバージョンタグが一致するようにする必要があります。そうしないと、コンテナーの起動に失敗したり、未定義の動作が発生したりする可能性があります。
 
-## <a name="how-do-i-make-my-container-images-available-on-air-gapped-machines"></a>Gapped コンピューターでコンテナーの画像を使用できるようにするにはどうすればよいですか?
+## <a name="how-do-i-make-my-container-images-available-on-air-gapped-machines"></a>Gapped コンピューターでコンテナーイメージを使用できるようにする操作方法
 
-Windows コンテナーのベースイメージには、配布がライセンスによって制限されている成果物が含まれています。 これらの画像を構築してプライベートまたは公開レジストリにプッシュすると、基本レイヤーがプッシュされることはありません。 代わりに、Azure クラウドストレージに存在する実際のベースレイヤーを指す、外部レイヤーの概念を使います。
+Windows コンテナーの基本イメージには、配布がライセンスによって制限されている成果物が含まれています。 これらのイメージを構築してプライベートまたはパブリックレジストリにプッシュすると、基本レイヤーがプッシュされることはありません。 代わりに、Azure クラウドストレージに存在する実際の基本レイヤーを指す外部レイヤーの概念を使用します。
 
-これは、プライベートコンテナーレジストリのアドレスからのみ画像を取得できる air-gapped のコンピューターを使用している場合に、より複雑なものになることがあります。 この場合は、外部レイヤーに従って基本イメージを取得しようとしても機能しません。 外部レイヤーの動作をオーバーライドするには、Docker `--allow-nondistributable-artifacts`デーモンのフラグを使うことができます。
+これにより、プライベートコンテナーレジストリのアドレスからイメージをプルすることしかできない gapped コンピューターがある場合に、処理が複雑になる可能性があります。 この場合、基本イメージを取得するために外部層に従う試行は機能しません。 外部レイヤーの動作をオーバーライドするには、Docker デーモンで `--allow-nondistributable-artifacts` フラグを使用します。
 
 > [!IMPORTANT]
-> このフラグを使用すると、Windows コンテナーベースのイメージライセンスの条項に準拠する義務を排除することはできません。パブリックまたはサードパーティの再配布には、Windows のコンテンツを投稿しないでください。 独自の環境内での使用が許可されています。
+> このフラグを使用すると、Windows コンテナーの基本イメージライセンスの条項に準拠する義務を排除することはできません。パブリックまたはサードパーティの再配布のために Windows コンテンツを投稿することはできません。 自分の環境内で使用できます。
 
 ## <a name="additional-feedback"></a>その他のフィードバック
 
-FAQ に何かを追加しますか? [コメント] セクションで新しいフィードバックの問題を開くか、GitHub でこのページのプル要求を設定します。
+FAQ に何かを追加する必要がある場合は、 [コメント] セクションで新しいフィードバックの問題を開くか、GitHub を使用してこのページのプル要求を設定します。

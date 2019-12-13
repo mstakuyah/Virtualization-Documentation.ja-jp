@@ -8,20 +8,20 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: cfbb2542-fead-48e7-8318-4da92a7b5b6f
-ms.openlocfilehash: 338dd0570f1a2e73295b2bacf2c4282b3fdd7956
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 55b428894b22ded48ce9db8f24928924964ce96d
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998489"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74910082"
 ---
 # <a name="community-videos-and-blogs"></a>コミュニティのビデオとブログ
 
 このページには、メンバーまたはコンテナーのコミュニティが作成したビデオとブログへのリンクが記載されています。  すばらしいリソースをご存じの場合や、ご自分でリソースを作成した場合は、このリストに追加するための PR を送信してください。
 
-## <a name="getting-started"></a>概要
+## <a name="getting-started"></a>作業の開始
 
-[Windows 10-シュテファン/windows のコンテナーを windows 10 で実行](https://stefanscherer.github.io/run-linux-and-windows-containers-on-windows-10/)する
+[Windows 10 での Linux コンテナーと windows コンテナーの実行](https://stefanscherer.github.io/run-linux-and-windows-containers-on-windows-10/)-Stefan/er
 
 [Docker Windows Server コンテナーを初めて構築して実行する](https://blog.docker.com/2016/09/build-your-first-docker-windows-server-container/) - Michael Friis
 
@@ -31,15 +31,15 @@ ms.locfileid: "9998489"
 
 [.NET とコンテナーの概要](https://blog.alexellis.io/docker-dotnet-containers/) - Alex Ellis
 
-[Dockerize アプリケーションを操作する方法: 5 つの手順](https://blog.sixeyed.com/how-to-dockerize-windows-applications/)-Elton Stoneman
+[Windows アプリケーションを Dockerize する方法: 5 つの手順](https://blog.sixeyed.com/how-to-dockerize-windows-applications/)-elton
 
-Docker-elton Stoneman[を使用した .Net Framework アプリの Modernizing](https://www.pluralsight.com/courses/modernizing-dotnet-framework-apps-docker?clickid=UVL20JTFpzK6UDSX5n1b5zmyUkgWUPWOz3Pjwg0&irgwc=1&mpid=1197078&utm_source=impactradius&utm_medium=digital_affiliate&utm_campaign=1197078&aid=7010a000001xAKZAA2)
+[Docker を使用した .NET Framework アプリの最新化](https://www.pluralsight.com/courses/modernizing-dotnet-framework-apps-docker?clickid=UVL20JTFpzK6UDSX5n1b5zmyUkgWUPWOz3Pjwg0&irgwc=1&mpid=1197078&utm_source=impactradius&utm_medium=digital_affiliate&utm_campaign=1197078&aid=7010a000001xAKZAA2)Stoneman
 
 [Microsoft SQL 2016 と ASP.NET を利用した Docker](https://blog.alexellis.io/docker-does-sql2016-aspnet/) - Alex Ellis
 
-[最初のルック: Windows コンテナーと Docker-Alex Ellis を含む JENKINS CI](https://blog.alexellis.io/continuous-integration-docker-windows-containers/)
+[最初の確認: JENKINS CI With Windows コンテナーと Docker](https://blog.alexellis.io/continuous-integration-docker-windows-containers/) -Alex Ellis
 
-[Windows コンテナ用のパッケージのパッケージ化](https://blog.alexellis.io/packaging-windows-containers/)-Alex Ellis
+[Windows コンテナーの Redis のパッケージ化](https://blog.alexellis.io/packaging-windows-containers/)-Alex Ellis
 
 [Docker での MSBuild の 3 つのステップ](https://blog.alexellis.io/3-steps-to-msbuild-with-docker/) - Alex Ellis
 
@@ -47,7 +47,7 @@ Docker-elton Stoneman[を使用した .Net Framework アプリの Modernizing](h
 
 [Use Docker Compose and Service Discovery on Windows to scale-out your multi-service container application](https://techcommunity.microsoft.com/t5/Containers/Use-Docker-Compose-and-Service-Discovery-on-Windows-to-scale-out/ba-p/382312) (Windows で Docker Compose とサービス検索を使用してマルチサービス コンテナー アプリケーションをスケールアウトする) - Kallie Bracken および Jason Messer
 
-Docker-Nicholas Dille[を使用する Windows コンテナーの PowerShell Desired State Configuration](https://dille.name/blog/2016/06/17/powershell-desired-state-configuration-psdsc-in-windows-containers-using-docker/)
+[Docker を使用した Windows コンテナーでの PowerShell Desired State Configuration](https://dille.name/blog/2016/06/17/powershell-desired-state-configuration-psdsc-in-windows-containers-using-docker/) -Nicholas Dille
 
 [Windows コンテナーでの Neo4j の実行](https://glennsarti.github.io/blog/neo4j-nano-containers)-Glenn Sarti
 

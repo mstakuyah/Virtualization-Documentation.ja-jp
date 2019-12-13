@@ -1,19 +1,19 @@
 ---
 title: Hyper-V のプレリリース機能を試す
 description: Hyper-V のプレリリース機能を試す
-keywords: windows 10、hyper-v
+keywords: Windows 10, Hyper-V
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 426c87cc-fa50-4b8d-934e-0b653d7dea7d
-ms.openlocfilehash: 725466f657ae8fc4f14813822e90657e12d26fa6
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 8f1c1b96fe88f46a24b8ebb46d4f387c9717f6ba
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998929"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911162"
 ---
 # <a name="try-pre-release-features-for-hyper-v"></a>Hyper-V のプレリリース機能を試す
 
@@ -35,7 +35,7 @@ Windows Server 2016 Technical Preview で Hyper-V のプレリリース機能に
 Windows Server 2016 Technical Preview を実行する Hyper-V ホスト上にプレリリース仮想マシンを作成することができます。
 
 1. Windows デスクトップ上で、[スタート] ボタンをクリックし、**Windows PowerShell** という名前の一部を入力します。
-2. **[Windows PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
+2. **[Windows PowerShell]** を右クリックし、 **[管理者として実行]** を選択します。
 3. -Prerelease フラグの付いた [New-VM](https://docs.microsoft.com/powershell/module/hyper-v/new-vm?view=win10-ps) コマンドレットを使用して、プレリリース仮想マシンを作成します。 たとえば、VM 名が作成する仮想マシンの名前である場合は、以下のコマンドを実行します。
 
 ``` PowerShell

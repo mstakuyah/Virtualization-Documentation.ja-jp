@@ -1,28 +1,28 @@
 ---
-title: Windows のコンテナー内のデバイス
-description: Windows のコンテナーにはどのようなデバイスがサポートされるか
+title: Windows 上のコンテナー内のデバイス
+description: Windows 上のコンテナーに対してどのようなデバイスサポートが存在するか
 keywords: docker、コンテナー、デバイス、ハードウェア
 author: cwilhit
 ms.openlocfilehash: 1ad63c158a42f116882c949b242274dde8d893fc
-ms.sourcegitcommit: 2f8fd4b2e7113fbb7c323d89f3c72df5e1a4437e
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "10045032"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74910602"
 ---
-# <a name="devices-in-containers-on-windows"></a>Windows のコンテナー内のデバイス
+# <a name="devices-in-containers-on-windows"></a>Windows 上のコンテナー内のデバイス
 
-既定では、Windows コンテナーには、Linux コンテナーのように、ホストデバイスへの最小限のアクセスが与えられます。 一部のワークロードは、ホストハードウェアデバイスにアクセスして通信するのに役立ちます。 このガイドでは、コンテナーでサポートされているデバイスと開始方法について説明します。
+既定では、Windows コンテナーには、Linux コンテナーと同様に、ホストデバイスへの最小限のアクセス権が付与されます。 ホストハードウェアデバイスにアクセスして通信するために、有用なワークロードや、必要に応じて、特定のワークロードがあります。 このガイドでは、コンテナーでサポートされているデバイスと開始方法について説明します。
 
 ## <a name="requirements"></a>要件
 
-この機能が機能するためには、環境が次の要件を満たしている必要があります。
-- コンテナーホストでは、Windows Server 2019 または Windows 10 バージョン1809以降を実行している必要があります。
-- コンテナーベースのイメージバージョンは、1809以降である必要があります。
+この機能を機能させるには、環境が次の要件を満たしている必要があります。
+- コンテナーホストでは、Windows Server 2019 または Windows 10、バージョン1809以降が実行されている必要があります。
+- コンテナーの基本イメージのバージョンは1809以降である必要があります。
 - コンテナーは、プロセス分離モードで実行されている Windows コンテナーである必要があります。
-- コンテナーホストは、Docker Engine 19.03 以降を実行している必要があります。
+- コンテナーホストは、Docker エンジン19.03 以降を実行している必要があります。
 
-## <a name="run-a-container-with-a-device"></a>デバイスでコンテナーを実行する
+## <a name="run-a-container-with-a-device"></a>デバイスを使用したコンテナーの実行
 
 デバイスでコンテナーを開始するには、次のコマンドを使用します。
 
@@ -30,21 +30,21 @@ ms.locfileid: "10045032"
 docker run --isolation=process --device="class/{interface class GUID}" mcr.microsoft.com/windows/servercore:1809
 ```
 
-は、 `{interface class guid}`次のセクションに記載されている適切な[デバイスインターフェイスクラスの GUID](https://docs.microsoft.com/windows-hardware/drivers/install/overview-of-device-interface-classes)に置き換える必要があります。
+`{interface class guid}` を適切な[デバイスインターフェイスクラス GUID](https://docs.microsoft.com/windows-hardware/drivers/install/overview-of-device-interface-classes)に置き換える必要があります。これについては、以下のセクションを参照してください。
 
-複数のデバイスでコンテナーを開始するには、次のコマンドを使用`--device`し、複数の引数を組み合わせて指定します。
+複数のデバイスでコンテナーを起動するには、次のコマンドと文字列を複数の `--device` 引数と共に使用します。
 
 ```shell
 docker run --isolation=process --device="class/{interface class GUID}" --device="class/{interface class GUID}" mcr.microsoft.com/windows/servercore:1809
 ```
 
-Windows では、すべてのデバイスが実装するインターフェイスクラスの一覧を宣言します。 このコマンドを Docker に渡すことによって、要求されたクラスを実装することを示すすべてのデバイスがコンテナーに plumb されるようになります。
+Windows では、すべてのデバイスが実装するインターフェイスクラスのリストを宣言します。 このコマンドを Docker に渡すことで、要求されたクラスの実装として識別されるすべてのデバイスがコンテナーに組み込まれるようになります。
 
-これは、ホストからデバイスに割り当てられ**ていない**ことを意味します。 代わりに、ホストがコンテナーと共有します。 同様に、クラスの GUID を指定しているため、その GUID を実装する_すべて_のデバイスがコンテナーと共有されます。
+これは、デバイスがホストから割り当てられ**ていない**ことを意味します。 代わりに、ホストはコンテナーと共有します。 同様に、クラス GUID を指定するため、その GUID を実装する_すべて_のデバイスがコンテナーと共有されます。
 
-## <a name="what-devices-are-supported"></a>サポートされるデバイス
+## <a name="what-devices-are-supported"></a>サポートされているデバイス
 
-現在、次のデバイス (およびそのデバイスインターフェイスクラスの Guid) がサポートされています。
+現在、次のデバイス (およびそのデバイスインターフェイスクラス Guid) がサポートされています。
   
 <table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:75%" cellpadding="5" cellspacing="5">
 <thead>
@@ -71,19 +71,19 @@ Windows では、すべてのデバイスが実装するインターフェイス
 <td><center>DCDE6AF9-6610-4285-828F-CAAF78C424CC</center></td>
 </tr>
 <tr valign="top">
-<td><center>DirectX GPU アクセラレータ</center></td>
-<td><center>「 <a href="https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/gpu-acceleration">GPU アクセラレータ</a>に関するドキュメント」をご覧ください。</center></td>
+<td><center>DirectX GPU アクセラレーション</center></td>
+<td><center><a href="https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/gpu-acceleration">GPU アクセラレータ</a>に関するドキュメントを参照してください。</center></td>
 </tr>
 </tbody>
 </table>
 
 > [!IMPORTANT]
-> デバイスのサポートは、ドライバーに依存します。 上の表で定義されていないクラス Guid を渡そうとすると、未定義の動作が発生する可能性があります。
+> デバイスのサポートはドライバーに依存します。 上の表で定義されていないクラス Guid を渡そうとすると、未定義の動作が発生する可能性があります。
 
-## <a name="hyper-v-isolated-windows-container-support"></a>Hyper-v-分離された Windows コンテナーのサポート
+## <a name="hyper-v-isolated-windows-container-support"></a>Hyper-v 分離 Windows コンテナーのサポート
 
-Hyper-v-分離された Windows コンテナーでのワークロードのデバイス割り当てとデバイス共有は、現在サポートされていません。
+Hyper-v 分離 Windows コンテナーにおけるワークロードのデバイス割り当てとデバイス共有は、現在サポートされていません。
 
-## <a name="hyper-v-isolated-linux-container-support"></a>Hyper-v-分離された Linux コンテナーのサポート
+## <a name="hyper-v-isolated-linux-container-support"></a>Hyper-v 分離された Linux コンテナーのサポート
 
-Hyper-v でのワークロードのためのデバイスの割り当てとデバイス共有 (分離された Linux コンテナーは現在サポートされていません)。
+Hyper-v 分離 Linux コンテナーにおけるワークロードのデバイス割り当てとデバイス共有は、現在サポートされていません。
