@@ -1,7 +1,7 @@
 ---
 title: Windows 10 の Hyper-V
 description: Windows 10 の Hyper-V
-keywords: windows 10、hyper-v
+keywords: Windows 10, Hyper-V
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
@@ -9,11 +9,11 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 05269ce0-a54f-4ad8-af75-2ecf5142b866
 ms.openlocfilehash: 0621a06832844b0350b33c763f0546afa9b596e6
-ms.sourcegitcommit: 62fff5436770151a28b6fea2be3a8818564f3867
-ms.translationtype: MT
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "10147305"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74909122"
 ---
 # <a name="hyper-v-on-windows-10"></a>Windows 10 の Hyper-V 
 
@@ -22,7 +22,7 @@ Windows 10 の多くのバージョンに Hyper-V 仮想化テクノロジが含
 次のドキュメントでは、Windows 10 における Hyper-V 機能について説明し、クイック スタート ガイドを提供します。また、詳しいリソースやコミュニティ フォーラムのリンクを紹介します。 
 
 ## <a name="about-hyper-v-on-windows"></a>Windows の Hyper-V について
-次の記事では、Windows 上にし、その HYPER-V に関する情報を提供します。
+次の記事には、Windows の Hyper-V の概要と情報が記載されています。
 
 * [Hyper-V の概要](./about/index.md)
 * [サポートされているゲスト オペレーティング システム](about/supported-guest-os.md)
