@@ -50,6 +50,6 @@ docker build -t nanoserverPowerShell6 -f Dockerfile-PowerShell6 .
 
 詳しくは、[PowerShell GitHub](https://github.com/PowerShell/PowerShell-Docker/tree/master/release) をご覧ください。  PowerShell の zip には、PowerShell Core 6 の構築に必要な .NET Core 2.0 のサブセットが含まれていることに注意してください。  使用する PowerShell モジュールが .NET Core 2.0 に依存している場合は、基本 Nano コンテナーではなく、Nano .NET Core コンテナー上に PowerShell コンテナーを構築するのが安全です。これには、Dockerfile で、FROM microsoft/nanoserver-insider-dotnet を使用します。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次のステップ:
 - Docker Hub にある Nano Server ベースの新しいコンテナー イメージ (基本 Nano Server イメージ、Nano/.NET Core 2.0、Nano/PowerShell Core 6) のいずれかを使用する
 - このガイドに含まれている Dockerfile コンテンツのサンプルを使用し、新しい Nano Server コンテナー基本 OS イメージに基づいて、独自のコンテナー イメージを構築する 

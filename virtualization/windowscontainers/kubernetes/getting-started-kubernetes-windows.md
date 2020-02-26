@@ -8,12 +8,12 @@ ms.prod: containers
 description: Windows ノードを Kubernetes クラスターに追加する (v 1.14)。
 keywords: kubernetes、1.14、windows、はじめに
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: c380f5dc10430a94959718a5ce92f311603db733
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 18734f102042ec951255061dcd82229e18d29a15
+ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910362"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77439529"
 ---
 # <a name="kubernetes-on-windows"></a>Windows で使用する Kubernetes
 
@@ -41,7 +41,7 @@ ms.locfileid: "74910362"
 | サブネット/アドレス範囲 | 説明 | 既定値 |
 | --------- | ------------- | ------------- |
 | <a name="service-subnet-def"></a>**サービスサブネット** | ルーティング不可能な、純粋な仮想サブネット。ネットワークトポロジに関する気なしで uniformally access services にアクセスするためにポッドによって使用されます。 ノードで実行されている `kube-proxy` によって、ルーティング可能なアドレス空間との間で変換が行われます。 | "10.96.0.0/12" |
-| <a name="cluster-subnet-def"></a>**クラスターサブネット** |  これは、クラスター内のすべてのポッドによって使用されるグローバルサブネットです。 各ノードには、ポッドが使用できるように、これより小さい/24 のサブネットが割り当てられます。 クラスターで使用されているすべてのポッドを格納するのに十分な大きさである必要があります。 サブネットの*最小*サイズの計算式は、`(number of nodes) + (number of nodes * maximum pods per node that you configure)` です。 <p/>ノードあたり100ポッドの5ノードクラスターの例: `(5) + (5 *  100) = 505`。  | "10.244.0.0/16" |
+| <a name="cluster-subnet-def"></a>**クラスターサブネット** |  これは、クラスター内のすべてのポッドによって使用されるグローバルサブネットです。 各ノードには、ポッドが使用できるように、これより小さい/24 のサブネットが割り当てられます。 クラスターで使用されているすべてのポッドを格納するのに十分な大きさである必要があります。 サブネットの*最小*サイズを計算するには: `(number of nodes) + (number of nodes * maximum pods per node that you configure)` <p/>ノードあたり100ポッドの5ノードクラスターの例: `(5) + (5 *  100) = 505`。  | "10.244.0.0/16" |
 | **Kubernetes DNS サービス IP** | クラスターサービス検出 & DNS 解決に使用される "kube" サービスの IP アドレス。 | "10.96.0.10" |
 
 > [!NOTE]
@@ -58,7 +58,7 @@ ms.locfileid: "74910362"
 > * [サンプル Kubernetes リソース](./deploying-resources.md)をデプロイしました。  
 > * [一般的な問題とよくある誤り](./common-problems.md)を理解する。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次のステップ:
 
 このセクションでは、現在、Windows で Kubernetes を正常に展開するために必要な前提条件 & 重要な前提条件について説明しました。 Kubernetes マスターのセットアップ方法については、「」を参照してください。
 

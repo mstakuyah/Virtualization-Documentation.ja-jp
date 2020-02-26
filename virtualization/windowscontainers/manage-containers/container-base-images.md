@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 88e6e080-cf8f-41d8-a301-035959dc5ce0
-ms.openlocfilehash: 2a69fbace51589cce08476bd68fdb5c34a7907e6
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 9884cc0ae2d2f398d2dc2fb1997a70493a6de6c0
+ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74909782"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764180"
 ---
 # <a name="container-base-images"></a>コンテナーの基本イメージ
 
@@ -144,4 +144,4 @@ Microsoft では、各コンテナーの基本イメージの "insider" バー�
 
 `Windows Server Core` と `Nanoserver` は、対象となる最も一般的な基本イメージです。 これらのイメージの主な違いは、Nanoserver の API サーフェイスが大幅に小さくなる点です。 PowerShell、WMI、および Windows サービススタックは、Nanoserver イメージには存在しません。
 
-Nanoserver は、.NET core またはその他の最新のオープンソースフレームワークに依存するアプリを実行するための十分な API サーフェイスを提供するように構築されました。 小さい APi サーフェイスのトレードオフとして、Nanoserver イメージは、Windows の基本イメージの他の部分よりも、ディスク上のフットプリントが大幅に小さくなります。 Nano Server 上には、いつでもレイヤーを追加できることに注意してください。 この例については、[.NET Core の Nano Server の Dockerfile](https://github.com/dotnet/dotnet-docker/blob/master/2.1/sdk/nanoserver-1803/amd64/Dockerfile) をご覧ください。
+Nanoserver は、.NET core またはその他の最新のオープンソースフレームワークに依存するアプリを実行するための十分な API サーフェイスを提供するように構築されました。 小さい APi サーフェイスのトレードオフとして、Nanoserver イメージは、Windows の基本イメージの他の部分よりも、ディスク上のフットプリントが大幅に小さくなります。 Nano Server 上には、いつでもレイヤーを追加できることに注意してください。 この例については、[.NET Core の Nano Server の Dockerfile](https://github.com/dotnet/dotnet-docker/blob/master/2.1/sdk/nanoserver-1909/amd64/Dockerfile) をご覧ください。

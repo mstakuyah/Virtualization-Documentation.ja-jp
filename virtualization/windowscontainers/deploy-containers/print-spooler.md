@@ -3,12 +3,12 @@ title: Windows コンテナーの印刷スプーラ
 description: Windows コンテナーの印刷スプーラサービスの現在の動作について説明します。
 keywords: docker、コンテナー、プリンター、スプーラ
 author: cwilhit
-ms.openlocfilehash: 48130bc6a826a45dfa49d0a3b4600d227f34704e
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: e104a87046545b90d244783aafb62ad9d151e14b
+ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910532"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77439539"
 ---
 # <a name="print-spooler-in-windows-containers"></a>Windows コンテナーの印刷スプーラ
 

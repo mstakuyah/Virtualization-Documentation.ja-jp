@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 6e5e6b01-7a9d-4123-8cc7-f986e10cd372
-ms.openlocfilehash: d4e3f7c1e94d0162ae9ee6251d9c6d8cc51bf1d3
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: d3375cd912097f85f0a350b8f329c008323cab37
+ms.sourcegitcommit: cea415924b7b6a690d0ba9ff31beed30e9c187d2
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74911222"
+ms.lasthandoff: 01/25/2020
+ms.locfileid: "76750193"
 ---
 # <a name="windows-10-hyper-v-system-requirements"></a>Windows 10 Hyper-V のシステム要件
 
@@ -41,17 +41,17 @@ Hyper-V のロールは、次のバージョンにはインストール**でき�
 
 このドキュメントでは、Hyper-V と互換性のあるハードウェアをすべて一覧していませんが、次のアイテムが必要です。
 
-- 第 2 レベルのアドレス変換 (SLAT) の 64 ビット プロセッサ。
-- VM モニター モード拡張機能 (Intel CPU の VT-c) の CPU サポート
+- 2 番目のレベルのアドレス変換 (SLAT) と 64 ビット プロセッサ。
+- VM モニターモード拡張機能の CPU サポート (Intel CPU の VT-x)。
 - 最小 4 GB のメモリ。 仮想マシンは Hyper-V ホストとメモリを共有するため、予想される仮想ワークロードを処理するために十分なメモリを提供する必要があります。
 
 次の項目をシステム BIOS で有効にする必要があります。
 - 仮想化テクノロジ (マザーボードの製造元によってラベルが異なる場合があります)
 - ハードウェアによるデータ実行防止
 
-## <a name="verify-hardware-compatibility"></a>ハードウェアの互換性の検証
+## <a name="verify-hardware-compatibility"></a>ハードウェアの互換性を確認します。
 
-互換性を検証するには、PowerShell またはコマンド プロンプト (cmd.exe) を開いて、「**systeminfo**」と入力します。 一覧表示された Hyper-V の要件がすべて **Yes** である場合、使用しているシステムで Hyper-V のロールを実行できます。 いずれかの項目が **No** を返す場合、このドキュメントに一覧された要件を確認して、可能な限り調整を行います。
+互換性を検証するには、PowerShell またはコマンド プロンプト (cmd.exe) を開いて、「**systeminfo**」と入力します。 一覧された Hyper-V の要件がすべて **Yes** である場合、使用しているシステムで Hyper-V の役割を実行できます。 いずれかの項目が **No** を返す場合、このドキュメントに一覧された要件を確認して、可能な限り調整を行います。
 
 ![](media/SystemInfo-upd.png)
 

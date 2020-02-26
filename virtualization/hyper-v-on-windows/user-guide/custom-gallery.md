@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d9238389-7028-4015-8140-27253b156f37
-ms.openlocfilehash: c7a6462b331f469148eb4cf5a0a2740c9929fa29
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 1348b9923d9de1314818f13414abdacee2cb9735
+ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74911062"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77439716"
 ---
 # <a name="create-a-custom-virtual-machine-gallery"></a>カスタム仮想マシン ギャラリーの作成
 
@@ -43,7 +43,7 @@ Fall Creators Update ではクイック作成が拡張され、仮想マシン �
 
 値の名前: `GalleryLocations`
 
-型: `REG_MULTI_SZ`
+種類: `REG_MULTI_SZ`
 
 ## <a name="create-gallery-compatible-virtual-machines"></a>ギャラリーと互換性がある仮想マシンを作成する
 
@@ -135,11 +135,11 @@ Fall Creators Update ではクイック作成が拡張され、仮想マシン �
 
 仮想マシン ギャラリーでのエラー報告は、Windows イベント ビューアーで確認できます。  エラーをチェックするには:
 
-1. イベント ビューアーを開きます。
+1. イベント ビューアーを開きます
 1. **[Windows ログ]**  ->  **[Application]** に移動します。
 1. ソース VMCreate からのイベントを探します。
 
-## <a name="resources"></a>参考資料
+## <a name="resources"></a>リソース
 
 GitHub の[リンク](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/live/hyperv-tools/vmgallery)には、少数のギャラリー スクリプトとヘルパーが掲載されています。
 

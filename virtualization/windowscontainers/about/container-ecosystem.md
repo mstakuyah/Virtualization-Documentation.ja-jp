@@ -8,12 +8,12 @@ ms.topic: about-article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 29fbe13a-228a-4eaa-9d4d-90ae60da5965
-ms.openlocfilehash: a1abc73d706458fbb8b8d3244072b025e433afd6
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 67fdbd813fbd2fa2911d8f5aff6637a85b9855ec
+ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910842"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77439319"
 ---
 # <a name="about-building-container-ecosystems"></a>コンテナーエコシステムの構築について
 
@@ -27,7 +27,7 @@ Windows コンテナーは、大規模なコンテナーエコシステムの重
 
 ![](media/containerEcosystem.png)
 
-マイクロソフトでは、開発者がこうした次世代アプリケーションを構築する際の選択肢と生産性を提供することで、開発者を支援します。 私たちの目標は、開発者の生産性を高めることです。これは、アプリケーションがコードを変更、書き換え、または再構成することなく、任意の Microsoft クラウドを対象とすることを意味します。
+Microsoft は、これらの次世代のアプリを構築すると、開発者の選択肢と生産性を高めるしようとしました。 私たちの目標は、開発者の生産性を高めることです。これは、アプリケーションがコードを変更、書き換え、または再構成することなく、任意の Microsoft クラウドを対象とすることを意味します。
 
 Microsoft は、オープンでエコシステムに対応しています。 イノベーションを促進するために、Windows や Linux などの複数の開発者エコシステムの組み合わせが積極的にサポートされています。
 

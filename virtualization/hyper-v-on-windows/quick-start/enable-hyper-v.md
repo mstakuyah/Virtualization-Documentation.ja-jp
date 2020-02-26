@@ -7,12 +7,12 @@ ms.date: 02/15/2019
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
-ms.openlocfilehash: e1b6b55b2e17ac4f0883078748d75f6d4b9fcafa
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: bad59fcc65bf66ab3c6dc940a17111e46a9bc226
+ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74909462"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77439699"
 ---
 # <a name="install-hyper-v-on-windows-10"></a>Windows 10 上に Hyper-V をインストールする
 
@@ -24,8 +24,8 @@ Hyper-v は、Windows 10 のコントロールパネル、PowerShell、または
 ## <a name="check-requirements"></a>要件の確認
 
 * Windows 10 Enterprise、Pro、または教育
-* 第 2 レベルのアドレス変換 (SLAT) の 64 ビット プロセッサ。
-* VM モニター モード拡張機能 (Intel CPU 上の VT-c) の CPU サポート。
+* 2 番目のレベルのアドレス変換 (SLAT) と 64 ビット プロセッサ。
+* VM モニターモード拡張機能の CPU サポート (Intel Cpu での VT-c)。
 * 最小 4 GB のメモリ。
 
 Hyper-V ロールは、Windows 10 Home にはインストール**できません**。
@@ -52,7 +52,7 @@ Windows 10 Home edition から Windows 10 Pro にアップグレードするに�
 
 展開イメージのサービスと管理 (DISM) ツール を使用して、Windows と Windows イメージを構成できます。  さまざまなアプリケーションがありますが、DISM では、オペレーティング システムの実行中に Windows の機能を有効にすることができます。
 
-DISM を使用して Hyper-V ロールを有効にするには:
+DISM を使用して、HYPER-V ロールを有効にします。
 
 1. 管理者として PowerShell または CMD セッションを開きます。
 
@@ -78,7 +78,7 @@ DISM について詳しくは、[DISM のテクニカル リファレンス](<ht
 
 ![Windows のプログラムと機能が示されたダイアログ ボックス](media/enable_role_upd.png)
 
-インストールが完了すると、コンピューターの再起動を促すメッセージが表示されます。
+インストールが完了すると、コンピューターを再起動するメッセージが表示されます。
 
 ## <a name="make-virtual-machines"></a>仮想マシンを作成する
 

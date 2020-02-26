@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 18930864-476a-40db-aa21-b03dfb4fda98
-ms.openlocfilehash: 762b82f3714651ffb488f682581680c9526404a8
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 6568b68a77fc5506b58249caea44ec78e3e44de2
+ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74911152"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77439569"
 ---
 # <a name="hyper-v-integration-services"></a>Hyper-V 統合サービス
 
@@ -27,11 +27,11 @@ ms.locfileid: "74911152"
 
 ## <a name="quick-reference"></a>クイック リファレンス
 
-| 名前 | Windows サービス名 | Linux デーモン名 |  説明 | 無効にした場合に VM に与える影響 |
+| Name | Windows サービス名 | Linux デーモン名 |  説明 | 無効にした場合に VM に与える影響 |
 |:---------|:---------|:---------|:---------|:---------|
 | [Hyper-V ハートビート サービス](#hyper-v-heartbeat-service) |  vmicheartbeat | hv_utils | 仮想マシンが正しく動作していることを報告します。 | 不定 |
-| [Hyper-V ゲスト シャットダウン サービス](#hyper-v-guest-shutdown-service) | vmicshutdown | hv_utils |  ホストが仮想マシンのシャットダウンをトリガーするのを許可します。 | **高** |
-| [Hyper-V 時刻の同期サービス](#hyper-v-time-synchronization-service) | vmictimesync | hv_utils | 仮想マシンのクロックをホスト コンピューターのクロックに同期します。 | **高** |
+| [Hyper-V ゲスト シャットダウン サービス](#hyper-v-guest-shutdown-service) | vmicshutdown | hv_utils |  ホストが仮想マシンのシャットダウンをトリガーするのを許可します。 | **高い** |
+| [Hyper-V 時刻の同期サービス](#hyper-v-time-synchronization-service) | vmictimesync | hv_utils | 仮想マシンのクロックをホスト コンピューターのクロックに同期します。 | **高い** |
 | [Hyper-v データ交換サービス (KVP)](#hyper-v-data-exchange-service-kvp) | vmickvpexchange | hv_kvp_daemon | 仮想マシンとホストとの間で基本的なメタデータを交換する手段を提供します。 | 中 |
 | [Hyper-V ボリューム シャドウ コピー リクエスター](#hyper-v-volume-shadow-copy-requestor) | vmicvss | hv_vss_daemon | 仮想マシンをシャットダウンすることなく仮想マシンのバックアップを作成することをボリューム シャドウ コピー サービスに許可します。 | 不定 |
 | [Hyper-V ゲスト サービス インターフェイス](#hyper-v-powershell-direct-service) | vmicguestinterface | hv_fcopy_daemon | Hyper-V ホストが仮想マシンとの間でファイルをコピーするのに必要なインターフェイスを提供します。 | 低 |
@@ -74,7 +74,7 @@ DemoVM  Running  Operating normally
 **Linux デーモン名:** hv_utils  
 **説明:** Hyper-V が仮想マシンのシャットダウンを要求できるようにします。  ホストはいつでも仮想マシンを強制的に停止させることができますが、それはシャットダウンを選択するのではなく、電源スイッチをオフにするようなものです。  
 **追加先:** Windows Server 2012、Windows 8  
-**影響:** **影響: 大**  無効にした場合、ホストは仮想マシンで安全なシャットダウンをトリガーできなくなります。  すべてのシャットダウンがハード電源オフになり、データの損失やデータの破損が発生する可能性があります。  
+**影響:** **大きな影響**: 無効にすると、ホストはバーチャルマシン内での使いやすいシャットダウンをトリガーできません。  すべてのシャットダウンがハード電源オフになり、データの損失やデータの破損が発生する可能性があります。  
 
 
 ## <a name="hyper-v-time-synchronization-service"></a>Hyper-V 時刻の同期サービス
@@ -83,7 +83,7 @@ DemoVM  Running  Operating normally
 **Linux デーモン名:** hv_utils  
 **説明:** 仮想マシンのシステム クロックを物理コンピューターのシステム クロックに同期します。  
 **追加先:** Windows Server 2012、Windows 8  
-**影響:** **影響: 大**  無効にした場合、仮想マシンのクロックが変動し不安定になります。  
+**影響:** **大きな影響**: 無効にすると、バーチャルマシンのクロックが不安定になります。  
 
 
 ## <a name="hyper-v-data-exchange-service-kvp"></a>Hyper-V データ交換サービス (KVP)
@@ -127,7 +127,7 @@ DemoVM  Running  Operating normally
 **影響:** 無効にした場合、ホストは、`Copy-VMFile` を使用してゲストとの間でファイルをコピーできなくなります。  Copy-VMFile コマンドレットについては、[こちら](https://docs.microsoft.com/powershell/module/hyper-v/copy-vmfile?view=win10-ps)を参照してください。  
 
 **注:**  
-既定では無効になっています。  [Copy-Item を使用した PowerShell ダイレクト](../user-guide/powershell-direct.md#copy-files-with-new-pssession-and-copy-item)に関するページを参照してください。 
+既定では無効  [Copy-Item を使用した PowerShell ダイレクト](../user-guide/powershell-direct.md#copy-files-with-new-pssession-and-copy-item)に関するページを参照してください。 
 
 
 ## <a name="hyper-v-powershell-direct-service"></a>Hyper-V PowerShell ダイレクト サービス

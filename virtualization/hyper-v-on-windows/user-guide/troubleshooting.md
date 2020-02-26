@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: f0ec8eb4-ffc4-4bf1-9a19-7a8c3975b359
-ms.openlocfilehash: 03bbb4494bbbd790f16c4b6afef387905f7c6c83
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: bdb9feeb2452f2784a3b814e85dc72f3b967a9d3
+ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910892"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77439329"
 ---
 # <a name="troubleshoot-hyper-v-on-windows-10"></a>Windows 10 の Hyper-V のトラブルシューティング
 
@@ -36,4 +36,4 @@ PowerShell では、"システムで '\[path to VHD\]' を作成できません�
 ## <a name="i-get-this-message-when-i-try-to-install-hyper-v-cannot-be-installed-the-processor-does-not-support-second-level-address-translation-slat"></a>インストールしようとすると、このメッセージが表示されます。"Hyper-V をインストールできません: プロセッサは、第 2 レベルのアドレス変換 (SLAT) をサポートしていません。"
 Hyper-V では、仮想マシンを実行するために SLAT が必要です。 コンピューターが SLAT をサポートしていない場合、仮想マシンのホストにすることはできません。
 
-管理ツールのインストールのみを行う場合は、 **[プログラムと機能]**  >  **[Windows の機能の有効化または無効化]** で、 **[Hyper-V プラットフォーム]** の選択を解除します。
+管理ツールのインストールのみを行う場合は、 **[プログラムと機能]** [Windows の機能の有効化または無効化] >  で、 **[Hyper-V プラットフォーム]** の選択を解除します。

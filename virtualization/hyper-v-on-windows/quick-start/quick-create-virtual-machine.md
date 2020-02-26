@@ -7,12 +7,12 @@ ms.date: 04/07/2018
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: f1e75efa-8745-4389-b8dc-91ca931fe5ae
-ms.openlocfilehash: 970e92def02e5386d38a2e72d5ef921aa8321fdf
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 6035143bc1449bc4a8e9bb7a4484b4c5329e6d3c
+ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74911402"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77439629"
 ---
 # <a name="create-a-virtual-machine-with-hyper-v"></a>Hyper-V による仮想マシンの作成
 
@@ -51,7 +51,7 @@ Fall Creators Update で新しい仮想マシンを作成するには:
 
 1. [仮想マシンの作成] を選択します。
 
-以上で作業は終了です。  残りの操作はクイック作成によって行われます。
+以上で終わりです。  残りの操作はクイック作成によって行われます。
 
 ## <a name="windows-10-creators-update-windows-10-version-1703"></a>Windows 10 の作成者の更新 (Windows 10 バージョン 1703)
 
@@ -85,5 +85,5 @@ Fall Creators Update で新しい仮想マシンを作成するには:
 
 Windows 10 Creators Update 以降を実行していない場合は、代わりに、仮想マシンの新規作成ウィザードを使用してこれらの手順に従います。
 
-1. [仮想ネットワークの作成](connect-to-network.md)
-1. [新しい仮想マシンを作成する](create-virtual-machine.md)
+1. [仮想ネットワークを作成する](connect-to-network.md)
+1. [新しい仮想マシンの作成](create-virtual-machine.md)

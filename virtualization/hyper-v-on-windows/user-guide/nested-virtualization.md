@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 68c65445-ce13-40c9-b516-57ded76c1b15
-ms.openlocfilehash: 625a9b36ff782c86065ef3d9124708e5716e066f
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: f819ac04773188525af202d370ba271a2d93e259
+ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910932"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77439349"
 ---
 # <a name="run-hyper-v-in-a-virtual-machine-with-nested-virtualization"></a>入れ子になった仮想化による仮想マシンでの Hyper-V の実行
 
@@ -31,7 +31,7 @@ ms.locfileid: "74910932"
 
 ## <a name="configure-nested-virtualization"></a>入れ子になった仮想化の構成
 
-1. 仮想マシンを作成します。 必要な OS と VM のバージョンについては、前述の前提条件をご覧ください。
+1. バーチャル マシンの作成 必要な OS と VM のバージョンについては、前述の前提条件をご覧ください。
 2. 仮想マシンがオフ状態のときに、次のコマンドを物理的 Hyper-V ホスト上で実行します。 これで、この仮想マシンに対して入れ子になった仮想化が有効になります。
 
 ```

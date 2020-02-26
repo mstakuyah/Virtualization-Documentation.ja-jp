@@ -7,18 +7,18 @@ ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: ae4a18ed-996b-4104-90c5-539c90798e4c
-ms.openlocfilehash: e3255d236a3fbb5ac4d908143750b84e3db82ceb
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 25c72b910af15fc0b498a5b2abce72d32e6d1efd
+ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74911682"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77439599"
 ---
 # <a name="supported-windows-guests"></a>サポートされる Windows ゲスト
 
 この記事では、Windows 上の Hyper-V でサポートされているオペレーティング システムの組み合わせを一覧に示します。  また、サポートされる統合サービスやその他のファクターの概要も紹介します。
 
-Microsoft では、これらのホスト/ゲストの組み合わせをテスト済みです。  これらの組み合わせでの問題については、製品サポート サービスから対応を受けることができます。
+Microsoft では、これらのホスト/ゲストの組み合わせをテスト済みです。  これらの組み合わせの問題は、製品サポート サービスから注意を受け取る可能性があります。
 
 Microsoft では、次のようにサポートを提供します。
 
