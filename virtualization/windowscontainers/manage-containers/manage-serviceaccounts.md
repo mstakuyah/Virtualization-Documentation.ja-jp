@@ -3,17 +3,17 @@ title: Windows コンテナー用に gMSAs を作成する
 description: Windows コンテナーのグループ管理サービスアカウント (gMSAs) を作成する方法。
 keywords: docker、コンテナー、active directory、gmsa、グループの管理されたサービスアカウント、グループの管理されたサービスアカウント
 author: rpsqrd
-ms.date: 09/10/2019
+ms.date: 01/03/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 9ed9029e534d56bfe1830281d0bfd3ddde0cee9e
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 36061cfc491dd9dd581d1e6bce92a29e4a6f217d
+ms.sourcegitcommit: 530712469552a1ef458883001ee748bab2c65ef7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910252"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77628937"
 ---
 # <a name="create-gmsas-for-windows-containers"></a>Windows コンテナー用に gMSAs を作成する
 
@@ -82,9 +82,9 @@ GMSA を作成するときに、複数の異なるコンピューターで同時
 
 次の表に、gMSA を作成するために必要な属性を示します。
 
-|gMSA プロパティ | 必要な値 | 例 |
+|gMSA プロパティ | 必須の値 | 例 |
 |--------------|----------------|--------|
-|名前 | 任意の有効なアカウント名。 | `WebApp01` |
+|Name | 任意の有効なアカウント名。 | `WebApp01` |
 |DnsHostName | アカウント名に追加されたドメイン名。 | `WebApp01.contoso.com` |
 |ServicePrincipalNames | 少なくともホスト SPN を設定し、必要に応じて他のプロトコルを追加します。 | `'host/WebApp01', 'host/WebApp01.contoso.com'` |
 |PrincipalsAllowedToRetrieveManagedPassword | コンテナーホストを含むセキュリティグループ。 | `WebApp01Hosts` |
@@ -109,7 +109,7 @@ New-ADGroup -Name "WebApp01 Authorized Hosts" -SamAccountName "WebApp01Hosts" -G
 New-ADServiceAccount -Name "WebApp01" -DnsHostName "WebApp01.contoso.com" -ServicePrincipalNames "host/WebApp01", "host/WebApp01.contoso.com" -PrincipalsAllowedToRetrieveManagedPassword "WebApp01Hosts"
 
 # Add your container hosts to the security group
-Add-ADGroupMember -Identity "WebApp01Hosts" -Members "ContainerHost01", "ContainerHost02", "ContainerHost03"
+Add-ADGroupMember -Identity "WebApp01Hosts" -Members "ContainerHost01$", "ContainerHost02$", "ContainerHost03$"
 ```
 
 開発、テスト、運用の各環境用に個別の gMSA アカウントを作成することをお勧めします。
@@ -164,13 +164,19 @@ Docker は、Docker データディレクトリの**Credentialspecs**ディレ�
 
     既定では、このコマンドレットは、指定された gMSA 名をコンテナーのコンピューターアカウントとして使用して、cred 仕様を作成します。 ファイルは、ファイル名の gMSA ドメインとアカウント名を使用して、Docker CredentialSpecs ディレクトリに保存されます。
 
-    コンテナーでサービスまたはプロセスをセカンダリ gMSA として実行している場合は、追加の gMSA アカウントを含む資格情報仕様を作成できます。 これを行うには、`-AdditionalAccounts` パラメーターを使用します。
+    ファイルを別のディレクトリに保存する場合は、`-Path` パラメーターを使用します。
+
+    ```powershell
+    New-CredentialSpec -AccountName WebApp01 -Path "C:\MyFolder\WebApp01_CredSpec.json"
+    ```
+
+    コンテナーでサービスまたはプロセスをセカンダリ gMSA として実行している場合は、追加の gMSA アカウントを含む資格情報仕様を作成することもできます。 これを行うには、`-AdditionalAccounts` パラメーターを使用します。
 
     ```powershell
     New-CredentialSpec -AccountName WebApp01 -AdditionalAccounts LogAgentSvc, OtherSvc
     ```
 
-    サポートされているパラメーターの完全な一覧については、`Get-Help New-CredentialSpec`を実行してください。
+    サポートされているパラメーターの完全な一覧については、`Get-Help New-CredentialSpec -Full`を実行してください。
 
 4. 次のコマンドレットを使用して、すべての資格情報の仕様と完全なパスの一覧を表示できます。
 
@@ -178,7 +184,7 @@ Docker は、Docker データディレクトリの**Credentialspecs**ディレ�
     Get-CredentialSpec
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次のステップ:
 
 GMSA アカウントの設定が完了したので、次の目的で使用できます。
 
@@ -188,7 +194,7 @@ GMSA アカウントの設定が完了したので、次の目的で使用でき
 
 セットアップ中に問題が発生した場合は、[トラブルシューティングガイド](gmsa-troubleshooting.md)で解決策を確認してください。
 
-## <a name="additional-resources"></a>その他の資料
+## <a name="additional-resources"></a>その他のリソース
 
 - GMSAs の詳細については、「グループの管理された[サービスアカウントの概要](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)」を参照してください。
 - ビデオデモについては、Ignite 2016 からの記録された[デモ](https://youtu.be/cZHPz80I-3s?t=2672)をご覧ください。

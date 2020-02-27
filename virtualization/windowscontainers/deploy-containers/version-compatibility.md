@@ -3,12 +3,12 @@ title: Windows コンテナーのバージョンの互換性
 description: Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。
 keywords: メタデータ, コンテナー, バージョン
 author: taylorb-microsoft
-ms.openlocfilehash: 1f068cd011b2172e75c240d566473ccab25d984a
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 32d40997ffef47e4eae2d06303f45522623a5e54
+ms.sourcegitcommit: 530712469552a1ef458883001ee748bab2c65ef7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910482"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77628947"
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーのバージョンの互換性
 
@@ -19,7 +19,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 ## <a name="windows-server-host-os-compatibility"></a>Windows Server ホスト OS の互換性
 
 <!-- start tab view -->
-# <a name="windows-server-version-1909tabwindows-server-1909"></a>[Windows Server バージョン1909](#tab/windows-server-1909)
+# <a name="windows-server-version-1909"></a>[Windows Server バージョン1909](#tab/windows-server-1909)
 
 |コンテナーの基本イメージの OS バージョン|Hyper-v の分離をサポートします。|プロセス分離のサポート|
 |---|:---:|:---:|
@@ -28,7 +28,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 |Windows Server 2019|&#10004;|&#10060;|
 |Windows Server 2016|&#10004;|&#10060;|
 
-# <a name="windows-server-version-1903tabwindows-server-1903"></a>[Windows Server バージョン1903](#tab/windows-server-1903)
+# <a name="windows-server-version-1903"></a>[Windows Server バージョン1903](#tab/windows-server-1903)
 
 |コンテナーの基本イメージの OS バージョン|Hyper-v の分離をサポートします。|プロセス分離のサポート|
 |---|:---:|:---:|
@@ -37,7 +37,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 |Windows Server 2019|&#10004;|&#10060;|
 |Windows Server 2016|&#10004;|&#10060;|
 
-# <a name="windows-server-2019tabwindows-server-2019"></a>[Windows Server 2019](#tab/windows-server-2019)
+# <a name="windows-server-2019"></a>[Windows Server 2019](#tab/windows-server-2019)
 
 |コンテナーの基本イメージの OS バージョン|Hyper-v の分離をサポートします。|プロセス分離のサポート|
 |---|:---:|:---:|
@@ -46,7 +46,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 |Windows Server 2019|&#10004;|&#10004;|
 |Windows Server 2016|&#10004;|&#10060;|
 
-# <a name="windows-server-2016tabwindows-server-2016"></a>[Windows Server 2016](#tab/windows-server-2016)
+# <a name="windows-server-2016"></a>[Windows Server 2016](#tab/windows-server-2016)
 
 |コンテナーの基本イメージの OS バージョン|Hyper-v の分離をサポートします。|プロセス分離のサポート|
 |---|:---:|:---:|
@@ -62,7 +62,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 
 <!-- start tab view -->
 
-# <a name="windows-10-version-1909tabwindows-10-1909"></a>[Windows 10 バージョン1909](#tab/windows-10-1909)
+# <a name="windows-10-version-1909"></a>[Windows 10 バージョン1909](#tab/windows-10-1909)
 
 |コンテナーの基本イメージの OS バージョン|Hyper-v の分離をサポートします。|プロセス分離のサポート|
 |---|:---:|:---:|
@@ -71,7 +71,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 |Windows Server 2019|&#10004;|&#10060;|
 |Windows Server 2016|&#10004;|&#10060;|
 
-# <a name="windows-10-version-1903tabwindows-10-1903"></a>[Windows 10 バージョン1903](#tab/windows-10-1903)
+# <a name="windows-10-version-1903"></a>[Windows 10 バージョン1903](#tab/windows-10-1903)
 
 |コンテナーの基本イメージの OS バージョン|Hyper-v の分離をサポートします。|プロセス分離のサポート|
 |---|:---:|:---:|
@@ -80,7 +80,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 |Windows Server 2019|&#10004;|&#10060;|
 |Windows Server 2016|&#10004;|&#10060;|
 
-# <a name="windows-10-version-1809tabwindows-10-1809"></a>[Windows 10 バージョン 1809](#tab/windows-10-1809)
+# <a name="windows-10-version-1809"></a>[Windows 10 バージョン1809](#tab/windows-10-1809)
 
 |コンテナーの基本イメージの OS バージョン|Hyper-v の分離をサポートします。|プロセス分離のサポート|
 |---|:---:|:---:|
@@ -104,15 +104,17 @@ Windows Server のコンテナーと基になるホストは1つのカーネル�
 
 #### <a name="revision-number-patching"></a>リビジョン番号 (修正プログラムの適用)
 
-コンテナーホストとコンテナーイメージのリビジョン番号が異なる場合、Windows Server のコンテナーの起動がブロックされることはありません。 たとえば、コンテナーのホストがバージョン 10.0.14393.1914 (KB4051033 が適用された Windows Server 2016) であり、コンテナーイメージがバージョン 10.0.14393.1944 (KB4053579 が適用されている Windows Server 2016) の場合、イメージはリビジョンでも起動されます。数値は異なります。
+コンテナーホストとコンテナーイメージのリビジョン番号が異なる場合、Windows Server 2016 ベースのコンテナーの起動がブロックされます。 たとえば、コンテナーホストのバージョンが10.0.14393 の場合などです。**1914** (KB4051033 が適用された Windows Server 2016) と、コンテナーイメージはバージョン10.0.14393 です。**1944** (KB4053579 が適用された Windows Server 2016) では、イメージは起動されません。
 
-Windows Server 2016 ベースのホストまたはイメージの場合は、コンテナーイメージのリビジョンが、サポートされている構成のホストと一致している必要があります。 ただし、Windows Server バージョン1709以降を使用しているホストまたはイメージの場合、この規則は適用されず、ホストとコンテナーのイメージには一致するリビジョンが必要ありません。 最新の修正プログラムと更新プログラムを使用して、システムを最新の状態に保つことをお勧めします。
+ただし、Windows Server バージョン1809以降を使用しているホストまたはイメージの場合、この規則は適用されず、ホストとコンテナーのイメージには一致するリビジョンが必要ありません。 
+
+最新のパッチと更新プログラムを使用してシステム (ホストとコンテナー) を最新の状態に保ち、セキュリティを維持することをお勧めします。
 
 #### <a name="practical-application"></a>実用的なアプリケーション
 
 例 1: コンテナーホストが、KB4041691 が適用された Windows Server 2016 を実行している。 このホストに展開されているすべての Windows Server コンテナーは、バージョン 10.0.14393.1770 container base イメージに基づいている必要があります。 ホストコンテナーに KB4053579 を適用する場合は、ホストコンテナーがサポートしていることを確認するために、イメージも更新する必要があります。
 
-例 2: コンテナーホストは、KB4043961 が適用された Windows Server バージョン1709を実行しています。 このホストに展開されているすべての Windows Server コンテナーは、Windows Server version 1709 (10.0.16299) コンテナーの基本イメージに基づいている必要がありますが、ホスト KB と一致する必要はありません。 KB4054517 がホストに適用されている場合でも、コンテナーイメージは引き続きサポートされますが、潜在的なセキュリティの問題に対処するために更新することをお勧めします。
+例 2: コンテナーホストは、KB4534273 が適用された Windows Server バージョン1809を実行しています。 このホストに展開されているすべての Windows Server コンテナーは、Windows Server version 1809 (10.0.17763) コンテナーの基本イメージに基づいている必要がありますが、ホスト KB と一致する必要はありません。 KB4534273 がホストに適用されている場合でも、コンテナーイメージは引き続きサポートされますが、潜在的なセキュリティの問題に対処するために更新することをお勧めします。
 
 #### <a name="querying-version"></a>バージョンの照会
 
@@ -129,7 +131,7 @@ Microsoft Windows [Version 10.0.16299.125]
 
 方法 2: HKEY_LOCAL_MACHINE \Software\Microsoft\Windows NT\CurrentVersion で次のレジストリキーを照会します。
 
-次に、例を示します。
+例 :
 
 ```batch
 C:\>reg query "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion" /v BuildLabEx
@@ -241,7 +243,7 @@ y5blbdum70zoh1f6uhx5nxsfv    \_ angry_liskov.1   microsoft/iis:windowsservercore
 
 ### <a name="fix---update-the-service-to-use-a-matching-version"></a>修正方法: 一致するバージョンが使用されるようにサービスを更新する
 
-Docker Swarm を使う場合、2 つの考慮事項があります。 作成したイメージを使用するサービスを含む作成ファイルがある場合は、それに応じて参照を更新する必要があります。 次に、例を示します。
+Docker Swarm を使う場合、2 つの考慮事項があります。 作成したイメージを使用するサービスを含む作成ファイルがある場合は、それに応じて参照を更新する必要があります。 例 :
 
 ``` yaml
 version: '3'
@@ -271,7 +273,7 @@ services:
 
 これには、Docker サービスの構成を変更した後、Docker エンジンを再起動します。
 
-1. 次のファイルを編集します。`C:\ProgramData\docker\config\daemon.json`
+1. `C:\ProgramData\docker\config\daemon.json` の編集
 2. `"exec-opts":["isolation=hyperv"]` の行を追加します
 
     >[!NOTE]
@@ -489,7 +491,7 @@ System Info:
 
     この例では、情報は次のようになります。
 
-    名前         | バージョン
+    Name         | バージョン
     -------------|--------------------------------------------------------
     38519acs9010 | 14393.1715.amd64fre.rs1_release_inmarket.170906-1810
     38519acs9011 | 16299.0.amd64fre.rs3_release.170922-1354
