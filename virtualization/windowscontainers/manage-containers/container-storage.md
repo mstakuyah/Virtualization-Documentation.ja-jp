@@ -3,12 +3,12 @@ title: コンテナーストレージの概要
 description: Windows Server コンテナーがホストとその他の種類の記憶域を使用する方法
 keywords: コンテナー, ボリューム, 記憶域, マウント, bindmount
 author: cwilhit
-ms.openlocfilehash: fba08de884d59cc1b656895ec2b7078ba3975269
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: f758877f1131813fe4637a01c03b49d7a18a83c4
+ms.sourcegitcommit: db085db8a54664184a2f7cfa01d00598a1c66992
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910272"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78288674"
 ---
 # <a name="container-storage-overview"></a>コンテナーストレージの概要
 
@@ -26,7 +26,7 @@ ms.locfileid: "74910272"
 
 ### <a name="where-layers-are-stored-and-how-to-change-it"></a>レイヤーの保存場所と変更方法
 
-既定のインストールでは、レイヤーが `C:\ProgramData\docker` に格納され、"image" ディレクトリおよび "windowsfilter" ディレクトリに分割されます。 レイヤーの保存場所は、「[Windows 上の Docker エンジン](../manage-docker/configure-docker-daemon.md)」の記載に従い、`docker-root` 構成を使用して変更できます。
+既定のインストールでは、レイヤーが `C:\ProgramData\docker` に格納され、"image" ディレクトリおよび "windowsfilter" ディレクトリに分割されます。 レイヤーの保存場所は、「`docker-root`Windows 上の Docker エンジン[」の記載に従い、](../manage-docker/configure-docker-daemon.md) 構成を使用して変更できます。
 
 > [!NOTE]
 > レイヤー記憶域は、NTFS のみでサポートされます。 ReFS はサポートされません。
@@ -41,9 +41,9 @@ ms.locfileid: "74910272"
 
 ### <a name="supported-operations-in-layer-storage"></a>レイヤー記憶域でサポートされる操作
 
-コンテナーの実行では、ほとんどの NTFS 操作を使用できます (トランザクションを除く)。 これには ACL の設定が含まれており、すべての ACL はコンテナー内でチェックされます。 1 つのコンテナー内で複数のユーザーとしてプロセスを実行するには、`RUN net user /create ...` で `Dockerfile` 内にユーザーを作成し、ファイルの ACL を設定します。次に、[Dockerfile USER ディレクティブ](https://docs.docker.com/engine/reference/builder/#user)を使用して、そのユーザーで実行するプロセスを構成します。
+コンテナーの実行では、ほとんどの NTFS 操作を使用できます (トランザクションを除く)。 これには ACL の設定が含まれており、すべての ACL はコンテナー内でチェックされます。 1 つのコンテナー内で複数のユーザーとしてプロセスを実行するには、`Dockerfile` で `RUN net user /create ...` 内にユーザーを作成し、ファイルの ACL を設定します。次に、[Dockerfile USER ディレクティブ](https://docs.docker.com/engine/reference/builder/#user)を使用して、そのユーザーで実行するプロセスを構成します。
 
-## <a name="persistent-storage"></a>Persistent Storage
+## <a name="persistent-storage"></a>永続ストレージ
 
 Windows コンテナーは、バインドマウントとボリュームを介して永続ストレージを提供するメカニズムをサポートしています。 詳細については、「[コンテナーの永続ストレージ](./persistent-storage.md)」を参照してください。
 
@@ -60,7 +60,7 @@ Windows アプリケーションでは、新しいファイルをインストー
 または、docker 構成ファイルを直接変更することもできます。
 
 ```Docker Configuration File
-"storage-opts": [
+"storage-opt": [
     "size=50GB"
   ]
 ```
