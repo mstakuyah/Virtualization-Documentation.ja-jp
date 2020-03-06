@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 46eefb03f8f5a53333f5e7eca7074ab34e72a767
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: cd16f496b85c0977af0d40142768833acadea0f4
+ms.sourcegitcommit: 6f505becbafb1e9785c67d6b0715c4c3af074116
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910072"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78338046"
 ---
 # <a name="windows-container-network-drivers"></a>Windows コンテナーネットワークドライバー  
 
@@ -48,9 +48,8 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
   2. L2bridge ネットワークが新しいカスタム IP サブネットで構成されています
   
   構成2では、ゲートウェイとして機能するホストネットワークコンパートメントにエンドポイントを追加し、指定されたプレフィックスのルーティング機能を構成する必要があります。 
-  > 必要: Windows Server 2016、Windows 10 の作成者の更新プログラム、またはそれ以降のリリースが必要です。
-
-  > 必要: 外部接続用の[Outboundnat ポリシー](./advanced.md#specify-outboundnat-policy-for-a-network) 。
+  >[!TIP]
+  >L2bridge を構成してインストールする方法の詳細については、[こちら](https://techcommunity.microsoft.com/t5/networking-blog/l2bridge-container-networking/ba-p/1180923)を参照してください。
 
 - **l2tunnel** -l2bridge に似ています_が、このドライバーは Microsoft Cloud スタック (Azure) でのみ使用_してください。 コンテナーからのパケットは、SDN ポリシーが適用されている仮想化ホストに送信されます。
 
@@ -61,7 +60,7 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
 
 ### <a name="networking-modesdocker-drivers"></a>ネットワークモード/Docker ドライバー
 
-  | Docker Windows ネットワーク ドライバー | 標準的な使用 | コンテナーからコンテナー (単一ノード) | コンテナーから外部 (単一ノード + マルチノード) | コンテナーとコンテナー間 (マルチノード) |
+  | Docker Windows ネットワーク ドライバー | 一般的な用途 | コンテナーからコンテナー (単一ノード) | コンテナーから外部 (単一ノード + マルチノード) | コンテナーとコンテナー間 (マルチノード) |
   |-------------------------------|:------------:|:------------------------------------:|:------------------------------------------------:|:-----------------------------------:|
   | **NAT (既定値)** | 開発者向け | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li> クロスサブネット: サポートされていません (NAT 内部プレフィックスが1つのみ)</li></ul> | 管理 vNIC (WinNAT にバインド) を経由してルーティング | 直接サポート外: ホストを経由してポートを公開する必要があります |
   | **Transparent** | 開発者または小規模な開発向け | <ul><li>同一サブネット: Hyper-V 仮想スイッチを介したブリッジ接続</li><li>クロス サブネット: コンテナー ホストを経由してルーティング</li></ul> | (物理) ネットワーク アダプターへの直接アクセスでコンテナー ホストを経由してルーティング | (物理) ネットワーク アダプターへの直接アクセスでコンテナー ホストを経由してルーティング |
@@ -76,7 +75,7 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
 | ネットワーク モード/ドライバー | IPAM |
 | -------------------------|:----:|
 | NAT | 内部 NAT サブネットプレフィックスからのホストネットワークサービス (HNS) による動的 IP の割り当てと割り当て |
-| 透過 | コンテナー ホストのネットワーク プレフィックス内で IP アドレスから静的または動的 (外部 DHCP サーバーを使用して) IP 割り当て/設定 |
+| 透明 | コンテナー ホストのネットワーク プレフィックス内で IP アドレスから静的または動的 (外部 DHCP サーバーを使用して) IP 割り当て/設定 |
 | オーバーレイ | Docker エンジン Swarm モードで管理されるプレフィックスからの動的 IP 割り当てと HNS による設定 |
 | L2Bridge | コンテナーホストのネットワークプレフィックス内の IP アドレスからの静的 IP の割り当てと割り当て (または、HNS 経由で割り当てることもできます) |
 | L2Tunnel | Azure のみ: プラグインから動的 IP 割り当て/設定 |
@@ -89,5 +88,5 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
 | :---: | :---------------     |  :---                |
 | nat | 使用可能 | Docker EE で使用可能 |  
 | overlay | 使用可能 | はい (Docker EE または kube) |
-| transparent | 使用不可 | 使用不可 |
+| 透明な | 使用不可 | 使用不可 |
 | l2bridge | 使用不可 | はい (kube を使用) |
