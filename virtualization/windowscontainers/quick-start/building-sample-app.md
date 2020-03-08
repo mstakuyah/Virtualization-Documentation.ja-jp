@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: fab0dc46ddcc8c82a010d408032e5f3c4cea8d69
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 587e8de5f0d593f92f6301c87bf68e08a8bbd839
+ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910142"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78854006"
 ---
 # <a name="containerize-a-net-core-app"></a>コンテナー化 a .NET Core アプリ
 
@@ -71,7 +71,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build-env
 WORKDIR /app
 ```
 
-最初の一連の行では、コンテナー構築の基盤として使う基本イメージを宣言します。 ローカル システムにこのイメージがまだ存在しない場合、docker が自動的に取得を試みます。 `mcr.microsoft.com/dotnet/core/sdk:2.1` には .NET core 2.1 SDK がインストールされています。そのため、バージョン2.1 をターゲットとする ASP .NET core プロジェクトをビルドする作業は、ここで行います。 次の手順では、コンテナー内の作業ディレクトリを `/app`に変更します。このため、この後に続くすべてのコマンドがこのコンテキストで実行されます。
+最初の一連の行では、コンテナー構築の基盤として使う基本イメージを宣言します。 ローカル システムにこのイメージがまだ存在しない場合、docker が自動的に取得を試みます。 `mcr.microsoft.com/dotnet/core/sdk:2.1` には .NET core 2.1 SDK がインストールされているため、バージョン2.1 をターゲットとする ASP .NET core プロジェクトをビルドする必要があります。 次の手順では、コンテナー内の作業ディレクトリを `/app`に変更します。このため、この後に続くすべてのコマンドがこのコンテキストで実行されます。
 
 ```Dockerfile
 COPY *.csproj ./
@@ -103,7 +103,7 @@ ENTRYPOINT ["dotnet", "asp-net-getting-started.dll"]
 
 _複数段階のビルド_を実行するために dockerfile を作成しました。 Dockerfile を実行すると、一時的なコンテナーである `build-env`を .NET core 2.1 SDK と共に使用してサンプルアプリをビルドし、最終的なコンテナーのサイズを最小限に抑えるために、出力されたバイナリを .NET core 2.1 runtime のみを含む別のコンテナーにコピーします。
 
-## <a name="build-and-run-the-app"></a>アプリをビルドして実行する
+## <a name="build-and-run-the-app"></a>アプリケーションをビルドし、実行します。
 
 Dockerfile が記述されたので、Dockerfile で Docker をポイントし、イメージをビルドして実行するように指示できます。
 
@@ -126,11 +126,11 @@ Dockerfile が記述されたので、Dockerfile で Docker をポイントし�
    * `--name myapp` は Docker に対して、このコンテナーに対してクエリを実行するのに便利な名前を与えるように Docker に指示します (Docker によって実行時に割り当てられたコンテキスト ID を検索する必要はありません)。
    * `my-asp-app` は、Docker で実行するイメージです。 これは、`docker build` プロセスの概念として生成されたコンテナーイメージです。
 
-3. Web ブラウザーの web ブラウザーを開き、`http://localhost:5000` に移動して、次のスクリーンショットに示すように、コンテナー化されたアプリケーションを表示します。
+3. Web ブラウザーを開き、`http://localhost:5000` に移動して、次のスクリーンショットに示すように、コンテナー化されたアプリケーションを表示します。
 
    >![ASP.NET Core web ページ、コンテナー内の localhost から実行する](media/SampleAppScreenshot.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次のステップ:
 
 1. 次の手順では、Azure Container Registry を使用して、コンテナー化された ASP.NET web アプリをプライベートレジストリに発行します。 これにより、組織に展開することができます。
 

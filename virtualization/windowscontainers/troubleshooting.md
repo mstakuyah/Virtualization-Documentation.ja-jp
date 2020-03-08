@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ebd79cd3-5fdd-458d-8dc8-fc96408958b5
-ms.openlocfilehash: 1de86a2492ca899dc3fb932e0d57927fa4000fd0
-ms.sourcegitcommit: 15b5ab92b7b8e96c180767945fdbb2963c3f6f88
+ms.openlocfilehash: 549209c40c2332bdc197375ce4e501467280fa18
+ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74911712"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78853887"
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -90,7 +90,7 @@ Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-3
 Docker エンジンのデバッグ レベルのログ出力を有効にすることもできます。 これは、トラブルシューティングに必要な詳細情報が通常のログでは得られない場合に役立つ可能性があります。
 
 管理者特権でのコマンド プロンプトを開いてから、`sc.exe qc docker` を実行して Docker サービスの現在のコマンド ラインを取得します。
-以下に例を示します。
+例:
 ```
 C:\> sc.exe qc docker
 [SC] QueryServiceConfig SUCCESS
@@ -112,7 +112,7 @@ SERVICE_NAME: docker
 - " をそれぞれ \ でエスケープする
 - コマンド全体を " で囲む
 
-変更したら、`sc.exe config docker binpath=` の後に変更後の文字列を付けて実行します。 次に、例を示します。 
+変更したら、`sc.exe config docker binpath=` の後に変更後の文字列を付けて実行します。 例 : 
 ```
 sc.exe config docker binpath= "\"C:\Program Files\Docker\dockerd.exe\" --run-service -D"
 ```
@@ -136,9 +136,9 @@ sc.exe stop docker
 
 一般に、これは、Microsoft サポートまたは docker 開発者によって明示的に要求された場合にのみ有効です。 Docker がハングしているように見える状況を診断するために使用できます。 
 
-[docker signal.exe](https://github.com/jhowardmsft/docker-signal) をダウンロードします。
+[docker signal.exe](https://github.com/moby/docker-signal) をダウンロードします。
 
-使い方:
+使用法:
 ```PowerShell
 docker-signal --pid=$((Get-Process dockerd).Id)
 ```
@@ -155,9 +155,9 @@ Docker エンジンは、Windows 固有のホスト コンピューティング 
 - Microsoft-Windows-Hyper-V-Compute-Admin
 - Microsoft-Windows-Hyper-V-Compute-Operational
 
-これらはイベント ビューアーに表示され、PowerShell を使用して照会することもできます。
+これらはイベントビューアーに表示され、PowerShell を使用してクエリを行うこともできます。
 
-次に、例を示します。
+例 :
 ```PowerShell
 Get-WinEvent -LogName Microsoft-Windows-Hyper-V-Compute-Admin
 Get-WinEvent -LogName Microsoft-Windows-Hyper-V-Compute-Operational 

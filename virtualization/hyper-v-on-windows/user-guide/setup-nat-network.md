@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1f8a691c-ca75-42da-8ad8-a35611ad70ec
-ms.openlocfilehash: e69775c15359645f3659c9bee3562733415228d5
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 1652c3bcb32ddbc4e05e8821d0e646a76a2fd4f0
+ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74909432"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78853966"
 ---
 # <a name="set-up-a-nat-network"></a>NAT ネットワークのセットアップ
 
@@ -43,13 +43,13 @@ NAT は、ホスト コンピューターの IP アドレスと内部 Hyper-V �
 ## <a name="create-a-nat-virtual-network"></a>NAT 仮想ネットワークを作成する
 新しい NAT ネットワークの設定方法を段階的に確認しましょう。
 
-1.  管理者として PowerShell コンソールを開きます。  
+1. 管理者として PowerShell コンソールを開きます。  
 
 2. 内部スイッチを作成する
 
-  ``` PowerShell
-  New-VMSwitch -SwitchName "SwitchName" -SwitchType Internal
-  ```
+    ```powershell
+    New-VMSwitch -SwitchName "SwitchName" -SwitchType Internal
+    ```
 
 3. 作成した仮想スイッチのインターフェイス インデックスを検索します。
 
@@ -57,7 +57,7 @@ NAT は、ホスト コンピューターの IP アドレスと内部 Hyper-V �
 
     出力は以下のようになります。
 
-    ```
+    ```console
     PS C:\> Get-NetAdapter
 
     Name                  InterfaceDescription               ifIndex Status       MacAddress           LinkSpeed
@@ -72,56 +72,56 @@ NAT は、ホスト コンピューターの IP アドレスと内部 Hyper-V �
 
 4. [New-NetIPAddress](https://docs.microsoft.com/powershell/module/nettcpip/New-NetIPAddress) を利用して NAT ゲートウェイを構成します。  
 
-  汎用コマンドを次に示します。
-  ``` PowerShell
-  New-NetIPAddress -IPAddress <NAT Gateway IP> -PrefixLength <NAT Subnet Prefix Length> -InterfaceIndex <ifIndex>
-  ```
+    汎用コマンドを次に示します。
+    ```powershell
+    New-NetIPAddress -IPAddress <NAT Gateway IP> -PrefixLength <NAT Subnet Prefix Length> -InterfaceIndex <ifIndex>
+    ```
 
-  ゲートウェイを構成するためには、ネットワークについていくつかの情報が必要です。  
-  * **IPAddress** -- NAT ゲートウェイ IP は、NAT ゲートウェイ IP として使用する IPv4 または IPv6 アドレスを指定するものです。  
-    一般的な形式は a.b.c.1 です (例: 172.16.0.1)。  最後の位置を 1 にする必要はありませんが、通常はそうなっています (プレフィックスの長さに基づきます)。
+    ゲートウェイを構成するためには、ネットワークについていくつかの情報が必要です。  
+    * **IPAddress** -- NAT ゲートウェイ IP は、NAT ゲートウェイ IP として使用する IPv4 または IPv6 アドレスを指定するものです。  
+      一般的な形式は a.b.c.1 です (例: 172.16.0.1)。  最後の位置を 1 にする必要はありませんが、通常はそうなっています (プレフィックスの長さに基づきます)。
 
-    一般的なゲートウェイ IP は 192.168.0.1 です。  
+      一般的なゲートウェイ IP は 192.168.0.1 です。  
 
-  * **PrefixLength** --  NAT Subnet Prefix Length により、NAT ローカル サブネット サイズが定義されます (サブネット マスク)。
-    サブネット プレフィックスの長さは、0 ～ 32 の整数値になります。
+    * **プレフィックス**--Nat サブネットプレフィックス長は、nat ローカルサブネットのサイズ (サブネットマスク) を定義します。
+      サブネット プレフィックスの長さは、0 ～ 32 の整数値になります。
 
-    0 の場合、インターネット全体がマッピングされます。32 の場合、IP を 1 つだけマッピングできます。  一般的な値は 24 ～ 12 であり、NAT に接続する IP の数により決まります。
+      0 の場合、インターネット全体がマッピングされます。32 の場合、IP を 1 つだけマッピングできます。  一般的な値は 24 ～ 12 であり、NAT に接続する IP の数により決まります。
 
-    一般的な PrefixLength は 24 です。これは 255.255.255.0 のサブネット マスクです。
+      一般的な PrefixLength は 24 です。これは 255.255.255.0 のサブネット マスクです。
 
-  * **InterfaceIndex**: ifIndex は、前の手順で指定した、仮想スイッチのインターフェイス インデックスです。
+    * **InterfaceIndex**: ifIndex は、前の手順で指定した、仮想スイッチのインターフェイス インデックスです。
 
-  次を実行して、NAT ゲートウェイを作成します。
+    次を実行して、NAT ゲートウェイを作成します。
 
-  ``` PowerShell
-  New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex 24
-  ```
+    ```powershell
+    New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex 24
+    ```
 
 5. [New-NetNat](https://docs.microsoft.com/powershell/module/netnat/New-NetNat) を使用し、NAT ネットワークを構成します。  
 
-  汎用コマンドを次に示します。
+    汎用コマンドを次に示します。
 
-  ``` PowerShell
-  New-NetNat -Name <NATOutsideName> -InternalIPInterfaceAddressPrefix <NAT subnet prefix>
-  ```
+    ```powershell
+    New-NetNat -Name <NATOutsideName> -InternalIPInterfaceAddressPrefix <NAT subnet prefix>
+    ```
 
-  ゲートウェイを構成するには、ネットワークと NAT ゲートウェイに関する情報を提供する必要があります。  
-  * **Name** -- NATOutsideName は NAT ネットワークの名前です。  NAT ネットワークを削除するとき、これを使用します。
+    ゲートウェイを構成するには、ネットワークと NAT ゲートウェイに関する情報を提供する必要があります。  
+    * **Name** -- NATOutsideName は NAT ネットワークの名前です。  NAT ネットワークを削除するとき、これを使用します。
 
-  * **InternalIPInterfaceAddressPrefix** -- NAT サブネット プレフィックスは、上記の NAT ゲートウェイ IP プレフィックスと上記の NAT Subnet Prefix Length の両方を表すものです。
+    * **InternalIPInterfaceAddressPrefix** -- NAT サブネット プレフィックスは、上記の NAT ゲートウェイ IP プレフィックスと上記の NAT Subnet Prefix Length の両方を表すものです。
 
     一般的な形式は a.b.c.0/NAT Subnet Prefix Length です
 
     上記から、この例では、192.168.0.0/24 を使用します。
 
-  この例では、次を実行して NAT ネットワークを設定します。
+    この例では、次を実行して NAT ネットワークを設定します。
 
-  ``` PowerShell
-  New-NetNat -Name MyNATnetwork -InternalIPInterfaceAddressPrefix 192.168.0.0/24
-  ```
+    ```powershell
+    New-NetNat -Name MyNATnetwork -InternalIPInterfaceAddressPrefix 192.168.0.0/24
+    ```
 
-これで終了です。  これで仮想 NAT ネットワークができました。  NAT ネットワークに仮想マシンを追加するには、[ここの指示](#connect-a-virtual-machine)に従ってください。
+おめでとうございます!  これで仮想 NAT ネットワークができました。  NAT ネットワークに仮想マシンを追加するには、[ここの指示](#connect-a-virtual-machine)に従ってください。
 
 ## <a name="connect-a-virtual-machine"></a>仮想マシンを接続する
 
@@ -203,55 +203,58 @@ Docker/HNS によって Windows コンテナーに Ip が割り当てられ、�
 このガイドでは、ホストに他に NAT がないものと想定しています。 ただし、アプリケーションまたはサービスで NAT の使用が必要であり、設定の一環として作成される場合があります。 Windows (WinNAT) でサポートされる内部 NAT サブネット プレフィックスは 1 つだけです。複数の NAT を作成しようとすると、システムが不明状態になります。
 
 この問題があるかを確認するには、NAT が 1 つだけであることを確認します。
-``` PowerShell
+```powershell
 Get-NetNat
 ```
 
 NAT が既に存在する場合はそれを削除します。
-``` PowerShell
+```powershell
 Get-NetNat | Remove-NetNat
 ```
 アプリケーションまたは機能 (例: Windows コンテナー) ごとに「内部」vmSwitch が 1 つだけ設定されていることを確認します。 vSwitch の名前を記録します
-``` PowerShell
+```powershell
 Get-VMSwitch
 ```
 
-以前の NAT のプライベート IP アドレス (例: NAT の既定のゲートウェイ IP Address - 通常 *.1) がアダプターに割り当てられていないか確認します
-``` PowerShell
+プライベート IP アドレスがあるかどうかを確認します (例: NAT の既定のゲートウェイ IP アドレス–通常は_x_)。_y_。_z_.1) 以前の NAT からアダプターに割り当てられたままになっている
+```powershell
 Get-NetIPAddress -InterfaceAlias "vEthernet (<name of vSwitch>)"
 ```
 
 古いプライベート IP アドレスが使用されている場合、それを削除してください。
-``` PowerShell
+```powershell
 Remove-NetIPAddress -InterfaceAlias "vEthernet (<name of vSwitch>)" -IPAddress <IPAddress>
 ```
 
 **複数の Nat の削除**  
 複数の NAT ネットワークが誤って作成されてしまうと報告されています。 これは、最新のビルド (Windows Server 2016 Technical Preview 5 や Windows 10 Insider Preview ビルドなど) のバグが原因です。 複数の NAT ネットワークがある場合は、docker ネットワーク ls や Get-ContainerNetwork を実行した後に、管理者特権の PowerShell から次を実行してください。
 
+```powershell
+$keys = Get-ChildItem "HKLM:\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\SwitchList"
+foreach($key in $keys)
+{
+   if ($key.GetValue("FriendlyName") -eq 'nat')
+   {
+      $newKeyPath = $KeyPath+"\"+$key.PSChildName
+      Remove-Item -Path $newKeyPath -Recurse
+   }
+}
+Remove-NetNat -Confirm:$false
+Get-ContainerNetwork | Remove-ContainerNetwork
+Get-VmSwitch -Name nat | Remove-VmSwitch # failure is expected
+Stop-Service docker
+Set-Service docker -StartupType Disabled
 ```
-PS> $KeyPath = "HKLM:\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\SwitchList"
-PS> $keys = get-childitem $KeyPath
-PS> foreach($key in $keys)
-PS> {
-PS>    if ($key.GetValue("FriendlyName") -eq 'nat')
-PS>    {
-PS>       $newKeyPath = $KeyPath+"\"+$key.PSChildName
-PS>       Remove-Item -Path $newKeyPath -Recurse
-PS>    }
-PS> }
-PS> remove-netnat -Confirm:$false
-PS> Get-ContainerNetwork | Remove-ContainerNetwork
-PS> Get-VmSwitch -Name nat | Remove-VmSwitch (_failure is expected_)
-PS> Stop-Service docker
-PS> Set-Service docker -StartupType Disabled
-Reboot Host
-PS> Get-NetNat | Remove-NetNat
-PS> Set-Service docker -StartupType automaticac
-PS> Start-Service docker 
+
+次のコマンドを実行する前に、オペレーティングシステムを再起動します (`Restart-Computer`)
+
+```powershell
+Get-NetNat | Remove-NetNat
+Set-Service docker -StartupType Automatic
+Start-Service docker 
 ```
 
 NAT 環境を必要に応じて再構築するには、セットアップ ガイド「[複数のアプリケーションで同じ NAT を使用する](#multiple-applications-using-the-same-nat)」をご覧ください。 
 
-## <a name="references"></a>参考資料
+## <a name="references"></a>参照
 NAT ネットワークの詳細は[ここ](https://en.wikipedia.org/wiki/Network_address_translation)を参照してください。

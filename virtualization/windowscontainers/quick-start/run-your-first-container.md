@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: a664b5b8eb87adffdf7eba3ffca9f4194128df80
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 551d405d836cfb16b587ef78bc2d5f5abbd8648f
+ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74909572"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78853816"
 ---
 # <a name="get-started-run-your-first-windows-container"></a>はじめに: 初めての Windows コンテナーを実行する
 
@@ -22,7 +22,7 @@ ms.locfileid: "74909572"
 
 ## <a name="install-a-container-base-image"></a>コンテナーの基本イメージをインストールする
 
-すべてのコンテナーは、コンテナーイメージから作成されます。 Microsoft では、基本イメージと呼ばれるいくつかのスターターイメージを提供しています (詳細については、「[コンテナーの基本イメージ](../manage-containers/container-base-images.md)」を参照してください)。 この手順では、ライトウェイト Nano Server 基本イメージをプル (ダウンロードしてインストール) します。
+すべてのコンテナーは、コンテナー イメージから作成されます。 Microsoft では、基本イメージと呼ばれるいくつかのスターターイメージを提供しています (詳細については、「[コンテナーの基本イメージ](../manage-containers/container-base-images.md)」を参照してください)。 この手順では、ライトウェイト Nano Server 基本イメージをプル (ダウンロードしてインストール) します。
 
 1. コマンドプロンプトウィンドウ (組み込みコマンドプロンプト、PowerShell、 [Windows ターミナル](https://www.microsoft.com/p/windows-terminal-preview/9n0dx20hk701?activetab=pivot:overviewtab)など) を開き、次のコマンドを実行して基本イメージをダウンロードしてインストールします。
 
@@ -33,7 +33,7 @@ ms.locfileid: "74909572"
    > [!TIP]
    > `no matching manifest for unknown in the manifest list entries`というエラーメッセージが表示された場合は、Docker が Linux コンテナーを実行するように構成されていないことを確認してください。
 
-2. イメージのダウンロードが完了したら、しばらくお待ちください。ローカルの docker イメージリポジトリにクエリを実行することで、使用[許諾契約書](../images-eula.md)がシステムに存在することを確認します。 コマンド `docker images` を実行すると、インストールされているイメージの一覧が返されます。
+2. イメージのダウンロードが完了したら、待機中に[EULA](../images-eula.md)をお読みください。ローカルの docker イメージリポジトリにクエリを実行して、システム上に存在することを確認します。 コマンド `docker images` を実行すると、インストールされているイメージの一覧が返されます。
 
    Nano Server イメージを示す出力の例を次に示します。
 
@@ -92,7 +92,7 @@ ms.locfileid: "74909572"
 
    結果として、コンテナーが ' HelloWorld ' イメージから作成され、ファイルを読み取るコンテナーで cmd.exe のインスタンスが開始され、ファイルの内容がシェルに出力された後、コンテナーが停止して削除されたことになります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次のステップ:
 
 > [!div class="nextstepaction"]
 > [サンプルアプリをコンテナー化する方法について説明します](./building-sample-app.md)

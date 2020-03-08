@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: cd16f496b85c0977af0d40142768833acadea0f4
-ms.sourcegitcommit: 6f505becbafb1e9785c67d6b0715c4c3af074116
+ms.openlocfilehash: f54c715f474c50c4b3073912adc4e0ab1c42d662
+ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78338046"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78853926"
 ---
 # <a name="windows-container-network-drivers"></a>Windows コンテナーネットワークドライバー  
 
@@ -42,6 +42,14 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
 
   >[!NOTE]
   >Windows Server 2019 では、Docker 群れによって作成されたオーバーレイネットワークは、送信接続用の VFP NAT ルールを活用します。 これは、特定のコンテナーが1つの IP アドレスを受け取ることを意味します。 また、`ping` や `Test-NetConnection` などの ICMP ベースのツールを、デバッグ状況での TCP/UDP オプションを使用して構成する必要があります。
+
+- **l2bridge** -"l2bridge" ドライバーを使用して作成されたネットワークに接続されているコンテナーは、`transparent` ネットワークモードと同様に、*外部*hyper-v スイッチを介して物理ネットワークに接続されます。 L2bridge の違いは、受信と送信でのレイヤー2アドレス変換 (MAC の再書き込み) 操作によって、コンテナーエンドポイントがホストと同じ MAC アドレスを持つことです。 クラスタリングのシナリオでは、これにより、有効期間が短いコンテナーの MAC アドレスを学習する必要があるスイッチのストレスを軽減できます。 L2bridge ネットワークは、次の2つの異なる方法で構成できます。
+  1. L2bridge ネットワークは、コンテナーホストと同じ IP サブネットを使用して構成されています
+  2. L2bridge ネットワークが新しいカスタム IP サブネットで構成されています
+  
+  構成2では、ゲートウェイとして機能するホストネットワークコンパートメントにエンドポイントを追加し、指定されたプレフィックスのルーティング機能を構成する必要があります。 
+  > 必要: Windows Server 2016、Windows 10 の作成者の更新プログラム、またはそれ以降のリリースが必要です。
+
 
 - **l2bridge** -"l2bridge" ドライバーを使用して作成されたネットワークに接続されているコンテナーは、`transparent` ネットワークモードと同様に、*外部*hyper-v スイッチを介して物理ネットワークに接続されます。 L2bridge の違いは、受信と送信でのレイヤー2アドレス変換 (MAC の再書き込み) 操作によって、コンテナーエンドポイントがホストと同じ MAC アドレスを持つことです。 クラスタリングのシナリオでは、これにより、有効期間が短いコンテナーの MAC アドレスを学習する必要があるスイッチのストレスを軽減できます。 L2bridge ネットワークは、次の2つの異なる方法で構成できます。
   1. L2bridge ネットワークは、コンテナーホストと同じ IP サブネットを使用して構成されています

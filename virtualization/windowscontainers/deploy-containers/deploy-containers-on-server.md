@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
-ms.openlocfilehash: 6e3996af36b4a710f9a12b3a1371138b053a43d8
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 9899a2d76bfa1fe312e3bd983f60d09d77c272e9
+ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74909902"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78853913"
 ---
 # <a name="container-host-deployment-windows-server"></a>コンテナーホストの展開: Windows Server
 
@@ -49,7 +49,7 @@ Restart-Computer -Force
 
 現在、Docker EE for Windows Server で使用できるチャネルは2つあります。
 
-* `17.06`-Docker Enterprise Edition (Docker エンジン、UCP、DTR) を使用している場合は、このバージョンを使用します。 `17.06` が既定値です。
+* `17.06`-Docker Enterprise Edition (Docker エンジン、UCP、DTR) を使用している場合は、このバージョンを使用します。 既定値は `17.06` です。
 * `18.03`-Docker EE エンジンのみを実行している場合は、このバージョンを使用します。
 
 特定のバージョンをインストールするには、`RequiredVersion` フラグを使用します。
@@ -76,7 +76,8 @@ Install-Package -Name docker -ProviderName DockerMsftProvider -Update -Force -Re
 
 Windows コンテナーを使用する前に、基本イメージをインストールする必要があります。 基本イメージは、コンテナー オペレーティング システムとして Windows Server Core と Nano Server の両方で使用できます。 Docker コンテナー イメージの詳細については、「[Build your own images on docker.com](https://docs.docker.com/engine/tutorials/dockerimages/)」(docker.com で独自のイメージを構築する) を参照してください。
 
-Windows Server 2019 のリリースでは、Microsoft が供給するコンテナーイメージは、Microsoft Container Registry と呼ばれる新しいレジストリに移動しています。 Microsoft によって発行されたコンテナーイメージは、引き続き Docker Hub を使用して検出される必要があります。 Windows Server 2019 以降で公開された新しいコンテナーイメージについては、MCR からプルするようにしてください。 Windows Server 2019 より前に発行された古いコンテナーイメージの場合は、Docker のレジストリから引き続きプルする必要があります。
+> [!TIP]
+> 2018年5月から、一貫性のある信頼できる取得エクスペリエンスが提供されるようになり、ほとんどすべての Microsoft ソースコンテナーイメージは、 [_Docker Hub_](https://hub.docker.com/publishers/microsoftowner)を介して現在の検出プロセスを維持しながら、microsoft Container Registry _mcr.microsoft.com_から提供されます。
 
 ### <a name="windows-server-2019-and-newer"></a>Windows Server 2019 以降
 

@@ -1,21 +1,21 @@
 ---
-title: Linux Containers on Windows
-description: Hyper-v を使用して Linux コンテナーを Windows で実行するさまざまな方法については、「ネイティブ」を参照してください。
-keywords: LCOW, linux コンテナー, docker, コンテナー
+title: Windows 10 の Linux コンテナー
+description: Hyper-v を使用して Windows 10 で Linux コンテナーをネイティブとして実行するさまざまな方法について説明します。
+keywords: LCOW、linux コンテナー、docker、コンテナー、windows 10
 author: scooley
 ms.date: 09/17/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: edfd11c8-ee99-42d8-9878-efc126fe1826
-ms.openlocfilehash: 14445f3e9d292dbdab28986e772d0c045fca1586
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 843bd0ab7ccf3a227482ba3a3d2677e36b395b29
+ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910572"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78854016"
 ---
-# <a name="linux-containers-on-windows"></a>Windows 上の Linux コンテナー
+# <a name="linux-containers-on-windows-10"></a>Windows 10 の Linux コンテナー
 
 Linux コンテナーは、コンテナーエコシステム全体の大部分を占めるものであり、開発者エクスペリエンスと運用環境の両方の基礎となります。  コンテナーはコンテナーホストとカーネルを共有するため、Linux コンテナーを Windows で直接実行することは、オプション[*](linux-containers.md#other-options-we-considered)ではありません。  ここでは、仮想化を図に示します。
 
@@ -23,6 +23,8 @@ Linux コンテナーは、コンテナーエコシステム全体の大部分�
 
 - Linux コンテナーを完全な Linux VM で実行する-これは、現在、Docker が行うものです。
 - [Hyper-v 分離](../manage-containers/hyperv-container.md)(lcow) を使用して Linux コンテナーを実行する-これは Docker for Windows の新しいオプションです。
+
+> _Windows Server OS での Linux コンテナーの実行は、現在も試験段階にあります。これを試すには、Docker EE プログラムの追加ライセンスが必要になります。**この記事の残りの部分では、Windows 10 についてのみ説明し**ます。_
 
 この記事では、各方法のしくみについて説明し、どのソリューションを選択するかと、進行中の作業を共有する方法に関するガイダンスを提供します。
 
@@ -47,7 +49,7 @@ Moby VM で実行しているかどうかを確認するには、Hyper-v マネ�
 
 ## <a name="linux-containers-with-hyper-v-isolation"></a>Hyper-v 分離を使用した Linux コンテナー
 
-Windows 上の linux コンテナー (LCOW) を試すには、 [windows 10 の](../quick-start/quick-start-windows-10-linux.md)linux コンテナーの linux コンテナーの手順に従います。
+Windows 10 (LCOW10) で linux コンテナーを試すには、 [windows 10 の](../quick-start/quick-start-windows-10-linux.md)linux コンテナーの linux コンテナーの手順に従います。 
 
 Hyper-v の分離を使用した linux コンテナーは、コンテナーを実行するのに十分な OS を備えた、最適化された Linux VM で各 Linux コンテナーを実行します。 Moby VM の方法とは異なり、各 Linux コンテナーには独自のカーネルと独自の VM サンドボックスがあります。 また、Windows 上の Docker によって直接管理されています。
 
@@ -74,10 +76,10 @@ LCOW は、アクティブな開発中です。 [GitHub](https://github.com/moby
 * MkNod
 * XAttrWalk
 * XAttrCreate
-* Lock
+* ロック
 * Getlock
 * Auth
-* Flush
+* フラッシュ
 * INotify
 
 完全に実装されていない操作も少数ですが存在します。

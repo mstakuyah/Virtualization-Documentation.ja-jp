@@ -3,12 +3,12 @@ title: Windows コンテナーのバージョンの互換性
 description: Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。
 keywords: メタデータ, コンテナー, バージョン
 author: taylorb-microsoft
-ms.openlocfilehash: 32d40997ffef47e4eae2d06303f45522623a5e54
-ms.sourcegitcommit: 530712469552a1ef458883001ee748bab2c65ef7
+ms.openlocfilehash: 326a56789d07f601beceebed01fdc3d49bc7471e
+ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77628947"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78853866"
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーのバージョンの互換性
 
@@ -137,7 +137,7 @@ Microsoft Windows [Version 10.0.16299.125]
 C:\>reg query "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion" /v BuildLabEx
 ```
 
-```batch
+```powershell
 Windows PowerShell
 Copyright (C) 2016 Microsoft Corporation. All rights reserved.
 
@@ -174,28 +174,28 @@ docker: Error response from daemon: container b81ed896222eb87906ccab1c3dd2fc4932
 
 コンテナーに使用する必要があるバージョンを把握しておく必要があります。 たとえば、Windows Server バージョン1809をコンテナー OS として使用し、最新の修正プログラムを適用する場合は、次のように、必要なベース OS コンテナーイメージのバージョンを指定するときに、タグ `1809` を使用する必要があります。
 
-``` dockerfile
+```dockerfile
 FROM mcr.microsoft.com/windows/nanoserver:1809
 ...
 ```
 
 ただし、Windows Server バージョン1809の特定の修正プログラムが必要な場合は、タグに KB 番号を指定できます。 たとえば、KB4493509 が適用された Windows Server バージョン1809から Nano Server ベース OS コンテナーイメージを取得するには、次のように指定します。
 
-``` dockerfile
+```dockerfile
 FROM mcr.microsoft.com/windows/nanoserver:1809-KB4493509
 ...
 ```
 
 また、タグに OS バージョンを指定することで、以前に使用したスキーマで必要な修正プログラムを正確に指定することもできます。
 
-``` dockerfile
+```dockerfile
 FROM mcr.microsoft.com/windows/nanoserver:10.0.17763.437
 ...
 ```
 
 Windows Server 2019 および Windows Server 2016 に基づく Server Core 基本イメージは、[長期的なサービスチャネル (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)のリリースです。 たとえば、Windows Server 2019 を Server Core イメージのコンテナー OS として使用し、最新のパッチを適用する場合は、次のように LTSC のリリースを指定できます。
 
-``` dockerfile
+```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
 ...
 ```

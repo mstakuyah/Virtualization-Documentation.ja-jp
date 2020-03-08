@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 52625517748356251aa41115caebd7801ec3cdaf
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: b997cf79cdf7f1782b6299198859714563c45f8c
+ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74909762"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78853936"
 ---
 # <a name="run-a-container-with-a-gmsa"></a>GMSA を使用してコンテナーを実行する
 
@@ -49,7 +49,7 @@ The command completed successfully
 コンテナー内から gMSA id を確認するには、次のコマンドを実行し、クライアント名を確認します。
 
 ```powershell
-PS C:\> klist get krbtgt
+PS C:\> klist get webapp01
 
 Current LogonId is 0:0xaa79ef8
 A ticket to krbtgt has been retrieved successfully.
@@ -92,7 +92,7 @@ Mode                LastWriteTime         Length Name
 d----l        2/27/2019   8:09 PM                contoso.com
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次のステップ:
 
 コンテナーを実行するだけでなく、gMSAs を使用して次のことを行うこともできます。
 

@@ -8,16 +8,16 @@ ms.date: 05/22/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 99a3b47a9d80e21c246fb3b4f61d650557eb37fa
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 23dd1e56ba68a679945779f5e7dbc15225412934
+ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910722"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78853908"
 ---
 # <a name="windows-container-orchestration-overview"></a>Windows コンテナーオーケストレーションの概要
 
-サイズとアプリケーションの向きが小さいため、コンテナーはアジャイル配信環境とマイクロサービスベースのアーキテクチャに最適です。 ただし、コンテナーとマイクロサーバーを使用する環境では、数百または数千のコンポーネントを追跡することができます。 数十の仮想マシンまたは物理サーバーを手動で管理することもできますが、運用環境のコンテナー環境を自動化せずに適切に管理する方法はありません。 このタスクは orchestrator に分類される必要があります。これは、多数のコンテナーを自動化および管理し、相互に対話する方法を行うプロセスです。
+サイズとアプリケーションの向きが小さいため、コンテナーはアジャイル配信環境とマイクロサービスベースのアーキテクチャに最適です。 ただし、コンテナーとマイクロサービスを使用する環境では、数百または数千のコンポーネントを追跡することができます。 数十の仮想マシンまたは物理サーバーを手動で管理することもできますが、運用環境のコンテナー環境を自動化せずに適切に管理する方法はありません。 このタスクは orchestrator に分類される必要があります。これは、多数のコンテナーを自動化および管理し、相互に対話する方法を行うプロセスです。
 
 Orchestrators、次のタスクを実行します。
 
@@ -38,7 +38,7 @@ Azure には、Azure Kubernetes Service (AKS) と Service Fabric という2つ�
 
 [Azure Service Fabric](/azure/service-fabric/) は、スケーラブルで信頼性の高いマイクロサービスとコンテナーを容易にパッケージ化、展開、管理できる分散システム プラットフォームです。 Service Fabric によって、クラウド ネイティブ アプリケーションを開発、管理する際の重要な問題を解決します。 開発者や管理者は、複雑なインフラストラクチャの問題を回避し、ミッション クリティカルで要求の厳しいワークロードを、スケーラブルで、信頼性が高く、管理しやすい方法で実装することに集中できます。 Service Fabric は、このようなエンタープライズ クラス、階層 1、クラウド規模のアプリケーションを構築および管理するための次世代プラットフォームです。
 
-## <a name="getting-started"></a>概要
+## <a name="getting-started"></a>作業の開始
 
 Azure Kubernetes service のデプロイを開始するには、 [Kubernetes セットアップガイド](../kubernetes/getting-started-kubernetes-windows.md)を参照してください。
 

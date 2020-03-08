@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
-ms.openlocfilehash: fa95ffe1c699a2c837076fcc1b662f6b792b7dfb
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 362805fa230f461414ccc53643644f6c1b3474a8
+ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74909752"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78853956"
 ---
 # <a name="isolation-modes"></a>分離モード
 
@@ -40,7 +40,7 @@ Docker を使用した Hyper-v 分離コンテナーの管理は、プロセス�
 docker run -it --isolation=hyperv mcr.microsoft.com/windows/servercore:ltsc2019 cmd
 ```
 
-プロセス分離の完全な Docker を使用してコンテナーを作成するには、`--isolation` パラメーターを使用して `--isolation=process`を設定します。
+Docker を介してプロセス分離を持つコンテナーを作成するには、`--isolation` パラメーターを使用して `--isolation=process`を設定します。
 
 ```cmd
 docker run -it --isolation=process mcr.microsoft.com/windows/servercore:ltsc2019 cmd
