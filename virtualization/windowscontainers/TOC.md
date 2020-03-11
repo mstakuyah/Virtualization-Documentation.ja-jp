@@ -6,7 +6,7 @@
 ## [システム要件](deploy-containers/system-requirements.md)
 ## [FAQ](about/faq.md)
 
-# はじめに
+# 開始
 ## [環境をセットアップする](quick-start/set-up-environment.md)
 ## [最初のコンテナーを実行する](quick-start/run-your-first-container.md)
 ## [サンプル アプリをコンテナー化する](quick-start/building-sample-app.md)
@@ -35,6 +35,7 @@
 ### [コンテナーの基本イメージ](manage-containers/container-base-images.md)
 ### [分離モード](manage-containers/hyperv-container.md)
 ### [バージョンの互換性](deploy-containers/version-compatibility.md)
+### [コンテナーの更新](deploy-containers/update-containers.md)
 ### [リソース コントロール](manage-containers/resource-controls.md)
 ## Docker
 ### [Windows 上の Docker エンジン](manage-docker/configure-docker-daemon.md)
@@ -57,7 +58,7 @@
 ### Docker Swarm
 #### [Swarm モード](manage-containers/swarm-mode.md)
 ## ワークロード
-### グループ管理サービス アカウント
+### Group Managed Service Accounts
 #### [gMSA を作成する](manage-containers/manage-serviceaccounts.md)
 #### [gMSA を使用するようにアプリを構成する](manage-containers/gmsa-configure-app.md)
 #### [gMSA を使用してコンテナーを実行する](manage-containers/gmsa-run-container.md)
@@ -69,20 +70,20 @@
 ### [ネットワーク トポロジとドライバー](container-networking/network-drivers-topologies.md)
 ### [ネットワーク分離とセキュリティ](container-networking/network-isolation-security.md)
 ### [高度なネットワーク オプションを構成する](container-networking/advanced.md)
-## ストレージ
+## 記憶域
 ### [概要](manage-containers/container-storage.md)
 ### [永続的ストレージ](manage-containers/persistent-storage.md)
 ## デバイス
 ### [ハードウェア デバイス](deploy-containers/hardware-devices-in-containers.md)
 ### [GPU アクセラレーション](deploy-containers/gpu-acceleration.md)
 
-# リファレンス
+# 参照先
 ## [基本イメージのサービス ライフサイクル](deploy-containers/base-image-lifecycle.md)
 ## [ウイルス対策の最適化](https://docs.microsoft.com/windows-hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 ## [Container Platform のツール](deploy-containers/containerd.md)
 ## [コンテナー OS イメージの使用許諾契約書 (EULA)](Images_EULA.md)
 
-# 参考資料
+# 参照情報
 ## [コンテナーのサンプル](samples.md)
 ## [トラブルシューティング](troubleshooting.md)
 ## [コンテナーのフォーラム](https://social.msdn.microsoft.com/Forums/home?forum=windowscontainers)
