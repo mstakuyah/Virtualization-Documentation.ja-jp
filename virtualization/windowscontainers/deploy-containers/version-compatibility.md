@@ -3,12 +3,12 @@ title: Windows コンテナーのバージョンの互換性
 description: Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。
 keywords: メタデータ, コンテナー, バージョン
 author: taylorb-microsoft
-ms.openlocfilehash: 326a56789d07f601beceebed01fdc3d49bc7471e
-ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
+ms.openlocfilehash: 917c07e13d6a0ec5b5e73213da4dc4f04ec0d9bb
+ms.sourcegitcommit: 8eedfdc1fda9d0abb36e28dc2b5fb39891777364
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78853866"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79027864"
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーのバージョンの互換性
 
@@ -104,11 +104,16 @@ Windows Server のコンテナーと基になるホストは1つのカーネル�
 
 #### <a name="revision-number-patching"></a>リビジョン番号 (修正プログラムの適用)
 
-コンテナーホストとコンテナーイメージのリビジョン番号が異なる場合、Windows Server 2016 ベースのコンテナーの起動がブロックされます。 たとえば、コンテナーホストのバージョンが10.0.14393 の場合などです。**1914** (KB4051033 が適用された Windows Server 2016) と、コンテナーイメージはバージョン10.0.14393 です。**1944** (KB4053579 が適用された Windows Server 2016) では、イメージは起動されません。
+現在、windows Server のコンテナーでは、コンテナーホストとコンテナーイメージのリビジョン番号が異なるシステムで Windows Server 2016 ベースのコンテナーを実行するシナリオはサポートされていません。 たとえば、コンテナーホストのバージョンが10.0.14393 の場合などです。**1914** (KB4051033 が適用された Windows Server 2016) と、コンテナーイメージはバージョン10.0.14393 です。**1944** (KB4053579 が適用された Windows Server 2016) では、イメージが起動しない可能性があります。
 
-ただし、Windows Server バージョン1809以降を使用しているホストまたはイメージの場合、この規則は適用されず、ホストとコンテナーのイメージには一致するリビジョンが必要ありません。 
+ただし、Windows Server バージョン1809以降を使用しているホストまたはイメージの場合、この規則は適用されず、ホストとコンテナーのイメージには一致するリビジョンが必要ありません。
 
 最新のパッチと更新プログラムを使用してシステム (ホストとコンテナー) を最新の状態に保ち、セキュリティを維持することをお勧めします。
+
+>[!NOTE]
+>2020年2月11日のセキュリティ更新プログラムのリリース ("2B" とも呼ばれます) またはそれ以降の毎月のセキュリティ更新プログラムのリリースで Windows Server コンテナーを使用すると、問題が発生する場合があります。 詳細については、こちらの[記事](https://support.microsoft.com/help/4542617/you-might-encounter-issues-when-using-windows-server-containers-with-t)を参照してください。  
+>
+>安全で互換性のある最新のパッチと更新プログラムを使用して、ホストとコンテナーの両方を更新することを強くお勧めします。 Windows コンテナーを更新する方法の重要なガイダンスについては、「 [Windows Server のコンテナーを更新](update-containers.md)する」を参照してください。
 
 #### <a name="practical-application"></a>実用的なアプリケーション
 
