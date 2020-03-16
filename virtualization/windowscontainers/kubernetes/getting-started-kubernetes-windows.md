@@ -8,12 +8,12 @@ ms.prod: containers
 description: Windows ノードを Kubernetes クラスターに追加する (v 1.14)。
 keywords: kubernetes、1.14、windows、はじめに
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: c380f5dc10430a94959718a5ce92f311603db733
-ms.sourcegitcommit: 6f505becbafb1e9785c67d6b0715c4c3af074116
+ms.openlocfilehash: 18734f102042ec951255061dcd82229e18d29a15
+ms.sourcegitcommit: 8eedfdc1fda9d0abb36e28dc2b5fb39891777364
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78338063"
+ms.lasthandoff: 03/15/2020
+ms.locfileid: "79402893"
 ---
 # <a name="kubernetes-on-windows"></a>Windows で使用する Kubernetes
 
