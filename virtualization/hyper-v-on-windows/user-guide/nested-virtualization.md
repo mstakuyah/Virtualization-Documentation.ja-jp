@@ -10,7 +10,7 @@ ms.service: windows-10-hyperv
 ms.assetid: 68c65445-ce13-40c9-b516-57ded76c1b15
 ms.openlocfilehash: f819ac04773188525af202d370ba271a2d93e259
 ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/18/2020
 ms.locfileid: "77439349"
@@ -31,13 +31,13 @@ ms.locfileid: "77439349"
 
 ## <a name="configure-nested-virtualization"></a>入れ子になった仮想化の構成
 
-1. バーチャル マシンの作成 必要な OS と VM のバージョンについては、前述の前提条件をご覧ください。
+1. 仮想マシンを作成します。 必要な OS と VM のバージョンについては、前述の前提条件をご覧ください。
 2. 仮想マシンがオフ状態のときに、次のコマンドを物理的 Hyper-V ホスト上で実行します。 これで、この仮想マシンに対して入れ子になった仮想化が有効になります。
 
 ```
 Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true
 ```
-3. 仮想マシンを開始します。
+3. 仮想マシンを起動します。
 4. Hyper-V を仮想マシン内にインストールします。方法は物理サーバーの場合と同様です。 Hyper-V のインストールの詳細については、[Hyper-V のインストール](../quick-start/enable-hyper-v.md)に関するページを参照してください。
 
 ## <a name="disable-nested-virtualization"></a>入れ子になった仮想化の無効化
