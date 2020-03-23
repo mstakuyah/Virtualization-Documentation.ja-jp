@@ -9,7 +9,7 @@ ms.prod: windows-10-hyperv
 ms.assetid: 1ef8f18c-3d76-4c06-87e4-11d8d4e31aea
 ms.openlocfilehash: 89a36ee87bce1da18852f0ebff248e239165eb7d
 ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/04/2019
 ms.locfileid: "74911032"
@@ -28,7 +28,7 @@ Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレ�
 * Windows 10 以降
 * Windows Server 2016 以降
 * Linux ゲストと Linux 統合サービス (「[Supported Linux and FreeBSD virtual machines for Hyper-V on Windows (Windows 上の Hyper-V 向けにサポートされる Linux と FreeBSD 仮想マシン)](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Linux-and-FreeBSD-virtual-machines-for-Hyper-V-on-Windows)」をご覧ください)
-> **注意:** サポートされる Linux ゲストでは、以下のコマンドに対応するカーネル サポートが必要です。
+> **注:** サポートされる Linux ゲストでは、以下のコマンドに対応するカーネル サポートが必要です。
 > ```bash
 > CONFIG_VSOCKET=y
 > CONFIG_HYPERV_VSOCKETS=y
@@ -41,14 +41,14 @@ Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレ�
 
 --------------
 
-## <a name="getting-started"></a>概要
+## <a name="getting-started"></a>はじめに
 
 要件:
 * C/C++ コンパイラ。  お持ちではない場合は、[Visual Studio コミュニティ](https://aka.ms/vs)を確認してください。
 * [Windows 10 SDK](https://developer.microsoft.com/windows/downloads/windows-10-sdk): Visual Studio 2015 with Update 3 以降でプレインストールされています。
 * 上記のいずれかのホスト オペレーティング システムと 1 つ以上の仮想マシンが実行されているコンピューター。 これは、アプリケーションのテスト用です。
 
-> **注:** Hyper-v ソケット用の API は、Windows 10 周年記念プログラムで一般公開されています。 HVSocket を使用するアプリケーションは、任意の Windows 10 ホストとゲスト上で実行されますが、ビルド14290より後の Windows SDK でのみ開発できます。
+> **注:** Hyper-V ソケットの API は、Windows 10 Anniversary Update で公開されています。 HVSocket を使うアプリケーションは、あらゆる Widnows 10 ホストとゲストで実行できますが、開発には Windows SDK ビルド 14290 以降が必要です。
 
 ## <a name="register-a-new-application"></a>新しいアプリケーションの登録
 Hyper-V ソケットを使用するには、アプリケーションを Hyper-V ホストのレジストリに登録する必要があります。
@@ -96,7 +96,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
         ElementName    REG_SZ    Your Service Friendly Name
 ```
 
-> **注意:** Linux ゲストのサービス GUID には、GUID ではなく `svm_cid` および `svm_port` によるアドレス指定が行われる VSOCK プロトコルが使用されます。 このような Windows との不整合を埋め合わせるために、よく知られている GUID がホスト上のサービス テンプレートとして使用され、ゲスト内のポートに変換されます。 サービス GUID をカスタマイズするには、先頭の "00000000" を必要なポート番号に変更します。 例: "00000ac9" は、ポート 2761 です。
+> **注:** Linux ゲストのサービス GUID には、GUID ではなく `svm_cid` および `svm_port` によるアドレス指定が行われる VSOCK プロトコルが使用されます。 このような Windows との不整合を埋め合わせるために、よく知られている GUID がホスト上のサービス テンプレートとして使用され、ゲスト内のポートに変換されます。 サービス GUID をカスタマイズするには、先頭の "00000000" を必要なポート番号に変更します。 例:"00000ac9" は、ポート 2761 です。
 > ```C++
 > // Hyper-V Socket Linux guest VSOCK template GUID
 > struct __declspec(uuid("00000000-facb-11e6-bd58-64006a7986d3")) VSockTemplate{};
@@ -108,7 +108,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 > ```
 >
 
-> **ヒント:** PowerShell で GUID を生成し、それをクリップボードにコピーするには、次のコマンドを実行します。
+> **クォータを調整する**PowerShell で GUID を生成し、それをクリップボードにコピーするには、次のコマンドを実行します。
 >``` PowerShell
 >(New-Guid).Guid | clip.exe
 >```
@@ -216,11 +216,11 @@ IP またはホスト名の代わりに、AF_HYPERV エンドポイントは 2 �
 | HV_GUID_PARENT | a42e7cda-d03f-480c-9cc2-a4de20abb878 | 親アドレス。 この VmId を使用して、コネクタの親パーティションに接続します。* |
 
 
-バーチャルマシンの親 `HV_GUID_PARENT` \* は、そのホストであることを示します。  コンテナーの親は、コンテナーのホストです。
+\* `HV_GUID_PARENT` 仮想マシンの親は、その仮想マシンのホストです。  コンテナーの親は、コンテナーのホストです。
 仮想マシンで実行しているコンテナーからの接続は、コンテナーをホストしている仮想マシンに接続します。
-この VmId でのリッスンでは、次からの接続を受け入れることができます: (コンテナー内): コンテナー ホスト。
-(VM 内: コンテナー ホスト/コンテナーなし): VM ホスト。
-(VM 内でない: コンテナー ホスト/コンテナーなし): サポートされていません。
+この VmId でリッスンし、次からの接続を受け入れます。(コンテナー内):コンテナー ホスト。
+(VM 内:コンテナー ホスト/コンテナーなし):VM ホスト。
+(VM 内なし:コンテナー ホスト/コンテナーなし):サポートされていません。
 
 ## <a name="supported-socket-commands"></a>サポートされているソケット コマンド
 
@@ -229,4 +229,4 @@ Socket() Bind() Connect() Send() Listen() Accept()
 ## <a name="useful-links"></a>役に立つリンク
 [完全な WinSock API](https://docs.microsoft.com/windows/desktop/WinSock/winsock-functions)
 
-[Hyper-v Integration Services リファレンス](../reference/integration-services.md)
+[Hyper-V 統合サービスの参照](../reference/integration-services.md)

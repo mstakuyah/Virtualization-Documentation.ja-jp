@@ -1,6 +1,6 @@
 ---
 title: Docker について
-description: Docker について説明します。
+description: Docker の詳細
 keywords: Docker, コンテナー
 author: Heidilohr
 ms.author: helohr
@@ -10,25 +10,25 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.openlocfilehash: cdb7771a1293e7c3fd505103f0010bdfba47cc31
 ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/04/2019
 ms.locfileid: "74910792"
 ---
 # <a name="about-docker"></a>Docker について
 
-コンテナーについての資料で、必ず言及されるのが Docker です。 Docker エンジンは、コンテナーイメージのパッケージ化と配信を行うコンテナー管理ツールセットです。 生成されたイメージは、コンテナーとして、オンプレミス、クラウド、または個人用コンピューターのいずれでも実行できます。
+コンテナーについての資料で、必ず言及されるのが Docker です。 Docker Engineは、コンテナー イメージのパッケージ化と配信を行うコンテナー管理ツールセットです。 生成されたイメージは、コンテナーとして、オンプレミス、クラウド、または個人用マシンのいずれでも実行できます。
 
 ![](media/docker.png)
 
-他のコンテナーと同じように、 [Docker](https://www.docker.com)を使用して Windows Server コンテナーを管理できます。
+Windows Server コンテナーは、他のコンテナーと同様、[Docker](https://www.docker.com) によって管理できます。
 
-コンテナーを使用した名前空間の分離とリソースガバナンスの概念は、長い間、BSD 途中、Solaris ゾーン、および基本的な UNIX 変更ルート (chroot) メカニズムに戻りました。 Docker は、アプリケーションのコンテナー化と配布を簡略化する共通ツールセット、パッケージングモデル、および配置メカニズムを使用して、開発用の堅固な基盤となります。 これらのアプリケーションは、任意の Linux ホストおよび Windows 上の任意の場所で実行できます。
+コンテナーを通じた名前空間の分離とリソース管理の概念は、ずっと以前からあり、BSD Jail、Solaris ゾーン、UNIX の基本的なルート変更 (chroot) メカニズムにまでさかのぼります。 Docker は、アプリケーションのコンテナー化と配信を簡略化する共通ツールセット、パッケージングモデル、およびデプロイ メカニズムを使用して、開発用の堅固な基盤となります。 これらのアプリケーションは、任意の Linux ホストおよび Windows 上の任意の場所で実行できます。
 
-ユビキタスなパッケージモデルと展開テクノロジを使用すると、任意のホストに対して同じ管理コマンドを提供することで管理を簡素化し、シームレスな DevOps を実現するための独自の機会を作成できます。 また、開発者のデスクトップ、テスト用のコンピューター、または一連の実稼働コンピューターのいずれであっても、任意の環境で同じようにデプロイできる Docker イメージを作成することもできます。 これにより、docker で保持されているパブリックコンテナー化アプリケーションレジストリである DockerHub を使用して、Docker コンテナーにパッケージ化されたアプリケーションのエコシステムを大幅に拡大します。
+一般的なパッケージング モデルおよびデプロイ テクノロジは、任意のホストに対して同じ管理コマンドを提供することで管理を合理化するだけでなく、シームレスな DevOps にまたとない機会をもたらします。 開発者のデスクトップ、テスト マシン、または一連の実稼働コンピューターのいずれであっても、秒単位で任意の環境全体に同じように展開される Docker のイメージを作成することができます。 これにより、Docker コンテナーにパッケージ化された、大規模で拡大するエコシステムが作成されてきました。このエコシステムには、DockerHub と、Docker が保持するパブリック コンテナー化されたアプリケーション レジストリがあります。
 
-次に、アプリケーションのエコシステムについて説明します。また、Docker の概念を構築して、ニーズに適した開発とデプロイのワークフローを作成する方法についても説明します。
+次に、アプリケーションのエコシステムについて説明し、ニーズに合った開発およびデプロイのワークフローを作成するための Docker 概念を構築する方法について説明しましょう。
 
 ## <a name="get-started-with-docker"></a>Docker の概要
 
-Docker を使用してコンテナーを構築する方法については、「 [Windows 上の Docker エンジン](../manage-docker/configure-docker-daemon.md)」を参照してください。 Docker の使用方法の詳細については[、docker の web サイト](https://www.docker.com)を参照してください。
+Docker を使用してコンテナーを構築する方法については、「[Docker Engine on Windows](../manage-docker/configure-docker-daemon.md)」を参照してください。 また、Docker の使用方法の詳細については、[Docker の Web サイト](https://www.docker.com)にアクセスすることもできます。

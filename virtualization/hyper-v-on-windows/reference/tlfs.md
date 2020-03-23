@@ -10,7 +10,7 @@ ms.service: windows-10-hyperv
 ms.assetid: aee64ad0-752f-4075-a115-2d6b983b4f49
 ms.openlocfilehash: f1b33bf805f7868bb42ee1f49965c2ea9a45916f
 ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/06/2020
 ms.locfileid: "78853976"
@@ -24,13 +24,13 @@ Hyper-V ハイパーバイザー トップレベル機能仕様 (TLFS) では、
 > この仕様は、Microsoft Open Specification Promise の下で提供されます。  [Microsoft Open Specification Promise](https://docs.microsoft.com/openspecs/dev_center/ms-devcentlp/51a0d3ff-9f77-464c-b83f-2de08ed28134) の詳細については、以下をご覧ください。  
 
 #### <a name="download"></a>ダウンロード
-解放 | ドキュメント
+リリース | マニュアル名の正式名称
 --- | ---
-Windows Server 2019 | [ハイパーバイザートップレベル機能仕様 (6.0)](https://github.com/MicrosoftDocs/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v6.0.pdf)
-Windows Server 2016 (リビジョン C) | [ハイパーバイザートップレベル機能仕様 v1.0 (pdf)](https://github.com/MicrosoftDocs/Virtualization-Documentation/raw/live/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v5.0C.pdf)
-Windows Server 2012 R2 (リビジョン B) | [ハイパーバイザーのトップレベル機能仕様 v1.0 b. .pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v4.0b.pdf)
-Windows Server 2012 | [ハイパーバイザーのトップレベル機能仕様-3.0 .pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v3.0.pdf)
-Windows Server 2008 R2 | [ハイパーバイザーのトップレベル機能仕様 v2.0 .pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v2.0.pdf)
+Windows Server 2019 | [Hypervisor Top Level Functional Specification v6.0.pdf](https://github.com/MicrosoftDocs/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v6.0.pdf)
+Windows Server 2016 (リビジョン C) | [Hypervisor Top Level Functional Specification v5.0c.pdf](https://github.com/MicrosoftDocs/Virtualization-Documentation/raw/live/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v5.0C.pdf)
+Windows Server 2012 R2 (リビジョン B) | [Hypervisor Top Level Functional Specification v4.0b.pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v4.0b.pdf)
+Windows Server 2012 | [Hypervisor Top Level Functional Specification v3.0.pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v3.0.pdf)
+Windows Server 2008 R2 | [Hypervisor Top Level Functional Specification v2.0.pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v2.0.pdf)
 
 ## <a name="requirements-for-implementing-the-microsoft-hypervisor-interface"></a>Microsoft ハイパーバイザー インターフェイスを実装するための要件
 
@@ -38,4 +38,4 @@ TLFS には、Microsoft 固有のハイパーバイザー アーキテクチャ�
 
 #### <a name="download"></a>ダウンロード
 
-[Microsoft ハイパーバイザーインターフェイス .pdf を実装するための要件](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Requirements%20for%20Implementing%20the%20Microsoft%20Hypervisor%20Interface.pdf)
+[Requirements for Implementing the Microsoft Hypervisor Interface.pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Requirements%20for%20Implementing%20the%20Microsoft%20Hypervisor%20Interface.pdf)

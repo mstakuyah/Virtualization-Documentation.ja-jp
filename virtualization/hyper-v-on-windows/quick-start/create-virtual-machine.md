@@ -9,7 +9,7 @@ ms.prod: windows-10-hyperv
 ms.assetid: 66723f33-b12c-49d1-82cf-71ba9d6087e9
 ms.openlocfilehash: 94ac197f5bc660e52d215fa132eae78f521e1c30
 ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/04/2019
 ms.locfileid: "74911652"
