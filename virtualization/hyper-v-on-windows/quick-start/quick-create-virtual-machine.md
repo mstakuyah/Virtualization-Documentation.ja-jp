@@ -9,7 +9,7 @@ ms.prod: windows-10-hyperv
 ms.assetid: f1e75efa-8745-4389-b8dc-91ca931fe5ae
 ms.openlocfilehash: 6035143bc1449bc4a8e9bb7a4484b4c5329e6d3c
 ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/18/2020
 ms.locfileid: "77439629"
@@ -18,17 +18,17 @@ ms.locfileid: "77439629"
 
 仮想マシンを作成し、オペレーティング システムをインストールします。
 
-仮想マシンを作成するための新しいツールを作成しています。これにより、過去3回のリリースでの手順が大幅に変更されました。
+Microsoft では、これまで仮想マシンを作成するための新しいツールの作成を行ってきたため、過去の 3 つのリリースで手順が大きく変わっています。
 
 適切な手順については、該当するオペレーティング システムを選択してください。
 
-* [Windows 10 フォール作成者更新プログラム (v1709) 以降](quick-create-virtual-machine.md#windows-10-fall-creators-update-windows-10-version-1709)
-* [Windows 10 クリエーター更新プログラム (v1703)](quick-create-virtual-machine.md#windows-10-creators-update-windows-10-version-1703)
-* [Windows 10 記念日更新 (v1607) 以前](quick-create-virtual-machine.md#before-windows-10-creators-update-windows-10-version-1607-and-earlier)
+* [Windows 10 Fall Creators Update (v1709) 以降](quick-create-virtual-machine.md#windows-10-fall-creators-update-windows-10-version-1709)
+* [Windows 10 Creators Update (v1703)](quick-create-virtual-machine.md#windows-10-creators-update-windows-10-version-1703)
+* [Windows 10 Anniversary Update (v1607) 以前](quick-create-virtual-machine.md#before-windows-10-creators-update-windows-10-version-1607-and-earlier)
 
 それでは始めましょう。
 
-## <a name="windows-10-fall-creators-update-windows-10-version-1709"></a>Windows 10 の作成者の更新プログラム (Windows 10 バージョン 1709)
+## <a name="windows-10-fall-creators-update-windows-10-version-1709"></a>Windows 10 Fall Creators Update (Windows 10 バージョン 1709)
 
 Fall Creators Update ではクイック作成が拡張され、Hyper-V マネージャーから個別に起動できる仮想マシン ギャラリーが追加されています。
 
@@ -44,16 +44,16 @@ Fall Creators Update で新しい仮想マシンを作成するには:
 
     1. 独自のイメージを使用して仮想マシンを作成する場合は、 **[ローカル インストール ソース]** を選択します。
     1. **[インストール元の変更]** を選択します。
-      ローカルインストールソースを使用する ![ボタン](media/change-source.png)
+      ![ローカル インストール ソースを使用するためのボタン](media/change-source.png)
     1. 新しい仮想マシンに変換する .iso または .vhdx を選択します。
     1. イメージが Linux イメージの場合は、セキュア ブート オプションを選択解除します。
-      ローカルインストールソースを使用する ![ボタン](media/toggle-secure-boot.png)
+      ![ローカル インストール ソースを使用するためのボタン](media/toggle-secure-boot.png)
 
 1. [仮想マシンの作成] を選択します。
 
-以上で終わりです。  残りの操作はクイック作成によって行われます。
+以上で作業は終了です。  残りの操作はクイック作成によって行われます。
 
-## <a name="windows-10-creators-update-windows-10-version-1703"></a>Windows 10 の作成者の更新 (Windows 10 バージョン 1703)
+## <a name="windows-10-creators-update-windows-10-version-1703"></a>Windows 10 Creators Update (Windows 10 バージョン 1703)
 
 ![クイック作成 UI のスクリーン ショット](media/quickcreatesteps_inked.jpg)
 
@@ -81,9 +81,9 @@ Fall Creators Update で新しい仮想マシンを作成するには:
 
 > **注:** ボリューム ライセンス版の Windows を実行していない限り、仮想マシン内で実行されている Windows のライセンスを区別する必要があります。 仮想マシンのオペレーティング システムは、ホストのオペレーティング システムに依存しません。
 
-## <a name="before-windows-10-creators-update-windows-10-version-1607-and-earlier"></a>Windows 10 の作成者が更新する前 (Windows 10 バージョン1607およびそれ以前)
+## <a name="before-windows-10-creators-update-windows-10-version-1607-and-earlier"></a>Windows 10 Creators Update より前 (Windows 10 バージョン 1607 以前)
 
 Windows 10 Creators Update 以降を実行していない場合は、代わりに、仮想マシンの新規作成ウィザードを使用してこれらの手順に従います。
 
 1. [仮想ネットワークを作成する](connect-to-network.md)
-1. [新しい仮想マシンの作成](create-virtual-machine.md)
+1. [新しい仮想マシンを作成する](create-virtual-machine.md)

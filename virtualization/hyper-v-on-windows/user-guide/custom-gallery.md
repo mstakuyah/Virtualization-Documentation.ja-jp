@@ -10,7 +10,7 @@ ms.service: windows-10-hyperv
 ms.assetid: d9238389-7028-4015-8140-27253b156f37
 ms.openlocfilehash: 1348b9923d9de1314818f13414abdacee2cb9735
 ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/18/2020
 ms.locfileid: "77439716"
@@ -39,11 +39,11 @@ Fall Creators Update ではクイック作成が拡張され、仮想マシン �
 
 ![ギャラリーのアーキテクチャ](media/vmgallery-architecture.png)
 
-レジストリキー: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization`
+レジストリ キー: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization`
 
 値の名前: `GalleryLocations`
 
-種類: `REG_MULTI_SZ`
+型: `REG_MULTI_SZ`
 
 ## <a name="create-gallery-compatible-virtual-machines"></a>ギャラリーと互換性がある仮想マシンを作成する
 
@@ -61,12 +61,12 @@ Fall Creators Update ではクイック作成が拡張され、仮想マシン �
 仮想マシンイメージの起動と実行を確認するには:
 
 1. VM ギャラリー (Hyper-V クイック作成) を開き、 **[ローカル インストール ソース]** を選択します。
-  ローカルインストールソースを使用する ![ボタン](media/use-local-source.png)
+  ![ローカル インストール ソースを使用するためのボタン](media/use-local-source.png)
 1. **[インストール元の変更]** を選択します。
-  ローカルインストールソースを使用する ![ボタン](media/change-source.png)
+  ![ローカル インストール ソースを使用するためのボタン](media/change-source.png)
 1. ギャラリーで使用する .iso または .vhdx を選択します。
 1. イメージが Linux イメージの場合は、セキュア ブート オプションを選択解除します。
-  ローカルインストールソースを使用する ![ボタン](media/toggle-secure-boot.png)
+  ![ローカル インストール ソースを使用するためのボタン](media/toggle-secure-boot.png)
 1. 仮想マシンを作成します。  仮想マシンが正しく起動する場合は、ギャラリーに追加する準備が完了です。
 
 ## <a name="build-a-new-gallery-source"></a>新しいギャラリー ソースを作成する
@@ -103,7 +103,7 @@ Fall Creators Update ではクイック作成が拡張され、仮想マシン �
 
 仮想マシン (.iso または .vhdx)。
 
-ハッシュを生成するには、次の powershell コマンドを使用します。
+ハッシュを生成するには、次の PowerShell コマンドを使用できます。
 
   ``` PowerShell
   Get-FileHash -Path .\TMLogo.jpg -Algorithm SHA256
@@ -118,7 +118,7 @@ Fall Creators Update ではクイック作成が拡張され、仮想マシン �
 カスタムのギャラリー ソースを VM ギャラリーに追加する最も簡単な方法は、regedit で追加することです。
 
 1. **regedit.exe** を開きます。
-1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\` に移動します。
+1. 次に移動します: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\`
 1. `GalleryLocations` という項目を探します。
 
     既に存在する場合は、 **[編集]** メニューの **[修正]** に移動します。
@@ -135,11 +135,11 @@ Fall Creators Update ではクイック作成が拡張され、仮想マシン �
 
 仮想マシン ギャラリーでのエラー報告は、Windows イベント ビューアーで確認できます。  エラーをチェックするには:
 
-1. イベント ビューアーを開きます
+1. イベント ビューアーを開きます。
 1. **[Windows ログ]**  ->  **[Application]** に移動します。
 1. ソース VMCreate からのイベントを探します。
 
-## <a name="resources"></a>リソース
+## <a name="resources"></a>参照情報
 
 GitHub の[リンク](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/live/hyperv-tools/vmgallery)には、少数のギャラリー スクリプトとヘルパーが掲載されています。
 

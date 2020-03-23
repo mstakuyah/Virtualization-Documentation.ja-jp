@@ -10,7 +10,7 @@ ms.service: windows-10-hyperv
 ms.assetid: fb228e06-e284-45c0-b6e6-e7b0217c3a49
 ms.openlocfilehash: ed96c7ba30c83906cd3245a279ab078229400d8d
 ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/18/2020
 ms.locfileid: "77439549"
@@ -19,20 +19,20 @@ ms.locfileid: "77439549"
 
 PowerShell ダイレクトを使用すると、ネットワークの構成やリモート管理の設定に関係なく、Hyper-V ホストから、Windows 10 仮想マシンまたは Windows Server 2016 仮想マシンで任意の PowerShell を実行することができます。
 
-PowerShell ダイレクトを実行するには、次の方法があります。
+以下に、PowerShell ダイレクトを実行する方法をいくつか示します。
 
-* [入力-PSSession コマンドレットを使用して対話型セッションとして](#create-and-exit-an-interactive-powershell-session)
-* [単一使用セクションとして、コマンドレットを使用して1つのコマンドまたはスクリプトを実行する](#run-a-script-or-command-with-invoke-command)
-* [新しい-pssession、コピー項目、および削除コマンドレットを使用して、永続的なセッション (ビルド14280以降) として](#copy-files-with-new-pssession-and-copy-item)
+* [Enter-PSSession コマンドレットを使用する対話型セッションとして](#create-and-exit-an-interactive-powershell-session)
+* [Invoke-Command コマンドレットを使用して単一のコマンドまたはスクリプトを実行する 1 回限りの使用のセクションとして](#run-a-script-or-command-with-invoke-command)
+* [New-PSSession、Copy-Item、および Remove-PSSession コマンドレットを使用する永続的なセッションとして (ビルド 14280 以降)](#copy-files-with-new-pssession-and-copy-item)
 
 ## <a name="requirements"></a>要件
 **オペレーティング システムの要件:**
-* ホスト: Windows 10、Windows Server 2016、または Hyper-V を実行するそれ以降のバージョン。
-* ゲスト/仮想マシン: Windows 10、Windows Server 2016、またはそれ以降のバージョン。
+* ホスト:Windows 10、Windows Server 2016、または Hyper-V を実行するそれら以降のバージョン。
+* ゲスト/仮想マシン:Windows 10、Windows Server 2016、またはそれら以降。
 
 以前の仮想マシンを管理している場合は、仮想マシン接続 (VMConnect) を使用するか、[仮想マシン用の仮想ネットワークを構成します](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc816585(v=ws.10))。 
 
-**構成要件:**    
+**構成に必要な条件:**    
 * 仮想マシンがホスト上でローカルに実行されている必要があります。
 * 仮想マシンが有効であり、少なくとも 1 つの構成済みユーザー プロファイルで実行されている必要があります。
 * HYPER-V の管理者として、ホスト コンピューターには、ログインする必要があります。
@@ -75,7 +75,7 @@ PowerShell ダイレクトを実行するには、次の方法があります。
    Exit-PSSession 
    ``` 
 
-> 注: セッションが接続されない場合は、考えられる原因の「[トラブルシューティング](#troubleshooting)」を参照してください。 
+> 注: セッションが接続されない場合は、考えられる原因について、「[トラブルシューティング](#troubleshooting)」を参照してください。 
 
 これらのコマンドレットの詳細については、「[Enter-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Core/Enter-PSSession?view=powershell-5.1)」と「[Exit-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Core/Exit-PSSession?view=powershell-5.1)」を参照してください。 
 
@@ -85,7 +85,7 @@ PowerShell ダイレクトを実行するには、次の方法があります。
 
 PowerShell ダイレクトと Invoke-Command コマンドの組み合わせは、1 つのコマンドまたは 1 つのスクリプトを仮想マシン上で実行する必要があるが、それらの実行以降は仮想マシンとの対話を続行する必要がないという場合に最適です。
 
-**1つのコマンドを実行するには:**
+**単一のコマンドを実行するには:**
 
 1. Hyper-V ホストで PowerShell を管理者として開きます。
 
@@ -122,13 +122,13 @@ PowerShell ダイレクトと Invoke-Command コマンドの組み合わせは�
 
 ## <a name="copy-files-with-new-pssession-and-copy-item"></a>New-PSSession および Copy-Item でファイルをコピーする
 
-> **注:** PowerShell ダイレクトでは、Windows ビルド 14280 以降でのみ永続的なセッションをサポートしています。
+> **注:** PowerShell ダイレクトでは、Windows ビルド 14280 以降でのみ永続的なセッションがサポートされます
 
 永続的な PowerShell セッションは、1 つまたは複数のリモート コンピューターを対象にした動作を調整するスクリプトを記述する際にとても便利です。  いったん作成された永続的なセッションは、それを削除するまで、バック グラウンドに保持されます。  すなわち、資格情報を渡さなくても`Invoke-Command` または `Enter-PSSession` を使用して、同じセッションを何度でも繰り返し参照することができます。
 
 セッションは同じトークンにより状態を保持します。  永続的なセッションは存続するので、セッションで作成された変数またはセッションに渡された変数はいずれも複数回の呼び出しにわたり保持されます。 永続的なセッションでの作業で使用できるさまざまなツールがあります。  たとえば、[New-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Core/New-PSSession?view=powershell-5.1) および [Copy-Item](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Management/Copy-Item?view=powershell-5.1) を使用して、ホストから仮想マシンへ、仮想マシンからホストへデータを移動することができます。
 
-**セッションを作成するには、次のようにファイルをコピーします。**  
+**セッションを作成し、ファイルをコピーするには:**  
 
 1. Hyper-V ホストで PowerShell を管理者として開きます。
 
@@ -174,7 +174,7 @@ PowerShell Direct を通じて表示される一般的なエラー メッセー�
 
 ### <a name="-vmname-or--vmid-parameters-dont-exist"></a>-VMName または -VMID パラメーターが存在しない
 **問題**:  
-`Enter-PSSession`、`Invoke-Command`、または `New-PSSession` には、`-VMName` または `-VMId` パラメーターがありません。
+`Enter-PSSession`、`Invoke-Command`、または `New-PSSession` に `-VMName` パラメーターまたは `-VMId` パラメーターがありません。
 
 **考えられる原因:**  
 最も可能性の高い原因として、PowerShell ダイレクトがご使用のホスト オペレーティング システムでサポートされないことが挙げられます。
@@ -219,7 +219,7 @@ New-PSSession : An error has occurred which Windows PowerShell cannot handle. A 
 ```
 
 **考えられる原因:**
-* 上記のいずれかの理由の1つは、これらすべてが同様に適用され `New-PSSession`  
+* 上の一覧に示したいずれかの理由です。これらはすべて `New-PSSession` にも同様に当てはまります  
 * 現在のビルドにバグがあります。`-Credential` で資格情報を明示的に渡す必要があります。  このエラーが発生すると、ゲスト オペレーティング システムでサービス全体がハングし、再起動する必要があります。  Enter-PSSession を使用すれば、セッションが引き続き使用できるかどうかを確認できます。
 
 資格情報の問題を回避するには、VMConnect を使用して仮想マシンにログインし、PowerShell を開き、次の PowerShell を使用して vmicvmsession サービスを再開します。
@@ -228,21 +228,21 @@ New-PSSession : An error has occurred which Windows PowerShell cannot handle. A 
 Restart-Service -Name vmicvmsession
 ```
 
-### <a name="error-parameter-set-cannot-be-resolved"></a>エラー: パラメーター セットを解決できません。
+### <a name="error-parameter-set-cannot-be-resolved"></a>エラー: パラメーター セットを解決できない
 **エラー メッセージ:**  
 ``` 
 Enter-PSSession : Parameter set cannot be resolved using the specified named parameters.
 ```
 
 **考えられる原因:**  
-* `-RunAsAdministrator` は、仮想マシンへの接続時にはサポートされません。
+* 仮想マシンへの接続時に `-RunAsAdministrator` がサポートされません。
      
   Windows コンテナーに接続するときは、`-RunAsAdministrator` フラグを指定すると、明示的な資格情報がなくても管理者として接続できます。  仮想マシンはホストに暗黙の管理者アクセス権を付与しないため、資格情報を明示的に入力する必要があります。
 
 仮想マシンに管理者の資格情報を渡すには、`-Credential` パラメーターを使用するか、要求されたときに手動で入力します。
 
 
-### <a name="error-the-credential-is-invalid"></a>エラー: 資格情報が無効です。
+### <a name="error-the-credential-is-invalid"></a>エラー: 資格情報が無効である。
 
 **エラー メッセージ:**  
 ```
@@ -253,9 +253,9 @@ Enter-PSSession : The credential is invalid.
 * ゲストの資格情報を検証できない
   * 指定された資格情報が誤っていた。
   * ゲストにユーザー アカウントがない (前もって OS が起動されていない)
-  * 管理者として接続する場合: 管理者がアクティブなユーザーとして設定されていない。  [こちら](<https://docs.microsoft.com/previous-versions/windows/it-pro/windows-8.1-and-8/hh825104(v=win.10)>)をご覧ください。
+  * 管理者として接続している場合:管理者がアクティブなユーザーとして設定されていない。  詳細については、[こちら](<https://docs.microsoft.com/previous-versions/windows/it-pro/windows-8.1-and-8/hh825104(v=win.10)>)をご覧ください。
   
-### <a name="error-the-input-vmname-parameter-does-not-resolve-to-any-virtual-machine"></a>エラー: 入力 VMName パラメーターが仮想マシンに解決されません。
+### <a name="error-the-input-vmname-parameter-does-not-resolve-to-any-virtual-machine"></a>エラー: 入力の VMName パラメーターが仮想マシンに解決されない。
 
 **エラー メッセージ:**  
 ```

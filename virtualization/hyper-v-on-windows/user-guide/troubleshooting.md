@@ -10,7 +10,7 @@ ms.service: windows-10-hyperv
 ms.assetid: f0ec8eb4-ffc4-4bf1-9a19-7a8c3975b359
 ms.openlocfilehash: bdb9feeb2452f2784a3b814e85dc72f3b967a9d3
 ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/18/2020
 ms.locfileid: "77439329"
@@ -29,11 +29,11 @@ VMConnect を閉じて、もう一度開き、正しいチェックポイント�
 
 ## <a name="when-i-try-to-create-a-virtual-hard-disk-on-a-flash-drive-an-error-message-is-displayed"></a>フラッシュ ドライブ上に仮想ハード ディスクを作成しようとしましたが、エラー メッセージが表示されます
 これらのファイル システムはアクセス制御リスト (ACL) を指定しないため、また、4 GB より大きいファイルをサポートしないため、Hyper-V では FAT または FAT32 でフォーマットされたディスク ドライブをサポートしません。 ExFAT でフォーマットされたディスクは、ACL 機能を制限付きで提供するため、セキュリティ上の理由により、サポートもされません。
-PowerShell では、"システムで '\[path to VHD\]' を作成できませんでした: ファイル システム制限のため、要求された操作を完了できませんでした (0x80070299)。" のエラー メッセージが表示されます。
+PowerShell に表示されるエラー メッセージは、"システムで '\[VHD へのパス\]' を作成できませんでした:ファイル システム制限のため、要求された操作を完了できませんでした (0x80070299)" です。
 
 代わりに、NTFS フォーマットのドライブを使用します。 
 
-## <a name="i-get-this-message-when-i-try-to-install-hyper-v-cannot-be-installed-the-processor-does-not-support-second-level-address-translation-slat"></a>インストールしようとすると、このメッセージが表示されます。"Hyper-V をインストールできません: プロセッサは、第 2 レベルのアドレス変換 (SLAT) をサポートしていません。"
+## <a name="i-get-this-message-when-i-try-to-install-hyper-v-cannot-be-installed-the-processor-does-not-support-second-level-address-translation-slat"></a>インストールしようとすると、このメッセージが表示されます。"Hyper-V をインストールできません:プロセッサは、第 2 レベルのアドレス変換 (SLAT) をサポートしていません。"
 Hyper-V では、仮想マシンを実行するために SLAT が必要です。 コンピューターが SLAT をサポートしていない場合、仮想マシンのホストにすることはできません。
 
-管理ツールのインストールのみを行う場合は、 **[プログラムと機能]** [Windows の機能の有効化または無効化] >  で、 **[Hyper-V プラットフォーム]** の選択を解除します。
+管理ツールのインストールのみを行う場合は、 **[プログラムと機能]**  >  **[Windows の機能の有効化または無効化]** で、 **[Hyper-V プラットフォーム]** の選択を解除します。

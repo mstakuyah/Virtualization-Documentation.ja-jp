@@ -10,20 +10,20 @@ ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
 ms.openlocfilehash: ae633c7ba5d9672335addcc582988fc47c13ed79
 ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/04/2019
 ms.locfileid: "74910152"
 ---
 # <a name="optimize-windows-dockerfiles"></a>Windows Dockerfile を最適化する
 
-Docker のビルドプロセスと作成された Docker イメージの両方を最適化するには、さまざまな方法があります。 この記事では、Docker のビルドプロセスのしくみと、Windows コンテナーのイメージを最適に作成する方法について説明します。
+Docker のビルド プロセスと結果の Docker イメージの両方を最適化する方法は多数あります。 この記事では、Docker のビルド プロセスがどのように機能するかと、Windows コンテナーのイメージを最適に作成する方法について説明します。
 
-## <a name="image-layers-in-docker-build"></a>Docker ビルドのイメージレイヤー
+## <a name="image-layers-in-docker-build"></a>Docker ビルド内のイメージ レイヤー
 
-Docker ビルドを最適化するには、Docker のビルドのしくみを理解しておく必要があります。 Docker ビルド プロセスでは、Dockerfile が使用されて、アクション可能な各命令が 1 つずつ専用の一時的なコンテナーで実行されます。 その結果、アクション可能な各命令に対して新しいイメージ レイヤーが作成されます。
+Docker ビルドを最適化するには、Docker のビルドがどのように機能するかを理解する必要があります。 Docker ビルド プロセスでは、Dockerfile が使用されて、アクション可能な各命令が 1 つずつ専用の一時的なコンテナーで実行されます。 その結果、アクション可能な各命令に対して新しいイメージ レイヤーが作成されます。
 
-たとえば、次のサンプル Dockerfile は、`mcr.microsoft.com/windows/servercore:ltsc2019` ベース OS イメージを使用し、IIS をインストールして、単純な web サイトを作成します。
+たとえば、次のサンプル Dockerfile では、`mcr.microsoft.com/windows/servercore:ltsc2019` ベース OS イメージを使用して、IIS をインストールし、簡単な Web サイトを作成しています。
 
 ```dockerfile
 # Sample Dockerfile
@@ -34,9 +34,9 @@ RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 CMD [ "cmd" ]
 ```
 
-この Dockerfile では、2つのレイヤーを持つイメージが生成されることが予想されます。1つはコンテナー OS イメージ用で、もう1つは IIS と web サイトで構成されます。 ただし、実際のイメージには多くのレイヤーがあり、各レイヤーは前のレイヤーに依存しています。
+この Dockerfile では、2 つのレイヤーを持つイメージが生成されると想定されています。1 つはコンテナー OS イメージ用、2 つ目は IIS と Web サイトを含むものです。 ただし、実際のイメージには多くのレイヤーがあって、各レイヤーはその前のレイヤーに依存しています。
 
-これをわかりやすくするために、サンプルの Dockerfile が作成されたイメージに対して `docker history` コマンドを実行してみましょう。
+これを明確にするために、サンプルの Dockerfile で作成されたイメージに対して `docker history` コマンドを実行してみましょう。
 
 ```dockerfile
 docker history iis
@@ -48,23 +48,23 @@ f0e017e5b088        21 seconds ago       cmd /S /C echo "Hello World - Dockerfil
 6801d964fda5        4 months ago                                                         0 B
 ```
 
-出力には、このイメージに4つのレイヤーがあることが示されています。基本レイヤーと、Dockerfile の各命令にマップされる3つの追加レイヤーです。 最下位のレイヤー (この例では `6801d964fda5`) は、ベース OS イメージを表します。 1つは IIS のインストールです。 次のレイヤーには、新しい Web サイトなどが含まれます。
+出力には、このイメージには 4 つのレイヤーがあることが示されています。基本レイヤーと、Dockerfile 内の各命令にマップされている 3 つの追加レイヤーです。 最下位のレイヤー (この例では `6801d964fda5`) は、ベース OS イメージを表します。 1 つ上のレイヤーは、IIS のインストールです。 次のレイヤーには、新しい Web サイトなどが含まれます。
 
-Dockerfiles は、イメージレイヤーを最小化し、ビルドのパフォーマンスを最適化し、読みやすさによってアクセシビリティを最適化するために記述できます。 最終的に、同じイメージ ビルド タスクを実行するにはさまざまな方法があります。 Dockerfile の形式がビルド時間にどのように影響するかを理解し、それによって作成されるイメージによってオートメーションエクスペリエンスが向上します。
+Dockerfiles は、イメージ レイヤーの最小化、ビルドのパフォーマンスの最適化、読みやすさを通したアクセシビリティの最適化を目的として記述できます。 最終的に、同じイメージ ビルド タスクを実行するにはさまざまな方法があります。 Dockerfile の形式がビルド時間と作成されるイメージにどのように影響するかを理解すれば、オートメーションのエクスペリエンスを向上させることになります。
 
-## <a name="optimize-image-size"></a>イメージサイズの最適化
+## <a name="optimize-image-size"></a>イメージ サイズを最適化する
 
-領域の要件によっては、Docker コンテナーイメージを作成するときにイメージのサイズが重要な要素になることがあります。 コンテナー イメージは、レジストリとホストの間を移動され、エクスポートおよびインポートされて、最終的にはスペースを消費します。 このセクションでは、Windows コンテナーの Docker ビルドプロセス中にイメージサイズを最小限に抑える方法について説明します。
+対象分野の要件によっては、Docker コンテナー イメージを作成するときにイメージ サイズが重要な要素になることがあります。 コンテナー イメージは、レジストリとホストの間を移動され、エクスポートおよびインポートされて、最終的にはスペースを消費します。 このセクションでは、Windows コンテナーの Docker ビルド プロセス時にイメージ サイズを最小限に抑える方法について説明します。
 
-Dockerfile のベストプラクティスの詳細については、「 [Docker.com で Dockerfile を作成するためのベストプラクティス](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)」を参照してください。
+Dockerfile のベスト プラクティスについては、[Docker.com の、Dockerfile を作成するときのベスト プラクティス](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)を参照してください。
 
 ### <a name="group-related-actions"></a>関連するアクションをグループ化する
 
-各 `RUN` 命令によってコンテナーイメージに新しいレイヤーが作成されるため、アクションを1つの `RUN` 命令にグループ化すると、Dockerfile 内のレイヤーの数を減らすことができます。 レイヤーの数を最小限に抑えてもイメージのサイズに大きな影響はありませんが、後の例で示すように、関連するアクションをグループ化するとイメージのサイズに大きな影響があります。
+それぞれの `RUN` 命令によってコンテナー イメージ内に 1 つの新しいレイヤーが作成されるため、複数のアクションを 1 つの `RUN` 命令にグループ化すると、Dockerfile のレイヤーの数を減らすことができます。 レイヤーの数を最小限に抑えてもイメージのサイズに大きな影響はありませんが、後の例で示すように、関連するアクションをグループ化するとイメージのサイズに大きな影響があります。
 
-このセクションでは、同じ処理を実行する2つの Dockerfiles の例を比較します。 ただし、1つの Dockerfile にはアクションごとに1つの命令があり、もう一方の Dockerfile には、関連するアクションがグループ化されています。
+このセクションでは、同じことを実行する Dockerfile の 2 つの例を比較します。 ただし、1 つの Dockerfile にはアクションごとに 1 つの命令があるのに対して、別の Dockerfile では関連するアクションがグループ化されています。
 
-次のグループ化されていない例 Dockerfile は、Windows 用の Python をダウンロードしてインストールし、インストールが完了したらダウンロードしたセットアップファイルを削除します。 この Dockerfile では、各アクションに独自の `RUN` 命令が指定されています。
+グループ化されていない次の例の Dockerfile では、Windows 用の Python をダウンロードしてインストールし、インストールが完了したらダウンロードしたセットアップ ファイルを削除します。 この Dockerfile では、各アクションに固有の `RUN` 命令が指定されています。
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -85,7 +85,7 @@ a395ca26777f        15 seconds ago      cmd /S /C powershell.exe -Command Remove
 957147160e8d        3 minutes ago       cmd /S /C powershell.exe -Command Invoke-WebR   125.7 MB
 ```
 
-2番目の例は、まったく同じ操作を実行する Dockerfile です。 ただし、すべての関連するアクションは、単一の `RUN` 命令の下にグループ化されています。 `RUN` 命令の各手順は、Dockerfile の新しい行にあります。一方、'\\' 文字は、行の折り返しに使用されます。
+2 番目の例は、まったく同じ操作を実行する Dockerfile です。 ただし、関連するすべてのアクションが単一の `RUN` 命令のもとにグループ化されています。 `RUN` 命令内の各ステップは、Dockerfile では新しい行に記述されていて、改行には "\\" 文字が使用されています。
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -97,7 +97,7 @@ RUN powershell.exe -Command \
   Remove-Item c:\python-3.5.1.exe -Force
 ```
 
-結果のイメージには、`RUN` 命令に対して追加されたレイヤーが1つだけあります。
+結果のイメージにあるのは、`RUN` 命令に対する 1 つの追加レイヤーだけです。
 
 ```dockerfile
 docker history doc-example-2
@@ -108,9 +108,9 @@ IMAGE               CREATED             CREATED BY                              
 
 ### <a name="remove-excess-files"></a>余分なファイルを削除する
 
-使用後に必要のない、Dockerfile 内のファイルがある場合は、それを削除してイメージのサイズを小さくすることができます。 この処理は、イメージ レイヤーへのファイルのコピーが行われるのと同じステップで行う必要があります。 これにより、ファイルが下位レベルのイメージレイヤーに保持されなくなります。
+Dockerfile 内に、使用後には必要がないインストーラーなどのファイルがある場合は、それを削除してイメージ サイズを小さくすることができます。 この処理は、イメージ レイヤーへのファイルのコピーが行われるのと同じステップで行う必要があります。 そうすれば、ファイルが下位レベルのイメージ レイヤーに残らないようにできます。
 
-次の Dockerfile の例では、Python パッケージがダウンロードされ、実行された後、削除されます。 このすべてを 1 つの `RUN` 操作で行うので、作成されるイメージ レイヤーは 1 つです。
+次の例の Dockerfile では、Python パッケージがダウンロードされて実行された後、削除されます。 このすべてを 1 つの `RUN` 操作で行うので、作成されるイメージ レイヤーは 1 つです。
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -122,13 +122,13 @@ RUN powershell.exe -Command \
   Remove-Item c:\python-3.5.1.exe -Force
 ```
 
-## <a name="optimize-build-speed"></a>ビルド速度の最適化
+## <a name="optimize-build-speed"></a>ビルドの速さを最適化する
 
-### <a name="multiple-lines"></a>複数行
+### <a name="multiple-lines"></a>複数の行
 
-操作を複数の個別の命令に分割して、Docker のビルド速度を最適化することができます。 複数の `RUN` 操作では、`RUN` 命令ごとに個々のレイヤーが作成されるため、キャッシュの有効性が向上します。 同じ命令が別の Docker ビルド操作で既に実行されている場合、このキャッシュされた操作 (イメージレイヤー) が再利用されるため、Docker ビルドランタイムが減少します。
+操作を複数の独立した命令に分割し、Docker のビルドの速さを最適化することができます。 複数の `RUN` 操作では、`RUN` 命令ごとに独立したレイヤーが作成されるため、キャッシュの有効性が向上します。 まったく同じ命令が、異なる Docker ビルド操作で既に実行されている場合、このキャッシュ済みの操作 (イメージ レイヤー) が再利用されるので、Docker ビルドの実行時間が短縮されます。
 
-次の例では、Apache と Visual Studio の再配布パッケージの両方がダウンロードされ、インストールされた後、不要になったファイルを削除することによってクリーンアップされます。 これはすべて、1つの `RUN` 命令を使用して行われます。 これらのアクションのいずれかが更新されると、すべてのアクションが再実行されます。
+次の例では、Apache と Visual Studio の両方の再配布パッケージをダウンロードし、インストールした後、不要になったファイルの削除によってクリーンアップを行っています。 これは、1 つの `RUN` 命令ですべて実行されます。 これらのアクションのいずれかが更新された場合、すべてのアクションが再実行されます。
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -154,7 +154,7 @@ RUN powershell -Command \
   Remove-Item c:\php.zip
 ```
 
-生成されるイメージには2つのレイヤーがあります。1つは基本 OS イメージ用で、もう1つは1つの `RUN` 命令からのすべての操作が含まれています。
+結果のイメージには 2 つのレイヤーがあります。1 つはベース OS イメージ用で、もう 1 つのレイヤーには 1 つの `RUN` 命令のすべての操作が含まれています。
 
 ```dockerfile
 docker history doc-sample-1
@@ -164,7 +164,7 @@ IMAGE               CREATED             CREATED BY                              
 6801d964fda5        5 months ago                                                        0 B
 ```
 
-比較して、ここでは、同じ操作を3つの `RUN` 命令に分割します。 この場合、各 `RUN` 命令はコンテナーイメージレイヤーにキャッシュされ、以降の Dockerfile ビルドでは変更されたものだけを再実行する必要があります。
+比較して、こちらでは同じ操作が 3 つの `RUN` 命令に分割されています。 この場合、各 `RUN` 命令はコンテナー イメージ レイヤーにキャッシュされており、以降の Dockerfile ビルドでは、再実行する必要があるのは変更されたものだけです。
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -188,7 +188,7 @@ RUN powershell -Command \
     Remove-Item c:\php.zip -Force
 ```
 
-結果のイメージは、4つのレイヤーで構成されます。基本 OS イメージのための1つのレイヤーと3つの `RUN` 命令。 各 `RUN` 命令は独自のレイヤーで実行されるため、この Dockerfile の後続の実行、または異なる Dockerfile 内の同じ命令セットが、キャッシュされたイメージレイヤーを使用してビルド時間を短縮します。
+結果のイメージは、4 つのレイヤーで構成されます。ベース OS イメージ用のレイヤーが 1 つと、3 つの `RUN` 命令それぞれに 1 つです。 各 `RUN` 命令は独自のレイヤーで実行されたため、それ以降、この Dockerfile を実行したり、異なる Dockerfile で同じ命令セットを実行したりすると、キャッシュされているイメージ レイヤーが使用され、ビルド時間が短縮されます。
 
 ```dockerfile
 docker history doc-sample-2
@@ -200,13 +200,13 @@ d43abb81204a        7 days ago          cmd /S /C powershell -Command  Sleep 2 ;
 6801d964fda5        5 months ago
 ```
 
-イメージキャッシュを使用する場合は、次のセクションで説明するように、命令の順序を付けることが重要です。
+次のセクションで説明するように、イメージ キャッシュを使用する場合は、命令の順序をどのようにするかが重要です。
 
-### <a name="ordering-instructions"></a>命令の順序
+### <a name="ordering-instructions"></a>命令の順序指定
 
 Dockerfile は上から下に処理され、各命令はキャッシュされているレイヤーと比較されます。 キャッシュされたレイヤーがない命令が見つかると、その命令およびそれ以降のすべての命令が新しいコンテナー イメージ レイヤーで処理されます。 このため、命令の配置の順序が重要になります。 変化しない命令は、Dockerfile の前の方に配置します。 変化する可能性のある命令は、Dockerfile の後の方に配置します。 そうすることで、既存のキャッシュが役に立たなくなる可能性が減ります。
 
-次の例は、Dockerfile 命令の順序付けがキャッシュの有効性に与える影響を示しています。 この単純な Dockerfile の例では、4つの番号付きフォルダーがあります。  
+この例は、Dockerfile の命令の順序指定がキャッシュの有効性にどのような影響を与えるかを示しています。 この簡単な例の Dockerfile には、番号が付いたフォルダーが 4 つあります。  
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -217,7 +217,7 @@ RUN mkdir test-3
 RUN mkdir test-4
 ```
 
-生成されるイメージには5つのレイヤーがあります。1つは基本 OS イメージ用で、もう1つは `RUN` 命令です。
+結果のイメージには 5 つのレイヤーがあります。ベース OS イメージ用に 1 つ、`RUN` 命令ごとに 1 つずつです。
 
 ```dockerfile
 docker history doc-sample-1
@@ -230,7 +230,7 @@ afba1a3def0a        38 seconds ago       cmd /S /C mkdir test-4   42.46 MB
 6801d964fda5        5 months ago                                  0 B
 ```
 
-次の Dockerfile が少し変更され、3番目の `RUN` 命令が新しいファイルに変更されました。 この Dockerfile に対して Docker ビルドを実行すると、前の例と同じ最初の 3 つの命令は、キャッシュされたイメージ レイヤーを使用します。 ただし、変更された `RUN` 命令はキャッシュされないため、変更された命令とそれ以降のすべての命令に対して新しいレイヤーが作成されます。
+次に示すこの Dockerfile は少し変更されて、3 つ目の `RUN` 命令が新しいファイルに変更されました。 この Dockerfile に対して Docker ビルドを実行すると、前の例と同じ最初の 3 つの命令は、キャッシュされたイメージ レイヤーを使用します。 ただし、変更された `RUN` 命令はキャッシュされていないので、変更された命令と、後続のすべての命令に対して新しいレイヤーが作成されます。
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -241,7 +241,7 @@ RUN mkdir test-5
 RUN mkdir test-4
 ```
 
-新しいイメージのイメージ Id を、このセクションの最初の例で使用したものと比較すると、下から上にある最初の3つのレイヤーが共有されますが、4番目と5番目のレイヤーは一意です。
+新しいイメージのイメージ ID を、このセクションの最初の例に含まれるものと比較すると、下から上に最初の 3 つのレイヤーは共有されていますが、4 つ目と 5 つ目は一意になっていることがわかります。
 
 ```dockerfile
 docker history doc-sample-2
@@ -254,13 +254,13 @@ c92cc95632fb        28 seconds ago      cmd /S /C mkdir test-4   5.644 MB
 6801d964fda5        5 months ago                                 0 B
 ```
 
-## <a name="cosmetic-optimization"></a>コスメティックの最適化
+## <a name="cosmetic-optimization"></a>見た目の最適化
 
-### <a name="instruction-case"></a>命令ケース
+### <a name="instruction-case"></a>命令の大文字と小文字の区別
 
-Dockerfile 命令では大文字と小文字は区別されませんが、大文字を使用します。 これにより、命令呼び出しと命令操作を区別することで読みやすさが向上します。 次の2つの例は、初期化されていない Dockerfile を比較しています。
+Dockerfile の命令の大文字と小文字は区別されませんが、規則では大文字を使うようになっています。 これにより、命令の呼び出しと命令の操作が区別されて、読みやすさが向上しています。 以下の 2 つの例では、大文字で記述していない Dockerfile と大文字で記述してある Dockerfile を比較しています。
 
-次に示すのは、呼び出されていない Dockerfile です。
+次に示すのは、大文字で記述していない Dockerfile です。
 
 ```dockerfile
 # Sample Dockerfile
@@ -271,7 +271,7 @@ run echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 cmd [ "cmd" ]
 ```
 
-次に示すのは、大文字を使用する同じ Dockerfile です。
+次に示すのは、大文字を使用している同一の Dockerfile です。
 
 ```dockerfile
 # Sample Dockerfile
@@ -284,7 +284,7 @@ CMD [ "cmd" ]
 
 ### <a name="line-wrapping"></a>行の折り返し
 
-長い複雑な操作は、円記号 `\` 文字で複数行に分けることができます。 次の Dockerfile は、Visual Studio の再頒布可能パッケージをインストールし、インストーラー ファイルを削除して、構成ファイルを作成します。 これら 3 つの操作すべてが 1 行で指定されています。
+長くて複雑な操作は、バックスラッシュ `\` 文字によって複数行に分割できます。 次の Dockerfile は、Visual Studio の再頒布可能パッケージをインストールし、インストーラー ファイルを削除して、構成ファイルを作成します。 これら 3 つの操作すべてが 1 行で指定されています。
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -292,7 +292,7 @@ FROM mcr.microsoft.com/windows/servercore:ltsc2019
 RUN powershell -Command c:\vcredist_x86.exe /quiet ; Remove-Item c:\vcredist_x86.exe -Force ; New-Item c:\config.ini
 ```
 
-コマンドは円記号で分割できます。これにより、1つの `RUN` 命令の各操作がそれぞれの行に指定されます。
+1 つの `RUN` 命令の各操作が独自の行で指定されるように、バックスラッシュを使用してコマンドを分割できます。
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -304,8 +304,8 @@ RUN powershell -Command \
     New-Item c:\config.ini
 ```
 
-## <a name="further-reading-and-references"></a>参考資料と参照
+## <a name="further-reading-and-references"></a>この後の参考資料
 
-[Windows 上の dockerfile](manage-windows-dockerfile.md)
+[Windows 上の Dockerfile](manage-windows-dockerfile.md)
 
-[Docker.com で Dockerfiles を作成するためのベストプラクティス](https://docs.docker.com/engine/reference/builder/)
+[Dockerfile を作成するときのベスト プラクティス (Docker.com)](https://docs.docker.com/engine/reference/builder/)

@@ -1,6 +1,6 @@
 ---
-title: コンテナー化 a .NET Core アプリ
-description: コンテナーを使用してサンプル .NET core アプリを構築する方法について説明します
+title: .NET Core アプリをコンテナー化する
+description: コンテナーを使用してサンプル .NET Core アプリを構築する方法について説明します
 keywords: Docker, コンテナー
 author: cwilhit
 ms.author: crwilhit
@@ -10,31 +10,31 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.openlocfilehash: 587e8de5f0d593f92f6301c87bf68e08a8bbd839
 ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/06/2020
 ms.locfileid: "78854006"
 ---
-# <a name="containerize-a-net-core-app"></a>コンテナー化 a .NET Core アプリ
+# <a name="containerize-a-net-core-app"></a>.NET Core アプリをコンテナー化する
 
-このトピックでは、Windows コンテナーとしてデプロイするために既存のサンプル .NET アプリをパッケージ化する方法について説明し[ます。「はじめ](set-up-environment.md)に」の説明に従って環境を設定した後、「[最初の Windows コンテナーを実行](run-your-first-container.md)する」の説明に従って最初のコンテナーを実行します。
+このトピックでは、既存のサンプル .NET アプリをデプロイするために Windows コンテナーとしてパッケージ化する方法を説明します。この作業は、「[作業の開始:コンテナー用の Windows を準備する](set-up-environment.md)」で説明されているように環境をセットアップし、「[最初の Windows コンテナーを実行する](run-your-first-container.md)」で説明されているように最初のコンテナーを実行した後に行います。
 
-また、コンピューターに Git ソース管理システムがインストールされている必要があります。 インストールするには、 [Git](https://git-scm.com/download)にアクセスしてください。
+また、コンピューターに Git ソース管理システムがインストールされている必要があります。 これをインストールするには、[Git](https://git-scm.com/download) にアクセスしてください。
 
-## <a name="clone-the-sample-code-from-github"></a>GitHub からサンプルコードを複製する
+## <a name="clone-the-sample-code-from-github"></a>GitHub からサンプル コードを複製する
 
-すべてのコンテナーサンプルソースコードは、`windows-container-samples`という名前のフォルダーにある[仮想化ドキュメント](https://github.com/MicrosoftDocs/Virtualization-Documentation)git リポジトリ (リポジトリとして知られています) の下に保持されます。
+すべてのコンテナー サンプル ソース コードは、`windows-container-samples` という名前のフォルダー内の [Virtualization-Documentation](https://github.com/MicrosoftDocs/Virtualization-Documentation) Git リポジトリ (略式で "リポ" とも呼ばれます) に保管されています。
 
-1. PowerShell セッションを開き、このリポジトリを格納するフォルダーに移動します。 (他のコマンドプロンプトウィンドウの種類も同様に機能しますが、コマンド例では PowerShell を使用しています)。
+1. PowerShell セッションを開き、このリポジトリを格納しようとしているフォルダーにディレクトリを移動します。 (他の種類のコマンド プロンプト ウィンドウも同様に機能しますが、このコマンド例では PowerShell を使用しています。)
 2. 現在の作業ディレクトリにリポジトリを複製します。
 
    ```PowerShell
    git clone https://github.com/MicrosoftDocs/Virtualization-Documentation.git
    ```
 
-3. 次のコマンドを使用して、`Virtualization-Documentation\windows-container-samples\asp-net-getting-started` の下にあるサンプルディレクトリに移動し、Dockerfile を作成します。
+3. 以下のコマンドを使用して、`Virtualization-Documentation\windows-container-samples\asp-net-getting-started` の下にあるサンプル ディレクトリに移動し、Dockerfile を作成します。
 
-   [Dockerfile](https://docs.docker.com/engine/reference/builder/)はメイクファイルに似ています。これは、コンテナーエンジンにコンテナーイメージを構築する方法を指示する命令のリストです。
+   [Dockerfile](https://docs.docker.com/engine/reference/builder/) はメイクファイルに似ています。これは、コンテナー イメージの構築方法をコンテナー エンジンに指示する手順の一覧です。
 
    ```Powershell
    # Navigate into the sample directory
@@ -44,9 +44,9 @@ ms.locfileid: "78854006"
    New-Item -Name Dockerfile -ItemType file
    ```
 
-## <a name="write-the-dockerfile"></a>Dockerfile を作成する
+## <a name="write-the-dockerfile"></a>Dockerfile を記述する
 
-先ほど作成した Dockerfile を任意のテキストエディターで開き、次の内容を追加します。
+先ほど作成した Dockerfile を任意のテキスト エディターで開き、以下の内容を追加します。
 
 ```Dockerfile
 FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build-env
@@ -64,33 +64,33 @@ COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "asp-net-getting-started.dll"]
 ```
 
-1行ずつ分割して、それぞれの手順について説明します。
+各行に分けて、それぞれの手順で何が行われるかを説明します。
 
 ```Dockerfile
 FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build-env
 WORKDIR /app
 ```
 
-最初の一連の行では、コンテナー構築の基盤として使う基本イメージを宣言します。 ローカル システムにこのイメージがまだ存在しない場合、docker が自動的に取得を試みます。 `mcr.microsoft.com/dotnet/core/sdk:2.1` には .NET core 2.1 SDK がインストールされているため、バージョン2.1 をターゲットとする ASP .NET core プロジェクトをビルドする必要があります。 次の手順では、コンテナー内の作業ディレクトリを `/app`に変更します。このため、この後に続くすべてのコマンドがこのコンテキストで実行されます。
+最初の一連の行では、コンテナー構築の基盤として使う基本イメージを宣言します。 ローカル システムにこのイメージがまだ存在しない場合、docker が自動的に取得を試みます。 `mcr.microsoft.com/dotnet/core/sdk:2.1` は、インストールされた .NET Core 2.1 SDK と一緒のパッケージで提供されているため、バージョン 2.1 をターゲットとする ASP .NET Core プロジェクトをビルドするタスクに対応できます。 次の手順では、コンテナー内の作業ディレクトリが `/app` になるように変更しています。これで、この後に続くすべてのコマンドがこのコンテキストで実行されます。
 
 ```Dockerfile
 COPY *.csproj ./
 RUN dotnet restore
 ```
 
-次に、これらの手順で .csproj ファイルを `build-env` コンテナーの `/app` ディレクトリにコピーします。 このファイルをコピーすると、.NET はそれを読み取ってから、プロジェクトに必要なすべての依存関係とツールを取得します。
+次にこれらの手順で、.csproj ファイルを `build-env` コンテナーの `/app` ディレクトリにコピーします。 このファイルをコピーすると、そこから .NET の読み取りが行われ、プロジェクトに必要なすべての依存関係とツールが外部から取得されます。
 
 ```Dockerfile
 COPY . ./
 RUN dotnet publish -c Release -o out
 ```
 
-.NET がすべての依存関係を `build-env` コンテナーにプルすると、次の命令によってすべてのプロジェクトソースファイルがコンテナーにコピーされます。 次に、リリース構成を使用してアプリケーションを発行し、で出力パスを指定するよう .NET に指示します。
+すべての依存関係が .NET によって `build-env` コンテナーにプルされると、次の手順で、すべてのプロジェクト ソース ファイルがコンテナーにコピーされます。 次に、アプリケーションをリリース構成と共に公開するよう.NET に指定し、出力パスを指定します。
 
-コンパイルは成功します。 次に、最終イメージをビルドする必要があります。 
+コンパイルが成功するはずです。 ここで、最終イメージをビルドする必要があります。 
 
 > [!TIP]
-> このクイックスタートでは、ソースから .NET core プロジェクトをビルドします。 コンテナーイメージを作成するときは、実稼働ペイロードとその依存関係_のみ_をコンテナーイメージに含めることをお勧めします。 .Net core ランタイムのみが必要であるため、.NET core SDK を最終イメージに含める必要はありません。そのため、dockerfile は、アプリをビルドするために `build-env` という名前の SDK と共にパッケージ化された一時コンテナーを使用するように記述されています。
+> このクイックスタートでは、ソースから .NET Core プロジェクトをビルドします。 コンテナー イメージのビルド時には、運用環境のペイロードとその依存関係_のみ_をコンテナー イメージに含めることが推奨されます。 .Net Core ランタイムのみが必要なため、.NET Core SDK を最終イメージに含めたくありません。そのため、Dockerfile は、アプリをビルドするために SDK と共にパッケージ化された、`build-env` という名前の一時コンテナーを使用するように記述されます。
 
 ```Dockerfile
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.1
@@ -99,53 +99,53 @@ COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "asp-net-getting-started.dll"]
 ```
 
-このアプリケーションは ASP.NET であるため、このランタイムに含まれるイメージを指定します。 次に、一時コンテナーの出力ディレクトリから、すべてのファイルを最終コンテナーにコピーします。 コンテナーの開始時に、新しいアプリを entrypoint として実行するようにコンテナーを構成します。
+アプリケーションが ASP.NET であるため、このラインタイムを含めてイメージを指定します。 次に、一時コンテナーの出力ディレクトリから、すべてのファイルを最終コンテナーにコピーします。 コンテナーは、コンテナーの起動時に新しいアプリをエントリ ポイントとして使用して実行するように構成します
 
-_複数段階のビルド_を実行するために dockerfile を作成しました。 Dockerfile を実行すると、一時的なコンテナーである `build-env`を .NET core 2.1 SDK と共に使用してサンプルアプリをビルドし、最終的なコンテナーのサイズを最小限に抑えるために、出力されたバイナリを .NET core 2.1 runtime のみを含む別のコンテナーにコピーします。
+Dockerfile は、_多段階ビルド_を実行するように記述しました。 Dockerfile を実行するときには、一時コンテナーである `build-env` を .NET Core 2.1 SDK と共に使用してサンプル アプリをビルドした後、最終的なコンテナーのサイズを最小限にするために、出力されたバイナリを、.NET Core 2.1 ランタイムのみを含む別のコンテナーにコピーします。
 
-## <a name="build-and-run-the-app"></a>アプリケーションをビルドし、実行します。
+## <a name="build-and-run-the-app"></a>アプリをビルドして実行する
 
-Dockerfile が記述されたので、Dockerfile で Docker をポイントし、イメージをビルドして実行するように指示できます。
+Dockerfile が記述されたので、Docker に Dockerfile を指し示して、イメージをビルドしてから実行するように指示できます。
 
-1. コマンドプロンプトウィンドウで、dockerfile が置かれているディレクトリに移動し、 [docker build](https://docs.docker.com/engine/reference/commandline/build/)コマンドを実行して、dockerfile からコンテナーをビルドします。
+1. コマンド プロンプト ウィンドウで、Dockerfile が置かれているディレクトリに移動し、[docker build](https://docs.docker.com/engine/reference/commandline/build/) コマンドを実行して Dockerfile からコンテナーをビルドします。
 
    ```Powershell
    docker build -t my-asp-app .
    ```
 
-2. 新しく構築されたコンテナーを実行するには、 [docker run](https://docs.docker.com/engine/reference/commandline/run/)コマンドを実行します。
+2. 新しくビルドされたコンテナーを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを実行します。
 
    ```Powershell
    docker run -d -p 5000:80 --name myapp my-asp-app
    ```
 
-   次のコマンドを詳しく分析してみましょう。
+   このコマンドの詳細を確認しておきましょう。
 
-   * `-d` によって、Docker tun によってコンテナー ' デタッチ済み ' が実行されます。これは、コンテナー内のコンソールにコンソールがフックされていないことを意味します。 コンテナーはバックグラウンドで実行されます。 
-   * `-p 5000:80` は、ホスト上のポート5000をコンテナーのポート80にマップするよう Docker に指示します。 各コンテナーは、独自の IP アドレスを取得します。 ASP .NET は、既定でポート80でリッスンします。 ポートマッピングを使用すると、マップされたポートでホストの IP アドレスに移動し、Docker はすべてのトラフィックをコンテナー内の宛先ポートに転送します。
-   * `--name myapp` は Docker に対して、このコンテナーに対してクエリを実行するのに便利な名前を与えるように Docker に指示します (Docker によって実行時に割り当てられたコンテキスト ID を検索する必要はありません)。
-   * `my-asp-app` は、Docker で実行するイメージです。 これは、`docker build` プロセスの概念として生成されたコンテナーイメージです。
+   * `-d` により、Docker に、"デタッチされている" コンテナーを実行するよう指示します。これは、コンテナー内部のコンソールにフックされているコンソールはないことを意味します。 コンテナーはバックグラウンドで実行されます。 
+   * `-p 5000:80` により、ホスト上のポート 5000 をコンテナーのポート 80 にマップするよう Docker に指示します。 各コンテナーは、独自の IP アドレスを取得します。 ASP .NET は既定で、ポート 80 でリッスンします。 ポート マッピングを使用すると、マップされたポートでホストの IP アドレスに移動することができ、Docker はすべてのトラフィックをコンテナー内の宛先ポートに転送するようになります。
+   * `--name myapp` では、Docker によって実行時に割り当てられるコンテナー ID を検索する代わりに、このコンテナーにクエリで使用するのに便利な名前を割り当てるよう Docker に指示します。
+   * `my-asp-app` は、Docker の実行対象となるイメージです。 これは、`docker build` プロセスの結果として生成されるコンテナー イメージです。
 
-3. Web ブラウザーを開き、`http://localhost:5000` に移動して、次のスクリーンショットに示すように、コンテナー化されたアプリケーションを表示します。
+3. Web ブラウザーを開いて `http://localhost:5000` に移動し、次のスクリーンショットに示すように、コンテナー化されたアプリケーションを表示します。
 
-   >![ASP.NET Core web ページ、コンテナー内の localhost から実行する](media/SampleAppScreenshot.png)
+   >![コンテナー内の localhost から実行されている ASP.NET Core Web ページ](media/SampleAppScreenshot.png)
 
-## <a name="next-steps"></a>次のステップ:
+## <a name="next-steps"></a>次の手順
 
-1. 次の手順では、Azure Container Registry を使用して、コンテナー化された ASP.NET web アプリをプライベートレジストリに発行します。 これにより、組織に展開することができます。
+1. 次の手順は、コンテナー化された ASP.NET Web アプリを、Azure Container Registry を使用してプライベート レジストリに発行することです。 この操作で、アプリを組織内でデプロイすることができます。
 
    > [!div class="nextstepaction"]
-   > [プライベートコンテナーレジストリを作成する](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-powershell)
+   > [プライベート コンテナー レジストリを作成する](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-powershell)
 
-   [コンテナーイメージをレジストリにプッシュ](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-powershell#push-image-to-registry)するセクションが表示されたら、コンテナーレジストリ (`my-asp-app`) と共にパッケージ化した ASP.NET アプリの名前 (例: `contoso-container-registry`) を指定します。
+   [コンテナー イメージをレジストリ](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-powershell#push-image-to-registry)にプッシュするセクションに移動したら、コンテナー レジストリ (`my-asp-app`) と共に、パッケージ化したばかりの ASP.NET アプリの名前 (例: `contoso-container-registry`) を指定します。
 
    ```PowerShell
    docker tag my-asp-app contoso-container-registry.azurecr.io/my-asp-app:v1
    ```
 
-   アプリのサンプルとそれに関連付けられている dockerfiles の詳細については、[追加のコンテナーのサンプル](../samples.md)を参照してください。
+   アプリのサンプルとそれに関連付けられている Dockerfile の詳細については、[その他のコンテナー サンプル](../samples.md)を参照してください。
 
-2. アプリをコンテナーレジストリに発行したら、次の手順として、Azure Kubernetes Service で作成した Kubernetes クラスターにアプリをデプロイします。
+2. アプリをコンテナー レジストリに発行したら、次の手順は、Azure Kubernetes Service で作成する Kubernetes クラスターにアプリをデプロイすることです。
 
    > [!div class="nextstepaction"]
-   > [Kubernetes クラスターの作成](https://docs.microsoft.com/azure/aks/windows-container-cli)
+   > [Kubernetes クラスターを作成する](https://docs.microsoft.com/azure/aks/windows-container-cli)

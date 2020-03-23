@@ -9,7 +9,7 @@ ms.prod: windows-10-hyperv
 ms.assetid: ae4a18ed-996b-4104-90c5-539c90798e4c
 ms.openlocfilehash: 25c72b910af15fc0b498a5b2abce72d32e6d1efd
 ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/18/2020
 ms.locfileid: "77439599"
@@ -18,7 +18,7 @@ ms.locfileid: "77439599"
 
 この記事では、Windows 上の Hyper-V でサポートされているオペレーティング システムの組み合わせを一覧に示します。  また、サポートされる統合サービスやその他のファクターの概要も紹介します。
 
-Microsoft では、これらのホスト/ゲストの組み合わせをテスト済みです。  これらの組み合わせの問題は、製品サポート サービスから注意を受け取る可能性があります。
+Microsoft では、これらのホスト/ゲストの組み合わせをテスト済みです。  これらの組み合わせでの問題については、製品サポート サービスから対応を受けることができます。
 
 Microsoft では、次のようにサポートを提供します。
 
@@ -32,14 +32,14 @@ Microsoft では、次のようにサポートを提供します。
 
 ## <a name="supported-guest-operating-systems"></a>サポートされているゲスト オペレーティング システム
 
-| ゲスト オペレーティング システム |  仮想プロセッサの最大数 | 説明 |
+| ゲスト オペレーティング システム |  仮想プロセッサの最大数 | メモ |
 |:-----|:-----|:-----|
 | Windows 10 | 32 |拡張セッション モードは、Windows 10 Home エディションでは機能しません |
 | Windows 8.1 | 32 | |
 | Windows 8 | 32 ||
 | Windows 7 Service Pack 1 (SP 1) | 4 | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
 | Windows 7 | 4 | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
-| Windows Vista Service Pack 2 (SP2) | 2 | Business、Enterprise、および Ultimate (N および KN エディションを含む)。 |
+| Windows Vista Service Pack 2 (SP2) | 2 で保護されたプロセスとして起動されました | Business、Enterprise、および Ultimate (N および KN エディションを含む)。 |
 | - | | |
 | [Windows Server 半期チャネル](https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview) | 64 | |
 | Windows Server 2019 | 64 | |
@@ -57,8 +57,8 @@ Microsoft では、次のようにサポートを提供します。
 
 | ゲスト オペレーティング システム |  |
 |:-----|:------|
-| [CentOS と Red Hat Enterprise Linux](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-CentOS-and-Red-Hat-Enterprise-Linux-virtual-machines-on-Hyper-V) | |
-| [Hyper-v の Debian 仮想マシン](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Debian-virtual-machines-on-Hyper-V) | |
+| [CentOS と Red Hat Enterprise Linux ](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-CentOS-and-Red-Hat-Enterprise-Linux-virtual-machines-on-Hyper-V) | |
+| [Hyper-V の Debian 仮想マシン](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Debian-virtual-machines-on-Hyper-V) | |
 | [SUSE](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-SUSE-virtual-machines-on-Hyper-V) | |
 | [Oracle Linux](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Oracle-Linux-virtual-machines-on-Hyper-V)  | |
 | [Ubuntu](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Ubuntu-virtual-machines-on-Hyper-V) | |
