@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Kubernetes の展開と Windows ノードの参加で発生する一般的な問題の解決方法。
 keywords: kubernetes、1.14、linux、コンパイル
-ms.openlocfilehash: 471731ec50c7c03816a956bd7aae859ad218be6d
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 19b467b657708627dcb6ca93b64fa292d3db8de8
+ms.sourcegitcommit: 8eedfdc1fda9d0abb36e28dc2b5fb39891777364
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910452"
+ms.lasthandoff: 03/15/2020
+ms.locfileid: "79402923"
 ---
 # <a name="troubleshooting-kubernetes"></a>Kubernetes のトラブルシューティング #
 このページでは、Kubernetes のセットアップ、ネットワーク、および展開に関する一般的な問題について説明します。
@@ -62,7 +62,7 @@ Policy creation failed: hcnCreateLoadBalancer failed in Win32: The specified por
 ### <a name="hostport-publishing-is-not-working"></a>HostPort の発行が機能していません ###
 現時点では、Kubernetes `containers.ports.hostPort` フィールドを使用してポートを発行することはできません。このフィールドは Windows CNI プラグインによって受け入れられないためです。 ノードにポートを公開するときは、NodePort publishing を使用してください。
 
-### <a name="i-am-seeing-errors-such-as-hnscall-failed-in-win32-the-wrong-diskette-is-in-the-drive"></a>"HnsCall が Win32 で失敗しました。ドライブに間違ったディスケットがあります" などのエラーが表示されます。 ###
+### <a name="i-am-seeing-errors-such-as-hnscall-failed-in-win32-the-wrong-diskette-is-in-the-drive"></a>「Win32 でエラーが発生しました。間違ったディスケットがドライブにあります。 " ###
 このエラーは、古い HNS オブジェクトを破棄せずに、hns オブジェクトに対してカスタム変更を行ったり、HNS を変更する新しい Windows Update をインストールしたりするときに発生する可能性があります。 これは、更新前に以前に作成された HNS オブジェクトが、現在インストールされている HNS バージョンと互換性がないことを示します。
 
 Windows Server 2019 (およびそれ以降) では、ユーザーは、HNS ファイルを削除することで、HNS オブジェクトを削除できます。 
@@ -101,7 +101,7 @@ Windows ポッドには、現在 ICMP プロトコル用にプログラミング
 
 まだ問題が発生している場合は、 [cni](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf)のネットワーク構成に注意が必要です。 この静的ファイルをいつでも編集できます。構成は、新しく作成された Kubernetes リソースに適用されます。
 
-どうしてでしょうか?
+なぜでしょうか。
 Kubernetes のネットワーク要件の1つ (「 [Kubernetes モデル](https://kubernetes.io/docs/concepts/cluster-administration/networking/)」を参照) は、NAT を使用せずにクラスター通信を行う場合に使用します。 この要件を遵守するために、送信 NAT[を使用し](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf#L20)ないすべての通信のための [の追加] があります。 ただし、これは、クエリを実行しようとしている外部 IP を除外する必要があることも意味します。 その後、Windows ポッドから送信されたトラフィックは、外部からの応答を受信するために正しく正常に送信されます。 この点で、`cni.conf` の [] の [] は次のようになります。
 ```conf
 "ExceptionList": [
@@ -112,7 +112,10 @@ Kubernetes のネットワーク要件の1つ (「 [Kubernetes モデル](https:
 ```
 
 ### <a name="my-windows-node-cannot-access-a-nodeport-service"></a>Windows ノードが NodePort サービスにアクセスできない ###
-ノード自体からのローカル NodePort アクセスは失敗します。 これは既知の制限です。 NodePort アクセスは、他のノードや外部クライアントからも機能します。
+ノード自体からのローカル NodePort アクセスは、Windows Server 2019 の設計上の制限のために失敗します。 NodePort アクセスは、他のノードや外部クライアントからも機能します。
+
+### <a name="my-windows-node-stops-routing-thourgh-nodeports-after-i-scaled-down-my-pods"></a>Windows ノードがポッドをスケールダウンした後、thourgh NodePorts のルーティングを停止する ###
+デザイン上の制限により、NodePort 転送を機能させるには、Windows ノードで少なくとも1つのポッドが実行されている必要があります。
 
 ### <a name="after-some-time-vnics-and-hns-endpoints-of-containers-are-being-deleted"></a>しばらくすると、コンテナーの vNICs と HNS のエンドポイントが削除されます。 ###
 この問題は、`hostname-override` パラメーターが[kube](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)に渡されない場合に発生する可能性があります。 これを解決するには、ユーザーは次のようにホスト名を kube に渡す必要があります。
@@ -176,7 +179,7 @@ Get-HnsNetwork | ? Name -ieq "cbr0"
 Get-NetAdapter | ? Name -Like "vEthernet (Ethernet*"
 ```
 
-多くの場合、ホストのネットワークアダプターが "イーサネット" ではない場合は、InterfaceName スクリプトの[](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/start.ps1#L6)パラメーターを変更することをお勧めします。 それ以外の場合は、`start-kubelet.ps1` スクリプトの出力を参照して、仮想ネットワークの作成中にエラーが発生していないかどうかを確認します。 
+多くの場合、ホストのネットワークアダプターが "イーサネット" ではない場合は、[InterfaceName](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/start.ps1#L6) スクリプトのパラメーターを変更することをお勧めします。 それ以外の場合は、`start-kubelet.ps1` スクリプトの出力を参照して、仮想ネットワークの作成中にエラーが発生していないかどうかを確認します。 
 
 ### <a name="pods-stop-resolving-dns-queries-successfully-after-some-time-alive"></a>しばらく稼働した後、ポッドが正常な DNS クエリの解決を停止する ###
 Windows Server バージョン1803以降のネットワークスタックに既知の DNS キャッシュの問題があるため、DNS 要求が失敗する場合があります。 この問題を回避するには、次のレジストリキーを使用して、TTL キャッシュの最大値を0に設定します。
@@ -188,12 +191,12 @@ New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Paramet
 New-ItemPropery -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxNegativeCacheTtl -Value 0 -Type DWord
 ```
 
-### <a name="i-am-still-seeing-problems-what-should-i-do"></a>まだ問題が発生しています。 どうしたらいいのでしょうか? ### 
-ネットワークまたはホストに追加の制約があり、ノード間で特定の種類の通信が妨げられている場合があります。 次のことを確認してください。
+### <a name="i-am-still-seeing-problems-what-should-i-do"></a>まだ問題が発生しています。 どうすればよいですか? ### 
+ネットワークまたはホストに追加の制約があり、ノード間で特定の種類の通信が妨げられている場合があります。 次を確認してください。
   - 選択した[ネットワークトポロジ](./network-topologies.md)が正しく構成されました
   - ポッドからと思われるトラフィックが許可されていること
   - HTTP トラフィックが許可されていること (Web サービスを展開する場合)
-  - さまざまなプロトコル (ie ICMP と TCP/UDP) からのパケットが削除されない
+  - さまざまなプロトコルのパケット (ie ICMP とTCP/UDP) は削除されていません
 
 >[!TIP]
 > セルフヘルプに関するその他のリソースについては、Kubernetes のトラブルシューティングガイド[を参照してください。](https://techcommunity.microsoft.com/t5/Networking-Blog/Troubleshooting-Kubernetes-Networking-on-Windows-Part-1/ba-p/508648)
