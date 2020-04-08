@@ -208,6 +208,12 @@ Docker をアンインストールした後は、Docker の既定のネットワ
 Get-HNSNetwork | Remove-HNSNetwork
 ```
 
+Windows Server 2016 の場合は、次のコマンドレッドを使用します。
+
+```powershell
+Get-ContainerNetwork | Remove-ContainerNetwork
+```
+
 次のコマンドレットを実行して、Docker のプログラム データをお使いのシステムから削除します。
 
 ```powershell
